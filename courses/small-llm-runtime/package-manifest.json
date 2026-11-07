@@ -1,0 +1,314 @@
+{
+  "format": "ivy-cpu-package-v1",
+  "course": "small-llm-runtime",
+  "sourceRevision": "8a451fd73d3ed6aeada6440049cb3e8a07ed4186",
+  "sourceDirty": false,
+  "inputHash": "a610dd44667831f69f09dab4650e340bfc2e1984e57c255e390f4638a9f2da81",
+  "files": [
+    {
+      "name": "README.md",
+      "bytes": 7564,
+      "sha256": "3894a5976893327add7879696fde7cd2a72bc5e3592d32f61d4a98dbce29d76e"
+    },
+    {
+      "name": "NOTICE.md",
+      "bytes": 2826,
+      "sha256": "67cf83b146aeb263c629160f1d615c92704972c69065b25908fe86c51c8aa573"
+    },
+    {
+      "name": "RUBRIC.md",
+      "bytes": 4586,
+      "sha256": "ceeb96e2f87ebd0d9fe9d36ba23601953a2213a979ea0d2053b8f42b71262b26"
+    },
+    {
+      "name": "PROMPT.md",
+      "bytes": 1017,
+      "sha256": "f43b276e258b62b41450c3d8359ff6018179dc6b0d68a97b559b8ae95fb1271b"
+    },
+    {
+      "name": "course.json",
+      "bytes": 3386,
+      "sha256": "19a4b19adebe94b4265bef352f34849e9df3eb9699937146ca5151d77704d9d3"
+    },
+    {
+      "name": "starter.mjs",
+      "bytes": 1368,
+      "sha256": "835bbd3c1569143ef7784b396579dc7a751a642a542be8ec797ffacac8678f38"
+    },
+    {
+      "name": "checks.mjs",
+      "bytes": 17379,
+      "sha256": "352cf2fd11a2596ae97d3e085d2c29d5d24f2cb6706fd29e0e8f9142b9e41ff8"
+    },
+    {
+      "name": "beam-checks.mjs",
+      "bytes": 12147,
+      "sha256": "420b7c4a34b9862ff442e234cecd2c3d69ec3a355a33e1e92dfaa0dec015400b"
+    },
+    {
+      "name": "beam-fixture-data.mjs",
+      "bytes": 4296,
+      "sha256": "5e51e3865000676b7bafe9a69a44cac2844eb4f062ba73d3f4104550311ec662"
+    },
+    {
+      "name": "stream-checks.mjs",
+      "bytes": 10125,
+      "sha256": "a1d66472b8d9bd379e78c61b12afbafc54e6e5cd2eaad80e6c11160173e0c4b6"
+    },
+    {
+      "name": "practice.mjs",
+      "bytes": 8224,
+      "sha256": "1a46fd77885cc3239790d455f28d919bde150a10adb2e3b36de0b5fca2960af1"
+    },
+    {
+      "name": "index.html",
+      "bytes": 4536,
+      "sha256": "df212e2693d39e8c8c74c105ab80db6e6c864e00520b378a3184588afcee5d37"
+    },
+    {
+      "name": "style.css",
+      "bytes": 2567,
+      "sha256": "e91f005d9a64ce60d4232a2fc7137cc283c0a1b00597c57fdc8517b52b33192a"
+    },
+    {
+      "name": "web.mjs",
+      "bytes": 19559,
+      "sha256": "5fc192e04e8d594c0a9cc26d2c19180d0810ae80d03a8bd9b1fc76b82879956f"
+    },
+    {
+      "name": "render.mjs",
+      "bytes": 1154,
+      "sha256": "9e7a1b42f3c732a351d504013b19a5a78aabcea09a8021838ed8c5cabae20e25"
+    },
+    {
+      "name": "lab.mjs",
+      "bytes": 13024,
+      "sha256": "30df0cfecbd242d03f2c43a3e7b2d85772ae4c94d493476868ff826c14e836b3"
+    },
+    {
+      "name": "node-worker.mjs",
+      "bytes": 1388,
+      "sha256": "3728d6ac880fcc8cbf49a733ee8fd85a2b999beebf6db44cad87dcb157e7c8b0"
+    },
+    {
+      "name": "checker-worker.mjs",
+      "bytes": 1232,
+      "sha256": "24b818b0c3fc05b177223f2b4c3b154fe7b38a004e3ca2688a8cfbfd9621335a"
+    },
+    {
+      "name": "zip.mjs",
+      "bytes": 1881,
+      "sha256": "ad92dcf2e12dcadcc7094ecdc9c381f9f7946545b9faaaa404d3e50591847aa0"
+    },
+    {
+      "name": "manifest.mjs",
+      "bytes": 1576,
+      "sha256": "9fa63245cdd7fce32a5550e8dffab88511a5b615c3eed30f984e96b3324bf5d9"
+    },
+    {
+      "name": "lessons/01.md",
+      "bytes": 4024,
+      "sha256": "9a9840cdffc437ba17f19caff05a54aefeb1a2583c3a6338aaad68264a39b331"
+    },
+    {
+      "name": "lessons/02.md",
+      "bytes": 3576,
+      "sha256": "21c421b4a763f86cd723b6ca9738d749f80d30d0e94c3f284db7982036a29ed9"
+    },
+    {
+      "name": "lessons/03.md",
+      "bytes": 3757,
+      "sha256": "b5d4e1cb260bf7191194d6df03a3e5829e5262f155f4a0f7a5956cd6c2b0157f"
+    },
+    {
+      "name": "lessons/04.md",
+      "bytes": 3695,
+      "sha256": "92a39d8309bf76d8b5bcf48e38f64bd0525a53c9d54449ff6eeb5fce650e3de0"
+    },
+    {
+      "name": "lessons/05.md",
+      "bytes": 3383,
+      "sha256": "9ad17401ead27ad117cfeadd2c718c5ec683178191d13b3059bb0c8341826387"
+    },
+    {
+      "name": "lessons/06.md",
+      "bytes": 3603,
+      "sha256": "93bafae011f0bfdddba2e57459922b8276612f9dc32a9b3bc37352aef6b55cbf"
+    },
+    {
+      "name": "lessons/07.md",
+      "bytes": 3428,
+      "sha256": "ed55a0bb389c03bac73acf214457f2b32298200091ace537b9730598276e9eb9"
+    },
+    {
+      "name": "lessons/08.md",
+      "bytes": 9832,
+      "sha256": "141d649b983a9fdc30f85ba0d4c2ccb2a5245c201e3a7253ab7bfc31302e5e51"
+    },
+    {
+      "name": "MISCONCEPTIONS.md",
+      "bytes": 3716,
+      "sha256": "ad8166c19eab8dc65412b1773a678f46cc066d1e1525c142aa96e23aacdfbccb"
+    },
+    {
+      "name": "misconceptions.json",
+      "bytes": 8134,
+      "sha256": "00d4e641e6c58f28bcd3c0bbb07459d8c8125475d73146c9c5ca6f6f67f56de2"
+    },
+    {
+      "name": "reference-support/index.json",
+      "bytes": 2120,
+      "sha256": "417353d9987ac22e0051999012fbda0a4eeb0655e5bf1e6df4238d5066709596"
+    },
+    {
+      "name": "reference-support/for-02.mjs",
+      "bytes": 5150,
+      "sha256": "78b88b247420f4acf445ba9f4715178dd4464b86f0009f756ecec9171d7cc783"
+    },
+    {
+      "name": "reference-support/for-03.mjs",
+      "bytes": 5336,
+      "sha256": "d8fd7fadb17f1315acb83e1b9288829cdf8f27bd3e5cdf353543ab11c04ccd68"
+    },
+    {
+      "name": "reference-support/for-04.mjs",
+      "bytes": 5634,
+      "sha256": "7caf12c1ab566926622c072fc0e6d021865bbeb522c1be22949b841f6e1decdb"
+    },
+    {
+      "name": "reference-support/for-05.mjs",
+      "bytes": 7042,
+      "sha256": "d43d83e9916222383287c57e89b80beaa49472f133ff7b5f65f92255a90e70c3"
+    },
+    {
+      "name": "reference-support/for-06.mjs",
+      "bytes": 5336,
+      "sha256": "6c25b080b20ac8ee7b9781cd82c2af58325960deb1f33a583c818818614d3b07"
+    },
+    {
+      "name": "reference-support/for-07.mjs",
+      "bytes": 8828,
+      "sha256": "bb227a83890c1ffc63dbf137802835809d84e609f9f68d7892a8070e25bbed92"
+    },
+    {
+      "name": "reference-support/for-08.mjs",
+      "bytes": 9750,
+      "sha256": "bf60001116146defd92c845c476dc71af81643bd411eb057dd9947d9237f94be"
+    },
+    {
+      "name": "API.md",
+      "bytes": 9471,
+      "sha256": "7de0f2b8a27561246938c4ee2f0d42a3047aa5cc84e15a14f61942336e0b26a5"
+    },
+    {
+      "name": "numeric.mjs",
+      "bytes": 924,
+      "sha256": "666304771545f6ada6699f42b7c216152dd0547acd47163b85bf742da1060912"
+    },
+    {
+      "name": "spec.mjs",
+      "bytes": 293,
+      "sha256": "db3a56c0bac1315a84089eb6234443142593c11f941e4ea5cb1bdaa270b510c1"
+    },
+    {
+      "name": "fixtures/manifest.json",
+      "bytes": 486,
+      "sha256": "92855fa8aa4224fe41ebfef737b3aae5891e8b2d47108c1812d454ba2f0c21a6"
+    },
+    {
+      "name": "fixtures/tiny-original.json",
+      "bytes": 21661,
+      "sha256": "60867dbc492cc5978dfad4cf8a0bfef37f756a186edcdc18c8199db5ed474112"
+    },
+    {
+      "name": "fixtures/golden.json",
+      "bytes": 4529,
+      "sha256": "62c1f0d4dbfce5c6da28d6c3f96cf96f065e3900f948f2cbafbda04ff312d769"
+    },
+    {
+      "name": "fixtures/mystery-cache.json",
+      "bytes": 6212,
+      "sha256": "ff161f60d7038b406b3164f04e63c97fcf8d2c1020cccd68a9d76e8eed40571b"
+    },
+    {
+      "name": "TRAINED.md",
+      "bytes": 15200,
+      "sha256": "428ffbac4ee8eea5626250e9c28d0b9898286c8ea5ec0aa7d8d6151e14fc83ed"
+    },
+    {
+      "name": "fixtures/trained/manifest.json",
+      "bytes": 3326,
+      "sha256": "b7efeb7b2e9d5d5bcadec834caec2545201907516a52c24a5379cc930baeebb4"
+    },
+    {
+      "name": "fixtures/trained/mystery-cache.json",
+      "bytes": 54312,
+      "sha256": "ccbc276569469a6d9b9ba0449cc08ee55e6ef87e43d051e73b8597a8f4bc0d3e"
+    },
+    {
+      "name": "fixtures/trained/publisher-README.md",
+      "bytes": 183,
+      "sha256": "f5d36081d79fc18b2b8ee80fbf05f307c30ea8d6f3ce605c3f393be29f7d8863"
+    },
+    {
+      "name": "fixtures/trained/publisher-profile.md",
+      "bytes": 2804,
+      "sha256": "b743d79e10d9fdd57686aaef8fbb8ac337672dc0e098f9aebe672e4faea06ba4"
+    },
+    {
+      "name": "fixtures/trained/publisher-reference-project-LICENSE.txt",
+      "bytes": 1063,
+      "sha256": "e87b912002f04cdfa837eaf7f70548ab79b9cb62a285495edf575f3da875aec4"
+    },
+    {
+      "name": "fixtures/trained/stories260K.bin",
+      "bytes": 1056540,
+      "sha256": "b0a507e7ad0f626624f17112325e66691f9076d622e1d3274d103d00299f2696"
+    },
+    {
+      "name": "fixtures/trained/tok512.bin",
+      "bytes": 6227,
+      "sha256": "037cb335abb25d1fa9e8ecae30ed2a3a8ace9302862ebcdc05d51a6bbb10c312"
+    },
+    {
+      "name": "trained-checks.mjs",
+      "bytes": 22236,
+      "sha256": "9eb4c6fddbc996914832ce65cd685cd3cfcb4501756d8cd7aff7d66a9c5e0d93"
+    },
+    {
+      "name": "trained-goldens.json",
+      "bytes": 203867,
+      "sha256": "c433a80049a5726452345a773c20204824e8bb0927d39ba25408d8924461c63f"
+    },
+    {
+      "name": "trained-guide.mjs",
+      "bytes": 532,
+      "sha256": "78291827ee307b0fea4cf6c6ec59d62e0e02154f718995b448cb83b053b8de9e"
+    },
+    {
+      "name": "trained-run.mjs",
+      "bytes": 4412,
+      "sha256": "4134d7180141e66a5dc606a0b2f8bdb0635719636b872819e3b9061051ec8a32"
+    },
+    {
+      "name": "trained-spec.mjs",
+      "bytes": 543,
+      "sha256": "72a4717e08f56de994b3688ffc9151bc24b7fc6baf344f5d11da896ba311140b"
+    },
+    {
+      "name": "trained-starter.mjs",
+      "bytes": 1135,
+      "sha256": "45bd6c8292eeee74c9351dd40c4a7beb0335aedbf167b73567c7588cb6bae0cd"
+    },
+    {
+      "name": "trained.html",
+      "bytes": 696,
+      "sha256": "94886a717e448843d6030ad82345bb77d2d93f8fa377209f8d8d4521b16ecb47"
+    }
+  ],
+  "scope": "Positive learner package only. Input hash is not the archive hash. Author checks are source-aware QA; browser and human acceptance require separate evidence.",
+  "publicLearnerDerivative": {
+    "memberInventorySha256": "5faa6e1d9cfa9adfa9ad509346bd6eb8f86f66c6a99c00e181788bfde6f84cc0",
+    "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
+  }
+}

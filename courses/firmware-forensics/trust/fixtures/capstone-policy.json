@@ -1,0 +1,13 @@
+{
+  "minimum_release": 20,
+  "required_components": [
+    "loader",
+    "scheduler",
+    "config"
+  ],
+  "required_config": {
+    "boot_mode": "normal",
+    "diagnostics": "minimal"
+  },
+  "schema": 1
+}

@@ -1,0 +1,367 @@
+{
+  "schema": 1,
+  "split": "calibration",
+  "origin": "authored synthetic environment",
+  "episodes": [
+    {
+      "id": "calibration-00",
+      "seed": "calibration-seed-00",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-01",
+      "seed": "calibration-seed-01",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-02",
+      "seed": "calibration-seed-02",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-03",
+      "seed": "calibration-seed-03",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-04",
+      "seed": "calibration-seed-04",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-05",
+      "seed": "calibration-seed-05",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-06",
+      "seed": "calibration-seed-06",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-07",
+      "seed": "calibration-seed-07",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-08",
+      "seed": "calibration-seed-08",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-09",
+      "seed": "calibration-seed-09",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-10",
+      "seed": "calibration-seed-10",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-11",
+      "seed": "calibration-seed-11",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-12",
+      "seed": "calibration-seed-12",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-13",
+      "seed": "calibration-seed-13",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-14",
+      "seed": "calibration-seed-14",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-15",
+      "seed": "calibration-seed-15",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-16",
+      "seed": "calibration-seed-16",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-17",
+      "seed": "calibration-seed-17",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-18",
+      "seed": "calibration-seed-18",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-19",
+      "seed": "calibration-seed-19",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-20",
+      "seed": "calibration-seed-20",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-21",
+      "seed": "calibration-seed-21",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-22",
+      "seed": "calibration-seed-22",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-23",
+      "seed": "calibration-seed-23",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-24",
+      "seed": "calibration-seed-24",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-25",
+      "seed": "calibration-seed-25",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-26",
+      "seed": "calibration-seed-26",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-27",
+      "seed": "calibration-seed-27",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-28",
+      "seed": "calibration-seed-28",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-29",
+      "seed": "calibration-seed-29",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-30",
+      "seed": "calibration-seed-30",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-31",
+      "seed": "calibration-seed-31",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-32",
+      "seed": "calibration-seed-32",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-33",
+      "seed": "calibration-seed-33",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-34",
+      "seed": "calibration-seed-34",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-35",
+      "seed": "calibration-seed-35",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-36",
+      "seed": "calibration-seed-36",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-37",
+      "seed": "calibration-seed-37",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-38",
+      "seed": "calibration-seed-38",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-39",
+      "seed": "calibration-seed-39",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-40",
+      "seed": "calibration-seed-40",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-41",
+      "seed": "calibration-seed-41",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-42",
+      "seed": "calibration-seed-42",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-43",
+      "seed": "calibration-seed-43",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-44",
+      "seed": "calibration-seed-44",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-45",
+      "seed": "calibration-seed-45",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-46",
+      "seed": "calibration-seed-46",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-47",
+      "seed": "calibration-seed-47",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-48",
+      "seed": "calibration-seed-48",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-49",
+      "seed": "calibration-seed-49",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-50",
+      "seed": "calibration-seed-50",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-51",
+      "seed": "calibration-seed-51",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-52",
+      "seed": "calibration-seed-52",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-53",
+      "seed": "calibration-seed-53",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-54",
+      "seed": "calibration-seed-54",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-55",
+      "seed": "calibration-seed-55",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-56",
+      "seed": "calibration-seed-56",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "calibration-57",
+      "seed": "calibration-seed-57",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-58",
+      "seed": "calibration-seed-58",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "calibration-59",
+      "seed": "calibration-seed-59",
+      "bot": "aggressive",
+      "profile": "pulse"
+    }
+  ]
+}

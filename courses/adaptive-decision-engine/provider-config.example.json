@@ -1,0 +1,7 @@
+{
+  "endpoint": "https://api.liquid.ai/decisions/v1/systemone",
+  "model": "d1.1",
+  "maxRequests": 1,
+  "maxInputBytes": 6000,
+  "timeoutMs": 5000
+}

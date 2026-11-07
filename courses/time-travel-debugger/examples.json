@@ -1,0 +1,532 @@
+{
+  "01": {
+    "kind": "worked demonstration; supplied control, not learner work",
+    "program": [
+      {
+        "op": "set",
+        "reg": "c",
+        "value": 5
+      },
+      {
+        "op": "add",
+        "reg": "c",
+        "value": 2
+      },
+      {
+        "op": "halt"
+      }
+    ],
+    "states": [
+      {
+        "pc": 0,
+        "tick": 0,
+        "regs": {
+          "a": 0,
+          "b": 0,
+          "c": 0,
+          "d": 0
+        },
+        "mem": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "output": [],
+        "halted": false
+      },
+      {
+        "pc": 1,
+        "tick": 1,
+        "regs": {
+          "a": 0,
+          "b": 0,
+          "c": 5,
+          "d": 0
+        },
+        "mem": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "output": [],
+        "halted": false
+      },
+      {
+        "pc": 2,
+        "tick": 2,
+        "regs": {
+          "a": 0,
+          "b": 0,
+          "c": 7,
+          "d": 0
+        },
+        "mem": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "output": [],
+        "halted": false
+      },
+      {
+        "pc": 3,
+        "tick": 3,
+        "regs": {
+          "a": 0,
+          "b": 0,
+          "c": 7,
+          "d": 0
+        },
+        "mem": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "output": [],
+        "halted": true
+      }
+    ],
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "521d3c91219c0a2f1e34f0844c6a4e361f1c9689eb8d0877d1cc8a6c85556bbd"
+    }
+  },
+  "02": {
+    "program": [
+      {
+        "op": "set",
+        "reg": "d",
+        "value": 2
+      },
+      {
+        "op": "store",
+        "address": 3,
+        "value": "d"
+      },
+      {
+        "op": "add",
+        "reg": "d",
+        "value": -1
+      },
+      {
+        "op": "jnz",
+        "value": "d",
+        "target": 1
+      },
+      {
+        "op": "emit",
+        "value": "d"
+      },
+      {
+        "op": "halt"
+      }
+    ],
+    "breakpoint": {
+      "pc": 1,
+      "condition": {
+        "kind": "reg",
+        "name": "d",
+        "equals": 1
+      }
+    },
+    "stop": {
+      "reason": "breakpoint",
+      "tick": 4,
+      "pc": 1
+    },
+    "state": {
+      "pc": 1,
+      "tick": 4,
+      "regs": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1
+      },
+      "mem": [
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0
+      ],
+      "output": [],
+      "halted": false
+    },
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "521d3c91219c0a2f1e34f0844c6a4e361f1c9689eb8d0877d1cc8a6c85556bbd"
+    }
+  },
+  "03": {
+    "program": [
+      {
+        "op": "store",
+        "address": 2,
+        "value": 0
+      },
+      {
+        "op": "store",
+        "address": 2,
+        "value": 5
+      },
+      {
+        "op": "store",
+        "address": 2,
+        "value": 5
+      },
+      {
+        "op": "halt"
+      }
+    ],
+    "watch": 2,
+    "stop": {
+      "reason": "watchpoint",
+      "tick": 2,
+      "pc": 2,
+      "write": {
+        "address": 2,
+        "before": 0,
+        "after": 5
+      }
+    },
+    "state": {
+      "pc": 2,
+      "tick": 2,
+      "regs": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0
+      },
+      "mem": [
+        0,
+        0,
+        5,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "output": [],
+      "halted": false
+    },
+    "events": [
+      {
+        "tick": 1,
+        "pc": 0,
+        "op": "store",
+        "writes": [
+          {
+            "address": 2,
+            "before": 0,
+            "after": 0
+          }
+        ],
+        "emitted": []
+      },
+      {
+        "tick": 2,
+        "pc": 1,
+        "op": "store",
+        "writes": [
+          {
+            "address": 2,
+            "before": 0,
+            "after": 5
+          }
+        ],
+        "emitted": []
+      }
+    ],
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "521d3c91219c0a2f1e34f0844c6a4e361f1c9689eb8d0877d1cc8a6c85556bbd"
+    }
+  },
+  "04": {
+    "program": [
+      {
+        "op": "store",
+        "address": 2,
+        "value": 0
+      },
+      {
+        "op": "store",
+        "address": 2,
+        "value": 5
+      },
+      {
+        "op": "store",
+        "address": 2,
+        "value": 5
+      },
+      {
+        "op": "halt"
+      }
+    ],
+    "events": [
+      {
+        "tick": 1,
+        "pc": 0,
+        "op": "store",
+        "writes": [
+          {
+            "address": 2,
+            "before": 0,
+            "after": 0
+          }
+        ],
+        "emitted": []
+      },
+      {
+        "tick": 2,
+        "pc": 1,
+        "op": "store",
+        "writes": [
+          {
+            "address": 2,
+            "before": 0,
+            "after": 5
+          }
+        ],
+        "emitted": []
+      },
+      {
+        "tick": 3,
+        "pc": 2,
+        "op": "store",
+        "writes": [
+          {
+            "address": 2,
+            "before": 5,
+            "after": 5
+          }
+        ],
+        "emitted": []
+      }
+    ],
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "521d3c91219c0a2f1e34f0844c6a4e361f1c9689eb8d0877d1cc8a6c85556bbd"
+    }
+  },
+  "05": {
+    "program": [
+      {
+        "op": "set",
+        "reg": "d",
+        "value": 2
+      },
+      {
+        "op": "store",
+        "address": 3,
+        "value": "d"
+      },
+      {
+        "op": "add",
+        "reg": "d",
+        "value": -1
+      },
+      {
+        "op": "jnz",
+        "value": "d",
+        "target": 1
+      },
+      {
+        "op": "emit",
+        "value": "d"
+      },
+      {
+        "op": "halt"
+      }
+    ],
+    "checkpoint": {
+      "label": "sibling",
+      "tick": 4,
+      "state": {
+        "pc": 1,
+        "tick": 4,
+        "regs": {
+          "a": 0,
+          "b": 0,
+          "c": 0,
+          "d": 1
+        },
+        "mem": [
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          0
+        ],
+        "output": [],
+        "halted": false
+      }
+    },
+    "recorded_frontier": 7,
+    "after_seek_zero": {
+      "pc": 0,
+      "tick": 0,
+      "regs": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0
+      },
+      "mem": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "output": [],
+      "halted": false
+    },
+    "after_seek_six": {
+      "pc": 3,
+      "tick": 6,
+      "regs": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 0
+      },
+      "mem": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "output": [],
+      "halted": false
+    },
+    "trace_length": 7,
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "521d3c91219c0a2f1e34f0844c6a4e361f1c9689eb8d0877d1cc8a6c85556bbd"
+    }
+  },
+  "06": {
+    "program": [
+      {
+        "op": "set",
+        "reg": "d",
+        "value": 2
+      },
+      {
+        "op": "store",
+        "address": 3,
+        "value": "d"
+      },
+      {
+        "op": "add",
+        "reg": "d",
+        "value": -1
+      },
+      {
+        "op": "jnz",
+        "value": "d",
+        "target": 1
+      },
+      {
+        "op": "emit",
+        "value": "d"
+      },
+      {
+        "op": "halt"
+      }
+    ],
+    "query": {
+      "kind": "reg",
+      "name": "d",
+      "equals": 1
+    },
+    "exclusive_bound": 7,
+    "found": 5,
+    "state": {
+      "pc": 2,
+      "tick": 5,
+      "regs": {
+        "a": 0,
+        "b": 0,
+        "c": 0,
+        "d": 1
+      },
+      "mem": [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "output": [],
+      "halted": false
+    },
+    "absent_query_result": null,
+    "no_match_preserved": true,
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "521d3c91219c0a2f1e34f0844c6a4e361f1c9689eb8d0877d1cc8a6c85556bbd"
+    }
+  },
+  "07": {
+    "kind": "capstone rehearsal procedure, not a worked diagnosis",
+    "steps": [
+      "Record intended behavior before running.",
+      "Choose one stop or trace query.",
+      "Compare the observation with the intention.",
+      "Run a counterexperiment from a new instance."
+    ],
+    "automated_limit": "Stage 07 checks the tool, not the report or learning.",
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "521d3c91219c0a2f1e34f0844c6a4e361f1c9689eb8d0877d1cc8a6c85556bbd"
+    }
+  }
+}

@@ -1,0 +1,367 @@
+{
+  "schema": 1,
+  "split": "evaluation",
+  "origin": "authored synthetic environment",
+  "episodes": [
+    {
+      "id": "evaluation-00",
+      "seed": "evaluation-seed-00",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-01",
+      "seed": "evaluation-seed-01",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-02",
+      "seed": "evaluation-seed-02",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-03",
+      "seed": "evaluation-seed-03",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-04",
+      "seed": "evaluation-seed-04",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-05",
+      "seed": "evaluation-seed-05",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-06",
+      "seed": "evaluation-seed-06",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-07",
+      "seed": "evaluation-seed-07",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-08",
+      "seed": "evaluation-seed-08",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-09",
+      "seed": "evaluation-seed-09",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-10",
+      "seed": "evaluation-seed-10",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-11",
+      "seed": "evaluation-seed-11",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-12",
+      "seed": "evaluation-seed-12",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-13",
+      "seed": "evaluation-seed-13",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-14",
+      "seed": "evaluation-seed-14",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-15",
+      "seed": "evaluation-seed-15",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-16",
+      "seed": "evaluation-seed-16",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-17",
+      "seed": "evaluation-seed-17",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-18",
+      "seed": "evaluation-seed-18",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-19",
+      "seed": "evaluation-seed-19",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-20",
+      "seed": "evaluation-seed-20",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-21",
+      "seed": "evaluation-seed-21",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-22",
+      "seed": "evaluation-seed-22",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-23",
+      "seed": "evaluation-seed-23",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-24",
+      "seed": "evaluation-seed-24",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-25",
+      "seed": "evaluation-seed-25",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-26",
+      "seed": "evaluation-seed-26",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-27",
+      "seed": "evaluation-seed-27",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-28",
+      "seed": "evaluation-seed-28",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-29",
+      "seed": "evaluation-seed-29",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-30",
+      "seed": "evaluation-seed-30",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-31",
+      "seed": "evaluation-seed-31",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-32",
+      "seed": "evaluation-seed-32",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-33",
+      "seed": "evaluation-seed-33",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-34",
+      "seed": "evaluation-seed-34",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-35",
+      "seed": "evaluation-seed-35",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-36",
+      "seed": "evaluation-seed-36",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-37",
+      "seed": "evaluation-seed-37",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-38",
+      "seed": "evaluation-seed-38",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-39",
+      "seed": "evaluation-seed-39",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-40",
+      "seed": "evaluation-seed-40",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-41",
+      "seed": "evaluation-seed-41",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-42",
+      "seed": "evaluation-seed-42",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-43",
+      "seed": "evaluation-seed-43",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-44",
+      "seed": "evaluation-seed-44",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-45",
+      "seed": "evaluation-seed-45",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-46",
+      "seed": "evaluation-seed-46",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-47",
+      "seed": "evaluation-seed-47",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-48",
+      "seed": "evaluation-seed-48",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-49",
+      "seed": "evaluation-seed-49",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-50",
+      "seed": "evaluation-seed-50",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-51",
+      "seed": "evaluation-seed-51",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-52",
+      "seed": "evaluation-seed-52",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-53",
+      "seed": "evaluation-seed-53",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-54",
+      "seed": "evaluation-seed-54",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-55",
+      "seed": "evaluation-seed-55",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-56",
+      "seed": "evaluation-seed-56",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "evaluation-57",
+      "seed": "evaluation-seed-57",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-58",
+      "seed": "evaluation-seed-58",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "evaluation-59",
+      "seed": "evaluation-seed-59",
+      "bot": "aggressive",
+      "profile": "pulse"
+    }
+  ]
+}

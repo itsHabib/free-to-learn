@@ -1,0 +1,281 @@
+{
+  "origin": "executed source-aware author demonstrations",
+  "shown": {
+    "10": {
+      "lowTarget": {
+        "target": [
+          0.1,
+          0.2
+        ],
+        "scores": {
+          "rest": 0,
+          "scout": 0.3,
+          "swarm": 0.1833333333333333,
+          "brute": 0.3
+        },
+        "allowed": [
+          "rest"
+        ]
+      },
+      "highTarget": {
+        "target": [
+          0.4,
+          0.65
+        ],
+        "scores": {
+          "rest": 0.23333333333333336,
+          "scout": 0.01666666666666672,
+          "swarm": 0.13333333333333336,
+          "brute": 0.01666666666666672
+        },
+        "allowed": [
+          "scout",
+          "brute"
+        ]
+      }
+    },
+    "04": {
+      "questionNames": [
+        "encounter"
+      ],
+      "offered": [
+        "rest",
+        "scout",
+        "swarm",
+        "brute"
+      ],
+      "binding": {
+        "requestId": "311e4f6d",
+        "stateHash": "5704c776",
+        "revision": 0
+      },
+      "selected": "scout",
+      "valid": {
+        "ok": true,
+        "action": {
+          "kind": "scout"
+        },
+        "distribution": {
+          "rest": 0.09999999999999999,
+          "scout": 0.7,
+          "swarm": 0.09999999999999999,
+          "brute": 0.09999999999999999
+        },
+        "score": 0.68,
+        "binding": {
+          "stateHash": "5704c776",
+          "questionHash": "ff03c5e8",
+          "episodeId": "binding-notebook",
+          "revision": 0,
+          "allowed": [
+            "rest",
+            "scout",
+            "swarm",
+            "brute"
+          ],
+          "model": "fixture-v1",
+          "host": "offline",
+          "adapterVersion": "beacon-adapter/1",
+          "requestId": "311e4f6d"
+        },
+        "origin": "synthetic-fixture"
+      },
+      "wrongQuestion": {
+        "ok": false,
+        "error": "invalid-response"
+      }
+    },
+    "05": {
+      "easy": {
+        "lo": 0.8,
+        "hi": 1.0000001,
+        "n": 90,
+        "yes": 90,
+        "episodes": 90,
+        "p": 1,
+        "rowRate": 1,
+        "interval": [
+          0.8568435305510875,
+          1
+        ]
+      },
+      "hard": {
+        "lo": 0.8,
+        "hi": 1.0000001,
+        "n": 10,
+        "yes": 0,
+        "episodes": 10,
+        "p": 0,
+        "rowRate": 0,
+        "interval": [
+          0,
+          0.4294694083467376
+        ]
+      },
+      "easyDecision": {
+        "use": true,
+        "reason": "supported",
+        "probability": 1,
+        "interval": [
+          0.8568435305510875,
+          1
+        ],
+        "episodes": 90,
+        "domain": "easy"
+      },
+      "hardDecision": {
+        "use": false,
+        "reason": "uncertain",
+        "probability": 0,
+        "interval": [
+          0,
+          0.4294694083467376
+        ],
+        "episodes": 10,
+        "domain": "hard"
+      }
+    },
+    "06": {
+      "counted": {
+        "survival": 1,
+        "completion": 1,
+        "distance": 0.10833333333333339,
+        "playedDistance": 0.10833333333333334,
+        "challenge": 0.5,
+        "proposalViolations": 6,
+        "executedViolations": 0,
+        "fallbacks": 12,
+        "calls": 12,
+        "latencyMs": 69,
+        "duplicateEffects": 0,
+        "staleEffects": 0
+      },
+      "defeat": {
+        "survival": 0,
+        "completion": 0,
+        "distance": 0.7541666666666668,
+        "playedDistance": 0.26249999999999996,
+        "challenge": 0.3333333333333333,
+        "proposalViolations": 3,
+        "executedViolations": 3,
+        "fallbacks": 0,
+        "calls": 4,
+        "latencyMs": 8,
+        "duplicateEffects": 0,
+        "staleEffects": 0
+      },
+      "healthyPrefixRejected": "invalid episode: nonterminal prefix is not a complete episode"
+    },
+    "07": {
+      "reserved": {
+        "state": {
+          "used": 1,
+          "maxRequests": 2,
+          "timeoutMs": 5,
+          "serial": 1,
+          "pending": {
+            "token": 1,
+            "episodeId": "notebook",
+            "revision": 3,
+            "deadline": 15
+          },
+          "armed": false
+        },
+        "ticket": {
+          "token": 1,
+          "episodeId": "notebook",
+          "revision": 3,
+          "deadline": 15
+        }
+      },
+      "timely": {
+        "state": {
+          "used": 1,
+          "maxRequests": 2,
+          "timeoutMs": 5,
+          "serial": 1,
+          "pending": null,
+          "armed": false
+        },
+        "accepted": true,
+        "proposal": {
+          "ok": true,
+          "action": {
+            "kind": "rest"
+          }
+        }
+      },
+      "atDeadline": {
+        "state": {
+          "used": 1,
+          "maxRequests": 2,
+          "timeoutMs": 5,
+          "serial": 1,
+          "pending": null,
+          "armed": false
+        },
+        "accepted": false,
+        "error": "timeout"
+      }
+    },
+    "08": {
+      "requiredFields": [
+        "id",
+        "hypothesis",
+        "health",
+        "budget",
+        "damageA",
+        "damageB"
+      ],
+      "identityRule": "unique ID and distinct normalized conditions",
+      "control": "display-only changes leave the decision unchanged"
+    },
+    "09": {
+      "before": {
+        "round": 3,
+        "memory": {
+          "recovering": true
+        },
+        "used": 3,
+        "pending": true,
+        "armed": true
+      },
+      "restored": {
+        "round": 3,
+        "memory": {
+          "recovering": true
+        },
+        "used": 3,
+        "pending": null,
+        "armed": false
+      },
+      "nextDecisionEqual": true
+    },
+    "09-stateful-runtime": {
+      "before": {
+        "round": 0,
+        "encounter": "scout",
+        "memory": {
+          "recovering": false,
+          "calls": 1
+        }
+      },
+      "afterResume": {
+        "round": 0,
+        "encounter": "scout",
+        "memory": {
+          "recovering": false,
+          "calls": 1
+        }
+      },
+      "afterResolve": {
+        "round": 1,
+        "encounter": "rest",
+        "memory": {
+          "recovering": false,
+          "calls": 2
+        }
+      }
+    }
+  }
+}

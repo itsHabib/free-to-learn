@@ -1,0 +1,109 @@
+{
+  "id": "small-llm-runtime",
+  "title": "Build a small language-model runtime",
+  "entry": "runtime.mjs",
+  "starter": "starter.mjs",
+  "support": [
+    "numeric.mjs",
+    "spec.mjs",
+    "trained-spec.mjs"
+  ],
+  "format": "ivy-course-contract-v1",
+  "lead": "Build the small numerical path first, then adapt it to one pinned pretrained decoder. Deliver real generated tokens, compare cached computation and investigate a content-valid cache discrepancy.",
+  "prerequisites": "JavaScript arrays, functions, objects and ES modules; matrix multiplication and dimensions. A complete numeric backend is supplied; the tensor course is optional.",
+  "scope": "Original PocketDecoder-v1 is the earlier numerical teaching slice. The one trained final profile is pinned Stories260K:5blocks,dim64,8query/4KVheads,512-token BPE,context512,CPUbinary64. Checked binary/tokenizer loading, RMSNorm/RoPE/gatedMLP, cache, seeded streaming and bounded beam extension. No GPU, training, quantization, hosted inference or model zoo.",
+  "runtime": "Node 22+ advertised; tested on Node 26.5.1 only. No API key, account, network or dependency install.",
+  "lessons": [
+    {
+      "id": "01",
+      "title": "Load exactly one model",
+      "objective": "Validate checkpoint identity and tokenize characters",
+      "type": "procedure",
+      "dependencies": [],
+      "file": "lessons/01.md"
+    },
+    {
+      "id": "02",
+      "title": "Keep probabilities finite",
+      "objective": "Implement stable softmax and SiLU",
+      "type": "procedure",
+      "dependencies": [
+        "01"
+      ],
+      "file": "lessons/02.md"
+    },
+    {
+      "id": "03",
+      "title": "Build a decoder block",
+      "objective": "Implement learned RMS normalization and a gated MLP",
+      "type": "procedure",
+      "dependencies": [
+        "02"
+      ],
+      "file": "lessons/03.md"
+    },
+    {
+      "id": "04",
+      "title": "Attend to the prefix",
+      "objective": "Implement causal attention and head-local rotary positions",
+      "type": "procedure",
+      "dependencies": [
+        "01",
+        "02",
+        "03"
+      ],
+      "file": "lessons/04.md"
+    },
+    {
+      "id": "05",
+      "title": "Reuse keys and values",
+      "objective": "Make cached decode agree with full-prefix computation",
+      "type": "procedure",
+      "dependencies": [
+        "04"
+      ],
+      "file": "lessons/05.md"
+    },
+    {
+      "id": "06",
+      "title": "Make sampling reproducible",
+      "objective": "Implement a seeded distribution with explicit controls",
+      "type": "procedure",
+      "dependencies": [
+        "02"
+      ],
+      "file": "lessons/06.md"
+    },
+    {
+      "id": "07",
+      "title": "Generate under limits",
+      "objective": "Integrate tokenizer, prefill, cached decode and stopping rules",
+      "type": "procedure",
+      "dependencies": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "file": "lessons/07.md"
+    },
+    {
+      "id": "08",
+      "title": "Your generator and cache investigation",
+      "objective": "Deliver tokens before completion, diagnose unfamiliar cache corruption and implement bounded beam search",
+      "type": "procedure",
+      "dependencies": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07"
+      ],
+      "file": "lessons/08.md"
+    }
+  ]
+}

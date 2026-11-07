@@ -1,0 +1,120 @@
+{
+  "01a": {
+    "version": 1,
+    "question": "For set d=6, add d=3, halt, what are pc and d immediately after ONE step from genesis?",
+    "format": "pc,d as two integers separated by comma",
+    "expected": "1,6",
+    "reason": "The step executes the instruction selected by the old pc. The add has not executed yet."
+  },
+  "01b": {
+    "version": 1,
+    "question": "For set d=6, add d=3, halt, what are tick and d immediately after TWO steps?",
+    "format": "tick,d separated by comma",
+    "expected": "2,9",
+    "reason": "Tick counts executed instructions; the second instruction adds to the first assigned value."
+  },
+  "02a": {
+    "version": 1,
+    "question": "Tiny program: set a=8, emit a, halt. Breakpoint at pc=1. What is output.length at the breakpoint?",
+    "format": "one integer",
+    "expected": "0",
+    "reason": "The breakpoint is checked before emit executes; observation is before the instruction."
+  },
+  "02b": {
+    "version": 2,
+    "question": "Program: set a=4; add a=1; emit a; halt. Break at pc2, run to the breakpoint, step once, then run(1). What is output.length?",
+    "format": "one integer",
+    "expected": "1",
+    "reason": "Step executes the pending emit; the remaining halt emits nothing.",
+    "kind": "application-after-instruction"
+  },
+  "03a": {
+    "version": 1,
+    "question": "From zero memory: store cell2=0; store cell2=5; halt. Watch cell2. What is the first stop tick?",
+    "format": "one integer",
+    "expected": "2",
+    "reason": "A same-value write is recorded but does not trigger this watchpoint; the changed value does."
+  },
+  "03b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "Program set a=2; store cell4=a; add a=3; halt starts at genesis with cell4 watched. At its first watchpoint, what are next pc and cell4?",
+    "format": "pc,memory separated by comma",
+    "expected": "2,2",
+    "reason": "The store executes after set and the watchpoint observes its post-state; the later add has not executed."
+  },
+  "04a": {
+    "version": 1,
+    "question": "For store cell2=0; store cell2=5; store cell2=5, how many events exist after all three stores?",
+    "format": "one integer",
+    "expected": "3",
+    "reason": "Every executed instruction has an event, including same-value stores."
+  },
+  "04b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "Program emit 2; store cell1=0; emit 3; halt runs four instructions. How many events and emitted values are recorded?",
+    "format": "events,emitted-values separated by comma",
+    "expected": "4,2",
+    "reason": "All four instructions have events; only the two emit instructions produce values."
+  },
+  "05a": {
+    "version": 1,
+    "question": "A debugger recorded 7 instructions, then seeks to tick2 without branching. What is trace().length?",
+    "format": "one integer",
+    "expected": "7",
+    "reason": "The recorded frontier remains available when the current tick moves backwards."
+  },
+  "05b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "A debugger has recorded ten instructions, seeks to tick3 and steps twice through known history. What are current tick and trace length?",
+    "format": "tick,trace-length separated by comma",
+    "expected": "5,10",
+    "reason": "Position advances by two while the recorded frontier stays at ten."
+  },
+  "06a": {
+    "version": 1,
+    "question": "A register is 5 at ticks4,5,6. From tick6, reverseFind asks for that value with its default exclusive bound. Which tick matches first?",
+    "format": "one integer",
+    "expected": "5",
+    "reason": "The search begins one tick before the bound and returns the nearest matching state, even when no write occurs there."
+  },
+  "06b": {
+    "version": 2,
+    "question": "Program set a=4; emit a; halt is at tick2. reverseFind asks for a=99 and finds nothing. What pc does inspect return?",
+    "format": "one integer",
+    "expected": "2",
+    "reason": "No-match exploration restores the entire prior state, including its concrete pc.",
+    "kind": "application-after-instruction"
+  },
+  "07a": {
+    "version": 2,
+    "question": "A supplied report claims an emit skipped a store. Its saved trace contains store cell2=6, then load b from cell2, then emit b=6. Does this evidence support the claimed skipped store?",
+    "format": "supported or unsupported",
+    "expected": "unsupported",
+    "reason": "The recorded load and emit are consistent with the recorded store; a different observation is needed for that complaint.",
+    "kind": "application-after-instruction"
+  },
+  "07b": {
+    "version": 3,
+    "kind": "application-after-instruction",
+    "question": "A sibling report shows output 8,8. Its trace contains two emit events, each emitted=[8]. Which explanation is supported: the program emits twice, or one emit was duplicated only by the report?",
+    "format": "program or report",
+    "expected": "program",
+    "reason": "Two executed emit events support two program emissions; a report-only duplication would leave one emit event.",
+    "sibling_program": [
+      {
+        "op": "emit",
+        "value": 8
+      },
+      {
+        "op": "emit",
+        "value": 8
+      },
+      {
+        "op": "halt"
+      }
+    ]
+  }
+}

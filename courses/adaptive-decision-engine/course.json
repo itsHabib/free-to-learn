@@ -1,0 +1,167 @@
+{
+  "title": "Adaptive Decision Engine",
+  "subtitle": "Build the director for Beacon Keep",
+  "slug": "adaptive-decision-engine",
+  "version": "beacon-keep-1.1.3",
+  "modules": [
+    {
+      "id": "01",
+      "title": "Read the game before choosing",
+      "file": "observe.mjs",
+      "depends": [],
+      "objective": "ADE-01",
+      "type": "procedure",
+      "publicTransfer": "check 01 --variant 1",
+      "practice": [
+        "01a",
+        "01b"
+      ],
+      "hardestInteraction": "missing history vs hidden future"
+    },
+    {
+      "id": "02",
+      "title": "Make illegal choices impossible",
+      "file": "constraints.mjs",
+      "depends": [
+        "01"
+      ],
+      "objective": "ADE-02",
+      "type": "procedure",
+      "publicTransfer": "check 02 --variant 1",
+      "practice": [
+        "02a",
+        "02b"
+      ],
+      "hardestInteraction": "health/budget/cooldown conjunction"
+    },
+    {
+      "id": "03",
+      "title": "Build the director you must beat",
+      "file": "rules.mjs",
+      "depends": [
+        "02"
+      ],
+      "objective": "ADE-03",
+      "type": "principle",
+      "publicTransfer": "check 03 --variant 1",
+      "practice": [
+        "03a",
+        "03b"
+      ],
+      "hardestInteraction": "target band plus memory"
+    },
+    {
+      "id": "04",
+      "title": "Connect a typed decision source",
+      "file": "adapter.mjs",
+      "depends": [
+        "03"
+      ],
+      "objective": "ADE-04",
+      "type": "procedure",
+      "publicTransfer": "check 04 --variant 1",
+      "practice": [
+        "04a",
+        "04b"
+      ],
+      "hardestInteraction": "response identity plus legal subset"
+    },
+    {
+      "id": "05",
+      "title": "Decide when to abstain",
+      "file": "confidence.mjs",
+      "depends": [
+        "04"
+      ],
+      "objective": "ADE-05",
+      "type": "concept/procedure",
+      "publicTransfer": "check 05 --variant 1",
+      "practice": [
+        "05a",
+        "05b"
+      ],
+      "hardestInteraction": "event, split, count and uncertainty"
+    },
+    {
+      "id": "06",
+      "title": "Compare complete expeditions",
+      "file": "evaluate.mjs",
+      "depends": [
+        "05"
+      ],
+      "objective": "ADE-06",
+      "type": "procedure",
+      "publicTransfer": "check 06 --variant 1",
+      "practice": [
+        "06a",
+        "06b"
+      ],
+      "hardestInteraction": "paired trajectories and penalties"
+    },
+    {
+      "id": "07",
+      "title": "Spend time and calls deliberately",
+      "file": "schedule.mjs",
+      "depends": [
+        "06"
+      ],
+      "objective": "ADE-07",
+      "type": "procedure",
+      "publicTransfer": "check 07 --variant 1",
+      "practice": [
+        "07a",
+        "07b"
+      ],
+      "hardestInteraction": "deadline, token, revision and reservation"
+    },
+    {
+      "id": "08",
+      "title": "Break your own explanation",
+      "file": "scenarios.json",
+      "depends": [
+        "07"
+      ],
+      "objective": "ADE-08",
+      "type": "principle",
+      "publicTransfer": "check 08 --variant 1",
+      "practice": [
+        "08a",
+        "08b"
+      ],
+      "hardestInteraction": "intervention vs control"
+    },
+    {
+      "id": "09",
+      "title": "Resume without changing the decision",
+      "file": "director.mjs",
+      "depends": [
+        "08"
+      ],
+      "objective": "ADE-09",
+      "type": "procedure",
+      "publicTransfer": "check 09 --variant 1",
+      "practice": [
+        "09a",
+        "09b"
+      ],
+      "hardestInteraction": "memory, budget and source identity"
+    },
+    {
+      "id": "10",
+      "title": "A new pacing contract",
+      "file": "project.mjs",
+      "depends": [
+        "09"
+      ],
+      "objective": "ADE-10",
+      "type": "integration",
+      "publicTransfer": "check 10 --variant 1",
+      "practice": [
+        "10a",
+        "10b"
+      ],
+      "hardestInteraction": "pulse, outage and allowance"
+    }
+  ],
+  "buildId": "deac6c0a0bd239374990abd33648ffb682d2869c0b9bbbb2345283289e3fc50a"
+}

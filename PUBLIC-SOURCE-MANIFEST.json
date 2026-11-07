@@ -1,0 +1,1672 @@
+{
+  "schema": 1,
+  "status": "LEARNER_SOURCE_SNAPSHOT_FIRST_FIVE",
+  "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 73,
+      "sha256": "11f8d3bda239dd6071e4772dd320d48868bf9fccbc53c20f9473deda86f3a9a3"
+    },
+    {
+      "path": ".packages/adaptive-decision-engine.zip",
+      "bytes": 4417133,
+      "sha256": "04f43bc836ba39f6b0be099bcb2e16f28b6947c9d625c004edbe40090bc9dd33"
+    },
+    {
+      "path": ".packages/adaptive-decision-engine.zip.sha256",
+      "bytes": 95,
+      "sha256": "5d0890aa0b963508eea30ebe21fd488a41bb262a2488495a68a8e8d6210f3960"
+    },
+    {
+      "path": ".packages/firmware-forensics.zip",
+      "bytes": 107833,
+      "sha256": "d9fe95963830c05d41012efe8d0fc606b5e34021d8aee4eb98c9c7d095cf4567"
+    },
+    {
+      "path": ".packages/firmware-forensics.zip.sha256",
+      "bytes": 89,
+      "sha256": "d345f81c0e613d9d3092f5022c6d68304629cbcd7529effd387d296fe835091f"
+    },
+    {
+      "path": ".packages/recoverable-storage.zip",
+      "bytes": 82700,
+      "sha256": "5bf3989824b0a559809c2b82a7aa0c02daf8455f06296c11a9864410ba990f09"
+    },
+    {
+      "path": ".packages/recoverable-storage.zip.sha256",
+      "bytes": 90,
+      "sha256": "988ffece8915ec356b76e61e276e2d7caa43af759cdd6ce118c0ef2ad330ca27"
+    },
+    {
+      "path": ".packages/small-llm-runtime.zip",
+      "bytes": 1649757,
+      "sha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452"
+    },
+    {
+      "path": ".packages/small-llm-runtime.zip.sha256",
+      "bytes": 88,
+      "sha256": "0539c81172c7172c14f07db7bf2db5ed0a804a5dcf978370c6174006969b95e0"
+    },
+    {
+      "path": ".packages/time-travel-debugger.zip",
+      "bytes": 78293,
+      "sha256": "9bbd168a413773b57bcbdf088d4c80403b2c36a575e9788eaaff433399738bdc"
+    },
+    {
+      "path": ".packages/time-travel-debugger.zip.sha256",
+      "bytes": 91,
+      "sha256": "c914024bdf3c883bec12476b342f47fbad33866332a263ef9d398b000a8f0366"
+    },
+    {
+      "path": "LICENSE-SCOPE.json",
+      "bytes": 76214,
+      "sha256": "3204fb5dc8160616336351905ee24bec93cf715e71955d21421efcf6ed5c8571"
+    },
+    {
+      "path": "LICENSE.md",
+      "bytes": 2149,
+      "sha256": "98485fd5e13634d6dc74f00f06bc56aa7f847e3ff162e8c44e46bf120b36d364"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
+      "path": "QUALIFICATION.md",
+      "bytes": 1882,
+      "sha256": "ae533a9a1ae80a69f23e80ad919566afd70d29c2ee7a5e8b8ec7b0befd63ac18"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1864,
+      "sha256": "424975feabe59c68e207fea61151dd5bfcd08ab7734cd4c62fd6ec8c83defab5"
+    },
+    {
+      "path": "START-HERE.md",
+      "bytes": 2093,
+      "sha256": "efb77027ee3e541b9e068418d791c690d6ec7bcc98d86cd50768a7e3edf4ae38"
+    },
+    {
+      "path": "THIRD-PARTY-NOTICES.md",
+      "bytes": 2321,
+      "sha256": "ff748b448680b0f9da049ac72b9410de125595a8a9e1f73759c668a3de7d4e04"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/API.md",
+      "bytes": 15832,
+      "sha256": "296b481224b7a1565bac250692bbce6d4a51922d81c003b9b9d6937bdf4fb292"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/BRIDGE.md",
+      "bytes": 2146,
+      "sha256": "774ae43ed19863276aba000fbb6dfae7eaf1bee542234da26bd8c1911b20d31b"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/NOTICE.md",
+      "bytes": 422,
+      "sha256": "f886ebafd46bc24284dd8c81e4829519c445100fc30c33bf058c40e3416950c3"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/README.md",
+      "bytes": 6753,
+      "sha256": "4c5a833536ef6bfe4e1cf9ca67a8bdc14a64209208cc492936f43e0df3aacbb1"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/RUBRIC.md",
+      "bytes": 2018,
+      "sha256": "ba271e330131b530a451baa15fa56f2b1da986f4668c1a2446a079718e2ebb47"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/SOURCES.md",
+      "bytes": 2602,
+      "sha256": "4920d9327314b9df87eceb335a4971149be4d6b10eb3f0288a68c5e8d89e17e4"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/assessment-fixtures.mjs",
+      "bytes": 932,
+      "sha256": "ac26e2059ac4ffc7d08518a0caeea584b64bcecfbe0ac1ad3e0fa9b3e679c5b3"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/assessment.mjs",
+      "bytes": 3630,
+      "sha256": "5d9c6a581a925307270be7523c6830c01b5eca8ff1447daa293827f50cdf57a2"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/audit.mjs",
+      "bytes": 3406,
+      "sha256": "0a8b3f0646961ea29ea349a3512acbf257424e8640c67a6f1d3489ba64953d2d"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/bundle.mjs",
+      "bytes": 7224,
+      "sha256": "1fa0251ac665eec2887a0ef4a4ed5b3b7a31526d73f14f1036d8efa16cb03779"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/calibration-report.mjs",
+      "bytes": 1207,
+      "sha256": "ddb9426c3f8ebfbb220cc6c43ccfd9e37c75a27c65f08c255046822c7b38a32d"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/checks.mjs",
+      "bytes": 18167,
+      "sha256": "d704242f1cb3efae923467c15a531b440e0840b333df40e0cd15ff83ed2c1326"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/contracts.d.ts",
+      "bytes": 1607,
+      "sha256": "0446374d16bfc6a4a314932789e98a2ab4f9ed31dda0257c978f55394e1ec03b"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/control.mjs",
+      "bytes": 2446,
+      "sha256": "3d627773922a0dceceec538b128f75dcef342fe198f61b37adf691b313977c71"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/course.json",
+      "bytes": 4003,
+      "sha256": "1032d231d22cf930b13dc797cfd85a5043322b102126b2f6844d7dc9e76b24a5"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/data.mjs",
+      "bytes": 471,
+      "sha256": "f58cdaf66f840278d5d76de6b66b24ee9ead00038d0b73aa7e47ca38bcb1a6e4"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation.mjs",
+      "bytes": 2428,
+      "sha256": "0619a9e35c9e27edc6654d1562d9479126cdab2feafb90b5bfb11a061bb4a185"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation/calibration-data.json",
+      "bytes": 113283,
+      "sha256": "e81bf5ca5d1b15b6539b4bdbf99bf511dceecdbdb8a5c4cbef93f619a16b640d"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation/calibration.json",
+      "bytes": 7920,
+      "sha256": "53b33e09940e02e9947a0cb333fe626d464139bf838da83c85f5e26e79d4e280"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation/corpus.json",
+      "bytes": 3734938,
+      "sha256": "a5cc04e80658584ca08ae13cca2c25da2d75a9ea20fddfd07fc819ab9a01cac6"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation/dev-data.json",
+      "bytes": 101763,
+      "sha256": "55af4203e70114d08a51de946ed7b608395cdd815dd3c6f20d0df4dd75f56644"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation/dev.json",
+      "bytes": 6952,
+      "sha256": "554d1f2ca22bb252b7c3cda88979c4f379e1468db1b26f10915bf5b2b3eebe88"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation/evaluation-data.json",
+      "bytes": 111843,
+      "sha256": "2f3d696e6da50c98bf2322bcf58d6f932f3512c9d8b697fc762ae124534acd82"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/evaluation/evaluation.json",
+      "bytes": 7799,
+      "sha256": "3e0dc6ae055e90efe8341b706bc9b47cd747134ccdddf92f01c9e32a0ff48173"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/examples/repair-worked.json",
+      "bytes": 6087,
+      "sha256": "485825990029c62bdba4deca10f21a4919562b578c8f2047b54ce05f60b7c7fc"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/examples/worked-trace.json",
+      "bytes": 8662,
+      "sha256": "2080ed6312f85636ae0d1a5ccdb3ace6ad02e62bca300a064b935e93e36839f2"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/examples/worked-trace.md",
+      "bytes": 380,
+      "sha256": "0e97e34e72ce3172e7e641a386895a9e88165c46d6ca2cb8c87a8aae011c6690"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/figures/boundary.svg",
+      "bytes": 2018,
+      "sha256": "9dd088fe19669874978b042c0a90374a12f0ea97c885415ddcda2d710bc901ee"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/figures/calibration.svg",
+      "bytes": 2047,
+      "sha256": "f8616470391e5fa8e3acf707a1e35e493ce5dd21284194703c8e50a0c896b7f4"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/figures/checkpoint.svg",
+      "bytes": 2010,
+      "sha256": "dbd8c390292ae493d745fa22025b27c68131a1ca934058abf47c8308b3fb912d"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/figures/constraints.svg",
+      "bytes": 2018,
+      "sha256": "28f215893ff1803b474bd78d2fe7d1461c6665e4fd1878b095c946939645f60a"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/figures/deadline.svg",
+      "bytes": 2050,
+      "sha256": "a91c8457bc6b58870179fbaf3ae72aa4f64d1691d7ebf7b622149550eb0c98cc"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/figures/pairs.svg",
+      "bytes": 2055,
+      "sha256": "b2034a399c8608317640ae6243fc385729a8046a4a828f5ea3decd0eaebf1ea3"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/fixtures.mjs",
+      "bytes": 943,
+      "sha256": "501eecbc398f2241e6dc54dfbb93064f4d4ba727b2056ed2a2db52db9a881f49"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/game.mjs",
+      "bytes": 4614,
+      "sha256": "6c628588180513a590d06b30525a38edafb2246c33b52c42fb1f38c2af6f7394"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/generate-data.mjs",
+      "bytes": 2225,
+      "sha256": "3ccd9082a37f68533e4bead6bf3e2e07544905fd18d13c9fe9d52436de8b4971"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/index.html",
+      "bytes": 6603,
+      "sha256": "edd772a6550a9b25f07d40f93fc81f1260f3c9db1e4d5f340816a33957fa3a9a"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lab.mjs",
+      "bytes": 11131,
+      "sha256": "554e43544d5608f9491eb28ae92f8fcef3cd5dd44b6a21d0876c8c88f9c441d4"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/01.md",
+      "bytes": 4922,
+      "sha256": "3fa2d1786d2f9f2765e7d2ae1ff5b9f244a7d9a7188c4bd9a95b19d93eff1328"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/02.md",
+      "bytes": 4987,
+      "sha256": "9360389713552c5ff5ae6d9192b0dace446731a899d62ed26902bfeb58fbea7c"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/03.md",
+      "bytes": 4874,
+      "sha256": "30230a84084b1d5c78d1f1af496193a691bfe29da824462f26aab6dd61df423c"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/04-worked.md",
+      "bytes": 1944,
+      "sha256": "9712697abf9394f79a6b8fd6d427892e9f04d89bf197d26b2ac7549f4d599e1c"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/04.md",
+      "bytes": 4778,
+      "sha256": "d63a1f7078acfb992902887e2512e742b0110767b06243ce206d07c847be4205"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/05-worked.md",
+      "bytes": 1546,
+      "sha256": "39904c8bb9ba3bc6b146a625de14bbe00b56ae9f45858f9f451ee09f6c960e6e"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/05.md",
+      "bytes": 5973,
+      "sha256": "3631807ad24167d642d4aa21a68c89d21586a9fdc5aec84fbeaef1ef42db406d"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/06-worked.md",
+      "bytes": 1619,
+      "sha256": "686204147cb846e8f790bbcc86d0bb05a52eb4c8474dc35b7f2c19453631f259"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/06.md",
+      "bytes": 5768,
+      "sha256": "4f217fcea9bd7eab9367ae2c992800740132e3d645396e5c7927ca6cd8c96e47"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/07-worked.md",
+      "bytes": 1690,
+      "sha256": "51232c0a25001e71123c4798be8cc625da69e955e6416681edd741a5b4c4a67d"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/07.md",
+      "bytes": 4719,
+      "sha256": "bf50209541dd81788b36da8552bd7adea3781fe1787fb815050ac6a920e09e4a"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/08-worked.md",
+      "bytes": 1177,
+      "sha256": "d22c5e09737ec5402d2f99754b7b7f4a3c6768d82a7b0ddefcb1794278e5cf7f"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/08.md",
+      "bytes": 4864,
+      "sha256": "93fbc4b2fbb1de0eb84e3f69e4bc7cd2b80d678e1eec53af9f96c51174e2853c"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/09-worked.md",
+      "bytes": 2342,
+      "sha256": "a9a0d461ee0f9c33d22e968580f3f4bd5639433648beecfb49659649b536f068"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/09.md",
+      "bytes": 5223,
+      "sha256": "87edaa140eda01d1c13d099090dec54ceb0e98e9bd012334d974d9ad34177e22"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/10-worked.md",
+      "bytes": 1477,
+      "sha256": "806c59274d3c70d7233093b39637d0ddec1e65289bd62bfb869446d7af774a17"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/lessons/10.md",
+      "bytes": 6354,
+      "sha256": "092c99792c5c405b2d0cc27214552d4e7ec7bd266c12b877e8ff18f9a07b55a2"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/live.mjs",
+      "bytes": 1735,
+      "sha256": "e0f1a48aed1abb6746ce6955fdfc8b7c7ddd4d1d53ffd971752fc9d02c2ac217"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/loader.mjs",
+      "bytes": 1188,
+      "sha256": "8c0b05bf137829c6f8184d8b255153c60c26fa6ec76020281977d8b3acffead2"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/node-run.mjs",
+      "bytes": 560,
+      "sha256": "71808d2df4ad1a78bf0433f630354c018624147c6dd1e4749e7ae65ac94d0f49"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/node-worker.mjs",
+      "bytes": 230,
+      "sha256": "f57a151ae90ec303c6056424e1d3946cb135498a2927f988d0b01e408d37f7c3"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/package-manifest.json",
+      "bytes": 15363,
+      "sha256": "872ed2d5480e50c4b9b2779d33ec4147130180fb71f245f7cd91ff16ee18d9a3"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/practice.json",
+      "bytes": 9220,
+      "sha256": "1161374d0f10e8b7b75c688284663b5e9733c7aff11773e62ed8f0d9e1c9b57f"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/project-cases.mjs",
+      "bytes": 3519,
+      "sha256": "c13f3dfb3a3d502b126701d0c0c5a04d3cc5168f70996fca254c54357d615b36"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/provider-config.example.json",
+      "bytes": 150,
+      "sha256": "7442bfd0665d1a78ebbef0b6db61e7f71e7169121249b892e87047dd4463bf1a"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/provider.mjs",
+      "bytes": 2081,
+      "sha256": "2169942aa3d29c6f736a56839a1ef76c95724cad4810075a0626434d15628ce3"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/public-files.json",
+      "bytes": 2113,
+      "sha256": "f0c63aac60bdc58da375a3d49b7f2d15958cd73931716ae36d914be2fbdbe686"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/recovery.mjs",
+      "bytes": 3359,
+      "sha256": "19966a9e2d62bc89f18046e7250d2488dbc7e0a272ed9e5a14f53c6b9eea62c9"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/render.mjs",
+      "bytes": 1322,
+      "sha256": "5752698de0d705e8c7e9440c5b906ba3e97b1dd6fe0a874061204ddfde2b9f4e"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/replay.mjs",
+      "bytes": 316,
+      "sha256": "9ed77546d59f1c5c30a8617bffab40782d1340c53d8158a85a18ccc2feb337da"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/resample.mjs",
+      "bytes": 509,
+      "sha256": "4f0c742eedde7bc257f405a7033ebcee7c372ef8920d9b305939cce26c7d3016"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/shared.mjs",
+      "bytes": 1377,
+      "sha256": "bf211fe87656e16e988a15f67cd7648c58fb564c375d18adf4b77a102d99405e"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/REPORT.md",
+      "bytes": 190,
+      "sha256": "9f80be7f590e03c82df4a935addbbbe807e79971691852882aa3b715a73dfc3d"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/adapter.mjs",
+      "bytes": 405,
+      "sha256": "0779e7815050955d1441bbd0c48b51521ef800d7d7b7a05e607c5008ad4c85e0"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/confidence.mjs",
+      "bytes": 432,
+      "sha256": "edfd08a9446422d8e8e5ef38d9c7dca8595c26e25d735be05a868fd8b16d6261"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/constraints.mjs",
+      "bytes": 123,
+      "sha256": "fb228efc92bd779c2c826dbfd6d4776b2c944c0841cbf0567bde39c9c1817d21"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/director.mjs",
+      "bytes": 557,
+      "sha256": "0a4d1643fd1876c9be07d8206036b42bf3f1745a7771fdd1d8eeef71f7825a1c"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/evaluate.mjs",
+      "bytes": 427,
+      "sha256": "bc697e9d73fcd55e1010e5e58e096c2572ebf265369efd976928d86080795181"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/observe.mjs",
+      "bytes": 148,
+      "sha256": "8887d2ec45d171d082a68c8239d34848c836dfc1ac67d202522b6ee5b50b743e"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/project-plan.json",
+      "bytes": 116,
+      "sha256": "ca41a4ee99c486f074f7b7cc22084ddeac53a14e9d6795821ab1c485078233ba"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/rules.mjs",
+      "bytes": 176,
+      "sha256": "cee0d337d212d358235c7769f44701bbf3655a8c5e70fc1d363a9a30b4ccf368"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/scenarios.json",
+      "bytes": 34,
+      "sha256": "127ec735fdcb7fc58f7d5f6efbc584727bb0be6f94bc05e38ee485d45023c5cb"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/starter/schedule.mjs",
+      "bytes": 363,
+      "sha256": "0a1dc7e36fd1080f2a6cd3801068754422afbabf51dd45545a5859c23efed358"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/style.css",
+      "bytes": 5111,
+      "sha256": "78a2395ba2de0c98e3b8d2cfc84f1490cf1332b80493155c916af33336eb62bf"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/01.json",
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/02.json",
+      "bytes": 601,
+      "sha256": "3597ff4b0ea54752868ae693b32513d46aae2a8a6b8b8ee1ab4de1d68483791b"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/03.json",
+      "bytes": 956,
+      "sha256": "bf4c04a48aeca6ea3d2c68b77c96a0fc593093567aa82f8938efa30bb29660ff"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/04.json",
+      "bytes": 1653,
+      "sha256": "e1f624acb83ce2b1ebb7df29469b80a25bfc3807656de239f953c9b935bdce0f"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/05.json",
+      "bytes": 3535,
+      "sha256": "4c049f3d8bc810d7a007ee4e92c303ae3873372baf9831412354a721c83815e3"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/06.json",
+      "bytes": 6534,
+      "sha256": "6dc09285cd680766879f9e2ab44ddc562471a9ee76e3356b9fc984eb46866ad5"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/07.json",
+      "bytes": 8959,
+      "sha256": "f987ecc37cb2aeb915cfe1c76dfcedb50019bf3ee4aac34db9359d1883e8f529"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/08.json",
+      "bytes": 9952,
+      "sha256": "68124d6a14e0bcee55914d9d0ac0225648221b2d6bb74e87f9583b7f7b93c5af"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/09.json",
+      "bytes": 9952,
+      "sha256": "68124d6a14e0bcee55914d9d0ac0225648221b2d6bb74e87f9583b7f7b93c5af"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/support/10.json",
+      "bytes": 10950,
+      "sha256": "21f552128d6075d34e2115d4c0ba705c2e786279c459e3363dfb69ad6972c5d7"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/uncertainty.mjs",
+      "bytes": 546,
+      "sha256": "b47845a174dffb45d38e9665ea9a47302a968e1a38c4850c7ac81e16b658f802"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/web.mjs",
+      "bytes": 21164,
+      "sha256": "f435a8600a0bf4527935e44cbb906b3cf274e437495dfeff1e37842e9a208045"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/worker.mjs",
+      "bytes": 1945,
+      "sha256": "850181d0114f121a2a88d00c4946324bf6d255cadf3542f04256e3e9bba87287"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/zip.mjs",
+      "bytes": 1981,
+      "sha256": "9ae0c43720448c4169b2b00f927af46050247c35608aad36143e8ea6db9e9fb6"
+    },
+    {
+      "path": "courses/firmware-forensics/PACKAGE-MANIFEST.json",
+      "bytes": 14819,
+      "sha256": "5476bd079b47f2b9b1b4807670d05c65fcf301f4edbba0ccd5f686d6ea1a98cc"
+    },
+    {
+      "path": "courses/firmware-forensics/README.md",
+      "bytes": 3458,
+      "sha256": "0c371a60255781c9c15676928f9035b2e3394f3f78d84b9fb30bdd518b1b7ae3"
+    },
+    {
+      "path": "courses/firmware-forensics/SOURCES.md",
+      "bytes": 1708,
+      "sha256": "a28b6d2b68444224aa60b26e25501ddd2feab25e3591c62fdb889f77846261c8"
+    },
+    {
+      "path": "courses/firmware-forensics/capstone.md",
+      "bytes": 3463,
+      "sha256": "c30db00841b67c48440820f59a4e12d2db02d9e7fd091d48ef753ecb3442616b"
+    },
+    {
+      "path": "courses/firmware-forensics/check_core.py",
+      "bytes": 1326,
+      "sha256": "1578de35f5514368be026bbe7d99ff7d2a245b77dd037489123c7bd5c3d0bc59"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/CONTENT-MANIFEST.json",
+      "bytes": 7214,
+      "sha256": "e73bc80136b7107a85c5eacfb77200c664f4698ce805d05d0de8149de76fb590"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/FORMAT.md",
+      "bytes": 3270,
+      "sha256": "73e440325fb7e3e321aa7283c5ae548c977da6315731d80ac4f0708992f21747"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/ORIGIN-NOTICE.md",
+      "bytes": 713,
+      "sha256": "7e2a8c901a3d9389cac2c61c524565a058bceedd1d7b62c678a19230c5929bda"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/README.md",
+      "bytes": 7618,
+      "sha256": "408a7e26c80c387b651eef8dceb851f3d6ce3bd33516bf8f070023e6da10e2da"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/checks/check_investigation.py",
+      "bytes": 3786,
+      "sha256": "b0c7094dad89bef2ecaada0c8a6ae5998227e4d04e0b49fae5303fffd4a53c5f"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/checks/check_parser.py",
+      "bytes": 9304,
+      "sha256": "f59eb309d994ff1663a0a29f1a7a41c2879c31e7d1f6ff93e1079743246dfc78"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/checks/check_submission.py",
+      "bytes": 7371,
+      "sha256": "73910e2716bc1be2970e61ac87ad556460408d8465707756fe7c49b40bf1defc"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/checks/parser_cases.py",
+      "bytes": 1902,
+      "sha256": "8273db763d0ea0f4d28a1c688a1a276c35b00ed1c7b6c847315b0c00add7809b"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/checks/test_scaffold.py",
+      "bytes": 3382,
+      "sha256": "e526b79d420c79a1a917f0b6b73489bab5c5f582c381d8d2e8f2f6c1d4b6f539"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/README.md",
+      "bytes": 1518,
+      "sha256": "212523b31c0a6b8d8d1981d9d0d678554e4ff3a4b41fa5ea14aef7561352e0cc"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/case-study/BRIEF.md",
+      "bytes": 2259,
+      "sha256": "78af2fe0cb713a86d50a3c355ab1d5e02a08ee0bff8fe56463ce39d0fd301735"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/case-study/capture-a.efw",
+      "bytes": 684,
+      "sha256": "0ceb6bdcee437e2cf0f29ef328ebee480dc3fc67acdc3d7d4a5d82b7878b56c6"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/case-study/capture-a.json",
+      "bytes": 1191,
+      "sha256": "c580605a92f79c14f108140f62d98e2c8fa84b93e67877be093997fb93a0dab0"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/case-study/capture-b.efw",
+      "bytes": 689,
+      "sha256": "bc182971ae774846f7f59df1d94fe84322d526d206991aa01e6b1cff33ef2289"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/case-study/capture-b.json",
+      "bytes": 1185,
+      "sha256": "32200bd006b093c12b56fcc5900251d4e003ca4fd6dde1c0d788320b9bd9a12c"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/case-study/capture-partial.efw",
+      "bytes": 687,
+      "sha256": "9293502833c3d8506eb361ad44c961da5bd846a11e83821f875d32eca2d5cc50"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/case-study/policy.json",
+      "bytes": 199,
+      "sha256": "c7805e9797f0489100adbd31053114c0e6b35e62ceb78e7d3e372bd02803be52"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/cycle-manifest.json",
+      "bytes": 992,
+      "sha256": "380b67024c487c636b068ea899489e15ba42ba2648b2b409c3b6417666214819"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/fixture-index.json",
+      "bytes": 3664,
+      "sha256": "ef686dd2d42235b94e123cea90074f7cabe5d4a2d3bd6c5e890cdf4edccc78b8"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/hash-mismatch.efw",
+      "bytes": 574,
+      "sha256": "a070b30013aa27b03f33683ca36a06924f3a991927bc03a122a85e02dff5755c"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/incomplete-manifest.json",
+      "bytes": 776,
+      "sha256": "7d3701902d085361f1bf7431a0f9fdf6b76985faad1e8162008292f796b8ec86"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/missing-dependency.json",
+      "bytes": 994,
+      "sha256": "1ac705fc1a4030ce4596206ca00acf8328cfe17ccf3117215735296bc974af81"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/overlap.efw",
+      "bytes": 574,
+      "sha256": "f85fc0c84d3a5d65d2a41bac3958b06758d609975cb44e8d16899df447892e24"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/policy.json",
+      "bytes": 197,
+      "sha256": "66f567a0361e0f8e5742cd2be89bbb8d3e00034477443b87cdfb505ce7ca959d"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-1.efw",
+      "bytes": 574,
+      "sha256": "6767c0bc25ea4aee86523a15a912ffbd9b731f0cd1e3ec22154a2a66bdb71838"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-1.json",
+      "bytes": 970,
+      "sha256": "f7aa649778520c604bc98f483f6a1aeeceb96cb4472e05877c79165fdac0daa3"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-2-observed.efw",
+      "bytes": 581,
+      "sha256": "544bb8af7e7ff2bb91426c52ec7cdb30d95abd559ee76cf0455479bbb00d24d8"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-2-observed.json",
+      "bytes": 990,
+      "sha256": "e20c5d722e84d6f5caa422b1c97aa21e24219f5cc86e73450367387cc5d5290e"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-2-reordered.efw",
+      "bytes": 576,
+      "sha256": "416bdd2fe02c415aec6d8362224403c4eaceac3164118e879bd35f041ce39fdc"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-2-reordered.json",
+      "bytes": 990,
+      "sha256": "3271d2ebff6ff696f1e5bada661f653d566e7163043053340680b7227b739223"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-2.efw",
+      "bytes": 576,
+      "sha256": "1d1b390175e9350b2e6158328922c0404ebc8061b5917bdc9b04d4472ab18413"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/release-2.json",
+      "bytes": 990,
+      "sha256": "4e656395e30813d022cbce46383a843f2cfc95fca4b42024b03cec5a6eba73e5"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/truncated.efw",
+      "bytes": 567,
+      "sha256": "3d98b4d2032a0ec974e7c6f2f4c6085ddefddea2a74ab4694a96ef8a34f8f173"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fixtures/unsafe-name.efw",
+      "bytes": 574,
+      "sha256": "7a563ae73f7e338b426ce4c0b67a14b59df8793aa0e211c8b89be2f4c84ab8c0"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fwcourse/__init__.py",
+      "bytes": 82,
+      "sha256": "f45422f45b77f9044ee7076a3f5e51fd47a441f578cccaca980c9136b4ee553f"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fwcourse/container.py",
+      "bytes": 2269,
+      "sha256": "f9ce24775a6c9629bdf29c5b1593880048657b1e0473505c0c816a3b84e2c033"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fwcourse/evidence.py",
+      "bytes": 7984,
+      "sha256": "edad1d93d4dd667859ff5135354b11cd01e0a9e43c2cfc8a3f5d5b1b8e480f1a"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fwcourse/runner.py",
+      "bytes": 1036,
+      "sha256": "4ee0494339a1425e123b2e1a902a944e9b56037bd9842de5af0a9091947a776c"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/fwlab.py",
+      "bytes": 3597,
+      "sha256": "760d7f70f3ef6c7e2ac62d9ad0da444df28ded8af3c13248c2e4bdd20131ce03"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/lessons/00-build-parser-and-map.md",
+      "bytes": 5231,
+      "sha256": "b1aaa5d2125e0f47ac780343dd9c3f4b1b0b10c4139f29af6b61aa0af8445cfd"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/lessons/01-evidence-and-change.md",
+      "bytes": 4886,
+      "sha256": "264329ddddea207f0811e682dfbba7371b456ab911d100a13e7f952f50cafaee"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/rubric.md",
+      "bytes": 2340,
+      "sha256": "440543b79b9674df6913cebd01afdf1f482d61e1d69a4e6073027fb8804b607c"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/starter/analysis.py",
+      "bytes": 1347,
+      "sha256": "289c50b67e3c1c6125ec7146f27560ad87fb9bd964ab0115ae29f7243d7e34c9"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/starter/parser.py",
+      "bytes": 2164,
+      "sha256": "c770d255f32a30d850412bf3473fac1d15d267fffcb0a83c9740e0249fbfab44"
+    },
+    {
+      "path": "courses/firmware-forensics/lab/tools/attempt.py",
+      "bytes": 2181,
+      "sha256": "fd8c9a7da93663e723401b4bce3873983a668c0b84f6e960f4e41810d46c7aae"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/01/index.html",
+      "bytes": 9544,
+      "sha256": "1681499c67b7c469e8e85b7f7b1836c677061a24668c9f665f0fcd80891b0b29"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/02/index.html",
+      "bytes": 10997,
+      "sha256": "3b2af37f85625b3ded0f2c2603210a8e17e3aa417f0c1074c3fc9b4c357c0b57"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/03/index.html",
+      "bytes": 8784,
+      "sha256": "412fce2e225a115a826c5f5c591f510f5ecdccc82b7cbf4fcff395076ad558ef"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/04/index.html",
+      "bytes": 9016,
+      "sha256": "f203e7682cd283a27d3906d5facf9096b9d32393d8c74ecde9f9c15287a72e03"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/05/index.html",
+      "bytes": 8820,
+      "sha256": "52413faef87eef2a8e4967f87bd768cfe0318eed745ccf289a5e910d768a73a6"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/06/index.html",
+      "bytes": 8940,
+      "sha256": "7382673401581724e5845c515cf34a2b68cd6d561a25b091a82f13211f709203"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/07/index.html",
+      "bytes": 8819,
+      "sha256": "88c60c4d6f564cbee0e58d556505a2f58ae7efeb350218adc74e95541b36fa6b"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/app.mjs",
+      "bytes": 3271,
+      "sha256": "13edfd7abb1ea3a3c6981d2240413f1f20e92a3745611c0ba5b67939085bc20a"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/index.html",
+      "bytes": 3450,
+      "sha256": "ed21f62d3dd72a4d2bb4416f7b236b7ad791ab68c26396adc31f20fd33a89b11"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/journal.mjs",
+      "bytes": 2369,
+      "sha256": "88d27fbbcf53f1f209ad0185307381d2bab581f2d865903073f6d79799006e39"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/questions.mjs",
+      "bytes": 10502,
+      "sha256": "da7d4dc2a8d250de9a431815eac27968d099e28d82d9ebaeab2eca564dea79a6"
+    },
+    {
+      "path": "courses/firmware-forensics/reader/style.css",
+      "bytes": 3741,
+      "sha256": "02c6ea7205764cd9abcdf061e0c1bc4c9e543f8977bb895d9b3ba8929f0de190"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/README.md",
+      "bytes": 3280,
+      "sha256": "463f89919982610b3b286bfa0c79524f16a643887e0194cb725033834b9d26b2"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/check.mjs",
+      "bytes": 3546,
+      "sha256": "042ebba5a8f29717c3ad8cd71f3ccbe1581497ac0a6138152e1f3beab40b3150"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/crypto.mjs",
+      "bytes": 1795,
+      "sha256": "1c4e26e7d538982dbe5a244fceda88e11758a03dc55830abe1aaa37443266801"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/candidate.efw",
+      "bytes": 581,
+      "sha256": "544bb8af7e7ff2bb91426c52ec7cdb30d95abd559ee76cf0455479bbb00d24d8"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/candidate.json",
+      "bytes": 990,
+      "sha256": "e20c5d722e84d6f5caa422b1c97aa21e24219f5cc86e73450367387cc5d5290e"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/candidate.sig",
+      "bytes": 129,
+      "sha256": "cdc4b713d97f42a1168b8124e8e5411973198e36ea9d910e4cd2772a6f70599e"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-a.efw",
+      "bytes": 611,
+      "sha256": "ca25b1a257198dd0d04ea3223d922c3d0d0216e1c7b5b1f05dcff84c60d45543"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-a.json",
+      "bytes": 1184,
+      "sha256": "a91276935e92abf424e4bb487f50971a2ec30f163c458c78fd4ae0a893329081"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-a.sig",
+      "bytes": 129,
+      "sha256": "6b91abf1d18a976c63c348a6e25bbe0ed013dfd14e87787c0fcf13abdfb485bc"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-b.efw",
+      "bytes": 624,
+      "sha256": "eddc1478b5b8d932ecc166341fa5f320a67cf0a1ccbd35bd499d6b785c6e92c2"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-b.json",
+      "bytes": 1188,
+      "sha256": "83432f23d776756ed18e640088d7b988267e66a48ecc1fb57fd99b1923439a29"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-b.sig",
+      "bytes": 129,
+      "sha256": "235f287f15e46bc5489af5540c407f9b827b038b0c5d191addfc4f451ad7e8e2"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-partial.efw",
+      "bytes": 619,
+      "sha256": "b91e73c74b5c74204d2484ce55ddc3e5360620d3f59a6caf106565dfdca3aac3"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/capstone-policy.json",
+      "bytes": 203,
+      "sha256": "93de65138b2c3840abdaaff671387dae24a5a9c4bc2fb4fbe49a18bf17651a99"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/cases.json",
+      "bytes": 1951,
+      "sha256": "14156ef24189106638f8891754e19027d4d6695b4d77836d2162f7bf03d4f992"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/changed-manifest.json",
+      "bytes": 971,
+      "sha256": "be5e496a07289922c725ee8f905f1839a3ed7da1b0346fadee4ce780f8b5237e"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/changed.efw",
+      "bytes": 574,
+      "sha256": "a070b30013aa27b03f33683ca36a06924f3a991927bc03a122a85e02dff5755c"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/guided.efw",
+      "bytes": 574,
+      "sha256": "6767c0bc25ea4aee86523a15a912ffbd9b731f0cd1e3ec22154a2a66bdb71838"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/guided.json",
+      "bytes": 970,
+      "sha256": "f7aa649778520c604bc98f483f6a1aeeceb96cb4472e05877c79165fdac0daa3"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/guided.sig",
+      "bytes": 129,
+      "sha256": "4c32f2285d444e171e413a3d2935d22a6e3e80c34beb50e9dcadf0f1b4b790af"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/lab-public.hex",
+      "bytes": 65,
+      "sha256": "40d359139cfd8af4ff3ebfbf9c8845468ca7876582189c11d3293b832f660632"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/other-public.hex",
+      "bytes": 65,
+      "sha256": "0d0b053c14976bfab1f4e944cbcceb3cb4e4fddc8e7fb152dd492748801d8903"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/other.sig",
+      "bytes": 129,
+      "sha256": "b6673b3574d34f4d030d205ded20e4280eda81be5402a471b30546d4821529b3"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/fixtures/rfc8032.json",
+      "bytes": 589,
+      "sha256": "39f96d87d10e6ec14fc87a0b1c955d4e64a7e41059552d83fcf6eb9c1e8fcab6"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/starter/trust.mjs",
+      "bytes": 878,
+      "sha256": "29c6bf43552a1f7d228fbaed2591fe706b18133a75f6f0f493945164b6142f56"
+    },
+    {
+      "path": "courses/firmware-forensics/trust/verify.mjs",
+      "bytes": 2428,
+      "sha256": "b63d766115476a6ed5ded5c502305ae09bba8daa7734a7b1c739e41fd1e4e0ef"
+    },
+    {
+      "path": "courses/firmware-forensics/work.py",
+      "bytes": 1639,
+      "sha256": "5ab204ddc5879b578982382b82992a648a7d8c75056b8b70081154d88b23132a"
+    },
+    {
+      "path": "courses/recoverable-storage/BROWSER-LIMITS.md",
+      "bytes": 3039,
+      "sha256": "d06ef95cbd988d0b96a5993e2c888d938ff5d2b3cbefc470bbc16f1a93e15c19"
+    },
+    {
+      "path": "courses/recoverable-storage/PACKAGE-MANIFEST.json",
+      "bytes": 5419,
+      "sha256": "877cebb5dd7cca3a69a08babd0ab56df75a4a6caf372dc0e098cb2f681895ff2"
+    },
+    {
+      "path": "courses/recoverable-storage/README.md",
+      "bytes": 7281,
+      "sha256": "787f7123de136fe8c94845d4f30ba0c972ffe9140a74733dac3fcbce4ed7b745"
+    },
+    {
+      "path": "courses/recoverable-storage/capstone.md",
+      "bytes": 2258,
+      "sha256": "f0790755e154f2fdc28278671fc9fa4f89ca22b155bddd82c8bf199604daae97"
+    },
+    {
+      "path": "courses/recoverable-storage/checker.html",
+      "bytes": 63052,
+      "sha256": "2d3e0946eaf4e3b0963d0ced1038ce6ccd790f1a6ca4f369116d4818acdebe0b"
+    },
+    {
+      "path": "courses/recoverable-storage/contracts.md",
+      "bytes": 6634,
+      "sha256": "d40038915bd9a9b642e10288e96047ce9682a0e0816e1baba4a608345552ddd3"
+    },
+    {
+      "path": "courses/recoverable-storage/course.json",
+      "bytes": 763,
+      "sha256": "2dfb93ae46bf4f841b730db005dba1cfd10030a8ec3eb65ae63ff286d7b9e166"
+    },
+    {
+      "path": "courses/recoverable-storage/diagrams/byte-layout.svg",
+      "bytes": 1506,
+      "sha256": "995c3ab31d2054a7e5c8fc7d2b2c220ea8daff2ff8bcd2cdf1bc8759f4f3a13b"
+    },
+    {
+      "path": "courses/recoverable-storage/diagrams/commit-boundary.svg",
+      "bytes": 1618,
+      "sha256": "179a6e884dc610c5e5eb6c88d22c93adcc16a71d3ea81259e251f1af7315320e"
+    },
+    {
+      "path": "courses/recoverable-storage/examples.json",
+      "bytes": 4297,
+      "sha256": "9a320745073aab89189b0fec7ae756609933547c963e73330a9b296705fe47b7"
+    },
+    {
+      "path": "courses/recoverable-storage/examples.mjs",
+      "bytes": 328,
+      "sha256": "77cb79491583124facf17c4003ad518c8963f7b6be43d1cf538911906bff0bb4"
+    },
+    {
+      "path": "courses/recoverable-storage/examples/batch.json",
+      "bytes": 181,
+      "sha256": "1e2c6813747386e3ac198c907352c8fa9d4d35c205571386c18dec605d4958a2"
+    },
+    {
+      "path": "courses/recoverable-storage/grade.mjs",
+      "bytes": 356,
+      "sha256": "599b5f3425b4eb64d00112bfea7f25b84189df105ed97ae766caf351a5c72bb1"
+    },
+    {
+      "path": "courses/recoverable-storage/index.html",
+      "bytes": 65002,
+      "sha256": "072faed6dee4b868dd3a1ac768b7cd30cc05b53b82dcb350da9ed075bc116476"
+    },
+    {
+      "path": "courses/recoverable-storage/lab.mjs",
+      "bytes": 9643,
+      "sha256": "8396b232ca538ddecf643a2a5c552b5bb81f2210fa2e1cf1494d375a5a03666a"
+    },
+    {
+      "path": "courses/recoverable-storage/lessons/01.md",
+      "bytes": 5853,
+      "sha256": "a3bbe3c76866ce1d9e4df708be22067cd673b2624efb92b65ee6544f48f39f65"
+    },
+    {
+      "path": "courses/recoverable-storage/lessons/02.md",
+      "bytes": 4912,
+      "sha256": "f3b84c48cb09bc5030c9e9d1f7bac733f166f431a599d8c7d12a50a212643842"
+    },
+    {
+      "path": "courses/recoverable-storage/lessons/03.md",
+      "bytes": 4881,
+      "sha256": "0ad50916d85b3d3ee0b907d15ae3bb1d6aa86eb80a933c06dd8879925857c878"
+    },
+    {
+      "path": "courses/recoverable-storage/lessons/04.md",
+      "bytes": 5137,
+      "sha256": "30ab18194441903356370071859ae03d6efbd029609e34fe09d9d154865338b6"
+    },
+    {
+      "path": "courses/recoverable-storage/lessons/05.md",
+      "bytes": 5365,
+      "sha256": "f029b681046dea7a533a89d435a94ffeefd8d791d40caa446735d98aebe80184"
+    },
+    {
+      "path": "courses/recoverable-storage/lessons/06.md",
+      "bytes": 4969,
+      "sha256": "e71545d8663dc2421f56832ce73dc0f7db661acffdc0ad767d8a499898a70777"
+    },
+    {
+      "path": "courses/recoverable-storage/lessons/07.md",
+      "bytes": 5094,
+      "sha256": "e835ada5c4db1947e7993026958843f253d9030eab7cd0b81c25a25f276019bc"
+    },
+    {
+      "path": "courses/recoverable-storage/own-llm.md",
+      "bytes": 1527,
+      "sha256": "1160ba94d04a45c50b0522b6b3654c04db8e352e16e7698fb88f33d2cf4b0b0a"
+    },
+    {
+      "path": "courses/recoverable-storage/package-files.json",
+      "bytes": 607,
+      "sha256": "bca4ce387ff8401f400f433d9a7d0596bbe3cbb8ced0fc6aa228225169109482"
+    },
+    {
+      "path": "courses/recoverable-storage/practice.json",
+      "bytes": 5986,
+      "sha256": "3da452d14bad608ef7d6790113d55fa94fa2e838ce4a812f83bf94c60a6da33a"
+    },
+    {
+      "path": "courses/recoverable-storage/public/checks.mjs",
+      "bytes": 14102,
+      "sha256": "87882c4dc05c1fcb4b0fb9d991bef85fef41ceafb1294b133cdc96af0d79f5b5"
+    },
+    {
+      "path": "courses/recoverable-storage/public/disk.mjs",
+      "bytes": 3090,
+      "sha256": "687b715b521a4a4c4c49021ca7971cf869f17d93ad1c854624e41a3d92169dde"
+    },
+    {
+      "path": "courses/recoverable-storage/serve.mjs",
+      "bytes": 3810,
+      "sha256": "7decfbf0fddef54d60f6baad72b5a741b9f8d8e76e4336347f8ca78e4cb1ab98"
+    },
+    {
+      "path": "courses/recoverable-storage/sources.md",
+      "bytes": 1116,
+      "sha256": "39b19131ebe3233a37bb818a534bb4071cf37bc36927ebd3e4a7ce55577945b6"
+    },
+    {
+      "path": "courses/recoverable-storage/starter/solution.mjs",
+      "bytes": 755,
+      "sha256": "d008c7a860a90f86582108f8a2f305c490ff7379a030b203a4c69dbd3c8ccb63"
+    },
+    {
+      "path": "courses/recoverable-storage/store.mjs",
+      "bytes": 1435,
+      "sha256": "bacc87d3dde08593d73497dbf62d7f95895078c705213f28156c1587ea4af806"
+    },
+    {
+      "path": "courses/recoverable-storage/support.json",
+      "bytes": 27815,
+      "sha256": "d4fdbec305c4e77887699852ac8857be1fcc402030ef8427a0aa78cdc90aa353"
+    },
+    {
+      "path": "courses/small-llm-runtime/API.md",
+      "bytes": 9471,
+      "sha256": "7de0f2b8a27561246938c4ee2f0d42a3047aa5cc84e15a14f61942336e0b26a5"
+    },
+    {
+      "path": "courses/small-llm-runtime/MISCONCEPTIONS.md",
+      "bytes": 3716,
+      "sha256": "ad8166c19eab8dc65412b1773a678f46cc066d1e1525c142aa96e23aacdfbccb"
+    },
+    {
+      "path": "courses/small-llm-runtime/NOTICE.md",
+      "bytes": 2826,
+      "sha256": "67cf83b146aeb263c629160f1d615c92704972c69065b25908fe86c51c8aa573"
+    },
+    {
+      "path": "courses/small-llm-runtime/PROMPT.md",
+      "bytes": 1017,
+      "sha256": "f43b276e258b62b41450c3d8359ff6018179dc6b0d68a97b559b8ae95fb1271b"
+    },
+    {
+      "path": "courses/small-llm-runtime/README.md",
+      "bytes": 7564,
+      "sha256": "3894a5976893327add7879696fde7cd2a72bc5e3592d32f61d4a98dbce29d76e"
+    },
+    {
+      "path": "courses/small-llm-runtime/RUBRIC.md",
+      "bytes": 4586,
+      "sha256": "ceeb96e2f87ebd0d9fe9d36ba23601953a2213a979ea0d2053b8f42b71262b26"
+    },
+    {
+      "path": "courses/small-llm-runtime/TRAINED.md",
+      "bytes": 15200,
+      "sha256": "428ffbac4ee8eea5626250e9c28d0b9898286c8ea5ec0aa7d8d6151e14fc83ed"
+    },
+    {
+      "path": "courses/small-llm-runtime/beam-checks.mjs",
+      "bytes": 12147,
+      "sha256": "420b7c4a34b9862ff442e234cecd2c3d69ec3a355a33e1e92dfaa0dec015400b"
+    },
+    {
+      "path": "courses/small-llm-runtime/beam-fixture-data.mjs",
+      "bytes": 4296,
+      "sha256": "5e51e3865000676b7bafe9a69a44cac2844eb4f062ba73d3f4104550311ec662"
+    },
+    {
+      "path": "courses/small-llm-runtime/checker-worker.mjs",
+      "bytes": 1232,
+      "sha256": "24b818b0c3fc05b177223f2b4c3b154fe7b38a004e3ca2688a8cfbfd9621335a"
+    },
+    {
+      "path": "courses/small-llm-runtime/checks.mjs",
+      "bytes": 17379,
+      "sha256": "352cf2fd11a2596ae97d3e085d2c29d5d24f2cb6706fd29e0e8f9142b9e41ff8"
+    },
+    {
+      "path": "courses/small-llm-runtime/course.json",
+      "bytes": 3386,
+      "sha256": "19a4b19adebe94b4265bef352f34849e9df3eb9699937146ca5151d77704d9d3"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/golden.json",
+      "bytes": 4529,
+      "sha256": "62c1f0d4dbfce5c6da28d6c3f96cf96f065e3900f948f2cbafbda04ff312d769"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/manifest.json",
+      "bytes": 486,
+      "sha256": "92855fa8aa4224fe41ebfef737b3aae5891e8b2d47108c1812d454ba2f0c21a6"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/mystery-cache.json",
+      "bytes": 6212,
+      "sha256": "ff161f60d7038b406b3164f04e63c97fcf8d2c1020cccd68a9d76e8eed40571b"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/tiny-original.json",
+      "bytes": 21661,
+      "sha256": "60867dbc492cc5978dfad4cf8a0bfef37f756a186edcdc18c8199db5ed474112"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/trained/manifest.json",
+      "bytes": 3326,
+      "sha256": "b7efeb7b2e9d5d5bcadec834caec2545201907516a52c24a5379cc930baeebb4"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/trained/mystery-cache.json",
+      "bytes": 54312,
+      "sha256": "ccbc276569469a6d9b9ba0449cc08ee55e6ef87e43d051e73b8597a8f4bc0d3e"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/trained/publisher-README.md",
+      "bytes": 183,
+      "sha256": "f5d36081d79fc18b2b8ee80fbf05f307c30ea8d6f3ce605c3f393be29f7d8863"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/trained/publisher-profile.md",
+      "bytes": 2804,
+      "sha256": "b743d79e10d9fdd57686aaef8fbb8ac337672dc0e098f9aebe672e4faea06ba4"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/trained/publisher-reference-project-LICENSE.txt",
+      "bytes": 1063,
+      "sha256": "e87b912002f04cdfa837eaf7f70548ab79b9cb62a285495edf575f3da875aec4"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/trained/stories260K.bin",
+      "bytes": 1056540,
+      "sha256": "b0a507e7ad0f626624f17112325e66691f9076d622e1d3274d103d00299f2696"
+    },
+    {
+      "path": "courses/small-llm-runtime/fixtures/trained/tok512.bin",
+      "bytes": 6227,
+      "sha256": "037cb335abb25d1fa9e8ecae30ed2a3a8ace9302862ebcdc05d51a6bbb10c312"
+    },
+    {
+      "path": "courses/small-llm-runtime/index.html",
+      "bytes": 4536,
+      "sha256": "df212e2693d39e8c8c74c105ab80db6e6c864e00520b378a3184588afcee5d37"
+    },
+    {
+      "path": "courses/small-llm-runtime/lab.mjs",
+      "bytes": 13024,
+      "sha256": "30df0cfecbd242d03f2c43a3e7b2d85772ae4c94d493476868ff826c14e836b3"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/01.md",
+      "bytes": 4024,
+      "sha256": "9a9840cdffc437ba17f19caff05a54aefeb1a2583c3a6338aaad68264a39b331"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/02.md",
+      "bytes": 3576,
+      "sha256": "21c421b4a763f86cd723b6ca9738d749f80d30d0e94c3f284db7982036a29ed9"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/03.md",
+      "bytes": 3757,
+      "sha256": "b5d4e1cb260bf7191194d6df03a3e5829e5262f155f4a0f7a5956cd6c2b0157f"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/04.md",
+      "bytes": 3695,
+      "sha256": "92a39d8309bf76d8b5bcf48e38f64bd0525a53c9d54449ff6eeb5fce650e3de0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/05.md",
+      "bytes": 3383,
+      "sha256": "9ad17401ead27ad117cfeadd2c718c5ec683178191d13b3059bb0c8341826387"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/06.md",
+      "bytes": 3603,
+      "sha256": "93bafae011f0bfdddba2e57459922b8276612f9dc32a9b3bc37352aef6b55cbf"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/07.md",
+      "bytes": 3428,
+      "sha256": "ed55a0bb389c03bac73acf214457f2b32298200091ace537b9730598276e9eb9"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/08.md",
+      "bytes": 9832,
+      "sha256": "141d649b983a9fdc30f85ba0d4c2ccb2a5245c201e3a7253ab7bfc31302e5e51"
+    },
+    {
+      "path": "courses/small-llm-runtime/manifest.mjs",
+      "bytes": 1576,
+      "sha256": "9fa63245cdd7fce32a5550e8dffab88511a5b615c3eed30f984e96b3324bf5d9"
+    },
+    {
+      "path": "courses/small-llm-runtime/misconceptions.json",
+      "bytes": 8134,
+      "sha256": "00d4e641e6c58f28bcd3c0bbb07459d8c8125475d73146c9c5ca6f6f67f56de2"
+    },
+    {
+      "path": "courses/small-llm-runtime/node-worker.mjs",
+      "bytes": 1388,
+      "sha256": "3728d6ac880fcc8cbf49a733ee8fd85a2b999beebf6db44cad87dcb157e7c8b0"
+    },
+    {
+      "path": "courses/small-llm-runtime/numeric.mjs",
+      "bytes": 924,
+      "sha256": "666304771545f6ada6699f42b7c216152dd0547acd47163b85bf742da1060912"
+    },
+    {
+      "path": "courses/small-llm-runtime/package-manifest.json",
+      "bytes": 10040,
+      "sha256": "1fb011f9e296d16a628ed0258c7bc35f21cb2e2418bd18e5e0a7ab8a0ffb5d87"
+    },
+    {
+      "path": "courses/small-llm-runtime/practice.mjs",
+      "bytes": 8224,
+      "sha256": "1a46fd77885cc3239790d455f28d919bde150a10adb2e3b36de0b5fca2960af1"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/for-02.mjs",
+      "bytes": 5150,
+      "sha256": "78b88b247420f4acf445ba9f4715178dd4464b86f0009f756ecec9171d7cc783"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/for-03.mjs",
+      "bytes": 5336,
+      "sha256": "d8fd7fadb17f1315acb83e1b9288829cdf8f27bd3e5cdf353543ab11c04ccd68"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/for-04.mjs",
+      "bytes": 5634,
+      "sha256": "7caf12c1ab566926622c072fc0e6d021865bbeb522c1be22949b841f6e1decdb"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/for-05.mjs",
+      "bytes": 7042,
+      "sha256": "d43d83e9916222383287c57e89b80beaa49472f133ff7b5f65f92255a90e70c3"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/for-06.mjs",
+      "bytes": 5336,
+      "sha256": "6c25b080b20ac8ee7b9781cd82c2af58325960deb1f33a583c818818614d3b07"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/for-07.mjs",
+      "bytes": 8828,
+      "sha256": "bb227a83890c1ffc63dbf137802835809d84e609f9f68d7892a8070e25bbed92"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/for-08.mjs",
+      "bytes": 9750,
+      "sha256": "bf60001116146defd92c845c476dc71af81643bd411eb057dd9947d9237f94be"
+    },
+    {
+      "path": "courses/small-llm-runtime/reference-support/index.json",
+      "bytes": 2120,
+      "sha256": "417353d9987ac22e0051999012fbda0a4eeb0655e5bf1e6df4238d5066709596"
+    },
+    {
+      "path": "courses/small-llm-runtime/render.mjs",
+      "bytes": 1154,
+      "sha256": "9e7a1b42f3c732a351d504013b19a5a78aabcea09a8021838ed8c5cabae20e25"
+    },
+    {
+      "path": "courses/small-llm-runtime/spec.mjs",
+      "bytes": 293,
+      "sha256": "db3a56c0bac1315a84089eb6234443142593c11f941e4ea5cb1bdaa270b510c1"
+    },
+    {
+      "path": "courses/small-llm-runtime/starter.mjs",
+      "bytes": 1368,
+      "sha256": "835bbd3c1569143ef7784b396579dc7a751a642a542be8ec797ffacac8678f38"
+    },
+    {
+      "path": "courses/small-llm-runtime/stream-checks.mjs",
+      "bytes": 10125,
+      "sha256": "a1d66472b8d9bd379e78c61b12afbafc54e6e5cd2eaad80e6c11160173e0c4b6"
+    },
+    {
+      "path": "courses/small-llm-runtime/style.css",
+      "bytes": 2567,
+      "sha256": "e91f005d9a64ce60d4232a2fc7137cc283c0a1b00597c57fdc8517b52b33192a"
+    },
+    {
+      "path": "courses/small-llm-runtime/trained-checks.mjs",
+      "bytes": 22236,
+      "sha256": "9eb4c6fddbc996914832ce65cd685cd3cfcb4501756d8cd7aff7d66a9c5e0d93"
+    },
+    {
+      "path": "courses/small-llm-runtime/trained-goldens.json",
+      "bytes": 203867,
+      "sha256": "c433a80049a5726452345a773c20204824e8bb0927d39ba25408d8924461c63f"
+    },
+    {
+      "path": "courses/small-llm-runtime/trained-guide.mjs",
+      "bytes": 532,
+      "sha256": "78291827ee307b0fea4cf6c6ec59d62e0e02154f718995b448cb83b053b8de9e"
+    },
+    {
+      "path": "courses/small-llm-runtime/trained-run.mjs",
+      "bytes": 4412,
+      "sha256": "4134d7180141e66a5dc606a0b2f8bdb0635719636b872819e3b9061051ec8a32"
+    },
+    {
+      "path": "courses/small-llm-runtime/trained-spec.mjs",
+      "bytes": 543,
+      "sha256": "72a4717e08f56de994b3688ffc9151bc24b7fc6baf344f5d11da896ba311140b"
+    },
+    {
+      "path": "courses/small-llm-runtime/trained-starter.mjs",
+      "bytes": 1135,
+      "sha256": "45bd6c8292eeee74c9351dd40c4a7beb0335aedbf167b73567c7588cb6bae0cd"
+    },
+    {
+      "path": "courses/small-llm-runtime/trained.html",
+      "bytes": 696,
+      "sha256": "94886a717e448843d6030ad82345bb77d2d93f8fa377209f8d8d4521b16ecb47"
+    },
+    {
+      "path": "courses/small-llm-runtime/web.mjs",
+      "bytes": 19559,
+      "sha256": "5fc192e04e8d594c0a9cc26d2c19180d0810ae80d03a8bd9b1fc76b82879956f"
+    },
+    {
+      "path": "courses/small-llm-runtime/zip.mjs",
+      "bytes": 1881,
+      "sha256": "ad92dcf2e12dcadcc7094ecdc9c381f9f7946545b9faaaa404d3e50591847aa0"
+    },
+    {
+      "path": "courses/time-travel-debugger/BROWSER-LIMITS.md",
+      "bytes": 3039,
+      "sha256": "973cf0c136946b8418b08b220a0024e553568dcc6619f7606564e6d7e40f4aa6"
+    },
+    {
+      "path": "courses/time-travel-debugger/PACKAGE-MANIFEST.json",
+      "bytes": 6744,
+      "sha256": "d517b704049868f5f885125ff7b10bef6cb6d6b70479c30125b5570f11abc139"
+    },
+    {
+      "path": "courses/time-travel-debugger/README.md",
+      "bytes": 7272,
+      "sha256": "da5629389b1e47cc9c79fc08bc18d117df1dc1be948c7d50d3c54585f0a54c4f"
+    },
+    {
+      "path": "courses/time-travel-debugger/capstone.md",
+      "bytes": 2847,
+      "sha256": "ae275816bbc9b6c5cd6a2b8e55a6be305699398552cc8ee40da81bcaa4421d56"
+    },
+    {
+      "path": "courses/time-travel-debugger/checker.html",
+      "bytes": 51911,
+      "sha256": "b2a97882eb3077e9e5a8ecefa621bbd32ffaa1923bd9ffb9504439daf27ae418"
+    },
+    {
+      "path": "courses/time-travel-debugger/contracts.md",
+      "bytes": 4966,
+      "sha256": "0a6f31aa726963a26eea7cff3d190ed3a86b567c9a1d224b86e9173d5dec8c88"
+    },
+    {
+      "path": "courses/time-travel-debugger/course.json",
+      "bytes": 650,
+      "sha256": "b27fd431939f510a220218359f808d1e44f559c8d48b6187f93a108b13e0bf48"
+    },
+    {
+      "path": "courses/time-travel-debugger/debug.mjs",
+      "bytes": 2196,
+      "sha256": "b9dcf84150a4b91750f7dcae62edf81edf4fb2bee11e342ca570cdecd11df21f"
+    },
+    {
+      "path": "courses/time-travel-debugger/diagrams/state-event.svg",
+      "bytes": 1707,
+      "sha256": "1e99215cb1d97633b14411a90c75889edb588f4f1f9f8daa67f60a031bb96cf8"
+    },
+    {
+      "path": "courses/time-travel-debugger/examples.json",
+      "bytes": 9283,
+      "sha256": "6432ef379585a502db7302199bf42ebebe645107630b8ea007de3cccc0143d32"
+    },
+    {
+      "path": "courses/time-travel-debugger/examples.mjs",
+      "bytes": 328,
+      "sha256": "77cb79491583124facf17c4003ad518c8963f7b6be43d1cf538911906bff0bb4"
+    },
+    {
+      "path": "courses/time-travel-debugger/grade.mjs",
+      "bytes": 356,
+      "sha256": "599b5f3425b4eb64d00112bfea7f25b84189df105ed97ae766caf351a5c72bb1"
+    },
+    {
+      "path": "courses/time-travel-debugger/index.html",
+      "bytes": 64164,
+      "sha256": "6641d7850dc3e138e637b111ab63e0df6121485aa9e313fcfb2cf4021f9f6cd6"
+    },
+    {
+      "path": "courses/time-travel-debugger/lab.mjs",
+      "bytes": 9643,
+      "sha256": "8396b232ca538ddecf643a2a5c552b5bb81f2210fa2e1cf1494d375a5a03666a"
+    },
+    {
+      "path": "courses/time-travel-debugger/lessons/01.md",
+      "bytes": 5311,
+      "sha256": "d679a42fb1cb7efec99ae058e6a435ee0f98c174a06f2fdb834143e1fd1e6269"
+    },
+    {
+      "path": "courses/time-travel-debugger/lessons/02.md",
+      "bytes": 4991,
+      "sha256": "2b7d7df5e8801f95ef6729776e62c6f8e2f1e75137e97641d47a0e90746c251c"
+    },
+    {
+      "path": "courses/time-travel-debugger/lessons/03.md",
+      "bytes": 4861,
+      "sha256": "a28fa2f233c2426ddd135faa7a02afa9af49ca916494921df295eb5ce6bfbfe3"
+    },
+    {
+      "path": "courses/time-travel-debugger/lessons/04.md",
+      "bytes": 5023,
+      "sha256": "e6aeb74e91efe5c1980615c4f91e8469cc5055a8ef077c7ec8533b41eb524435"
+    },
+    {
+      "path": "courses/time-travel-debugger/lessons/05.md",
+      "bytes": 5266,
+      "sha256": "2492006c125f28c0dd8cf4b08689f39af4fdf47a3ec693d411791f40d89ee546"
+    },
+    {
+      "path": "courses/time-travel-debugger/lessons/06.md",
+      "bytes": 5002,
+      "sha256": "2987b60477336767be4c5a025f20c922dcb5cf5680d24895f0b0f3b4bbc4e433"
+    },
+    {
+      "path": "courses/time-travel-debugger/lessons/07.md",
+      "bytes": 5004,
+      "sha256": "4cbd2fc7a2849c63a2fc98d1da58d1d8fddd3fca2fd970b96cecf45749a5d44f"
+    },
+    {
+      "path": "courses/time-travel-debugger/own-llm.md",
+      "bytes": 1527,
+      "sha256": "1160ba94d04a45c50b0522b6b3654c04db8e352e16e7698fb88f33d2cf4b0b0a"
+    },
+    {
+      "path": "courses/time-travel-debugger/package-files.json",
+      "bytes": 738,
+      "sha256": "bf7bc48c274add7c828dbbd35c8044fc8e303e80a00614bd8de391f4932cb081"
+    },
+    {
+      "path": "courses/time-travel-debugger/practice.json",
+      "bytes": 5281,
+      "sha256": "f45e84e7824d8866886f46db24c34a25f414145eb9aa9a566b960056d76271e6"
+    },
+    {
+      "path": "courses/time-travel-debugger/programs/counter.json",
+      "bytes": 425,
+      "sha256": "1c96d6ef919e573ab80996291fc9f27bf359fab4e1415d6ccc39a6600b22249b"
+    },
+    {
+      "path": "courses/time-travel-debugger/programs/dispatch.json",
+      "bytes": 543,
+      "sha256": "8b5cd4a37c0893055087b87161bf943805cbd4c802c9eae56ffeea7e6a2acb47"
+    },
+    {
+      "path": "courses/time-travel-debugger/programs/first-session.json",
+      "bytes": 39,
+      "sha256": "a369fa06e1979c70515bb906c7f72ddec61afa3272105091b142e1e1055bb50a"
+    },
+    {
+      "path": "courses/time-travel-debugger/programs/replay-session-stage05.json",
+      "bytes": 89,
+      "sha256": "fb4c8961fc8e4621babdf35e4c25d2b020563d62643cf38038043159f2a6e770"
+    },
+    {
+      "path": "courses/time-travel-debugger/programs/replay-session.json",
+      "bytes": 107,
+      "sha256": "33b204b006c9bf904307526bd254aab544d2556b4e9279f44bd4814095709175"
+    },
+    {
+      "path": "courses/time-travel-debugger/programs/transfer.json",
+      "bytes": 485,
+      "sha256": "5302d743c88714b9523c5aa3924af8f126d152f0e3c3cf125ad772648fddc9d7"
+    },
+    {
+      "path": "courses/time-travel-debugger/public/checks.mjs",
+      "bytes": 11431,
+      "sha256": "c151a93315cce609001739ad0de80ea306800d7df0ae0e81f73e75a8daf51758"
+    },
+    {
+      "path": "courses/time-travel-debugger/public/vm.mjs",
+      "bytes": 3106,
+      "sha256": "3908d562aa3de8801e118991dda467e8abd4bfe54264bad5ee2667bade7bd657"
+    },
+    {
+      "path": "courses/time-travel-debugger/serve.mjs",
+      "bytes": 3778,
+      "sha256": "4b2c96891009383db071002a24a0f35b4bdf134c95235a3b09038c2bf4247d51"
+    },
+    {
+      "path": "courses/time-travel-debugger/sources.md",
+      "bytes": 1116,
+      "sha256": "39b19131ebe3233a37bb818a534bb4071cf37bc36927ebd3e4a7ce55577945b6"
+    },
+    {
+      "path": "courses/time-travel-debugger/starter/solution.mjs",
+      "bytes": 991,
+      "sha256": "b35675e230d5cbba6db34e4c26134cb3f5d8febab465ee4972adf0abc45a9052"
+    },
+    {
+      "path": "courses/time-travel-debugger/support.json",
+      "bytes": 18361,
+      "sha256": "0c08f8c3b254cfe01cc3f14fe7025f5703c08a51ff4f7bd0cb70afaa46278cbf"
+    }
+  ],
+  "selfHash": "Omitted to avoid circularity; exact Git tree and external manifest hash bind this file."
+}

@@ -1,0 +1,13 @@
+{
+  "minimum_release": 1,
+  "required_components": [
+    "boot",
+    "kernel",
+    "config"
+  ],
+  "required_config": {
+    "boot_mode": "normal",
+    "diagnostics": "minimal"
+  },
+  "schema": 1
+}

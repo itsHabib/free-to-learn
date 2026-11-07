@@ -1,0 +1,7 @@
+{
+  "filename": "tiny-original.json",
+  "sha256": "60867dbc492cc5978dfad4cf8a0bfef37f756a186edcdc18c8199db5ed474112",
+  "origin": "Original deterministic teaching fixture; seed 20261027; no pretrained parameters, corpus, downloaded asset or third-party checkpoint.",
+  "purpose": "Numeric and cache correctness. Untrained weights do not produce reliable language.",
+  "redistribution": "Original project fixture; see NOTICE.md. External checkpoint terms must be reviewed separately."
+}

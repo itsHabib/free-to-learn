@@ -1,0 +1,66 @@
+{
+  "format": "stories260k-pinned-assets-v1",
+  "publisher": "karpathy/tinyllamas",
+  "revision": "0bd21da7698eaf29a0d7de3992de8a46ef624add",
+  "modelAndTokenizerBytes": 1062767,
+  "assets": [
+    {
+      "name": "publisher-README.md",
+      "url": "https://huggingface.co/karpathy/tinyllamas/resolve/0bd21da7698eaf29a0d7de3992de8a46ef624add/README.md",
+      "finalHost": "huggingface.co",
+      "finalPath": "/api/resolve-cache/models/karpathy/tinyllamas/0bd21da7698eaf29a0d7de3992de8a46ef624add/README.md",
+      "status": 200,
+      "bytes": 183,
+      "sha256": "f5d36081d79fc18b2b8ee80fbf05f307c30ea8d6f3ce605c3f393be29f7d8863"
+    },
+    {
+      "name": "publisher-profile.md",
+      "url": "https://huggingface.co/karpathy/tinyllamas/resolve/0bd21da7698eaf29a0d7de3992de8a46ef624add/stories260K/readme.md",
+      "finalHost": "huggingface.co",
+      "finalPath": "/api/resolve-cache/models/karpathy/tinyllamas/0bd21da7698eaf29a0d7de3992de8a46ef624add/stories260K%2Freadme.md",
+      "status": 200,
+      "bytes": 2804,
+      "sha256": "b743d79e10d9fdd57686aaef8fbb8ac337672dc0e098f9aebe672e4faea06ba4"
+    },
+    {
+      "name": "publisher-reference-project-LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/karpathy/llama2.c/master/LICENSE",
+      "finalHost": "raw.githubusercontent.com",
+      "finalPath": "/karpathy/llama2.c/master/LICENSE",
+      "status": 200,
+      "bytes": 1063,
+      "sha256": "e87b912002f04cdfa837eaf7f70548ab79b9cb62a285495edf575f3da875aec4"
+    },
+    {
+      "name": "stories260K.bin",
+      "url": "https://huggingface.co/karpathy/tinyllamas/resolve/0bd21da7698eaf29a0d7de3992de8a46ef624add/stories260K/stories260K.bin",
+      "finalHost": "us.aws.cdn.hf.co",
+      "finalPath": "/xet-bridge-us/64c19eb0275dc8cd7f170b8f/de84e3f29a1ead01b26ef62241e869be33324cd9a71f9c52cd24b674c1a5fb11",
+      "status": 200,
+      "bytes": 1056540,
+      "sha256": "b0a507e7ad0f626624f17112325e66691f9076d622e1d3274d103d00299f2696"
+    },
+    {
+      "name": "tok512.bin",
+      "url": "https://huggingface.co/karpathy/tinyllamas/resolve/0bd21da7698eaf29a0d7de3992de8a46ef624add/stories260K/tok512.bin",
+      "finalHost": "us.aws.cdn.hf.co",
+      "finalPath": "/xet-bridge-us/64c19eb0275dc8cd7f170b8f/9320ac4e92dbdab1cf27343eb2c7ac620504689b2d3a614806a39526b4442d48",
+      "status": 200,
+      "bytes": 6227,
+      "sha256": "037cb335abb25d1fa9e8ecae30ed2a3a8ace9302862ebcdc05d51a6bbb10c312"
+    }
+  ],
+  "header": {
+    "dim": 64,
+    "hidden": 172,
+    "layers": 5,
+    "heads": 8,
+    "kvHeads": 4,
+    "vocabSize": 512,
+    "maxContext": 512
+  },
+  "licenseBasis": "Pinned model publisher README explicitly declares MIT; complete related publisher MIT permission notice retained with its actual source identity, not relabelled as a model-repository LICENSE file.",
+  "trainingClaim": "Publisher states TinyStories pretraining; no corpus acquired.",
+  "readmeCaution": "The retained publisher profile card contains published examples; keep it provenance material, separate from assessed prediction answers.",
+  "qualificationScope": "Pinned trained capstone assets and retained provenance only. Author/reference/defect controls, private review and learner histories are excluded by the course public inventory. Separate source/package/learner verdicts retain their exact versions."
+}

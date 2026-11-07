@@ -1,0 +1,24 @@
+{
+  "id": "recoverable-storage",
+  "runtime": [
+    "disk.mjs"
+  ],
+  "outcomes": [
+    "Encode and decode bounded binary frames with explicit corruption and incomplete-tail behavior.",
+    "Append all bytes despite short writes and synchronize before acknowledgement.",
+    "Index latest values and deletions without prototype-key errors.",
+    "Encode atomic batches and apply only committed operations.",
+    "Recover committed prefixes, fail closed on corruption and repair before appending.",
+    "Provide a usable single-writer store and safely replace its log during compaction.",
+    "Inject faults at byte and operation boundaries and explain observed recovery limits."
+  ],
+  "caseCounts": [
+    12,
+    15,
+    17,
+    20,
+    24,
+    33,
+    35
+  ]
+}

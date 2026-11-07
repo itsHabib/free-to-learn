@@ -1,0 +1,199 @@
+{
+  "format": "ivy-original-offline-package-v1",
+  "course": "time-travel-debugger",
+  "source_revision": "9ad1b1585eacd2fb83785c32f468b8b053c988aa",
+  "source_dirty": false,
+  "ordered_inputs_sha256": "b63098db210e660ea4aead36729649f54e25334b93d9cfaf05c2875ae62011ee",
+  "files": [
+    {
+      "path": "BROWSER-LIMITS.md",
+      "bytes": 3039,
+      "sha256": "973cf0c136946b8418b08b220a0024e553568dcc6619f7606564e6d7e40f4aa6"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7272,
+      "sha256": "da5629389b1e47cc9c79fc08bc18d117df1dc1be948c7d50d3c54585f0a54c4f"
+    },
+    {
+      "path": "capstone.md",
+      "bytes": 2847,
+      "sha256": "ae275816bbc9b6c5cd6a2b8e55a6be305699398552cc8ee40da81bcaa4421d56"
+    },
+    {
+      "path": "checker.html",
+      "bytes": 51911,
+      "sha256": "b2a97882eb3077e9e5a8ecefa621bbd32ffaa1923bd9ffb9504439daf27ae418"
+    },
+    {
+      "path": "contracts.md",
+      "bytes": 4966,
+      "sha256": "0a6f31aa726963a26eea7cff3d190ed3a86b567c9a1d224b86e9173d5dec8c88"
+    },
+    {
+      "path": "course.json",
+      "bytes": 650,
+      "sha256": "b27fd431939f510a220218359f808d1e44f559c8d48b6187f93a108b13e0bf48"
+    },
+    {
+      "path": "debug.mjs",
+      "bytes": 2196,
+      "sha256": "b9dcf84150a4b91750f7dcae62edf81edf4fb2bee11e342ca570cdecd11df21f"
+    },
+    {
+      "path": "diagrams/state-event.svg",
+      "bytes": 1707,
+      "sha256": "1e99215cb1d97633b14411a90c75889edb588f4f1f9f8daa67f60a031bb96cf8"
+    },
+    {
+      "path": "examples.json",
+      "bytes": 9283,
+      "sha256": "6432ef379585a502db7302199bf42ebebe645107630b8ea007de3cccc0143d32"
+    },
+    {
+      "path": "examples.mjs",
+      "bytes": 328,
+      "sha256": "77cb79491583124facf17c4003ad518c8963f7b6be43d1cf538911906bff0bb4"
+    },
+    {
+      "path": "grade.mjs",
+      "bytes": 356,
+      "sha256": "599b5f3425b4eb64d00112bfea7f25b84189df105ed97ae766caf351a5c72bb1"
+    },
+    {
+      "path": "index.html",
+      "bytes": 64164,
+      "sha256": "6641d7850dc3e138e637b111ab63e0df6121485aa9e313fcfb2cf4021f9f6cd6"
+    },
+    {
+      "path": "lab.mjs",
+      "bytes": 9643,
+      "sha256": "8396b232ca538ddecf643a2a5c552b5bb81f2210fa2e1cf1494d375a5a03666a"
+    },
+    {
+      "path": "lessons/01.md",
+      "bytes": 5311,
+      "sha256": "d679a42fb1cb7efec99ae058e6a435ee0f98c174a06f2fdb834143e1fd1e6269"
+    },
+    {
+      "path": "lessons/02.md",
+      "bytes": 4991,
+      "sha256": "2b7d7df5e8801f95ef6729776e62c6f8e2f1e75137e97641d47a0e90746c251c"
+    },
+    {
+      "path": "lessons/03.md",
+      "bytes": 4861,
+      "sha256": "a28fa2f233c2426ddd135faa7a02afa9af49ca916494921df295eb5ce6bfbfe3"
+    },
+    {
+      "path": "lessons/04.md",
+      "bytes": 5023,
+      "sha256": "e6aeb74e91efe5c1980615c4f91e8469cc5055a8ef077c7ec8533b41eb524435"
+    },
+    {
+      "path": "lessons/05.md",
+      "bytes": 5266,
+      "sha256": "2492006c125f28c0dd8cf4b08689f39af4fdf47a3ec693d411791f40d89ee546"
+    },
+    {
+      "path": "lessons/06.md",
+      "bytes": 5002,
+      "sha256": "2987b60477336767be4c5a025f20c922dcb5cf5680d24895f0b0f3b4bbc4e433"
+    },
+    {
+      "path": "lessons/07.md",
+      "bytes": 5004,
+      "sha256": "4cbd2fc7a2849c63a2fc98d1da58d1d8fddd3fca2fd970b96cecf45749a5d44f"
+    },
+    {
+      "path": "own-llm.md",
+      "bytes": 1527,
+      "sha256": "1160ba94d04a45c50b0522b6b3654c04db8e352e16e7698fb88f33d2cf4b0b0a"
+    },
+    {
+      "path": "package-files.json",
+      "bytes": 738,
+      "sha256": "bf7bc48c274add7c828dbbd35c8044fc8e303e80a00614bd8de391f4932cb081"
+    },
+    {
+      "path": "practice.json",
+      "bytes": 5281,
+      "sha256": "f45e84e7824d8866886f46db24c34a25f414145eb9aa9a566b960056d76271e6"
+    },
+    {
+      "path": "programs/counter.json",
+      "bytes": 425,
+      "sha256": "1c96d6ef919e573ab80996291fc9f27bf359fab4e1415d6ccc39a6600b22249b"
+    },
+    {
+      "path": "programs/dispatch.json",
+      "bytes": 543,
+      "sha256": "8b5cd4a37c0893055087b87161bf943805cbd4c802c9eae56ffeea7e6a2acb47"
+    },
+    {
+      "path": "programs/first-session.json",
+      "bytes": 39,
+      "sha256": "a369fa06e1979c70515bb906c7f72ddec61afa3272105091b142e1e1055bb50a"
+    },
+    {
+      "path": "programs/replay-session-stage05.json",
+      "bytes": 89,
+      "sha256": "fb4c8961fc8e4621babdf35e4c25d2b020563d62643cf38038043159f2a6e770"
+    },
+    {
+      "path": "programs/replay-session.json",
+      "bytes": 107,
+      "sha256": "33b204b006c9bf904307526bd254aab544d2556b4e9279f44bd4814095709175"
+    },
+    {
+      "path": "programs/transfer.json",
+      "bytes": 485,
+      "sha256": "5302d743c88714b9523c5aa3924af8f126d152f0e3c3cf125ad772648fddc9d7"
+    },
+    {
+      "path": "public/checks.mjs",
+      "bytes": 11431,
+      "sha256": "c151a93315cce609001739ad0de80ea306800d7df0ae0e81f73e75a8daf51758"
+    },
+    {
+      "path": "public/vm.mjs",
+      "bytes": 3106,
+      "sha256": "3908d562aa3de8801e118991dda467e8abd4bfe54264bad5ee2667bade7bd657"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 3778,
+      "sha256": "4b2c96891009383db071002a24a0f35b4bdf134c95235a3b09038c2bf4247d51"
+    },
+    {
+      "path": "sources.md",
+      "bytes": 1116,
+      "sha256": "39b19131ebe3233a37bb818a534bb4071cf37bc36927ebd3e4a7ce55577945b6"
+    },
+    {
+      "path": "starter/solution.mjs",
+      "bytes": 991,
+      "sha256": "b35675e230d5cbba6db34e4c26134cb3f5d8febab465ee4972adf0abc45a9052"
+    },
+    {
+      "path": "support.json",
+      "bytes": 18361,
+      "sha256": "0c08f8c3b254cfe01cc3f14fe7025f5703c08a51ff4f7bd0cb70afaa46278cbf"
+    }
+  ],
+  "limits": [
+    "No independent acceptance or learning claim.",
+    "Browser/render/download inspection pending."
+  ],
+  "deliveryDerivative": {
+    "reviewedTeachingCommit": "5494aae5b94c43763cdb6be1bf481ef0373c99f4",
+    "reviewedTeachingTree": "a1729f81becf3c4ebe9eff45cbc1514833cf50fc",
+    "historicalArchiveSha256": "270f494520cf08d95b3e36eafe263a14f823ac31bb8a30316b27a4e014806187",
+    "memberInventorySha256": "f1f3982127951430a181ae3e8475b9950baf7bf32170b4d175ee2ee78ccbe069",
+    "scope": "Only reviewed lessons04/05/06, matching reader paragraphs, positive member list and the stage05 command input are adopted. source_revision and ordered_inputs_sha256 retain historical engine lineage; files binds current delivery bytes. No engine, grader, learner attempt or acceptance is changed."
+  },
+  "publicLearnerDerivative": {
+    "memberInventorySha256": "56985bcf79ad476a8633ad7e34f2f899301a4832086f6964efb59403454bf516",
+    "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
+  }
+}

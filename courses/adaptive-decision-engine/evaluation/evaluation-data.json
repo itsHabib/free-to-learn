@@ -1,0 +1,5762 @@
+[
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-00",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-01",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-02",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-03",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-04",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-05",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-06",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-07",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-08",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-09",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-10",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-11",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-12",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-13",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-14",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-15",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-16",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-17",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-18",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-19",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-20",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-21",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-22",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-23",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-24",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-25",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-26",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-27",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-28",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-29",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-30",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-31",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-32",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-33",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-34",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-35",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-36",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-37",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-38",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-39",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-40",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-41",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-42",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-43",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-44",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-45",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-46",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-47",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-48",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-49",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-50",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-51",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-52",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-53",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-54",
+    "split": "evaluation",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-55",
+    "split": "evaluation",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-56",
+    "split": "evaluation",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-57",
+    "split": "evaluation",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-58",
+    "split": "evaluation",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "evaluation-59",
+    "split": "evaluation",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  }
+]

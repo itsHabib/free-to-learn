@@ -1,0 +1,32 @@
+{
+  "components": [
+    {
+      "kind": "description",
+      "name": "boot",
+      "requires": [
+        "kernel",
+        "config"
+      ],
+      "sha256": "d90889972d5e9e185863279ed175cd31bdd204a8f532d49fb9383b3b2807ac86",
+      "version": 1
+    },
+    {
+      "kind": "description",
+      "name": "kernel",
+      "requires": [],
+      "sha256": "a5f764ac3dcd9a697542fb65ee3ec098a06f630f186b4c8927ca9a8325844ad3",
+      "version": 1
+    },
+    {
+      "kind": "config",
+      "name": "config",
+      "requires": [],
+      "sha256": "7de0d29b0c4d4f4bddc1a4ada9d563d9c960335278a805de05fecea10320d54e",
+      "version": 1
+    }
+  ],
+  "container_sha256": "6767c0bc25ea4aee86523a15a912ffbd9b731f0cd1e3ec22154a2a66bdb71838",
+  "format": "EDUFW1",
+  "release": 1,
+  "schema": 1
+}

@@ -1,0 +1,145 @@
+{
+  "format": "ivy-sourced-risk-catalog-v1",
+  "course": "small-llm-runtime",
+  "status": "source-cited construction; independent delta acceptance pending",
+  "claimLimit": "These entries are documented programming risks. The cited sources establish technical distinctions, not that a learner held a belief or its prevalence. Author mutants and reviewer counterexamples are controls, not learner-error evidence.",
+  "entries": [
+    {
+      "id": "M-R01",
+      "temptingClaim": "Correct object fields in a different order describe a different JSON model schema.",
+      "correction": "Compare object members by name and value. Preserve order for arrays such as vocabulary entries. Byte identity is a separate check.",
+      "sourceIds": [
+        "json"
+      ],
+      "basis": "Citation-backed programming risk; no learner prevalence or recorded learner-error claim. Applying the documented distinction to this original teaching model is author inference.",
+      "lesson": "01",
+      "hinge": "r01-order",
+      "refutationMarker": "Compare object members by name and value. Preserve order for arrays such as vocabulary entries. Byte identity is a separate check.",
+      "laterLesson": "05",
+      "laterCheckIds": [
+        "cache-cross-checkpoint-identity"
+      ],
+      "scopeBoundary": "A different serialization still has a different byte digest, which this course deliberately uses as the cache fingerprint."
+    },
+    {
+      "id": "M-R02",
+      "temptingClaim": "A value that JavaScript can convert into a finite number is already a valid numeric score.",
+      "correction": "Numeric validation must reject strings, null and missing values. The attention mask is the one explicit nonfinite exception.",
+      "sourceIds": [
+        "types"
+      ],
+      "basis": "Citation-backed programming risk; no learner prevalence or recorded learner-error claim. Applying the documented distinction to this original teaching model is author inference.",
+      "lesson": "02",
+      "hinge": "r02-types",
+      "refutationMarker": "Numeric validation must reject strings, null and missing values. The attention mask is the one explicit nonfinite exception.",
+      "laterLesson": "06",
+      "laterCheckIds": [
+        "sampling-wrong-score-types"
+      ],
+      "scopeBoundary": "This is the original runtime input policy, not a statement that every JavaScript API must reject coercible values."
+    },
+    {
+      "id": "M-R03",
+      "temptingClaim": "Finite input coordinates guarantee finite intermediate arithmetic.",
+      "correction": "Squaring or dividing can overflow. Rearrange the same formula to keep intermediate magnitudes bounded.",
+      "sourceIds": [
+        "extremes"
+      ],
+      "basis": "Citation-backed programming risk; no learner prevalence or recorded learner-error claim. Applying the documented distinction to this original teaching model is author inference.",
+      "lesson": "03",
+      "hinge": "r03-extremes",
+      "refutationMarker": "Squaring or dividing can overflow. Rearrange the same formula to keep intermediate magnitudes bounded.",
+      "laterLesson": "06",
+      "laterCheckIds": [
+        "sampling-small-temperature"
+      ],
+      "scopeBoundary": "The examples establish specific binary64 failure modes, not universal guarantees about all numerical algorithms."
+    },
+    {
+      "id": "M-R04",
+      "temptingClaim": "RMSNorm subtracts the row mean just as LayerNorm does.",
+      "correction": "This RMS normalization rescales by root mean square and learned gains without mean subtraction.",
+      "sourceIds": [
+        "rms"
+      ],
+      "basis": "Citation-backed programming risk; no learner prevalence or recorded learner-error claim. Applying the documented distinction to this original teaching model is author inference.",
+      "lesson": "03",
+      "hinge": "r03-normalize",
+      "refutationMarker": "This RMS normalization rescales by root mean square and learned gains without mean subtraction.",
+      "laterLesson": "04",
+      "laterCheckIds": [
+        "forward-independent-oracle"
+      ],
+      "scopeBoundary": "PocketDecoder fixes epsilon, dimensions and gains. The source paper does not define this whole architecture."
+    },
+    {
+      "id": "M-R05",
+      "temptingClaim": "A cached next token can restart its position at zero because only one new token is computed.",
+      "correction": "The new token follows the already processed prefix; its zero-based position equals the old cache length.",
+      "sourceIds": [
+        "cache"
+      ],
+      "basis": "Citation-backed programming risk; no learner prevalence or recorded learner-error claim. Applying the documented distinction to this original teaching model is author inference.",
+      "lesson": "04",
+      "hinge": "r04-position",
+      "refutationMarker": "The new token follows the already processed prefix; its zero-based position equals the old cache length.",
+      "laterLesson": "08",
+      "laterCheckIds": [
+        "capstone-generator-audit"
+      ],
+      "scopeBoundary": "The course uses immutable, fingerprint-bound full-prefix caches and RoPE. It does not implement Transformers cache classes, padding, sliding windows or session-reset APIs."
+    }
+  ],
+  "sources": [
+    {
+      "id": "cache",
+      "title": "Transformers: Best Practices for Generation with Cache",
+      "url": "https://huggingface.co/docs/transformers/v4.49.0/en/kv_cache",
+      "versionObserved": "Transformers 4.49.0",
+      "checkedAt": "2026-10-27",
+      "section": "Under the Hood: How Cache Object Works in Attention Mechanism",
+      "support": "Cached and new key/value positions are combined. A custom loop must supply the proper sequence position, advancing by one for each processed token.",
+      "reuse": "Bibliographic link and original paraphrase only; no code, images or passages copied."
+    },
+    {
+      "id": "extremes",
+      "title": "PyTorch: Numerical accuracy",
+      "url": "https://docs.pytorch.org/docs/2.14/notes/numerical_accuracy.html",
+      "versionObserved": "PyTorch 2.14",
+      "checkedAt": "2026-10-27",
+      "section": "Extremal values",
+      "support": "Finite inputs can produce overflowing intermediates even when a mathematical result could be represented. Being representable does not guarantee finite intermediate arithmetic.",
+      "reuse": "Bibliographic link and original paraphrase only; no code, images or passages copied."
+    },
+    {
+      "id": "json",
+      "title": "RFC 8259: JSON Data Interchange Format",
+      "url": "https://www.rfc-editor.org/rfc/rfc8259",
+      "versionObserved": "December 2017",
+      "checkedAt": "2026-10-27",
+      "section": "Section 1, Introduction",
+      "support": "JSON objects associate names with values without assigning semantic significance to member order. Arrays have ordered elements.",
+      "reuse": "Bibliographic link and original paraphrase only; no code, images or passages copied."
+    },
+    {
+      "id": "rms",
+      "title": "Zhang and Sennrich: Root Mean Square Layer Normalization",
+      "url": "https://arxiv.org/abs/1910.07467v1",
+      "versionObserved": "arXiv v1, October 16, 2019",
+      "checkedAt": "2026-10-27",
+      "section": "Abstract",
+      "support": "RMSNorm uses root mean square rescaling without the mean recentering performed by LayerNorm. The course fixes its own epsilon and gain convention.",
+      "reuse": "Bibliographic link and original paraphrase only; no code, images or passages copied."
+    },
+    {
+      "id": "types",
+      "title": "MDN: Number.isFinite",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite",
+      "versionObserved": "Last modified October 26, 2026",
+      "checkedAt": "2026-10-27",
+      "section": "Difference between Number.isFinite() and global isFinite()",
+      "support": "Number.isFinite requires a Number and does not convert strings or null into numbers. Global isFinite performs conversion, so it is a different validation operation.",
+      "reuse": "Bibliographic link and original paraphrase only; no code, images or passages copied."
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "files": [
+    {
+      "bytes": 684,
+      "path": "case-study/capture-a.efw",
+      "sha256": "0ceb6bdcee437e2cf0f29ef328ebee480dc3fc67acdc3d7d4a5d82b7878b56c6"
+    },
+    {
+      "bytes": 1191,
+      "path": "case-study/capture-a.json",
+      "sha256": "c580605a92f79c14f108140f62d98e2c8fa84b93e67877be093997fb93a0dab0"
+    },
+    {
+      "bytes": 689,
+      "path": "case-study/capture-b.efw",
+      "sha256": "bc182971ae774846f7f59df1d94fe84322d526d206991aa01e6b1cff33ef2289"
+    },
+    {
+      "bytes": 1185,
+      "path": "case-study/capture-b.json",
+      "sha256": "32200bd006b093c12b56fcc5900251d4e003ca4fd6dde1c0d788320b9bd9a12c"
+    },
+    {
+      "bytes": 687,
+      "path": "case-study/capture-partial.efw",
+      "sha256": "9293502833c3d8506eb361ad44c961da5bd846a11e83821f875d32eca2d5cc50"
+    },
+    {
+      "bytes": 199,
+      "path": "case-study/policy.json",
+      "sha256": "c7805e9797f0489100adbd31053114c0e6b35e62ceb78e7d3e372bd02803be52"
+    },
+    {
+      "bytes": 992,
+      "path": "cycle-manifest.json",
+      "sha256": "380b67024c487c636b068ea899489e15ba42ba2648b2b409c3b6417666214819"
+    },
+    {
+      "bytes": 574,
+      "path": "hash-mismatch.efw",
+      "sha256": "a070b30013aa27b03f33683ca36a06924f3a991927bc03a122a85e02dff5755c"
+    },
+    {
+      "bytes": 776,
+      "path": "incomplete-manifest.json",
+      "sha256": "7d3701902d085361f1bf7431a0f9fdf6b76985faad1e8162008292f796b8ec86"
+    },
+    {
+      "bytes": 994,
+      "path": "missing-dependency.json",
+      "sha256": "1ac705fc1a4030ce4596206ca00acf8328cfe17ccf3117215735296bc974af81"
+    },
+    {
+      "bytes": 574,
+      "path": "overlap.efw",
+      "sha256": "f85fc0c84d3a5d65d2a41bac3958b06758d609975cb44e8d16899df447892e24"
+    },
+    {
+      "bytes": 197,
+      "path": "policy.json",
+      "sha256": "66f567a0361e0f8e5742cd2be89bbb8d3e00034477443b87cdfb505ce7ca959d"
+    },
+    {
+      "bytes": 574,
+      "path": "release-1.efw",
+      "sha256": "6767c0bc25ea4aee86523a15a912ffbd9b731f0cd1e3ec22154a2a66bdb71838"
+    },
+    {
+      "bytes": 970,
+      "path": "release-1.json",
+      "sha256": "f7aa649778520c604bc98f483f6a1aeeceb96cb4472e05877c79165fdac0daa3"
+    },
+    {
+      "bytes": 581,
+      "path": "release-2-observed.efw",
+      "sha256": "544bb8af7e7ff2bb91426c52ec7cdb30d95abd559ee76cf0455479bbb00d24d8"
+    },
+    {
+      "bytes": 990,
+      "path": "release-2-observed.json",
+      "sha256": "e20c5d722e84d6f5caa422b1c97aa21e24219f5cc86e73450367387cc5d5290e"
+    },
+    {
+      "bytes": 576,
+      "path": "release-2-reordered.efw",
+      "sha256": "416bdd2fe02c415aec6d8362224403c4eaceac3164118e879bd35f041ce39fdc"
+    },
+    {
+      "bytes": 990,
+      "path": "release-2-reordered.json",
+      "sha256": "3271d2ebff6ff696f1e5bada661f653d566e7163043053340680b7227b739223"
+    },
+    {
+      "bytes": 576,
+      "path": "release-2.efw",
+      "sha256": "1d1b390175e9350b2e6158328922c0404ebc8061b5917bdc9b04d4472ab18413"
+    },
+    {
+      "bytes": 990,
+      "path": "release-2.json",
+      "sha256": "4e656395e30813d022cbce46383a843f2cfc95fca4b42024b03cec5a6eba73e5"
+    },
+    {
+      "bytes": 567,
+      "path": "truncated.efw",
+      "sha256": "3d98b4d2032a0ec974e7c6f2f4c6085ddefddea2a74ab4694a96ef8a34f8f173"
+    },
+    {
+      "bytes": 574,
+      "path": "unsafe-name.efw",
+      "sha256": "7a563ae73f7e338b426ce4c0b67a14b59df8793aa0e211c8b89be2f4c84ab8c0"
+    }
+  ],
+  "format": "Original EDUFW1 teaching container, NOT real UEFI",
+  "provenance": "New inert text/JSON bytes authored for this course; no third-party inputs.",
+  "signature_status": "No signatures. This index is a hash-only inventory, not an authenticated source."
+}

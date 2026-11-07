@@ -1,0 +1,24 @@
+{
+  "id": "time-travel-debugger",
+  "runtime": [
+    "vm.mjs"
+  ],
+  "outcomes": [
+    "Inspect detached VM state and execute exactly one instruction.",
+    "Stop before a conditional breakpoint and bound execution.",
+    "Stop after a watched memory value changes.",
+    "Record detached instruction events in execution order.",
+    "Checkpoint and replay recorded ticks without duplicate events.",
+    "Find the nearest earlier matching state and preserve state on no match.",
+    "Diagnose an unfamiliar program with a learner-owned debugger and evidence report."
+  ],
+  "caseCounts": [
+    4,
+    10,
+    12,
+    16,
+    19,
+    26,
+    28
+  ]
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "type": "put",
+    "key": "paper",
+    "value": "7"
+  },
+  {
+    "type": "put",
+    "key": "ink",
+    "value": "2"
+  },
+  {
+    "type": "del",
+    "key": "obsolete"
+  }
+]

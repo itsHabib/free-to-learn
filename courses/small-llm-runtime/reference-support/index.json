@@ -1,0 +1,80 @@
+{
+  "format": "ivy-prior-layer-support-v1",
+  "course": "small-llm-runtime",
+  "modules": {
+    "02": {
+      "file": "reference-support/for-02.mjs",
+      "providedModules": [
+        "01"
+      ],
+      "learnerModule": "02",
+      "note": "Earlier dependencies only; current/future operations remain TODO. No project.mjs is supplied."
+    },
+    "03": {
+      "file": "reference-support/for-03.mjs",
+      "providedModules": [
+        "01",
+        "02"
+      ],
+      "learnerModule": "03",
+      "note": "Earlier dependencies only; current/future operations remain TODO. No project.mjs is supplied."
+    },
+    "04": {
+      "file": "reference-support/for-04.mjs",
+      "providedModules": [
+        "01",
+        "02",
+        "03"
+      ],
+      "learnerModule": "04",
+      "note": "Earlier dependencies only; current/future operations remain TODO. No project.mjs is supplied."
+    },
+    "05": {
+      "file": "reference-support/for-05.mjs",
+      "providedModules": [
+        "01",
+        "02",
+        "03",
+        "04"
+      ],
+      "learnerModule": "05",
+      "note": "Earlier dependencies only; current/future operations remain TODO. No project.mjs is supplied."
+    },
+    "06": {
+      "file": "reference-support/for-06.mjs",
+      "providedModules": [
+        "01",
+        "02"
+      ],
+      "learnerModule": "06",
+      "note": "Earlier dependencies only; current/future operations remain TODO. No project.mjs is supplied."
+    },
+    "07": {
+      "file": "reference-support/for-07.mjs",
+      "providedModules": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "learnerModule": "07",
+      "note": "Earlier dependencies only; current/future operations remain TODO. No project.mjs is supplied."
+    },
+    "08": {
+      "file": "reference-support/for-08.mjs",
+      "providedModules": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "05",
+        "06",
+        "07"
+      ],
+      "learnerModule": "08",
+      "note": "Earlier dependencies only; current/future operations remain TODO. No project.mjs is supplied."
+    }
+  }
+}

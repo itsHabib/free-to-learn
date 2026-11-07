@@ -1,0 +1,172 @@
+{
+  "format": "ivy-original-offline-package-v1",
+  "course": "recoverable-storage",
+  "source_revision": "43da55015fd39b04033023a4b0a5eba6f20880ea",
+  "source_dirty": false,
+  "ordered_inputs_sha256": "0bc33df1c8a6327ff6571dd5d1e69f6c1bd0d0a349913a1abd96c1f26e288de0",
+  "files": [
+    {
+      "path": "BROWSER-LIMITS.md",
+      "bytes": 3039,
+      "sha256": "d06ef95cbd988d0b96a5993e2c888d938ff5d2b3cbefc470bbc16f1a93e15c19"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7281,
+      "sha256": "787f7123de136fe8c94845d4f30ba0c972ffe9140a74733dac3fcbce4ed7b745"
+    },
+    {
+      "path": "capstone.md",
+      "bytes": 2258,
+      "sha256": "f0790755e154f2fdc28278671fc9fa4f89ca22b155bddd82c8bf199604daae97"
+    },
+    {
+      "path": "checker.html",
+      "bytes": 63052,
+      "sha256": "2d3e0946eaf4e3b0963d0ced1038ce6ccd790f1a6ca4f369116d4818acdebe0b"
+    },
+    {
+      "path": "contracts.md",
+      "bytes": 6634,
+      "sha256": "d40038915bd9a9b642e10288e96047ce9682a0e0816e1baba4a608345552ddd3"
+    },
+    {
+      "path": "course.json",
+      "bytes": 763,
+      "sha256": "2dfb93ae46bf4f841b730db005dba1cfd10030a8ec3eb65ae63ff286d7b9e166"
+    },
+    {
+      "path": "diagrams/byte-layout.svg",
+      "bytes": 1506,
+      "sha256": "995c3ab31d2054a7e5c8fc7d2b2c220ea8daff2ff8bcd2cdf1bc8759f4f3a13b"
+    },
+    {
+      "path": "diagrams/commit-boundary.svg",
+      "bytes": 1618,
+      "sha256": "179a6e884dc610c5e5eb6c88d22c93adcc16a71d3ea81259e251f1af7315320e"
+    },
+    {
+      "path": "examples.json",
+      "bytes": 4297,
+      "sha256": "9a320745073aab89189b0fec7ae756609933547c963e73330a9b296705fe47b7"
+    },
+    {
+      "path": "examples.mjs",
+      "bytes": 328,
+      "sha256": "77cb79491583124facf17c4003ad518c8963f7b6be43d1cf538911906bff0bb4"
+    },
+    {
+      "path": "examples/batch.json",
+      "bytes": 181,
+      "sha256": "1e2c6813747386e3ac198c907352c8fa9d4d35c205571386c18dec605d4958a2"
+    },
+    {
+      "path": "grade.mjs",
+      "bytes": 356,
+      "sha256": "599b5f3425b4eb64d00112bfea7f25b84189df105ed97ae766caf351a5c72bb1"
+    },
+    {
+      "path": "index.html",
+      "bytes": 65002,
+      "sha256": "072faed6dee4b868dd3a1ac768b7cd30cc05b53b82dcb350da9ed075bc116476"
+    },
+    {
+      "path": "lab.mjs",
+      "bytes": 9643,
+      "sha256": "8396b232ca538ddecf643a2a5c552b5bb81f2210fa2e1cf1494d375a5a03666a"
+    },
+    {
+      "path": "lessons/01.md",
+      "bytes": 5853,
+      "sha256": "a3bbe3c76866ce1d9e4df708be22067cd673b2624efb92b65ee6544f48f39f65"
+    },
+    {
+      "path": "lessons/02.md",
+      "bytes": 4912,
+      "sha256": "f3b84c48cb09bc5030c9e9d1f7bac733f166f431a599d8c7d12a50a212643842"
+    },
+    {
+      "path": "lessons/03.md",
+      "bytes": 4881,
+      "sha256": "0ad50916d85b3d3ee0b907d15ae3bb1d6aa86eb80a933c06dd8879925857c878"
+    },
+    {
+      "path": "lessons/04.md",
+      "bytes": 5137,
+      "sha256": "30ab18194441903356370071859ae03d6efbd029609e34fe09d9d154865338b6"
+    },
+    {
+      "path": "lessons/05.md",
+      "bytes": 5365,
+      "sha256": "f029b681046dea7a533a89d435a94ffeefd8d791d40caa446735d98aebe80184"
+    },
+    {
+      "path": "lessons/06.md",
+      "bytes": 4969,
+      "sha256": "e71545d8663dc2421f56832ce73dc0f7db661acffdc0ad767d8a499898a70777"
+    },
+    {
+      "path": "lessons/07.md",
+      "bytes": 5094,
+      "sha256": "e835ada5c4db1947e7993026958843f253d9030eab7cd0b81c25a25f276019bc"
+    },
+    {
+      "path": "own-llm.md",
+      "bytes": 1527,
+      "sha256": "1160ba94d04a45c50b0522b6b3654c04db8e352e16e7698fb88f33d2cf4b0b0a"
+    },
+    {
+      "path": "package-files.json",
+      "bytes": 607,
+      "sha256": "bca4ce387ff8401f400f433d9a7d0596bbe3cbb8ced0fc6aa228225169109482"
+    },
+    {
+      "path": "practice.json",
+      "bytes": 5986,
+      "sha256": "3da452d14bad608ef7d6790113d55fa94fa2e838ce4a812f83bf94c60a6da33a"
+    },
+    {
+      "path": "public/checks.mjs",
+      "bytes": 14102,
+      "sha256": "87882c4dc05c1fcb4b0fb9d991bef85fef41ceafb1294b133cdc96af0d79f5b5"
+    },
+    {
+      "path": "public/disk.mjs",
+      "bytes": 3090,
+      "sha256": "687b715b521a4a4c4c49021ca7971cf869f17d93ad1c854624e41a3d92169dde"
+    },
+    {
+      "path": "serve.mjs",
+      "bytes": 3810,
+      "sha256": "7decfbf0fddef54d60f6baad72b5a741b9f8d8e76e4336347f8ca78e4cb1ab98"
+    },
+    {
+      "path": "sources.md",
+      "bytes": 1116,
+      "sha256": "39b19131ebe3233a37bb818a534bb4071cf37bc36927ebd3e4a7ce55577945b6"
+    },
+    {
+      "path": "starter/solution.mjs",
+      "bytes": 755,
+      "sha256": "d008c7a860a90f86582108f8a2f305c490ff7379a030b203a4c69dbd3c8ccb63"
+    },
+    {
+      "path": "store.mjs",
+      "bytes": 1435,
+      "sha256": "bacc87d3dde08593d73497dbf62d7f95895078c705213f28156c1587ea4af806"
+    },
+    {
+      "path": "support.json",
+      "bytes": 27815,
+      "sha256": "d4fdbec305c4e77887699852ac8857be1fcc402030ef8427a0aa78cdc90aa353"
+    }
+  ],
+  "limits": [
+    "No independent acceptance or learning claim.",
+    "Browser/render/download inspection pending."
+  ],
+  "publicLearnerDerivative": {
+    "memberInventorySha256": "6668bbcd4b4328391e4fdfb0d49ee10eff37e502d916f8376b641338e65c9681",
+    "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
+  }
+}

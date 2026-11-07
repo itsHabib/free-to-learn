@@ -1,0 +1,85 @@
+{
+  "schema": 1,
+  "cases": [
+    {
+      "id": "valid",
+      "capture": "guided.efw",
+      "manifest": "guided.json",
+      "signature": "guided.sig",
+      "key": "lab-public.hex",
+      "floor": 1
+    },
+    {
+      "id": "changed-payload",
+      "capture": "changed.efw",
+      "manifest": "guided.json",
+      "signature": "guided.sig",
+      "key": "lab-public.hex",
+      "floor": 1
+    },
+    {
+      "id": "changed-signed-bytes",
+      "capture": "guided.efw",
+      "manifest": "changed-manifest.json",
+      "signature": "guided.sig",
+      "key": "lab-public.hex",
+      "floor": 1
+    },
+    {
+      "id": "wrong-key",
+      "capture": "guided.efw",
+      "manifest": "guided.json",
+      "signature": "guided.sig",
+      "key": "other-public.hex",
+      "floor": 1
+    },
+    {
+      "id": "unpinned-valid",
+      "capture": "guided.efw",
+      "manifest": "guided.json",
+      "signature": "other.sig",
+      "key": "other-public.hex",
+      "floor": 1
+    },
+    {
+      "id": "unsigned",
+      "capture": "guided.efw",
+      "manifest": "guided.json",
+      "signature": null,
+      "key": "lab-public.hex",
+      "floor": 1
+    },
+    {
+      "id": "rollback",
+      "capture": "guided.efw",
+      "manifest": "guided.json",
+      "signature": "guided.sig",
+      "key": "lab-public.hex",
+      "floor": 2
+    },
+    {
+      "id": "signed-policy-candidate",
+      "capture": "candidate.efw",
+      "manifest": "candidate.json",
+      "signature": "candidate.sig",
+      "key": "lab-public.hex",
+      "floor": 2
+    },
+    {
+      "id": "new-capstone",
+      "capture": "capstone-b.efw",
+      "manifest": "capstone-b.json",
+      "signature": "capstone-b.sig",
+      "key": "lab-public.hex",
+      "floor": 20
+    },
+    {
+      "id": "capstone-raised-floor",
+      "capture": "capstone-b.efw",
+      "manifest": "capstone-b.json",
+      "signature": "capstone-b.sig",
+      "key": "lab-public.hex",
+      "floor": 22
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+// Supplied, offline dataset reader usable from both learner environments.
+export async function loadData(split){if(!['dev','calibration','evaluation'].includes(split))throw Error('unknown data split');const url=new URL('./evaluation/'+split+'-data.json',import.meta.url);return typeof process==='undefined'?fetch(url).then(r=>{if(!r.ok)throw Error('dataset unavailable');return r.json();}):import('node:fs/promises').then(fs=>fs.readFile(url,'utf8')).then(JSON.parse);}

@@ -1,0 +1,108 @@
+{
+  "01a": {
+    "version": 2,
+    "question": "Take a buffer holding exactly the complete encoding of one otherwise well-formed frame whose body has variable payload after its fixed body prefix. Remove exactly the final byte of the body and nothing else, so the complete original header and fixed body prefix remain present and unchanged, including their original length declarations. If the existing decoder reads this buffer from offset zero, should it report an incomplete input or a complete valid frame?",
+    "format": "incomplete or valid",
+    "expected": "incomplete",
+    "reason": "The declared body boundary has not been reached; a smaller prefix is not a smaller valid record."
+  },
+  "01b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "Key 猫a is encoded as UTF-8. What byte count belongs in the key-length field?",
+    "format": "one integer",
+    "expected": "4",
+    "reason": "The ASCII a occupies one byte and the three-byte character occupies three; the field stores byte count."
+  },
+  "02a": {
+    "version": 1,
+    "question": "Disk accepts at most 4 bytes each append. How many append calls are needed for 9 bytes?",
+    "format": "one integer",
+    "expected": "3",
+    "reason": "The caller retries only the unwritten suffix, then synchronizes after all bytes."
+  },
+  "02b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "Append eleven bytes through a disk accepting at most three bytes per call, with no failures. How many append calls and sync calls should occur?",
+    "format": "append-calls,sync-calls separated by comma",
+    "expected": "4,1",
+    "reason": "Three calls accept three bytes and the fourth accepts the two-byte suffix; one sync follows completion."
+  },
+  "03a": {
+    "version": 1,
+    "question": "Raw records put y=old, put x=empty string, put y=new, del y. How many entries remain?",
+    "format": "one integer",
+    "expected": "1",
+    "reason": "Delete removes y; an empty string remains a real value at x."
+  },
+  "03b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "Raw records put b=empty string; put a=1; delete b; put b=2. What are the final key-sorted entries?",
+    "format": "a=VALUE;b=VALUE",
+    "expected": "a=1;b=2",
+    "reason": "The later put recreates b after deletion; sorting does not change either latest value."
+  },
+  "04a": {
+    "version": 2,
+    "question": "Start with an empty log and a logical store that has no entries; no earlier records, other transactions, previous snapshot or previously committed state exist. The entire log then consists of exactly one complete, otherwise valid put-operation frame for one transaction, with no commit frame. When recovery reads this log, how many visible logical entries should it expose?",
+    "format": "one integer",
+    "expected": "0",
+    "reason": "Frame integrity is not transaction visibility. Recovery applies a batch only after its complete commit."
+  },
+  "04b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "Baseline x=old is committed. A later batch deletes x, puts y=new and has a complete commit, but its caller loses the response. What can this exact surviving complete log return for get(x),get(y)?",
+    "format": "x-value,y-value, using null for missing",
+    "expected": "null,new",
+    "reason": "This exact surviving log includes the commit, so both operations apply despite the lost acknowledgement."
+  },
+  "05a": {
+    "version": 1,
+    "question": "Before a new append after a torn suffix, should the writer truncate to the last commit or append after the torn bytes?",
+    "format": "truncate or append",
+    "expected": "truncate",
+    "reason": "The torn frame must not consume or hide bytes from the new transaction."
+  },
+  "05b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "The last commit ends at byte50. A complete uncommitted operation ends at byte80, then five bytes of the next header remain. What are validBytes and discardedBytes?",
+    "format": "validBytes,discardedBytes separated by comma",
+    "expected": "50,35",
+    "reason": "The complete pending operation advances the scan cursor, not the committed boundary; all 35 suffix bytes are discarded."
+  },
+  "06a": {
+    "version": 1,
+    "question": "During compaction, should compact.tmp be synchronized before or after rename onto store.log?",
+    "format": "before or after",
+    "expected": "before",
+    "reason": "The replacement must be complete and synchronized before it replaces the only active log."
+  },
+  "06b": {
+    "version": 2,
+    "kind": "application-after-instruction",
+    "question": "Operations put a=1; put b=2; put a=3; delete b are committed, then compact and reopen succeed. What are get(a),get(b)?",
+    "format": "a-value,b-value using null for missing",
+    "expected": "3,null",
+    "reason": "The replacement keeps the latest committed a and preserves the deletion of b, regardless of physical log changes."
+  },
+  "07a": {
+    "version": 2,
+    "question": "A batch should replace a=old and create b=new together. After an interrupted append, reopen shows a=new and no b. Is this an allowed atomic outcome?",
+    "format": "allowed or violation",
+    "expected": "violation",
+    "reason": "The observed state exposes only part of the same batch; whole absence or whole presence are the allowed alternatives.",
+    "kind": "application-after-instruction"
+  },
+  "07b": {
+    "version": 2,
+    "question": "The acknowledged baseline has keys a and b. Compaction writes a complete equivalent snapshot, renames it, then process interruption occurs before the next client call. Under this process model, how many keys must reopen expose?",
+    "format": "one integer",
+    "expected": "2",
+    "reason": "Whole-file replacement changes physical history while retaining both committed logical entries.",
+    "kind": "application-after-instruction"
+  }
+}

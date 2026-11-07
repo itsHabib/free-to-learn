@@ -1,0 +1,2 @@
+import {Worker} from 'node:worker_threads';
+export function run(message,timeoutMs=10000){return new Promise((resolve,reject)=>{const worker=new Worker(new URL('./node-worker.mjs',import.meta.url),{workerData:message,execArgv:[]});const timer=setTimeout(()=>{worker.terminate();reject(Error('Execution timed out; your saved attempt remains available.'));},timeoutMs);worker.once('message',r=>{clearTimeout(timer);worker.terminate();r.ok?resolve(r.value):reject(Error(r.error));});worker.once('error',e=>{clearTimeout(timer);worker.terminate();reject(e);});});}

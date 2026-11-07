@@ -1,0 +1,367 @@
+{
+  "schema": 1,
+  "split": "dev",
+  "origin": "authored synthetic environment",
+  "episodes": [
+    {
+      "id": "dev-00",
+      "seed": "dev-seed-00",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-01",
+      "seed": "dev-seed-01",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-02",
+      "seed": "dev-seed-02",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-03",
+      "seed": "dev-seed-03",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-04",
+      "seed": "dev-seed-04",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-05",
+      "seed": "dev-seed-05",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-06",
+      "seed": "dev-seed-06",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-07",
+      "seed": "dev-seed-07",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-08",
+      "seed": "dev-seed-08",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-09",
+      "seed": "dev-seed-09",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-10",
+      "seed": "dev-seed-10",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-11",
+      "seed": "dev-seed-11",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-12",
+      "seed": "dev-seed-12",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-13",
+      "seed": "dev-seed-13",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-14",
+      "seed": "dev-seed-14",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-15",
+      "seed": "dev-seed-15",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-16",
+      "seed": "dev-seed-16",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-17",
+      "seed": "dev-seed-17",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-18",
+      "seed": "dev-seed-18",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-19",
+      "seed": "dev-seed-19",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-20",
+      "seed": "dev-seed-20",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-21",
+      "seed": "dev-seed-21",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-22",
+      "seed": "dev-seed-22",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-23",
+      "seed": "dev-seed-23",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-24",
+      "seed": "dev-seed-24",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-25",
+      "seed": "dev-seed-25",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-26",
+      "seed": "dev-seed-26",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-27",
+      "seed": "dev-seed-27",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-28",
+      "seed": "dev-seed-28",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-29",
+      "seed": "dev-seed-29",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-30",
+      "seed": "dev-seed-30",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-31",
+      "seed": "dev-seed-31",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-32",
+      "seed": "dev-seed-32",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-33",
+      "seed": "dev-seed-33",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-34",
+      "seed": "dev-seed-34",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-35",
+      "seed": "dev-seed-35",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-36",
+      "seed": "dev-seed-36",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-37",
+      "seed": "dev-seed-37",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-38",
+      "seed": "dev-seed-38",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-39",
+      "seed": "dev-seed-39",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-40",
+      "seed": "dev-seed-40",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-41",
+      "seed": "dev-seed-41",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-42",
+      "seed": "dev-seed-42",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-43",
+      "seed": "dev-seed-43",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-44",
+      "seed": "dev-seed-44",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-45",
+      "seed": "dev-seed-45",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-46",
+      "seed": "dev-seed-46",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-47",
+      "seed": "dev-seed-47",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-48",
+      "seed": "dev-seed-48",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-49",
+      "seed": "dev-seed-49",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-50",
+      "seed": "dev-seed-50",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-51",
+      "seed": "dev-seed-51",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-52",
+      "seed": "dev-seed-52",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-53",
+      "seed": "dev-seed-53",
+      "bot": "aggressive",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-54",
+      "seed": "dev-seed-54",
+      "bot": "fixed",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-55",
+      "seed": "dev-seed-55",
+      "bot": "cautious",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-56",
+      "seed": "dev-seed-56",
+      "bot": "aggressive",
+      "profile": "steady"
+    },
+    {
+      "id": "dev-57",
+      "seed": "dev-seed-57",
+      "bot": "fixed",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-58",
+      "seed": "dev-seed-58",
+      "bot": "cautious",
+      "profile": "pulse"
+    },
+    {
+      "id": "dev-59",
+      "seed": "dev-seed-59",
+      "bot": "aggressive",
+      "profile": "pulse"
+    }
+  ]
+}

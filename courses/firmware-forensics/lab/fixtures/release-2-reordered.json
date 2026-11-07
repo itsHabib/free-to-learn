@@ -1,0 +1,41 @@
+{
+  "components": [
+    {
+      "kind": "metadata",
+      "name": "notices",
+      "requires": [],
+      "sha256": "d076b90330bc632a9814e5994fb924980359f1f5f9ba761b6fe8e40b7614dbe1",
+      "version": 1
+    },
+    {
+      "kind": "config",
+      "name": "config",
+      "requires": [],
+      "sha256": "7de0d29b0c4d4f4bddc1a4ada9d563d9c960335278a805de05fecea10320d54e",
+      "version": 2
+    },
+    {
+      "kind": "description",
+      "name": "kernel",
+      "requires": [
+        "notices"
+      ],
+      "sha256": "30b252afb68d0b33232f98696f3fd5927dbb41a573d84a7f87f49c26040ea990",
+      "version": 2
+    },
+    {
+      "kind": "description",
+      "name": "boot",
+      "requires": [
+        "kernel",
+        "config"
+      ],
+      "sha256": "d90889972d5e9e185863279ed175cd31bdd204a8f532d49fb9383b3b2807ac86",
+      "version": 1
+    }
+  ],
+  "container_sha256": "416bdd2fe02c415aec6d8362224403c4eaceac3164118e879bd35f041ce39fdc",
+  "format": "EDUFW1",
+  "release": 2,
+  "schema": 1
+}

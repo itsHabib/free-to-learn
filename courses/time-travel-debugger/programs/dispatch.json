@@ -1,0 +1,49 @@
+[
+  {
+    "op": "set",
+    "reg": "a",
+    "value": 4
+  },
+  {
+    "op": "set",
+    "reg": "b",
+    "value": 12
+  },
+  {
+    "op": "set",
+    "reg": "c",
+    "value": 0
+  },
+  {
+    "op": "store",
+    "address": 1,
+    "value": "b"
+  },
+  {
+    "op": "add",
+    "reg": "c",
+    "value": "b"
+  },
+  {
+    "op": "add",
+    "reg": "b",
+    "value": -3
+  },
+  {
+    "op": "add",
+    "reg": "a",
+    "value": -1
+  },
+  {
+    "op": "jnz",
+    "value": "a",
+    "target": 3
+  },
+  {
+    "op": "emit",
+    "value": "c"
+  },
+  {
+    "op": "halt"
+  }
+]

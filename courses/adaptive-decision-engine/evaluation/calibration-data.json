@@ -1,0 +1,5762 @@
+[
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-00",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-01",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-02",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-03",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-04",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-05",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-06",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-07",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-08",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-09",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-10",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-11",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-12",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-13",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-14",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-15",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-16",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-17",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-18",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-19",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-20",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-21",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-22",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-23",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-24",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-25",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-26",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-27",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-28",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-29",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-30",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-31",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-32",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-33",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-34",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-35",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-36",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-37",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-38",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-39",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-40",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-41",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-42",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-43",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-44",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-45",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-46",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-47",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-48",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-49",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-50",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-51",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-52",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-53",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 0,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 1,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 2,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 4,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 6,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 10,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-54",
+    "split": "calibration",
+    "domain": "fixed/steady",
+    "revision": 11,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 1,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 5,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 7,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-55",
+    "split": "calibration",
+    "domain": "cautious/steady",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 0,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 3,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 4,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 6,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 7,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 8,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 10,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-56",
+    "split": "calibration",
+    "domain": "aggressive/steady",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 2,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 5,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 10,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-57",
+    "split": "calibration",
+    "domain": "fixed/pulse",
+    "revision": 11,
+    "score": 0.68,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 0,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 3,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 6,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 8,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 9,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-58",
+    "split": "calibration",
+    "domain": "cautious/pulse",
+    "revision": 11,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 0,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 1,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 2,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 3,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 4,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 5,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 6,
+    "score": 0.68,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 7,
+    "score": 0.35,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 8,
+    "score": 0.92,
+    "label": 0
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 9,
+    "score": 0.92,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 10,
+    "score": 0.35,
+    "label": 1
+  },
+  {
+    "episodeId": "calibration-59",
+    "split": "calibration",
+    "domain": "aggressive/pulse",
+    "revision": 11,
+    "score": 0.35,
+    "label": 0
+  }
+]

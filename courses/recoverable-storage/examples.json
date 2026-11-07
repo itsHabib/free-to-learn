@@ -1,0 +1,187 @@
+{
+  "01": {
+    "record": {
+      "type": "put",
+      "tx": 3,
+      "key": "bé",
+      "value": "ok"
+    },
+    "hex": "49565931000000109d2e67ea010000000300030000000262c3a96f6b",
+    "body_length": 16,
+    "key_bytes": 3,
+    "value_bytes": 2,
+    "decoded": {
+      "record": {
+        "type": "put",
+        "tx": 3,
+        "key": "bé",
+        "value": "ok"
+      },
+      "bytes": 28
+    },
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "34b7d3bc3579c15dfeba310a5a57e449c3f6f9b4814f5d53802c660d641ad162"
+    }
+  },
+  "02": {
+    "input": "123456789",
+    "max_write": 4,
+    "events": [
+      "append:store.log",
+      "append:store.log",
+      "append:store.log",
+      "sync:store.log"
+    ],
+    "stored": "123456789",
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "34b7d3bc3579c15dfeba310a5a57e449c3f6f9b4814f5d53802c660d641ad162"
+    }
+  },
+  "03": {
+    "records": [
+      {
+        "type": "put",
+        "tx": 1,
+        "key": "y",
+        "value": "old"
+      },
+      {
+        "type": "put",
+        "tx": 2,
+        "key": "x",
+        "value": ""
+      },
+      {
+        "type": "put",
+        "tx": 3,
+        "key": "y",
+        "value": "new"
+      },
+      {
+        "type": "del",
+        "tx": 4,
+        "key": "y",
+        "value": null
+      }
+    ],
+    "entries": [
+      [
+        "x",
+        ""
+      ]
+    ],
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "34b7d3bc3579c15dfeba310a5a57e449c3f6f9b4814f5d53802c660d641ad162"
+    }
+  },
+  "04": {
+    "committed_baseline_bytes": 50,
+    "next_batch_bytes": 75,
+    "recovery_before_final_commit_byte": {
+      "entries": [
+        [
+          "q",
+          "old"
+        ]
+      ],
+      "validBytes": 50,
+      "discardedBytes": 74,
+      "maxTx": 1
+    },
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "34b7d3bc3579c15dfeba310a5a57e449c3f6f9b4814f5d53802c660d641ad162"
+    }
+  },
+  "05": {
+    "baseline_bytes": 50,
+    "next_batch_bytes": 75,
+    "first_cut": {
+      "cut": 0,
+      "validBytes": 50,
+      "entries": [
+        [
+          "q",
+          "old"
+        ]
+      ]
+    },
+    "last_incomplete_cut": {
+      "cut": 74,
+      "validBytes": 50,
+      "entries": [
+        [
+          "q",
+          "old"
+        ]
+      ]
+    },
+    "all_incomplete_cuts_keep_baseline": true,
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "34b7d3bc3579c15dfeba310a5a57e449c3f6f9b4814f5d53802c660d641ad162"
+    }
+  },
+  "06": {
+    "size_before": 240,
+    "size_after": 48,
+    "entries_after_reopen": [
+      [
+        "q",
+        "4"
+      ]
+    ],
+    "events": [
+      "append:store.log",
+      "sync:store.log",
+      "append:store.log",
+      "sync:store.log",
+      "append:store.log",
+      "sync:store.log",
+      "append:store.log",
+      "sync:store.log",
+      "append:store.log",
+      "sync:store.log",
+      "truncate:compact.tmp",
+      "append:compact.tmp",
+      "sync:compact.tmp",
+      "rename",
+      "syncDir"
+    ],
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "34b7d3bc3579c15dfeba310a5a57e449c3f6f9b4814f5d53802c660d641ad162"
+    }
+  },
+  "07": {
+    "kind": "fault-trace worksheet, not capstone results",
+    "fields": [
+      "acknowledged history",
+      "fault primitive/byte prefix",
+      "surviving active bytes",
+      "allowed reopen states",
+      "observed reopen state",
+      "counterexperiment",
+      "persistence assumptions"
+    ],
+    "untested": [
+      "physical power removal",
+      "cache loss/reordering",
+      "human learning"
+    ],
+    "provenance": {
+      "source": "original local author reference and supplied runtime",
+      "runtime": "v26.5.1",
+      "reference_sha256": "34b7d3bc3579c15dfeba310a5a57e449c3f6f9b4814f5d53802c660d641ad162"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# License scope
+
+Free to Learn makes its original course material available for learning, teaching, reuse and remixing, including commercial reuse. This grant covers only rights held by the project; it does not assert ownership of third-party material or create rights in uncopyrightable facts or public test values.
+
+- **Original code: MIT.** Executable code, code examples, styling, configuration, schemas, and original technical fixture data accompanying the software use [MIT](LICENSES/MIT.txt). Retain the copyright and permission notice in copies or substantial portions of that software. This includes supplied code carried into a redistributed learner project.
+- **Original lesson content: CC BY 4.0.** Lesson prose, instructions, questions, feedback, rubrics and original illustrations use [CC BY 4.0](LICENSES/CC-BY-4.0.txt). Credit Free to Learn, link to the license and identify modifications. Preserve applicable attribution/disclaimer notices, and do not imply endorsement. Commercial sharing and adaptations are permitted under those terms.
+- **Mixed files have distinct parts, not a choice of licenses.** In Markdown/HTML/JSON/JavaScript containing both lessons and software, the original narrative lesson content is CC BY 4.0 and the executable code or code examples are MIT. A file extension does not relicense its other parts. Ordinary implementation comments belong to the code; embedded lesson explanations belong to the content.
+- **Third-party exceptions take precedence.** Fonts, named pretrained assets, publisher material, public test-vector material and their notices retain their own terms and attribution. See [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md) and the file-level [LICENSE-SCOPE.json](LICENSE-SCOPE.json). Our MIT/CC BY grant does not replace those terms.
+
+The complete standard license texts control; this summary adds no restrictions. CC BY does not grant trademark/endorsement rights. Choosing these licenses is not a certification of every possible third-party right. Public-source delivery and course qualification are separate from licensing; consult QUALIFICATION.md for the current release status.

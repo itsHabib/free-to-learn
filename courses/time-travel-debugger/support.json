@@ -1,0 +1,118 @@
+{
+  "01": {
+    "provided_layers": [],
+    "provided_methods": [],
+    "target": "inspect/step",
+    "source": "import { initial, execute, validateProgram, clone, matches } from './vm.mjs';\nexport class Debugger {\n  constructor(program) {\n    this.program = validateProgram(program); this.state = initial(); this.events = [];\n    this.breakpoints = []; this.watches = new Set(); this.points = [{ label: 'initial', tick: 0, state: initial() }];\n  }\n  inspect() { throw Error('Unfinished current/later layer: inspect; read the selected lesson.'); }\n  step() { throw Error('Unfinished current/later layer: step; read the selected lesson.'); }\n  addBreakpoint(spec) { throw Error('Unfinished current/later layer: addBreakpoint; read the selected lesson.'); }\n  watch(address) { throw Error('Unfinished current/later layer: watch; read the selected lesson.'); }\n  run(limit = 1000) { throw Error('Unfinished current/later layer: run; read the selected lesson.'); }\n  stop(reason) { return { reason, tick: this.state.tick, pc: this.state.pc }; }\n  trace() { throw Error('Unfinished current/later layer: trace; read the selected lesson.'); }\n  checkpoint(label) { throw Error('Unfinished current/later layer: checkpoint; read the selected lesson.'); }\n  seek(tick) { throw Error('Unfinished current/later layer: seek; read the selected lesson.'); }\n  reverseFind(condition, beforeTick = this.state.tick) { throw Error('Unfinished current/later layer: reverseFind; read the selected lesson.'); }\n}\n",
+    "notice": "Earlier-layer worked source is explicit assistance, not learner-owned work. Stage07 supplies a practice tool only; the capstone report/program must be your own. No stage is a mastery certificate."
+  },
+  "02": {
+    "provided_layers": [
+      1
+    ],
+    "provided_methods": [
+      "inspect",
+      "step"
+    ],
+    "target": "conditional run/breakpoint",
+    "source": "import { initial, execute, validateProgram, clone, matches } from './vm.mjs';\nexport class Debugger {\n  constructor(program) {\n    this.program = validateProgram(program); this.state = initial(); this.events = [];\n    this.breakpoints = []; this.watches = new Set(); this.points = [{ label: 'initial', tick: 0, state: initial() }];\n  }\n  inspect() { return clone(this.state); }\n  step() {\n    if (this.state.halted) return null;\n    const { state, event } = execute(this.program, this.state);\n    this.state = state;\n    return clone(event);\n  }\n  addBreakpoint(spec) { throw Error('Unfinished current/later layer: addBreakpoint; read the selected lesson.'); }\n  watch(address) { throw Error('Unfinished current/later layer: watch; read the selected lesson.'); }\n  run(limit = 1000) { throw Error('Unfinished current/later layer: run; read the selected lesson.'); }\n  stop(reason) { return { reason, tick: this.state.tick, pc: this.state.pc }; }\n  trace() { throw Error('Unfinished current/later layer: trace; read the selected lesson.'); }\n  checkpoint(label) { throw Error('Unfinished current/later layer: checkpoint; read the selected lesson.'); }\n  seek(tick) { throw Error('Unfinished current/later layer: seek; read the selected lesson.'); }\n  reverseFind(condition, beforeTick = this.state.tick) { throw Error('Unfinished current/later layer: reverseFind; read the selected lesson.'); }\n}\n",
+    "notice": "Earlier-layer worked source is explicit assistance, not learner-owned work. Stage07 supplies a practice tool only; the capstone report/program must be your own. No stage is a mastery certificate."
+  },
+  "03": {
+    "provided_layers": [
+      1,
+      2
+    ],
+    "provided_methods": [
+      "inspect",
+      "step",
+      "addBreakpoint",
+      "run"
+    ],
+    "target": "watch/change handling",
+    "source": "import { initial, execute, validateProgram, clone, matches } from './vm.mjs';\nexport class Debugger {\n  constructor(program) {\n    this.program = validateProgram(program); this.state = initial(); this.events = [];\n    this.breakpoints = []; this.watches = new Set(); this.points = [{ label: 'initial', tick: 0, state: initial() }];\n  }\n  inspect() { return clone(this.state); }\n  step() {\n    if (this.state.halted) return null;\n    const { state, event } = execute(this.program, this.state);\n    this.state = state;\n    return clone(event);\n  }\n  addBreakpoint(spec) {\n    if (!spec || !Number.isInteger(spec.pc) || spec.pc < 0 || spec.pc >= this.program.length) throw Error('Breakpoint: pc is outside program.');\n    if (spec.condition) matches(this.state, spec.condition);\n    this.breakpoints.push(clone(spec));\n  }\n  watch(address) { throw Error('Unfinished current/later layer: watch; read the selected lesson.'); }\n  run(limit = 1000) {\n    if (!Number.isInteger(limit) || limit < 1 || limit > 10000) throw Error('Run: limit must be an integer from 1\u201310000.');\n    for (let n = 0; n < limit; n++) {\n      if (this.state.halted) return this.stop('halt');\n      if (this.breakpoints.some(b => b.pc === this.state.pc && (!b.condition || matches(this.state, b.condition)))) return this.stop('breakpoint');\n      const event = this.step();\n      if (this.state.halted) return this.stop('halt');\n    }\n    return this.stop('limit');\n  }\n  stop(reason) { return { reason, tick: this.state.tick, pc: this.state.pc }; }\n  trace() { throw Error('Unfinished current/later layer: trace; read the selected lesson.'); }\n  checkpoint(label) { throw Error('Unfinished current/later layer: checkpoint; read the selected lesson.'); }\n  seek(tick) { throw Error('Unfinished current/later layer: seek; read the selected lesson.'); }\n  reverseFind(condition, beforeTick = this.state.tick) { throw Error('Unfinished current/later layer: reverseFind; read the selected lesson.'); }\n}\n",
+    "notice": "Earlier-layer worked source is explicit assistance, not learner-owned work. Stage07 supplies a practice tool only; the capstone report/program must be your own. No stage is a mastery certificate."
+  },
+  "04": {
+    "provided_layers": [
+      1,
+      2,
+      3
+    ],
+    "provided_methods": [
+      "inspect",
+      "step",
+      "addBreakpoint",
+      "run",
+      "watch"
+    ],
+    "target": "event recording/trace",
+    "source": "import { initial, execute, validateProgram, clone, matches } from './vm.mjs';\nexport class Debugger {\n  constructor(program) {\n    this.program = validateProgram(program); this.state = initial(); this.events = [];\n    this.breakpoints = []; this.watches = new Set(); this.points = [{ label: 'initial', tick: 0, state: initial() }];\n  }\n  inspect() { return clone(this.state); }\n  step() {\n    if (this.state.halted) return null;\n    const { state, event } = execute(this.program, this.state);\n    this.state = state;\n    return clone(event);\n  }\n  addBreakpoint(spec) {\n    if (!spec || !Number.isInteger(spec.pc) || spec.pc < 0 || spec.pc >= this.program.length) throw Error('Breakpoint: pc is outside program.');\n    if (spec.condition) matches(this.state, spec.condition);\n    this.breakpoints.push(clone(spec));\n  }\n  watch(address) {\n    if (!Number.isInteger(address) || address < 0 || address > 7) throw Error('Watchpoint: address must be 0\u20137.');\n    this.watches.add(address);\n  }\n  run(limit = 1000) {\n    if (!Number.isInteger(limit) || limit < 1 || limit > 10000) throw Error('Run: limit must be an integer from 1\u201310000.');\n    for (let n = 0; n < limit; n++) {\n      if (this.state.halted) return this.stop('halt');\n      if (this.breakpoints.some(b => b.pc === this.state.pc && (!b.condition || matches(this.state, b.condition)))) return this.stop('breakpoint');\n      const event = this.step();\n      const changed = event.writes.find(w => this.watches.has(w.address) && w.before !== w.after);\n      if (changed) return { ...this.stop('watchpoint'), write: clone(changed) };\n      if (this.state.halted) return this.stop('halt');\n    }\n    return this.stop('limit');\n  }\n  stop(reason) { return { reason, tick: this.state.tick, pc: this.state.pc }; }\n  trace() { throw Error('Unfinished current/later layer: trace; read the selected lesson.'); }\n  checkpoint(label) { throw Error('Unfinished current/later layer: checkpoint; read the selected lesson.'); }\n  seek(tick) { throw Error('Unfinished current/later layer: seek; read the selected lesson.'); }\n  reverseFind(condition, beforeTick = this.state.tick) { throw Error('Unfinished current/later layer: reverseFind; read the selected lesson.'); }\n}\n",
+    "notice": "Earlier-layer worked source is explicit assistance, not learner-owned work. Stage07 supplies a practice tool only; the capstone report/program must be your own. No stage is a mastery certificate."
+  },
+  "05": {
+    "provided_layers": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "provided_methods": [
+      "inspect",
+      "step",
+      "addBreakpoint",
+      "run",
+      "watch",
+      "trace"
+    ],
+    "target": "checkpoint/seek",
+    "source": "import { initial, execute, validateProgram, clone, matches } from './vm.mjs';\nexport class Debugger {\n  constructor(program) {\n    this.program = validateProgram(program); this.state = initial(); this.events = [];\n    this.breakpoints = []; this.watches = new Set(); this.points = [{ label: 'initial', tick: 0, state: initial() }];\n  }\n  inspect() { return clone(this.state); }\n  step() {\n    if (this.state.halted) return null;\n    const { state, event } = execute(this.program, this.state);\n    this.state = state;\n    if (this.events.length < state.tick) this.events.push(clone(event));\n    return clone(event);\n  }\n  addBreakpoint(spec) {\n    if (!spec || !Number.isInteger(spec.pc) || spec.pc < 0 || spec.pc >= this.program.length) throw Error('Breakpoint: pc is outside program.');\n    if (spec.condition) matches(this.state, spec.condition);\n    this.breakpoints.push(clone(spec));\n  }\n  watch(address) {\n    if (!Number.isInteger(address) || address < 0 || address > 7) throw Error('Watchpoint: address must be 0\u20137.');\n    this.watches.add(address);\n  }\n  run(limit = 1000) {\n    if (!Number.isInteger(limit) || limit < 1 || limit > 10000) throw Error('Run: limit must be an integer from 1\u201310000.');\n    for (let n = 0; n < limit; n++) {\n      if (this.state.halted) return this.stop('halt');\n      if (this.breakpoints.some(b => b.pc === this.state.pc && (!b.condition || matches(this.state, b.condition)))) return this.stop('breakpoint');\n      const event = this.step();\n      const changed = event.writes.find(w => this.watches.has(w.address) && w.before !== w.after);\n      if (changed) return { ...this.stop('watchpoint'), write: clone(changed) };\n      if (this.state.halted) return this.stop('halt');\n    }\n    return this.stop('limit');\n  }\n  stop(reason) { return { reason, tick: this.state.tick, pc: this.state.pc }; }\n  trace() { return clone(this.events); }\n  checkpoint(label) { throw Error('Unfinished current/later layer: checkpoint; read the selected lesson.'); }\n  seek(tick) { throw Error('Unfinished current/later layer: seek; read the selected lesson.'); }\n  reverseFind(condition, beforeTick = this.state.tick) { throw Error('Unfinished current/later layer: reverseFind; read the selected lesson.'); }\n}\n",
+    "notice": "Earlier-layer worked source is explicit assistance, not learner-owned work. Stage07 supplies a practice tool only; the capstone report/program must be your own. No stage is a mastery certificate."
+  },
+  "06": {
+    "provided_layers": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "provided_methods": [
+      "inspect",
+      "step",
+      "addBreakpoint",
+      "run",
+      "watch",
+      "trace",
+      "checkpoint",
+      "seek"
+    ],
+    "target": "reverseFind",
+    "source": "import { initial, execute, validateProgram, clone, matches } from './vm.mjs';\nexport class Debugger {\n  constructor(program) {\n    this.program = validateProgram(program); this.state = initial(); this.events = [];\n    this.breakpoints = []; this.watches = new Set(); this.points = [{ label: 'initial', tick: 0, state: initial() }];\n  }\n  inspect() { return clone(this.state); }\n  step() {\n    if (this.state.halted) return null;\n    const { state, event } = execute(this.program, this.state);\n    this.state = state;\n    if (this.events.length < state.tick) this.events.push(clone(event));\n    return clone(event);\n  }\n  addBreakpoint(spec) {\n    if (!spec || !Number.isInteger(spec.pc) || spec.pc < 0 || spec.pc >= this.program.length) throw Error('Breakpoint: pc is outside program.');\n    if (spec.condition) matches(this.state, spec.condition);\n    this.breakpoints.push(clone(spec));\n  }\n  watch(address) {\n    if (!Number.isInteger(address) || address < 0 || address > 7) throw Error('Watchpoint: address must be 0\u20137.');\n    this.watches.add(address);\n  }\n  run(limit = 1000) {\n    if (!Number.isInteger(limit) || limit < 1 || limit > 10000) throw Error('Run: limit must be an integer from 1\u201310000.');\n    for (let n = 0; n < limit; n++) {\n      if (this.state.halted) return this.stop('halt');\n      if (this.breakpoints.some(b => b.pc === this.state.pc && (!b.condition || matches(this.state, b.condition)))) return this.stop('breakpoint');\n      const event = this.step();\n      const changed = event.writes.find(w => this.watches.has(w.address) && w.before !== w.after);\n      if (changed) return { ...this.stop('watchpoint'), write: clone(changed) };\n      if (this.state.halted) return this.stop('halt');\n    }\n    return this.stop('limit');\n  }\n  stop(reason) { return { reason, tick: this.state.tick, pc: this.state.pc }; }\n  trace() { return clone(this.events); }\n  checkpoint(label) {\n    if (typeof label !== 'string' || !label.trim()) throw Error('Checkpoint: provide a label.');\n    const point = { label, tick: this.state.tick, state: this.inspect() };\n    this.points.push(clone(point)); return clone(point);\n  }\n  seek(tick) {\n    if (!Number.isInteger(tick) || tick < 0 || tick > this.events.length) throw Error('Seek: tick must be within the recorded history.');\n    const point = this.points.filter(p => p.tick <= tick).sort((a,b) => b.tick-a.tick)[0];\n    let state = clone(point.state);\n    while (state.tick < tick) state = execute(this.program, state).state;\n    this.state = state; return this.inspect();\n  }\n  reverseFind(condition, beforeTick = this.state.tick) { throw Error('Unfinished current/later layer: reverseFind; read the selected lesson.'); }\n}\n",
+    "notice": "Earlier-layer worked source is explicit assistance, not learner-owned work. Stage07 supplies a practice tool only; the capstone report/program must be your own. No stage is a mastery certificate."
+  },
+  "07": {
+    "provided_layers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "provided_methods": [
+      "inspect",
+      "step",
+      "addBreakpoint",
+      "watch",
+      "run",
+      "trace",
+      "checkpoint",
+      "seek",
+      "reverseFind"
+    ],
+    "target": "own diagnosis and fresh program",
+    "source": "import { initial, execute, validateProgram, clone, matches } from './vm.mjs';\nexport class Debugger {\n  constructor(program) {\n    this.program = validateProgram(program); this.state = initial(); this.events = [];\n    this.breakpoints = []; this.watches = new Set(); this.points = [{ label: 'initial', tick: 0, state: initial() }];\n  }\n  inspect() { return clone(this.state); }\n  step() {\n    if (this.state.halted) return null;\n    const { state, event } = execute(this.program, this.state);\n    this.state = state;\n    if (this.events.length < state.tick) this.events.push(clone(event));\n    return clone(event);\n  }\n  addBreakpoint(spec) {\n    if (!spec || !Number.isInteger(spec.pc) || spec.pc < 0 || spec.pc >= this.program.length) throw Error('Breakpoint: pc is outside program.');\n    if (spec.condition) matches(this.state, spec.condition);\n    this.breakpoints.push(clone(spec));\n  }\n  watch(address) {\n    if (!Number.isInteger(address) || address < 0 || address > 7) throw Error('Watchpoint: address must be 0\u20137.');\n    this.watches.add(address);\n  }\n  run(limit = 1000) {\n    if (!Number.isInteger(limit) || limit < 1 || limit > 10000) throw Error('Run: limit must be an integer from 1\u201310000.');\n    for (let n = 0; n < limit; n++) {\n      if (this.state.halted) return this.stop('halt');\n      if (this.breakpoints.some(b => b.pc === this.state.pc && (!b.condition || matches(this.state, b.condition)))) return this.stop('breakpoint');\n      const event = this.step();\n      const changed = event.writes.find(w => this.watches.has(w.address) && w.before !== w.after);\n      if (changed) return { ...this.stop('watchpoint'), write: clone(changed) };\n      if (this.state.halted) return this.stop('halt');\n    }\n    return this.stop('limit');\n  }\n  stop(reason) { return { reason, tick: this.state.tick, pc: this.state.pc }; }\n  trace() { return clone(this.events); }\n  checkpoint(label) {\n    if (typeof label !== 'string' || !label.trim()) throw Error('Checkpoint: provide a label.');\n    const point = { label, tick: this.state.tick, state: this.inspect() };\n    this.points.push(clone(point)); return clone(point);\n  }\n  seek(tick) {\n    if (!Number.isInteger(tick) || tick < 0 || tick > this.events.length) throw Error('Seek: tick must be within the recorded history.');\n    const point = this.points.filter(p => p.tick <= tick).sort((a,b) => b.tick-a.tick)[0];\n    let state = clone(point.state);\n    while (state.tick < tick) state = execute(this.program, state).state;\n    this.state = state; return this.inspect();\n  }\n  reverseFind(condition, beforeTick = this.state.tick) {\n    matches(this.state, condition);\n    if (!Number.isInteger(beforeTick) || beforeTick < 0 || beforeTick > this.events.length + 1) throw Error('Reverse search: invalid exclusive bound.');\n    const original = this.inspect();\n    for (let tick = beforeTick - 1; tick >= 0; tick--) {\n      this.seek(tick);\n      if (matches(this.state, condition)) return tick;\n    }\n    this.state = original; return null;\n  }\n}\n",
+    "notice": "Earlier-layer worked source is explicit assistance, not learner-owned work. Stage07 supplies a practice tool only; the capstone report/program must be your own. No stage is a mastery certificate."
+  }
+}

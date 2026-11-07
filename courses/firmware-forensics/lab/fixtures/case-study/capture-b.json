@@ -1,0 +1,48 @@
+{
+  "components": [
+    {
+      "kind": "metadata",
+      "name": "readme",
+      "requires": [],
+      "sha256": "00b1f53def377baeadd6c4cf9e02c9607e7b73b1a9c867a50b597478ea3936c1",
+      "version": 1
+    },
+    {
+      "kind": "data",
+      "name": "calibration",
+      "requires": [],
+      "sha256": "6e445a6d956fc35d48717e3bfd6f515c9d1e7d51106ec0b0e8224c53084097fb",
+      "version": 1
+    },
+    {
+      "kind": "config",
+      "name": "config",
+      "requires": [],
+      "sha256": "b035072b22a06515cc6dad490e204b561e53306f664612807424479f3bbdfe50",
+      "version": 3
+    },
+    {
+      "kind": "description",
+      "name": "runtime",
+      "requires": [
+        "calibration"
+      ],
+      "sha256": "c2ee42d01750f646145319b30e1784ef16a1eb8043f8b86860917ddd9e407246",
+      "version": 5
+    },
+    {
+      "kind": "description",
+      "name": "boot",
+      "requires": [
+        "config",
+        "runtime"
+      ],
+      "sha256": "95ccaafc4cf91c379a7b5716edb01e60e7f84ebe799dd1f136d7c047476ffc57",
+      "version": 1
+    }
+  ],
+  "container_sha256": "bc182971ae774846f7f59df1d94fe84322d526d206991aa01e6b1cff33ef2289",
+  "format": "EDUFW1",
+  "release": 12,
+  "schema": 1
+}

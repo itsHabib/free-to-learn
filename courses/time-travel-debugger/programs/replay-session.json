@@ -1,0 +1,9 @@
+[
+  "break 3 b 1",
+  "run 100",
+  "checkpoint stop",
+  "trace",
+  "seek 0",
+  "seek 7",
+  "find reg b 0"
+]

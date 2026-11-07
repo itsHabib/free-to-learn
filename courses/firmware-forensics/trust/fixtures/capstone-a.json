@@ -1,0 +1,48 @@
+{
+  "components": [
+    {
+      "kind": "metadata",
+      "name": "old-notes",
+      "requires": [],
+      "sha256": "06c7207a0881e0856f555fec9199df20e71ba953359d75fa143bd9afb6b70c0c",
+      "version": 1
+    },
+    {
+      "kind": "data",
+      "name": "lookup",
+      "requires": [],
+      "sha256": "3cec0fe4ad75354b62e1a0c15dc393af0adfa359d921a8035249ffffbda76c36",
+      "version": 1
+    },
+    {
+      "kind": "config",
+      "name": "config",
+      "requires": [],
+      "sha256": "7de0d29b0c4d4f4bddc1a4ada9d563d9c960335278a805de05fecea10320d54e",
+      "version": 2
+    },
+    {
+      "kind": "description",
+      "name": "scheduler",
+      "requires": [
+        "lookup"
+      ],
+      "sha256": "77bb27fcbd48ff81e93702898407608e1c8065f0aecdb928ad3ecfd5cb3251b2",
+      "version": 3
+    },
+    {
+      "kind": "description",
+      "name": "loader",
+      "requires": [
+        "scheduler",
+        "config"
+      ],
+      "sha256": "3dad00a2257b39b7357f9936aff34e25ea83107e233ccac5caf32c0dba4be421",
+      "version": 1
+    }
+  ],
+  "container_sha256": "ca25b1a257198dd0d04ea3223d922c3d0d0216e1c7b5b1f05dcff84c60d45543",
+  "format": "EDUFW1",
+  "release": 20,
+  "schema": 1
+}

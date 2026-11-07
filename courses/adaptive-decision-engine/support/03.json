@@ -1,0 +1,4 @@
+{
+  "observe.mjs": "import {targetAt} from '../shared.mjs';\nexport function observe(s) {\n const h=s.history.slice(-3), available=!s.observationMissing;\n return {episodeId:s.episodeId,revision:s.revision,round:s.round,health:s.health,supplies:s.supplies,charge:s.charge,budget:s.budget,lastKind:s.history.at(-1)?.kind??null,recentDamage:h.map(e=>e.damage),recentMoves:h.map(e=>e.move),pressure:available&&h.length===3?.6*(12-s.health)/12+.4*Math.min(1,h.reduce((n,e)=>n+e.damage,0)/6):null,target:targetAt(s.profile,s.round,s.targetSchedule),flags:{historyComplete:h.length===3,available}};\n}\n",
+  "constraints.mjs": "export function allowedActions(o) {\n if(o.round>=12||o.health<=0)return [];\n const high=['swarm','brute'],cost={scout:1,swarm:2,brute:3};\n return ['rest',...Object.keys(cost).filter(k=>o.health>3&&cost[k]<=o.budget&&(k!=='swarm'||o.health>=6)&&(k!=='brute'||o.health>=8)&&(!high.includes(k)||!high.includes(o.lastKind)))];\n}\n"
+}

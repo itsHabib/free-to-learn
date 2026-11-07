@@ -1,0 +1,296 @@
+{
+  "01a": {
+    "question": "On the same scout card and hazard, which move prevents more damage?",
+    "options": [
+      "Press",
+      "Brace",
+      "Both always do the same"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Press earns more charge but takes full damage.",
+      "Brace subtracts up to two damage.",
+      "The moves differ whenever the raw damage is positive."
+    ],
+    "transfer": "Compare Repair with Brace when health is already full and supplies are scarce."
+  },
+  "01b": {
+    "question": "Health is 9 and recent damage is [1,2,0]. What is pressure?",
+    "options": [
+      "0.15",
+      "0.35",
+      "0.50"
+    ],
+    "correct": 1,
+    "feedback": [
+      "That is only the health term. Add 0.4 \u00d7 3/6.",
+      "0.15 + 0.20 = 0.35.",
+      "Recompute missing health: only 3 of 12 is missing."
+    ],
+    "transfer": "Recompute at health 8 with [0,0,0]."
+  },
+  "02a": {
+    "question": "Health 7, budget 2, previous swarm, round 4. What is the legal set?",
+    "options": [
+      "rest, scout",
+      "rest, scout, swarm",
+      "all four"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Cooldown removes swarm; brute also fails health and budget.",
+      "Swarm is high and cannot follow swarm.",
+      "Brute fails three constraints."
+    ],
+    "transfer": "Keep the state but change the previous card to rest."
+  },
+  "02b": {
+    "question": "At round 12 with health 12 and budget 18, what is legal?",
+    "options": [
+      "rest only",
+      "all four",
+      "nothing"
+    ],
+    "correct": 2,
+    "feedback": [
+      "Terminal states accept no action.",
+      "Resources do not reopen a finished expedition.",
+      "Round twelve is terminal regardless of resources."
+    ],
+    "transfer": "Try round 11 with health zero."
+  },
+  "03a": {
+    "question": "All-rest survives all twelve rounds. Which result prevents calling it a useful beacon baseline?",
+    "options": [
+      "Its completion is zero",
+      "Its code is short",
+      "Its choices are deterministic"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Zero charge cannot reach the goal.",
+      "Short code is not a defect.",
+      "Determinism helps comparison."
+    ],
+    "transfer": "Design a policy that earns charge but still rests when necessary."
+  },
+  "03b": {
+    "question": "Recovery entered above 0.55 and exits below 0.25. At 0.30, recovering true, what next?",
+    "options": [
+      "Exit recovery",
+      "Stay in recovery",
+      "Forget memory"
+    ],
+    "correct": 1,
+    "feedback": [
+      "The lower exit boundary has not been crossed.",
+      "The flag persists between the two boundaries.",
+      "Forgetting memory removes hysteresis."
+    ],
+    "transfer": "Use the same pressure with recovering false."
+  },
+  "04a": {
+    "question": "The allowed set is rest/scout. The response assigns zero to an extra brute key. Valid?",
+    "options": [
+      "Yes, zero cannot matter",
+      "No, the declared label set changed",
+      "Only if brute was selected"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Keys are part of the typed contract.",
+      "Exactly the allowed keys must be present.",
+      "Unexpected labels invalidate the full answer."
+    ],
+    "transfer": "Try the same keys in reversed order."
+  },
+  "04b": {
+    "question": "Episode A revision 8 asks encounter; an answer belongs to episode B revision 8. What should happen?",
+    "options": [
+      "Accept because revisions match",
+      "Reject as stale context",
+      "Rename episode B to A"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Revision alone cannot identify an episode.",
+      "The episode identity differs.",
+      "Relabeling loses provenance."
+    ],
+    "transfer": "Change only the question while keeping the episode."
+  },
+  "05a": {
+    "question": "A Choice confidence of 0.9 is automatically a 90% chance of completing the expedition.",
+    "options": [
+      "True",
+      "False"
+    ],
+    "correct": 1,
+    "feedback": [
+      "The event has not been calibrated.",
+      "Choice preference and episode completion are different events."
+    ],
+    "transfer": "Define the one-round event this course measures."
+  },
+  "05b": {
+    "question": "A score bin has one row from each of ten distinct episodes, with six successful events. What is its equal-episode mean?",
+    "options": [
+      "0.6",
+      "0.9",
+      "10/6"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Each episode has one row, so the equal-episode mean is 6/10 = 0.6.",
+      "The raw score does not determine observed frequency.",
+      "A probability cannot exceed one."
+    ],
+    "transfer": "Put nine of the rows in one episode and recompute the equal-episode mean."
+  },
+  "06a": {
+    "question": "The candidate times out on a case. What happens to that pair?",
+    "options": [
+      "Drop it",
+      "Keep fallback outcome and the failure",
+      "Rerun until it wins"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Dropping failure biases the experiment.",
+      "Timeout is part of complete episode behavior.",
+      "Selective retry changes the experiment."
+    ],
+    "transfer": "Predict what dropping only candidate defeats does to completion."
+  },
+  "06b": {
+    "question": "Defeat after two zero-distance rounds. What is fixed-denominator distance?",
+    "options": [
+      "0",
+      "10/12",
+      "1/12"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Unplayed rounds carry penalty one.",
+      "Ten unplayed rounds contribute ten to the numerator.",
+      "There are ten unplayed rounds, not one."
+    ],
+    "transfer": "Compute played-only distance and explain its limit."
+  },
+  "07a": {
+    "question": "A dispatched request fails. Does it spend a reservation?",
+    "options": [
+      "Yes",
+      "No"
+    ],
+    "correct": 0,
+    "feedback": [
+      "Reservation occurs before dispatch.",
+      "Only counting successes permits unbounded retries."
+    ],
+    "transfer": "Trace two failures under a two-request cap."
+  },
+  "07b": {
+    "question": "Fallback at the deadline advanced to revision 9. Revision 8 success arrives late.",
+    "options": [
+      "Apply a second round",
+      "Discard and log stale result",
+      "Restore revision 8"
+    ],
+    "correct": 1,
+    "feedback": [
+      "This duplicates an effect.",
+      "The response no longer belongs to the current state.",
+      "Rolling back changes the committed game."
+    ],
+    "transfer": "Repeat with a new episode at the same revision."
+  },
+  "08a": {
+    "question": "Which intervention isolates missing history information?",
+    "options": [
+      "Change history, health and seed",
+      "Change only history, holding current state fixed",
+      "Repaint the UI"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Several changed causes confound the result.",
+      "One suspected cause changes.",
+      "Display is a negative control."
+    ],
+    "transfer": "Test display color separately."
+  },
+  "08b": {
+    "question": "A repair passes the old case. What strengthens transfer evidence?",
+    "options": [
+      "Rename the old case",
+      "A new case not used to tune the repair",
+      "Delete the failed attempt"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Renaming preserves the same problem.",
+      "A fresh case tests a remaining assumption.",
+      "The failure is useful evidence."
+    ],
+    "transfer": "Choose an outage placement not used during repair."
+  },
+  "09a": {
+    "question": "Three of four calls were reserved before restart. Remaining calls?",
+    "options": [
+      "Four",
+      "One",
+      "Zero because the process restarted"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Restart must not refill the budget.",
+      "Used reservations survive restart.",
+      "One valid reservation remains."
+    ],
+    "transfer": "Add a pending request and decide whether to replay it."
+  },
+  "09b": {
+    "question": "The checkpoint source identity differs from current code.",
+    "options": [
+      "Restore anyway",
+      "Refuse incompatible restore",
+      "Copy the old passing grade"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Memory meaning may have changed.",
+      "The saved contract is incompatible.",
+      "A historical grade is not current evidence."
+    ],
+    "transfer": "Change only a display preference instead."
+  },
+  "10a": {
+    "question": "The evidence favors rules. Can that be a successful capstone?",
+    "options": [
+      "Yes, with a working artifact and bounded explanation",
+      "No, a model must win"
+    ],
+    "correct": 0,
+    "feedback": [
+      "The decision to retain rules is part of the task.",
+      "A required model win would bias the experiment."
+    ],
+    "transfer": "Explain the cost of gathering more evidence."
+  },
+  "10b": {
+    "question": "When should adoption limits be frozen?",
+    "options": [
+      "After seeing final evaluation",
+      "Before final evaluation, using development evidence",
+      "Only if the candidate loses"
+    ],
+    "correct": 1,
+    "feedback": [
+      "Post-hoc limits bias adoption.",
+      "The final result is judged by a prior rule.",
+      "The rule applies to every outcome."
+    ],
+    "transfer": "Describe what changes when you revise a limit."
+  }
+}
