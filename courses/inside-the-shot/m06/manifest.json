@@ -1,0 +1,112 @@
+{
+  "compiler": {
+    "command": "clang",
+    "executable_sha256": "7def90dd8829726686213a747fc5bff1583df933dae5edc55d755479e0bfe00a",
+    "flags": [
+      "-std=c11",
+      "-g0",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fno-inline",
+      "-fno-stack-protector"
+    ],
+    "launcher_sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9",
+    "link_flags": [
+      "-Wl,-reproducible"
+    ],
+    "version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix"
+  },
+  "disassembler": {
+    "command": "objdump",
+    "executable_sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "flags": [
+      "--no-show-raw-insn"
+    ],
+    "launcher_sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9",
+    "version": "Apple LLVM version 21.0.0\n  Optimized build.\n\n\n  Registered Targets:\n    aarch64    - AArch64 (little endian)\n    aarch64_32 - AArch64 (little endian ILP32)\n    aarch64_be - AArch64 (big endian)\n    arm        - ARM\n    arm64      - ARM64 (little endian)\n    arm64_32   - ARM64 (little endian ILP32)\n    armeb      - ARM (big endian)\n    thumb      - Thumb\n    thumbeb    - Thumb (big endian)\n    x86        - 32-bit X86: Pentium-Pro and above\n    x86-64     - 64-bit X86: EM64T and AMD64"
+  },
+  "host_specific": true,
+  "milestone": "re-lab-m06",
+  "platform": {
+    "byte_order": "little",
+    "machine": "arm64",
+    "release": "25.6.0",
+    "system": "Darwin"
+  },
+  "schema_version": 1,
+  "source_sha256": {
+    "courses/re-lab/m06/source/quote.c": "390e0ca319ee6d4b689d50d8d953b9cfcdf4b4b392d5c3dddbd866b5db748213"
+  },
+  "tool_sha256": {
+    "courses/re-lab/m06/tools/build.py": "5cd33b705aff69158e1e24fba1de95506995b5d83e4f31c962be025799e5f626"
+  },
+  "variants": {
+    "O0": {
+      "assembly": "quote-O0.asm",
+      "assembly_sha256": "303a9addfdf02386888ab1e8b6288efc69940c2c0d3c7894c7abf626499af230",
+      "binary": "quote-O0",
+      "binary_sha256": "7730da18a4358da5765244959383e3368f0e182e956560f9601765b362720e1f",
+      "disassembly_flags": [
+        "--disassemble-symbols=_quote",
+        "--no-show-raw-insn"
+      ],
+      "flags": [
+        "-O0"
+      ],
+      "function_symbols": [
+        "quote"
+      ]
+    },
+    "O2": {
+      "assembly": "quote-O2.asm",
+      "assembly_sha256": "77040eb04d590a88d02f44bca0234ff54e7d53f7120671126bafb6a77f2c2668",
+      "binary": "quote-O2",
+      "binary_sha256": "ece5bec561a821d5ac6ad1e45b79a0719e6f227837fae49bf3fbc94a65004d8f",
+      "disassembly_flags": [
+        "--disassemble-symbols=_quote",
+        "--no-show-raw-insn"
+      ],
+      "flags": [
+        "-O2"
+      ],
+      "function_symbols": [
+        "quote"
+      ]
+    },
+    "example-O0": {
+      "assembly": "fee-O0.asm",
+      "assembly_sha256": "9b2c37a56f24b34360c7ebac51c92a06b7bc511daf4830e4b119867e94333893",
+      "binary": "fee-O0",
+      "binary_sha256": "41041e95141529af39c7bf968b31bbe570c3f59124b4b27518d565c33596e652",
+      "disassembly_flags": [
+        "--disassemble-symbols=_fee_example",
+        "--no-show-raw-insn"
+      ],
+      "flags": [
+        "-O0",
+        "-DFEE_EXAMPLE=1"
+      ],
+      "function_symbols": [
+        "fee_example"
+      ]
+    },
+    "example-O2": {
+      "assembly": "fee-O2.asm",
+      "assembly_sha256": "8ec5b3938e1603307ee13d5abb7a3d93d1935515513379f3178d8875f93c34c0",
+      "binary": "fee-O2",
+      "binary_sha256": "855891f3e086ba1530246b0ab6cf782f677c1444c4c77db8c66cfaf3263545f9",
+      "disassembly_flags": [
+        "--disassemble-symbols=_fee_example",
+        "--no-show-raw-insn"
+      ],
+      "flags": [
+        "-O2",
+        "-DFEE_EXAMPLE=1"
+      ],
+      "function_symbols": [
+        "fee_example"
+      ]
+    }
+  }
+}

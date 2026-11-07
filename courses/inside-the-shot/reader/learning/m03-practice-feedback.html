@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practice feedback for Project3 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><aside class="notice">Authored project practice feedback. Follow the original project’s save-before-reveal order. This separate help page is not a secure exam or evidence of mastery.</aside><article><h1 id="practice-feedback-for-project3">Practice feedback for Project3</h1>
+<p>Open after choosing on <a href="m03-practice.html">m03-practice.md</a>. Preserve the original answer and any later correction.</p>
+<h2 id="m03-complete-envelope">m03-complete-envelope</h2>
+<p>Correct choice: c.</p>
+<p>For count 2 and width 3, expected payload is 2*3=6 and total is 7+6=13. For count 0, expected payload is 0 and total is 7.</p>
+<ul>
+<li><p><strong>a.</strong> Width counts bytes in one entry, while declared covers all entries. The actual file also includes the seven-byte header, so it cannot be compared with payload length alone.</p></li>
+<li><p><strong>b.</strong> Adding entry count to entry width mixes two quantities. Multiply to obtain payload bytes, then add the header bytes for total length.</p></li>
+<li><p><strong>c.</strong> Count times bytes per entry gives expected payload bytes. Header bytes plus declared payload bytes gives the exact total, catching both truncation and trailing data.</p></li>
+</ul>
+<p><a href="m03-practice.html#m03-complete-envelope">Return to this question</a>.</p>
+<h2 id="m03-unknown-evidence">m03-unknown-evidence</h2>
+<p>Correct choice: b.</p>
+<p>The declared reading slices exclude the unknown positions. Changing excluded bytes leaves those integer calculations unchanged. No declared rule assigns the unknown bytes a semantic role.</p>
+<ul>
+<li><p><strong>a.</strong> Unchanged readings only show that these reading calculations did not consume the changed bytes. It does not establish padding, and deletion violates the example&#x27;s requirement to retain them.</p></li>
+<li><p><strong>b.</strong> The locations and raw values are observable. Preserving them keeps that evidence available, while the unchanged readings support only the narrower statement about these probes.</p></li>
+<li><p><strong>c.</strong> A checksum claim needs evidence relating the bytes to protected content. Independent variation and unchanged readings do not establish that rule; retain the bytes under their unknown names.</p></li>
+</ul>
+<p><a href="m03-practice.html#m03-unknown-evidence">Return to this question</a>.</p>
+<h2 id="m03-trailing-byte-test">m03-trailing-byte-test</h2>
+<p>Correct choice: a.</p>
+<p>Original length = 7+1*3 = 10. Appended length 11 satisfies 11&gt;=10 but fails 11==10. A removed-byte length 9 fails both comparisons.</p>
+<ul>
+<li><p><strong>a.</strong> A valid one-entry queue has 7+3=10 bytes. Appending one makes 11 while the declaration still requires 10. A&#x27;s minimum-size check accepts it; B&#x27;s equality check rejects it.</p></li>
+<li><p><strong>b.</strong> The length remains 10 and the declared format permits every unknown-byte value. Both checks still pass, so this tests preservation rather than the size-check difference.</p></li>
+<li><p><strong>c.</strong> The file becomes 9 bytes while 10 are required. Both the minimum-size and exact-size checks reject it. Truncation is useful to test, but it does not separate these two implementations.</p></li>
+</ul>
+<p><a href="m03-practice.html#m03-trailing-byte-test">Return to this question</a>.</p>
+<h2 id="m03-new-queue">m03-new-queue</h2>
+<p>Correct choice: c.</p>
+<p>count=1; width=3; declared=3; total=7+3=10. Entry begins at 7. ff fe is 255+254*256=65279 unsigned, then 65279-65536=-257 signed. raw[9:10].hex() is d4.</p>
+<ul>
+<li><p><strong>a.</strong> The envelope and unknown byte are right, but 65279 is the unsigned reading of ff fe. The field is signed and its top bit is set, so subtract 65536 to obtain -257.</p></li>
+<li><p><strong>b.</strong> ff is the first byte of the two-byte reading. The entry starts at offset 7, so its unknown byte is at offset 9: d4. Recompute positions before interpreting values.</p></li>
+<li><p><strong>c.</strong> Count 1 and width 3 require payload 3 and total 10, matching the bytes. The signed reading is 255+254*256-65536=-257. The remaining entry byte is retained as d4; the header&#x27;s unknown byte is 00.</p></li>
+</ul>
+<p><a href="m03-practice.html#m03-new-queue">Return to this question</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m03-complete-envelope">m03-complete-envelope</a></li><li><a href="#m03-unknown-evidence">m03-unknown-evidence</a></li><li><a href="#m03-trailing-byte-test">m03-trailing-byte-test</a></li><li><a href="#m03-new-queue">m03-new-queue</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

@@ -1,0 +1,9 @@
+{
+  "version": "re-lab-m02-v1",
+  "questions": {
+    "prediction": "Before revealing a worked-example exercise answer or running parcel, save your prediction and reasoning. For parcel, predict the before/after field values and total for your chosen arguments. Give two competing explanations of the update, a probe that distinguishes them, and your uncertainty. Keep predictions separate from later observations.",
+    "layout": "Save your current baseline decoder and proposed field offsets, widths and signedness before checking it. Connect byte changes and ARM64 instructions to each field and to the caller passing a record address. After feedback, save a new revision and its reason rather than replacing the old attempt.",
+    "transfer": "Before running parcel-shifted or checking its decoder, predict whether the baseline layout still fits. Record a distinguishing probe and its expected before/after fields and total. Then preserve observations, changed-layout instruction evidence, your decoder attempts and any repairs in new records.",
+    "handoff": "Predict a fresh result before running it, then save the actual result in a later record. Explain the supported layouts, pointer call evidence, padding and signedness, remaining uncertainty and assistance. Export your plain-file workspace, resume from a copy, and verify earlier record hashes remain unchanged."
+  }
+}

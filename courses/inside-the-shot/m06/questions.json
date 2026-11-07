@@ -1,0 +1,9 @@
+{
+  "version": "re-lab-m06-v2",
+  "questions": {
+    "prediction": "P0/P1: use the fee rule taught in P0 to calculate your first fee prediction. Save arguments, predicted result, reason and uncertainty BEFORE a native run or feedback reveal. Then save the observation separately. For the larger quote task, state two competing explanations and a probe that distinguishes them.",
+    "model": "P2: save your first model before checker feedback. Record paired native probes across signs, limits and flags. After feedback preserve each revision and explain the changed rule. All feedback or source exposure is assistance.",
+    "comparison": "P3: map semantic phases between exact O0/O2 addresses with numeric values and condition reasoning. Show one register reused for distinct values. Refute a source-shaped, register-name or branch-count assumption with native evidence and both listings. Distinguish observable behavior from source spelling.",
+    "handoff": "P4: after feedback choose a new input outside the lesson probe table, save its predicted result before running both builds, then save the outcome separately. Preserve models, report, questions, manifests and assistance; export, resume, and verify prior record hashes. State limits."
+  }
+}

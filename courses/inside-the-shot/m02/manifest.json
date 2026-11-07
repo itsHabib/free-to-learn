@@ -1,0 +1,79 @@
+{
+  "compiler": {
+    "command": "clang",
+    "executable_sha256": "7def90dd8829726686213a747fc5bff1583df933dae5edc55d755479e0bfe00a",
+    "flags": [
+      "-std=c11",
+      "-O0",
+      "-g0",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fno-inline",
+      "-fno-stack-protector"
+    ],
+    "launcher_sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9",
+    "link_flags": [
+      "-Wl,-reproducible"
+    ],
+    "version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix"
+  },
+  "disassembler": {
+    "command": "objdump",
+    "executable_sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "flags": [
+      "--disassemble-symbols=_initialize_parcel,_adjust_credit,_score_parcel,_process_parcel",
+      "--no-show-raw-insn"
+    ],
+    "launcher_sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9",
+    "version": "Apple LLVM version 21.0.0\n  Optimized build.\n\n\n  Registered Targets:\n    aarch64    - AArch64 (little endian)\n    aarch64_32 - AArch64 (little endian ILP32)\n    aarch64_be - AArch64 (big endian)\n    arm        - ARM\n    arm64      - ARM64 (little endian)\n    arm64_32   - ARM64 (little endian ILP32)\n    armeb      - ARM (big endian)\n    thumb      - Thumb\n    thumbeb    - Thumb (big endian)\n    x86        - 32-bit X86: Pentium-Pro and above\n    x86-64     - 64-bit X86: EM64T and AMD64"
+  },
+  "host_specific": true,
+  "milestone": "re-lab-m02",
+  "platform": {
+    "byte_order": "little",
+    "machine": "arm64",
+    "release": "25.6.0",
+    "system": "Darwin"
+  },
+  "schema_version": 1,
+  "source_sha256": {
+    "courses/re-lab/m02/source/call_example.c": "cf30cf7582fa0d6f5b49689a551b6add4a8d5ba8cde526af86a965790546858a",
+    "courses/re-lab/m02/source/operations.c": "8d647cf83b6f96318413d3235a8a62cd522e03efe99cfa62455f5da2ccd84df1",
+    "courses/re-lab/m02/source/parcel.c": "d245410a3bdbaa73803f0b64d04dccc49f561f38787fb79bef905915f5bab6ad",
+    "courses/re-lab/m02/source/parcel.h": "7772c7b83f9d829e056ed8433f53926d2874b73aad9cd4ba86a7bb1c321a8cbf"
+  },
+  "tool_sha256": {
+    "courses/re-lab/m02/tools/build.py": "72a0825fb962e3ec73e3f6b05cb18713f598fcb067294f0697e7d82fcaa9e1fd"
+  },
+  "variants": {
+    "baseline": {
+      "assembly": "parcel.asm",
+      "assembly_sha256": "9acb2729851b001ca1ed123d78cc52c3a8203c5c5772785a93b94aeb3741965c",
+      "binary": "parcel",
+      "binary_sha256": "b377d6cee325f5e015682af9a4805272381eb7c8f97dea22336ff2efcdad92ac",
+      "defines": [],
+      "function_symbols": [
+        "initialize_parcel",
+        "adjust_credit",
+        "score_parcel",
+        "process_parcel"
+      ]
+    },
+    "shifted": {
+      "assembly": "parcel-shifted.asm",
+      "assembly_sha256": "3965c57d32bef8ae8d48b5bb8dcf8326e2a026e5ca90453afd4ad5c8f1dfdfb6",
+      "binary": "parcel-shifted",
+      "binary_sha256": "1d0b14d460109da5ee5d581889bfb4ff34cb2f87f9bcd130ce908093207e0b50",
+      "defines": [
+        "-DPARCEL_SHIFTED=1"
+      ],
+      "function_symbols": [
+        "initialize_parcel",
+        "adjust_credit",
+        "score_parcel",
+        "process_parcel"
+      ]
+    }
+  }
+}

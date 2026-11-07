@@ -1,0 +1,440 @@
+{
+  "format": "optimizer-curriculum/1",
+  "top_level_goal": "Design, implement and evaluate semantics-preserving optimizations; justify applicability and diagnose a wrong-result transformation with reproducible bounded evidence.",
+  "prerequisites": [
+    {
+      "id": "compiler_basics",
+      "skills": [
+        "Compiler pipeline",
+        "AST versus IR",
+        "Basic types and expression evaluation"
+      ]
+    },
+    {
+      "id": "graphs",
+      "skills": [
+        "Directed graphs",
+        "Reachability",
+        "Sets and maps",
+        "Conceptual fixed points"
+      ]
+    },
+    {
+      "id": "systems_programming",
+      "skills": [
+        "Arrays and references",
+        "Debugging functions",
+        "Editing and running a local program"
+      ]
+    }
+  ],
+  "outcomes": [
+    {
+      "id": "O1",
+      "kind": "principle",
+      "goal": "State and apply the IR observation and integer/memory/effect contract.",
+      "prerequisites": [
+        "compiler_basics",
+        "systems_programming"
+      ],
+      "introduced_in": "U01",
+      "revisited_in": [
+        "U05",
+        "U06",
+        "U08",
+        "U09"
+      ]
+    },
+    {
+      "id": "O2",
+      "kind": "procedure",
+      "goal": "Compute dominance and establish edge-correct SSA legality.",
+      "prerequisites": [
+        "O1",
+        "graphs"
+      ],
+      "introduced_in": "U02",
+      "revisited_in": [
+        "U03",
+        "U04",
+        "U06",
+        "U09"
+      ]
+    },
+    {
+      "id": "O3",
+      "kind": "procedure",
+      "goal": "Build semantics-aware scalar transforms and conditional constant propagation.",
+      "prerequisites": [
+        "O1",
+        "O2"
+      ],
+      "introduced_in": "U03",
+      "revisited_in": [
+        "U04",
+        "U07",
+        "U09"
+      ]
+    },
+    {
+      "id": "O4",
+      "kind": "principle",
+      "goal": "Use conservative alias/effect reasoning to reuse memory values safely.",
+      "prerequisites": [
+        "O1",
+        "O2",
+        "O3"
+      ],
+      "introduced_in": "U05",
+      "revisited_in": [
+        "U06",
+        "U09"
+      ]
+    },
+    {
+      "id": "O5",
+      "kind": "procedure",
+      "goal": "Recognize supported natural loops and implement justified LICM.",
+      "prerequisites": [
+        "O2",
+        "O3",
+        "O4"
+      ],
+      "introduced_in": "U06",
+      "revisited_in": [
+        "U07",
+        "U09"
+      ]
+    },
+    {
+      "id": "O6",
+      "kind": "principle",
+      "goal": "Produce exact-artifact bounded validation evidence and interpret its limits.",
+      "prerequisites": [
+        "O1"
+      ],
+      "introduced_in": "U01",
+      "revisited_in": [
+        "U07",
+        "U08",
+        "U09"
+      ]
+    },
+    {
+      "id": "O7",
+      "kind": "principle",
+      "goal": "Choose profitable pass pipelines from declared comparable cost evidence.",
+      "prerequisites": [
+        "O3",
+        "O4",
+        "O5",
+        "O6"
+      ],
+      "introduced_in": "U07",
+      "revisited_in": [
+        "U09"
+      ]
+    },
+    {
+      "id": "O8",
+      "kind": "procedure",
+      "goal": "Find, reduce, explain and narrowly repair a wrong-result optimization.",
+      "prerequisites": [
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "O6",
+        "O7"
+      ],
+      "introduced_in": "U08",
+      "revisited_in": [
+        "U09"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "id": "U01",
+      "title": "What must an optimization preserve?",
+      "objectives": [
+        "O1",
+        "O6"
+      ],
+      "depends_on": [],
+      "project": "PA",
+      "learner_functions": "compare",
+      "lesson": "lessons/01.md",
+      "practice": [
+        "01a",
+        "01b"
+      ],
+      "command": "node cli.mjs check 01 work --help-used none",
+      "deliverables": [
+        "Observation comparator",
+        "Claim and finite-domain record"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U02",
+      "title": "SSA, control flow and dominance",
+      "objectives": [
+        "O2"
+      ],
+      "depends_on": [
+        "U01"
+      ],
+      "project": "PA",
+      "learner_functions": "dominators",
+      "lesson": "lessons/02.md",
+      "practice": [
+        "02a",
+        "02b"
+      ],
+      "command": "node cli.mjs check 02 work --help-used none",
+      "deliverables": [
+        "Dominance analysis",
+        "SSA semantic validation"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U03",
+      "title": "A useful scalar optimizer",
+      "objectives": [
+        "O1",
+        "O2",
+        "O3",
+        "O6"
+      ],
+      "depends_on": [
+        "U01",
+        "U02"
+      ],
+      "project": "PA",
+      "learner_functions": "scalar",
+      "lesson": "lessons/03.md",
+      "practice": [
+        "03a",
+        "03b"
+      ],
+      "command": "node cli.mjs check 03 work --help-used none",
+      "deliverables": [
+        "Constant folding",
+        "Dominance-scoped pure CSE",
+        "Unused total-pure result elimination",
+        "Rewrite records"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U04",
+      "title": "Conditional constants and dataflow",
+      "objectives": [
+        "O2",
+        "O3",
+        "O6"
+      ],
+      "depends_on": [
+        "U03"
+      ],
+      "project": "PB",
+      "learner_functions": "constants",
+      "lesson": "lessons/04.md",
+      "practice": [
+        "04a",
+        "04b"
+      ],
+      "command": "node cli.mjs check 04 work --help-used none",
+      "deliverables": [
+        "Value/edge lattice facts",
+        "Join and transfer functions",
+        "Convergence and justified branch/phi simplification"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U05",
+      "title": "Aliases and effects",
+      "objectives": [
+        "O1",
+        "O4",
+        "O6"
+      ],
+      "depends_on": [
+        "U02",
+        "U04"
+      ],
+      "project": "PB",
+      "learner_functions": "aliases, memory",
+      "lesson": "lessons/05.md",
+      "practice": [
+        "05a",
+        "05b"
+      ],
+      "command": "node cli.mjs check 05 work --help-used none",
+      "deliverables": [
+        "Conservative alias query",
+        "Effect-aware block-local memory value reuse"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U06",
+      "title": "Move loop work without changing behavior",
+      "objectives": [
+        "O2",
+        "O4",
+        "O5",
+        "O6"
+      ],
+      "depends_on": [
+        "U02",
+        "U04",
+        "U05"
+      ],
+      "project": "PB",
+      "learner_functions": "loops",
+      "lesson": "lessons/06.md",
+      "practice": [
+        "06a",
+        "06b"
+      ],
+      "command": "node cli.mjs check 06 work --help-used none",
+      "deliverables": [
+        "Supported natural-loop analysis",
+        "Scalar LICM",
+        "Restricted nontrapping invariant-load LICM",
+        "Recorded refusal reasons"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U07",
+      "title": "Evidence, pass order and cost",
+      "objectives": [
+        "O6",
+        "O7"
+      ],
+      "depends_on": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06"
+      ],
+      "project": "PC",
+      "learner_functions": "decide",
+      "lesson": "lessons/07.md",
+      "practice": [
+        "07a",
+        "07b"
+      ],
+      "command": "node cli.mjs check 07 work --help-used none",
+      "deliverables": [
+        "Finite validation domain selection",
+        "Receipt acceptance and invalidation policy",
+        "Declared cost and pipeline decision"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U08",
+      "title": "Reduce a miscompilation",
+      "objectives": [
+        "O1",
+        "O6",
+        "O8"
+      ],
+      "depends_on": [
+        "U07"
+      ],
+      "project": "PC",
+      "learner_functions": "reduce",
+      "lesson": "lessons/08.md",
+      "practice": [
+        "08a",
+        "08b"
+      ],
+      "command": "node cli.mjs check 08 work --help-used none",
+      "deliverables": [
+        "Pass-prefix localization",
+        "Wrong-result interestingness predicate",
+        "Validity-aware reduction strategy",
+        "Reproduction bundle"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    },
+    {
+      "id": "U09",
+      "title": "Transfer: an unfamiliar optimization",
+      "objectives": [
+        "O1",
+        "O2",
+        "O3",
+        "O4",
+        "O5",
+        "O6",
+        "O7",
+        "O8"
+      ],
+      "depends_on": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U06",
+        "U07",
+        "U08"
+      ],
+      "project": "PT",
+      "learner_functions": "project.investigate",
+      "lesson": "lessons/09.md",
+      "practice": [
+        "09a",
+        "09b"
+      ],
+      "command": "node cli.mjs check 09 work --help-used none",
+      "deliverables": [
+        "Original legal wrong-result witness",
+        "Meaningful reduced reproducer",
+        "Causal diagnosis",
+        "Narrow pass repair",
+        "Retained correct optimization evidence"
+      ],
+      "implementation_status": "implemented local candidate; independent acceptance pending"
+    }
+  ],
+  "supplied": [
+    "strict JSON reader and SSA verifier",
+    "BigInt word operations and interpreter",
+    "CFG/definition/use accessors",
+    "checked edit replay",
+    "finite-domain enumeration and bounded validation",
+    "pass runner and cost reports",
+    "three-state witness execution and neighborhood accounting",
+    "original input kernels",
+    "CLI, offline reader, saved attempts and export/recovery"
+  ],
+  "learner_built": [
+    "observation comparison",
+    "dominance analysis",
+    "scalar and conditional transforms",
+    "alias facts and memory reuse",
+    "supported loop motion",
+    "evidence acceptance policy",
+    "reduction search and investigation decisions",
+    "fresh witness, explanation and useful repair"
+  ],
+  "limits": [
+    "U04 is conservative conditional simplification, not complete LLVM SCCP",
+    "U09 unfamiliar transformation concentrates on integer and control semantics; guided U05/U06 assess memory and loop reasoning",
+    "No independent source-blind or human learning evidence yet",
+    "Browser interface implemented but unqualified",
+    "No publication or Free to Learn completion claim"
+  ]
+}

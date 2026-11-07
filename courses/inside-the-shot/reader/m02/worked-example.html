@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Worked example — read a seven-byte sensor record · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="../learning/m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="../learning/m02.html">Prepare</a> · <a href="START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="../learning/m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="../learning/m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="../learning/m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="../learning/m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="../learning/m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><nav class="project-context" aria-label="This project"><a href="../learning/m02.html">Preparation lesson</a> · <a href="START-HERE.html">Original project procedure</a></nav><article><h1 id="worked-example-read-a-seven-byte-sensor-record">Worked example — read a seven-byte sensor record</h1>
+<p>A sensor sends seven bytes, but a display needs three integers. You will turn that record into a Python dictionary while keeping byte positions, byte order and signed values distinct. The first example is worked through below. Each later exercise has its own feedback page; open only that exercise&#x27;s feedback after saving its prediction.</p>
+<p>This invented wire format is a teaching example, not the native parcel&#x27;s layout. It has a one-byte channel at offset 0, a two-byte unsigned reading at offset 1, two padding bytes at offsets 3–4, and a two-byte signed drift at offset 5. <strong>Unsigned</strong> integers represent zero and positive values; <strong>signed</strong> integers also represent negative values. Padding is unused space that the decoder ignores. A <strong>byte</strong> contains eight binary digits, or bits; two hexadecimal digits represent one byte. Hexadecimal counts 0–9 then a–f, so <code>ff</code> represents 255.</p>
+<h2 id="read-positions-before-values">Read positions before values</h2>
+<p>An offset counts from zero. A Python slice <code>raw[1:3]</code> takes byte 1 and byte 2; the end position 3 is excluded. That makes the two-byte reading occupy <code>[1:3]</code>, not <code>[1:2]</code>.</p>
+<p>Little-endian means the byte with the smallest place value comes first. <code>2c 01</code> represents 44 + 1 × 256 = 300. Reversing those bytes gives 1 + 44 × 256 = 11265. Width and byte order are separate choices: both examples still contain two bytes.</p>
+<p>This record&#x27;s bytes are <code>07 2c 01 aa 55 fe ff</code>. Before reading the next section, write the three values you expect in <code>response.json</code>, using an extra field named <code>sensor_prediction</code>. If signed drift is unfamiliar, record it as unknown for now. Use <code>claim</code> to explain which bytes belong to each field. Save before revealing the decoded result:</p>
+<pre tabindex="0" aria-label="Code example"><code class="language-sh">python3 notebook.py record --workspace work/m02 --stage prediction --response response.json --manifest manifest.json --assistance none
+</code></pre>
+<h2 id="interpret-the-sign-and-decode-the-record">Interpret the sign and decode the record</h2>
+<p>Your prediction should use <code>07</code> for channel and <code>2c 01</code> for reading. The padding <code>aa 55</code> belongs to neither value. Drift uses <code>fe ff</code>, with the low byte first.</p>
+<p><strong>Two&#x27;s complement</strong> is the signed-integer encoding used here. For two bytes, first read the bits as an unsigned integer. The top bit is the bit with the largest place value; in little-endian order it belongs to the last byte. If the top bit is zero, the signed value is the same. If the top bit is one, subtract 65536, the number of possible two-byte patterns. <code>fe ff</code> is unsigned 65534, so its signed value is 65534 − 65536 = −2. The nearby <code>ff 7f</code> is 32767, while <code>00 80</code> is −32768. One bit pattern can have different values under signed and unsigned interpretation.</p>
+<p><code>bytes.fromhex</code> turns readable pairs into Python bytes. <code>int.from_bytes</code> reads a slice with an explicit order and signedness. This complete example checks the type and exact length first, because a short slice can otherwise decode successfully while silently omitting bytes.</p>
+<pre tabindex="0" aria-label="Code example"><code class="language-python">def decode_sensor(raw):
+    if not isinstance(raw, bytes) or len(raw) != 7:
+        raise ValueError(&quot;sensor record must be bytes of length 7&quot;)
+    return {
+        &quot;channel&quot;: raw[0],
+        &quot;reading&quot;: int.from_bytes(raw[1:3], &quot;little&quot;, signed=False),
+        &quot;drift&quot;: int.from_bytes(raw[5:7], &quot;little&quot;, signed=True),
+    }
+
+sample = bytes.fromhex(&quot;07 2c 01 aa 55 fe ff&quot;)
+print(decode_sensor(sample))
+</code></pre>
+<p>Save this code as <code>sensor_example.py</code> in the bundle folder and run <code>python3 sensor_example.py</code>. It prints:</p>
+<pre tabindex="0" aria-label="Code example"><code class="language-text">{&#x27;channel&#x27;: 7, &#x27;reading&#x27;: 300, &#x27;drift&#x27;: -2}
+</code></pre>
+<p>Compare that result with <code>sensor_prediction</code>, then add the actual result and your explanation under <code>sensor_observation</code>. Save a new <code>prediction</code> record. The saved original remains your first attempt; the output resolves it without erasing it.</p>
+<h2 id="complete-one-case-then-decode-a-new-one">Complete one case, then decode a new one</h2>
+<p>First complete these three values without running Python: <code>reading = int.from_bytes(bytes.fromhex(&quot;00 02&quot;), &quot;little&quot;, signed=False)</code>, <code>drift = int.from_bytes(bytes.fromhex(&quot;01 80&quot;), &quot;little&quot;, signed=True)</code>, and the number of bytes in the slice <code>[5:7]</code>. Put your answers in <code>sensor_completion</code>, then save a <code>prediction</code> record with the earlier command.</p>
+<p>After saving, add this below the example code and run it. Each comparison prints whether your recorded numeric answer matches the computed value; replace the three <code>None</code> placeholders with your own numbers before running.</p>
+<pre tabindex="0" aria-label="Code example"><code class="language-python">my_reading, my_drift, my_width = None, None, None
+reading = int.from_bytes(bytes.fromhex(&quot;00 02&quot;), &quot;little&quot;, signed=False)
+drift = int.from_bytes(bytes.fromhex(&quot;01 80&quot;), &quot;little&quot;, signed=True)
+width = len(sample[5:7])
+print(&quot;completion:&quot;, my_reading == reading, my_drift == drift, my_width == width)
+print(&quot;actual:&quot;, reading, drift, width)
+</code></pre>
+<p>After saving your answers, run the checks and use <a href="completion-feedback.html">the completion feedback</a> to diagnose a difference. Add the result and any repair to your response.</p>
+<p>Now independently predict all three decoded fields for <code>09 ff 00 00 00 00 80</code>. Also decide whether <code>09 ff 00 00 00 00</code> should produce a dictionary or an error. Put both decisions and their reasons in <code>sensor_practice</code>, and save before using the following checks:</p>
+<pre tabindex="0" aria-label="Code example"><code class="language-python">practice = bytes.fromhex(&quot;09 ff 00 00 00 00 80&quot;)
+print(&quot;practice:&quot;, decode_sensor(practice))
+for invalid in (practice[:-1], practice + b&quot;\x00&quot;, &quot;09 ff 00 00 00 00 80&quot;):
+    try:
+        decode_sensor(invalid)
+    except ValueError as error:
+        print(type(error).__name__, str(error))
+</code></pre>
+<p>After saving and running the practice checks, compare with <a href="practice-feedback.html">the practice feedback</a>. Keep the initial answer even if you revise it.</p>
+<p>Finally, predict whether replacing padding <code>aa 55</code> with <code>00 ff</code> changes the first dictionary. Save that prediction, then check it with:</p>
+<pre tabindex="0" aria-label="Code example"><code class="language-python">print(&quot;padding ignored:&quot;, decode_sensor(sample) == decode_sensor(bytes.fromhex(&quot;07 2c 01 00 ff fe ff&quot;)))
+</code></pre>
+<p>After saving and checking your padding prediction, read <a href="padding-feedback.html">the padding feedback</a>. Native programs can contain padding too, but their offsets come from their actual layout. Return to <a href="START-HERE.html">START-HERE.md</a> and infer those offsets from the parcel&#x27;s probes and listing; do not copy the sensor offsets.</p></article><nav class="previous-next" aria-label="Course sequence"><a href="START-HERE.html">Return to original project procedure (M02)</a></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#read-positions-before-values">Read positions before values</a></li><li><a href="#interpret-the-sign-and-decode-the-record">Interpret the sign and decode the record</a></li><li><a href="#complete-one-case-then-decode-a-new-one">Complete one case, then decode a new one</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

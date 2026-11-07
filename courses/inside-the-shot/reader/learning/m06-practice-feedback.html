@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practice feedback for Project6 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><aside class="notice">Authored project practice feedback. Follow the original project’s save-before-reveal order. This separate help page is not a secure exam or evidence of mastery.</aside><article><h1 id="practice-feedback-for-project6">Practice feedback for Project6</h1>
+<p>Open after choosing on <a href="m06-practice.html">m06-practice.md</a>. Preserve the original answer and any later correction.</p>
+<h2 id="m06-value-correspondence">m06-value-correspondence</h2>
+<p>Correct choice: a.</p>
+<p>enabled=0 implies Z=1 and bonus=2. Branch base=3<em>6=18; adjusted result=18+2=20. Selected form chooses w8=2 and computes madd=6</em>3+2=20.</p>
+<ul>
+<li><p><strong>a.</strong> The branch takes off and adds 2 to base 18. The selected form has Z=1, chooses its first source 2, then madd combines 6*3+2. Different intermediate roles converge on return 20.</p></li>
+<li><p><strong>b.</strong> The branch w8 holds base 18 before adjustment; selected-form w8 holds the chosen bonus 2. Follow definitions and uses rather than equating register labels.</p></li>
+<li><p><strong>c.</strong> Comparing enabled 0 with zero sets Z=1. eq is true, so csel chooses its first source, not its second. Bonus 5 would apply to a nonzero input.</p></li>
+</ul>
+<p><a href="m06-practice.html#m06-value-correspondence">Return to this question</a>.</p>
+<h2 id="m06-flags-survive-move">m06-flags-survive-move</h2>
+<p>Correct choice: b.</p>
+<p>cmp(0,0) yields zero and Z=1. mov w9,99 leaves Z=1. eq therefore holds, and csel copies first input w2=9.</p>
+<ul>
+<li><p><strong>a.</strong> An ordinary mov changes a register without setting arithmetic flags. Look for cmp, subs or another actual flag producer before changing Z in your trace.</p></li>
+<li><p><strong>b.</strong> cmp computes flags for 0-0, so Z=1. No later instruction replaces them before csel; its true eq arm copies w2=9 into w8.</p></li>
+<li><p><strong>c.</strong> csel selects one of two values using existing flags; it does not compare its sources or produce a boolean. cset is the form that writes 0 or 1.</p></li>
+</ul>
+<p><a href="m06-practice.html#m06-flags-survive-move">Return to this question</a>.</p>
+<h2 id="m06-conditional-compare">m06-conditional-compare</h2>
+<p>Correct choice: c.</p>
+<p>2&gt;3 is false. ccmp uses literal NZCV=0100, hence Z=1. ne=(Z=0) is false and cset result is 0.</p>
+<ul>
+<li><p><strong>a.</strong> The nonzero test happens only when the preceding signed-greater condition holds. Here it does not, so flag=-1 is not compared by ccmp.</p></li>
+<li><p><strong>b.</strong> Fallback 4 encodes the four flags, not a register result. cset writes 1 or 0 based on ne; inspect the fallback&#x27;s Z bit.</p></li>
+<li><p><strong>c.</strong> The first comparison makes gt false. Fallback binary 0100 gives Z=1; ne requires Z=0, so cset writes 0 despite the nonzero second input.</p></li>
+</ul>
+<p><a href="m06-practice.html#m06-conditional-compare">Return to this question</a>.</p>
+<h2 id="m06-discriminating-probe">m06-discriminating-probe</h2>
+<p>Correct choice: a.</p>
+<p>n=5: min(4<em>5,30)=20 and min(4</em>5+2,30)=22. n=8 gives min(32,30)=min(34,30)=30; n=9 similarly caps 36 and 38 to 30.</p>
+<ul>
+<li><p><strong>a.</strong> At 5, raw values 20 and 22 are both below 30, so the displays preserve their difference. This probe can reject at least one candidate if the observation matches only the other.</p></li>
+<li><p><strong>b.</strong> At 9, raw values are 36 and 38, both capped to 30. Agreement there leaves both hypotheses possible; it does not choose A.</p></li>
+<li><p><strong>c.</strong> A repeat may check repeatability, but both candidates already predict 30 at 8. More observations of the same nondiscriminating case do not identify which raw value was computed.</p></li>
+</ul>
+<p><a href="m06-practice.html#m06-discriminating-probe">Return to this question</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m06-value-correspondence">m06-value-correspondence</a></li><li><a href="#m06-flags-survive-move">m06-flags-survive-move</a></li><li><a href="#m06-conditional-compare">m06-conditional-compare</a></li><li><a href="#m06-discriminating-probe">m06-discriminating-probe</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

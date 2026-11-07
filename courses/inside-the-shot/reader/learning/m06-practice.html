@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Text practice for Project6 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><article><h1 id="text-practice-for-project6">Text practice for Project6</h1>
+<p>Read <a href="m06.html">m06.md</a> alongside these questions. Keep a first choice and reason before opening the separate feedback.</p>
+<h2 id="m06-value-correspondence">m06-value-correspondence</h2>
+<p>Complete the display example for n=6, enabled=0. It computes 3*n plus bonus 2 for zero enabled, otherwise 5. Which trace agrees in both schematic forms?</p>
+<ul>
+<li><p><strong>a.</strong> Branch w8 reaches 20; selected-form w8 is bonus 2 before madd, whose return is 6*3+2=20.</p></li>
+<li><p><strong>b.</strong> Both w8 registers must hold 18 at the selection stage, because equal register names identify equal source values.</p></li>
+<li><p><strong>c.</strong> The selected form returns 23 because csel always chooses its second source after any comparison.</p></li>
+</ul>
+<p><a href="m06-practice-feedback.html#m06-value-correspondence">Feedback after choosing</a>.</p>
+<h2 id="m06-flags-survive-move">m06-flags-survive-move</h2>
+<p>Fresh register trace: initially w1=0, w2=9, w3=14. Execute cmp w1,#0; mov w9,#99; csel w8,w2,w3,eq. What is w8, and why?</p>
+<ul>
+<li><p><strong>a.</strong> 14: mov of nonzero 99 must clear the zero flag.</p></li>
+<li><p><strong>b.</strong> 9: cmp sets Z=1, mov leaves flags unchanged, and eq selects the first source w2.</p></li>
+<li><p><strong>c.</strong> 0: csel compares w2 with w3 and returns a boolean equality result.</p></li>
+</ul>
+<p><a href="m06-practice-feedback.html#m06-flags-survive-move">Feedback after choosing</a>.</p>
+<h2 id="m06-conditional-compare">m06-conditional-compare</h2>
+<p>Apply cmp w0,#3; ccmp w1,#0,#4,gt; cset w8,ne to n=2, flag=-1. Fallback #4 is NZCV=0100. What does w8 become?</p>
+<ul>
+<li><p><strong>a.</strong> 1, because flag=-1 is nonzero, regardless of the first comparison.</p></li>
+<li><p><strong>b.</strong> 4, because cset copies the fallback number directly.</p></li>
+<li><p><strong>c.</strong> 0: signed 2 is not greater than 3, so ccmp supplies Z=1 and ne is false.</p></li>
+</ul>
+<p><a href="m06-practice-feedback.html#m06-conditional-compare">Feedback after choosing</a>.</p>
+<h2 id="m06-discriminating-probe">m06-discriminating-probe</h2>
+<p>An indicator returns min(raw,30). Candidate A uses raw=4<em>n; candidate B uses raw=4</em>n+2. You observed display 30 at n=8. Which new input best separates these candidates?</p>
+<ul>
+<li><p><strong>a.</strong> n=5: candidate A predicts 20, candidate B 22.</p></li>
+<li><p><strong>b.</strong> n=9: candidate A predicts 30, candidate B 30, so equal outputs prove A.</p></li>
+<li><p><strong>c.</strong> n=8 again: repeating the same saturated result identifies the hidden raw value.</p></li>
+</ul>
+<p><a href="m06-practice-feedback.html#m06-discriminating-probe">Feedback after choosing</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m06-value-correspondence">m06-value-correspondence</a></li><li><a href="#m06-flags-survive-move">m06-flags-survive-move</a></li><li><a href="#m06-conditional-compare">m06-conditional-compare</a></li><li><a href="#m06-discriminating-probe">m06-discriminating-probe</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>One pointer, two stack frames · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="../learning/m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="../learning/m02.html">Prepare</a> · <a href="START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="../learning/m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="../learning/m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="../learning/m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="../learning/m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="../learning/m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><nav class="project-context" aria-label="This project"><a href="../learning/m02.html">Preparation lesson</a> · <a href="START-HERE.html">Original project procedure</a></nav><article><h1 id="one-pointer-two-stack-frames">One pointer, two stack frames</h1>
+<p>This separate temperature example shows how to trace a call. It does not use the parcel record or reveal its layout. Read the register vocabulary in section 4 of <code>START-HERE.md</code> first.</p>
+<p>Memory at address <strong>P</strong> holds the integer <strong>6</strong>. <code>visit_cell</code> receives P in <code>x0</code>, then calls <code>warm_cell</code> with P in <code>x0</code> and the increment <strong>1</strong> in <code>w1</code>. <code>warm_cell</code> updates the integer through P and returns the updated value. P is a symbolic address, not the number 6.</p>
+<p>These are actual instructions from the course&#x27;s separately compiled demonstration. You do not need another executable. Addresses label instructions in this build; they are not the data address P.</p>
+<h2 id="follow-the-caller-into-the-call">Follow the caller into the call</h2>
+<pre tabindex="0" aria-label="Code example"><code class="language-asm">0000000100000494 &lt;_visit_cell&gt;:
+100000494: sub sp, sp, #0x20
+100000498: stp x29, x30, [sp, #0x10]
+10000049c: add x29, sp, #0x10
+1000004a0: str x0, [sp, #0x8]
+1000004a4: ldr x0, [sp, #0x8]
+1000004a8: mov w1, #0x1
+1000004ac: bl 0x100000460 &lt;_warm_cell&gt;
+1000004b0: ldp x29, x30, [sp, #0x10]
+1000004b4: add sp, sp, #0x20
+1000004b8: ret
+</code></pre>
+<p>The first instruction reserves 32 bytes (<code>0x20</code>) of stack storage. Call the resulting stack address <strong>S</strong>. The store at <code>1000004a0</code> copies P to memory at S + 8; it does not copy the integer 6 there. The following load restores that pointer to <code>x0</code>. <code>mov</code> puts 1 in <code>w1</code>. The call at <code>1000004ac</code> therefore passes a pointer and a number, not two numbers describing temperatures.</p>
+<p><code>bl</code> also records where execution should resume in <code>x30</code>: here, instruction <code>1000004b0</code>. The caller saved its own incoming <code>x30</code> before making that call. <code>stp</code> and <code>ldp</code> store and load a pair of registers; the saved <code>x29</code> supports this function&#x27;s stack frame. For this trace, follow the pointer and argument first, while checking that the saved registers and stack are restored before returning.</p>
+<h2 id="follow-the-callee-s-separate-storage">Follow the callee&#x27;s separate storage</h2>
+<pre tabindex="0" aria-label="Code example"><code class="language-asm">0000000100000460 &lt;_warm_cell&gt;:
+100000460: sub sp, sp, #0x10
+100000464: str x0, [sp, #0x8]
+100000468: str w1, [sp, #0x4]
+10000046c: ldr x8, [sp, #0x8]
+100000470: ldr w8, [x8]
+100000474: ldr w9, [sp, #0x4]
+100000478: add w8, w8, w9
+10000047c: ldr x9, [sp, #0x8]
+100000480: str w8, [x9]
+100000484: ldr x8, [sp, #0x8]
+100000488: ldr w0, [x8]
+10000048c: add sp, sp, #0x10
+100000490: ret
+</code></pre>
+<p>The callee reserves another 16 bytes (<code>0x10</code>). Its stack pointer is now <strong>T = S − 16</strong>. Both functions use <code>[sp, #0x8]</code>, but the caller means S + 8 and the callee means T + 8. Those are different memory locations containing copies of the same P. Match addresses and values; matching offset text alone cannot connect two stack slots.</p>
+<div class="table-wrap" tabindex="0" role="region" aria-label="Lesson table"><table><thead><tr><th scope="col">Instruction</th><th scope="col">State after the instruction</th></tr></thead><tbody>
+<tr><td><code>100000464</code>, <code>100000468</code></td><td>Callee memory at T + 8 holds P; T + 4 holds the increment 1. Memory at P still holds 6.</td></tr>
+<tr><td><code>10000046c</code></td><td><code>x8</code> holds P, an address.</td></tr>
+<tr><td><code>100000470</code></td><td><code>w8</code> holds 6, loaded from P. Writing <code>w8</code> replaces the prior pointer in <code>x8</code>; do not keep treating that register as P.</td></tr>
+<tr><td><code>100000474</code>, <code>100000478</code></td><td><code>w9</code> holds 1; addition makes <code>w8</code> hold 7. Memory at P still holds 6 until the store.</td></tr>
+<tr><td><code>10000047c</code>, <code>100000480</code></td><td><code>x9</code> reloads P; the four-byte store changes memory at P to 7. The stack copy of P is unchanged.</td></tr>
+<tr><td><code>100000484</code>, <code>100000488</code></td><td><code>x8</code> reloads P; <code>w0</code> receives 7 from that address.</td></tr>
+<tr><td><code>10000048c</code>, <code>100000490</code></td><td>The callee restores <code>sp</code> to S and returns to <code>1000004b0</code>, carrying 7 in <code>w0</code>.</td></tr>
+<tr><td><code>1000004b0</code> through <code>1000004b8</code> in the caller</td><td>The caller restores its saved registers and stack, then returns 7 in <code>w0</code>. It does not perform another temperature update.</td></tr>
+</tbody></table></div>
+<p>The demonstration prints <code>temperature=7 return=7</code>. A sound trace connects that output to the store and both returns. Simply listing <code>ldr</code>, <code>add</code> and <code>ret</code> would not explain which memory changed or what returned.</p>
+<h2 id="complete-a-different-starting-state">Complete a different starting state</h2>
+<p>Now suppose memory at P starts at <strong>4</strong>, with the same call and increment. Before running the check below, write four missing trace entries in your notes: the contents of <code>x8</code> after <code>10000046c</code>, of <code>w8</code> after <code>100000478</code>, of memory at P after <code>100000480</code>, and of <code>w0</code> at each <code>ret</code>. Also explain why the caller and callee&#x27;s <code>[sp, #0x8]</code> slots differ.</p>
+<p>Save the notes before checking. The first entry is an address; the remaining entries are integer values. This Python model checks only the arithmetic and returned value, not your explanation of registers or stack frames:</p>
+<pre tabindex="0" aria-label="Code example"><code class="language-python">old, increment = 4, 1
+updated = old + increment
+print(&quot;stored:&quot;, updated, &quot;callee return:&quot;, updated, &quot;caller return:&quot;, updated)
+</code></pre>
+<p>If your numbers disagree, locate the addition and store again. If the numbers agree but your pointer or stack explanation is unclear, retrace S, T and P separately. Then return to section 4 of <code>START-HERE.md</code> and apply the same procedure to the parcel listing.</p></article><nav class="previous-next" aria-label="Course sequence"><a href="START-HERE.html">Return to original project procedure (M02)</a></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#follow-the-caller-into-the-call">Follow the caller into the call</a></li><li><a href="#follow-the-callee-s-separate-storage">Follow the callee&#x27;s separate storage</a></li><li><a href="#complete-a-different-starting-state">Complete a different starting state</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

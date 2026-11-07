@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Text practice for Project1 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><article><h1 id="text-practice-for-project1">Text practice for Project1</h1>
+<p>Read <a href="m01.html">m01.md</a> alongside these questions. Keep a first choice and reason before opening the separate feedback.</p>
+<h2 id="m01-receipt-trace">m01-receipt-trace</h2>
+<p>Complete the receipt-counter trace with memory at P initially 10 and w1 = 4. The instructions are ldr w8,[x0]; add w9,w8,w1; str w9,[x0]; mov w0,w8; ret, with x0 initially P. What are the final count in memory and the returned receipt?</p>
+<ul>
+<li><p><strong>a.</strong> Count 10; receipt 14.</p></li>
+<li><p><strong>b.</strong> Count 14; receipt 10.</p></li>
+<li><p><strong>c.</strong> Count 14; receipt 14.</p></li>
+</ul>
+<p><a href="m01-practice-feedback.html#m01-receipt-trace">Feedback after choosing</a>.</p>
+<h2 id="m01-register-width">m01-register-width</h2>
+<p>A separate instruction sequence starts with x8 = 0x0000000100000007, then executes mov w8,#2. What does x8 hold afterward?</p>
+<ul>
+<li><p><strong>a.</strong> 0x0000000100000002: the old upper half is preserved.</p></li>
+<li><p><strong>b.</strong> 0x0000000100000007: w8 is a separate register.</p></li>
+<li><p><strong>c.</strong> 0x0000000000000002: the write also clears the upper half.</p></li>
+</ul>
+<p><a href="m01-practice-feedback.html#m01-register-width">Feedback after choosing</a>.</p>
+<h2 id="m01-repeat-state">m01-repeat-state</h2>
+<p>Apply receive(count, delivered), which returns (count + delivered, count), twice. Start with count 2 and use delivery 5 on both calls, carrying the new state forward. Which sequence is produced?</p>
+<ul>
+<li><p><strong>a.</strong> Receipts 2 then 7; final count 12.</p></li>
+<li><p><strong>b.</strong> Receipts 2 then 2; final count 7.</p></li>
+<li><p><strong>c.</strong> Receipts 7 then 12; final count 12.</p></li>
+</ul>
+<p><a href="m01-practice-feedback.html#m01-repeat-state">Feedback after choosing</a>.</p>
+<h2 id="m01-distinguishing-probe">m01-distinguishing-probe</h2>
+<p>Two candidate counter functions both add the delivery to the stored count. A returns the old count; B returns the new count. Which single observation distinguishes them?</p>
+<ul>
+<li><p><strong>a.</strong> Start at 9, deliver 0, and inspect the receipt.</p></li>
+<li><p><strong>b.</strong> Start at 9, deliver 2, and inspect the receipt.</p></li>
+<li><p><strong>c.</strong> Start at 9, deliver 2, and inspect only the final stored count.</p></li>
+</ul>
+<p><a href="m01-practice-feedback.html#m01-distinguishing-probe">Feedback after choosing</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m01-receipt-trace">m01-receipt-trace</a></li><li><a href="#m01-register-width">m01-register-width</a></li><li><a href="#m01-repeat-state">m01-repeat-state</a></li><li><a href="#m01-distinguishing-probe">m01-distinguishing-probe</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

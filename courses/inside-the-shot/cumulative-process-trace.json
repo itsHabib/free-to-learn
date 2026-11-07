@@ -1,0 +1,169 @@
+{
+  "schema": "re-lab-m05-trace-v1",
+  "scenario": "end-of-course-revisit",
+  "notice": "Actual local processes and OS reads; delivery sizes are scripted. Times do not establish exact latency or causality.",
+  "processes": {
+    "service": {
+      "pid": 62457,
+      "exit": 0
+    },
+    "client": {
+      "pid": 62458,
+      "exit": 0
+    }
+  },
+  "runtime": {
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]"
+  },
+  "sources": {
+    "build_review_trace.py": "5005afa4c6e9a53d9f6824a3806a039a082c0b098d635883f30d72dc84ffac43"
+  },
+  "events": [
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 1,
+      "t_ns": 3637180960674541,
+      "event": "start"
+    },
+    {
+      "role": "service",
+      "pid": 62457,
+      "seq": 1,
+      "t_ns": 3637180960689250,
+      "event": "start"
+    },
+    {
+      "role": "service",
+      "pid": 62457,
+      "seq": 2,
+      "t_ns": 3637180960740625,
+      "event": "write_return",
+      "offset": 0,
+      "count": 2,
+      "hex": "0006"
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 2,
+      "t_ns": 3637180960747333,
+      "event": "os_read",
+      "offset": 0,
+      "requested": 5,
+      "count": 2,
+      "hex": "0006"
+    },
+    {
+      "role": "service",
+      "pid": 62457,
+      "seq": 3,
+      "t_ns": 3637180960755958,
+      "event": "write_return",
+      "offset": 2,
+      "count": 5,
+      "hex": "73796e633a"
+    },
+    {
+      "role": "service",
+      "pid": 62457,
+      "seq": 4,
+      "t_ns": 3637180960765500,
+      "event": "write_return",
+      "offset": 7,
+      "count": 10,
+      "hex": "3500076e6f74653a3132"
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 3,
+      "t_ns": 3637180960765708,
+      "event": "os_read",
+      "offset": 2,
+      "requested": 5,
+      "count": 5,
+      "hex": "73796e633a"
+    },
+    {
+      "role": "service",
+      "pid": 62457,
+      "seq": 5,
+      "t_ns": 3637180960771208,
+      "event": "send_closed",
+      "total": 17
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 4,
+      "t_ns": 3637180960774208,
+      "event": "os_read",
+      "offset": 7,
+      "requested": 5,
+      "count": 5,
+      "hex": "3500076e6f"
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 5,
+      "t_ns": 3637180960781333,
+      "event": "os_read",
+      "offset": 12,
+      "requested": 5,
+      "count": 5,
+      "hex": "74653a3132"
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 6,
+      "t_ns": 3637180964182250,
+      "event": "os_read",
+      "offset": 17,
+      "requested": 5,
+      "count": 0,
+      "hex": ""
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 7,
+      "t_ns": 3637180964192791,
+      "event": "delivery",
+      "offset": 0,
+      "count": 3,
+      "hex": "000673"
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 8,
+      "t_ns": 3637180964198125,
+      "event": "delivery",
+      "offset": 3,
+      "count": 7,
+      "hex": "796e633a350007"
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 9,
+      "t_ns": 3637180964202625,
+      "event": "delivery",
+      "offset": 10,
+      "count": 7,
+      "hex": "6e6f74653a3132"
+    },
+    {
+      "role": "client",
+      "pid": 62458,
+      "seq": 10,
+      "t_ns": 3637180964207208,
+      "event": "eof",
+      "total": 17
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "format": "optimizer-bundle/1",
+  "kind": "learner",
+  "publicIdentity": "964c480e2c7793cf652efaeae4b42a0715b65a68989913ca596a48a5c0d7bd30",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5647,
+      "sha256": "b7872c939be55fb021fd1a392c90c1d4a23bbad0607b005521f69b48e08a4ed7"
+    },
+    {
+      "path": "API.md",
+      "bytes": 12544,
+      "sha256": "d7466fe518133a68fb41c1bd42b6a4212fd79b73a84fa6bc476baeb8753932fa"
+    },
+    {
+      "path": "RUBRIC.md",
+      "bytes": 2096,
+      "sha256": "46254400d75336e7b9ea294a5358edf588db9df50151055e9517049991d79f41"
+    },
+    {
+      "path": "NOTICE.md",
+      "bytes": 1668,
+      "sha256": "f348d6f9eb5254100b7d1502bf6422504221e17417b8047a938356d913f26695"
+    },
+    {
+      "path": "course.json",
+      "bytes": 853,
+      "sha256": "863805be7852e9f8c2e6370552dda7eeb11c46b9e8cba7b96dbddc941a03efee"
+    },
+    {
+      "path": "practice.json",
+      "bytes": 9300,
+      "sha256": "f1956168a1413a548f1dba9a65c866ced7bcdeed1c69d1e738eeb0a5946a71da"
+    },
+    {
+      "path": "runtime.mjs",
+      "bytes": 16719,
+      "sha256": "c7321f010a37248ee615ac5c7c52e39564fc6935c00850292c6c84ce389addbd"
+    },
+    {
+      "path": "json.mjs",
+      "bytes": 1643,
+      "sha256": "446daffda175211d902a1291fda83da83ecc6f15a709589b73696b99dccf35ce"
+    },
+    {
+      "path": "editor.mjs",
+      "bytes": 8993,
+      "sha256": "ca0a80f3a1705ff3936e79b954126f2c23fc3d7e33aafd6249338c6d3b8e18b5"
+    },
+    {
+      "path": "evidence.mjs",
+      "bytes": 3392,
+      "sha256": "8bbfbced6ce080919a652f37223b74a99a903424441d000164736f1ddd940596"
+    },
+    {
+      "path": "domains.mjs",
+      "bytes": 3338,
+      "sha256": "930682d4a3689dcd932d87b8d7e88923426a48657dfb1b7397e6222f3ce3e760"
+    },
+    {
+      "path": "pipeline.mjs",
+      "bytes": 2057,
+      "sha256": "b651784ab23af61d8b724b5f2a0914a214064dff65d5ddfd23405b94629cf682"
+    },
+    {
+      "path": "investigation.mjs",
+      "bytes": 5016,
+      "sha256": "883c24294af40d3ae1055abb74de4daaae79534bd5403e08cd098274f2aa79e5"
+    },
+    {
+      "path": "cases.mjs",
+      "bytes": 7245,
+      "sha256": "1381ac9760e9c961a5b36c558e78ff218e4d585c81e6214db08a4eeb7a1d4095"
+    },
+    {
+      "path": "checks.mjs",
+      "bytes": 12491,
+      "sha256": "5351893e03f5841833e5792522b186ee70a4edd242cb5923728217f09b5ad169"
+    },
+    {
+      "path": "starter.mjs",
+      "bytes": 1524,
+      "sha256": "a26ca9b16568f44b89de93f75763b9933b5b1975e2b086b97098dc94fbdd81cc"
+    },
+    {
+      "path": "worker.mjs",
+      "bytes": 2285,
+      "sha256": "71aa902d0bc7aef5062cf26d5c94eb60a827dc534ec775863507612ebe7f67a0"
+    },
+    {
+      "path": "cli.mjs",
+      "bytes": 11057,
+      "sha256": "d413b5365485147afc8761f2b7518a6e7be23577f5f9e2e05aaaaecc35268f37"
+    },
+    {
+      "path": "zip.mjs",
+      "bytes": 1781,
+      "sha256": "0046c0ef9d18a66b10b27cdded756a6643a1ab13ad3a1274d2bac395c1773b96"
+    },
+    {
+      "path": "index.html",
+      "bytes": 47657,
+      "sha256": "f429492777cb0009f618ccaf7ba3dc3f38702e221bc5fd8c8017b8726bc0b8c4"
+    },
+    {
+      "path": "lessons/01.md",
+      "bytes": 2704,
+      "sha256": "7e11fb4d8b37178e5d63372662963261dce31842a3451d86f9b89946a9bac142"
+    },
+    {
+      "path": "lessons/02.md",
+      "bytes": 2571,
+      "sha256": "f5b7e7a1561d3cc69da4688ed668b0f47ea2b971212df5976835074457dd710f"
+    },
+    {
+      "path": "lessons/03.md",
+      "bytes": 2693,
+      "sha256": "4411d32ba9a97fa81a077a8d22f50c5c4bdce18cc755964ee2b81043f68982bb"
+    },
+    {
+      "path": "lessons/04.md",
+      "bytes": 2678,
+      "sha256": "cc55d39f8b03c2a5533bd36b575ce49ba0d1a8527349cd48302c949cadbaf572"
+    },
+    {
+      "path": "lessons/05.md",
+      "bytes": 2421,
+      "sha256": "b7f70bc62e3da52325da480b3897956ba705f14de48700c4b5c42e673d2be26b"
+    },
+    {
+      "path": "lessons/06.md",
+      "bytes": 2349,
+      "sha256": "cac5648f65ae9361e6461086001d3df0114af0f18ff215be9b6740e2ee93e556"
+    },
+    {
+      "path": "lessons/07.md",
+      "bytes": 3748,
+      "sha256": "612e15c999a752bbad1ed74bc3bcabad6bb18420774f1a7e373d08780bb91b37"
+    },
+    {
+      "path": "lessons/08.md",
+      "bytes": 4046,
+      "sha256": "c28a4e1d60c43e7ae043405a8d6060587d4077fb573f8ce607dd0c90bf8c34b5"
+    },
+    {
+      "path": "lessons/09.md",
+      "bytes": 2918,
+      "sha256": "5c4a71ac147eecc78eb84ab0957698224dedd60e9882c83158fba72bf6d48667"
+    },
+    {
+      "path": "practice-state.mjs",
+      "bytes": 2666,
+      "sha256": "159799710d5471590fed4d80f8ed2cccf15fd9c27c761c956de72f24d553e7d4"
+    },
+    {
+      "path": "reader-ui.js",
+      "bytes": 4369,
+      "sha256": "01a5a39960b80f9902c09dd129c3ab320c7ac8f844e96dd1e106fbbdbe45dd2a"
+    },
+    {
+      "path": "curriculum.json",
+      "bytes": 10862,
+      "sha256": "8c1ae394507b5e147d55a0397242776a4fcad2e01eba813f0255c81dd8ddc656"
+    }
+  ],
+  "qualification": "Targeted cosmetic-reduction repair: 18 regression checks and 8 affected alternative/invariant checks. Browser, independent successor review and human acceptance pending."
+}

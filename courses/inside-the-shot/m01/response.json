@@ -1,0 +1,22 @@
+{
+  "question_version": "re-lab-m01-v3",
+  "miniature": {
+    "position": null,
+    "velocity": null,
+    "reason": ""
+  },
+  "claim": "",
+  "reason": "",
+  "alternative": "",
+  "probe": {
+    "target": "cart",
+    "args": [],
+    "predicted_rows": [],
+    "distinguishes": ""
+  },
+  "observations": [],
+  "static_evidence": [],
+  "revision": "",
+  "transfer_decision": "",
+  "assistance_details": ""
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Set up one private workspace · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="../learning/m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="../learning/m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="../learning/m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="../learning/m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="../learning/m05.html">Prepare</a> · <a href="START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="../learning/m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="../learning/m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><nav class="project-context" aria-label="This project"><a href="../learning/m05.html">Preparation lesson</a> · <a href="START-HERE.html">Original project procedure</a></nav><article><h1 id="set-up-one-private-workspace">Set up one private workspace</h1>
+<p>The verified host is macOS ARM64, Python 3.14.6. Nothing is installed by this packet. A Python 3.11+ interpreter on another POSIX system may run it, but that route is unverified. Windows cannot use this procedure. No browser, network, port, administrator access or compiler is used. Do not substitute a downloaded service or a proprietary program.</p>
+<ol>
+<li><p>If you extracted the complete course ZIP, use its existing <code>m05</code> folder; there is no separate module ZIP to find or extract. If you received a standalone M5 ZIP, extract it once into a new private folder. Open Terminal in the folder containing this <code>setup.md</code> and <code>decoder.py</code>. The files listed below should be directly inside that folder. Keep the whole folder as your working copy.</p></li>
+<li><p>Check the location and tools:</p></li>
+</ol>
+<pre tabindex="0" aria-label="Code example"><code class="language-sh">pwd
+ls README.md START-HERE.md decoder.py run_lab.py manifest.json
+uname -sm
+python3 --version
+</code></pre>
+<p><code>pwd</code> prints your current folder. <code>ls</code> must find all five named files. <code>uname -sm</code> should say <code>Darwin arm64</code> for the verified route. The Python command should print <code>Python 3.14.6</code>. If a file is missing, change to the extracted folder with Terminal&#x27;s <code>cd</code> command (type <code>cd </code>, drag the folder in, then press Return). If Python is absent or the platform differs, stop this route and ask the course operator; this lesson does not require you to install or change system software.</p>
+<ol start="3">
+<li><p>Check that your decoder starter and JSON worksheet are readable:</p></li>
+</ol>
+<pre tabindex="0" aria-label="Code example"><code class="language-sh">python3 -m py_compile decoder.py
+python3 -m json.tool response.json
+</code></pre>
+<p>Compilation creates a disposable <code>__pycache__</code> folder and prints nothing on success; it does not complete the decoder. The second command displays the blank worksheet. For a JSON error, use a text editor to repair the named line: double-quoted keys/strings, no comments, no trailing comma. Preserve the original <code>question_version</code>.</p>
+<ol start="4">
+<li><p>Verify the packet before editing. This script reads every file listed in the supplied manifest and compares its SHA256 fingerprint (a content identifier) with the packaged value:</p></li>
+</ol>
+<pre tabindex="0" aria-label="Code example"><code class="language-sh">python3 - &lt;&lt;&#x27;PY&#x27;
+import hashlib, json
+from pathlib import Path
+manifest = json.loads(Path(&quot;manifest.json&quot;).read_text())
+for name, expected in manifest[&quot;files&quot;].items():
+    actual = hashlib.sha256(Path(name).read_bytes()).hexdigest()
+    if actual != expected:
+        raise SystemExit(&quot;Packet differs: &quot; + name)
+print(&quot;Packet files match the manifest.&quot;)
+PY
+</code></pre>
+<p>Expected: <code>Packet files match the manifest.</code> Run this before editing <code>response.json</code> or <code>decoder.py</code>; later edits should differ. A mismatch before editing means use a fresh extraction, retain the bad packet and report the named file. The manifest documents the baseline; it does not authenticate an unknown sender. Saved records later retain both this original manifest and your changed decoder.</p>
+<p>You are ready for START-HERE. The first live run comes after a worked example and a saved prediction. Run commands in the extracted folder throughout. Every run needs a new output folder; a refusal to reuse an old folder protects its evidence. Choose a new suffix such as <code>runs/first-2</code> and record that path in your notes. Do not delete an earlier attempt to make a command succeed.</p></article><nav class="previous-next" aria-label="Course sequence"><a href="START-HERE.html">Return to original project procedure (M05)</a></nav></main><aside class="page-sidebar"></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

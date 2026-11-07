@@ -40,3 +40,10 @@ Run locally with already installed tools from the repository root:
 The JSON-formatted .yml workflow is valid YAML and locally parsed as JSON. Public
 course/source licenses and third-party terms apply unchanged. CI is regression
 evidence; current qualification is described in QUALIFICATION.md.
+
+The configured matrix now includes the five original terminal releases, Inside
+the Shot and Compiler. Inside the Shot checks its exact packet, supplied native
+ARM64 target launch and initial public Python model diagnostic. Compiler reads
+all nine lessons and checks setup/starter/export/restore. These remain public
+interface regressions, not complete learner solutions. Full-path/private-fixture
+CI was explicitly deferred; no credential infrastructure is being added for it.

@@ -251,6 +251,219 @@
         "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
         "One-time blind trials and private source-aware full replay evidence remain separate."
       ]
+    },
+    {
+      "id": "inside-the-shot",
+      "archive": ".packages/inside-the-shot.zip",
+      "sha256": "54c24bd29da1f63312c49eafb7a97d7b22978ea2b046ca93a3c118b77c33861e",
+      "archive_prefix": "",
+      "direct_root": "courses/inside-the-shot",
+      "root": ".",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "packet_integrity",
+          "argv": [
+            "python3",
+            "check_packet.py"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "provided_native_target_profile",
+          "argv": [
+            "./m01/cart",
+            "0",
+            "0",
+            "0",
+            "1"
+          ],
+          "exit": 0,
+          "match": "\"position\"\\s*:"
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "python3",
+            "m01/check_basic.py"
+          ],
+          "exit": 1,
+          "match": "FAIL command response"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Full exercise/capstone success requires a learner-owned implementation; no private solution is published as a CI fixture.",
+        "Owner full-path evidence and independent AI blind trials are separate from this deterministic public regression job.",
+        "Browser/human/other profiles retain original qualifications."
+      ]
+    },
+    {
+      "id": "compiler-optimizer",
+      "archive": ".packages/compiler-optimizer.zip",
+      "sha256": "8633d0c07b2ff73205ee37614d74d630a35a452afdfd15cf55da87540cabbb20",
+      "archive_prefix": "compiler-optimizer/",
+      "direct_root": "courses/compiler-optimizer",
+      "root": "compiler-optimizer",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "start",
+            "work"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_1",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "01"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_2",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "02"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_3",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "03"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_4",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "04"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_5",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "05"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_6",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "06"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_7",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "07"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_8",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "08"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_access_9",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "lesson",
+            "09"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "check",
+            "01",
+            "work",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "TODO U01"
+        },
+        {
+          "stage": "starter_workspace_export",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "export",
+            "work",
+            "ci-export.json"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "starter_workspace_restore",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "restore",
+            "ci-export.json",
+            "ci-restored"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "restored_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "check",
+            "01",
+            "ci-restored",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "TODO U01"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Full exercise/capstone success requires a learner-owned implementation; no private solution is published as a CI fixture.",
+        "Owner full-path evidence and independent AI blind trials are separate from this deterministic public regression job.",
+        "Browser/human/other profiles retain original qualifications."
+      ]
     }
   ]
 }

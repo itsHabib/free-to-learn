@@ -1,0 +1,64 @@
+{
+  "compiler": {
+    "command": "clang",
+    "flags": [
+      "-std=c11",
+      "-O0",
+      "-g0",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fno-inline",
+      "-fno-stack-protector"
+    ],
+    "link_flags": [
+      "-Wl,-reproducible"
+    ],
+    "version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix"
+  },
+  "disassembler": {
+    "command": "objdump",
+    "flags": [
+      "--disassemble-symbols=_lab_step",
+      "--no-show-raw-insn"
+    ],
+    "version": "Apple LLVM version 21.0.0\n  Optimized build.\n\n\n  Registered Targets:\n    aarch64    - AArch64 (little endian)\n    aarch64_32 - AArch64 (little endian ILP32)\n    aarch64_be - AArch64 (big endian)\n    arm        - ARM\n    arm64      - ARM64 (little endian)\n    arm64_32   - ARM64 (little endian ILP32)\n    armeb      - ARM (big endian)\n    thumb      - Thumb\n    thumbeb    - Thumb (big endian)\n    x86        - 32-bit X86: Pentium-Pro and above\n    x86-64     - 64-bit X86: EM64T and AMD64\n"
+  },
+  "host_specific": true,
+  "platform": {
+    "machine": "arm64",
+    "release": "25.6.0",
+    "system": "Darwin"
+  },
+  "schema_version": 1,
+  "source_sha256": {
+    "courses/re-lab/source/baseline.c": "953434b2394bc0ce8277e9e614fc65c059de17fdec3ff0724d862c6e738d3111",
+    "courses/re-lab/source/cart.c": "6e91795a8893686a0e95e505a36a5bd8fe12fb67c8881cdd780a237d1e954242",
+    "courses/re-lab/source/cart.h": "de5bd889e1435094e5d05c6fd9397f5c83033fc938c89515167de50b4da68b07",
+    "courses/re-lab/source/crossing.c": "dff26e8a4ff85db92e26c54ab7ec89c00af8d88cc7d18e4092197d3f1d69c00a",
+    "courses/re-lab/source/transfer.c": "88db369becedd38217bfadde9dadb383d198c42bebbdd0e4f77574ecef887a70"
+  },
+  "variants": {
+    "baseline": {
+      "assembly": "cart.asm",
+      "assembly_sha256": "fdd8ca401a8168c24aa7ebf99bdbaebb2a0d3044d462bda07add24ab4cbbf8b5",
+      "binary": "cart",
+      "binary_sha256": "5e3c9dd99052749bccf36ad03524778be16b0d8dd1f3f913e3a8578acf6df85c",
+      "step_symbol": "lab_step"
+    },
+    "crossing": {
+      "assembly": "cart-crossing.asm",
+      "assembly_sha256": "fc2c60ece8b53def38d0add042717af599225f4dc6280b483d888b015a3f9735",
+      "binary": "cart-crossing",
+      "binary_sha256": "2bdc966dc50f8e106174c3436977b39322c12a29d7cf0d53cf594cbbec7e264a",
+      "step_symbol": "lab_step"
+    },
+    "transfer": {
+      "assembly": "cart-transfer.asm",
+      "assembly_sha256": "95edd585b593b9a75aabe4ef6e5646c6978244ba0ed26b14d02d1249ce8813f8",
+      "binary": "cart-transfer",
+      "binary_sha256": "8202429986184770c91ba516765d4965710a4b0fb848b8dd4cadb3e61a551bf3",
+      "step_symbol": "lab_step"
+    }
+  }
+}

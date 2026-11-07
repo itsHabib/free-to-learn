@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practice feedback for Project4 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><aside class="notice">Authored project practice feedback. Follow the original project’s save-before-reveal order. This separate help page is not a secure exam or evidence of mastery.</aside><article><h1 id="practice-feedback-for-project4">Practice feedback for Project4</h1>
+<p>Open after choosing on <a href="m04-practice.html">m04-practice.md</a>. Preserve the original answer and any later correction.</p>
+<h2 id="m04-preserve-predicate">m04-preserve-predicate</h2>
+<p>Correct choice: b.</p>
+<p>Count(2|elm,elm)=2 and the second elm is already in seen. For every valid input with fewer than 2 names, no name can repeat. The claimed measure is name count, not byte length.</p>
+<ul>
+<li><p><strong>a.</strong> The header declares four names but supplies two, so count validation fails before the repeat guard. Regenerate dependent metadata and check the exact failure stage.</p></li>
+<li><p><strong>b.</strong> The declared count 2 matches two names; the second elm triggers the same guard. One name cannot contain a repeat, establishing the two-name lower bound for this predicate.</p></li>
+<li><p><strong>c.</strong> This valid one-name control is accepted by the shown loop. Minimality is constrained by retaining the failure, not just by being small and valid.</p></li>
+</ul>
+<p><a href="m04-practice.html#m04-preserve-predicate">Return to this question</a>.</p>
+<h2 id="m04-first-contradiction">m04-first-contradiction</h2>
+<p>Correct choice: a.</p>
+<p>Iteration indices for 2 names are 0 and 1. At index 1, elm belongs to the one-element seen set, so the shown guard raises. Since the grammar allows repetitions and 2=2 at the earlier count check, this guard is the demonstrated contradiction.</p>
+<ul>
+<li><p><strong>a.</strong> Index 1 is the second name, not a declared count. The actual membership value explains the executed rejection; the grammar permits that occurrence, while the earlier count comparison agreed at 2.</p></li>
+<li><p><strong>b.</strong> A zero-based index is a position. It is not the header count. The trace supplies both count values as 2; inspect their producers rather than deriving a count from an index.</p></li>
+<li><p><strong>c.</strong> Suppressing an exception could discard the entire list. The repair must retain all permitted names and preserve other validation rules; successful termination alone cannot establish that.</p></li>
+</ul>
+<p><a href="m04-practice.html#m04-first-contradiction">Return to this question</a>.</p>
+<h2 id="m04-coordinate-window">m04-coordinate-window</h2>
+<p>Correct choice: c.</p>
+<p>Region=[6,6+5)=[6,11). Read=[9,9+3)=[9,12). Intersection=[9,11) has length 2; 3-2=1 read byte is outside the region.</p>
+<ul>
+<li><p><strong>a.</strong> The access stays inside the whole buffer but exceeds the smaller region. Name the region whose bound the operation must respect.</p></li>
+<li><p><strong>b.</strong> Offset 9 and length 5 have different origins. Convert both the region and read into file-coordinate intervals before comparing them.</p></li>
+<li><p><strong>c.</strong> The exclusive region end is 6+5=11. The read covers 9, 10 and 11; its overlap has two bytes, leaving 3-2=1 byte beyond the region.</p></li>
+</ul>
+<p><a href="m04-practice.html#m04-coordinate-window">Return to this question</a>.</p>
+<h2 id="m04-regression-controls">m04-regression-controls</h2>
+<p>Correct choice: b.</p>
+<p>2|elm,elm declares and supplies 2 names, both retained by the contract. 2|elm declares 2 but supplies 1, so 2 != 1 must still cause refusal. The pair tests acceptance with content plus an independent refusal.</p>
+<ul>
+<li><p><strong>a.</strong> Two matching runs can share the same bug. Derive an expected value independently from the format and retain the earlier failure as a regression case.</p></li>
+<li><p><strong>b.</strong> The valid case must retain both names, while 2|elm declares two and supplies one. Together they challenge data loss and a weakened count guard; further controls still remain useful.</p></li>
+<li><p><strong>c.</strong> The format requires names to be returned for valid nonempty lists. A blanket empty result conceals the original loss of permitted records instead of addressing it.</p></li>
+</ul>
+<p><a href="m04-practice.html#m04-regression-controls">Return to this question</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m04-preserve-predicate">m04-preserve-predicate</a></li><li><a href="#m04-first-contradiction">m04-first-contradiction</a></li><li><a href="#m04-coordinate-window">m04-coordinate-window</a></li><li><a href="#m04-regression-controls">m04-regression-controls</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

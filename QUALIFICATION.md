@@ -28,3 +28,28 @@ profiles retain their original course qualifications. A local clone verifies
 exact Git transport/files and documented command behavior; it does not by
 itself establish anonymous GitHub access, live website behavior, accessibility
 or human learning. Human studies are not added as a mandatory release gate.
+
+## Additional terminal routes
+
+Inside the Shot's seven public native projects, capstone variants,31 text
+practice questions, cumulative review and seven notebook export/restore paths
+were exercised on macOS26.6.2 arm64/Python3.14.6 by the original owner using
+retained AI learner work. This is source-aware engineering evidence. The earlier
+M2 sensor prediction was late and remains unqualified as an unaided prediction.
+An omitted linked retry and export metadata were corrected additively in the
+qualification evidence; no course code was changed. Instructor-only assessment
+is excluded. Browser/Ghidra/other profiles and human learning are not claimed.
+
+Compiler's nine units,18 practice answers, written follow-ups, cumulative
+optimizer, miscompilation capstone and export/restore passed an owner-authored
+source-aware run. Earlier failures, help,59 receipts and refusal controls remain
+private and preserved. Finite domains and a best-found reduction are bounded
+evidence, not a universal proof or an independently graded causal explanation.
+No new browser, human or source-blind claim follows from this owner run.
+
+One-time independent AI learner trials are recorded separately and never
+incorporated as public code submissions. Public CI checks only its documented
+setup/interface regression profile; complete private-solution replay is deferred.
+Earlier build-status prose retained inside course archives describes its
+historical package scope; this qualification file records the current terminal
+release scope without changing those original first attempts or prior reports.

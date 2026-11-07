@@ -1,7 +1,8 @@
 # Free to Learn course projects
 
 Source for Time-travel Debugger, Recoverable Storage, Small Language-model
-Runtime, Firmware Forensics (terminal route) and Adaptive Decision Engine.
+Runtime, Firmware Forensics (terminal route), Adaptive Decision Engine, Inside
+the Shot and Compiler and Optimizer.
 Canonical development remains private; this learner snapshot has one clean
 initial commit and contains no private development history.
 

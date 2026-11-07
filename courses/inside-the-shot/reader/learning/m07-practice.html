@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Text practice for Project7 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><article><h1 id="text-practice-for-project7">Text practice for Project7</h1>
+<p>Read <a href="m07.html">m07.md</a> alongside these questions. Keep a first choice and reason before opening the separate feedback.</p>
+<h2 id="m07-distinct-layouts">m07-distinct-layouts</h2>
+<p>Complete a new lift entry. File bytes are 45 01 44 02 at file-buffer base 0x7000. The two-byte entry starts at file offset 2. Toy packing is direction + 256*amount; state is separately allocated at 0x9000. Which call values are justified?</p>
+<ul>
+<li><p><strong>a.</strong> x0=0x7002 and w1=0x9000, because the entry pointer is the mutable state.</p></li>
+<li><p><strong>b.</strong> x0=0x9000 and w1=0x0244 (580); 0x7002 is the entry&#x27;s address, not its packed value.</p></li>
+<li><p><strong>c.</strong> x0=2 and w1=0x4402, because file offsets are pointers and the first byte is the most significant byte.</p></li>
+</ul>
+<p><a href="m07-practice-feedback.html#m07-distinct-layouts">Feedback after choosing</a>.</p>
+<h2 id="m07-competing-hypotheses">m07-competing-hypotheses</h2>
+<p>Fresh toy sequence: start at floor 2, travel 0; moves U3, D6, U1; floors must remain 0..6. Rejected moves leave working state unchanged. How do continue-after-rejection and stop-at-rejection differ?</p>
+<ul>
+<li><p><strong>a.</strong> Continue produces 3 events and ends (6,4); stop produces 2 events and ends (5,3).</p></li>
+<li><p><strong>b.</strong> Both produce 3 events and end (0,10), because every amount changes travel even when the move is rejected.</p></li>
+<li><p><strong>c.</strong> Both produce 2 events and end (5,3), so including a later U1 cannot distinguish them.</p></li>
+</ul>
+<p><a href="m07-practice-feedback.html#m07-competing-hypotheses">Feedback after choosing</a>.</p>
+<h2 id="m07-invariant-diagnosis">m07-invariant-diagnosis</h2>
+<p>For a lift starting at floor 1 with travel 0, which reported (floor, travel) is impossible under the supplied accepted-move rules? Amounts are nonnegative, and rejected moves change neither value.</p>
+<ul>
+<li><p><strong>a.</strong> (4,3), because arriving above the start requires at least one downward move.</p></li>
+<li><p><strong>b.</strong> (4,5), because travel must equal displacement even when both directions occur.</p></li>
+<li><p><strong>c.</strong> (4,1), because displacement 3 exceeds total accepted travel 1.</p></li>
+</ul>
+<p><a href="m07-practice-feedback.html#m07-invariant-diagnosis">Feedback after choosing</a>.</p>
+<h2 id="m07-published-state">m07-published-state</h2>
+<p>A hypothetical run starts at (floor 2, travel 0), evaluates U3, D6, U1, and reports event snapshots (5,3), (5,3), (6,4), then final (2,0) with publication=false. Which interpretation is supported?</p>
+<ul>
+<li><p><strong>a.</strong> No internal state changes occurred, because final equals the initial state.</p></li>
+<li><p><strong>b.</strong> The event history records speculative travel 4, while the published state retains travel 0; applying the speculative movement ledger to final would mix histories.</p></li>
+<li><p><strong>c.</strong> Final must be wrong because the last event snapshot is always the published state.</p></li>
+</ul>
+<p><a href="m07-practice-feedback.html#m07-published-state">Feedback after choosing</a>.</p>
+<h2 id="m07-evidence-boundary">m07-evidence-boundary</h2>
+<p>A model returns dictionaries with the required keys and bounded integers, and its final outputs match native results on six saved files. You want to claim that each decoded field has the correct meaning. What is still needed?</p>
+<ul>
+<li><p><strong>a.</strong> Separate byte/extraction and call evidence for field meanings; two compensating decoder/replay mistakes could still match those six final outputs.</p></li>
+<li><p><strong>b.</strong> Nothing: correct dictionary shape proves every label refers to the correct input bytes on every file.</p></li>
+<li><p><strong>c.</strong> Only more repetitions of the same six outputs; repetition necessarily identifies each hidden field independently.</p></li>
+</ul>
+<p><a href="m07-practice-feedback.html#m07-evidence-boundary">Feedback after choosing</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m07-distinct-layouts">m07-distinct-layouts</a></li><li><a href="#m07-competing-hypotheses">m07-competing-hypotheses</a></li><li><a href="#m07-invariant-diagnosis">m07-invariant-diagnosis</a></li><li><a href="#m07-published-state">m07-published-state</a></li><li><a href="#m07-evidence-boundary">m07-evidence-boundary</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

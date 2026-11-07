@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Text practice for Project2 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><article><h1 id="text-practice-for-project2">Text practice for Project2</h1>
+<p>Read <a href="m02.html">m02.md</a> alongside these questions. Keep a first choice and reason before opening the separate feedback.</p>
+<h2 id="m02-complete-fields">m02-complete-fields</h2>
+<p>Complete the ten-byte gauge decode for 80 ff a6 77 00 01 7f c0 77 19. Bias is signed little-endian raw[0:2], cycles is unsigned little-endian raw[4:6], and code is unsigned raw[6]. Which result follows?</p>
+<ul>
+<li><p><strong>a.</strong> bias = 65408, cycles = 256, code = 127.</p></li>
+<li><p><strong>b.</strong> bias = -128, cycles = 256, code = 127.</p></li>
+<li><p><strong>c.</strong> bias = -128, cycles = 1, code = 127.</p></li>
+</ul>
+<p><a href="m02-practice-feedback.html#m02-complete-fields">Feedback after choosing</a>.</p>
+<h2 id="m02-probe-width">m02-probe-width</h2>
+<p>You are investigating the gauge cycle field. Hypothesis A reads only byte 4; B reads two little-endian bytes starting at 4. Which pair most directly tests the missing high byte while keeping other field inputs fixed?</p>
+<ul>
+<li><p><strong>a.</strong> Cycles 255 and 256: compare ff 00 with 00 01 at offsets 4–5.</p></li>
+<li><p><strong>b.</strong> Cycles 1 and 2: compare 01 00 with 02 00 at offsets 4–5.</p></li>
+<li><p><strong>c.</strong> Keep cycles 1 and change the bias from -1 to 0.</p></li>
+</ul>
+<p><a href="m02-practice-feedback.html#m02-probe-width">Feedback after choosing</a>.</p>
+<h2 id="m02-call-versus-layout">m02-call-versus-layout</h2>
+<p>In the worked gauge call, P points to bias -3 and cycles 513, and increment is 5. The caller&#x27;s stack is S and the callee&#x27;s is T = S - 16. Each saves P at its own [sp,#8]. The callee sign-loads bias, adds 5, stores a halfword at P, then loads cycles from P+4 into w0. What follows?</p>
+<ul>
+<li><p><strong>a.</strong> Bias becomes 2, and both functions return 2 because that was the latest update.</p></li>
+<li><p><strong>b.</strong> The saved pointer proves that bytes at record offset 8 contain P.</p></li>
+<li><p><strong>c.</strong> Bias becomes 2; both returns carry 513; S+8 and T+8 are distinct stack slots containing P.</p></li>
+</ul>
+<p><a href="m02-practice-feedback.html#m02-call-versus-layout">Feedback after choosing</a>.</p>
+<h2 id="m02-reordered-record">m02-reordered-record</h2>
+<p>A revised six-byte gauge declares code at [0:1], unsigned little-endian cycles at [1:3], an ignored byte at [3:4], and signed little-endian bias at [4:6]. Decode 81 01 02 aa 00 80.</p>
+<ul>
+<li><p><strong>a.</strong> code = 129, cycles = 258, bias = 128.</p></li>
+<li><p><strong>b.</strong> code = 129, cycles = 513, bias = -32768.</p></li>
+<li><p><strong>c.</strong> Reuse the original ten-byte decoder unchanged, because the field types survived.</p></li>
+</ul>
+<p><a href="m02-practice-feedback.html#m02-reordered-record">Feedback after choosing</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m02-complete-fields">m02-complete-fields</a></li><li><a href="#m02-probe-width">m02-probe-width</a></li><li><a href="#m02-call-versus-layout">m02-call-versus-layout</a></li><li><a href="#m02-reordered-record">m02-reordered-record</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

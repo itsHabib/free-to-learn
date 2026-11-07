@@ -1,0 +1,9 @@
+{
+  "version": "re-lab-m03-v1",
+  "questions": {
+    "prediction": "Before running each probe or revealing practice feedback, save predicted bytes/decoded values, two competing interpretations and the observation that would separate them. Save results later, with discrepancies.",
+    "layout": "Before checker access, save your inspector, field map (offset, width, signedness and evidence for every field), envelope relation and unknown byte ranges. Preserve failed and repaired code in distinct records.",
+    "transfer": "Before opening transfer.trail or native read output, predict where your model may fail. Decode it, explain nonzero unexplained bytes and compare at least two new native-generated files with your earlier predictions.",
+    "handoff": "Preserve final source, format note, finite-check output, remaining unknowns and assistance. Export and resume without changing earlier records. State what M4 may rely on and what remains a hypothesis."
+  }
+}

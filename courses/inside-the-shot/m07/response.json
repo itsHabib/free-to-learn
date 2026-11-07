@@ -1,0 +1,16 @@
+{
+  "question_version": "re-lab-m07-v1",
+  "hypotheses": [],
+  "predictions": [],
+  "probes": [],
+  "format": {},
+  "state_model": "",
+  "instruction_evidence": [],
+  "counterexample": "",
+  "repair_or_challenged_alternative": "",
+  "transfer": "",
+  "fresh_prediction": "",
+  "reproduction_commands": [],
+  "limitations": [],
+  "assistance_details": ""
+}

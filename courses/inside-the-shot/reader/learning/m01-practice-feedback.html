@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practice feedback for Project1 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><aside class="notice">Authored project practice feedback. Follow the original project’s save-before-reveal order. This separate help page is not a secure exam or evidence of mastery.</aside><article><h1 id="practice-feedback-for-project1">Practice feedback for Project1</h1>
+<p>Open after choosing on <a href="m01-practice.html">m01-practice.md</a>. Preserve the original answer and any later correction.</p>
+<h2 id="m01-receipt-trace">m01-receipt-trace</h2>
+<p>Correct choice: b.</p>
+<p>w8 = 10; w9 = 10 + 4 = 14; memory[P] = w9 = 14; w0 = w8 = 10.</p>
+<ul>
+<li><p><strong>a.</strong> The addition puts 14 in w9, then str copies w9 to memory at P. The final mov reads w8, which still contains 10. Follow the destination on each line instead of swapping memory and return.</p></li>
+<li><p><strong>b.</strong> The load retains old count 10 in w8. Addition produces 14 in w9; the store makes memory 14. Nothing replaces w8, so mov w0,w8 returns 10.</p></li>
+<li><p><strong>c.</strong> The store changed memory, not w8. The add destination is w9, so the final mov reads the old 10. Returning 14 would require a different source for that mov.</p></li>
+</ul>
+<p><a href="m01-practice.html#m01-receipt-trace">Return to this question</a>.</p>
+<h2 id="m01-register-width">m01-register-width</h2>
+<p>Correct choice: c.</p>
+<p>An ARM64 W-register write zero-extends its 32-bit result into the matching X register: x8 = zero_extend_64(2) = 2.</p>
+<ul>
+<li><p><strong>a.</strong> A write to w8 does more than replace the low bits: ARM64 also zeros x8&#x27;s upper 32 bits. Revisit the shared x8/w8 storage rule before carrying an old pointer forward.</p></li>
+<li><p><strong>b.</strong> w8 names the low 32 bits of x8. They are not independent storage locations, so a write to w8 changes x8.</p></li>
+<li><p><strong>c.</strong> Writing w8 puts 2 in the low 32 bits and zero in the upper 32 bits of x8. The entire x8 is therefore 2; the previous 64-bit value is gone.</p></li>
+</ul>
+<p><a href="m01-practice.html#m01-register-width">Return to this question</a>.</p>
+<h2 id="m01-repeat-state">m01-repeat-state</h2>
+<p>Correct choice: a.</p>
+<p>receive(2,5) = (7,2); receive(7,5) = (12,7). Receipts are [2,7] and retained state is 12.</p>
+<ul>
+<li><p><strong>a.</strong> The first call returns (7, 2). Feeding its new state 7 to the second returns (12, 7). The receipts report each call&#x27;s input state.</p></li>
+<li><p><strong>b.</strong> This repeats a call starting at 2 instead of carrying state 7 into the second call. Write the next input beside the first returned pair before updating again.</p></li>
+<li><p><strong>c.</strong> The final count is right, but these receipts report the updated states. The function&#x27;s second component is the old count, so read the pair&#x27;s roles separately.</p></li>
+</ul>
+<p><a href="m01-practice.html#m01-repeat-state">Return to this question</a>.</p>
+<h2 id="m01-distinguishing-probe">m01-distinguishing-probe</h2>
+<p>Correct choice: b.</p>
+<p>For start 9 and delivery 2: both stored states are 11, while A returns 9 and B returns 11. For delivery 0 both returns are 9.</p>
+<ul>
+<li><p><strong>a.</strong> With delivery zero, old and new are both 9. The receipt agrees under both explanations, so this run cannot choose between them.</p></li>
+<li><p><strong>b.</strong> The old-count explanation predicts receipt 9 and the new-count explanation predicts 11. Observing the receipt can reject one explanation for this case.</p></li>
+<li><p><strong>c.</strong> Both explanations store 9 + 2 = 11. They differ in the return&#x27;s source, so the final stored count is the wrong observation to separate them.</p></li>
+</ul>
+<p><a href="m01-practice.html#m01-distinguishing-probe">Return to this question</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m01-receipt-trace">m01-receipt-trace</a></li><li><a href="#m01-register-width">m01-register-width</a></li><li><a href="#m01-repeat-state">m01-repeat-state</a></li><li><a href="#m01-distinguishing-probe">m01-distinguishing-probe</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

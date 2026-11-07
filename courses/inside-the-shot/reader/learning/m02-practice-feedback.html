@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practice feedback for Project2 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><aside class="notice">Authored project practice feedback. Follow the original project’s save-before-reveal order. This separate help page is not a secure exam or evidence of mastery.</aside><article><h1 id="practice-feedback-for-project2">Practice feedback for Project2</h1>
+<p>Open after choosing on <a href="m02-practice.html">m02-practice.md</a>. Preserve the original answer and any later correction.</p>
+<h2 id="m02-complete-fields">m02-complete-fields</h2>
+<p>Correct choice: b.</p>
+<p>bias_unsigned = 0x80 + 0xff<em>256 = 65408; bias_signed = 65408 - 65536 = -128; cycles = 0x00 + 0x01</em>256 = 256; code = 0x7f = 127.</p>
+<ul>
+<li><p><strong>a.</strong> 65408 is the unsigned value of 80 ff. The bias is signed and its top bit is set, so subtract 65536. The cycle and code readings in this choice use the stated rules.</p></li>
+<li><p><strong>b.</strong> Bias bits give 128 + 255 × 256 = 65408, then signed interpretation gives -128. Cycles 00 01 give 0 + 1 × 256 = 256. Code 7f is 127.</p></li>
+<li><p><strong>c.</strong> 00 01 means 256 in little-endian order. A value of 1 reverses its byte weights. Keep the slice correct while checking the byte-order decision separately.</p></li>
+</ul>
+<p><a href="m02-practice.html#m02-complete-fields">Return to this question</a>.</p>
+<h2 id="m02-probe-width">m02-probe-width</h2>
+<p>Correct choice: a.</p>
+<p>Two-byte little-endian 255 = ff 00 and 256 = 00 01. Reading only byte 4 yields 255 and 0 instead of 255 and 256.</p>
+<ul>
+<li><p><strong>a.</strong> At 255 to 256, the low byte wraps from ff to 00 and the next becomes 01. A predicts cycle values 255 and 0; B predicts 255 and 256. The held-fixed fields make the changed byte easier to attribute.</p></li>
+<li><p><strong>b.</strong> Both hypotheses read 1 and 2 for these bytes because the high byte remains zero. This ordinary pair does not reject the one-byte explanation.</p></li>
+<li><p><strong>c.</strong> Changing bias can help locate bias bytes, but the cycle value remains 1 under both cycle-width hypotheses. Choose a probe whose cycle predictions disagree.</p></li>
+</ul>
+<p><a href="m02-practice.html#m02-probe-width">Return to this question</a>.</p>
+<h2 id="m02-call-versus-layout">m02-call-versus-layout</h2>
+<p>Correct choice: c.</p>
+<p>bias_after = -3 + 5 = 2. Return source is memory[P+4:P+6] = 01 02 = 513. T+8 = S-8, whereas caller slot is S+8; neither is P+8.</p>
+<ul>
+<li><p><strong>a.</strong> The updated bias is 2, but the final load overwrites w0 with the cycle count 513. Follow the return register&#x27;s last producer rather than the most recent memory update.</p></li>
+<li><p><strong>b.</strong> The store base is sp, so its address is S+8 or T+8. A record offset would use P as the base. Equal displacement text does not make these addresses equal.</p></li>
+<li><p><strong>c.</strong> The signed load and addition produce -3+5=2, stored at P. The final halfword load reads cycles 513 into w0, which the caller leaves unchanged. Since T=S-16, the two pointer slots are 16 bytes apart.</p></li>
+</ul>
+<p><a href="m02-practice.html#m02-call-versus-layout">Return to this question</a>.</p>
+<h2 id="m02-reordered-record">m02-reordered-record</h2>
+<p>Correct choice: b.</p>
+<p>code = 0x81 = 129; cycles = 1 + 2<em>256 = 513; bias_unsigned = 0 + 128</em>256 = 32768; bias_signed = 32768 - 65536 = -32768. New total length is 6.</p>
+<ul>
+<li><p><strong>a.</strong> This reads both two-byte fields in big-endian order. With the declared little-endian order, 01 02 is 513 and 00 80 has unsigned value 32768, then signed value -32768.</p></li>
+<li><p><strong>b.</strong> The revised ranges locate code 81, cycles 01 02 and bias 00 80. Apply the surviving interpretations to those new slices: 129, 513 and -32768.</p></li>
+<li><p><strong>c.</strong> The old exact-length guard rejects six bytes, and its field offsets refer to different locations. Types can survive while the layout and guard must change.</p></li>
+</ul>
+<p><a href="m02-practice.html#m02-reordered-record">Return to this question</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m02-complete-fields">m02-complete-fields</a></li><li><a href="#m02-probe-width">m02-probe-width</a></li><li><a href="#m02-call-versus-layout">m02-call-versus-layout</a></li><li><a href="#m02-reordered-record">m02-reordered-record</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

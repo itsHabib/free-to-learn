@@ -1,0 +1,140 @@
+{
+  "compiler": {
+    "command": "clang",
+    "executable_sha256": "7def90dd8829726686213a747fc5bff1583df933dae5edc55d755479e0bfe00a",
+    "flags": [
+      "-std=c11",
+      "-O0",
+      "-g0",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fno-inline",
+      "-fno-stack-protector"
+    ],
+    "launcher_sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9",
+    "link_flags": [
+      "-Wl,-reproducible"
+    ],
+    "version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix"
+  },
+  "disassembler": {
+    "command": "objdump",
+    "executable_sha256": "3cccdd0dad838d2130d7fc6237aa176c8c13a593a56b79c64fd980ddb89c670c",
+    "flags": [
+      "--disassemble-symbols=_decode_record,_apply_record,_replay",
+      "--no-show-raw-insn"
+    ],
+    "launcher_sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9",
+    "version": "Apple LLVM version 21.0.0\n  Optimized build.\n\n\n  Registered Targets:\n    aarch64    - AArch64 (little endian)\n    aarch64_32 - AArch64 (little endian ILP32)\n    aarch64_be - AArch64 (big endian)\n    arm        - ARM\n    arm64      - ARM64 (little endian)\n    arm64_32   - ARM64 (little endian ILP32)\n    armeb      - ARM (big endian)\n    thumb      - Thumb\n    thumbeb    - Thumb (big endian)\n    x86        - 32-bit X86: Pentium-Pro and above\n    x86-64     - 64-bit X86: EM64T and AMD64"
+  },
+  "host_specific": true,
+  "milestone": "re-lab-m07",
+  "packager_sha256": "f962d7fbe6fcb6779a32b65b57cb976df8712f27064a015a41523f0cdb764eae",
+  "platform": {
+    "byte_order": "little",
+    "machine": "arm64",
+    "release": "25.6.0",
+    "system": "Darwin"
+  },
+  "python": "3.14.6",
+  "schema_version": 1,
+  "source_sha256": {
+    "courses/re-lab/m07/source/operations.c": "e94395169b88771e3f3a273021bfab7d1f739b0d8da93ed7cf43f5bc1859cedd",
+    "courses/re-lab/m07/source/reserve.c": "6bfb1af02b253ec62d7c480533b01a0d424ce37a23c79f3daabedee2d79e7eab",
+    "courses/re-lab/m07/source/reserve.h": "9452d8a857bffc47418ab2a4eb77272535f9615f680847c3c23c53c1f24910d6"
+  },
+  "student_files_sha256": {
+    "README.md": "f428f3342767c6d4757ae0550e550071510a77dd0a503faec8105e24582d83b0",
+    "START-HERE.md": "d5a2f047f7f143b6dab1d64233056c283b56d002b599d8e1d0ec501a3c6f051d",
+    "check_model.py": "49d5051b77759da317906f678e7d33519128d2798d157c94706066ca37b058a5",
+    "checkpoint.md": "c73e048ecfecdfa4c3b97447a69fb7c79f11aadb54e56cf2f6137f759486732a",
+    "hints.md": "060762dfd2d694d34e2da6a2485e6f6db8f9fde724698cc1a388cb0e55867cc8",
+    "investigation.py": "6c0a6ad002cf3ff28d8792f9231aa4bf4d6a256c61c372d896a58315a8ff83eb",
+    "notebook.py": "38a4b82bc2ec24925e5e35a706f54be8be1aa9debdb31ca7df1228cb1fceadb3",
+    "practice-feedback.md": "79b02cf065f592f68121a05a0cca1d406cd374c619eed05290ffb616b0b4d703",
+    "questions.json": "824abe28836c47bcca6ee4e8dbeabc3a08d078b06f5f8e09edccd18fdb292449",
+    "response.json": "123eb204550a5aa0edafae6e1784ff6a7200653d301aa834388cab21cde70e35",
+    "setup.md": "f470c6476dd5fe17cee0563214a3ffb351f9d9efadd60ad7c18d2ceda671870d",
+    "transfer-hints.md": "62db72dd5cf7e6aacc55f6a5779faa6a56e0f1e042e9c5d3232b1be794d5c7fd",
+    "worked-example.md": "f1f6f4a52aa7107678c87610672f8ca0d2679899fb408dc2e5d3a4dd426240d1",
+    "write_hex.py": "f8bf720bb0ff926e3aae9659caf51cfc1db82d47e018cd03c973f1fd27d5e7d5"
+  },
+  "tool_sha256": {
+    "courses/re-lab/m07/tools/build.py": "a85580baf59cdd8d5860bacba1331381a6378ad25a7ca7d9d334065927fb3a0e"
+  },
+  "variants": {
+    "atomic": {
+      "assembly": "reserve-atomic.asm",
+      "assembly_sha256": "1155deebfe3994132d774566b640e0b97b77708daaaaf6217765157eca52ecc8",
+      "binary": "reserve-atomic",
+      "binary_sha256": "76211d3f8f4ba91a4189f93b4f6c20da2ef114ed68299f3cd4833bc130313b5a",
+      "defines": [
+        "-DATOMIC=1"
+      ],
+      "effective_flags": [
+        "-std=c11",
+        "-O0",
+        "-g0",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fno-inline",
+        "-fno-stack-protector",
+        "-DATOMIC=1"
+      ],
+      "function_symbols": [
+        "decode_record",
+        "apply_record",
+        "replay"
+      ]
+    },
+    "individual": {
+      "assembly": "reserve.asm",
+      "assembly_sha256": "5daa917c68e9bb10ad92e5753412b8bc707836c356a216b8062478c6505ce105",
+      "binary": "reserve",
+      "binary_sha256": "edeb312a8390ebed4513413b3bb14bb93a29f50b693e08a0fa89d27b5ea51fb1",
+      "defines": [],
+      "effective_flags": [
+        "-std=c11",
+        "-O0",
+        "-g0",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fno-inline",
+        "-fno-stack-protector"
+      ],
+      "function_symbols": [
+        "decode_record",
+        "apply_record",
+        "replay"
+      ]
+    },
+    "optimized": {
+      "assembly": "reserve-opt.asm",
+      "assembly_sha256": "a518e2c3af0d3d6841a4a8a7002ce67401b082346df4bf2519e628909211e32c",
+      "binary": "reserve-opt",
+      "binary_sha256": "4fbd83ba4ba998343ea2b49a06cdb7c1da8c3d92b7362f1d593730e0beee3fc1",
+      "defines": [
+        "-O2"
+      ],
+      "effective_flags": [
+        "-std=c11",
+        "-O0",
+        "-g0",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fno-inline",
+        "-fno-stack-protector",
+        "-O2"
+      ],
+      "function_symbols": [
+        "decode_record",
+        "apply_record",
+        "replay"
+      ]
+    }
+  }
+}

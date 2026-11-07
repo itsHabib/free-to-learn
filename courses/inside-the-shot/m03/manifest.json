@@ -1,0 +1,31 @@
+{
+  "schema": "trail-native-build-v1",
+  "milestone": "m03",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "python": "3.14.6",
+  "compiler": {
+    "version": "Apple clang version 21.0.0 (clang-2100.1.1.101)\nTarget: arm64-apple-darwin25.6.0\nThread model: posix\nInstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin\n",
+    "flags": [
+      "-std=c11",
+      "-O0",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-Wl,-reproducible"
+    ],
+    "launcher_sha256": "b8763cf250e607a778bb4603cecb5b90338814d0a3dfcba0d57b1de242f610e9"
+  },
+  "sources": {
+    "source/trail.c": "c2bac7ac2cb0a8686424d7183c0bd1d5854f48fa1b899b005092060647599479",
+    "tools/build.py": "6f1cd6b1bed2fb4a90c08337838a9246c45558ae4496f5aff195b78f5d366f98"
+  },
+  "files": {
+    "empty.trail": "dd1790fa6187444d4bf1d2ec64c8cdcdd9e1bf38dbd82d17b7c26e9a9b604b79",
+    "markers.trail": "dabd8e4f2c320e0025cf74e62cb76c408b3fc0a95dfb206d6aff8aa08b1f56b1",
+    "one.trail": "678a59de25bb3b22e7201627e00ea84fa2f9c06fb38bda1b86171794579ce7dd",
+    "opaque.trail": "12e767628a89a490d65d65a04117306dd592afeda13c40b1836520c8cbbb5567",
+    "trail": "c3d5db267aa66fd78da3919b4ea9177ce63274c47a14480ec5a6c05c12155ea3",
+    "transfer.trail": "0b2d58fcc17ccf74a212736db5ec4b770c38b6f723f174c2f7532181a2dff45a"
+  }
+}

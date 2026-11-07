@@ -57,6 +57,18 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": ".packages/compiler-optimizer.zip",
+      "kind": "archive-of-the-corresponding-course-files",
+      "terms": "Same original/third-party terms as matching course files; no private Git history."
+    },
+    {
+      "path": ".packages/compiler-optimizer.zip.sha256",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
       "path": ".packages/firmware-forensics.zip",
       "kind": "archive-of-the-corresponding-course-files",
       "terms": "Same per-file original/third-party terms as the matching courses directory; no private Git history."
@@ -66,6 +78,18 @@
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": ".packages/inside-the-shot.zip",
+      "kind": "archive-of-the-corresponding-course-files",
+      "terms": "Same original/third-party terms as matching course files; no private Git history."
+    },
+    {
+      "path": ".packages/inside-the-shot.zip.sha256",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
     },
     {
       "path": ".packages/recoverable-storage.zip",
@@ -729,6 +753,237 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": "courses/compiler-optimizer/API.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/BUNDLE-MANIFEST.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/NOTICE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/README.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/RUBRIC.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/cases.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/checks.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/cli.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/course.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/curriculum.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/domains.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/editor.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/evidence.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/index.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/investigation.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/json.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/01.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/02.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/03.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/04.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/05.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/06.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/07.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/08.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/09.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/pipeline.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/practice-state.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/reader-ui.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/starter.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/worker.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/zip.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
       "path": "courses/firmware-forensics/PACKAGE-MANIFEST.json",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
@@ -1255,6 +1510,1917 @@
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/inside-the-shot/CAPSTONE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/GHIDRA.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/HOW-TO-WORK.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/RECOVERY.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/SETUP.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/check_packet.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/cumulative-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/cumulative-process-trace.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/cumulative-review.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/index.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01-practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01-practice.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01.practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02-practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02-practice.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02.practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03-practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03-practice.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03.practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04-practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04-practice.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04.practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05-practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05-practice.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05.practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06-practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06-practice.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06.practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07-practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07-practice.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07.practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-crossing",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-crossing.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-transfer",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-transfer.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/check_basic.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/check_model.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/crossing-hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/crossing.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/crossing_model.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/follow-along.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/marker-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/methods.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/model.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/notebook.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/questions.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/response.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m01/setup.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/call-example.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/check_decoder.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/completion-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/decoder.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/decoder_shifted.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/notebook.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/padding-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel-shifted",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel-shifted.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/questions.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/response.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/setup.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/transfer-hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m02/worked-example.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/badge.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/check.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/empty.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/inspector.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/markers.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/notebook.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/one.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/opaque.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/questions.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/response.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/retry-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/retry.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/setup.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/transfer.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/worked-example.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m03/worker.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/check.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/empty.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/markers.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/notebook.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/one.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/opaque.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/parser.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/questions.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/regression.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/response.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/setup.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/trace.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/transfer.trail",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/window.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/worked-example.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m04/worker.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/README.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/check_decoder.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/client.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/decode_trace.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/decoder.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/example-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/notebook.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/protocol.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/questions.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/response.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/run_lab.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/service.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/setup.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/transfer-hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/transport.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/view_trace.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m05/worked-example.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/check_model.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/completion-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O0",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O0.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O2",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O2.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/model.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/notebook.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/questions.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O0",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O0.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O2",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O2.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/report.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/response.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/setup.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m06/worked-example.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/README.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/START-HERE.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/check_model.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/checkpoint.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/investigation.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/notebook.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/practice-feedback.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/questions.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-atomic",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-atomic.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-opt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-opt.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve.asm",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/response.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/setup.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/transfer-hints.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/worked-example.md",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/m07/write_hex.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/CAPSTONE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/GHIDRA.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/HOW-TO-WORK.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/RECOVERY.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/SETUP.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/course.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/course.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/cumulative-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/cumulative-review.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m01-practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m01-practice.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m01.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m02-practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m02-practice.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m02.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m03-practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m03-practice.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m03.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m04-practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m04-practice.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m04.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m05-practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m05-practice.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m05.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m06-practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m06-practice.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m06.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m07-practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m07-practice.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m07.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/START-HERE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/crossing-hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/crossing.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/follow-along.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/marker-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/methods.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/setup.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/START-HERE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/call-example.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/completion-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/padding-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/setup.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/transfer-hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/worked-example.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/START-HERE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/retry-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/retry.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/setup.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/worked-example.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/START-HERE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/setup.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/worked-example.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/README.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/START-HERE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/example-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/setup.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/transfer-hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/worked-example.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/START-HERE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/completion-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/report.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/setup.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/worked-example.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/README.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/START-HERE.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/checkpoint.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/practice-feedback.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/setup.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/transfer-hints.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/worked-example.html",
+      "kind": "original-prose-or-illustration-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/tools/CourseEvidence.java",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/inside-the-shot/tools/inspect_ghidra.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
     },
     {
       "path": "courses/recoverable-storage/BROWSER-LIMITS.md",

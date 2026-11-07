@@ -1,0 +1,73 @@
+{
+  "module": "m06",
+  "items": [
+    {
+      "id": "m06-value-correspondence",
+      "objective": "Complete a value-role correspondence across branch and conditional-selection forms.",
+      "prompt": "Complete the display example for n=6, enabled=0. It computes 3*n plus bonus 2 for zero enabled, otherwise 5. Which trace agrees in both schematic forms?",
+      "choices": [
+        {"id": "a", "text": "Branch w8 reaches 20; selected-form w8 is bonus 2 before madd, whose return is 6*3+2=20."},
+        {"id": "b", "text": "Both w8 registers must hold 18 at the selection stage, because equal register names identify equal source values."},
+        {"id": "c", "text": "The selected form returns 23 because csel always chooses its second source after any comparison."}
+      ],
+      "answer": "a",
+      "feedback": {
+        "a": "The branch takes off and adds 2 to base 18. The selected form has Z=1, chooses its first source 2, then madd combines 6*3+2. Different intermediate roles converge on return 20.",
+        "b": "The branch w8 holds base 18 before adjustment; selected-form w8 holds the chosen bonus 2. Follow definitions and uses rather than equating register labels.",
+        "c": "Comparing enabled 0 with zero sets Z=1. eq is true, so csel chooses its first source, not its second. Bonus 5 would apply to a nonzero input."
+      },
+      "derivation": "enabled=0 implies Z=1 and bonus=2. Branch base=3*6=18; adjusted result=18+2=20. Selected form chooses w8=2 and computes madd=6*3+2=20."
+    },
+    {
+      "id": "m06-flags-survive-move",
+      "objective": "Identify the flag-setting instruction consumed by a conditional selection despite an intervening value write.",
+      "prompt": "Fresh register trace: initially w1=0, w2=9, w3=14. Execute cmp w1,#0; mov w9,#99; csel w8,w2,w3,eq. What is w8, and why?",
+      "choices": [
+        {"id": "a", "text": "14: mov of nonzero 99 must clear the zero flag."},
+        {"id": "b", "text": "9: cmp sets Z=1, mov leaves flags unchanged, and eq selects the first source w2."},
+        {"id": "c", "text": "0: csel compares w2 with w3 and returns a boolean equality result."}
+      ],
+      "answer": "b",
+      "feedback": {
+        "a": "An ordinary mov changes a register without setting arithmetic flags. Look for cmp, subs or another actual flag producer before changing Z in your trace.",
+        "b": "cmp computes flags for 0-0, so Z=1. No later instruction replaces them before csel; its true eq arm copies w2=9 into w8.",
+        "c": "csel selects one of two values using existing flags; it does not compare its sources or produce a boolean. cset is the form that writes 0 or 1."
+      },
+      "derivation": "cmp(0,0) yields zero and Z=1. mov w9,99 leaves Z=1. eq therefore holds, and csel copies first input w2=9."
+    },
+    {
+      "id": "m06-conditional-compare",
+      "objective": "Use conditional comparison's gate and fallback flags to derive a combined condition.",
+      "prompt": "Apply cmp w0,#3; ccmp w1,#0,#4,gt; cset w8,ne to n=2, flag=-1. Fallback #4 is NZCV=0100. What does w8 become?",
+      "choices": [
+        {"id": "a", "text": "1, because flag=-1 is nonzero, regardless of the first comparison."},
+        {"id": "b", "text": "4, because cset copies the fallback number directly."},
+        {"id": "c", "text": "0: signed 2 is not greater than 3, so ccmp supplies Z=1 and ne is false."}
+      ],
+      "answer": "c",
+      "feedback": {
+        "a": "The nonzero test happens only when the preceding signed-greater condition holds. Here it does not, so flag=-1 is not compared by ccmp.",
+        "b": "Fallback 4 encodes the four flags, not a register result. cset writes 1 or 0 based on ne; inspect the fallback's Z bit.",
+        "c": "The first comparison makes gt false. Fallback binary 0100 gives Z=1; ne requires Z=0, so cset writes 0 despite the nonzero second input."
+      },
+      "derivation": "2>3 is false. ccmp uses literal NZCV=0100, hence Z=1. ne=(Z=0) is false and cset result is 0."
+    },
+    {
+      "id": "m06-discriminating-probe",
+      "objective": "Select a probe that separates raw-value hypotheses despite a shared output cap.",
+      "prompt": "An indicator returns min(raw,30). Candidate A uses raw=4*n; candidate B uses raw=4*n+2. You observed display 30 at n=8. Which new input best separates these candidates?",
+      "choices": [
+        {"id": "a", "text": "n=5: candidate A predicts 20, candidate B 22."},
+        {"id": "b", "text": "n=9: candidate A predicts 30, candidate B 30, so equal outputs prove A."},
+        {"id": "c", "text": "n=8 again: repeating the same saturated result identifies the hidden raw value."}
+      ],
+      "answer": "a",
+      "feedback": {
+        "a": "At 5, raw values 20 and 22 are both below 30, so the displays preserve their difference. This probe can reject at least one candidate if the observation matches only the other.",
+        "b": "At 9, raw values are 36 and 38, both capped to 30. Agreement there leaves both hypotheses possible; it does not choose A.",
+        "c": "A repeat may check repeatability, but both candidates already predict 30 at 8. More observations of the same nondiscriminating case do not identify which raw value was computed."
+      },
+      "derivation": "n=5: min(4*5,30)=20 and min(4*5+2,30)=22. n=8 gives min(32,30)=min(34,30)=30; n=9 similarly caps 36 and 38 to 30."
+    }
+  ]
+}

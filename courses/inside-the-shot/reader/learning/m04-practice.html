@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Text practice for Project4 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><article><h1 id="text-practice-for-project4">Text practice for Project4</h1>
+<p>Read <a href="m04.html">m04.md</a> alongside these questions. Keep a first choice and reason before opening the separate feedback.</p>
+<h2 id="m04-preserve-predicate">m04-preserve-predicate</h2>
+<p>The gardening format permits repeated names. The faulty parser rejects repeats after validating the count. Starting with 4|oak,elm,elm,ash, which result is minimal by number of names while preserving this failure?</p>
+<ul>
+<li><p><strong>a.</strong> 4|elm,elm: it is short, and an exception is sufficient.</p></li>
+<li><p><strong>b.</strong> 2|elm,elm: it is valid, reaches the repeat guard, and a repeat needs at least two names.</p></li>
+<li><p><strong>c.</strong> 1|elm: it is the smallest nonempty valid list, whether or not the rejection remains.</p></li>
+</ul>
+<p><a href="m04-practice-feedback.html#m04-preserve-predicate">Feedback after choosing</a>.</p>
+<h2 id="m04-first-contradiction">m04-first-contradiction</h2>
+<p>A saved trace for 2|elm,elm shows declared count=2, parsed names=2, index 0 adds elm, then index 1 has name=elm, seen={elm}, membership=true and raises. Repeated names are valid. Which causal explanation fits?</p>
+<ul>
+<li><p><strong>a.</strong> The membership guard rejects a permitted second occurrence; the passed count check contradicts a count-mismatch explanation for this case.</p></li>
+<li><p><strong>b.</strong> The header must have declared 1 because the final exception occurred on index 1.</p></li>
+<li><p><strong>c.</strong> Any change that prevents ValueError fixes the parser, regardless of the returned names.</p></li>
+</ul>
+<p><a href="m04-practice-feedback.html#m04-first-contradiction">Feedback after choosing</a>.</p>
+<h2 id="m04-coordinate-window">m04-coordinate-window</h2>
+<p>Complete the region analysis. An 18-byte buffer contains a region starting at file offset 6 with length 5. A three-byte read starts at file offset 9. How many bytes of this read lie outside that region?</p>
+<ul>
+<li><p><strong>a.</strong> 0: the whole buffer has 18 bytes, so the region guard must accept.</p></li>
+<li><p><strong>b.</strong> 3: comparing the starting offset 9 with region length 5 shows the whole read is outside.</p></li>
+<li><p><strong>c.</strong> 1: the region is [6,11), while the read is [9,12); offsets 9 and 10 are inside and 11 is outside.</p></li>
+</ul>
+<p><a href="m04-practice-feedback.html#m04-coordinate-window">Feedback after choosing</a>.</p>
+<h2 id="m04-regression-controls">m04-regression-controls</h2>
+<p>A proposed gardening-parser repair makes 2|elm,elm terminate. Which regression pair supplies the most relevant additional evidence?</p>
+<ul>
+<li><p><strong>a.</strong> Call the repaired parser twice on 2|elm,elm and use the first output as the expected second output.</p></li>
+<li><p><strong>b.</strong> Require the full list [elm, elm] for 2|elm,elm from the format rule, and require count refusal for 2|elm.</p></li>
+<li><p><strong>c.</strong> Require an empty list for every input so a blanket catch can satisfy the tests.</p></li>
+</ul>
+<p><a href="m04-practice-feedback.html#m04-regression-controls">Feedback after choosing</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m04-preserve-predicate">m04-preserve-predicate</a></li><li><a href="#m04-first-contradiction">m04-first-contradiction</a></li><li><a href="#m04-coordinate-window">m04-coordinate-window</a></li><li><a href="#m04-regression-controls">m04-regression-controls</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

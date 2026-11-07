@@ -1,0 +1,12 @@
+{
+  "version": "re-lab-m07-v1",
+  "questions": {
+    "orientation": "Before revealing practice feedback, decode the separate count-format example and predict its malformed-file behavior. Record your confidence as uncertainty, not a grade.",
+    "hypotheses": "State two competing explanations of the reservation log and predict a result that would distinguish them. Save before executing the probe.",
+    "probes": "For every chosen raw file give bytes, predicted output, reason it distinguishes hypotheses, actual output and what remains uncertain. Describe malformed versus rejected operations.",
+    "model": "Give field offsets/widths and bounds; explain the state transitions; attach first decoder/model and instruction evidence for decode_record, apply_record and replay. Save before checking.",
+    "repair": "Retain the exact counterexample and earlier code. Explain the false assumption, minimal repair and regression probe. If no failure occurred, record a deliberately challenged alternative and its counterexample without claiming a repair.",
+    "transfer": "Before running reserve-atomic, predict final versus event states for a log with accepted, rejected and later accepted entries. Revise the transaction-boundary hypothesis with native and call evidence; compare reserve-opt without source-shape assumptions.",
+    "handoff": "Commit a genuinely fresh prediction before executing it, then retain the comparison as a new record. Export and resume the investigation with exact manifest, raw probes, commands, model, evidence, assistance and limitations so another person can reproduce it."
+  }
+}

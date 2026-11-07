@@ -28,3 +28,20 @@ original export and import into a new directory. Firmware reasoning export is
 qualified manual selected JSON; automatic file download is not supported. Its
 original 28/30 journal history and clipboard/file-save qualification are unchanged.
 Browser/local-server routes are not exercised by this terminal rehearsal.
+
+## Inside the Shot
+
+Use Apple Silicon macOS and the documented Python profile, not portable Python
+alone. From the clone, enter courses/inside-the-shot, read START-HERE.md and
+SETUP.md, and run python3 check_packet.py. Preserve Git executable modes. Follow
+the seven public project folders m01-m07, CAPSTONE.md and RECOVERY.md. Supplied
+targets/listings need no Ivy checkout, compiler, account or Ghidra installation.
+Optional instructor-only assessment is not included in this learner edition.
+
+## Compiler and Optimizer
+
+Enter courses/compiler-optimizer. Run node cli.mjs start work, then
+node cli.mjs lesson 01 and node cli.mjs check 01 work --help-used none.
+Implement work/optimizer.mjs through01-09 and the cumulative optimization and
+miscompilation investigation. The first TODO is expected. Follow README.md for
+export/restore and preserve all original code/help/results before revising.

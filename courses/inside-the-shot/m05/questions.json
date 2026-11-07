@@ -1,0 +1,9 @@
+{
+  "version": "re-lab-m05-v1",
+  "questions": {
+    "prediction": "Before revealing worked-example feedback or running the baseline, record what each delivery could complete, what remains buffered, and why one read need not equal one message. State a competing explanation and a discriminating observation. Keep predictions separate from later observations.",
+    "timeline": "Save the live trace, annotate per-direction byte offsets, and reconstruct completed frames across deliveries. Distinguish process identity, write calls, OS reads, scripted application chunks and timestamp observations. Save a first decoder before running feedback, then preserve each repair and the evidence that caused it.",
+    "transfer": "Before running the changed request and delivery schedule, predict which decoder assumptions survive, which outputs and frame boundaries change, and what the old implementation will do. Save that prediction first, then retain the new trace, result, assistance and revisions.",
+    "handoff": "Predict a fresh chunking experiment, then run and compare it. Explain malformed/oversize/truncated refusal, repeated byte behavior versus variable timing, and remaining limits. Export the full plain-file workspace, resume from a copy and preserve old records unchanged."
+  }
+}

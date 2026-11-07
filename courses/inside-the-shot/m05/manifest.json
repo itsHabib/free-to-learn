@@ -1,0 +1,32 @@
+{
+  "schema": "re-lab-m05-manifest-v1",
+  "lesson": "re-lab-m05-v1",
+  "target": "original Python local pipe client/service",
+  "buildRuntime": {
+    "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64"
+  },
+  "files": {
+    "README.md": "03a04bf2627c9c88d00507396524fab6a68682df4be38abc2500e0908d05c6da",
+    "START-HERE.md": "f6d8ba9e26e5bb9c738e98e3769402095e9a86d7c335284ebce553a3b8c32a7f",
+    "setup.md": "ab3c54bb4fae9ff913bd89e1b2bc875aac7edd4b3d873779bf42f2d2bed9da31",
+    "worked-example.md": "ed445a29ce15733d8a10dcff8751e253971c61297e6a9faff163e02055c421c2",
+    "example-feedback.md": "6c6b0f1f3698aaec512c6278c451b2dad431c9329696037a8cdb1c098d8c6d7c",
+    "hints.md": "5daae614dc08491add8e205abdd87adb6f514a7ea9dcbaa159d281cf05927a71",
+    "transfer-hints.md": "9503237f9e8aa1d1b199afabe6e22dacd7ae09b4a93572929d5f41f43cb4ac8a",
+    "decoder.py": "b787803554ccd4756dca5c99d48edef38c2daea371a35b4ea8f3df65b3724738",
+    "response.json": "b33a755b44e0f2f33221b7854d72fb7b52e9ac4a4d1d70dff74c60ea60058c70",
+    "client.py": "853fcbbf170276b40a6d48e8ed784f7bbc7cab6b19058532ef5c8afa229d7911",
+    "service.py": "d17f434fa127b6a92e4b456cc9c2ca9e1a24b99127da80e78f9a708c1ad41b53",
+    "protocol.py": "8ca30ae0f9e943edce6c5659994e9c138d2f20c6588308798ef7f60aefc237f3",
+    "transport.py": "e911d72f7857d4c7793bed79cdbba2271e506eb58b5fe02c509bbf9d7d4afa3c",
+    "run_lab.py": "80ad3f24fea8fa63593db9ddbccf793010751175529400beb1a2b502b3cc84b3",
+    "view_trace.py": "e127426a001b8e3bafcce714494ca856441d66fddfcc7567ac15c6baf75aca22",
+    "decode_trace.py": "98a293716d91d9c81aaffb5fe3e8bd85fa7009166723676875294bbe7b86b51c",
+    "check_decoder.py": "a55cf017eb5095f7c71908f4ded8d1495e407faa894f791d7aff1aed2f0f8950",
+    "notebook.py": "53f376914bae428a763b1c3a6cec99410961e9d6956c661fb2932da9b1a25c8c",
+    "questions.json": "9f8d9cc27701e456267c3f8dda8efadeec6796f48707dd58cf24a3c5fecee5bc"
+  },
+  "support": "Verified Darwin arm64 Python 3.14.6. Other POSIX unverified. Windows unsupported."
+}

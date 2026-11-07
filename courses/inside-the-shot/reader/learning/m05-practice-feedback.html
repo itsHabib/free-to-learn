@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Practice feedback for Project5 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><aside class="notice">Authored project practice feedback. Follow the original project’s save-before-reveal order. This separate help page is not a secure exam or evidence of mastery.</aside><article><h1 id="practice-feedback-for-project5">Practice feedback for Project5</h1>
+<p>Open after choosing on <a href="m05-practice.html">m05-practice.md</a>. Preserve the original answer and any later correction.</p>
+<h2 id="m05-layer-intervals">m05-layer-intervals</h2>
+<p>Correct choice: a.</p>
+<p>[1,4) intersects [0,3) in [1,3), length 2, and [3,9) in [3,4), length 1. The OS read intervals are independently supplied observations; no future-read premise is given.</p>
+<ul>
+<li><p><strong>a.</strong> Offsets 1 and 2 belong to the first intent, and offset 3 to the second. Grouping those three bytes is an application action; the read intervals describe only this capture.</p></li>
+<li><p><strong>b.</strong> No observed read interval equals [1,4). The application can retain bytes from reads and regroup them before a decoder call.</p></li>
+<li><p><strong>c.</strong> Write intents describe the write loop&#x27;s intended ranges, not its OS call count. Messages require the framing rule; neither write count nor read count identifies them.</p></li>
+</ul>
+<p><a href="m05-practice.html#m05-layer-intervals">Return to this question</a>.</p>
+<h2 id="m05-regroup-completion">m05-regroup-completion</h2>
+<p>Correct choice: b.</p>
+<p>Delivery 1=[0,2): 02 4f, no complete frame. Delivery 2=[2,6): 4b 01 3f 03. Accumulated [0,6) consumes frame lengths 3+2=5, leaving 6-5=1 byte, 03. Returned payloads are OK and ?.</p>
+<ul>
+<li><p><strong>a.</strong> After removing the completed OK frame, 01 3f is another complete frame. Continue the loop and consume it; otherwise a completed message is unnecessarily delayed.</p></li>
+<li><p><strong>b.</strong> The first two deliveries supply offsets [0,6). Frames [0,3) and [3,5) are complete; offset 5 is 03, whose three body bytes have not arrived.</p></li>
+<li><p><strong>c.</strong> A declared length does not supply the body. The second delivery ends at exclusive offset 6; RUN occupies offsets 6, 7 and 8 and arrives only in the third.</p></li>
+</ul>
+<p><a href="m05-practice.html#m05-regroup-completion">Return to this question</a>.</p>
+<h2 id="m05-split-header">m05-split-header</h2>
+<p>Correct choice: b.</p>
+<p>Header width=2. After first feed, available header bytes=1&lt;2. After second, buffer=00 02 41, length=0*256+2=2, required total=2+2=4, available=3, deficit=1 body byte.</p>
+<ul>
+<li><p><strong>a.</strong> One byte is insufficient for this two-byte header. Interpret a length only after both bytes arrive; a leading zero can be part of a valid length.</p></li>
+<li><p><strong>b.</strong> Combined bytes are 00 02 41. Header value is 0*256+2=2; the complete frame needs 2 header + 2 body = 4 bytes, and only 3 are available.</p></li>
+<li><p><strong>c.</strong> Feed boundaries do not restart framing. Preserve the pending 00 and combine it with the next 02; 41 then has the body role. Discarding pending bytes loses the stream position.</p></li>
+</ul>
+<p><a href="m05-practice.html#m05-split-header">Return to this question</a>.</p>
+<h2 id="m05-eof-application">m05-eof-application</h2>
+<p>Correct choice: c.</p>
+<p>Input length=5. First frame length=1+1=2, leaving 3 bytes. Second required length=1+3=4, so deficit=4-3=1. feed(empty) adds 0; finish cannot accept a nonempty incomplete suffix.</p>
+<ul>
+<li><p><strong>a.</strong> Only finish announces EOF in this API. An empty feed adds zero bytes and cannot turn an incomplete open stream into a cleanly closed one.</p></li>
+<li><p><strong>b.</strong> Earlier output does not license dropping the suffix. X occupies its own complete two-byte frame; the second frame still requires three body bytes.</p></li>
+<li><p><strong>c.</strong> Pending has 1 header + 2 body bytes, while the promised frame needs 1+3=4. Empty feed adds none, so EOF arrives with a one-byte deficit. The earlier X remains an earlier valid event.</p></li>
+</ul>
+<p><a href="m05-practice.html#m05-eof-application">Return to this question</a>.</p>
+<h2 id="m05-invalid-header">m05-invalid-header</h2>
+<p>Correct choice: a.</p>
+<p>Header width=1, supplied bytes=1, declared length=0x04=4. Allowed interval is [1,3], and 4 is outside it. Refusal does not depend on body availability.</p>
+<ul>
+<li><p><strong>a.</strong> The toy header is one byte, so its value is fully known now. Since 4&gt;3, no later body can make this frame valid.</p></li>
+<li><p><strong>b.</strong> Waiting is appropriate for an incomplete body under a permitted header. It is unnecessary once a complete header violates the length bound.</p></li>
+<li><p><strong>c.</strong> At the start of a fresh stream the first byte has the header role. Arrival timing cannot change that role into payload.</p></li>
+</ul>
+<p><a href="m05-practice.html#m05-invalid-header">Return to this question</a>.</p>
+<h2 id="m05-causal-order">m05-causal-order</h2>
+<p>Correct choice: b.</p>
+<p>Recorded gaps are 130-100=30 ns, 160-130=30 ns and 160-100=60 ns. The supplied data identify endpoints only; no premise isolates transport or requires repeatable timing.</p>
+<ul>
+<li><p><strong>a.</strong> A peer can receive bytes while the writer is still inside its loop or waiting to log return. Use byte order and each process&#x27;s local sequence; return logging is not the creation of the bytes.</p></li>
+<li><p><strong>b.</strong> 130-100=30 and 160-130=30 describe the recorded observation gaps. They do not separate buffering, scheduling, code execution and logging from transport.</p></li>
+<li><p><strong>c.</strong> 160-100=60 is an intent-to-return observation span, not an isolated network quantity. This is a local pipe, and scripted application grouping does not fix scheduling or future timestamps.</p></li>
+</ul>
+<p><a href="m05-practice.html#m05-causal-order">Return to this question</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m05-layer-intervals">m05-layer-intervals</a></li><li><a href="#m05-regroup-completion">m05-regroup-completion</a></li><li><a href="#m05-split-header">m05-split-header</a></li><li><a href="#m05-eof-application">m05-eof-application</a></li><li><a href="#m05-invalid-header">m05-invalid-header</a></li><li><a href="#m05-causal-order">m05-causal-order</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

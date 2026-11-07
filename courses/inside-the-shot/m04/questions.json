@@ -1,0 +1,10 @@
+{
+  "version": "re-lab-m04-v1",
+  "questions": {
+    "prediction": "Before executing parser.py, predict success/failure on empty, one-entry and markers files. Separate prediction from later observed exception, preserve parser-original.py and first failure.txt.",
+    "reduce": "Preserve each candidate reproducer and observed failure. Distinguish the same loop-guard failure from a different earlier envelope failure. Justify why a smaller valid file cannot trigger the same failure.",
+    "trace": "Preserve a value trace from input length/count/payload through cursor, end and next entry, marking the first false bound. State the cause as a falsifiable claim and retain competing explanations.",
+    "repair": "Before editing, predict the effect of a narrow patch on empty, minimal, original and malformed inputs. Save repaired source and learner regression tests plus failure/checker feedback in new records.",
+    "handoff": "Preserve the patch rationale, original and repaired results, regression tests, valid-output comparison, residual risks and assistance. Export/resume records byte-for-byte; make no claim beyond evidence."
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "question_version": "re-lab-m02-v1",
+  "claim": "",
+  "reason": "",
+  "alternative": "",
+  "probe": {
+    "target": "parcel",
+    "args": [],
+    "predicted_before": {},
+    "predicted_after": {},
+    "predicted_total": null,
+    "distinguishes": ""
+  },
+  "observations": [],
+  "layout": {},
+  "static_evidence": [],
+  "revision": "",
+  "transfer_decision": "",
+  "assistance_details": ""
+}

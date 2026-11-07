@@ -1,0 +1,73 @@
+{
+  "module": "m02",
+  "items": [
+    {
+      "id": "m02-complete-fields",
+      "objective": "Apply independent slice, byte-order and signedness decisions to a declared record.",
+      "prompt": "Complete the ten-byte gauge decode for 80 ff a6 77 00 01 7f c0 77 19. Bias is signed little-endian raw[0:2], cycles is unsigned little-endian raw[4:6], and code is unsigned raw[6]. Which result follows?",
+      "choices": [
+        {"id": "a", "text": "bias = 65408, cycles = 256, code = 127."},
+        {"id": "b", "text": "bias = -128, cycles = 256, code = 127."},
+        {"id": "c", "text": "bias = -128, cycles = 1, code = 127."}
+      ],
+      "answer": "b",
+      "feedback": {
+        "a": "65408 is the unsigned value of 80 ff. The bias is signed and its top bit is set, so subtract 65536. The cycle and code readings in this choice use the stated rules.",
+        "b": "Bias bits give 128 + 255 × 256 = 65408, then signed interpretation gives -128. Cycles 00 01 give 0 + 1 × 256 = 256. Code 7f is 127.",
+        "c": "00 01 means 256 in little-endian order. A value of 1 reverses its byte weights. Keep the slice correct while checking the byte-order decision separately."
+      },
+      "derivation": "bias_unsigned = 0x80 + 0xff*256 = 65408; bias_signed = 65408 - 65536 = -128; cycles = 0x00 + 0x01*256 = 256; code = 0x7f = 127."
+    },
+    {
+      "id": "m02-probe-width",
+      "objective": "Choose a controlled boundary pair that can reject a one-byte field hypothesis.",
+      "prompt": "You are investigating the gauge cycle field. Hypothesis A reads only byte 4; B reads two little-endian bytes starting at 4. Which pair most directly tests the missing high byte while keeping other field inputs fixed?",
+      "choices": [
+        {"id": "a", "text": "Cycles 255 and 256: compare ff 00 with 00 01 at offsets 4–5."},
+        {"id": "b", "text": "Cycles 1 and 2: compare 01 00 with 02 00 at offsets 4–5."},
+        {"id": "c", "text": "Keep cycles 1 and change the bias from -1 to 0."}
+      ],
+      "answer": "a",
+      "feedback": {
+        "a": "At 255 to 256, the low byte wraps from ff to 00 and the next becomes 01. A predicts cycle values 255 and 0; B predicts 255 and 256. The held-fixed fields make the changed byte easier to attribute.",
+        "b": "Both hypotheses read 1 and 2 for these bytes because the high byte remains zero. This ordinary pair does not reject the one-byte explanation.",
+        "c": "Changing bias can help locate bias bytes, but the cycle value remains 1 under both cycle-width hypotheses. Choose a probe whose cycle predictions disagree."
+      },
+      "derivation": "Two-byte little-endian 255 = ff 00 and 256 = 00 01. Reading only byte 4 yields 255 and 0 instead of 255 and 256."
+    },
+    {
+      "id": "m02-call-versus-layout",
+      "objective": "Separate caller/callee stack slots, a record update and a returned field.",
+      "prompt": "In the worked gauge call, P points to bias -3 and cycles 513, and increment is 5. The caller's stack is S and the callee's is T = S - 16. Each saves P at its own [sp,#8]. The callee sign-loads bias, adds 5, stores a halfword at P, then loads cycles from P+4 into w0. What follows?",
+      "choices": [
+        {"id": "a", "text": "Bias becomes 2, and both functions return 2 because that was the latest update."},
+        {"id": "b", "text": "The saved pointer proves that bytes at record offset 8 contain P."},
+        {"id": "c", "text": "Bias becomes 2; both returns carry 513; S+8 and T+8 are distinct stack slots containing P."}
+      ],
+      "answer": "c",
+      "feedback": {
+        "a": "The updated bias is 2, but the final load overwrites w0 with the cycle count 513. Follow the return register's last producer rather than the most recent memory update.",
+        "b": "The store base is sp, so its address is S+8 or T+8. A record offset would use P as the base. Equal displacement text does not make these addresses equal.",
+        "c": "The signed load and addition produce -3+5=2, stored at P. The final halfword load reads cycles 513 into w0, which the caller leaves unchanged. Since T=S-16, the two pointer slots are 16 bytes apart."
+      },
+      "derivation": "bias_after = -3 + 5 = 2. Return source is memory[P+4:P+6] = 01 02 = 513. T+8 = S-8, whereas caller slot is S+8; neither is P+8."
+    },
+    {
+      "id": "m02-reordered-record",
+      "objective": "Reapply known numeric representations using a changed declared layout.",
+      "prompt": "A revised six-byte gauge declares code at [0:1], unsigned little-endian cycles at [1:3], an ignored byte at [3:4], and signed little-endian bias at [4:6]. Decode 81 01 02 aa 00 80.",
+      "choices": [
+        {"id": "a", "text": "code = 129, cycles = 258, bias = 128."},
+        {"id": "b", "text": "code = 129, cycles = 513, bias = -32768."},
+        {"id": "c", "text": "Reuse the original ten-byte decoder unchanged, because the field types survived."}
+      ],
+      "answer": "b",
+      "feedback": {
+        "a": "This reads both two-byte fields in big-endian order. With the declared little-endian order, 01 02 is 513 and 00 80 has unsigned value 32768, then signed value -32768.",
+        "b": "The revised ranges locate code 81, cycles 01 02 and bias 00 80. Apply the surviving interpretations to those new slices: 129, 513 and -32768.",
+        "c": "The old exact-length guard rejects six bytes, and its field offsets refer to different locations. Types can survive while the layout and guard must change."
+      },
+      "derivation": "code = 0x81 = 129; cycles = 1 + 2*256 = 513; bias_unsigned = 0 + 128*256 = 32768; bias_signed = 32768 - 65536 = -32768. New total length is 6."
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "status": "LEARNER_SOURCE_SNAPSHOT_FIRST_FIVE",
+  "status": "LEARNER_SOURCE_SEVEN_QUALIFIED_TERMINAL_ROUTES",
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 7586,
-      "sha256": "9a18784807bb63d093fe4dd1877e9ef0ade97a26f1a4c0033fb1f50e32fb940c"
+      "bytes": 12794,
+      "sha256": "84707566e33178b48663faeebd6ba30466457a506ea939bc972fb0e26394dc1e"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -48,6 +48,16 @@
       "sha256": "5d0890aa0b963508eea30ebe21fd488a41bb262a2488495a68a8e8d6210f3960"
     },
     {
+      "path": ".packages/compiler-optimizer.zip",
+      "bytes": 210927,
+      "sha256": "8633d0c07b2ff73205ee37614d74d630a35a452afdfd15cf55da87540cabbb20"
+    },
+    {
+      "path": ".packages/compiler-optimizer.zip.sha256",
+      "bytes": 89,
+      "sha256": "ddd6b8223fe7691b530a9e898ee2d7ed66f5f8a75a6b1989ea33c5f89d53c2bf"
+    },
+    {
       "path": ".packages/firmware-forensics.zip",
       "bytes": 107833,
       "sha256": "d9fe95963830c05d41012efe8d0fc606b5e34021d8aee4eb98c9c7d095cf4567"
@@ -56,6 +66,16 @@
       "path": ".packages/firmware-forensics.zip.sha256",
       "bytes": 89,
       "sha256": "d345f81c0e613d9d3092f5022c6d68304629cbcd7529effd387d296fe835091f"
+    },
+    {
+      "path": ".packages/inside-the-shot.zip",
+      "bytes": 620076,
+      "sha256": "54c24bd29da1f63312c49eafb7a97d7b22978ea2b046ca93a3c118b77c33861e"
+    },
+    {
+      "path": ".packages/inside-the-shot.zip.sha256",
+      "bytes": 86,
+      "sha256": "6d6a927670ec36849d544d4708c43381dfb8687f3d430e44028cac778b47ffcc"
     },
     {
       "path": ".packages/recoverable-storage.zip",
@@ -89,13 +109,13 @@
     },
     {
       "path": "CI.md",
-      "bytes": 2588,
-      "sha256": "0458a0509252aa3a98a835f3e302ff7bcb61251b487897739cfb68c5ba3349c0"
+      "bytes": 3066,
+      "sha256": "3031451b0f5def65b1a53eb5ff570089867bc349b855d1df3ae8a0cc734fbb78"
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 77656,
-      "sha256": "0ded7c1a599fd81d9f87e91cb89308521291137d609594e718a4849e8972bb1c"
+      "bytes": 167750,
+      "sha256": "92c3c052a4ac9c15e62cf458466ada9292b36f62371560acdb906c7e47ad2fb0"
     },
     {
       "path": "LICENSE.md",
@@ -114,18 +134,18 @@
     },
     {
       "path": "QUALIFICATION.md",
-      "bytes": 1882,
-      "sha256": "ae533a9a1ae80a69f23e80ad919566afd70d29c2ee7a5e8b8ec7b0befd63ac18"
+      "bytes": 3468,
+      "sha256": "a6332b5ade5a9dbcc891211ad35588358ae4f13d8ece6f09025b77b124ad12b1"
     },
     {
       "path": "README.md",
-      "bytes": 2014,
-      "sha256": "ecc5710f8dbc96ebd8d363bbf6fa092d2cc07d3064e8e16aca619131cde0f873"
+      "bytes": 2055,
+      "sha256": "df9077c97104ceca34558a432f087554ba834e0b9f9101de586f1eb18769684e"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 2093,
-      "sha256": "efb77027ee3e541b9e068418d791c690d6ec7bcc98d86cd50768a7e3edf4ae38"
+      "bytes": 2990,
+      "sha256": "6cafa3c4e3cc3c2b1018bd96ca68e74665d4262de85f8ee75706c963fab3398f"
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -613,6 +633,171 @@
       "sha256": "9ae0c43720448c4169b2b00f927af46050247c35608aad36143e8ea6db9e9fb6"
     },
     {
+      "path": "courses/compiler-optimizer/API.md",
+      "bytes": 12544,
+      "sha256": "d7466fe518133a68fb41c1bd42b6a4212fd79b73a84fa6bc476baeb8753932fa"
+    },
+    {
+      "path": "courses/compiler-optimizer/BUNDLE-MANIFEST.json",
+      "bytes": 5044,
+      "sha256": "05afabc9244ab9e6e2317489d94d50c042e9bfa47defeb5a0f240787433354e0"
+    },
+    {
+      "path": "courses/compiler-optimizer/NOTICE.md",
+      "bytes": 1668,
+      "sha256": "f348d6f9eb5254100b7d1502bf6422504221e17417b8047a938356d913f26695"
+    },
+    {
+      "path": "courses/compiler-optimizer/README.md",
+      "bytes": 5647,
+      "sha256": "b7872c939be55fb021fd1a392c90c1d4a23bbad0607b005521f69b48e08a4ed7"
+    },
+    {
+      "path": "courses/compiler-optimizer/RUBRIC.md",
+      "bytes": 2096,
+      "sha256": "46254400d75336e7b9ea294a5358edf588db9df50151055e9517049991d79f41"
+    },
+    {
+      "path": "courses/compiler-optimizer/cases.mjs",
+      "bytes": 7245,
+      "sha256": "1381ac9760e9c961a5b36c558e78ff218e4d585c81e6214db08a4eeb7a1d4095"
+    },
+    {
+      "path": "courses/compiler-optimizer/checks.mjs",
+      "bytes": 12491,
+      "sha256": "5351893e03f5841833e5792522b186ee70a4edd242cb5923728217f09b5ad169"
+    },
+    {
+      "path": "courses/compiler-optimizer/cli.mjs",
+      "bytes": 11057,
+      "sha256": "d413b5365485147afc8761f2b7518a6e7be23577f5f9e2e05aaaaecc35268f37"
+    },
+    {
+      "path": "courses/compiler-optimizer/course.json",
+      "bytes": 853,
+      "sha256": "863805be7852e9f8c2e6370552dda7eeb11c46b9e8cba7b96dbddc941a03efee"
+    },
+    {
+      "path": "courses/compiler-optimizer/curriculum.json",
+      "bytes": 10862,
+      "sha256": "8c1ae394507b5e147d55a0397242776a4fcad2e01eba813f0255c81dd8ddc656"
+    },
+    {
+      "path": "courses/compiler-optimizer/domains.mjs",
+      "bytes": 3338,
+      "sha256": "930682d4a3689dcd932d87b8d7e88923426a48657dfb1b7397e6222f3ce3e760"
+    },
+    {
+      "path": "courses/compiler-optimizer/editor.mjs",
+      "bytes": 8993,
+      "sha256": "ca0a80f3a1705ff3936e79b954126f2c23fc3d7e33aafd6249338c6d3b8e18b5"
+    },
+    {
+      "path": "courses/compiler-optimizer/evidence.mjs",
+      "bytes": 3392,
+      "sha256": "8bbfbced6ce080919a652f37223b74a99a903424441d000164736f1ddd940596"
+    },
+    {
+      "path": "courses/compiler-optimizer/index.html",
+      "bytes": 47657,
+      "sha256": "f429492777cb0009f618ccaf7ba3dc3f38702e221bc5fd8c8017b8726bc0b8c4"
+    },
+    {
+      "path": "courses/compiler-optimizer/investigation.mjs",
+      "bytes": 5016,
+      "sha256": "883c24294af40d3ae1055abb74de4daaae79534bd5403e08cd098274f2aa79e5"
+    },
+    {
+      "path": "courses/compiler-optimizer/json.mjs",
+      "bytes": 1643,
+      "sha256": "446daffda175211d902a1291fda83da83ecc6f15a709589b73696b99dccf35ce"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/01.md",
+      "bytes": 2704,
+      "sha256": "7e11fb4d8b37178e5d63372662963261dce31842a3451d86f9b89946a9bac142"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/02.md",
+      "bytes": 2571,
+      "sha256": "f5b7e7a1561d3cc69da4688ed668b0f47ea2b971212df5976835074457dd710f"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/03.md",
+      "bytes": 2693,
+      "sha256": "4411d32ba9a97fa81a077a8d22f50c5c4bdce18cc755964ee2b81043f68982bb"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/04.md",
+      "bytes": 2678,
+      "sha256": "cc55d39f8b03c2a5533bd36b575ce49ba0d1a8527349cd48302c949cadbaf572"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/05.md",
+      "bytes": 2421,
+      "sha256": "b7f70bc62e3da52325da480b3897956ba705f14de48700c4b5c42e673d2be26b"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/06.md",
+      "bytes": 2349,
+      "sha256": "cac5648f65ae9361e6461086001d3df0114af0f18ff215be9b6740e2ee93e556"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/07.md",
+      "bytes": 3748,
+      "sha256": "612e15c999a752bbad1ed74bc3bcabad6bb18420774f1a7e373d08780bb91b37"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/08.md",
+      "bytes": 4046,
+      "sha256": "c28a4e1d60c43e7ae043405a8d6060587d4077fb573f8ce607dd0c90bf8c34b5"
+    },
+    {
+      "path": "courses/compiler-optimizer/lessons/09.md",
+      "bytes": 2918,
+      "sha256": "5c4a71ac147eecc78eb84ab0957698224dedd60e9882c83158fba72bf6d48667"
+    },
+    {
+      "path": "courses/compiler-optimizer/pipeline.mjs",
+      "bytes": 2057,
+      "sha256": "b651784ab23af61d8b724b5f2a0914a214064dff65d5ddfd23405b94629cf682"
+    },
+    {
+      "path": "courses/compiler-optimizer/practice-state.mjs",
+      "bytes": 2666,
+      "sha256": "159799710d5471590fed4d80f8ed2cccf15fd9c27c761c956de72f24d553e7d4"
+    },
+    {
+      "path": "courses/compiler-optimizer/practice.json",
+      "bytes": 9300,
+      "sha256": "f1956168a1413a548f1dba9a65c866ced7bcdeed1c69d1e738eeb0a5946a71da"
+    },
+    {
+      "path": "courses/compiler-optimizer/reader-ui.js",
+      "bytes": 4369,
+      "sha256": "01a5a39960b80f9902c09dd129c3ab320c7ac8f844e96dd1e106fbbdbe45dd2a"
+    },
+    {
+      "path": "courses/compiler-optimizer/runtime.mjs",
+      "bytes": 16719,
+      "sha256": "c7321f010a37248ee615ac5c7c52e39564fc6935c00850292c6c84ce389addbd"
+    },
+    {
+      "path": "courses/compiler-optimizer/starter.mjs",
+      "bytes": 1524,
+      "sha256": "a26ca9b16568f44b89de93f75763b9933b5b1975e2b086b97098dc94fbdd81cc"
+    },
+    {
+      "path": "courses/compiler-optimizer/worker.mjs",
+      "bytes": 2285,
+      "sha256": "71aa902d0bc7aef5062cf26d5c94eb60a827dc534ec775863507612ebe7f67a0"
+    },
+    {
+      "path": "courses/compiler-optimizer/zip.mjs",
+      "bytes": 1781,
+      "sha256": "0046c0ef9d18a66b10b27cdded756a6643a1ab13ad3a1274d2bac395c1773b96"
+    },
+    {
       "path": "courses/firmware-forensics/PACKAGE-MANIFEST.json",
       "bytes": 14819,
       "sha256": "5476bd079b47f2b9b1b4807670d05c65fcf301f4edbba0ccd5f686d6ea1a98cc"
@@ -1056,6 +1241,1371 @@
       "path": "courses/firmware-forensics/work.py",
       "bytes": 1639,
       "sha256": "5ab204ddc5879b578982382b82992a648a7d8c75056b8b70081154d88b23132a"
+    },
+    {
+      "path": "courses/inside-the-shot/CAPSTONE.md",
+      "bytes": 4656,
+      "sha256": "e10c64a8e6b4603e1538b36efddc8d22be664e0dfd23186e0627ea0b68138cf2"
+    },
+    {
+      "path": "courses/inside-the-shot/GHIDRA.md",
+      "bytes": 10620,
+      "sha256": "e170666a3cae50e2ba8b77865889bc0a931479fcb82565404a97536df1d8c82b"
+    },
+    {
+      "path": "courses/inside-the-shot/HOW-TO-WORK.md",
+      "bytes": 5114,
+      "sha256": "1a1ead43a2706d9673612357fa60e4b756b55b6306c79d591540a7e1d67db08f"
+    },
+    {
+      "path": "courses/inside-the-shot/RECOVERY.md",
+      "bytes": 4227,
+      "sha256": "caa8ed5e41dcba29d3a482d81f621a352d1954196c0c53ba1de329b63e3c5e3e"
+    },
+    {
+      "path": "courses/inside-the-shot/SETUP.md",
+      "bytes": 4930,
+      "sha256": "6f41cd712fcd2eb316441f353d959b461968b75f88389a9e627b651689341cbf"
+    },
+    {
+      "path": "courses/inside-the-shot/START-HERE.md",
+      "bytes": 5069,
+      "sha256": "59cb4c1189c580a1c85413208379ec1fc2e229736b1b87bec0b6262315d2e046"
+    },
+    {
+      "path": "courses/inside-the-shot/check_packet.py",
+      "bytes": 2691,
+      "sha256": "49d8747d85adfbf0f84ca9c7ad0099bbff45462b085f12f0b22b2a33ea1d4462"
+    },
+    {
+      "path": "courses/inside-the-shot/cumulative-feedback.md",
+      "bytes": 1625,
+      "sha256": "915f355841c11227bf34e22cdc5967326ec2856287506734f1a73a3717b86738"
+    },
+    {
+      "path": "courses/inside-the-shot/cumulative-process-trace.json",
+      "bytes": 3467,
+      "sha256": "08474a85d81855cadd8a5d7697135bf70ef6c4cbeb26a5777ae069596dedae96"
+    },
+    {
+      "path": "courses/inside-the-shot/cumulative-review.md",
+      "bytes": 2738,
+      "sha256": "86a866349a61cbf0e4791477fdb1d074f8a11a3f13d6f50a4d4dd37d7cca9e85"
+    },
+    {
+      "path": "courses/inside-the-shot/index.html",
+      "bytes": 9264,
+      "sha256": "04053e6a36b389f5bd6ac4cd9d4af3247d1227d78ed624f9675932d6cd787111"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01-practice-feedback.md",
+      "bytes": 2860,
+      "sha256": "4c2c52757f296d66950db089e4785c3a253a1a71425532c55dc71232d970eeec"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01-practice.md",
+      "bytes": 1875,
+      "sha256": "7ec4c5edf66489d7a738dac6027d5fe684646aec795c5cca7ae228b759aad44b"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01.md",
+      "bytes": 9955,
+      "sha256": "2518544bb4c329ae4ed7d814c4ad04b56a11e63b765bf3c5805fcf082be4df61"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m01.practice.json",
+      "bytes": 5027,
+      "sha256": "1ce088b6e55114e425b7e03d6d34a920c2b61cbf52ff4950ad1f19d8f97741d0"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02-practice-feedback.md",
+      "bytes": 3154,
+      "sha256": "c745ea929226a16e4a0238f136f39a86da7d75650937598393e1e8708f744010"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02-practice.md",
+      "bytes": 2229,
+      "sha256": "435691d182a29c309284e392e7a92df3876062608f2961129b451c083f872491"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02.md",
+      "bytes": 10724,
+      "sha256": "651b1994c2a26836307994af406fee7575e0993258ed3e3200429f0e475fc1bb"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m02.practice.json",
+      "bytes": 5681,
+      "sha256": "3291b43724a37c75c1f09c3509171b42a32dc50f4c94c398fb7c0dda315f9d8f"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03-practice-feedback.md",
+      "bytes": 3384,
+      "sha256": "b18579a1c2a1dbd0e100e41c2151d2bfa7b286f2022d9cc87ef3a22330b87a6b"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03-practice.md",
+      "bytes": 2052,
+      "sha256": "3053bfddde8666e0c4b140cd5342921113063eee12e1f8dfebdabf4b836a6de4"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03.md",
+      "bytes": 10764,
+      "sha256": "9d42487dfb74bbded08c229aa17b369e5e678b1f6f0ff6ec2a9ef84e79170152"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m03.practice.json",
+      "bytes": 5768,
+      "sha256": "684d87256866f17f9fe5239d5b16533b8c1666ee2d18c277dc927eaf19b8e452"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04-practice-feedback.md",
+      "bytes": 3408,
+      "sha256": "e0aca9093272194a446658a1baebaf154b99a4068e2e6a65d423cff0f7fa2957"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04-practice.md",
+      "bytes": 2527,
+      "sha256": "1d90a691b5f4a20f22992c783bd65d9c864d6db1266a5a0dd1efd94d4014b7a7"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04.md",
+      "bytes": 8817,
+      "sha256": "3ef2b72e9e142c7866b16c10c79f1d38ad2c185d46b5d3e0854a7fa29bd64901"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m04.practice.json",
+      "bytes": 6321,
+      "sha256": "0a23c0584ca371bb26da650e4d0cebe9de89d0644a2a2139afc7e6832ca21ab2"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05-practice-feedback.md",
+      "bytes": 4748,
+      "sha256": "3d1062b1e0e01daf640b4cf8346dd901e0163ec4bf6199ca55578c9eaa3ae55a"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05-practice.md",
+      "bytes": 3735,
+      "sha256": "bd04e4ec54db2a2bf12c394ae76f120b7d56dbcf37d445c2a8426cbc690b7297"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05.md",
+      "bytes": 10623,
+      "sha256": "7f19954cd04ea0ffa22366a6c7b2bb91dd362323630e25f2bae076ad4e1094d9"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m05.practice.json",
+      "bytes": 9241,
+      "sha256": "0ea4552ff1102b60a3f6dd678a9378700da7c2f37397bcde04021da833df227f"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06-practice-feedback.md",
+      "bytes": 2953,
+      "sha256": "afee70199644ae16247fd7c16c9781560c9cefce213466311a98c2e260ed1481"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06-practice.md",
+      "bytes": 2138,
+      "sha256": "e462b449aea311badb95f9b8d98aed58be28c6d07cf2f0a255ce7a49fa5c71ea"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06.md",
+      "bytes": 9267,
+      "sha256": "5b0f3fcdb3d6ac522eda30ac079ca2ae5174d3362304f64e2abb0482132b7254"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m06.practice.json",
+      "bytes": 5390,
+      "sha256": "0adcc5b15169a06bc5881b2c7cbc1841094e7559cb064732194d765df62881a6"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07-practice-feedback.md",
+      "bytes": 4439,
+      "sha256": "5d369c6f57d46a0003a0d9fb9c406ba96be519ca3e2c7868ae8d752e597f7140"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07-practice.md",
+      "bytes": 3313,
+      "sha256": "547604dd6378435bdd445667041ab57194da8a05f46cca3500ebea9887280273"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07.md",
+      "bytes": 12183,
+      "sha256": "54c6c065c75e6caf7f329987e1e0ef893c621b422be0852b2494ce32c22ad11d"
+    },
+    {
+      "path": "courses/inside-the-shot/learning/m07.practice.json",
+      "bytes": 8346,
+      "sha256": "67cd48e0b1670f607be7be91fe476eef1bffbe890bd74363bcb10fc6e3d9925c"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/START-HERE.md",
+      "bytes": 15005,
+      "sha256": "f69d77e6c64de2b33a39d88632df5405f3c382a5b661a03c8dbea41b6fd03d68"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart",
+      "bytes": 33768,
+      "sha256": "5e3c9dd99052749bccf36ad03524778be16b0d8dd1f3f913e3a8578acf6df85c"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-crossing",
+      "bytes": 33776,
+      "sha256": "2bdc966dc50f8e106174c3436977b39322c12a29d7cf0d53cf594cbbec7e264a"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-crossing.asm",
+      "bytes": 2078,
+      "sha256": "fc2c60ece8b53def38d0add042717af599225f4dc6280b483d888b015a3f9735"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-transfer",
+      "bytes": 33776,
+      "sha256": "8202429986184770c91ba516765d4965710a4b0fb848b8dd4cadb3e61a551bf3"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart-transfer.asm",
+      "bytes": 1445,
+      "sha256": "95edd585b593b9a75aabe4ef6e5646c6978244ba0ed26b14d02d1249ce8813f8"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/cart.asm",
+      "bytes": 1436,
+      "sha256": "fdd8ca401a8168c24aa7ebf99bdbaebb2a0d3044d462bda07add24ab4cbbf8b5"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/check_basic.py",
+      "bytes": 2111,
+      "sha256": "ca1a3eba2ac7da42410f881618e1dc3b34cd157f5470aa830d93ee5f00406173"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/check_model.py",
+      "bytes": 3811,
+      "sha256": "7e9882a867f19d3fe9179ec4d1b3f7c17053f7304bca108820e3cefef94298e6"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/crossing-hints.md",
+      "bytes": 2367,
+      "sha256": "612031c781577f3f005d4cdf74df2b8a0dba12cb1417d273420e82d1624a31cf"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/crossing.md",
+      "bytes": 8812,
+      "sha256": "ead96180c542339d5a43d1fdf0925340c93fb1d4d8f899b64c1b08e98bb37b49"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/crossing_model.py",
+      "bytes": 197,
+      "sha256": "73b2e0cf8796d039daf7262cc2bc5b917ae6d30a879324063b881a9ff875a586"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/follow-along.md",
+      "bytes": 6268,
+      "sha256": "8502e25331ebb91fb00544bf4195ed10bdbf7666c5f3fbbc7fdb63d188953d9e"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/hints.md",
+      "bytes": 2192,
+      "sha256": "38b43189b8cca0c5ea71fe3e8d3c36bebcd3a31c4208a10cb7d989c81ee660ea"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/manifest.json",
+      "bytes": 2689,
+      "sha256": "13ea92ff62cce186d845a004ce23925c0d2e1d4404159dc6d129cd369fa05ebf"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/marker-feedback.md",
+      "bytes": 625,
+      "sha256": "0a03d63372f02fdb46327b3a7601bd0139de6dd91abe8791232ab37efce769eb"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/methods.md",
+      "bytes": 3954,
+      "sha256": "5d6b2c6bcddcbc5c5069cf895052bff783ac297f06ecddd9c5a868bba99e4b40"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/model.py",
+      "bytes": 468,
+      "sha256": "10d6db482bbfd0e1ac0befb645a9adc46e17b890932fce349bc2738c35680874"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/notebook.py",
+      "bytes": 4894,
+      "sha256": "7e84579114d797602075078d9c053bcbe55ff8725885c3c5ba35e9fc6547d847"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/questions.json",
+      "bytes": 969,
+      "sha256": "e1cfff90db8d62435d93b6df7e365e9eb333c1a22e8f3795deceb9b292f8cf5c"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/response.json",
+      "bytes": 403,
+      "sha256": "d6560ec4a747d8446bb59a57109ff61ef926fd852ab1a762768219f3817cf0f1"
+    },
+    {
+      "path": "courses/inside-the-shot/m01/setup.md",
+      "bytes": 3646,
+      "sha256": "c1198f25e29f6a0d6b257a4b7f4557d209b7cb2d6e9357fce4ff07754a8feffe"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/START-HERE.md",
+      "bytes": 20778,
+      "sha256": "354ce2e234dc8e1682a56c7790951a3c3bb79eb892a8e486a90be81bde3fa36c"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/call-example.md",
+      "bytes": 4813,
+      "sha256": "39dfb6bca99dfcc6f3a3e867dc6f8a3aa62d387cd123ec22225d875c292d4be5"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/check_decoder.py",
+      "bytes": 11037,
+      "sha256": "918a76cb575cd186c3d67017ed293cb402a574119428f3538f1b474b71b430b5"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/completion-feedback.md",
+      "bytes": 581,
+      "sha256": "a43c728d8882cb45ef7e3e9e34e7dd7543557ba6a1f71668bc4b3e820c74b3f3"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/decoder.py",
+      "bytes": 539,
+      "sha256": "73ed19d11d2c40d01bd42ede41e8d19e4f66be2f8b65e0439ebac6c38f019ff2"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/decoder_shifted.py",
+      "bytes": 456,
+      "sha256": "2fed8b87dac380b7bb29739975c234d9a38cf0d72dac143452bb821728298789"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/hints.md",
+      "bytes": 2482,
+      "sha256": "5dda03f4d92ec9be5136bc9820ace5ef2ac865e2bf5119acf800b98a2893e207"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/manifest.json",
+      "bytes": 3200,
+      "sha256": "b6084147a9f53c2e9ee92f2202606669d531fb4660f64f99c2c5f575c9595722"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/notebook.py",
+      "bytes": 5499,
+      "sha256": "3161ca7057f0d3993abd83253e5f27a936e860766b794eaba3a97c31c93ebade"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/padding-feedback.md",
+      "bytes": 506,
+      "sha256": "d2e26c9f40db17a9835b8758baa7dd87e43753b45c33c2b387db62a55b8b5348"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel",
+      "bytes": 33944,
+      "sha256": "b377d6cee325f5e015682af9a4805272381eb7c8f97dea22336ff2efcdad92ac"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel-shifted",
+      "bytes": 33952,
+      "sha256": "1d0b14d460109da5ee5d581889bfb4ff34cb2f87f9bcd130ce908093207e0b50"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel-shifted.asm",
+      "bytes": 1906,
+      "sha256": "3965c57d32bef8ae8d48b5bb8dcf8326e2a026e5ca90453afd4ad5c8f1dfdfb6"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/parcel.asm",
+      "bytes": 1904,
+      "sha256": "9acb2729851b001ca1ed123d78cc52c3a8203c5c5772785a93b94aeb3741965c"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/practice-feedback.md",
+      "bytes": 678,
+      "sha256": "a752dfe3485ffc976b481d9025f1eb585c51364fd56e51237532571b67ae796a"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/questions.json",
+      "bytes": 1381,
+      "sha256": "ec0caa7346d637ad1ddade5d28e1f7440c251e74b6695184852802ce53d4e162"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/response.json",
+      "bytes": 396,
+      "sha256": "fe84ab588d4facac88c57427c22267c24aa712ce81b9b25c7e86cf1423c1ac9d"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/setup.md",
+      "bytes": 4935,
+      "sha256": "bf981aa53b01148d25166088949b92eeff21eb7db8398dd5c51a8228ae3dd040"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/transfer-hints.md",
+      "bytes": 1735,
+      "sha256": "45d0169f485504c7204143a76497e887eb6066e7a92d3f2b53db7ac8a85fe1e9"
+    },
+    {
+      "path": "courses/inside-the-shot/m02/worked-example.md",
+      "bytes": 6230,
+      "sha256": "586ca34de2ec3739e44d4df24bf3d5363a6777a5264d0b2ad8514ca734d4463f"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/START-HERE.md",
+      "bytes": 9271,
+      "sha256": "86d7d9fc6bc53f7fd42aa60df46691e3edf4ba62ebd86d1324add4d69baef6b6"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/badge.py",
+      "bytes": 403,
+      "sha256": "379b2a0d0e4710d51bc7c78eb413780fd7052066f76a2a690ffe339e96110963"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/check.py",
+      "bytes": 8818,
+      "sha256": "e0110fb0d96f2da1606392853d5dcff0ce595f4bc7727f67445eb4bd6e7586bd"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/empty.trail",
+      "bytes": 12,
+      "sha256": "dd1790fa6187444d4bf1d2ec64c8cdcdd9e1bf38dbd82d17b7c26e9a9b604b79"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/feedback.md",
+      "bytes": 3627,
+      "sha256": "9d868d6794af595342f8049d7d788634c2fadaad746eb89a63d2aa512d6d6141"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/hints.md",
+      "bytes": 1089,
+      "sha256": "aca3783d428e3e77b8ab88186191ef21076db44d59e87f9834d2dc6c6de49462"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/inspector.py",
+      "bytes": 780,
+      "sha256": "8ccf7b44e213f0cddbfab4cf55c99aa09ebd63520f571eb89ae72a8d6f322201"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/manifest.json",
+      "bytes": 1359,
+      "sha256": "79ef5c076d689b2da487b3a0bf425f62a29dec7fffef4081d35490fcb7798fd2"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/markers.trail",
+      "bytes": 44,
+      "sha256": "dabd8e4f2c320e0025cf74e62cb76c408b3fc0a95dfb206d6aff8aa08b1f56b1"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/notebook.py",
+      "bytes": 5766,
+      "sha256": "880b7e73048704a3382e74fd1348cecb5cbb43568c074a180436bbc2d5a7fd67"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/one.trail",
+      "bytes": 20,
+      "sha256": "678a59de25bb3b22e7201627e00ea84fa2f9c06fb38bda1b86171794579ce7dd"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/opaque.trail",
+      "bytes": 28,
+      "sha256": "12e767628a89a490d65d65a04117306dd592afeda13c40b1836520c8cbbb5567"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/practice-feedback.md",
+      "bytes": 788,
+      "sha256": "16a8464860139a7c09ee27ca339af3fb251ba7d89f220c04212e84de2c66fa99"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/questions.json",
+      "bytes": 967,
+      "sha256": "7ab4d5f8c9492b13cad78c43524d2c13243221090a23f220a697dda2f1af0ecc"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/response.json",
+      "bytes": 182,
+      "sha256": "78f4216032e167f9473d8b9b12d6dd1f3595603a0f6f96011e8e9f5f7b2fbc75"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/retry-feedback.md",
+      "bytes": 814,
+      "sha256": "7bde2676ee4c604e7b5a7728097e7b5aec18b44a4ec9afbcff7fc1aae9831698"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/retry.md",
+      "bytes": 1430,
+      "sha256": "ea33bb876cf57997077f779984d7c4594524f197f90e8891c4d4857fac71e126"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/setup.md",
+      "bytes": 2664,
+      "sha256": "3cdc841184ebc9300be8af63217b4d0aa8e349fbec9cc99da1cc0ea3af02ffc6"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/trail",
+      "bytes": 34392,
+      "sha256": "c3d5db267aa66fd78da3919b4ea9177ce63274c47a14480ec5a6c05c12155ea3"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/transfer.trail",
+      "bytes": 36,
+      "sha256": "0b2d58fcc17ccf74a212736db5ec4b770c38b6f723f174c2f7532181a2dff45a"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/worked-example.md",
+      "bytes": 2988,
+      "sha256": "57df35df80677e5b230a653698c200f6785b9b1e2372358a98209e517e267a88"
+    },
+    {
+      "path": "courses/inside-the-shot/m03/worker.py",
+      "bytes": 760,
+      "sha256": "1a996e6a70395f5020645399e1c5d91d379c9b1c789376735600373ea7722d1e"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/START-HERE.md",
+      "bytes": 9158,
+      "sha256": "0d2ff099ae95b908c8dcd8fc24334187c612c73c3993c3545905e35a31dd8a49"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/check.py",
+      "bytes": 8818,
+      "sha256": "e0110fb0d96f2da1606392853d5dcff0ce595f4bc7727f67445eb4bd6e7586bd"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/empty.trail",
+      "bytes": 12,
+      "sha256": "dd1790fa6187444d4bf1d2ec64c8cdcdd9e1bf38dbd82d17b7c26e9a9b604b79"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/feedback.md",
+      "bytes": 3340,
+      "sha256": "e255cffb07662e6a144daa0fb6f7fe50d6882eeff40f72a4d226a8e0d81e2f16"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/hints.md",
+      "bytes": 867,
+      "sha256": "6d59ef547015851320247e49189fc8daef799672fb01f674dcbfd753007b774c"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/manifest.json",
+      "bytes": 1359,
+      "sha256": "13c635fd78cc3c69674355bc826fb242c14e71b0d1b474e33d435871d854d5a4"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/markers.trail",
+      "bytes": 44,
+      "sha256": "dabd8e4f2c320e0025cf74e62cb76c408b3fc0a95dfb206d6aff8aa08b1f56b1"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/notebook.py",
+      "bytes": 5766,
+      "sha256": "880b7e73048704a3382e74fd1348cecb5cbb43568c074a180436bbc2d5a7fd67"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/one.trail",
+      "bytes": 20,
+      "sha256": "678a59de25bb3b22e7201627e00ea84fa2f9c06fb38bda1b86171794579ce7dd"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/opaque.trail",
+      "bytes": 28,
+      "sha256": "12e767628a89a490d65d65a04117306dd592afeda13c40b1836520c8cbbb5567"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/parser.py",
+      "bytes": 1857,
+      "sha256": "0ec22947db5810c80af8efb3fbf306843b896cb8f6504eaf9a8fa54a53e71784"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/practice-feedback.md",
+      "bytes": 709,
+      "sha256": "e5787084439ba033418e489d3fd35ffbea8c80a645c1dd09cd15885239ddb3a4"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/questions.json",
+      "bytes": 1140,
+      "sha256": "b5c65dcb283c6ffb4d4bd32f106b49e4345bd8084915814caad02a15213f2a51"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/regression.py",
+      "bytes": 481,
+      "sha256": "63c61faeae38cdf7b173b0008de1759087073de8d00d66694b414603784a2692"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/response.json",
+      "bytes": 182,
+      "sha256": "9906f1c7a0ad8b495ce869b2411c05be0a3616f814b7e59eeccfcf000c21678c"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/setup.md",
+      "bytes": 2662,
+      "sha256": "7e2ac102cbebbfc80c2f910fe28fb35f3e3283a4ce0029384d8c0bbb82cb5211"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/trace.py",
+      "bytes": 1350,
+      "sha256": "d27864db5356bb83d17bdd7b84aa3180adca8b3073606e6b7ae0413fda36b85c"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/trail",
+      "bytes": 34392,
+      "sha256": "c3d5db267aa66fd78da3919b4ea9177ce63274c47a14480ec5a6c05c12155ea3"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/transfer.trail",
+      "bytes": 36,
+      "sha256": "0b2d58fcc17ccf74a212736db5ec4b770c38b6f723f174c2f7532181a2dff45a"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/window.py",
+      "bytes": 500,
+      "sha256": "0bd1c1e817ca2db718b6dadd7911994c778eb02b874db4eeb3d66927305e9f74"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/worked-example.md",
+      "bytes": 3166,
+      "sha256": "fbf8f988eca5bbce7f5b57070411297efd7b9ec72b2b7edda06a28a4f13a6825"
+    },
+    {
+      "path": "courses/inside-the-shot/m04/worker.py",
+      "bytes": 760,
+      "sha256": "1a996e6a70395f5020645399e1c5d91d379c9b1c789376735600373ea7722d1e"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/README.md",
+      "bytes": 2708,
+      "sha256": "03a04bf2627c9c88d00507396524fab6a68682df4be38abc2500e0908d05c6da"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/START-HERE.md",
+      "bytes": 19128,
+      "sha256": "f6d8ba9e26e5bb9c738e98e3769402095e9a86d7c335284ebce553a3b8c32a7f"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/check_decoder.py",
+      "bytes": 8244,
+      "sha256": "a55cf017eb5095f7c71908f4ded8d1495e407faa894f791d7aff1aed2f0f8950"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/client.py",
+      "bytes": 1819,
+      "sha256": "853fcbbf170276b40a6d48e8ed784f7bbc7cab6b19058532ef5c8afa229d7911"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/decode_trace.py",
+      "bytes": 957,
+      "sha256": "98a293716d91d9c81aaffb5fe3e8bd85fa7009166723676875294bbe7b86b51c"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/decoder.py",
+      "bytes": 592,
+      "sha256": "b787803554ccd4756dca5c99d48edef38c2daea371a35b4ea8f3df65b3724738"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/example-feedback.md",
+      "bytes": 1082,
+      "sha256": "6c6b0f1f3698aaec512c6278c451b2dad431c9329696037a8cdb1c098d8c6d7c"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/hints.md",
+      "bytes": 1442,
+      "sha256": "5daae614dc08491add8e205abdd87adb6f514a7ea9dcbaa159d281cf05927a71"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/manifest.json",
+      "bytes": 2116,
+      "sha256": "bb20c1652eb73e6f803031e49c7f5f1715a867cfe717713b085cabe4fc98480f"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/notebook.py",
+      "bytes": 6379,
+      "sha256": "53f376914bae428a763b1c3a6cec99410961e9d6956c661fb2932da9b1a25c8c"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/protocol.py",
+      "bytes": 886,
+      "sha256": "8ca30ae0f9e943edce6c5659994e9c138d2f20c6588308798ef7f60aefc237f3"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/questions.json",
+      "bytes": 1290,
+      "sha256": "9f8d9cc27701e456267c3f8dda8efadeec6796f48707dd58cf24a3c5fecee5bc"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/response.json",
+      "bytes": 254,
+      "sha256": "b33a755b44e0f2f33221b7854d72fb7b52e9ac4a4d1d70dff74c60ea60058c70"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/run_lab.py",
+      "bytes": 4758,
+      "sha256": "80ad3f24fea8fa63593db9ddbccf793010751175529400beb1a2b502b3cc84b3"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/service.py",
+      "bytes": 1962,
+      "sha256": "d17f434fa127b6a92e4b456cc9c2ca9e1a24b99127da80e78f9a708c1ad41b53"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/setup.md",
+      "bytes": 3200,
+      "sha256": "ab3c54bb4fae9ff913bd89e1b2bc875aac7edd4b3d873779bf42f2d2bed9da31"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/transfer-hints.md",
+      "bytes": 1232,
+      "sha256": "9503237f9e8aa1d1b199afabe6e22dacd7ae09b4a93572929d5f41f43cb4ac8a"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/transport.py",
+      "bytes": 1319,
+      "sha256": "e911d72f7857d4c7793bed79cdbba2271e506eb58b5fe02c509bbf9d7d4afa3c"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/view_trace.py",
+      "bytes": 1693,
+      "sha256": "e127426a001b8e3bafcce714494ca856441d66fddfcc7567ac15c6baf75aca22"
+    },
+    {
+      "path": "courses/inside-the-shot/m05/worked-example.md",
+      "bytes": 5083,
+      "sha256": "ed445a29ce15733d8a10dcff8751e253971c61297e6a9faff163e02055c421c2"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/START-HERE.md",
+      "bytes": 11152,
+      "sha256": "61a4f848286af1819faa3639dc1821b382f4ee50a4d12158612eff79c98f978f"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/check_model.py",
+      "bytes": 5117,
+      "sha256": "7f18f63ce1d01ab672f6dadf1795908e9fc0a067a5f5004eba7eff3dca5608f7"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/completion-feedback.md",
+      "bytes": 633,
+      "sha256": "4d7c4648d03ad17cbfab6699311f34e95aaeefd35c2b947c1584998094390017"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O0",
+      "bytes": 33720,
+      "sha256": "41041e95141529af39c7bf968b31bbe570c3f59124b4b27518d565c33596e652"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O0.asm",
+      "bytes": 697,
+      "sha256": "9b2c37a56f24b34360c7ebac51c92a06b7bc511daf4830e4b119867e94333893"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O2",
+      "bytes": 33768,
+      "sha256": "855891f3e086ba1530246b0ab6cf782f677c1444c4c77db8c66cfaf3263545f9"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/fee-O2.asm",
+      "bytes": 321,
+      "sha256": "8ec5b3938e1603307ee13d5abb7a3d93d1935515513379f3178d8875f93c34c0"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/hints.md",
+      "bytes": 1400,
+      "sha256": "072de583d8e7a5083563c19184799eb3663208bcf45b1f692b06a27e52af2bde"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/manifest.json",
+      "bytes": 3788,
+      "sha256": "3bd564fc8f19aaa9e6777dd6fb7f7877ffdda83595342bbd80f6ee884f341e65"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/model.py",
+      "bytes": 280,
+      "sha256": "2280238e5ef4b9ce513bd64462e6bc3101dd02f176b6454036fe4c16570a3651"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/notebook.py",
+      "bytes": 5452,
+      "sha256": "510016abe0adc96c475b966528407a15e17384480d2e7b0cc2560532e51f2630"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/practice-feedback.md",
+      "bytes": 704,
+      "sha256": "0d937fab7d950e2ef71b5d7eb16716cc87df0d607049a41bebc6160b168b03af"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/questions.json",
+      "bytes": 1251,
+      "sha256": "6e740f364b9a114e8b43729b1704b6d9c60a213e65ce90817f8e878fd36e23ce"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O0",
+      "bytes": 33720,
+      "sha256": "7730da18a4358da5765244959383e3368f0e182e956560f9601765b362720e1f"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O0.asm",
+      "bytes": 2252,
+      "sha256": "303a9addfdf02386888ab1e8b6288efc69940c2c0d3c7894c7abf626499af230"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O2",
+      "bytes": 33768,
+      "sha256": "ece5bec561a821d5ac6ad1e45b79a0719e6f227837fae49bf3fbc94a65004d8f"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/quote-O2.asm",
+      "bytes": 817,
+      "sha256": "77040eb04d590a88d02f44bca0234ff54e7d53f7120671126bafb6a77f2c2668"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/report.md",
+      "bytes": 1422,
+      "sha256": "c70a9821cf6ec2a04e226ec6b5c7fcd72fd71d14d2d06e5af04ed1761870b62f"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/response.json",
+      "bytes": 233,
+      "sha256": "79801e845179760298a206a7e1fb27f16068563b26ff282d248d3fbd9ab181ea"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/setup.md",
+      "bytes": 3262,
+      "sha256": "25b46ed0bd2a0f9cff066483d9e98b382af442a2a88dc4c6213d2785be93730d"
+    },
+    {
+      "path": "courses/inside-the-shot/m06/worked-example.md",
+      "bytes": 3478,
+      "sha256": "fb92700da04e06be2d34eda3157f20ca5f9e9a08a77fb609d97cbfac7b160560"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/README.md",
+      "bytes": 2165,
+      "sha256": "f428f3342767c6d4757ae0550e550071510a77dd0a503faec8105e24582d83b0"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/START-HERE.md",
+      "bytes": 18842,
+      "sha256": "d5a2f047f7f143b6dab1d64233056c283b56d002b599d8e1d0ec501a3c6f051d"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/check_model.py",
+      "bytes": 7158,
+      "sha256": "49d5051b77759da317906f678e7d33519128d2798d157c94706066ca37b058a5"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/checkpoint.md",
+      "bytes": 2107,
+      "sha256": "c73e048ecfecdfa4c3b97447a69fb7c79f11aadb54e56cf2f6137f759486732a"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/hints.md",
+      "bytes": 1521,
+      "sha256": "060762dfd2d694d34e2da6a2485e6f6db8f9fde724698cc1a388cb0e55867cc8"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/investigation.py",
+      "bytes": 660,
+      "sha256": "6c0a6ad002cf3ff28d8792f9231aa4bf4d6a256c61c372d896a58315a8ff83eb"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/manifest.json",
+      "bytes": 5416,
+      "sha256": "09bd9234717b7461b18ca40dc37e1395cc44e881061ee9a878634f12115ccb51"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/notebook.py",
+      "bytes": 6454,
+      "sha256": "38a4b82bc2ec24925e5e35a706f54be8be1aa9debdb31ca7df1228cb1fceadb3"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/practice-feedback.md",
+      "bytes": 794,
+      "sha256": "79b02cf065f592f68121a05a0cca1d406cd374c619eed05290ffb616b0b4d703"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/questions.json",
+      "bytes": 1612,
+      "sha256": "824abe28836c47bcca6ee4e8dbeabc3a08d078b06f5f8e09edccd18fdb292449"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve",
+      "bytes": 34072,
+      "sha256": "edeb312a8390ebed4513413b3bb14bb93a29f50b693e08a0fa89d27b5ea51fb1"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-atomic",
+      "bytes": 34080,
+      "sha256": "76211d3f8f4ba91a4189f93b4f6c20da2ef114ed68299f3cd4833bc130313b5a"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-atomic.asm",
+      "bytes": 9739,
+      "sha256": "1155deebfe3994132d774566b640e0b97b77708daaaaf6217765157eca52ecc8"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-opt",
+      "bytes": 34072,
+      "sha256": "4fbd83ba4ba998343ea2b49a06cdb7c1da8c3d92b7362f1d593730e0beee3fc1"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve-opt.asm",
+      "bytes": 4741,
+      "sha256": "a518e2c3af0d3d6841a4a8a7002ce67401b082346df4bf2519e628909211e32c"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/reserve.asm",
+      "bytes": 9732,
+      "sha256": "5daa917c68e9bb10ad92e5753412b8bc707836c356a216b8062478c6505ce105"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/response.json",
+      "bytes": 356,
+      "sha256": "123eb204550a5aa0edafae6e1784ff6a7200653d301aa834388cab21cde70e35"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/setup.md",
+      "bytes": 3264,
+      "sha256": "f470c6476dd5fe17cee0563214a3ffb351f9d9efadd60ad7c18d2ceda671870d"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/transfer-hints.md",
+      "bytes": 1280,
+      "sha256": "62db72dd5cf7e6aacc55f6a5779faa6a56e0f1e042e9c5d3232b1be794d5c7fd"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/worked-example.md",
+      "bytes": 3790,
+      "sha256": "f1f6f4a52aa7107678c87610672f8ca0d2679899fb408dc2e5d3a4dd426240d1"
+    },
+    {
+      "path": "courses/inside-the-shot/m07/write_hex.py",
+      "bytes": 1803,
+      "sha256": "f8bf720bb0ff926e3aae9659caf51cfc1db82d47e018cd03c973f1fd27d5e7d5"
+    },
+    {
+      "path": "courses/inside-the-shot/manifest.json",
+      "bytes": 31401,
+      "sha256": "8038f37c011b3eaf9f518ff4c38f0ec82481cee26df4f5935619a7c603c8c21d"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/CAPSTONE.html",
+      "bytes": 8689,
+      "sha256": "cb299dfdfd9899b91b9b7d8ae2b78033005bb8e8d9ead6f302e4ae412409acb0"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/GHIDRA.html",
+      "bytes": 15589,
+      "sha256": "914c42c3923de33c8872f850ef541f443f6bc9c7e91f9658d1935ae5aa11bc8f"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/HOW-TO-WORK.html",
+      "bytes": 8686,
+      "sha256": "34cd4528578a4cc85632a0ff8a947b01faf62f065f515f8ea2bf942502328fc9"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/RECOVERY.html",
+      "bytes": 7767,
+      "sha256": "5b28ffc6011a3159490185c87390f00da2f1b87fc5f963bbca502ca152762e71"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/SETUP.html",
+      "bytes": 8754,
+      "sha256": "37a6fbdacb8795fbbe57bb78f75c8cae02b1aab0fafaf65f2f0c4dbc1833f1dd"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/course.css",
+      "bytes": 7653,
+      "sha256": "66eb7bff6bd0945f13baea47c219f64d3edf228a323e6b45f3b7ee1b3d16d53a"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/course.js",
+      "bytes": 14758,
+      "sha256": "7ddf6a814f6e97bdc76d555ed40c35a689ff2c94928fd06ceaeceeb41e427f0e"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/cumulative-feedback.html",
+      "bytes": 4488,
+      "sha256": "5ac831e4fc36a4d668d9881ec85f12c0ad3f00823e8476ee20fa98751f7fec45"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/cumulative-review.html",
+      "bytes": 5764,
+      "sha256": "2a615b02ab82c3ffb8ec6b22b2fa349f64ae64fa2d8c20386172d723c29047f0"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m01-practice-feedback.html",
+      "bytes": 6499,
+      "sha256": "c2cb4293a19816887b7d69a08d4984233de7d724b62c0f2995a9a5aa5b384cac"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m01-practice.html",
+      "bytes": 5265,
+      "sha256": "03556a4a0ddeab68930680fc6db26c0c633002a0c04a477796cbfde01b50ccbc"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m01.html",
+      "bytes": 26851,
+      "sha256": "b2159cd192fdddba6d9e81efbd77d0185e6903dd0a3f100e0d00b2e5f4f0ea3f"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m02-practice-feedback.html",
+      "bytes": 6790,
+      "sha256": "2256d2bbc72d28ef82e298ca3bb1844d926d5fa6a4c1726da4cd437543d77f65"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m02-practice.html",
+      "bytes": 5632,
+      "sha256": "ddb6bf1f8a7f69b5b3adea0e67f9bd3896bbb93498d6537fea207cf5af738fdb"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m02.html",
+      "bytes": 28853,
+      "sha256": "dccc4f2f32e32d45d5c6d922d77ea8cedee819cca7433f3dd92e5c2471dbcfca"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m03-practice-feedback.html",
+      "bytes": 7024,
+      "sha256": "bed75f3b70a972e49f9050aa560d907d3b79b4d946510d6bf08cce814d985220"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m03-practice.html",
+      "bytes": 5466,
+      "sha256": "b8e0cc2d7fd90879ede2670e531a5937c8d876408a6b6e25bcecb17c3ebaf934"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m03.html",
+      "bytes": 28622,
+      "sha256": "e79349259b06ce444db7850f6d01ec4563296fe19d10b2f6b2648457d1c5999e"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m04-practice-feedback.html",
+      "bytes": 7064,
+      "sha256": "05e380425215c77aeddccf497d195f58229a99d6eec28174be0046f8b9387a2b"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m04-practice.html",
+      "bytes": 5959,
+      "sha256": "d295c8e5bcede9067c5f47344fdcbd2437ae60258a1f7a169d59d5a2b94b457a"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m04.html",
+      "bytes": 26796,
+      "sha256": "7d22f49ba4bec071839ac60d96f4e225258c606f8ab1e36c90c8eb36f2606f8e"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m05-practice-feedback.html",
+      "bytes": 8795,
+      "sha256": "a7df84936490b88226f63f35e41be551fba9dee33b1aaf66f27e9fb6ee9b542a"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m05-practice.html",
+      "bytes": 7555,
+      "sha256": "0276e9155b20df9b894e1f2e88bca07d7fde63aa5f6d998701dfebb3980f2c88"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m05.html",
+      "bytes": 35114,
+      "sha256": "0b673c48eef9143d8a7e06cec51c2f93a1d8aabd462bf11a63cd8d23939487bf"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m06-practice-feedback.html",
+      "bytes": 6643,
+      "sha256": "b1d6b332d2d217523e138f69f3a1d6fe24f0ab8fe0f2146c2fdf9ae50ab0e195"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m06-practice.html",
+      "bytes": 5589,
+      "sha256": "98b96baaa78120f5574a1889606f98ff840305854fe28bb1ceecda49185e32a2"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m06.html",
+      "bytes": 26570,
+      "sha256": "1751f98f3a447af67b5341695f94049b1edf2c7c73d682c885503ea52a5fe88b"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m07-practice-feedback.html",
+      "bytes": 8322,
+      "sha256": "199b7f487f2ef989d3204f0efc175eaf5b57b1b9afde8e3bd39c3f5b38c927aa"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m07-practice.html",
+      "bytes": 6954,
+      "sha256": "668ef577fac5c04356f338eb21fa4b9b106008f9354fedae20e658bf903c8985"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/learning/m07.html",
+      "bytes": 34670,
+      "sha256": "78eea98eabfde287c4f8d1216eba0b21e6bfd17574227faf943570163f5c3613"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/START-HERE.html",
+      "bytes": 22322,
+      "sha256": "0a162e3e5f6a4292d3046534041627532cfafd56090c6fdb6e2e85fd1f6a8668"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/crossing-hints.html",
+      "bytes": 6006,
+      "sha256": "6161be93c1478292a87deed4ec11ce1b7eb978328457180acdf0206f26d744fc"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/crossing.html",
+      "bytes": 13598,
+      "sha256": "51cbfa5e2058f757d85e3534a83b6f13748a2abbe6adab6a866cc7ab8051ef97"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/follow-along.html",
+      "bytes": 11052,
+      "sha256": "419c2f1ef32c29ff89a8ab38e9f60eb9134923c0fa74b6dc58d5b6a2bbe3bd63"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/hints.html",
+      "bytes": 5790,
+      "sha256": "7bdd7e99940b4ee7a01e6d6c0adcd71012a68f9e723411e436dbf12497a7878a"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/marker-feedback.html",
+      "bytes": 3747,
+      "sha256": "27ca3d04a12fd993413b533c6dd9421183013639b8c9a034ffd6b0149382e2c7"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/methods.html",
+      "bytes": 8155,
+      "sha256": "506b88355b3d9ad2bf76303dfda8f7be4239a9af033aa6ce2ee5cc19f8f152eb"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m01/setup.html",
+      "bytes": 7146,
+      "sha256": "7456579e88e31f5f2767126192153f66d243d3ddc219bfc484dd8060eedf92eb"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/START-HERE.html",
+      "bytes": 28724,
+      "sha256": "c3900a7698c19bdd69b7ba0e6f9c7d32c44029987469778899d0bd7f0938ac5e"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/call-example.html",
+      "bytes": 9531,
+      "sha256": "5fc65f2172b08aec874b3f27b76bfd241c91eb01a41724844912c3e1db37be87"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/completion-feedback.html",
+      "bytes": 3666,
+      "sha256": "03575517c9c6b0acdaba5b781a7730c775da8fc545d0f7ec50f0e6e00d36c3df"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/hints.html",
+      "bytes": 6273,
+      "sha256": "8bfdfe77ce4137b88e329bcb06f0512d68208f792ec5e6a3749726cb40e28f98"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/padding-feedback.html",
+      "bytes": 3529,
+      "sha256": "a376ede9c6a9ee2784e8e1e3d36dc5e1fedb52baadfe74f994a876f11b23c7e3"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/practice-feedback.html",
+      "bytes": 3767,
+      "sha256": "2ef7ef5bf85a71d4f4a5e088f5ea940970450fcad48e27b216de73ea9732c658"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/setup.html",
+      "bytes": 8921,
+      "sha256": "147e64f9b9c7ab12f2bc62f7a43a2de9ca7181d89b98aaedfe834706ce6054ab"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/transfer-hints.html",
+      "bytes": 5339,
+      "sha256": "1970b8437ee635510d3ad87a75ac256d6488b5fc26fde00dee405d72f8b13d71"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m02/worked-example.html",
+      "bytes": 10876,
+      "sha256": "14f624acbfbff11351331e7bd2e184a107c337630f99a7d3236c94878fa1229c"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/START-HERE.html",
+      "bytes": 13922,
+      "sha256": "5d9ca82dff7710035ac37bdccd01c5e36a8df6b7cbadda06b25c80e7e61f96ea"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/feedback.html",
+      "bytes": 7308,
+      "sha256": "acf7d1014b06989e69fc049ec11fa0e5e5a7a9eee93c7125585a69654cba35fe"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/hints.html",
+      "bytes": 4188,
+      "sha256": "6680f57f999114376a628c3ed13cd90c09eaf2108e9eeba6f4bb1d0a6e1df770"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/practice-feedback.html",
+      "bytes": 3899,
+      "sha256": "9eeb44a47783bbfc85abd61424b72787cd498bec7c8f628ac286689253ed7183"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/retry-feedback.html",
+      "bytes": 3888,
+      "sha256": "4ed4c8696eae563dc140047b44b81bfd1cec198b15e34dc5ee47973ef82a47ae"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/retry.html",
+      "bytes": 4554,
+      "sha256": "508c498878f7245cb66555ebfbab0319b818829c57486d64888ce2800b52b896"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/setup.html",
+      "bytes": 5675,
+      "sha256": "3eb4cd9d865ba6c6d3ac595362e9b6ccd57511966ea20d050d0874332c247a00"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m03/worked-example.html",
+      "bytes": 6539,
+      "sha256": "aea5df519f8099b3848c6ceb8b69f4c5438cdfa23e3864bcb6a6f2a156ed234d"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/START-HERE.html",
+      "bytes": 13979,
+      "sha256": "991b3488133d297f69786cc0e969a4ec5b48200777b7d5a0dd718ec4ee51f900"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/feedback.html",
+      "bytes": 6781,
+      "sha256": "476aa4641fffe254bc815b3836f5713aa1700ba84b050a8f2ec44515c33f9596"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/hints.html",
+      "bytes": 3990,
+      "sha256": "2b91496d8eaf4891a1b194566175903e07483416b3d2e11b763ef486f10016f5"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/practice-feedback.html",
+      "bytes": 3861,
+      "sha256": "2315d7d3d271633a8c33fc23672026e1bb63e3d45e94e137bc839d5298575e6f"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/setup.html",
+      "bytes": 5682,
+      "sha256": "fc55abaefe63d40454333051ddd259284b655ad267f046e6c2db3d6f71584b46"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m04/worked-example.html",
+      "bytes": 6941,
+      "sha256": "98b8a41fa518b0c8ffbde048e7e4ec42b07e758a8928bb50e476be4fb1dbc13b"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/README.html",
+      "bytes": 5980,
+      "sha256": "8f51be39738ac72b37ac7eaa0bf57c27b4ddc23c34ece09aafb1aea3cce2e7ca"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/START-HERE.html",
+      "bytes": 26116,
+      "sha256": "a6692a2cac59e9ea4a7113b25b918e976e43855ddc5e8780945a23b148fc36bc"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/example-feedback.html",
+      "bytes": 4325,
+      "sha256": "42a5f0bb1f01b5982630556dd5b5e9c8ef0869ed82256971db696cb72a52186b"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/hints.html",
+      "bytes": 4988,
+      "sha256": "80c401ed362af5ba0adfeb9078758da15a466d60565ba14a743ff12529c5296c"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/setup.html",
+      "bytes": 6577,
+      "sha256": "423e00966dc7347dbc247d5611c85003d72d83b9943c6c531c3ec4fb8bf765e4"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/transfer-hints.html",
+      "bytes": 4585,
+      "sha256": "9b0b82cadc03f1a773244c970a2124327ec653f7004734b637ba96d1ac9075c4"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m05/worked-example.html",
+      "bytes": 9155,
+      "sha256": "e05511fe3ec5301b006504bffe9963caa74ef64316f46e5b749cc3c9f8ebc52c"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/START-HERE.html",
+      "bytes": 16974,
+      "sha256": "a62f066eb0ea79dfce55f63165564a52a091db258e61b3b057913a51a857689f"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/completion-feedback.html",
+      "bytes": 3732,
+      "sha256": "7299bd5618a86e802f2a65839eba45bd157183fbb5a220576e5f024858ea7126"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/hints.html",
+      "bytes": 4904,
+      "sha256": "0280840aa05c518956c77139f5c7efb5485866b6753a1fe941a9e02901263693"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/practice-feedback.html",
+      "bytes": 3736,
+      "sha256": "c8bda82624927641ff99d5464651c434f013d767c332843677291874c64c3501"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/report.html",
+      "bytes": 4974,
+      "sha256": "4af0faceaf5c33463d9e0dcea6eb3b5e0f7c4619f20aba00f2f64d02cdcc602d"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/setup.html",
+      "bytes": 6322,
+      "sha256": "3506af7aad4f2615cb51f500017a0f3807306af50812c418d9fb06acf562ec69"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m06/worked-example.html",
+      "bytes": 7490,
+      "sha256": "d17bece9ef2af14444232ce9c95b4c73d67894e7abecf203f356de906225f322"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/README.html",
+      "bytes": 5093,
+      "sha256": "1e7f79c30196a26334a74f577c4c8f52c8872399ea70ff3bd7bd7977654cfb91"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/START-HERE.html",
+      "bytes": 26287,
+      "sha256": "cbfc094696e71c5ececf1c29b4b0196152c8c7fa02bc6bad41c52a0b5a34056a"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/checkpoint.html",
+      "bytes": 4946,
+      "sha256": "c3b2c6d3b8b2d81f1b80335ea74fe77209e792627c4b00d67dedf1eb87666a74"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/hints.html",
+      "bytes": 5130,
+      "sha256": "906ff3216d237ca4646dbde9f1ba3295da3d7eeecd578ce644d65ac206852764"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/practice-feedback.html",
+      "bytes": 3884,
+      "sha256": "84a50ffe2a47c4fd0852b149b30b8a4e0b52fa49b5cb14608e020e23557755f8"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/setup.html",
+      "bytes": 6467,
+      "sha256": "cd27763017507f920bd147e7a049d1d7557a899cd9f80611f8d7e16dff460874"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/transfer-hints.html",
+      "bytes": 4871,
+      "sha256": "8163dd128f84ec787c8fffde1b45fbff364b49c3ac9dac41ea5a531babc3271a"
+    },
+    {
+      "path": "courses/inside-the-shot/reader/m07/worked-example.html",
+      "bytes": 7227,
+      "sha256": "48cfbf24e0dbe17330efa6ab333e1ff43fbb47bebd38378da13d922dbb6f6a0a"
+    },
+    {
+      "path": "courses/inside-the-shot/tools/CourseEvidence.java",
+      "bytes": 4946,
+      "sha256": "cfb3ba35a950984f515fb9a4aa1050cfe53bdc8921a177a4718bef1aeec7ac8e"
+    },
+    {
+      "path": "courses/inside-the-shot/tools/inspect_ghidra.py",
+      "bytes": 9194,
+      "sha256": "b1930cede498f3c2354181c1de36dbc100d93aa9da3c7f4196790573c5ea5990"
     },
     {
       "path": "courses/recoverable-storage/BROWSER-LIMITS.md",

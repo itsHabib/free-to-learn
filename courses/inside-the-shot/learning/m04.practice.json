@@ -1,0 +1,73 @@
+{
+  "module": "m04",
+  "items": [
+    {
+      "id": "m04-preserve-predicate",
+      "objective": "Choose a smaller format-valid input that retains the specified rejection stage and justify its minimality measure.",
+      "prompt": "The gardening format permits repeated names. The faulty parser rejects repeats after validating the count. Starting with 4|oak,elm,elm,ash, which result is minimal by number of names while preserving this failure?",
+      "choices": [
+        {"id": "a", "text": "4|elm,elm: it is short, and an exception is sufficient."},
+        {"id": "b", "text": "2|elm,elm: it is valid, reaches the repeat guard, and a repeat needs at least two names."},
+        {"id": "c", "text": "1|elm: it is the smallest nonempty valid list, whether or not the rejection remains."}
+      ],
+      "answer": "b",
+      "feedback": {
+        "a": "The header declares four names but supplies two, so count validation fails before the repeat guard. Regenerate dependent metadata and check the exact failure stage.",
+        "b": "The declared count 2 matches two names; the second elm triggers the same guard. One name cannot contain a repeat, establishing the two-name lower bound for this predicate.",
+        "c": "This valid one-name control is accepted by the shown loop. Minimality is constrained by retaining the failure, not just by being small and valid."
+      },
+      "derivation": "Count(2|elm,elm)=2 and the second elm is already in seen. For every valid input with fewer than 2 names, no name can repeat. The claimed measure is name count, not byte length."
+    },
+    {
+      "id": "m04-first-contradiction",
+      "objective": "Locate the first observed condition that contradicts a supplied input contract and distinguish an alternative cause.",
+      "prompt": "A saved trace for 2|elm,elm shows declared count=2, parsed names=2, index 0 adds elm, then index 1 has name=elm, seen={elm}, membership=true and raises. Repeated names are valid. Which causal explanation fits?",
+      "choices": [
+        {"id": "a", "text": "The membership guard rejects a permitted second occurrence; the passed count check contradicts a count-mismatch explanation for this case."},
+        {"id": "b", "text": "The header must have declared 1 because the final exception occurred on index 1."},
+        {"id": "c", "text": "Any change that prevents ValueError fixes the parser, regardless of the returned names."}
+      ],
+      "answer": "a",
+      "feedback": {
+        "a": "Index 1 is the second name, not a declared count. The actual membership value explains the executed rejection; the grammar permits that occurrence, while the earlier count comparison agreed at 2.",
+        "b": "A zero-based index is a position. It is not the header count. The trace supplies both count values as 2; inspect their producers rather than deriving a count from an index.",
+        "c": "Suppressing an exception could discard the entire list. The repair must retain all permitted names and preserve other validation rules; successful termination alone cannot establish that."
+      },
+      "derivation": "Iteration indices for 2 names are 0 and 1. At index 1, elm belongs to the one-element seen set, so the shown guard raises. Since the grammar allows repetitions and 2=2 at the earlier count check, this guard is the demonstrated contradiction."
+    },
+    {
+      "id": "m04-coordinate-window",
+      "objective": "Compare a proposed byte access with a region using a common origin and half-open endpoints.",
+      "prompt": "Complete the region analysis. An 18-byte buffer contains a region starting at file offset 6 with length 5. A three-byte read starts at file offset 9. How many bytes of this read lie outside that region?",
+      "choices": [
+        {"id": "a", "text": "0: the whole buffer has 18 bytes, so the region guard must accept."},
+        {"id": "b", "text": "3: comparing the starting offset 9 with region length 5 shows the whole read is outside."},
+        {"id": "c", "text": "1: the region is [6,11), while the read is [9,12); offsets 9 and 10 are inside and 11 is outside."}
+      ],
+      "answer": "c",
+      "feedback": {
+        "a": "The access stays inside the whole buffer but exceeds the smaller region. Name the region whose bound the operation must respect.",
+        "b": "Offset 9 and length 5 have different origins. Convert both the region and read into file-coordinate intervals before comparing them.",
+        "c": "The exclusive region end is 6+5=11. The read covers 9, 10 and 11; its overlap has two bytes, leaving 3-2=1 byte beyond the region."
+      },
+      "derivation": "Region=[6,6+5)=[6,11). Read=[9,9+3)=[9,12). Intersection=[9,11) has length 2; 3-2=1 read byte is outside the region."
+    },
+    {
+      "id": "m04-regression-controls",
+      "objective": "Select valid and invalid regression controls that can distinguish a causal repair from exception suppression.",
+      "prompt": "A proposed gardening-parser repair makes 2|elm,elm terminate. Which regression pair supplies the most relevant additional evidence?",
+      "choices": [
+        {"id": "a", "text": "Call the repaired parser twice on 2|elm,elm and use the first output as the expected second output."},
+        {"id": "b", "text": "Require the full list [elm, elm] for 2|elm,elm from the format rule, and require count refusal for 2|elm."},
+        {"id": "c", "text": "Require an empty list for every input so a blanket catch can satisfy the tests."}
+      ],
+      "answer": "b",
+      "feedback": {
+        "a": "Two matching runs can share the same bug. Derive an expected value independently from the format and retain the earlier failure as a regression case.",
+        "b": "The valid case must retain both names, while 2|elm declares two and supplies one. Together they challenge data loss and a weakened count guard; further controls still remain useful.",
+        "c": "The format requires names to be returned for valid nonempty lists. A blanket empty result conceals the original loss of permitted records instead of addressing it."
+      },
+      "derivation": "2|elm,elm declares and supplies 2 names, both retained by the contract. 2|elm declares 2 but supplies 1, so 2 != 1 must still cause refusal. The pair tests acceptance with content plus an independent refusal."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Text practice for Project3 · Inside the Shot</title><link rel="stylesheet" href="../course.css"><script defer src="../course.js"></script></head><body><a class="skip-link" href="#lesson">Skip to lesson</a><header class="site-header"><a class="brand" href="../../index.html">Inside the Shot<span>Native reverse engineering · seven local projects</span></a><span class="version">Packet 0.6.0</span></header><div class="layout"><aside class="course-sidebar"><details open><summary>Seven-project course</summary><nav aria-label="Course"><a href="../../index.html">Start here</a><ol><li><span>1. Native state updates</span><div><a href="m01.html">Prepare</a> · <a href="../m01/START-HERE.html">Original project</a></div></li><li><span>2. Records across calls</span><div><a href="m02.html">Prepare</a> · <a href="../m02/START-HERE.html">Original project</a></div></li><li><span>3. A bounded file format</span><div><a href="m03.html">Prepare</a> · <a href="../m03/START-HERE.html">Original project</a></div></li><li><span>4. Parser failure and repair</span><div><a href="m04.html">Prepare</a> · <a href="../m04/START-HERE.html">Original project</a></div></li><li><span>5. Bytes between processes</span><div><a href="m05.html">Prepare</a> · <a href="../m05/START-HERE.html">Original project</a></div></li><li><span>6. Compiled forms and behavior</span><div><a href="m06.html">Prepare</a> · <a href="../m06/START-HERE.html">Original project</a></div></li><li><span>7. A fresh investigation</span><div><a href="m07.html">Prepare</a> · <a href="../m07/START-HERE.html">Original project</a></div></li></ol><p><a href="../SETUP.html">Setup</a> · <a href="../RECOVERY.html">Recovery</a> · <a href="../CAPSTONE.html">Capstone</a> · <a href="../GHIDRA.html">Ghidra</a></p></nav></details></aside><main id="lesson" tabindex="-1"><article><h1 id="text-practice-for-project3">Text practice for Project3</h1>
+<p>Read <a href="m03.html">m03.md</a> alongside these questions. Keep a first choice and reason before opening the separate feedback.</p>
+<h2 id="m03-complete-envelope">m03-complete-envelope</h2>
+<p>Complete the queue validator after count and width have been checked. Header length is 7. Fill both blanks: if declared != _<strong>_: reject; if len(raw) != </strong>__: reject.</p>
+<ul>
+<li><p><strong>a.</strong> width; declared.</p></li>
+<li><p><strong>b.</strong> count + width; 7 + count.</p></li>
+<li><p><strong>c.</strong> count * width; 7 + declared.</p></li>
+</ul>
+<p><a href="m03-practice-feedback.html#m03-complete-envelope">Feedback after choosing</a>.</p>
+<h2 id="m03-unknown-evidence">m03-unknown-evidence</h2>
+<p>Two valid teaching queues differ only in the header unknown byte and the first entry&#x27;s unknown byte. Both decoded readings stay the same. What can your inspector and format note justify?</p>
+<ul>
+<li><p><strong>a.</strong> Delete both bytes from output because unchanged readings prove they are padding.</p></li>
+<li><p><strong>b.</strong> Retain the new raw hex bytes and report that these probes did not change the readings; their purpose remains unknown.</p></li>
+<li><p><strong>c.</strong> Name both bytes checksums because they can vary independently of the readings.</p></li>
+</ul>
+<p><a href="m03-practice-feedback.html#m03-unknown-evidence">Feedback after choosing</a>.</p>
+<h2 id="m03-trailing-byte-test">m03-trailing-byte-test</h2>
+<p>Two queue inspectors agree on a valid one-entry file. A checks len(raw) &gt;= 7 + declared; B checks equality. Both apply the same other guards and preserve unknowns. Which change to that valid file directly distinguishes this size-check difference?</p>
+<ul>
+<li><p><strong>a.</strong> Append one byte without changing the header.</p></li>
+<li><p><strong>b.</strong> Change an unknown entry byte from 00 to 90.</p></li>
+<li><p><strong>c.</strong> Remove the last entry byte without changing the header.</p></li>
+</ul>
+<p><a href="m03-practice-feedback.html#m03-trailing-byte-test">Feedback after choosing</a>.</p>
+<h2 id="m03-new-queue">m03-new-queue</h2>
+<p>Apply the declared queue format to 51 54 01 03 03 00 00 ff fe d4. After validating the envelope, which result follows for its entry?</p>
+<ul>
+<li><p><strong>a.</strong> reading = 65279; unknown_hex = d4; total length = 10.</p></li>
+<li><p><strong>b.</strong> reading = -257; unknown_hex = ff; total length = 10.</p></li>
+<li><p><strong>c.</strong> reading = -257; unknown_hex = d4; total length = 10.</p></li>
+</ul>
+<p><a href="m03-practice-feedback.html#m03-new-queue">Feedback after choosing</a>.</p></article><nav class="previous-next" aria-label="Course sequence"></nav></main><aside class="page-sidebar"><nav class="contents" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#m03-complete-envelope">m03-complete-envelope</a></li><li><a href="#m03-unknown-evidence">m03-unknown-evidence</a></li><li><a href="#m03-trailing-byte-test">m03-trailing-byte-test</a></li><li><a href="#m03-new-queue">m03-new-queue</a></li></ul></nav></aside></div><footer><p>The core course uses local native projects and terminal tools. The recorded shot preview and browser mechanics toy are separate demonstrations and are not required for this route.</p><p>Reader 0.6.0 · Native execution needs the supported computer setup; this page does not execute learner Python.</p></footer></body></html>

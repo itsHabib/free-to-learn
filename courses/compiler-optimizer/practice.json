@@ -1,0 +1,239 @@
+{
+  "format": "optimizer-practice/1",
+  "items": [
+    {
+      "id": "01a",
+      "unit": 1,
+      "prompt": "Two completed runs return the same i8 value. One leaves A=[2], the other A=[3]. Which comparison is justified?",
+      "choices": {
+        "A": "Equivalent because return values match",
+        "B": "Different because final heap is observable",
+        "C": "Unknown because all memory is excluded"
+      },
+      "correct": "B",
+      "why": "All initial heap objects are observable, even when the return values agree.",
+      "next": "01b"
+    },
+    {
+      "id": "01b",
+      "unit": 1,
+      "prompt": "Two runs both stop at the fuel limit after emitting the same events. What may the validator claim?",
+      "choices": {
+        "A": "Equivalent",
+        "B": "Different",
+        "C": "Unknown"
+      },
+      "correct": "C",
+      "why": "A matching finite prefix cannot establish matching completed behavior.",
+      "next": "02a"
+    },
+    {
+      "id": "02a",
+      "unit": 2,
+      "prompt": "Entry branches to left or right; both reach join. A value is defined only in left and used directly in join. What is missing?",
+      "choices": {
+        "A": "A dominating definition or edge-correct phi",
+        "B": "A larger runtime fuel limit",
+        "C": "An unsigned type"
+      },
+      "correct": "A",
+      "why": "There is an entry-to-join path through right that never executes the definition.",
+      "next": "02b"
+    },
+    {
+      "id": "02b",
+      "unit": 2,
+      "prompt": "A header phi reads a body-defined value only on the body-to-header backedge. Must that body definition dominate entry-to-header?",
+      "choices": {
+        "A": "Yes, every phi operand must dominate the header",
+        "B": "No, availability is checked at its own predecessor terminator",
+        "C": "No, phis may read any runtime slot"
+      },
+      "correct": "B",
+      "why": "Each incoming value must be available on its corresponding predecessor edge.",
+      "next": "03a"
+    },
+    {
+      "id": "03a",
+      "unit": 3,
+      "prompt": "An unused load reads one-past an array. Is deleting it a valid generic dead-result optimization?",
+      "choices": {
+        "A": "Yes, its result has no users",
+        "B": "Only when the array has one element",
+        "C": "No, deleting a possible bounds trap changes behavior"
+      },
+      "correct": "C",
+      "why": "A load may trap even when nobody uses its result. Dead-result elimination here is restricted to total pure instructions.",
+      "next": "03b"
+    },
+    {
+      "id": "03b",
+      "unit": 3,
+      "prompt": "Two identical total arithmetic expressions occur in different branches. Neither branch dominates the other. May one result replace the other?",
+      "choices": {
+        "A": "Yes, equal expression keys are enough",
+        "B": "No, the replacement value may be unavailable",
+        "C": "Only if their IDs have equal length"
+      },
+      "correct": "B",
+      "why": "Expression equality and value availability are separate obligations.",
+      "next": "04a"
+    },
+    {
+      "id": "04a",
+      "unit": 4,
+      "prompt": "A loop phi initially has one reachable constant input. Later a backedge carrying a different value becomes executable. What happens to the constant claim?",
+      "choices": {
+        "A": "It stays constant because it was found first",
+        "B": "It must be revised using the new incoming information",
+        "C": "Only the report text changes"
+      },
+      "correct": "B",
+      "why": "A fixed-point analysis must propagate newly available control and value facts.",
+      "next": "04b"
+    },
+    {
+      "id": "04b",
+      "unit": 4,
+      "prompt": "After a proven constant branch removes an edge, a join has one incoming constant. What is the useful next action?",
+      "choices": {
+        "A": "Revisit that phi and its users",
+        "B": "Preserve all old analysis facts without checking",
+        "C": "Stop because only the original blocks may be optimized"
+      },
+      "correct": "A",
+      "why": "Control simplification can expose new constant facts; iterate until no justified edit remains.",
+      "next": "05a"
+    },
+    {
+      "id": "05a",
+      "unit": 5,
+      "prompt": "p and q are different parameter names. No input contract separates them. A store through q sits between two loads through p. What alias answer is safe?",
+      "choices": {
+        "A": "NoAlias",
+        "B": "MustAlias",
+        "C": "MayAlias"
+      },
+      "correct": "C",
+      "why": "Names do not identify runtime objects. The intervening store prevents unconditional reuse.",
+      "next": "05b"
+    },
+    {
+      "id": "05b",
+      "unit": 5,
+      "prompt": "q is derived as p plus one typed element. There are no casts or byte reinterpretations. Do accesses through p and q address the same cell?",
+      "choices": {
+        "A": "Yes, they share an object",
+        "B": "No, the known element offsets differ",
+        "C": "Always unknown even with exact offsets"
+      },
+      "correct": "B",
+      "why": "Object identity alone does not imply the same typed cell. Bounds safety remains a separate issue.",
+      "next": "06a"
+    },
+    {
+      "id": "06a",
+      "unit": 6,
+      "prompt": "A loop-invariant pointer may reference an empty object, and the loop can execute zero times. May its load be hoisted?",
+      "choices": {
+        "A": "Yes, invariance proves safety",
+        "B": "No, hoisting may introduce a bounds trap",
+        "C": "Yes, if the load has one use"
+      },
+      "correct": "B",
+      "why": "Address invariance does not establish that executing a load earlier is safe.",
+      "next": "06b"
+    },
+    {
+      "id": "06b",
+      "unit": 6,
+      "prompt": "A load address is fixed and in bounds, but the loop may store through an alias. What is still missing for load motion?",
+      "choices": {
+        "A": "Proof that the loaded value is not changed in the loop",
+        "B": "A shorter instruction ID",
+        "C": "A wall-clock benchmark"
+      },
+      "correct": "A",
+      "why": "A stable address can refer to changing contents.",
+      "next": "07a"
+    },
+    {
+      "id": "07a",
+      "unit": 7,
+      "prompt": "A required domain has 12 inputs. Eleven pairs complete equally; the last reaches a resource limit. Which result is correct?",
+      "choices": {
+        "A": "EXHAUSTIVE_WITHIN_DOMAIN",
+        "B": "SAMPLED_NO_DIFFERENCE",
+        "C": "UNKNOWN with incomplete coverage"
+      },
+      "correct": "C",
+      "why": "Required work did not finish. Do not silently remove the unfinished input.",
+      "next": "07b"
+    },
+    {
+      "id": "07b",
+      "unit": 7,
+      "prompt": "A candidate lowers total modeled work on the frozen workload but raises it for zero-trip calls. What should its report do?",
+      "choices": {
+        "A": "Claim every input is faster",
+        "B": "Show per-input increases and aggregate decrease under the declared model",
+        "C": "Hide zero-trip inputs"
+      },
+      "correct": "B",
+      "why": "An aggregate benefit is not a worst-case improvement or measured machine speedup.",
+      "next": "08a"
+    },
+    {
+      "id": "08a",
+      "unit": 8,
+      "prompt": "A reduced file now crashes the parser, while the original bug was a normal-return wrong result. Has the reducer preserved the target failure?",
+      "choices": {
+        "A": "Yes, any failure is interesting",
+        "B": "No, it changed the failure predicate",
+        "C": "Yes, smaller always wins"
+      },
+      "correct": "B",
+      "why": "Reduction must retain the specified legal miscompilation, not merely a failure.",
+      "next": "08b"
+    },
+    {
+      "id": "08b",
+      "unit": 8,
+      "prompt": "One final one-step reduction times out; every other tested neighbor loses the discrepancy. May the result be called 1-minimal?",
+      "choices": {
+        "A": "Yes",
+        "B": "Only if the timed-out input is small",
+        "C": "No, an unresolved neighbor remains"
+      },
+      "correct": "C",
+      "why": "1-minimality requires resolving every permitted one-step neighbor of the final candidate.",
+      "next": "09a"
+    },
+    {
+      "id": "09a",
+      "unit": 9,
+      "prompt": "A repair disables every optimization and returns the original program. It fixes the witness. Does it meet the capstone?",
+      "choices": {
+        "A": "Yes, correctness is the only criterion",
+        "B": "No, the repair must retain legitimate optimization wins",
+        "C": "Only if its source file is shorter"
+      },
+      "correct": "B",
+      "why": "The project requires a useful optimizer as well as elimination of the demonstrated bug.",
+      "next": "09b"
+    },
+    {
+      "id": "09b",
+      "unit": 9,
+      "prompt": "Your repaired optimizer passes a declared 48-input boundary set. Which claim is supported?",
+      "choices": {
+        "A": "The optimizer is universally correct",
+        "B": "No future bug can exist",
+        "C": "Those 48 inputs agree under the pinned semantics; broader claims need more evidence"
+      },
+      "correct": "C",
+      "why": "Finite evidence must keep its domain and trusted-base limitations visible.",
+      "next": "run check 09, review the rubric, then export your investigation"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "version": "re-lab-m01-v3",
+  "questions": {
+    "prediction": "Before running cart, propose what one tick does to position and velocity. Name a probe that distinguishes using the old velocity from using the updated velocity. Record your reason and uncertainty.",
+    "model": "Describe the one-tick model you implemented. Connect an instruction or branch to an observed result. Record the cases you tested and one limitation.",
+    "transfer": "Before revealing transfer source or a worked answer, predict how cart-transfer differs. Choose a discriminating probe, record the observed result, and explain whether your old model still fits.",
+    "challenge": "Investigate cart-crossing after saving two competing rules and a distinguishing prediction. Preserve observations, instruction evidence, a model attempt and any repair. Predict a fresh multi-tick run before executing it. Explain which alternatives your evidence rejects and which remain uncertain."
+  }
+}

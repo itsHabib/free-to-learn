@@ -1,0 +1,73 @@
+{
+  "module": "m01",
+  "items": [
+    {
+      "id": "m01-receipt-trace",
+      "objective": "Distinguish a register calculation, a stored next state and an old-value return.",
+      "prompt": "Complete the receipt-counter trace with memory at P initially 10 and w1 = 4. The instructions are ldr w8,[x0]; add w9,w8,w1; str w9,[x0]; mov w0,w8; ret, with x0 initially P. What are the final count in memory and the returned receipt?",
+      "choices": [
+        {"id": "a", "text": "Count 10; receipt 14."},
+        {"id": "b", "text": "Count 14; receipt 10."},
+        {"id": "c", "text": "Count 14; receipt 14."}
+      ],
+      "answer": "b",
+      "feedback": {
+        "a": "The addition puts 14 in w9, then str copies w9 to memory at P. The final mov reads w8, which still contains 10. Follow the destination on each line instead of swapping memory and return.",
+        "b": "The load retains old count 10 in w8. Addition produces 14 in w9; the store makes memory 14. Nothing replaces w8, so mov w0,w8 returns 10.",
+        "c": "The store changed memory, not w8. The add destination is w9, so the final mov reads the old 10. Returning 14 would require a different source for that mov."
+      },
+      "derivation": "w8 = 10; w9 = 10 + 4 = 14; memory[P] = w9 = 14; w0 = w8 = 10."
+    },
+    {
+      "id": "m01-register-width",
+      "objective": "Track the shared x/w register storage and the effect of a 32-bit destination.",
+      "prompt": "A separate instruction sequence starts with x8 = 0x0000000100000007, then executes mov w8,#2. What does x8 hold afterward?",
+      "choices": [
+        {"id": "a", "text": "0x0000000100000002: the old upper half is preserved."},
+        {"id": "b", "text": "0x0000000100000007: w8 is a separate register."},
+        {"id": "c", "text": "0x0000000000000002: the write also clears the upper half."}
+      ],
+      "answer": "c",
+      "feedback": {
+        "a": "A write to w8 does more than replace the low bits: ARM64 also zeros x8's upper 32 bits. Revisit the shared x8/w8 storage rule before carrying an old pointer forward.",
+        "b": "w8 names the low 32 bits of x8. They are not independent storage locations, so a write to w8 changes x8.",
+        "c": "Writing w8 puts 2 in the low 32 bits and zero in the upper 32 bits of x8. The entire x8 is therefore 2; the previous 64-bit value is gone."
+      },
+      "derivation": "An ARM64 W-register write zero-extends its 32-bit result into the matching X register: x8 = zero_extend_64(2) = 2."
+    },
+    {
+      "id": "m01-repeat-state",
+      "objective": "Use each returned next state as the following update's input.",
+      "prompt": "Apply receive(count, delivered), which returns (count + delivered, count), twice. Start with count 2 and use delivery 5 on both calls, carrying the new state forward. Which sequence is produced?",
+      "choices": [
+        {"id": "a", "text": "Receipts 2 then 7; final count 12."},
+        {"id": "b", "text": "Receipts 2 then 2; final count 7."},
+        {"id": "c", "text": "Receipts 7 then 12; final count 12."}
+      ],
+      "answer": "a",
+      "feedback": {
+        "a": "The first call returns (7, 2). Feeding its new state 7 to the second returns (12, 7). The receipts report each call's input state.",
+        "b": "This repeats a call starting at 2 instead of carrying state 7 into the second call. Write the next input beside the first returned pair before updating again.",
+        "c": "The final count is right, but these receipts report the updated states. The function's second component is the old count, so read the pair's roles separately."
+      },
+      "derivation": "receive(2,5) = (7,2); receive(7,5) = (12,7). Receipts are [2,7] and retained state is 12."
+    },
+    {
+      "id": "m01-distinguishing-probe",
+      "objective": "Select an observation on which two candidate dataflow explanations disagree.",
+      "prompt": "Two candidate counter functions both add the delivery to the stored count. A returns the old count; B returns the new count. Which single observation distinguishes them?",
+      "choices": [
+        {"id": "a", "text": "Start at 9, deliver 0, and inspect the receipt."},
+        {"id": "b", "text": "Start at 9, deliver 2, and inspect the receipt."},
+        {"id": "c", "text": "Start at 9, deliver 2, and inspect only the final stored count."}
+      ],
+      "answer": "b",
+      "feedback": {
+        "a": "With delivery zero, old and new are both 9. The receipt agrees under both explanations, so this run cannot choose between them.",
+        "b": "The old-count explanation predicts receipt 9 and the new-count explanation predicts 11. Observing the receipt can reject one explanation for this case.",
+        "c": "Both explanations store 9 + 2 = 11. They differ in the return's source, so the final stored count is the wrong observation to separate them."
+      },
+      "derivation": "For start 9 and delivery 2: both stored states are 11, while A returns 9 and B returns 11. For delivery 0 both returns are 9."
+    }
+  ]
+}
