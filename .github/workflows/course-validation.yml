@@ -1,0 +1,104 @@
+{
+  "name": "Public learner contracts",
+  "on": {
+    "push": {
+      "branches": [
+        "main"
+      ]
+    },
+    "pull_request": {},
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "read"
+  },
+  "concurrency": {
+    "group": "public-course-contracts-${{ github.workflow }}-${{ github.ref }}",
+    "cancel-in-progress": true
+  },
+  "jobs": {
+    "select": {
+      "runs-on": "ubuntu-24.04",
+      "outputs": {
+        "matrix": "${{ steps.select.outputs.matrix }}",
+        "count": "${{ steps.select.outputs.count }}",
+        "shared": "${{ steps.select.outputs.shared }}"
+      },
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "fetch-depth": 0,
+            "persist-credentials": false
+          }
+        },
+        {
+          "id": "select",
+          "run": "python3 .ci/select_courses.py"
+        }
+      ]
+    },
+    "shared-regressions": {
+      "needs": "select",
+      "if": "${{ needs.select.outputs.shared == 'true' }}",
+      "runs-on": "ubuntu-24.04",
+      "timeout-minutes": 5,
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "persist-credentials": false
+          }
+        },
+        {
+          "run": "python3 -B -m unittest discover -s .ci -p test_pipeline.py -v"
+        }
+      ]
+    },
+    "public-contracts": {
+      "needs": "select",
+      "if": "${{ needs.select.outputs.count != '0' }}",
+      "strategy": {
+        "fail-fast": false,
+        "max-parallel": 3,
+        "matrix": "${{ fromJSON(needs.select.outputs.matrix) }}"
+      },
+      "runs-on": "${{ matrix.runner }}",
+      "timeout-minutes": 15,
+      "steps": [
+        {
+          "uses": "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+          "with": {
+            "persist-credentials": false
+          }
+        },
+        {
+          "uses": "actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1",
+          "with": {
+            "node-version": "26.5.1"
+          }
+        },
+        {
+          "uses": "actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+          "with": {
+            "python-version": "3.14.6"
+          }
+        },
+        {
+          "name": "Documented public contracts, not full learner completion",
+          "run": "python3 -B .ci/public_contracts.py --course \"${{ matrix.id }}\" --output \".ci-output/${{ matrix.id }}\""
+        },
+        {
+          "uses": "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+          "if": "${{ always() }}",
+          "with": {
+            "name": "public-contracts-${{ matrix.id }}",
+            "path": ".ci-output/${{ matrix.id }}/*.summary.json",
+            "if-no-files-found": "warn",
+            "retention-days": 7
+          }
+        }
+      ]
+    }
+  }
+}

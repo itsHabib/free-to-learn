@@ -33,3 +33,5 @@ to Learn attribution. Third-party/model terms remain unchanged. Retain LICENSE.m
 LICENSE-SCOPE.json, LICENSES/, THIRD-PARTY-NOTICES.md and the course notices.
 PUBLIC-SOURCE-MANIFEST.json pins the learner files. Production availability is
 separate from this source snapshot; Free to Learn is https://freetolearn.world/.
+
+[Changed-course CI coverage and limits](CI.md). Public setup/interface checks are distinct from full learner implementation or blind-trial evidence.

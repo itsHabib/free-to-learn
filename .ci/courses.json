@@ -1,0 +1,256 @@
+{
+  "schema": 1,
+  "profile": "public-setup-interface-regression",
+  "courses": [
+    {
+      "id": "time-travel-debugger",
+      "archive": ".packages/time-travel-debugger.zip",
+      "sha256": "9bbd168a413773b57bcbdf088d4c80403b2c36a575e9788eaaff433399738bdc",
+      "archive_prefix": "",
+      "direct_root": "courses/time-travel-debugger",
+      "root": ".",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "project"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "project",
+            "01",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "FAIL 01.initial"
+        },
+        {
+          "stage": "starter_workspace_export",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "export",
+            "project",
+            "ci-export"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "restored_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "ci-export/project",
+            "01",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "FAIL 01.initial"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate."
+      ]
+    },
+    {
+      "id": "recoverable-storage",
+      "archive": ".packages/recoverable-storage.zip",
+      "sha256": "5bf3989824b0a559809c2b82a7aa0c02daf8455f06296c11a9864410ba990f09",
+      "archive_prefix": "",
+      "direct_root": "courses/recoverable-storage",
+      "root": ".",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "project"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "project",
+            "01",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "FAIL 01.roundtrip"
+        },
+        {
+          "stage": "starter_workspace_export",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "export",
+            "project",
+            "ci-export"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "restored_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "ci-export/project",
+            "01",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "FAIL 01.roundtrip"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate."
+      ]
+    },
+    {
+      "id": "small-llm-runtime",
+      "archive": ".packages/small-llm-runtime.zip",
+      "sha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452",
+      "archive_prefix": "",
+      "direct_root": "courses/small-llm-runtime",
+      "root": ".",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "work"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "01",
+            "work",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "TODO lesson 01"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate."
+      ]
+    },
+    {
+      "id": "firmware-forensics",
+      "archive": ".packages/firmware-forensics.zip",
+      "sha256": "d9fe95963830c05d41012efe8d0fc606b5e34021d8aee4eb98c9c7d095cf4567",
+      "archive_prefix": "",
+      "direct_root": "courses/firmware-forensics",
+      "root": ".",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "python3",
+            "work.py",
+            "001-first"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "python3",
+            "check_core.py",
+            "attempts/001-first"
+          ],
+          "exit": 1,
+          "match": "NotImplementedError: Implement bounded header/table/range validation"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate."
+      ]
+    },
+    {
+      "id": "adaptive-decision-engine",
+      "archive": ".packages/adaptive-decision-engine.zip",
+      "sha256": "04f43bc836ba39f6b0be099bcb2e16f28b6947c9d625c004edbe40090bc9dd33",
+      "archive_prefix": "",
+      "direct_root": "courses/adaptive-decision-engine",
+      "root": ".",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "work"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "01",
+            "work",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "TODO: implement observe"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate."
+      ]
+    }
+  ]
+}

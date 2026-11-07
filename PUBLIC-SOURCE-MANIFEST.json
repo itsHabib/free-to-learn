@@ -3,9 +3,39 @@
   "status": "LEARNER_SOURCE_SNAPSHOT_FIRST_FIVE",
   "files": [
     {
+      "path": ".ci/courses.json",
+      "bytes": 7586,
+      "sha256": "9a18784807bb63d093fe4dd1877e9ef0ade97a26f1a4c0033fb1f50e32fb940c"
+    },
+    {
+      "path": ".ci/public_contracts.py",
+      "bytes": 3037,
+      "sha256": "31a1172dce6094444b623effe55af5ccd7ff1939c071d2f6668a0107640b3daa"
+    },
+    {
+      "path": ".ci/select_courses.py",
+      "bytes": 2291,
+      "sha256": "b158e9d4a6adb317f39866350d9b1d1a099cb81412815fee16b8deeb6e78a68d"
+    },
+    {
+      "path": ".ci/test_pipeline.py",
+      "bytes": 4136,
+      "sha256": "302c3bc7d4d2aed95d5c42f1d1492ec675bdf47f91fa0d54eb8e43e91c24620d"
+    },
+    {
+      "path": ".ci/verify_courses.py",
+      "bytes": 8829,
+      "sha256": "ee6ced1a588c775ea1f9d2dbb058a9c44d1dbcd4ea00cd479870717db6dddfe2"
+    },
+    {
+      "path": ".github/workflows/course-validation.yml",
+      "bytes": 2893,
+      "sha256": "85d65cc5a775336625f1537874f96ada024ddd4aec973660b58b6e5983f76b1e"
+    },
+    {
       "path": ".gitignore",
-      "bytes": 73,
-      "sha256": "11f8d3bda239dd6071e4772dd320d48868bf9fccbc53c20f9473deda86f3a9a3"
+      "bytes": 86,
+      "sha256": "99dd493f7cabe3a58e22df4f487baaff4ebc247d3612ebf054f76eac513e4ad3"
     },
     {
       "path": ".packages/adaptive-decision-engine.zip",
@@ -58,9 +88,14 @@
       "sha256": "c914024bdf3c883bec12476b342f47fbad33866332a263ef9d398b000a8f0366"
     },
     {
+      "path": "CI.md",
+      "bytes": 2588,
+      "sha256": "0458a0509252aa3a98a835f3e302ff7bcb61251b487897739cfb68c5ba3349c0"
+    },
+    {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 76214,
-      "sha256": "3204fb5dc8160616336351905ee24bec93cf715e71955d21421efcf6ed5c8571"
+      "bytes": 77656,
+      "sha256": "0ded7c1a599fd81d9f87e91cb89308521291137d609594e718a4849e8972bb1c"
     },
     {
       "path": "LICENSE.md",
@@ -84,8 +119,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1864,
-      "sha256": "424975feabe59c68e207fea61151dd5bfcd08ab7734cd4c62fd6ec8c83defab5"
+      "bytes": 2014,
+      "sha256": "ecc5710f8dbc96ebd8d363bbf6fa092d2cc07d3064e8e16aca619131cde0f873"
     },
     {
       "path": "START-HERE.md",
