@@ -9,10 +9,21 @@ Unpack into a new directory. The **package root** contains `work.py`,
 
 ```sh
 python3 work.py 001-first
-python3 check_core.py attempts/001-first > attempts/001-first/core-first.json
+python3 check_core.py --stage parser attempts/001-first > attempts/001-first/core-first.json
 node trust/check.mjs attempts/001-first/trust.mjs > attempts/001-first/trust-first.json
 python3 work.py 002-revision --from-attempt attempts/001-first
 ```
+
+Use `--stage parser` through unit 02. It runs the scaffold and parser, inventory
+and dependency checks without the later analysis or investigation checks. After
+you write your first investigation in unit 05, run the complete check on your
+latest attempt with a new output filename, for example:
+
+```sh
+python3 check_core.py --stage full attempts/005-analysis > attempts/005-analysis/core-full.json
+```
+
+Omitting `--stage` still runs the complete check for older saved commands.
 
 The TODO starters deliberately fail. Keep those first source files and outputs.
 Edit parser.py, analysis.py and trust.mjs in the new attempt, not the starters.

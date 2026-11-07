@@ -3,11 +3,16 @@ import {canonical} from './shared.mjs';
 export const WORK_FILES=['observe.mjs','constraints.mjs','rules.mjs','adapter.mjs','confidence.mjs','evaluate.mjs','schedule.mjs','director.mjs','project.mjs','scenarios.json','REPORT.md','evaluation-plan.json','results.json','checkpoint.json','project-plan.json'];
 export async function sha256(text){const buffer=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return [...new Uint8Array(buffer)].map(b=>b.toString(16).padStart(2,'0')).join('');}
 export async function identity(sources){return sha256(JSON.stringify(Object.entries(sources).sort(([a],[b])=>a.localeCompare(b))));}
-// Storage format 2 interns exact source strings; the in-memory/learner schema stays 1.
+// Formats 2/3 intern exact source strings; format 3 also references matching
+// attempt results inside retained results.json texts. The learner schema stays 1.
 // Limits are bytes of UTF-8 JSON, including escaping. No history is discarded.
 export const SESSION_INPUT_LIMIT=40000000; // Legacy pretty-printed exports may exceed 20 MB on disk.
 const STORED_LIMIT=20000000, EXPANDED_LIMIT=128000000, MAX_ATTEMPTS=1000;
-const encoding='source-text-table/1', encoder=new TextEncoder();
+const encoding='source-text-table/1', resultEncoding='source-text-table/2', encoder=new TextEncoder();
+function resultFromText(text){
+ try{const value=JSON.parse(text);if(record(value)&&Object.hasOwn(value,'result'))return {value:value.result,key:JSON.stringify(value.result)};}catch{}
+ return null;
+}
 const jsonBytes=value=>encoder.encode(JSON.stringify(value)).length;
 const record=value=>value!==null&&typeof value==='object'&&!Array.isArray(value);
 function sourceEntries(sources){
@@ -20,11 +25,12 @@ function sourceEntries(sources){
 }
 function packedSession(session){
  if(session?.schema!==1||!Array.isArray(session.attempts)||session.attempts.length>MAX_ATTEMPTS)throw Error('Invalid session schema');
- const texts=[],indices=new Map(),lengths=[];
+ const texts=[],indices=new Map(),lengths=[],resultTexts=new Map();
  let expansion=0;
  const refs=sources=>Object.fromEntries(sourceEntries(sources).map(([name,text])=>{
   let index=indices.get(text);
   if(index===undefined){index=texts.length;indices.set(text,index);texts.push(text);lengths.push(jsonBytes(text));}
+  if(name==='results.json'&&!resultTexts.has(index)){const result=resultFromText(text);if(result)resultTexts.set(index,result);}
   expansion+=lengths[index]-String(index).length;
   if(expansion>EXPANDED_LIMIT)throw Error('Session exceeds 128 MB expanded evidence limit');
   return [name,index];
@@ -34,11 +40,17 @@ function packedSession(session){
   if(!record(a)||!a.id||!a.sourceHash||!a.question||!a.help)throw Error('Invalid attempt history');
   return {...a,sources:refs(a.sources)};
  });
+ // Match exact JSON values, never heuristically merge results or rewrite source text.
+ const byResult=new Map([...resultTexts].map(([index,result])=>[result.key,index])),resultRefs=[];
+ for(let i=0;i<attempts.length;i++){
+  const a=attempts[i],key=Object.hasOwn(a,'result')?JSON.stringify(a.result):undefined,index=byResult.get(key);
+  if(index!==undefined){resultRefs.push(i);expansion+=jsonBytes(a.result)-String(index).length;a.result=index;}
+ }
  const saved={...session,sources,attempts};
  if(jsonBytes(saved)+expansion>EXPANDED_LIMIT)throw Error('Session exceeds 128 MB expanded evidence limit');
- const packed={schema:2,encoding,texts,session:saved};
+ const packed=resultRefs.length?{schema:3,encoding:resultEncoding,texts,resultRefs,session:saved}:{schema:2,encoding,texts,session:saved};
  const text=JSON.stringify(packed);
- if(encoder.encode(text).length>STORED_LIMIT)throw Error('Session exceeds 20 MB stored evidence limit; export existing work before continuing');
+ if(encoder.encode(text).length>STORED_LIMIT)throw Error('Session exceeds 20 MB stored evidence limit; preserve the existing workspace before starting a new session');
  return text;
 }
 export function validateSession(session){packedSession(session);return session;}
@@ -47,10 +59,14 @@ export function parseSession(text){
  if(typeof text!=='string'||encoder.encode(text).length>SESSION_INPUT_LIMIT)throw Error('Session input exceeds 40 MB');
  const input=JSON.parse(text);
  if(input?.schema===1)return validateSession(input);
- if(input?.schema!==2||input.encoding!==encoding||!Array.isArray(input.texts)||!record(input.session)||input.session.schema!==1)throw Error('Invalid session storage format');
+ const resultFormat=input?.schema===3&&input.encoding===resultEncoding;
+ if((!(input?.schema===2&&input.encoding===encoding)&&!resultFormat)||!Array.isArray(input.texts)||!record(input.session)||input.session.schema!==1)throw Error('Invalid session storage format');
  if(encoder.encode(text).length>STORED_LIMIT)throw Error('Session exceeds 20 MB stored evidence limit');
  if(!Array.isArray(input.session.attempts)||input.session.attempts.length>MAX_ATTEMPTS||input.texts.length>(MAX_ATTEMPTS+1)*WORK_FILES.length)throw Error('Invalid session schema');
- const used=new Set(),unique=new Set(),lengths=[];
+ if(!resultFormat&&Object.hasOwn(input,'resultRefs'))throw Error('Invalid result references');
+ const resultRefs=resultFormat?input.resultRefs:[];
+ if(!Array.isArray(resultRefs)||resultRefs.some((index,i)=>!Number.isInteger(index)||index<0||index>=input.session.attempts.length||(i>0&&index<=resultRefs[i-1])))throw Error('Invalid result references');
+ const used=new Set(),unique=new Set(),lengths=[],resultTexts=new Map();
  for(const value of input.texts){
   if(typeof value!=='string'||value.length>8000000||unique.has(value))throw Error('Invalid source text table');
   unique.add(value);lengths.push(jsonBytes(value));
@@ -62,6 +78,7 @@ export function parseSession(text){
    if(!WORK_FILES.includes(name)||!Number.isInteger(index)||index<0||index>=input.texts.length)throw Error('Invalid source reference');
    expanded+=lengths[index]-String(index).length;
    if(expanded>EXPANDED_LIMIT)throw Error('Session exceeds 128 MB expanded evidence limit');
+   if(name==='results.json'&&!resultTexts.has(index)){const result=resultFromText(input.texts[index]);if(result)resultTexts.set(index,result);}
    used.add(index);return [name,input.texts[index]];
   }));
  };
@@ -70,6 +87,13 @@ export function parseSession(text){
   if(!record(a))throw Error('Invalid attempt history');
   return {...a,sources:restore(a.sources)};
  });
+ for(const i of resultRefs){
+  const a=attempts[i],index=a.result,result=resultTexts.get(index);
+  if(!Number.isInteger(index)||!result)throw Error('Invalid result reference');
+  expanded+=jsonBytes(result.value)-String(index).length;
+  if(expanded>EXPANDED_LIMIT)throw Error('Session exceeds 128 MB expanded evidence limit');
+  a.result=structuredClone(result.value);
+ }
  if(used.size!==input.texts.length)throw Error('Unreferenced source text');
  return validateSession({...input.session,sources,attempts});
 }

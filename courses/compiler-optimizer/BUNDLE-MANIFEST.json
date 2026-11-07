@@ -1,7 +1,7 @@
 {
   "format": "optimizer-bundle/1",
   "kind": "learner",
-  "publicIdentity": "964c480e2c7793cf652efaeae4b42a0715b65a68989913ca596a48a5c0d7bd30",
+  "publicIdentity": "a4c81a3c6188bfe725230002264417dde4e62801d7380a2debe653bf948e8c80",
   "files": [
     {
       "path": "README.md",
@@ -10,8 +10,8 @@
     },
     {
       "path": "API.md",
-      "bytes": 12544,
-      "sha256": "d7466fe518133a68fb41c1bd42b6a4212fd79b73a84fa6bc476baeb8753932fa"
+      "bytes": 13241,
+      "sha256": "f3e1caddca6e825d55b3cebba09ed234c7092e4ff75b8714865bf60f2f388852"
     },
     {
       "path": "RUBRIC.md",
@@ -164,5 +164,10 @@
       "sha256": "8c1ae394507b5e147d55a0397242776a4fcad2e01eba813f0255c81dd8ddc656"
     }
   ],
-  "qualification": "Targeted cosmetic-reduction repair: 18 regression checks and 8 affected alternative/invariant checks. Browser, independent successor review and human acceptance pending."
+  "qualification": "Targeted cosmetic-reduction repair: 18 regression checks and 8 affected alternative/invariant checks. Browser, independent successor review and human acceptance pending.",
+  "previousPublicIdentity": "964c480e2c7793cf652efaeae4b42a0715b65a68989913ca596a48a5c0d7bd30",
+  "documentationDerivative": {
+    "scope": "Clarifies the existing U07 policy report interface; runtime, criteria and learner source are unchanged.",
+    "memberInventorySha256": "4352e85acb07d7490b262a7c3cd9b6d8fe39a7975a68149975c7e025f1ba96d2"
+  }
 }

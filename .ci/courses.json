@@ -5,7 +5,7 @@
     {
       "id": "time-travel-debugger",
       "archive": ".packages/time-travel-debugger.zip",
-      "sha256": "9bbd168a413773b57bcbdf088d4c80403b2c36a575e9788eaaff433399738bdc",
+      "sha256": "b0117c610b9ecda96869e45a5283d81a706b84da459d893a917632fb11e32608",
       "archive_prefix": "",
       "direct_root": "courses/time-travel-debugger",
       "root": ".",
@@ -71,7 +71,7 @@
     {
       "id": "recoverable-storage",
       "archive": ".packages/recoverable-storage.zip",
-      "sha256": "5bf3989824b0a559809c2b82a7aa0c02daf8455f06296c11a9864410ba990f09",
+      "sha256": "6037e14821d2c0dd2c10e9096d3f6c82a802b0cd22d25a00d6f00e7b95422da2",
       "archive_prefix": "",
       "direct_root": "courses/recoverable-storage",
       "root": ".",
@@ -137,7 +137,7 @@
     {
       "id": "small-llm-runtime",
       "archive": ".packages/small-llm-runtime.zip",
-      "sha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452",
+      "sha256": "88657767284606929e963221d68c654b6ab145a55a5845a1345410324b6e37cf",
       "archive_prefix": "",
       "direct_root": "courses/small-llm-runtime",
       "root": ".",
@@ -178,7 +178,7 @@
     {
       "id": "firmware-forensics",
       "archive": ".packages/firmware-forensics.zip",
-      "sha256": "d9fe95963830c05d41012efe8d0fc606b5e34021d8aee4eb98c9c7d095cf4567",
+      "sha256": "c1da7641cef596690b7514d4cd02c2108d0e6e9b0f5eabf4b2eaa93ae003729c",
       "archive_prefix": "",
       "direct_root": "courses/firmware-forensics",
       "root": ".",
@@ -198,6 +198,8 @@
           "argv": [
             "python3",
             "check_core.py",
+            "--stage",
+            "parser",
             "attempts/001-first"
           ],
           "exit": 1,
@@ -214,7 +216,7 @@
     {
       "id": "adaptive-decision-engine",
       "archive": ".packages/adaptive-decision-engine.zip",
-      "sha256": "04f43bc836ba39f6b0be099bcb2e16f28b6947c9d625c004edbe40090bc9dd33",
+      "sha256": "2e2521b3171a0ea50b72c4497c17b83c1ec6625e72b78ac7e3e2e9b60de13ee9",
       "archive_prefix": "",
       "direct_root": "courses/adaptive-decision-engine",
       "root": ".",
@@ -243,6 +245,17 @@
           ],
           "exit": 1,
           "match": "TODO: implement observe"
+        },
+        {
+          "stage": "generated_lossless_session_capacity_regression",
+          "argv": [
+            "node",
+            "--test",
+            "--test-reporter=tap",
+            "session.test.mjs"
+          ],
+          "exit": 0,
+          "match": "# fail 0"
         }
       ],
       "coverage_complete": false,
@@ -301,7 +314,7 @@
     {
       "id": "compiler-optimizer",
       "archive": ".packages/compiler-optimizer.zip",
-      "sha256": "8633d0c07b2ff73205ee37614d74d630a35a452afdfd15cf55da87540cabbb20",
+      "sha256": "1d341f7d52c816d53759c9a19c16f97d7e81342032de8b651a230e72a201b8d0",
       "archive_prefix": "compiler-optimizer/",
       "direct_root": "courses/compiler-optimizer",
       "root": "compiler-optimizer",

@@ -47,3 +47,11 @@ ARM64 target launch and initial public Python model diagnostic. Compiler reads
 all nine lessons and checks setup/starter/export/restore. These remain public
 interface regressions, not complete learner solutions. Full-path/private-fixture
 CI was explicitly deferred; no credential infrastructure is being added for it.
+
+## Targeted recovery and feedback regressions
+
+Adaptive runs generated lossless session-capacity controls (formats 1/2/3,
+continued saving, malformed references and existing bounds) without private learner
+work. Firmware starts with the parser-only checker; its separate staged-checker
+regression verifies that later feedback remains gated until the documented stage.
+These deterministic regressions do not establish full learner completion.

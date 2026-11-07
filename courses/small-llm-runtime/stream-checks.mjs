@@ -29,6 +29,10 @@ const scenarios=[
   {id:'invalid-token',prompt:[32],options:options(1),tapes:[],ids:[],invalid:true},
 ];
 
+function samplingOptionsMessage(controls,expected){
+ const kind=value=>value===null?'null':typeof value==='number'?String(value):typeof value==='undefined'?'missing':typeof value;
+ try{const keys=controls&&typeof controls==='object'?Object.keys(controls).sort():[];const observed=keys.slice(0,8).map(key=>key.slice(0,40));return `sample input/controls: expected only {temperature:${expected.temperature},topK:${expected.topK}}; observed keys ${JSON.stringify(observed)}${keys.length>8?' (truncated)':''}, temperature=${kind(controls?.temperature)}, topK=${kind(controls?.topK)}. Pass resolved {temperature,topK}; seed belongs to rng(seed), maxNewTokens to generation. Extra-field values are not printed.`;}catch{return 'sample input/controls: unreadable sampling options; pass only resolved {temperature,topK}, not seed or maxNewTokens';}
+}
 function tapeRun(api,project,model,s) {
   insist(typeof project.streamGenerate==='function','export streamGenerate(runtime,model,prompt,options) from your project.mjs; lesson08 defines the iterator');
   const calls=[],events=[],counter={prefill:0,decode:0,sample:0,draw:0,rng:0};
@@ -42,7 +46,7 @@ function tapeRun(api,project,model,s) {
   const runtime={
     prefill(m,p){note('prefill');counter.prefill++;guard(counter.prefill===1&&same(p,s.prompt)&&m===model,'prefill input/count');return {logits:logits(0),cache:{position:p.length,tape:0}};},
     decodeStep(m,token,cache){note('decodeStep');guard(counter.decode<delivered,'decode before consumer received its preceding token');counter.decode++;guard(m===model&&token===s.ids[counter.decode-1]&&cache.tape===counter.decode-1&&cache.position===s.prompt.length+counter.decode-1,'decode token/cache alignment');if(s.error)throw sentinel;return {logits:logits(counter.decode),cache:{position:cache.position+1,tape:counter.decode}};},
-    sample(scores,controls,random){note('sample');guard(counter.sample<=delivered,'sample prefetched before consumer receipt');guard(same(scores,logits(counter.sample))&&same(controls,{temperature:s.options.temperature,topK:s.options.topK}),'sample input/controls');counter.sample++;return api.sample(scores,controls,random);},
+    sample(scores,controls,random){note('sample');guard(counter.sample<=delivered,'sample prefetched before consumer receipt');guard(same(scores,logits(counter.sample)),'sample input/controls: logits differ from the current sampling step');const expected={temperature:s.options.temperature,topK:s.options.topK},matches=same(controls,expected);guard(matches,matches?'':samplingOptionsMessage(controls,expected));counter.sample++;return api.sample(scores,controls,random);},
     rng(seed){note('rng');counter.rng++;guard(counter.rng===1&&seed===s.options.seed,'per-stream RNG creation');const random=api.rng(seed);return ()=>{note('draw');counter.draw++;return random();};},
     decode:api.decode,
     generate(){guard(false,'complete-generate shortcut cannot prove incremental delivery');},

@@ -22,6 +22,12 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": ".ci/test_firmware_checker_stages.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": ".ci/test_pipeline.py",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
@@ -586,6 +592,12 @@
     },
     {
       "path": "courses/adaptive-decision-engine/resample.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/session.test.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"

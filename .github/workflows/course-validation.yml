@@ -85,6 +85,11 @@
           }
         },
         {
+          "name": "Firmware feedback sequence regressions",
+          "if": "${{ matrix.id == 'firmware-forensics' }}",
+          "run": "python3 -B .ci/test_firmware_checker_stages.py -v"
+        },
+        {
           "name": "Documented public contracts, not full learner completion",
           "run": "python3 -B .ci/public_contracts.py --course \"${{ matrix.id }}\" --output \".ci-output/${{ matrix.id }}\""
         },

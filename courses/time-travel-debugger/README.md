@@ -5,7 +5,7 @@ Build a debugger for a small deterministic virtual machine, then diagnose an unf
 
 ## Entry skills and boundaries
 
-This course is for a programmer comfortable editing/running JavaScript ES modules, writing functions and classes, using objects/arrays/Map, reading exceptions and passing quoted arguments in a terminal. The debugger assumes you can follow nested object mutation; the supplied VM defines its own instruction set. The storage course additionally assumes basic Node Buffer use, unsigned big-endian integers, UTF-8 byte lengths and filesystem calls; lesson01 works through cursor placement before production. This is not a first programming course. If these prerequisites are unfamiliar, use the reduced examples and completion cases, then decide whether to review JavaScript first. No extra runtime or paid account is required.
+This course is for a programmer comfortable editing/running JavaScript ES modules, writing functions and classes, using objects/arrays/Map, reading exceptions and passing quoted arguments in a terminal. The debugger assumes you can follow nested object mutation; the supplied VM defines its own instruction set. This is not a first programming course. If these prerequisites are unfamiliar, use the reduced examples and completion cases, then decide whether to review JavaScript first. No extra runtime or paid account is required.
 
 ## Start offline
 
@@ -37,7 +37,7 @@ Use the help description that matches your actual assistance. No restore/import 
 
 ## Optional help and acceptance limits
 
-own-llm.md contains a copyable critique prompt for your own account. Nothing sends your work automatically. Deterministic checks cover their named cases; diagnosis reasoning uses a rubric. Author controls are outside this package. Independent course-taking, human difficulty/time trials, rendered desktop/mobile inspection and actual browser ZIP receipt are pending. This local candidate is not a published or independently accepted course. Node runs the full toolchain; checker.html supplies the bounded offline fallback described below, with actual browser acceptance pending.
+own-llm.md contains a copyable critique prompt for your own account. Nothing sends your work automatically. Deterministic checks cover their named cases; diagnosis reasoning uses a rubric. Author controls are outside this package. The Node terminal course is publicly available. Independent AI learner runs are separate evidence, not a human mastery claim. Human difficulty/time trials, rendered desktop/mobile inspection and actual browser ZIP receipt remain unqualified. Node runs the full toolchain; checker.html supplies the bounded offline fallback described below, with actual browser acceptance pending.
 
 The runner executes your trusted local JavaScript with your normal process permissions. It is not a security sandbox; run code you understand.
 
@@ -49,7 +49,7 @@ Human effectiveness and difficulty are unverified. The launch route uses learner
 
 ## Browser fallback and its limits
 
-Open checker.html for an offline code editor and on-demand worker checks using the same public criteria. It preserves all submitted code/help/results and can export source plus the complete local history. The earlier-layer button creates a separate assisted draft. It requires a browser supporting module workers, data-module imports, crypto.subtle and localStorage; actual browser route/download acceptance is still pending. The storage fallback uses MemoryDisk and a bounded Buffer adapter, so use Node for real FileDisk/CLI operations or other imports/Buffer APIs. Unsupported execution is an error, not a failed storage/debugger requirement. No staffed reply or paid model is involved.
+Open checker.html for an offline code editor and on-demand worker checks using the same public criteria. It preserves all submitted code/help/results and can export source plus the complete local history. The earlier-layer button creates a separate assisted draft. It requires a browser supporting module workers, data-module imports, crypto.subtle and localStorage; actual browser route/download acceptance is still pending. This debugger fallback accepts the supplied ./vm.mjs import. Use Node for custom modules, Node-only APIs and CLI export/replay. Unsupported browser execution is an execution error, not evidence that a Node-valid debugger violates the course contract. No staffed reply or paid model is involved.
 
 ## Run the browser checker offline
 

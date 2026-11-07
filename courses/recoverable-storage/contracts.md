@@ -14,6 +14,8 @@ The real file adapter exposes fsync on the file and directory. Append acknowledg
 
 Public logical operations: `put(key,value)`, `delete(key)`, `get(key)`, `entries()` (key-sorted pairs), `batch(operations)`, `compact()`, `close()`. Batch operations are `{type:"put",key,value}` or `{type:"del",key}`. Last operation for a repeated key wins. Entries are detached values. Single put/delete are one-operation batches.
 
+Key order is JavaScript string comparison by UTF-16 code units: compare keys with `<`/`>`, not locale-dependent `localeCompare`. For example, `"z"` sorts before `"é"`, so these two entries are `[["z","last ASCII"],["é","accented"]]`. Return detached pairs; sorting must not mutate the store.
+
 Physical records are `{type:"put"|"del"|"commit",tx,key,value}`. tx is integer 1 through 4294967295. A put has nonempty key and string value; del has key and value=null; commit has key=null and value=null. Key length is at most 1024 UTF-8 bytes; value length at most 65536 UTF-8 bytes. Batch records are contiguous, share tx and end with exactly one commit. Transaction ids strictly increase between committed batches. Empty batches may consist of just a commit. Interleaved/repeated transaction ids are corruption.
 
 Only committed batches affect recovered state. A complete uncommitted operation suffix and an incomplete final frame are discarded. The recovery boundary is immediately after the last complete commit, not merely the last complete record. Recovery propagates a detectable malformed-prefix error, and opening such a log must leave its bytes untouched. Before a reopened store appends anything, it truncates the log to that committed boundary and synchronizes the repair.

@@ -7,8 +7,8 @@
   "files": [
     {
       "path": "README.md",
-      "bytes": 3458,
-      "sha256": "0c371a60255781c9c15676928f9035b2e3394f3f78d84b9fb30bdd518b1b7ae3"
+      "bytes": 3952,
+      "sha256": "f8f1794ec68e1780732e171587d3f967ef70f8b2112e7f2987755467b212b18d"
     },
     {
       "path": "SOURCES.md",
@@ -22,8 +22,8 @@
     },
     {
       "path": "check_core.py",
-      "bytes": 1326,
-      "sha256": "1578de35f5514368be026bbe7d99ff7d2a245b77dd037489123c7bd5c3d0bc59"
+      "bytes": 1550,
+      "sha256": "ba36b1cbae384d86d5a28fb197a21fd6e0317cf2e2199e2bcdfd8a19cd509208"
     },
     {
       "path": "lab/CONTENT-MANIFEST.json",
@@ -252,13 +252,13 @@
     },
     {
       "path": "reader/01/index.html",
-      "bytes": 9544,
-      "sha256": "1681499c67b7c469e8e85b7f7b1836c677061a24668c9f665f0fcd80891b0b29"
+      "bytes": 9559,
+      "sha256": "b9937b96e60715aeac3426ce9508166c056b4f67eea9ed7d6596f945ae94396c"
     },
     {
       "path": "reader/02/index.html",
-      "bytes": 10997,
-      "sha256": "3b2af37f85625b3ded0f2c2603210a8e17e3aa417f0c1074c3fc9b4c357c0b57"
+      "bytes": 11012,
+      "sha256": "a7e89c4970da8c51d61d6f448f686b64066dfeab29b91170054bf62df9a8ab7d"
     },
     {
       "path": "reader/03/index.html",
@@ -272,8 +272,8 @@
     },
     {
       "path": "reader/05/index.html",
-      "bytes": 8820,
-      "sha256": "52413faef87eef2a8e4967f87bd768cfe0318eed745ccf289a5e910d768a73a6"
+      "bytes": 8903,
+      "sha256": "b48dfaba9047177368efbf87ceade61c5e6ea6228227545f34f3f7b31da8263b"
     },
     {
       "path": "reader/06/index.html",
@@ -447,7 +447,7 @@
     }
   ],
   "publicLearnerDerivative": {
-    "memberInventorySha256": "9000f749cd146fce2190c1838aaab8edf5f4ed8c0ddbcf8614e8eaac9dff7f25",
+    "memberInventorySha256": "3e4971746778a2a2f5c47f447219bd73486d566361752a267c1cea71f650d47a",
     "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
   }
 }

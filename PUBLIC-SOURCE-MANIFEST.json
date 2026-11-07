@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 12794,
-      "sha256": "84707566e33178b48663faeebd6ba30466457a506ea939bc972fb0e26394dc1e"
+      "bytes": 13121,
+      "sha256": "10d9d35f3928f0e3e9d06df90fe3e17f0c78c60843202d2de1472413b2121777"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -16,6 +16,11 @@
       "path": ".ci/select_courses.py",
       "bytes": 2291,
       "sha256": "b158e9d4a6adb317f39866350d9b1d1a099cb81412815fee16b8deeb6e78a68d"
+    },
+    {
+      "path": ".ci/test_firmware_checker_stages.py",
+      "bytes": 3829,
+      "sha256": "d417e3da6891aafcb202c2cfbaa57f96981a802676e5eda85afa6b214cd7b5b1"
     },
     {
       "path": ".ci/test_pipeline.py",
@@ -29,8 +34,8 @@
     },
     {
       "path": ".github/workflows/course-validation.yml",
-      "bytes": 2893,
-      "sha256": "85d65cc5a775336625f1537874f96ada024ddd4aec973660b58b6e5983f76b1e"
+      "bytes": 3103,
+      "sha256": "415ef600f9a2494637063efa0cd438e292c1c13d8544d59b1391175f9b982932"
     },
     {
       "path": ".gitignore",
@@ -39,33 +44,33 @@
     },
     {
       "path": ".packages/adaptive-decision-engine.zip",
-      "bytes": 4417133,
-      "sha256": "04f43bc836ba39f6b0be099bcb2e16f28b6947c9d625c004edbe40090bc9dd33"
+      "bytes": 4429090,
+      "sha256": "2e2521b3171a0ea50b72c4497c17b83c1ec6625e72b78ac7e3e2e9b60de13ee9"
     },
     {
       "path": ".packages/adaptive-decision-engine.zip.sha256",
       "bytes": 95,
-      "sha256": "5d0890aa0b963508eea30ebe21fd488a41bb262a2488495a68a8e8d6210f3960"
+      "sha256": "af62851fcefdf46b410df7cf4b178bfea70eb944b5c10ac58bf7350f9546ca39"
     },
     {
       "path": ".packages/compiler-optimizer.zip",
-      "bytes": 210927,
-      "sha256": "8633d0c07b2ff73205ee37614d74d630a35a452afdfd15cf55da87540cabbb20"
+      "bytes": 211972,
+      "sha256": "1d341f7d52c816d53759c9a19c16f97d7e81342032de8b651a230e72a201b8d0"
     },
     {
       "path": ".packages/compiler-optimizer.zip.sha256",
       "bytes": 89,
-      "sha256": "ddd6b8223fe7691b530a9e898ee2d7ed66f5f8a75a6b1989ea33c5f89d53c2bf"
+      "sha256": "bd943f094803fd0e429e17af457a69fe27c001a74cd81c3035cd5fea72c1cde1"
     },
     {
       "path": ".packages/firmware-forensics.zip",
-      "bytes": 107833,
-      "sha256": "d9fe95963830c05d41012efe8d0fc606b5e34021d8aee4eb98c9c7d095cf4567"
+      "bytes": 108155,
+      "sha256": "c1da7641cef596690b7514d4cd02c2108d0e6e9b0f5eabf4b2eaa93ae003729c"
     },
     {
       "path": ".packages/firmware-forensics.zip.sha256",
       "bytes": 89,
-      "sha256": "d345f81c0e613d9d3092f5022c6d68304629cbcd7529effd387d296fe835091f"
+      "sha256": "47c3d9fd514b40b2c53dfdabb6f6bea66c51e49fb1c09a89d39c672698ebfabd"
     },
     {
       "path": ".packages/inside-the-shot.zip",
@@ -79,43 +84,43 @@
     },
     {
       "path": ".packages/recoverable-storage.zip",
-      "bytes": 82700,
-      "sha256": "5bf3989824b0a559809c2b82a7aa0c02daf8455f06296c11a9864410ba990f09"
+      "bytes": 83113,
+      "sha256": "6037e14821d2c0dd2c10e9096d3f6c82a802b0cd22d25a00d6f00e7b95422da2"
     },
     {
       "path": ".packages/recoverable-storage.zip.sha256",
       "bytes": 90,
-      "sha256": "988ffece8915ec356b76e61e276e2d7caa43af759cdd6ce118c0ef2ad330ca27"
+      "sha256": "6ad663f1ce9970b2afb44ddceba3fddf8f2ab099182ed360e071793db39c919b"
     },
     {
       "path": ".packages/small-llm-runtime.zip",
-      "bytes": 1649757,
-      "sha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452"
+      "bytes": 1655212,
+      "sha256": "88657767284606929e963221d68c654b6ab145a55a5845a1345410324b6e37cf"
     },
     {
       "path": ".packages/small-llm-runtime.zip.sha256",
       "bytes": 88,
-      "sha256": "0539c81172c7172c14f07db7bf2db5ed0a804a5dcf978370c6174006969b95e0"
+      "sha256": "a77c589e8d14d3c0a174b1d27479c2ff768675530234d84b6b4cc8544dd69467"
     },
     {
       "path": ".packages/time-travel-debugger.zip",
-      "bytes": 78293,
-      "sha256": "9bbd168a413773b57bcbdf088d4c80403b2c36a575e9788eaaff433399738bdc"
+      "bytes": 77904,
+      "sha256": "b0117c610b9ecda96869e45a5283d81a706b84da459d893a917632fb11e32608"
     },
     {
       "path": ".packages/time-travel-debugger.zip.sha256",
       "bytes": 91,
-      "sha256": "c914024bdf3c883bec12476b342f47fbad33866332a263ef9d398b000a8f0366"
+      "sha256": "dba376a1f4efe199721eb3b3e080c374fb47703f8615a48d9a0b98284a97bed1"
     },
     {
       "path": "CI.md",
-      "bytes": 3066,
-      "sha256": "3031451b0f5def65b1a53eb5ff570089867bc349b855d1df3ae8a0cc734fbb78"
+      "bytes": 3509,
+      "sha256": "18444d7400832aa48823a24c6d7eeb66d4236c47d2302d1cc49a41b10fc6a02f"
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 167750,
-      "sha256": "92c3c052a4ac9c15e62cf458466ada9292b36f62371560acdb906c7e47ad2fb0"
+      "bytes": 168212,
+      "sha256": "e80cd44ff7e47fc6724289521aa2e2c19ec973dd0b67d460263fa52b82d8e45c"
     },
     {
       "path": "LICENSE.md",
@@ -144,8 +149,8 @@
     },
     {
       "path": "START-HERE.md",
-      "bytes": 2990,
-      "sha256": "6cafa3c4e3cc3c2b1018bd96ca68e74665d4262de85f8ee75706c963fab3398f"
+      "bytes": 3036,
+      "sha256": "2b0103191b49c18c3251f71c70df41deac16d49182556870baaacc8d85655d08"
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -154,8 +159,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/API.md",
-      "bytes": 15832,
-      "sha256": "296b481224b7a1565bac250692bbce6d4a51922d81c003b9b9d6937bdf4fb292"
+      "bytes": 16704,
+      "sha256": "61cd415bdeb2c850de23c7a0d0b53b39531ecdcffe889abb4c3d4143d6a94c0c"
     },
     {
       "path": "courses/adaptive-decision-engine/BRIDGE.md",
@@ -169,8 +174,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/README.md",
-      "bytes": 6753,
-      "sha256": "4c5a833536ef6bfe4e1cf9ca67a8bdc14a64209208cc492936f43e0df3aacbb1"
+      "bytes": 6982,
+      "sha256": "ca952602bb48f973672c4e739a1272f92ac11e412c0a6274688beeefa9538feb"
     },
     {
       "path": "courses/adaptive-decision-engine/RUBRIC.md",
@@ -199,8 +204,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/bundle.mjs",
-      "bytes": 7224,
-      "sha256": "1fa0251ac665eec2887a0ef4a4ed5b3b7a31526d73f14f1036d8efa16cb03779"
+      "bytes": 9224,
+      "sha256": "53424c9464350295df782214b0afc6c07942790b371825b122df550d500f6add"
     },
     {
       "path": "courses/adaptive-decision-engine/calibration-report.mjs",
@@ -449,8 +454,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/package-manifest.json",
-      "bytes": 15363,
-      "sha256": "872ed2d5480e50c4b9b2779d33ec4147130180fb71f245f7cd91ff16ee18d9a3"
+      "bytes": 15939,
+      "sha256": "d619b70d5d0e8007a097d74ef28a3d465f483394903294a9e23ba663d9e93e27"
     },
     {
       "path": "courses/adaptive-decision-engine/practice.json",
@@ -474,8 +479,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/public-files.json",
-      "bytes": 2113,
-      "sha256": "f0c63aac60bdc58da375a3d49b7f2d15958cd73931716ae36d914be2fbdbe686"
+      "bytes": 2135,
+      "sha256": "27a447e1a6d1c6e730be21a5784f6508c2cb37956e63899f3c9110c1d752b4eb"
     },
     {
       "path": "courses/adaptive-decision-engine/recovery.mjs",
@@ -496,6 +501,11 @@
       "path": "courses/adaptive-decision-engine/resample.mjs",
       "bytes": 509,
       "sha256": "4f0c742eedde7bc257f405a7033ebcee7c372ef8920d9b305939cce26c7d3016"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/session.test.mjs",
+      "bytes": 8150,
+      "sha256": "84c53b032a15e00999050f69a0c42c0b2a3cbfe65bae6960f7c0820e534298f6"
     },
     {
       "path": "courses/adaptive-decision-engine/shared.mjs",
@@ -634,13 +644,13 @@
     },
     {
       "path": "courses/compiler-optimizer/API.md",
-      "bytes": 12544,
-      "sha256": "d7466fe518133a68fb41c1bd42b6a4212fd79b73a84fa6bc476baeb8753932fa"
+      "bytes": 13241,
+      "sha256": "f3e1caddca6e825d55b3cebba09ed234c7092e4ff75b8714865bf60f2f388852"
     },
     {
       "path": "courses/compiler-optimizer/BUNDLE-MANIFEST.json",
-      "bytes": 5044,
-      "sha256": "05afabc9244ab9e6e2317489d94d50c042e9bfa47defeb5a0f240787433354e0"
+      "bytes": 5392,
+      "sha256": "522cc6bf25dfeec90a670f0bf9bae03689a3669ba428d68b269375fba06fa124"
     },
     {
       "path": "courses/compiler-optimizer/NOTICE.md",
@@ -800,12 +810,12 @@
     {
       "path": "courses/firmware-forensics/PACKAGE-MANIFEST.json",
       "bytes": 14819,
-      "sha256": "5476bd079b47f2b9b1b4807670d05c65fcf301f4edbba0ccd5f686d6ea1a98cc"
+      "sha256": "6404411dc5d564c822a318461038069239146bbd9f882a54a7b33053dc72487c"
     },
     {
       "path": "courses/firmware-forensics/README.md",
-      "bytes": 3458,
-      "sha256": "0c371a60255781c9c15676928f9035b2e3394f3f78d84b9fb30bdd518b1b7ae3"
+      "bytes": 3952,
+      "sha256": "f8f1794ec68e1780732e171587d3f967ef70f8b2112e7f2987755467b212b18d"
     },
     {
       "path": "courses/firmware-forensics/SOURCES.md",
@@ -819,8 +829,8 @@
     },
     {
       "path": "courses/firmware-forensics/check_core.py",
-      "bytes": 1326,
-      "sha256": "1578de35f5514368be026bbe7d99ff7d2a245b77dd037489123c7bd5c3d0bc59"
+      "bytes": 1550,
+      "sha256": "ba36b1cbae384d86d5a28fb197a21fd6e0317cf2e2199e2bcdfd8a19cd509208"
     },
     {
       "path": "courses/firmware-forensics/lab/CONTENT-MANIFEST.json",
@@ -1049,13 +1059,13 @@
     },
     {
       "path": "courses/firmware-forensics/reader/01/index.html",
-      "bytes": 9544,
-      "sha256": "1681499c67b7c469e8e85b7f7b1836c677061a24668c9f665f0fcd80891b0b29"
+      "bytes": 9559,
+      "sha256": "b9937b96e60715aeac3426ce9508166c056b4f67eea9ed7d6596f945ae94396c"
     },
     {
       "path": "courses/firmware-forensics/reader/02/index.html",
-      "bytes": 10997,
-      "sha256": "3b2af37f85625b3ded0f2c2603210a8e17e3aa417f0c1074c3fc9b4c357c0b57"
+      "bytes": 11012,
+      "sha256": "a7e89c4970da8c51d61d6f448f686b64066dfeab29b91170054bf62df9a8ab7d"
     },
     {
       "path": "courses/firmware-forensics/reader/03/index.html",
@@ -1069,8 +1079,8 @@
     },
     {
       "path": "courses/firmware-forensics/reader/05/index.html",
-      "bytes": 8820,
-      "sha256": "52413faef87eef2a8e4967f87bd768cfe0318eed745ccf289a5e910d768a73a6"
+      "bytes": 8903,
+      "sha256": "b48dfaba9047177368efbf87ceade61c5e6ea6228227545f34f3f7b31da8263b"
     },
     {
       "path": "courses/firmware-forensics/reader/06/index.html",
@@ -2614,8 +2624,8 @@
     },
     {
       "path": "courses/recoverable-storage/PACKAGE-MANIFEST.json",
-      "bytes": 5419,
-      "sha256": "877cebb5dd7cca3a69a08babd0ab56df75a4a6caf372dc0e098cb2f681895ff2"
+      "bytes": 5392,
+      "sha256": "2abdf1308b4180898736ae12a316bdfdbdd5e385ed53f85fe2d6e764289cbd38"
     },
     {
       "path": "courses/recoverable-storage/README.md",
@@ -2634,8 +2644,8 @@
     },
     {
       "path": "courses/recoverable-storage/contracts.md",
-      "bytes": 6634,
-      "sha256": "d40038915bd9a9b642e10288e96047ce9682a0e0816e1baba4a608345552ddd3"
+      "bytes": 6929,
+      "sha256": "6e0763f04fb472de4e29fcf435c0d524933ee835f09e1eaf93def58e4012853f"
     },
     {
       "path": "courses/recoverable-storage/course.json",
@@ -2674,8 +2684,8 @@
     },
     {
       "path": "courses/recoverable-storage/index.html",
-      "bytes": 65002,
-      "sha256": "072faed6dee4b868dd3a1ac768b7cd30cc05b53b82dcb350da9ed075bc116476"
+      "bytes": 65580,
+      "sha256": "314e15c2b8f2d6d479fc91d8cf0a5cdd7b3cca28f36d6d81f2abaae51df7234f"
     },
     {
       "path": "courses/recoverable-storage/lab.mjs",
@@ -2684,8 +2694,8 @@
     },
     {
       "path": "courses/recoverable-storage/lessons/01.md",
-      "bytes": 5853,
-      "sha256": "a3bbe3c76866ce1d9e4df708be22067cd673b2624efb92b65ee6544f48f39f65"
+      "bytes": 5856,
+      "sha256": "e780469451793bccee42ef58e0a4de2a9954bcff9efdc4e55b8fcbce069c289a"
     },
     {
       "path": "courses/recoverable-storage/lessons/02.md",
@@ -2694,18 +2704,18 @@
     },
     {
       "path": "courses/recoverable-storage/lessons/03.md",
-      "bytes": 4881,
-      "sha256": "0ad50916d85b3d3ee0b907d15ae3bb1d6aa86eb80a933c06dd8879925857c878"
+      "bytes": 4976,
+      "sha256": "b1bf2a10462481b0a084e33e8d9f0ee0e3c62cb2f62184bc96b6d57f8054c1ae"
     },
     {
       "path": "courses/recoverable-storage/lessons/04.md",
-      "bytes": 5137,
-      "sha256": "30ab18194441903356370071859ae03d6efbd029609e34fe09d9d154865338b6"
+      "bytes": 5140,
+      "sha256": "bf193f21f3d7b15a0b25b0702cfec412fd233ae84ab207d59e5d24fbc59710cd"
     },
     {
       "path": "courses/recoverable-storage/lessons/05.md",
-      "bytes": 5365,
-      "sha256": "f029b681046dea7a533a89d435a94ffeefd8d791d40caa446735d98aebe80184"
+      "bytes": 5368,
+      "sha256": "85fdb9953f310912d15cce580605f413ee85e22402a96fb8ce70ee0d2b5bdd30"
     },
     {
       "path": "courses/recoverable-storage/lessons/06.md",
@@ -2769,8 +2779,8 @@
     },
     {
       "path": "courses/small-llm-runtime/API.md",
-      "bytes": 9471,
-      "sha256": "7de0f2b8a27561246938c4ee2f0d42a3047aa5cc84e15a14f61942336e0b26a5"
+      "bytes": 10290,
+      "sha256": "3cb0cdf2492339838eef83ba2057a40bf47d942920377319501f3d3b15c8b621"
     },
     {
       "path": "courses/small-llm-runtime/MISCONCEPTIONS.md",
@@ -2789,8 +2799,8 @@
     },
     {
       "path": "courses/small-llm-runtime/README.md",
-      "bytes": 7564,
-      "sha256": "3894a5976893327add7879696fde7cd2a72bc5e3592d32f61d4a98dbce29d76e"
+      "bytes": 7949,
+      "sha256": "d36e41dd73202270576e10d8839e0e2a044212eed03b2cf4767eda611c693833"
     },
     {
       "path": "courses/small-llm-runtime/RUBRIC.md",
@@ -2799,8 +2809,8 @@
     },
     {
       "path": "courses/small-llm-runtime/TRAINED.md",
-      "bytes": 15200,
-      "sha256": "428ffbac4ee8eea5626250e9c28d0b9898286c8ea5ec0aa7d8d6151e14fc83ed"
+      "bytes": 16621,
+      "sha256": "515f4ff34a124770d7cebfedba15906a79e7a6751f08189154a110b4ffbcbfa8"
     },
     {
       "path": "courses/small-llm-runtime/beam-checks.mjs",
@@ -2889,8 +2899,8 @@
     },
     {
       "path": "courses/small-llm-runtime/lab.mjs",
-      "bytes": 13024,
-      "sha256": "30df0cfecbd242d03f2c43a3e7b2d85772ae4c94d493476868ff826c14e836b3"
+      "bytes": 14617,
+      "sha256": "3cc80e482b644ac428c8704b8c39bd73fcf58f95f29afe8c456573d245c3d8e4"
     },
     {
       "path": "courses/small-llm-runtime/lessons/01.md",
@@ -2954,8 +2964,8 @@
     },
     {
       "path": "courses/small-llm-runtime/package-manifest.json",
-      "bytes": 10040,
-      "sha256": "1fb011f9e296d16a628ed0258c7bc35f21cb2e2418bd18e5e0a7ab8a0ffb5d87"
+      "bytes": 10291,
+      "sha256": "ffbff12b2d57cfc3cf4444736c7d4bb409b3032dd5399aa7d26e07c42899cf91"
     },
     {
       "path": "courses/small-llm-runtime/practice.mjs",
@@ -3019,8 +3029,8 @@
     },
     {
       "path": "courses/small-llm-runtime/stream-checks.mjs",
-      "bytes": 10125,
-      "sha256": "a1d66472b8d9bd379e78c61b12afbafc54e6e5cd2eaad80e6c11160173e0c4b6"
+      "bytes": 11111,
+      "sha256": "6e2511803b2e15ed1305771dc9af325fac5180ffee49461a55485bf50c8cd2fd"
     },
     {
       "path": "courses/small-llm-runtime/style.css",
@@ -3074,18 +3084,18 @@
     },
     {
       "path": "courses/time-travel-debugger/BROWSER-LIMITS.md",
-      "bytes": 3039,
-      "sha256": "973cf0c136946b8418b08b220a0024e553568dcc6619f7606564e6d7e40f4aa6"
+      "bytes": 2666,
+      "sha256": "0aa28f844a14cb1fecdcddc52de47ac74bd605fba14f42758b0bf4b08bee2424"
     },
     {
       "path": "courses/time-travel-debugger/PACKAGE-MANIFEST.json",
-      "bytes": 6744,
-      "sha256": "d517b704049868f5f885125ff7b10bef6cb6d6b70479c30125b5570f11abc139"
+      "bytes": 6717,
+      "sha256": "ce9ba282e10b8fb7625c3fd4160bf68931a327a0e79d1ed32c7b5f03d0f616e6"
     },
     {
       "path": "courses/time-travel-debugger/README.md",
-      "bytes": 7272,
-      "sha256": "da5629389b1e47cc9c79fc08bc18d117df1dc1be948c7d50d3c54585f0a54c4f"
+      "bytes": 7142,
+      "sha256": "3d208d11f50a49f5ebf41eda507b5d7a49574140116c6196616d27e655a76205"
     },
     {
       "path": "courses/time-travel-debugger/capstone.md",
@@ -3134,8 +3144,8 @@
     },
     {
       "path": "courses/time-travel-debugger/index.html",
-      "bytes": 64164,
-      "sha256": "6641d7850dc3e138e637b111ab63e0df6121485aa9e313fcfb2cf4021f9f6cd6"
+      "bytes": 64034,
+      "sha256": "79f041de20ad3b9cf07a220e64cac4cf47a2b7edab03262b0bd95b7af9eb100f"
     },
     {
       "path": "courses/time-travel-debugger/lab.mjs",

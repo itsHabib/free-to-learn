@@ -1,14 +1,14 @@
 {
   "format": "ivy-cpu-package-v1",
   "course": "small-llm-runtime",
-  "sourceRevision": "8a451fd73d3ed6aeada6440049cb3e8a07ed4186",
+  "sourceRevision": "8830250a56986ccd77a8e9e8e5a124f288faac01",
   "sourceDirty": false,
-  "inputHash": "a610dd44667831f69f09dab4650e340bfc2e1984e57c255e390f4638a9f2da81",
+  "inputHash": "df7ceb5ca1c33cc1fb67b5913cf1e918a52a7f3dfb681d2dc0bd80089a0759e9",
   "files": [
     {
       "name": "README.md",
-      "bytes": 7564,
-      "sha256": "3894a5976893327add7879696fde7cd2a72bc5e3592d32f61d4a98dbce29d76e"
+      "bytes": 7949,
+      "sha256": "d36e41dd73202270576e10d8839e0e2a044212eed03b2cf4767eda611c693833"
     },
     {
       "name": "NOTICE.md",
@@ -52,8 +52,8 @@
     },
     {
       "name": "stream-checks.mjs",
-      "bytes": 10125,
-      "sha256": "a1d66472b8d9bd379e78c61b12afbafc54e6e5cd2eaad80e6c11160173e0c4b6"
+      "bytes": 11111,
+      "sha256": "6e2511803b2e15ed1305771dc9af325fac5180ffee49461a55485bf50c8cd2fd"
     },
     {
       "name": "practice.mjs",
@@ -82,8 +82,8 @@
     },
     {
       "name": "lab.mjs",
-      "bytes": 13024,
-      "sha256": "30df0cfecbd242d03f2c43a3e7b2d85772ae4c94d493476868ff826c14e836b3"
+      "bytes": 14617,
+      "sha256": "3cc80e482b644ac428c8704b8c39bd73fcf58f95f29afe8c456573d245c3d8e4"
     },
     {
       "name": "node-worker.mjs",
@@ -197,8 +197,8 @@
     },
     {
       "name": "API.md",
-      "bytes": 9471,
-      "sha256": "7de0f2b8a27561246938c4ee2f0d42a3047aa5cc84e15a14f61942336e0b26a5"
+      "bytes": 10290,
+      "sha256": "3cb0cdf2492339838eef83ba2057a40bf47d942920377319501f3d3b15c8b621"
     },
     {
       "name": "numeric.mjs",
@@ -232,8 +232,8 @@
     },
     {
       "name": "TRAINED.md",
-      "bytes": 15200,
-      "sha256": "428ffbac4ee8eea5626250e9c28d0b9898286c8ea5ec0aa7d8d6151e14fc83ed"
+      "bytes": 16621,
+      "sha256": "515f4ff34a124770d7cebfedba15906a79e7a6751f08189154a110b4ffbcbfa8"
     },
     {
       "name": "fixtures/trained/manifest.json",
@@ -308,7 +308,13 @@
   ],
   "scope": "Positive learner package only. Input hash is not the archive hash. Author checks are source-aware QA; browser and human acceptance require separate evidence.",
   "publicLearnerDerivative": {
-    "memberInventorySha256": "5faa6e1d9cfa9adfa9ad509346bd6eb8f86f66c6a99c00e181788bfde6f84cc0",
-    "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
+    "memberInventorySha256": "ad7b3d4d9ce3a4b6a40dbbce2dc2a00d0435b0d45006bc34c35dfe5952109714",
+    "scope": "Local Runtime owner correction pending bounded review/integration. The revision binds these committed learner files; this inventory binds current member bytes. No publication or new blind-learner claim."
+  },
+  "lineage": {
+    "qualifiedPublicBase": "811cb4f2caa9964d4cde1581b0e10199f0c4f371",
+    "runtimePreviouslyQualifiedAt": "11aace6",
+    "priorRuntimeSourceRevision": "8a451fd73d3ed6aeada6440049cb3e8a07ed4186",
+    "priorArchiveSha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452"
   }
 }

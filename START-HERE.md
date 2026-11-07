@@ -12,7 +12,7 @@ work, not successful exercises; missing dependencies/import errors are failures.
 | `courses/time-travel-debugger` | `node lab.mjs start project` | `node lab.mjs check project 01 --help-used none` |
 | `courses/recoverable-storage` | `node lab.mjs start project` | `node lab.mjs check project 01 --help-used none` |
 | `courses/small-llm-runtime` | `node lab.mjs start work` | `node lab.mjs check 01 work --help-used none` |
-| `courses/firmware-forensics` | `python3 work.py 001-first` | `python3 check_core.py attempts/001-first` |
+| `courses/firmware-forensics` | `python3 work.py 001-first` | `python3 check_core.py --stage parser attempts/001-first` |
 | `courses/adaptive-decision-engine` | `node lab.mjs start work` | `node lab.mjs check 01 work --help-used none` |
 
 Read each course's README, API/contracts and lessons. Implement your own source,
@@ -23,7 +23,8 @@ learner implementation, private reference or attempt history is supplied here.
 
 Debugger/Storage exports contain `EXPORT_DIRECTORY/project`; retain the original
 course package and pass that nested project path to the checker/client. Adaptive
-new sessions use format 2 and keep all attempts; old tools cannot read it. Keep an
+new sessions use source-text table formats 2/3 and keep all attempts; use current
+tools to read format 3. Keep an
 original export and import into a new directory. Firmware reasoning export is
 qualified manual selected JSON; automatic file download is not supported. Its
 original 28/30 journal history and clipboard/file-save qualification are unchanged.

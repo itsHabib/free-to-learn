@@ -4,13 +4,15 @@ import argparse,json,os,subprocess,sys,tempfile
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('attempt',type=Path);a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('attempt',type=Path);p.add_argument('--stage',choices=('parser','full'),default='full',help='parser runs scaffold and parser/map checks; full adds analysis and investigation (default)');a=p.parse_args()
     attempt=a.attempt.resolve(strict=True)
     env=dict(os.environ,TMPDIR=str(Path(tempfile.gettempdir()).resolve()))
     commands=[['-m','unittest','discover','-s','checks','-v'],
-      ['checks/check_parser.py','--parser',str(attempt/'parser.py')],
-      ['checks/check_submission.py','--parser',str(attempt/'parser.py'),'--analysis',str(attempt/'analysis.py')],
-      ['checks/check_investigation.py','--parser',str(attempt/'parser.py'),'--analysis',str(attempt/'analysis.py')]]
+      ['checks/check_parser.py','--parser',str(attempt/'parser.py')]]
+    if a.stage=='full':
+        commands.extend([
+          ['checks/check_submission.py','--parser',str(attempt/'parser.py'),'--analysis',str(attempt/'analysis.py')],
+          ['checks/check_investigation.py','--parser',str(attempt/'parser.py'),'--analysis',str(attempt/'analysis.py')]])
     results=[]
     for command in commands:
         r=subprocess.run([sys.executable,*command],cwd=ROOT/'lab',env=env,capture_output=True,text=True)

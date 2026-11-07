@@ -27,8 +27,8 @@
     },
     {
       "path": "contracts.md",
-      "bytes": 6634,
-      "sha256": "d40038915bd9a9b642e10288e96047ce9682a0e0816e1baba4a608345552ddd3"
+      "bytes": 6929,
+      "sha256": "6e0763f04fb472de4e29fcf435c0d524933ee835f09e1eaf93def58e4012853f"
     },
     {
       "path": "course.json",
@@ -67,8 +67,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 65002,
-      "sha256": "072faed6dee4b868dd3a1ac768b7cd30cc05b53b82dcb350da9ed075bc116476"
+      "bytes": 65580,
+      "sha256": "314e15c2b8f2d6d479fc91d8cf0a5cdd7b3cca28f36d6d81f2abaae51df7234f"
     },
     {
       "path": "lab.mjs",
@@ -77,8 +77,8 @@
     },
     {
       "path": "lessons/01.md",
-      "bytes": 5853,
-      "sha256": "a3bbe3c76866ce1d9e4df708be22067cd673b2624efb92b65ee6544f48f39f65"
+      "bytes": 5856,
+      "sha256": "e780469451793bccee42ef58e0a4de2a9954bcff9efdc4e55b8fcbce069c289a"
     },
     {
       "path": "lessons/02.md",
@@ -87,18 +87,18 @@
     },
     {
       "path": "lessons/03.md",
-      "bytes": 4881,
-      "sha256": "0ad50916d85b3d3ee0b907d15ae3bb1d6aa86eb80a933c06dd8879925857c878"
+      "bytes": 4976,
+      "sha256": "b1bf2a10462481b0a084e33e8d9f0ee0e3c62cb2f62184bc96b6d57f8054c1ae"
     },
     {
       "path": "lessons/04.md",
-      "bytes": 5137,
-      "sha256": "30ab18194441903356370071859ae03d6efbd029609e34fe09d9d154865338b6"
+      "bytes": 5140,
+      "sha256": "bf193f21f3d7b15a0b25b0702cfec412fd233ae84ab207d59e5d24fbc59710cd"
     },
     {
       "path": "lessons/05.md",
-      "bytes": 5365,
-      "sha256": "f029b681046dea7a533a89d435a94ffeefd8d791d40caa446735d98aebe80184"
+      "bytes": 5368,
+      "sha256": "85fdb9953f310912d15cce580605f413ee85e22402a96fb8ce70ee0d2b5bdd30"
     },
     {
       "path": "lessons/06.md",
@@ -166,7 +166,7 @@
     "Browser/render/download inspection pending."
   ],
   "publicLearnerDerivative": {
-    "memberInventorySha256": "6668bbcd4b4328391e4fdfb0d49ee10eff37e502d916f8376b641338e65c9681",
-    "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
+    "memberInventorySha256": "fb642d323302ff81ce678d69ec04e09087dbe27ada9f688126e1d7f02ad55513",
+    "scope": "Current learner member bytes. Historical engine/build/teaching fields remain lineage. This documentation successor corrects course-specific prerequisites, links or API wording without changing runtime, grader or learner-attempt bytes."
   }
 }

@@ -47,6 +47,11 @@ prefill(model,tokens) returns {logits:lastLogits,cache}. Prompt is nonempty and
 must fit context. Cache format is pocket-cache-v1, with model fingerprint,
 position=processed-token count and layers:[{keys,values},{keys,values}]. Each
 component contains position rows of width eight, with head vectors concatenated.
+The exact required identity key is `fingerprint: model.fingerprint`, a validated
+checkpoint SHA-256 string; it is not named modelFingerprint. Thus the cache schema
+is `{format:'pocket-cache-v1',fingerprint,position,layers}`. Pocket uses the
+checkpoint's embedded character vocabulary, so it has no separately required
+`tokenizerFingerprint`. TRAINED.md specifies the trained profile's extra identity.
 Keys have already received head-local rotary positions. Values are unrotated.
 
 decodeStep(model,token,cache) validates the entire cache and token before changes,
@@ -62,7 +67,12 @@ state/4294967296. Seed is 0..2^32-1. sample(logits,{temperature=1,topK=32},rando
 ranks score descending then token ID ascending. Temperature zero returns the
 first ID without a draw. Otherwise keep topK, subtract its maximum before dividing by temperature,
 softmax and select the first cumulative interval greater than a draw in [0,1).
-Require 32 finite logits and valid controls.
+Require 32 finite logits and valid controls. The sample options object contains
+only `temperature` and `topK`; either may be omitted to use the defaults above.
+A stream adapter passes both resolved fields as `{temperature,topK}`. Do not
+forward the generation-options object: `seed` is for `rng(seed)` and
+`maxNewTokens` is the generation/iterator stopping budget. The guarded stream
+checkpoint already checks this field boundary; object key order is immaterial.
 
 generate(model,prompt,{maxNewTokens=8,seed=1,temperature=1,topK=32}) validates
 settings before computation. Return {tokens,generated,text,stop,trace}. tokens

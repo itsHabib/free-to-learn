@@ -18,6 +18,8 @@ The supplied `start` command creates `optimizer.mjs` and `support/runtime.mjs`, 
 | `decide(report)` | `{accept: boolean, reason: string}` |
 | `reduce(program, input, transform)` | `{program, input, explanation}` preserving a smaller legal wrong-result witness |
 
+`decide(report)` receives `validation:{status,complete}`, `proof:{ok}`, `identitiesCurrent` and `cost:{complete,before,after,sameWorkload}`. A positive decision requires exhaustive completed domain success, successful proof, current identities, complete comparable costs and a strict aggregate improvement. Full generated reports also contain `validation.counts`, `cases` and subject/domain digests; these extra diagnostic fields are not required on the public policy-check interface. Do not require them to exist or infer success from missing required fields. Reject explicit incomplete or contradictory evidence. The status describes only the declared finite domain, not universal correctness.
+
 An Editor artifact is `{program, events}`. Start with `new Editor(program, contract)` and finish with `.finish()`. Read `.program` to inspect the current snapshot. Mutating it directly produces an unreported delta and is rejected when the chain is replayed.
 
 Supported `.edit(operation)` requests:

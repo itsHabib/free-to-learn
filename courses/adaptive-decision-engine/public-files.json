@@ -68,6 +68,7 @@
   "render.mjs",
   "replay.mjs",
   "resample.mjs",
+  "session.test.mjs",
   "shared.mjs",
   "starter/REPORT.md",
   "starter/adapter.mjs",

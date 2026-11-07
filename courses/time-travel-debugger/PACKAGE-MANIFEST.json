@@ -7,13 +7,13 @@
   "files": [
     {
       "path": "BROWSER-LIMITS.md",
-      "bytes": 3039,
-      "sha256": "973cf0c136946b8418b08b220a0024e553568dcc6619f7606564e6d7e40f4aa6"
+      "bytes": 2666,
+      "sha256": "0aa28f844a14cb1fecdcddc52de47ac74bd605fba14f42758b0bf4b08bee2424"
     },
     {
       "path": "README.md",
-      "bytes": 7272,
-      "sha256": "da5629389b1e47cc9c79fc08bc18d117df1dc1be948c7d50d3c54585f0a54c4f"
+      "bytes": 7142,
+      "sha256": "3d208d11f50a49f5ebf41eda507b5d7a49574140116c6196616d27e655a76205"
     },
     {
       "path": "capstone.md",
@@ -62,8 +62,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 64164,
-      "sha256": "6641d7850dc3e138e637b111ab63e0df6121485aa9e313fcfb2cf4021f9f6cd6"
+      "bytes": 64034,
+      "sha256": "79f041de20ad3b9cf07a220e64cac4cf47a2b7edab03262b0bd95b7af9eb100f"
     },
     {
       "path": "lab.mjs",
@@ -193,7 +193,7 @@
     "scope": "Only reviewed lessons04/05/06, matching reader paragraphs, positive member list and the stage05 command input are adopted. source_revision and ordered_inputs_sha256 retain historical engine lineage; files binds current delivery bytes. No engine, grader, learner attempt or acceptance is changed."
   },
   "publicLearnerDerivative": {
-    "memberInventorySha256": "56985bcf79ad476a8633ad7e34f2f899301a4832086f6964efb59403454bf516",
-    "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
+    "memberInventorySha256": "58f3775fdbccf74e1b44054dd61ab6b573be587334e6d815303dc3db21c7222e",
+    "scope": "Current learner member bytes. Historical engine/build/teaching fields remain lineage. This documentation successor corrects course-specific prerequisites, links or API wording without changing runtime, grader or learner-attempt bytes."
   }
 }

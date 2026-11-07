@@ -4,8 +4,8 @@
   "files": [
     {
       "name": "API.md",
-      "sha256": "296b481224b7a1565bac250692bbce6d4a51922d81c003b9b9d6937bdf4fb292",
-      "bytes": 15832
+      "sha256": "61cd415bdeb2c850de23c7a0d0b53b39531ecdcffe889abb4c3d4143d6a94c0c",
+      "bytes": 16704
     },
     {
       "name": "BRIDGE.md",
@@ -19,8 +19,8 @@
     },
     {
       "name": "README.md",
-      "sha256": "4c5a833536ef6bfe4e1cf9ca67a8bdc14a64209208cc492936f43e0df3aacbb1",
-      "bytes": 6753
+      "sha256": "ca952602bb48f973672c4e739a1272f92ac11e412c0a6274688beeefa9538feb",
+      "bytes": 6982
     },
     {
       "name": "RUBRIC.md",
@@ -49,8 +49,8 @@
     },
     {
       "name": "bundle.mjs",
-      "sha256": "1fa0251ac665eec2887a0ef4a4ed5b3b7a31526d73f14f1036d8efa16cb03779",
-      "bytes": 7224
+      "sha256": "53424c9464350295df782214b0afc6c07942790b371825b122df550d500f6add",
+      "bytes": 9224
     },
     {
       "name": "calibration-report.mjs",
@@ -81,11 +81,6 @@
       "name": "data.mjs",
       "sha256": "f58cdaf66f840278d5d76de6b66b24ee9ead00038d0b73aa7e47ca38bcb1a6e4",
       "bytes": 471
-    },
-    {
-      "name": "evaluation.mjs",
-      "sha256": "0619a9e35c9e27edc6654d1562d9479126cdab2feafb90b5bfb11a061bb4a185",
-      "bytes": 2428
     },
     {
       "name": "evaluation/calibration-data.json",
@@ -121,6 +116,11 @@
       "name": "evaluation/evaluation.json",
       "sha256": "3e0dc6ae055e90efe8341b706bc9b47cd747134ccdddf92f01c9e32a0ff48173",
       "bytes": 7799
+    },
+    {
+      "name": "evaluation.mjs",
+      "sha256": "0619a9e35c9e27edc6654d1562d9479126cdab2feafb90b5bfb11a061bb4a185",
+      "bytes": 2428
     },
     {
       "name": "examples/repair-worked.json",
@@ -319,8 +319,8 @@
     },
     {
       "name": "public-files.json",
-      "sha256": "f0c63aac60bdc58da375a3d49b7f2d15958cd73931716ae36d914be2fbdbe686",
-      "bytes": 2113
+      "sha256": "27a447e1a6d1c6e730be21a5784f6508c2cb37956e63899f3c9110c1d752b4eb",
+      "bytes": 2135
     },
     {
       "name": "recovery.mjs",
@@ -341,6 +341,11 @@
       "name": "resample.mjs",
       "sha256": "4f0c742eedde7bc257f405a7033ebcee7c372ef8920d9b305939cce26c7d3016",
       "bytes": 509
+    },
+    {
+      "name": "session.test.mjs",
+      "sha256": "84c53b032a15e00999050f69a0c42c0b2a3cbfe65bae6960f7c0820e534298f6",
+      "bytes": 8150
     },
     {
       "name": "shared.mjs",
@@ -484,7 +489,11 @@
     "scope": "Local composition of separately reviewed exact session-codec and evaluation-API documentation. Original buildId retains unchanged engine/assessment lineage; this inventory binds current package bytes. No combined release or fresh learner acceptance claimed."
   },
   "publicLearnerDerivative": {
-    "memberInventorySha256": "7661c4d227bd5760d3ed834ff3f6b4a6a4f0b5e50bc529aa5aea8a30ab44bdc1",
+    "memberInventorySha256": "2cb08bdd70f44e2c2ee59825d2721aa146ff838659bae6cc412fc6b5cfa71bae",
     "scope": "Exact current executable course files with retained approved privacy/license notices and nested-project export instructions. Historical revision/build fields remain lineage; this inventory binds current member bytes. Local Git qualification only; not published."
+  },
+  "capacityRepairDerivative": {
+    "memberInventorySha256": "2cb08bdd70f44e2c2ee59825d2721aa146ff838659bae6cc412fc6b5cfa71bae",
+    "scope": "Local lossless session-format-3 repair candidate. Source text, attempt metadata/results and original engine/assessment lineage are retained; current member bytes are bound here. Old format 1/2 sessions remain readable. No publication, new curriculum or policy adoption claim."
   }
 }
