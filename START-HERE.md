@@ -46,3 +46,14 @@ node cli.mjs lesson 01 and node cli.mjs check 01 work --help-used none.
 Implement work/optimizer.mjs through01-09 and the cumulative optimization and
 miscompilation investigation. The first TODO is expected. Follow README.md for
 export/restore and preserve all original code/help/results before revising.
+
+## Anti-cheat Engineering (beta)
+
+Enter courses/anti-cheat-engineering and read README.md, then enter courier-lab.
+Use Node22+; npm start opens the printed loopback /learn route. No npm install
+is needed. Prepare your own source exercises with lab:prepare/order:prepare/
+core:prepare. Preserve predictions, help, first failures and all artifacts.
+Its Git publication has safe offline/setup checks; the real HTTP/browser
+learner route remains not newly qualified. Labelled public controls/reference
+examples are assistance. Recovery details and absolute-path limits are explicit
+in its README. Existing browser introduction and ZIP remain available.

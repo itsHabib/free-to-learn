@@ -1,0 +1,8 @@
+{
+  "id": "courier-proximity-01",
+  "version": 1,
+  "objective": "Implement a server-side proximity guard, demonstrate that a remote pickup cannot grant cargo, and preserve a legitimate pickup and delivery through real HTTP clients.",
+  "question": "The server owns cargo, but its interaction policy is missing one guard. Repair defense.mjs so an interaction outside a 250 mm radius returns range. Keep the exact boundary inclusive: distance exactly 250 mm is legal. Use both x and y, preserve cooldown behavior, and do not change the protocol or clients to make the test pass. Run the focused network checker. Explain why the server must make this decision and name one modified-client behavior this guard cannot detect.",
+  "constraints": ["Edit defense.mjs only for this exercise.", "Keep legitimate pickup and deposit working.", "A rejected interaction must not create cargo or score.", "Client-supplied position is not an authority."],
+  "assessment": "The focused checker crosses the real process and HTTP boundary. Passing is evidence about this implementation and its fixtures, not proof of general anti-cheat competence."
+}

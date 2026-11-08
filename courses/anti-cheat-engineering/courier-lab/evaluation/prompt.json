@@ -1,0 +1,18 @@
+{
+  "id": "courier-evaluation-01",
+  "version": 2,
+  "objective": "Implement a case-level detector evaluation, select settings using only the exploration split, and explain the limits of the resulting synthetic counts and rates.",
+  "question": "Implement classify(signals, settings) and evaluate(cases, settings) in evaluation/policy.mjs. Count distant range denials inside any open-left, closed-right tick window, predict without reading labels, and compute one confusion-matrix vote per case. Record your settings before the evaluation run, preserve your first predictions and assistance in response.md, and explain the legal honest/automation twin and undefined rates. Compare exploration windows 8 and 20 at threshold 3 and minimum distance 500 before committing settings. Append repairs without replacing earlier answers.",
+  "constraints": [
+    "The only submitted executable file is evaluation/policy.mjs. Keep it independent of files, clocks, network APIs and reference code.",
+    "Inputs are validated. A signal is {tick,reason,distanceSquared}; signals have nonnegative integer ticks in nondecreasing order, reason range or cooldown, and nonnegative finite squared distances. Equal-tick observations may occur. Do not mutate inputs.",
+    "Settings are {threshold,windowTicks,minDistanceMm}; threshold and windowTicks are positive integers and minDistanceMm is finite and nonnegative.",
+    "An observation is eligible only when reason equals range and distanceSquared is strictly greater than minDistanceMm squared. Cooldown and near-boundary denials do not count.",
+    "classify returns a Boolean. Flag if any interval (latest-windowTicks, latest] contains at least threshold eligible observations. The exact left edge is excluded. A later quiet period does not erase an earlier qualifying interval.",
+    "Each case is {id,label,signals}, with a unique id and Boolean synthetic label. evaluate returns exactly {decisions,metrics}; decisions preserves input order as {id,flagged}. Labels are used only after predictions for scoring, never as classification features.",
+    "Metrics are {total,tp,fp,tn,fn,precision,recall,falsePositiveRate}. Count every case once, including a case with many observations. precision=tp/(tp+fp), recall=tp/(tp+fn), falsePositiveRate=fp/(fp+tn). A zero denominator produces null, never zero or NaN.",
+    "Use only the stable exploration IDs to choose settings. Record settings and policy source identity before running the separate evaluation IDs. Keep the corpus and source hashes with the report; do not tune on the evaluation results and report them as a fresh evaluation.",
+    "The corpus is fourteen scripted controls from the owned local game. Its author-assigned violation label is true only for repeated-distant-invalid behavior; declaredAutomation is separate metadata never supplied as a policy feature. It contains no human participants. Its counts and rates do not estimate real-human behavior, production prevalence or operational false-positive rates. A flag is advisory, never an automatic ban."
+  ],
+  "assessment": "Owner-side fixtures check window boundaries, eligible observations, one-case-one-vote metrics, decision order, label independence and undefined rates. Two independently structured correct policies pass; at least six plausible wrong policies fail with expected/actual feedback and a teaching source. The separate real-engine corpus demonstrates window tradeoffs and an indistinguishable legal honest/valid-automation pair without treating automation as a rule violation; it is not held-out human learning evidence."
+}

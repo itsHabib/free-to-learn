@@ -1,0 +1,18 @@
+{
+  "id": "courier-integrity-01",
+  "version": 2,
+  "objective": "Implement a pure startup policy that checks an owned runtime's observed files against an independently approved reference and an explicit supported-release list.",
+  "question": "Implement checkPackage({manifest, observed, supported}) in integrity/policy.mjs. Validate the reference, require a supported release, require the exact complete inventory and compare SHA-256 values by path. Return the specified refusal reason when any check fails. Record predictions before the first check, then explain one failure, your repair and the boundary of the evidence in response.md.",
+  "constraints": [
+    "Only integrity/policy.mjs is submitted executable code. It must export checkPackage, must not mutate inputs and must not read files, start processes or use the network.",
+    "The manifest has exactly schema, packageId, release and files; schema is 1 and packageId is courier-runtime. Release is a nonblank string. Files is a nonempty list of exact {path,sha256} records.",
+    "Paths are unique after ASCII case folding and use only letters, digits, dot, underscore, hyphen and slash; they are nonempty relative paths of at most 512 characters. Reject absolute paths, backslashes, colons, control characters and empty, dot or dot-dot segments. SHA-256 values are 64 hexadecimal characters; letter case does not change their value.",
+    "Supported is a list of nonblank release strings. An empty supported list supports no release.",
+    "Return {ok:false,reason:'schema'} for a malformed manifest or supported list; unsupported-release for an unknown release; inventory for a malformed, duplicate, missing or extra observed entry; digest for unequal well-formed hashes; otherwise return {ok:true,reason:'verified'}. Check in that order.",
+    "Both approved original and approved compatible-update packages must pass. A supported release label by itself does not approve changed bytes.",
+    "The observer hashes actual regular-file bytes. The launcher chooses the runtime inventory independently of the manifest. Files outside that explicit inventory are outside this comparison."
+  ],
+  "assessment": "The owner-side checker tests actual copied runtime bytes, an approved history-capacity update, changed bytes, inventory defects, unsupported releases and malformed references. Two independent correct policies must pass and ten deliberate wrong controls must fail by their returned behavior. A candidate exception or failed import is a runner failure. A pass establishes agreement with these cases; it does not establish client honesty, identity authentication or production security.",
+  "explanationAssessment": "Predictions, explanations and transfer reasoning are retained for review but are not automatically graded.",
+  "trustBoundary": "The expected manifest is logically separate from the observed package, although both are local in this teaching checkout. Anyone who changes both can defeat the comparison. Keep the package unchanged between checking and importing it."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "courier-recovery-01",
+  "version": 3,
+  "objective": "Select a compatible release, configuration and named snapshot, then verify recovery and explain the loss of post-snapshot actions.",
+  "question": "Implement selectRecovery(evidence) in recovery/policy.mjs. Honor the declared target release, require its exact configuration identity, and select the newest compatible snapshot without changing any evidence. Return the complete pinned tuple or the specified refusal. Record predictions and assistance in response.md before checking. Use the real recovery trial to distinguish baseline success, candidate configuration failure, code-only state incompatibility and full recovery. Explain which later actions are lost and which acknowledged sequence numbers become reusable; distinguish original and restored action lineages. Preserve the original failed trial and append repairs.",
+  "constraints": [
+    "Only recovery/policy.mjs is the submitted executable. Use no files, clocks, network, imports of author solutions or external systems.",
+    "Evidence is validated and deeply immutable: {targetReleaseId,releases,configurations,snapshots}. IDs are unique within each array. Package/configuration/snapshot hashes are opaque identity strings, not values to invent or recalculate in this policy.",
+    "A release has {id,packageHash,stateSchema,configId,configHash}. A configuration has {id,hash,releaseId,stateSchema,maxInteractionDistanceMm}. A snapshot has {id,hash,ordinal,stateSchema,configId,configHash,state}; optional provenance fields may also be present. ordinal is a nonnegative safe integer; state is opaque to selection.",
+    "Find the declared target release. If absent return exactly {ok:false,reason:'unknown-target'}. Never silently choose another release.",
+    "Find the configuration named by the target release. Its hash must equal release.configHash, its releaseId must equal release.id, and its stateSchema must equal release.stateSchema. If any check fails return exactly {ok:false,reason:'configuration-mismatch'}.",
+    "Compatible snapshots have stateSchema equal to the release schema and configId/configHash equal to the selected configuration. Choose the greatest ordinal; break a tie by ascending JavaScript UTF-16 code-unit string order of snapshot ID, not localeCompare. Array order does not establish age. If none qualify return exactly {ok:false,reason:'no-compatible-snapshot'}.",
+    "Success is exactly {ok:true,releaseId,packageHash,configId,configHash,snapshotId,snapshotHash}, copied from existing evidence. Do not return state, rewrite it, relabel its schema or merge post-snapshot actions.",
+    "Apply refusal checks in target, configuration, snapshot order. Code, configuration and state identities must stay visible in the trial report. This owned local exercise does not deploy, migrate production data or establish a transactionally safe rollback."
+  ],
+  "assessment": "Owner fixtures compare exact tuples and refusal reasons, using frozen inputs. Two independently structured correct policies pass; at least six isolated wrong policies must fail. The checker also invokes the actual owned-game recovery trial: a baseline 250 mm pickup succeeds, a narrowed configuration blocks it, the old package cannot decode the candidate state, and a compatible full recovery succeeds while losing later delivery state.",
+  "practiceSet": "application-v2: read worked examples, then apply the contract to different named artifacts; not an unseen mastery test"
+}

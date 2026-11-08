@@ -53,3 +53,13 @@ setup/interface regression profile; complete private-solution replay is deferred
 Earlier build-status prose retained inside course archives describes its
 historical package scope; this qualification file records the current terminal
 release scope without changing those original first attempts or prior reports.
+
+## Anti-cheat Git source publication
+
+The eight-course source repository now also exposes the existing Courier Lab
+beta as a clean clone path. Its 228 original project files are exact to the
+published package. Public deterministic runtime/control tests and sealed
+workspace preparation are checked separately from exercise completion. The
+retained listener restriction means no new HTTP/browser/capstone completion
+claim. No blind trial or private reference/learner fixture is used by CI.
+Labelled public worked examples and grader controls are shipped intentionally.

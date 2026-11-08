@@ -1,0 +1,4 @@
+{
+  "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd",
+  "guard": "  // LAB_PROXIMITY_GUARD\n  if (distanceSquared > RANGE_SQUARED && !omitProximity) return 'range';"
+}

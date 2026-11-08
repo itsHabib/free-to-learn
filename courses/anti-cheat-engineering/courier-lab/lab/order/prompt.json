@@ -1,0 +1,38 @@
+{
+  "id": "courier-order-01",
+  "version": 3,
+  "objective": "Implement admission policy and independently test observable ordering, expiry, retry and read behavior through HTTP.",
+  "question": "Implement admitInput(state, input, tick) and movementActive(state, tick) in admission.mjs. Write learner-scenario.mjs exporting async scenario({base, advance}) using node:assert/strict and clients/http-client.mjs. Demonstrate that newer sequence numbers replace movement, stale or duplicate input changes nothing, admitted intent expires after four inclusive ticks, state reads do not renew it, and stale retries do not contribute to findings. Commit your predictions and explanations in response.md before running the checker.",
+  "constraints": [
+    "Only admission.mjs and learner-scenario.mjs are submitted executable files. Local helper modules are not part of this exercise.",
+    "The policy receives only lastSeq, lastSeen, expiresAt, move and pendingInteract. Return those five fields in next; preserve all of them for stale input.",
+    "Gameplay requests cross HTTP. advance(n) is bounded owner-side test time, not a gameplay endpoint.",
+    "Assert observable state with expected and actual values. A rejected response string alone does not demonstrate unchanged state.",
+    "Both the reference and a structurally different correct policy must pass; all seven named wrong variants must be exposed."
+  ],
+  "assessment": "Component and scenario are judged independently. Captured code is run with sealed owner-side runtime and fixtures. Assertions on state can detect wrong variants; imports, crashes, non-assertion errors and timeouts cannot. These bounded checks establish agreement with the named cases, not production security or general competence.",
+  "wrongVariants": [
+    "equal-seq-admitted",
+    "stale-admitted",
+    "stale-interact",
+    "expiry-T+3",
+    "expiry-T+5",
+    "read-renews",
+    "stale-finding"
+  ],
+  "scenarioLimits": {
+    "seeds": [
+      17,
+      31,
+      99
+    ],
+    "initialTick": 0,
+    "maxActors": 4,
+    "advancePerCall": [
+      1,
+      100
+    ],
+    "totalTicks": 400
+  },
+  "predictionSet": "application-v2: unobstructed path, initially no pending interaction; response-template exact wording is captured with each submission"
+}

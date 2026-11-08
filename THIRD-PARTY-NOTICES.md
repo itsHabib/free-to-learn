@@ -17,3 +17,11 @@ The Ed25519 public-key values in `courses/firmware-forensics/trust/crypto.mjs`, 
 ## License texts and external references
 
 The copied third-party notices retain their own terms. Creative Commons dedicates its legal-license text to the public domain under CC0, as stated in the included legal code. The root MIT text grants rights in the identified original software, not ownership of standard license wording. Public bibliographic links do not license external books, websites or assets, and no external reference media is granted by this repository's original-material licenses.
+
+## Anti-cheat Engineering
+
+Courier Lab's teaching/runtime/control files are original Free to Learn
+material under the split code/content licenses. The optional, non-vendored
+axe-core dependency listed for author accessibility tooling retains MPL-2.0;
+no third-party package code is included or required for course setup/offline
+checks. The reading references remain links, not relicensed source material.

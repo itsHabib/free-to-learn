@@ -1,0 +1,21 @@
+import { writeFile } from 'node:fs/promises';
+import { investigations, runInvestigation } from '../timing/runtime.mjs';
+import { runTrial } from '../recovery/runtime.mjs';
+import * as recoveryPolicy from '../recovery/policy.mjs';
+import { withRepairServer } from '../capstone/server.mjs';
+import { session, submit } from '../capstone/client.mjs';
+const timing=investigations().map(item=>({name:item.name,...runInvestigation(item.record)}));
+const recovery=await runTrial(recoveryPolicy);
+const capstone=await withRepairServer(async server=>{
+ const actor=await session(server.base);server.moveActor(actor.id,{x:400,y:0});
+ const first=await submit(server.base,actor.token,{requestId:'job-1',stationId:'alpha'});
+ server.moveActor(actor.id,{x:900,y:0});
+ const retry=await submit(server.base,actor.token,{requestId:'job-1',stationId:'alpha'});
+ const distant=await submit(server.base,actor.token,{requestId:'job-2',stationId:'alpha'});
+ server.moveActor(actor.id,{x:0,y:0});
+ const repairedRetry=await submit(server.base,actor.token,{requestId:'job-2',stationId:'alpha'});
+ const full=await submit(server.base,actor.token,{requestId:'job-3',stationId:'alpha'});
+ return {steps:[{name:'1 · Legal boundary repair',...first},{name:'2 · Same ID after moving away',...retry},{name:'3 · New distant request',...distant},{name:'4 · Retry denied ID after moving back',...repairedRetry},{name:'5 · New ID after receipt capacity',...full}],trace:server.record()};
+});
+await writeFile(new URL('../public/samples/completion-cases.json',import.meta.url),JSON.stringify({schema:1,timing,recovery,capstone},null,2)+'\n');
+console.log('Saved actual timing, recovery and HTTP capstone outputs.');
