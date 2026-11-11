@@ -55,3 +55,8 @@ continued saving, malformed references and existing bounds) without private lear
 work. Firmware starts with the parser-only checker; its separate staged-checker
 regression verifies that later feedback remains gated until the documented stage.
 These deterministic regressions do not establish full learner completion.
+
+Small LLM Runtime runs .ci/test_small_llm_runtime_feedback.mjs: plain-word practice
+answers, short failure messages, explicit input-cache mutation reports and the
+module 07 and trained stop/tokenizer rules. Its runtimes are test doubles that
+replay public goldens or fixed logits; no learner solution is included.
