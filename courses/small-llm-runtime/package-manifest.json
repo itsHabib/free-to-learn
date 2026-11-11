@@ -1,14 +1,14 @@
 {
   "format": "ivy-cpu-package-v1",
   "course": "small-llm-runtime",
-  "sourceRevision": "8830250a56986ccd77a8e9e8e5a124f288faac01",
-  "sourceDirty": false,
-  "inputHash": "df7ceb5ca1c33cc1fb67b5913cf1e918a52a7f3dfb681d2dc0bd80089a0759e9",
+  "sourceRevision": "fbaa574779092598628054780587838f3d6b3762",
+  "sourceDirty": true,
+  "inputHash": "b600732fe81d01b3067715f550cdc1beb34cc8970c9efb0302c772d80e968c55",
   "files": [
     {
       "name": "README.md",
-      "bytes": 7949,
-      "sha256": "d36e41dd73202270576e10d8839e0e2a044212eed03b2cf4767eda611c693833"
+      "bytes": 8103,
+      "sha256": "76affe7ad1eb875dbe99db085ad87543ea12bea90d0fda30956b38b63b34ab98"
     },
     {
       "name": "NOTICE.md",
@@ -37,8 +37,8 @@
     },
     {
       "name": "checks.mjs",
-      "bytes": 17379,
-      "sha256": "352cf2fd11a2596ae97d3e085d2c29d5d24f2cb6706fd29e0e8f9142b9e41ff8"
+      "bytes": 27364,
+      "sha256": "63d7c2ec4cfb8641db8ac2ec3f49600055bb5bbad22d00aa136881e3c9f1b48b"
     },
     {
       "name": "beam-checks.mjs",
@@ -57,13 +57,13 @@
     },
     {
       "name": "practice.mjs",
-      "bytes": 8224,
-      "sha256": "1a46fd77885cc3239790d455f28d919bde150a10adb2e3b36de0b5fca2960af1"
+      "bytes": 10169,
+      "sha256": "3279baa38c3cbba6c0b5978d37a7880252025fc4ceeddb98362fdcd103885fd1"
     },
     {
       "name": "index.html",
-      "bytes": 4536,
-      "sha256": "df212e2693d39e8c8c74c105ab80db6e6c864e00520b378a3184588afcee5d37"
+      "bytes": 4517,
+      "sha256": "449b99bfeab7e8ee51f3f3c1148d2186bd075c4f521ef5dfd7ba2c75d1d5dab5"
     },
     {
       "name": "style.css",
@@ -72,8 +72,8 @@
     },
     {
       "name": "web.mjs",
-      "bytes": 19559,
-      "sha256": "5fc192e04e8d594c0a9cc26d2c19180d0810ae80d03a8bd9b1fc76b82879956f"
+      "bytes": 19794,
+      "sha256": "064e6fb018853204f4a432ff645cedc4abcdd86909b5c37f1f65fd1fc0b2b65f"
     },
     {
       "name": "render.mjs",
@@ -82,8 +82,8 @@
     },
     {
       "name": "lab.mjs",
-      "bytes": 14617,
-      "sha256": "3cc80e482b644ac428c8704b8c39bd73fcf58f95f29afe8c456573d245c3d8e4"
+      "bytes": 14860,
+      "sha256": "4cd9a9e51c13363bf5a20b01fb30a9b7771424bee56e0c9ccb6d5bd249bda2ba"
     },
     {
       "name": "node-worker.mjs",
@@ -107,38 +107,38 @@
     },
     {
       "name": "lessons/01.md",
-      "bytes": 4024,
-      "sha256": "9a9840cdffc437ba17f19caff05a54aefeb1a2583c3a6338aaad68264a39b331"
+      "bytes": 4102,
+      "sha256": "2db06c934ca95c6346c60935f356e47a3e875e9676748dc798a65d4d960c4ad7"
     },
     {
       "name": "lessons/02.md",
-      "bytes": 3576,
-      "sha256": "21c421b4a763f86cd723b6ca9738d749f80d30d0e94c3f284db7982036a29ed9"
+      "bytes": 3624,
+      "sha256": "8568f492e98c6392352e8a673ed1c7e75a0f434f1f985ee0df38ac20044a0fbc"
     },
     {
       "name": "lessons/03.md",
-      "bytes": 3757,
-      "sha256": "b5d4e1cb260bf7191194d6df03a3e5829e5262f155f4a0f7a5956cd6c2b0157f"
+      "bytes": 3870,
+      "sha256": "02c617c66fa3e5707362672771864e560b74e17a6df545611a4728885988b165"
     },
     {
       "name": "lessons/04.md",
-      "bytes": 3695,
-      "sha256": "92a39d8309bf76d8b5bcf48e38f64bd0525a53c9d54449ff6eeb5fce650e3de0"
+      "bytes": 3728,
+      "sha256": "8a6fc7277b5bf12a3e8dd1464a1bfef8f21abdf918af09035bcbf354ce2de96d"
     },
     {
       "name": "lessons/05.md",
-      "bytes": 3383,
-      "sha256": "9ad17401ead27ad117cfeadd2c718c5ec683178191d13b3059bb0c8341826387"
+      "bytes": 3427,
+      "sha256": "6e0d91908e0e3532f3dd7d46d01cc1ecdcdf432852ed3ab3ad43918924a1ae2a"
     },
     {
       "name": "lessons/06.md",
-      "bytes": 3603,
-      "sha256": "93bafae011f0bfdddba2e57459922b8276612f9dc32a9b3bc37352aef6b55cbf"
+      "bytes": 3668,
+      "sha256": "f1f7f06bd57023cd4c79e405d2127470bcb12f41d9d8c9a4d0a365c180c99326"
     },
     {
       "name": "lessons/07.md",
-      "bytes": 3428,
-      "sha256": "ed55a0bb389c03bac73acf214457f2b32298200091ace537b9730598276e9eb9"
+      "bytes": 3604,
+      "sha256": "3ffe664caa800c7d4d44ced4ac409c4c91cd76468146cb63b9a9349e334348c4"
     },
     {
       "name": "lessons/08.md",
@@ -198,7 +198,7 @@
     {
       "name": "API.md",
       "bytes": 10290,
-      "sha256": "3cb0cdf2492339838eef83ba2057a40bf47d942920377319501f3d3b15c8b621"
+      "sha256": "01c83367d2e1e1afca5bc05a8d79444d59ccf5af4472f043a32edcf591e42dd8"
     },
     {
       "name": "numeric.mjs",
@@ -232,8 +232,8 @@
     },
     {
       "name": "TRAINED.md",
-      "bytes": 16621,
-      "sha256": "515f4ff34a124770d7cebfedba15906a79e7a6751f08189154a110b4ffbcbfa8"
+      "bytes": 16936,
+      "sha256": "898cde14ebd9a1f63803f2f0c896a77fe4f4a8525dfd76f4cdcd5cd8c0dbb5e0"
     },
     {
       "name": "fixtures/trained/manifest.json",
@@ -272,13 +272,13 @@
     },
     {
       "name": "trained-checks.mjs",
-      "bytes": 22236,
-      "sha256": "9eb4c6fddbc996914832ce65cd685cd3cfcb4501756d8cd7aff7d66a9c5e0d93"
+      "bytes": 24532,
+      "sha256": "00a49fa6bc96fab368702210c343393ffca331c71431ec389ba45165b65589db"
     },
     {
       "name": "trained-goldens.json",
-      "bytes": 203867,
-      "sha256": "c433a80049a5726452345a773c20204824e8bb0927d39ba25408d8924461c63f"
+      "bytes": 206689,
+      "sha256": "c9fde17870a6a1bcb2a0491fe445e53975bc8803ed75c33cd832ee620c83db39"
     },
     {
       "name": "trained-guide.mjs",
@@ -302,19 +302,21 @@
     },
     {
       "name": "trained.html",
-      "bytes": 696,
-      "sha256": "94886a717e448843d6030ad82345bb77d2d93f8fa377209f8d8d4521b16ecb47"
+      "bytes": 697,
+      "sha256": "0b1f7013f9975b3922909fbfabfcec68a05c58c1e11f56196bb82e9bcf0f412c"
     }
   ],
   "scope": "Positive learner package only. Input hash is not the archive hash. Author checks are source-aware QA; browser and human acceptance require separate evidence.",
   "publicLearnerDerivative": {
-    "memberInventorySha256": "ad7b3d4d9ce3a4b6a40dbbce2dc2a00d0435b0d45006bc34c35dfe5952109714",
-    "scope": "Local Runtime owner correction pending bounded review/integration. The revision binds these committed learner files; this inventory binds current member bytes. No publication or new blind-learner claim."
+    "memberInventorySha256": "20c185aa82445e31a80aff994342e44f41bfd7f5f3428cb12c98f6d1f24e649f",
+    "scope": "Proposed learner-facing correction on public commit fbaa574779092598628054780587838f3d6b3762, pending owner review and integration. This inventory binds current member bytes. No publication or new blind-learner claim."
   },
   "lineage": {
     "qualifiedPublicBase": "811cb4f2caa9964d4cde1581b0e10199f0c4f371",
     "runtimePreviouslyQualifiedAt": "11aace6",
     "priorRuntimeSourceRevision": "8a451fd73d3ed6aeada6440049cb3e8a07ed4186",
-    "priorArchiveSha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452"
+    "priorArchiveSha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452",
+    "priorPublicCommit": "fbaa574779092598628054780587838f3d6b3762",
+    "priorPublicArchiveSha256": "88657767284606929e963221d68c654b6ab145a55a5845a1345410324b6e37cf"
   }
 }

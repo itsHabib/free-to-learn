@@ -1,7 +1,7 @@
 import {renderMarkdown,escape} from './render.mjs';
 import {PUBLIC_FILES} from './manifest.mjs';
-import {practice} from './practice.mjs';
-import {REQUIREMENTS,cases} from './checks.mjs';
+import {practice,parseAnswer,answerLabel,describeAnswer} from './practice.mjs';
+import {REQUIREMENTS,cases,formatResult} from './checks.mjs';
 import {zipFiles} from './zip.mjs';
 const $=id=>document.getElementById(id),read=async name=>{const r=await fetch(name);if(!r.ok)throw new Error(`Read ${name}: ${r.status}`);return r.text();};
 const readBytes=async name=>{const r=await fetch(name);if(!r.ok)throw new Error(`Read ${name}: ${r.status}`);return new Uint8Array(await r.arrayBuffer());};
@@ -62,7 +62,7 @@ function showHistory(){
  }
 }
 $('title').textContent=config.title;$('lead').textContent=config.lead;$('entry').textContent=config.prerequisites;$('scope').textContent=config.scope;$('runtime').textContent=config.runtime;
-$('identity').textContent='Build '+manifest.inputHash.slice(0,16)+' · source '+manifest.sourceRevision.slice(0,12)+' · local author candidate';document.title=config.title;
+$('identity').textContent='Build '+manifest.inputHash.slice(0,16)+' · source '+manifest.sourceRevision.slice(0,12);document.title=config.title;
 $('map').innerHTML=config.lessons.map(l=>`<a href="#lesson-${l.id}">${escape(l.id+' · '+l.title)}</a>`).join('');
 const lessonTexts=Object.fromEntries(await Promise.all(config.lessons.map(async l=>[l.id,await read(l.file)])));
 $('lessons').innerHTML=config.lessons.map(l=>`<article id="lesson-${l.id}"><p class="eyebrow">Module ${l.id} · depends on ${escape(l.dependencies.join(', ')||'entry skills')}</p>${renderMarkdown(lessonTexts[l.id])}<p><button type="button" data-lesson="${l.id}">Work on module ${l.id}</button></p></article>`).join('');
@@ -83,7 +83,7 @@ $('check').addEventListener('click',async()=>{
  try{save(next);}catch{return;}
  running=true;$('check').disabled=true;$('status').textContent='Attempt saved; running public checks.';
  const worker=new Worker(new URL('./checker-worker.mjs',import.meta.url),{type:'module'});
- let finished=false;const finish=result=>{if(finished)return;finished=true;worker.terminate();clearTimeout(timer);const update=structuredClone(state),a=update.attempts.find(x=>x.id===attempt.id);a.result=result;a.state='finished';try{save(update);}catch{}$('results').textContent=JSON.stringify(result,null,2);if(!unsafe)$('status').textContent=result.kind==='check'?(result.report.pass?'Public checks agree with this attempt. Review the rubric and changed-problem task.':'Some public criteria failed. Read each input, observed result and repair pointer.'):'Execution failed; correct the error and rerun. Original attempt preserved.';running=false;$('check').disabled=false;showHistory();};
+ let finished=false;const finish=result=>{if(finished)return;finished=true;worker.terminate();clearTimeout(timer);const update=structuredClone(state),a=update.attempts.find(x=>x.id===attempt.id);a.result=result;a.state='finished';try{save(update);}catch{}$('results').textContent=formatResult(result,{lesson,footer:'The exact stored record, including the machine-readable result, is under Keep and move your work, Attempt history.'});if(!unsafe)$('status').textContent=result.kind==='check'?(result.report.pass?'Public checks agree with this attempt. Review the rubric and changed-problem task.':'Some public criteria failed. Read each input, observed result and repair pointer.'):'Execution failed; correct the error and rerun. Original attempt preserved.';running=false;$('check').disabled=false;showHistory();};
  const timer=setTimeout(()=>finish({kind:'execution-error',message:'Five-second execution limit reached. Check loops, repair and retry.'}),5000);
  worker.onmessage=e=>finish(e.data);worker.onerror=e=>finish({kind:'execution-error',message:e.message});worker.postMessage(attempt);
 });
@@ -109,15 +109,15 @@ for(const host of document.querySelectorAll('[data-practice]')){
  let variant=Number(practiceLatest(records().filter(matches))?.variant??0);
  const draw=()=>{const q=variants[variant],id='practice-'+base.replace(/[^A-Za-z0-9_-]/g,'-')+'-'+variant,saved=practiceLatest(records().filter(r=>matches(r)&&Number(r.variant)===variant)),done=typeof saved?.feedback==='string';
  const savedNote=!saved?'':done?'Committed '+saved.at+' on this build. Your saved answer, help note and stored feedback are shown unchanged.':'Saved '+saved.at+' on this build without stored feedback. Nothing was recomputed; commit again to get feedback as a new record.';
- host.innerHTML=`<p><strong>${escape(q.kind||'Practice')} · ${escape(q.objective)}</strong></p><p id="${id}-q">${escape(q.prompt)}</p><label for="${id}-a">Commit your answer as JSON <input id="${id}-a" autocomplete="off" aria-describedby="${id}-q ${id}-s ${id}-f"></label><label for="${id}-h">Help used for this practice answer <textarea id="${id}-h" rows="2" autocomplete="off"></textarea></label><button type="button">Commit answer</button><p id="${id}-s"${savedNote?'':' hidden'}>${escape(savedNote)}</p><output id="${id}-f" aria-live="polite">${done?escape(saved.feedback):''}</output>`;
+ host.innerHTML=`<p><strong>${escape(q.kind||'Practice')} · ${escape(q.objective)}</strong></p><p id="${id}-q">${escape(q.prompt)}</p><label for="${id}-a">Your answer (${escape(answerLabel(q.answer))}) <input id="${id}-a" autocomplete="off" aria-describedby="${id}-q ${id}-s ${id}-f"></label><label for="${id}-h">Help used for this practice answer <textarea id="${id}-h" rows="2" autocomplete="off"></textarea></label><button type="button">Commit answer</button><p id="${id}-s"${savedNote?'':' hidden'}>${escape(savedNote)}</p><output id="${id}-f" aria-live="polite">${done?escape(saved.feedback):''}</output>`;
  const answerBox=$(id+'-a'),helpBox=$(id+'-h'),commit=host.querySelector('button'),note=$(id+'-s'),out=$(id+'-f');
  answerBox.value=saved?String(saved.answer??''):'';helpBox.value=saved?String(saved.help??''):'none declared';answerBox.readOnly=helpBox.readOnly=commit.disabled=done;
  const offerFreshCase=feedback=>{if(!String(feedback).startsWith('This answer differs.')||variant+1>=variants.length)return;const retry=document.createElement('button');retry.type='button';retry.textContent='Try a fresh case on this concept';retry.addEventListener('click',()=>{variant++;draw();host.querySelector('input').focus();});out.after(retry);};
  if(done)offerFreshCase(saved.feedback);
  const earlier=records().filter(r=>r!==saved);
  if(earlier.length){const box=document.createElement('details'),summary=document.createElement('summary'),list=document.createElement('ul');summary.textContent='Earlier records for this practice ('+earlier.length+')';for(const r of earlier){const li=document.createElement('li');li.textContent=`${r.at} · ${practiceLabel(r,variants)} · question: ${r.question} · answer: ${r.answer} · help: ${r.help} · feedback: ${typeof r.feedback==='string'?r.feedback:'none stored'}`;list.append(li);}box.append(summary,list);host.append(box);}
- commit.addEventListener('click',()=>{const answer=answerBox.value,record={id:crypto.randomUUID(),at:new Date().toISOString(),item:base,variant,question:q.prompt,answer,help:helpBox.value,identity:manifest};const next=structuredClone(state);next.practice.push(record);try{save(next);}catch{return;}
- let parsed;try{parsed=JSON.parse(answer);}catch{}const pass=JSON.stringify(parsed)===JSON.stringify(q.answer);const feedback=`${pass?'Agrees with this case.':'This answer differs.'} Expected ${JSON.stringify(q.answer)}. ${q.feedback}`;out.textContent=feedback;answerBox.readOnly=helpBox.readOnly=commit.disabled=true;note.textContent='Committed '+record.at+' on this build.';note.hidden=false;out.tabIndex=-1;out.focus({preventScroll:true});
+ commit.addEventListener('click',()=>{const answer=answerBox.value,parsed=parseAnswer(answer,q.answer);if(!parsed.ok){out.textContent=parsed.hint;answerBox.focus();return;}const record={id:crypto.randomUUID(),at:new Date().toISOString(),item:base,variant,question:q.prompt,answer,help:helpBox.value,identity:manifest};const next=structuredClone(state);next.practice.push(record);try{save(next);}catch{return;}
+ const pass=JSON.stringify(parsed.value)===JSON.stringify(q.answer);const feedback=`${pass?'Agrees with this case.':'This answer differs.'} Expected ${describeAnswer(q.answer)}. ${q.feedback}`;out.textContent=feedback;answerBox.readOnly=helpBox.readOnly=commit.disabled=true;note.textContent='Committed '+record.at+' on this build.';note.hidden=false;out.tabIndex=-1;out.focus({preventScroll:true});
  const update=structuredClone(state),stored=update.practice.find(r=>r?.id===record.id);if(stored){stored.feedback=feedback;try{save(update);}catch{}}showHistory();
  offerFreshCase(feedback);
  });};draw();
