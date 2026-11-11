@@ -216,7 +216,7 @@
     {
       "id": "adaptive-decision-engine",
       "archive": ".packages/adaptive-decision-engine.zip",
-      "sha256": "2e2521b3171a0ea50b72c4497c17b83c1ec6625e72b78ac7e3e2e9b60de13ee9",
+      "sha256": "e1b216cae9ea3e2363aece27cfd23b456b00e2339bed665509bb3750760f1e68",
       "archive_prefix": "",
       "direct_root": "courses/adaptive-decision-engine",
       "root": ".",
@@ -253,6 +253,17 @@
             "--test",
             "--test-reporter=tap",
             "session.test.mjs"
+          ],
+          "exit": 0,
+          "match": "# fail 0"
+        },
+        {
+          "stage": "public_check_feedback_regression",
+          "argv": [
+            "node",
+            "--test",
+            "--test-reporter=tap",
+            "checks.test.mjs"
           ],
           "exit": 0,
           "match": "# fail 0"
