@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "buildId": "deac6c0a0bd239374990abd33648ffb682d2869c0b9bbbb2345283289e3fc50a",
+  "buildId": "87cf6d30937a09635dfd74e68da8e895ae86685b7fdac8e8a0c5c5de171abc04",
   "files": [
     {
       "name": "API.md",
-      "sha256": "61cd415bdeb2c850de23c7a0d0b53b39531ecdcffe889abb4c3d4143d6a94c0c",
-      "bytes": 16704
+      "sha256": "397cc3cdc87b4bc2fa67427a85437cc8b7b36933a762ff501480b6f0d488d34e",
+      "bytes": 17118
     },
     {
       "name": "BRIDGE.md",
@@ -19,8 +19,8 @@
     },
     {
       "name": "README.md",
-      "sha256": "ca952602bb48f973672c4e739a1272f92ac11e412c0a6274688beeefa9538feb",
-      "bytes": 6982
+      "sha256": "364a9b67925f90be6e575f44aa233103895ae11a6ca02264defecf17b69f8e76",
+      "bytes": 7576
     },
     {
       "name": "RUBRIC.md",
@@ -59,8 +59,13 @@
     },
     {
       "name": "checks.mjs",
-      "sha256": "d704242f1cb3efae923467c15a531b440e0840b333df40e0cd15ff83ed2c1326",
-      "bytes": 18167
+      "sha256": "28a56b14f479c907c188a70026b3727e946765ac043fbd0c3e50618bd746a953",
+      "bytes": 39897
+    },
+    {
+      "name": "checks.test.mjs",
+      "sha256": "baa830d8c84814e8d0a1f8addc8693e99d43434c0ad57564931c215c0b461d43",
+      "bytes": 9755
     },
     {
       "name": "contracts.d.ts",
@@ -74,7 +79,7 @@
     },
     {
       "name": "course.json",
-      "sha256": "1032d231d22cf930b13dc797cfd85a5043322b102126b2f6844d7dc9e76b24a5",
+      "sha256": "a0d0ae2be409ec2bffe3debe828aea4f8fc6b0237b2dab50059bc0dbb9a06ae0",
       "bytes": 4003
     },
     {
@@ -138,6 +143,11 @@
       "bytes": 380
     },
     {
+      "name": "feedback.mjs",
+      "sha256": "7e3c67821f312393a06f2c73358bc3ada94d229fb439a137f7244d88c160fd2f",
+      "bytes": 3461
+    },
+    {
       "name": "figures/boundary.svg",
       "sha256": "9dd088fe19669874978b042c0a90374a12f0ea97c885415ddcda2d710bc901ee",
       "bytes": 2018
@@ -184,18 +194,18 @@
     },
     {
       "name": "index.html",
-      "sha256": "edd772a6550a9b25f07d40f93fc81f1260f3c9db1e4d5f340816a33957fa3a9a",
-      "bytes": 6603
+      "sha256": "24048ddcb9e8e25881b99a486c76692a91327d1d17abce9b747a988a41dc14cb",
+      "bytes": 6590
     },
     {
       "name": "lab.mjs",
-      "sha256": "554e43544d5608f9491eb28ae92f8fcef3cd5dd44b6a21d0876c8c88f9c441d4",
-      "bytes": 11131
+      "sha256": "133c6959a1bc0a66e5883a09ca90338007cda3907b0756be2ad4816e99f4e4c4",
+      "bytes": 12619
     },
     {
       "name": "lessons/01.md",
-      "sha256": "3fa2d1786d2f9f2765e7d2ae1ff5b9f244a7d9a7188c4bd9a95b19d93eff1328",
-      "bytes": 4922
+      "sha256": "5fcd71fb2bf41945849e49d1316e65d4914d6584b0d1cee53948b141dd7f0058",
+      "bytes": 5181
     },
     {
       "name": "lessons/02.md",
@@ -204,8 +214,8 @@
     },
     {
       "name": "lessons/03.md",
-      "sha256": "30230a84084b1d5c78d1f1af496193a691bfe29da824462f26aab6dd61df423c",
-      "bytes": 4874
+      "sha256": "45a5365a64102ea9c9c35e558ed995330fe5cfccd3c366a24ba34af9125758e4",
+      "bytes": 5047
     },
     {
       "name": "lessons/04-worked.md",
@@ -224,8 +234,8 @@
     },
     {
       "name": "lessons/05.md",
-      "sha256": "3631807ad24167d642d4aa21a68c89d21586a9fdc5aec84fbeaef1ef42db406d",
-      "bytes": 5973
+      "sha256": "4226785c4bba9a1154566edaf65853146da5d28de18f69b7fd853b40f65fe902",
+      "bytes": 6636
     },
     {
       "name": "lessons/06-worked.md",
@@ -244,8 +254,8 @@
     },
     {
       "name": "lessons/07.md",
-      "sha256": "bf50209541dd81788b36da8552bd7adea3781fe1787fb815050ac6a920e09e4a",
-      "bytes": 4719
+      "sha256": "e378dd6dec66f455855630becf7c081b7420810134e589304312efdbdd957111",
+      "bytes": 4844
     },
     {
       "name": "lessons/08-worked.md",
@@ -274,8 +284,8 @@
     },
     {
       "name": "lessons/10.md",
-      "sha256": "092c99792c5c405b2d0cc27214552d4e7ec7bd266c12b877e8ff18f9a07b55a2",
-      "bytes": 6354
+      "sha256": "90965a3ba3ff6f2350a820e326a85e009146696be49d5db0bd3b03d2b291323d",
+      "bytes": 6419
     },
     {
       "name": "live.mjs",
@@ -319,8 +329,8 @@
     },
     {
       "name": "public-files.json",
-      "sha256": "27a447e1a6d1c6e730be21a5784f6508c2cb37956e63899f3c9110c1d752b4eb",
-      "bytes": 2135
+      "sha256": "9918189cd81a7c222eaacbb859728ac8ef1f3cd845dcd2ae71a528098157d8a1",
+      "bytes": 2174
     },
     {
       "name": "recovery.mjs",
@@ -409,8 +419,8 @@
     },
     {
       "name": "style.css",
-      "sha256": "78a2395ba2de0c98e3b8d2cfc84f1490cf1332b80493155c916af33336eb62bf",
-      "bytes": 5111
+      "sha256": "a43371bece6f94280f6e8575eecf2917cae2f1df004dd0449b1e4955c2f3b185",
+      "bytes": 5870
     },
     {
       "name": "support/01.json",
@@ -469,8 +479,8 @@
     },
     {
       "name": "web.mjs",
-      "sha256": "f435a8600a0bf4527935e44cbb906b3cf274e437495dfeff1e37842e9a208045",
-      "bytes": 21164
+      "sha256": "0913f76e403787d1b354fd4896e81b7e11cc5adad1ee351db385d9bcecaa0315",
+      "bytes": 21203
     },
     {
       "name": "worker.mjs",
@@ -495,5 +505,9 @@
   "capacityRepairDerivative": {
     "memberInventorySha256": "2cb08bdd70f44e2c2ee59825d2721aa146ff838659bae6cc412fc6b5cfa71bae",
     "scope": "Local lossless session-format-3 repair candidate. Source text, attempt metadata/results and original engine/assessment lineage are retained; current member bytes are bound here. Old format 1/2 sessions remain readable. No publication, new curriculum or policy adoption claim."
+  },
+  "checkFeedbackDerivative": {
+    "memberInventorySha256": "ca8ff72b2cca0f5c4e072148956715cda717a3c5a1b8c0736fdc57b87598dce1",
+    "scope": "Public check and feedback revision beacon-keep-1.1.4: two added check cases in each of units 05 and 07, a plain-language message on every failing case, a readable browser result list, progress that shows ever-passed and recheck units, play --help, and clarified course copy. The buildId changes because the assessment changed, so earlier passes are shown as needing a recheck. Session formats 1, 2 and 3, checkpoints and the game engine are unchanged."
   }
 }
