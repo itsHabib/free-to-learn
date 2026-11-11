@@ -1,0 +1,272 @@
+{
+  "kind": "learner-source-and-build",
+  "status": "local-terminal-candidate-unreleased",
+  "supersedesArchiveSha256": "38e61665c640f3c88b6da8f74ac7efd28651bbb5afaad8eacd2141e71b17ee65",
+  "buildId": "2201e7d06346886dd41f19f2fd8137015549b83b344b0698c911d9a01d9e5b34",
+  "privateAuthorFilesIncluded": false,
+  "files": [
+    {
+      "path": "LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7289,
+      "sha256": "bd1b7ac33ae5afb3c639d6e9f82f92b44dc37e75089e01f4b998039917199f21"
+    },
+    {
+      "path": "TERMINAL.md",
+      "bytes": 4783,
+      "sha256": "863f4f6cdf74a076b0427f31b9c9d246180e95f1691c070888d31da7b518a21a"
+    },
+    {
+      "path": "build/CONTRACT.md",
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
+    },
+    {
+      "path": "build/SOURCES.md",
+      "bytes": 2665,
+      "sha256": "8a5fa529e2079ab208c6df49e5492aceabb14e861a445a6c4f8cd3a9f9512ade"
+    },
+    {
+      "path": "build/app.mjs",
+      "bytes": 19093,
+      "sha256": "2eeae8ef57d1e2dcaea03aed82d647caabe20f9817c7156498607251d8e0d504"
+    },
+    {
+      "path": "build/build.json",
+      "bytes": 2665,
+      "sha256": "f5a8b141bbc60f0fe2f562451a57b5163b0d900305498911c0051799adb77eff"
+    },
+    {
+      "path": "build/checks.mjs",
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
+    },
+    {
+      "path": "build/content.mjs",
+      "bytes": 32673,
+      "sha256": "b52994858acac80061535f56c6fcbe34bbf6c87ace5456b4d58e8e4c9bd2f32b"
+    },
+    {
+      "path": "build/demo.json",
+      "bytes": 297681,
+      "sha256": "fa7d3e595978b5a7bfb05a8cafbe3795ac3b6561af1f33a286ec9e76554e7240"
+    },
+    {
+      "path": "build/diagnostics.mjs",
+      "bytes": 2316,
+      "sha256": "b9f38db24a9cf4683a6cda69f60ca1c99405f49a89ec449fb503326303e60c6e"
+    },
+    {
+      "path": "build/font.mjs",
+      "bytes": 3735,
+      "sha256": "1108091afcf4061be99154e772b42b9056d15d5eadec8e1c9e22d67075b7cf9b"
+    },
+    {
+      "path": "build/index.html",
+      "bytes": 7941,
+      "sha256": "ffadfebfa4343e3babff9c0f8c85f6e391aea6292c91e80f19d99b6b30b6017b"
+    },
+    {
+      "path": "build/notebook.mjs",
+      "bytes": 2726,
+      "sha256": "5afa541e17826b3f19f7721c2c6215f87484bc36b6ea1da1a8b541961723bc5e"
+    },
+    {
+      "path": "build/pages.mjs",
+      "bytes": 1844,
+      "sha256": "611527ac14ec6e82f25242f5e817313e916e67cbcebaeb082eeac1badb34d694"
+    },
+    {
+      "path": "build/progression.mjs",
+      "bytes": 7617,
+      "sha256": "cded748aa86202e77b7cba8c328499c14ab3817b15ae5bd88496f5cf6c92c496"
+    },
+    {
+      "path": "build/raster.mjs",
+      "bytes": 1715,
+      "sha256": "dfd0c11e3eb1b4acdbb588fa7623f8fca07168ddfb9ddc85b6e14fe860cfc045"
+    },
+    {
+      "path": "build/starter.body.js",
+      "bytes": 1109,
+      "sha256": "da512d0e22362798148ba13387c4b51036fdf0317f61e8b4b375306f1313ff81"
+    },
+    {
+      "path": "build/style.css",
+      "bytes": 3981,
+      "sha256": "b4d04e67ab3eb5da8368c694deebf95876ff233ad8efb92dc539d2c293797b63"
+    },
+    {
+      "path": "build/supplier.mjs",
+      "bytes": 16185,
+      "sha256": "c82964a6a20cb8987cf58f147cd06b47888ddfcb86f897f64cc25d8ece19e865"
+    },
+    {
+      "path": "build/worker.js",
+      "bytes": 72949,
+      "sha256": "c8a5f5fb8a81397f88652ad5cb024a10df6f5e955ed537261b7375e22a13cbab"
+    },
+    {
+      "path": "public/CONTRACT.md",
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
+    },
+    {
+      "path": "public/SOURCES.md",
+      "bytes": 2665,
+      "sha256": "8a5fa529e2079ab208c6df49e5492aceabb14e861a445a6c4f8cd3a9f9512ade"
+    },
+    {
+      "path": "public/app.mjs",
+      "bytes": 19093,
+      "sha256": "2eeae8ef57d1e2dcaea03aed82d647caabe20f9817c7156498607251d8e0d504"
+    },
+    {
+      "path": "public/checks.mjs",
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
+    },
+    {
+      "path": "public/content.mjs",
+      "bytes": 32673,
+      "sha256": "b52994858acac80061535f56c6fcbe34bbf6c87ace5456b4d58e8e4c9bd2f32b"
+    },
+    {
+      "path": "public/demo.json",
+      "bytes": 297681,
+      "sha256": "fa7d3e595978b5a7bfb05a8cafbe3795ac3b6561af1f33a286ec9e76554e7240"
+    },
+    {
+      "path": "public/diagnostics.mjs",
+      "bytes": 2316,
+      "sha256": "b9f38db24a9cf4683a6cda69f60ca1c99405f49a89ec449fb503326303e60c6e"
+    },
+    {
+      "path": "public/font.mjs",
+      "bytes": 3735,
+      "sha256": "1108091afcf4061be99154e772b42b9056d15d5eadec8e1c9e22d67075b7cf9b"
+    },
+    {
+      "path": "public/index.html",
+      "bytes": 7941,
+      "sha256": "ffadfebfa4343e3babff9c0f8c85f6e391aea6292c91e80f19d99b6b30b6017b"
+    },
+    {
+      "path": "public/notebook.mjs",
+      "bytes": 2726,
+      "sha256": "5afa541e17826b3f19f7721c2c6215f87484bc36b6ea1da1a8b541961723bc5e"
+    },
+    {
+      "path": "public/pages.mjs",
+      "bytes": 1844,
+      "sha256": "611527ac14ec6e82f25242f5e817313e916e67cbcebaeb082eeac1badb34d694"
+    },
+    {
+      "path": "public/progression.mjs",
+      "bytes": 7617,
+      "sha256": "cded748aa86202e77b7cba8c328499c14ab3817b15ae5bd88496f5cf6c92c496"
+    },
+    {
+      "path": "public/raster.mjs",
+      "bytes": 1715,
+      "sha256": "dfd0c11e3eb1b4acdbb588fa7623f8fca07168ddfb9ddc85b6e14fe860cfc045"
+    },
+    {
+      "path": "public/starter.body.js",
+      "bytes": 1109,
+      "sha256": "da512d0e22362798148ba13387c4b51036fdf0317f61e8b4b375306f1313ff81"
+    },
+    {
+      "path": "public/style.css",
+      "bytes": 3981,
+      "sha256": "b4d04e67ab3eb5da8368c694deebf95876ff233ad8efb92dc539d2c293797b63"
+    },
+    {
+      "path": "public/supplier.mjs",
+      "bytes": 16185,
+      "sha256": "c82964a6a20cb8987cf58f147cd06b47888ddfcb86f897f64cc25d8ece19e865"
+    },
+    {
+      "path": "public/worker-entry.js",
+      "bytes": 2943,
+      "sha256": "8ca235aedfebb983e7d5d4f2bd000e3a9ed0b2fe24a43c28dfc329022a513e79"
+    },
+    {
+      "path": "tools/build.mjs",
+      "bytes": 2031,
+      "sha256": "7f6d12e0784ecd674e041799e2011b38ae20afcb6b355d16c508ed8c2f987adb"
+    },
+    {
+      "path": "tools/check.mjs",
+      "bytes": 1204,
+      "sha256": "4d30f7102f6e1a51878fb07e99dbd11f8f6cb0f92e51c1a51f7d660b13487eea"
+    },
+    {
+      "path": "tools/lesson.mjs",
+      "bytes": 1770,
+      "sha256": "313d9feb1b363cb15b3396e8141dfc2a7c4807b3852259ff60edaa4bca7ac97f"
+    },
+    {
+      "path": "tools/packet.mjs",
+      "bytes": 336,
+      "sha256": "ad855deddaa6d98b71d224601b3c91ec18e5335a1e11a373e1acfa6d141f33d0"
+    },
+    {
+      "path": "tools/render.mjs",
+      "bytes": 1887,
+      "sha256": "2f8655f1cb228fa106e2d7085fb2d47aa0288b381e9d4f8026618714e35c84d0"
+    },
+    {
+      "path": "tools/replay.mjs",
+      "bytes": 3927,
+      "sha256": "55ebacd7261a800f337bad32ef5c110112c3431690c04bb87f2d3726891595cd"
+    },
+    {
+      "path": "tools/serve.mjs",
+      "bytes": 1856,
+      "sha256": "639fa74f5650e3342e7d3f03da434b83c8d0a798de9476130cca4c6322940081"
+    },
+    {
+      "path": "tools/session.mjs",
+      "bytes": 7297,
+      "sha256": "3f0a1b1aafc6946426c92cbe002a0d0e0adbe21e400fd21856de975527b726fb"
+    },
+    {
+      "path": "tools/stage.mjs",
+      "bytes": 1378,
+      "sha256": "f1275218ee2048fe1dd6beb4f8a457617ef5df895340d36dcbcaa0865e1d056c"
+    }
+  ],
+  "publicDocumentationDerivative": {
+    "parentArchiveSha256": "4fd8de1b4816c36edafcb335f8c2f619df103ca9682edb4e3a28185d1c4c777a",
+    "scope": "Remove operator-specific authorization/private-workspace notes from learner README; all executable, lesson, checker, glyph and starter bytes remain exact."
+  },
+  "successor": {
+    "parentSourceCommit": "5aca0e396caec982b2ec47ed570539564064a221",
+    "parentArchiveSha256": "b462aa3948c2224d4af0ecfb04da7920356db28c3881a7a442f8d67787d970fc",
+    "instructionPatchSha256": "720c9861c7f195b555739a4aaf7c83642477b877b79622be238d190f08ef9e5c",
+    "status": "local-only-unreleased",
+    "additionalInstructionClarification": "M5/M6 terminal data evidence now; final PNG and hit table after M7; no runtime/checker/starter/quiz change.",
+    "assessmentRegression": "Add two public controls for actual fresh-learner failures: M4 collapsed whitespace-only text between inline spans at40px/39px wrap boundary; M7 viewport reflow with exact geometry and actual layout counter. Preserve all original42 checks. No learner solution is included.",
+    "learnerNavigationClarification": "Answer-free lesson CLI is the primary fresh route; include concrete width/height resize input example. No executable change."
+  },
+  "redistribution": {
+    "terms": "MIT original code; CC BY 4.0 original lessons; existing exceptions and component notices retained",
+    "license": "LICENSE.md",
+    "publication": "not performed; separate release gates remain"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "title": "Can the circuit come back after capacity returns?",
+  "predictions": [],
+  "steps": [
+    {"action":"open","circuit":"alpha","length":3,"avoid":[]},
+    {"action":"offline","relays":["cedar","birch","maple"]},
+    {"action":"recover","circuit":"alpha","replacement":"beta","failed":["cedar","birch","maple"]},
+    {"action":"online","relays":["cedar","birch","maple"]},
+    {"action":"send","circuit":"alpha","packet":"old","item":"luna"},
+    {"action":"open","circuit":"gamma","length":3,"avoid":[]},
+    {"action":"send","circuit":"gamma","packet":"fresh","item":"luna"}
+  ]
+}

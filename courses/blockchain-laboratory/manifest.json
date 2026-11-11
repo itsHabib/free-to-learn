@@ -1,0 +1,53 @@
+{
+  "createdAt": "2026-11-11T17:28:25.290Z",
+  "runtime": "v26.5.1",
+  "source": {
+    "algorithm": "SHA-256",
+    "files": {
+      "CONTRACT.md": "9d543c3fae80994395ff888ef6a2b6cdbb80e44220737257e35e1cb60007c8cc",
+      "COURSE.md": "84f665491057215db871bc28959d40281c9fa8f63d4649a6cf82de9c4c467f8a",
+      "LICENSE.md": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68",
+      "LICENSES/CC-BY-4.0.txt": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196",
+      "LICENSES/MIT.txt": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b",
+      "README.md": "7c78c4bf00978efc901c567e4b98d1810aa013d11f9449f6f44f2b8f857fcd7a",
+      "REPORT-TEMPLATE.md": "8062b29e709b0d69529e304d37a7070fa7834807325b3527cabebcb51418da23",
+      "SOURCES.md": "17f06cb5317a95caec765a1561e20f7ded970e40c3b2f0208cb84f63339ea493",
+      "build.mjs": "bdf486dfa2b826d979a5db1757d2f539f49070c2a16cd3339e2e3773066a35b5",
+      "lab.mjs": "da80e68ea0086e77918aab6b66679e70a0674c7b2d665b1e427c99804792a10b",
+      "lessons/01-bytes.md": "6213f82a30de628a505f51d6031fe7d11edda47a7665da20d85f288cbd127df9",
+      "lessons/02-transition.md": "ee16bda67f1d0bf317261c83dd937dbd8de194f10f418ddfa01b257008877a73",
+      "lessons/03-proof.md": "38d04004df84c2094ecb90c71111d858b19d0843bd45efc06c5a16b91ae358a5",
+      "lessons/04-mempool.md": "9aa37b868c88be6f6d42c0188e7149d77658df998cf63fe65f38023f822c9cfe",
+      "lessons/05-blocks.md": "d373a489bab4a3a8ba8a13c745c69d1795cd4de6582c49b5022cc61a2f21fa86",
+      "lessons/06-forks.md": "a3ac35b1aad48209876ef6c7bbaa148a2d450260c4863d203ba59bea761cc6a0",
+      "lessons/07-quorum.md": "0417852cf1d4e0f9df47c38826076a3a92d2f3b7373c2da826093f4f16e6fa92",
+      "lessons/08-recovery.md": "8d7196d951d863bca087d60c7a730e60f51c2e88a049d6831ba1d3a9e999d256",
+      "lessons/09-restart.md": "f771eff24eccd0d3bc780815a672884917bbc74847616a7dcc5113fbdb3f03a7",
+      "lib/checks.mjs": "be54bd13546f426c9a08ff1d034d1f6e5bfa79695f3bb50e7afdf07698d8ea73",
+      "lib/identity.mjs": "7ce49162a8d1bca698b66e6b339b52e8c57a02a8311198467713a25da78171d7",
+      "lib/practice.mjs": "c139aaf5877490bc1a45415739733cca15bb69b59024f3d09498c5c5dfdaf49b",
+      "lib/restart-checks.mjs": "c956c6990caee95ee2ddd182145dddb5137a441feea5039d28eab587d31538cf",
+      "lib/restart-model.mjs": "1ff1a9c0f2c2e627815400b02d16917657e229e4725fb1afacd0e0e9635ee796",
+      "lib/simulator.mjs": "d577e48cb5b65bb49374c9758ad40bca6bb4d2fa56f1417c70246e083a308cbb",
+      "lib/support.mjs": "e60bee9ca815b919a170c50b75173db3459e823c1c09dc203a2ca28f07f89490",
+      "reader/app.js": "e3fe56810c8dd9747b2249175c5db3adfc44e33538e189dcd18ed09f1cdcf67d",
+      "reader/merkle.svg": "95bfbd0b6df656b9b7a43a08dd9c7e2fb44e80f2fa043aa91dc237c12935e010",
+      "reader/style.css": "2c93d24ddbd776af459dc3c1bb809f4f346d02d05efc2cadd8de572411df0413",
+      "restart.mjs": "0c2f7fbfb3c37065e0204bbfcc6446d824d508f329d87269071382d934c6864e",
+      "starter/protocol.mjs": "6fcf7917030ae0b5cb5417b8c61a8df2017927d070b10b03ed8f012a0a561137",
+      "starter/vote-guard.mjs": "2cf17f36f3819aedd8fb1b590ccc6fcb176c716a409c52b17e3ce49708fcec07"
+    },
+    "hash": "c2f4b6f00e4460697e47d5d8020c428cb27c704a71ee78c4bcedce7fcd04dd30"
+  },
+  "generated": {
+    "index.html": "b47ac544a8ecb4a5387fff00c7e056664dc45134326f897f669c55a70170e4b0"
+  },
+  "excluded": [
+    "instructor/",
+    "evidence/",
+    "work/",
+    "QA.md",
+    "HANDOFF.md"
+  ],
+  "verification": "Source build only. Browser/native/live/network NOT RUN."
+}

@@ -1,0 +1,254 @@
+{
+  "7.1-p1": {
+    "answer": "180 games: 15 unordered policy pairs \u00d7 3 scenarios \u00d7 2 seats \u00d7 2 replicates.",
+    "reason": "The pair is unordered before seats are assigned. Counting ordered pairs and multiplying by two seats again would double the schedule.",
+    "hints": [
+      "Count distinct policy pairs first.",
+      "Six policies give 6\u00d75/2 pairs.",
+      "Multiply 15 by 3, 2 and 2."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.1-p2": {
+    "answer": "No. There are eleven distinct completed game keys. Identify the missing key, deduplicate the repeated record and rerun the missing planned game with preserved failure provenance.",
+    "reason": "A duplicate cannot substitute for an unplayed or missing matchup. An unresolved denominator changes the experiment.",
+    "hints": [
+      "Distinguish records from distinct planned games.",
+      "Match each record to its full game key.",
+      "One missing key remains even though twelve files exist."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.1-p3": {
+    "answer": "The action trajectory is legal under the verified rules. You cannot claim the supplied named policy generated it; policy reproduction and identity remain unresolved.",
+    "reason": "Trajectory replay establishes consequences of actions. A matching policy identity and decision rerun establish the stronger attribution.",
+    "hints": [
+      "Separate what the simulator checked from who chose the actions.",
+      "A legal move can be made by many different agents.",
+      "Retain trajectory-valid status but fail policy-reproduced status."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.2-p1": {
+    "answer": "A declared objective and opponent distribution, plus comparable uncertainty and coverage. Mean-score and worst-matchup objectives can prefer different policies.",
+    "reason": "Better is relative to a decision criterion and domain; one scalar does not remove strategic tradeoffs.",
+    "hints": [
+      "Which opponents receive weight?",
+      "Is the objective average return or resistance to a weak matchup?",
+      "State the criterion before selecting a winner."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.2-p2": {
+    "answer": "It is a useful counter-opponent and regression check. Retain its immutable snapshot and optionally give it training weight to prevent forgetting.",
+    "reason": "A policy can supply valuable coverage without being a good deployment champion. Archival retention and active sampling are separate decisions.",
+    "hints": [
+      "Think about what the old policy reveals.",
+      "Training opponents and deployed policies need not be identical.",
+      "Use it to retain the discovered regression while preserving history."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.2-p3": {
+    "answer": "No. Per-move switching changes the strategy and can combine incompatible continuations. Evaluate it separately and identify it as a new policy.",
+    "reason": "The original matrix averages complete frozen policies. It does not measure a new policy formed by switching within trajectories.",
+    "hints": [
+      "What was selected once in the experiment?",
+      "A plan includes its continuation after the first move.",
+      "The weights match, but the behavioral policy does not."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.3-p1": {
+    "answer": "This checkpoint-plus-search configuration scored higher on the declared fixed roster at twice the search budget. A matched-budget ablation is needed to isolate the learning contribution.",
+    "reason": "Training and compute changed together; the observation cannot separate their effects.",
+    "hints": [
+      "Name everything that changed.",
+      "Limit the domain to the observed roster.",
+      "Attribute the result to the combined configuration."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.3-p2": {
+    "answer": "They are selection/exploratory evidence. Freeze the chosen variant and evaluate on a fresh independently withheld confirmation set.",
+    "reason": "The test set influenced the choice, so its original role as untouched confirmation no longer holds.",
+    "hints": [
+      "Did the result affect a decision?",
+      "Renaming the files does not erase exposure.",
+      "Keep the exploratory run and obtain fresh confirmation."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "7.3-p3": {
+    "answer": "No winning response was found within the declared responder family and budget on the tested domain. This does not upper-bound full-game exploitability.",
+    "reason": "An approximate search can miss an existing counter-strategy. Failure to discover is weaker than exhaustive exclusion.",
+    "hints": [
+      "Was the entire response space enumerated?",
+      "State the family and resource limit.",
+      "Report no exploit found under this search, not none exists."
+    ],
+    "rubric": [
+      "Addresses the exact question and stated domain.",
+      "Explains the mechanism or evidence limit, not only a verdict."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.1-p1": {
+    "answer": "A valid answer names an assumption your agent actually makes, the consequence you expect and an observation that would show the prediction was wrong. It also declares what you had read before predicting. Which assumption you choose is yours; it does not have to match any later lesson.",
+    "reason": "The exact personal prediction can vary. It must be specific enough to compare with later evidence, rather than retroactively fit any outcome. The exposure declaration lets a reader tell an unassisted prediction from assisted practice.",
+    "hints": [
+      "Choose one dependency of your current implementation.",
+      "Describe a behavior you expect if that dependency changes.",
+      "Add a concrete test result that would contradict your expectation."
+    ],
+    "rubric": [
+      "Names one assumption, the consequence you expect and an observation that would refute it; any assumption your agent actually makes is acceptable.",
+      "Declares what you had read before predicting (lesson 8.2, this feedback, any rule-change or challenge text), even if the answer is nothing."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.1-p2": {
+    "answer": "The exact before configuration may be lost. Recover it only from an authentic retained snapshot or source/parameter export; otherwise label the before comparison unreproducible and do not invent the old weights.",
+    "reason": "A before/after claim needs both actual configurations. A recollection of the old score does not reconstruct its identity.",
+    "hints": [
+      "Which bytes identify the before agent?",
+      "Look for a retained snapshot, not a plausible replacement.",
+      "If recovery fails, report that limitation."
+    ],
+    "rubric": [
+      "Names what was lost: the identity of the before agent (its source and parameters), not only its score.",
+      "Allows recovery only from an authentic retained copy and otherwise labels the comparison unreproducible; another honest course counts if it invents no old parameters and you say what it can and cannot support."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.1-p3": {
+    "answer": "No. The rule and solution strategy were disclosed, so a new seed varies only the surface. The novelty that matters is a mechanism and solution the learner has not already seen. A new seed may give useful practice, but a genuine held-out claim requires a fresh independently issued instance and honest exposure records.",
+    "reason": "Surface variation does not remove prior access to the mechanism or answer.",
+    "hints": [
+      "Which part of the task was unfamiliar?",
+      "Separate practice variation from independent measurement.",
+      "Retain the run as practice and seek a fresh assessment instance."
+    ],
+    "rubric": [
+      "Says which novelty matters and why: the rule and its solution were already disclosed, and a new seed varies only the surface.",
+      "Says what a held-out claim would need, such as a fresh independently issued instance and an exposure record; a different condition counts if you explain how it removes the prior exposure."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.2-p1": {
+    "answer": "Search backup can assume alternation; cache/state identity can omit phase. Outcome-label perspective or feature representation may also be wrong.",
+    "reason": "Visible geometry alone is not the full decision state. Future transition and value depend on the phase and actor.",
+    "hints": [
+      "Inspect control flow and cached values.",
+      "Can equal boards have different futures?",
+      "Trace actor identity and include rule-relevant state."
+    ],
+    "rubric": [
+      "Names two components and says why each can be wrong while the board and action IDs look the same.",
+      "Any two you can justify count, for example search backup, cache or state identity, value features or outcome-label perspective; each reason must involve the phase or the actor."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.2-p2": {
+    "answer": "The representation/actor repair addresses the general assumption. Test the original witness and fresh structurally different positions, plus ordinary-rule regressions.",
+    "reason": "Hardcoding one witness can pass that trace without repairing the cause. A general-looking repair still needs independent checks.",
+    "hints": [
+      "Ask whether the change applies to unseen instances.",
+      "A witness is evidence of a defect, not the whole specification.",
+      "Use both regression and fresh transfer cases."
+    ],
+    "rubric": [
+      "Says which repair addresses the hypothesis and why the other can pass the known trace without repairing the cause.",
+      "Lists what must still be tested: the original witness, fresh structurally different positions and ordinary-rule play; a different test set counts if you say what each test could reveal."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.2-p3": {
+    "answer": "No. The metrics concern different properties and may have different uncertainty. Report both, inspect calibration and data shift, and avoid claiming unchanged predictive quality.",
+    "reason": "Search can compensate for a poor value estimate; a small or easy tournament may also hide performance differences.",
+    "hints": [
+      "Distinguish predicting returns from selecting moves.",
+      "Could search repair an inaccurate leaf estimate?",
+      "Inspect both metrics and their data, rather than replacing one with the other."
+    ],
+    "rubric": [
+      "Explains at least one way win rate can hold while value predictions worsen, such as search compensating for a worse leaf estimate, or a tournament too small or easy to show the difference.",
+      "Keeps playing strength, prediction quality and their uncertainty as separate claims, and says what you would inspect or report next."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.3-p1": {
+    "answer": "Preserve it as wrong or incomplete, explain the counter evidence and revised mechanism, and name a fresh state pair or ablation that could refute the cache explanation.",
+    "reason": "The report should show how evidence changed understanding. Retrospective editing would erase that learning record.",
+    "hints": [
+      "Keep the original record intact.",
+      "Link the actual repair to a specific behavioral difference.",
+      "Include a test that might make the revised explanation fail."
+    ],
+    "rubric": [
+      "Keeps the original prediction on record, unedited, and states what evidence showed it wrong or incomplete.",
+      "Names one observation or ablation that would weaken the new explanation; any test that could actually come out against it counts."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.3-p2": {
+    "answer": "Use the adapted policy for the new-rule domain if its evidence supports that choice, retain the old policy for ordinary play, and report both effects and uncertainty.",
+    "reason": "A configuration can be useful in one domain without being a universal upgrade. The recommendation must match the evaluated rules.",
+    "hints": [
+      "Name the domain of each result.",
+      "A conditional deployment choice is allowed.",
+      "Do not erase the old-rule regression."
+    ],
+    "rubric": [
+      "Names the rules each result applies to and gives a recommendation for each; a single-policy recommendation counts if you justify it from the stated evidence and say what it gives up.",
+      "Keeps the old-rule regression and the uncertainty of both results visible."
+    ],
+    "kind": "public-practice-self-check"
+  },
+  "8.3-p3": {
+    "answer": "The first can be exact within the enumerated game. The second is limited to the tested season/responder class and budget. Neither supports the unbounded third claim.",
+    "reason": "Completeness of the searched space determines the reach of an exploitability claim. More confident wording cannot enlarge the evidence.",
+    "hints": [
+      "Identify the quantified set of opponents.",
+      "Was that set exhausted or sampled?",
+      "Keep exact, empirical and universal claims separate."
+    ],
+    "rubric": [
+      "Gives each claim its scope: exact within the enumerated game; empirical for the tested season, responder family and budget; the universal claim unsupported.",
+      "Explains why, in terms of whether the set of opponents was exhausted or sampled; your own wording counts if the three scopes stay distinct."
+    ],
+    "kind": "public-practice-self-check"
+  }
+}

@@ -25,3 +25,15 @@ material under the split code/content licenses. The optional, non-vendored
 axe-core dependency listed for author accessibility tooling retains MPL-2.0;
 no third-party package code is included or required for course setup/offline
 checks. The reading references remain links, not relicensed source material.
+
+## Additional original course projects
+
+Tiny Browser, portable Sandbox, Blockchain, Onion Routing and Agent League contain
+original educational implementations with linked primary references; those references
+and the installed Node/Rust/Python runtimes are not relicensed or bundled here. Tiny
+Browser's diagnostic glyph data is original course data, not an external font asset.
+Advanced Storage retains runtime/FOUNDATION-NOTICE.md and the complete accompanying
+runtime/LICENSE-FOUNDATION-MIT.txt for its supplied Free to Learn foundation. Those
+notices remain byte-identical. Original project code is MIT and original lesson prose
+and illustrations CC BY4.0 under LICENSE.md; existing explicit third-party/model terms
+and notices take precedence. Keep these notices with copies, including matching ZIPs.

@@ -1,0 +1,150 @@
+{
+  "format": "boundary-lab-learner/v1",
+  "mode": "portable-core",
+  "native_linux": "NOT RUN",
+  "instructor_solutions_included": false,
+  "files": [
+    {
+      "path": "Cargo.lock",
+      "bytes": 156,
+      "sha256": "d7c77010a964de182b278b2c14df109a96b038e04e3801cc6fbad1c0e2d7406f"
+    },
+    {
+      "path": "Cargo.toml",
+      "bytes": 251,
+      "sha256": "9824f1e43227d741c70be3650b413dec16459e752a0b3dfae9772dab9801e17a"
+    },
+    {
+      "path": "LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6834,
+      "sha256": "df37db33066bb4b5e3dd6fc9356432e521ec65418d481fcf07f7bb6c4a0ed76e"
+    },
+    {
+      "path": "index.html",
+      "bytes": 48805,
+      "sha256": "8f89a8933f469ada65f30d238864cdc263a2596aedbbc53dd55b124b47c3979e"
+    },
+    {
+      "path": "lessons/01-promises.md",
+      "bytes": 4641,
+      "sha256": "1f96e63e32fa62a7a04a5770ff2a007e0e06a86ef91661f5aff3f9695f8b7ca9"
+    },
+    {
+      "path": "lessons/02-admission.md",
+      "bytes": 4363,
+      "sha256": "e163359eb7ecdab1ce9ef2b832e85c02f9c8efc7b362e5292a7809ab32a24173"
+    },
+    {
+      "path": "lessons/03-memory.md",
+      "bytes": 4362,
+      "sha256": "1560fc713989c74e680b3fa4c173823e01fc60e1b334d1f64e10c7b369dac0e4"
+    },
+    {
+      "path": "lessons/04-authority.md",
+      "bytes": 4255,
+      "sha256": "1489e097c1145790561081ea2d1b2df4d1b14255d66be728751886fea21066a5"
+    },
+    {
+      "path": "lessons/05-native.md",
+      "bytes": 4563,
+      "sha256": "b3843ea20ddb0a32a21afeb96ca7478d67f54c29c2e434e2cd6c176f97c4acc6"
+    },
+    {
+      "path": "lessons/06-budgets.md",
+      "bytes": 4295,
+      "sha256": "c8952d94c9fd512d8d2cb8f00d76749fec5f5e14311e3b2edb22927cfcdb4b98"
+    },
+    {
+      "path": "lessons/07-investigation.md",
+      "bytes": 3865,
+      "sha256": "87df815a728e78b6b3dc2c8053d185ef6bed92490a1a5552488300c116ed5810"
+    },
+    {
+      "path": "lessons/08-transfer.md",
+      "bytes": 4462,
+      "sha256": "90e4c69133dbf8dfd8afad62b32693dd42de82f19db815f35c3e963f9954607f"
+    },
+    {
+      "path": "run.py",
+      "bytes": 6402,
+      "sha256": "a7b611070181ef95f8842180b9bdcad04cddf58df685dc5db77b9fdeef52d129"
+    },
+    {
+      "path": "scaffold-manifest.json",
+      "bytes": 1231,
+      "sha256": "d362693f0270945a8d64e1915ded19e33056fb1cc22caa55cc2ca28133bae4b4"
+    },
+    {
+      "path": "src/checks.rs",
+      "bytes": 28342,
+      "sha256": "e4a680f4600428a48a3d9155b6d7b32aee5d43b20cff835daeef84a5246eaacf"
+    },
+    {
+      "path": "src/codec.rs",
+      "bytes": 4546,
+      "sha256": "6c873429ff92f8a6c9a8b07b10b8d65aeb98ee2cae9ea9a6fdd2cadd66c72bc2"
+    },
+    {
+      "path": "src/learner.rs",
+      "bytes": 2131,
+      "sha256": "825f6a35ea5bb2bef0cf3f8beaff59f6bc5d2013e66e73198734d5a072643956"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 285,
+      "sha256": "f7b3fdb26d8c1d2b43b749127b9e2d6094265b187a5705dc6570b59f7e375dc0"
+    },
+    {
+      "path": "src/main.rs",
+      "bytes": 2677,
+      "sha256": "e50ea14bbb3d338e40b963413f58b5767fc29f8535751cf549632f3c4f6e182d"
+    },
+    {
+      "path": "src/model.rs",
+      "bytes": 5106,
+      "sha256": "a8a0c5f6a8bee2bfcb1e04d41171db4a584250dc3a4267aad402f7a21c0ae572"
+    },
+    {
+      "path": "src/runtime.rs",
+      "bytes": 6959,
+      "sha256": "272991e8d2125aa2dde09149c33230fd3136fa1a849563f6aaae0e8ae8a9e3f7"
+    },
+    {
+      "path": "src/schedule.rs",
+      "bytes": 3685,
+      "sha256": "67b7f2d0c37f922c4ccf1c73a186086cc337a435bae13ad58d1501ec06f5d578"
+    }
+  ],
+  "successor": {
+    "parentSourceCommit": "5aca0e396caec982b2ec47ed570539564064a221",
+    "parentArchiveSha256": "aa3801f395436207477c39a119cbb6ad7dec8b2cdb5024eb58d7cf8d67121a42",
+    "instructionPatchSha256": "720c9861c7f195b555739a4aaf7c83642477b877b79622be238d190f08ef9e5c",
+    "status": "local-only-unreleased",
+    "checkerHardening": {
+      "addedPublicCases": 13,
+      "totalPublicCases": 84,
+      "transferCases": 10,
+      "deferred": "Q11 same-generation/new-epoch case not adopted; no new temporal grant rule implied."
+    }
+  },
+  "redistribution": {
+    "terms": "MIT original code; CC BY 4.0 original lessons; existing exceptions and component notices retained",
+    "license": "LICENSE.md",
+    "publication": "not performed; separate release gates remain"
+  }
+}

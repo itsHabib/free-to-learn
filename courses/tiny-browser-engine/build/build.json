@@ -1,0 +1,92 @@
+{
+  "course": "tiny-browser-engine",
+  "status": "local-candidate-not-released",
+  "buildId": "2201e7d06346886dd41f19f2fd8137015549b83b344b0698c911d9a01d9e5b34",
+  "files": [
+    {
+      "name": "index.html",
+      "bytes": 7941,
+      "sha256": "ffadfebfa4343e3babff9c0f8c85f6e391aea6292c91e80f19d99b6b30b6017b"
+    },
+    {
+      "name": "style.css",
+      "bytes": 3981,
+      "sha256": "b4d04e67ab3eb5da8368c694deebf95876ff233ad8efb92dc539d2c293797b63"
+    },
+    {
+      "name": "app.mjs",
+      "bytes": 19093,
+      "sha256": "2eeae8ef57d1e2dcaea03aed82d647caabe20f9817c7156498607251d8e0d504"
+    },
+    {
+      "name": "content.mjs",
+      "bytes": 32673,
+      "sha256": "b52994858acac80061535f56c6fcbe34bbf6c87ace5456b4d58e8e4c9bd2f32b"
+    },
+    {
+      "name": "supplier.mjs",
+      "bytes": 16185,
+      "sha256": "c82964a6a20cb8987cf58f147cd06b47888ddfcb86f897f64cc25d8ece19e865"
+    },
+    {
+      "name": "font.mjs",
+      "bytes": 3735,
+      "sha256": "1108091afcf4061be99154e772b42b9056d15d5eadec8e1c9e22d67075b7cf9b"
+    },
+    {
+      "name": "raster.mjs",
+      "bytes": 1715,
+      "sha256": "dfd0c11e3eb1b4acdbb588fa7623f8fca07168ddfb9ddc85b6e14fe860cfc045"
+    },
+    {
+      "name": "pages.mjs",
+      "bytes": 1844,
+      "sha256": "611527ac14ec6e82f25242f5e817313e916e67cbcebaeb082eeac1badb34d694"
+    },
+    {
+      "name": "progression.mjs",
+      "bytes": 7617,
+      "sha256": "cded748aa86202e77b7cba8c328499c14ab3817b15ae5bd88496f5cf6c92c496"
+    },
+    {
+      "name": "diagnostics.mjs",
+      "bytes": 2316,
+      "sha256": "b9f38db24a9cf4683a6cda69f60ca1c99405f49a89ec449fb503326303e60c6e"
+    },
+    {
+      "name": "notebook.mjs",
+      "bytes": 2726,
+      "sha256": "5afa541e17826b3f19f7721c2c6215f87484bc36b6ea1da1a8b541961723bc5e"
+    },
+    {
+      "name": "checks.mjs",
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
+    },
+    {
+      "name": "starter.body.js",
+      "bytes": 1109,
+      "sha256": "da512d0e22362798148ba13387c4b51036fdf0317f61e8b4b375306f1313ff81"
+    },
+    {
+      "name": "CONTRACT.md",
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
+    },
+    {
+      "name": "SOURCES.md",
+      "bytes": 2665,
+      "sha256": "8a5fa529e2079ab208c6df49e5492aceabb14e861a445a6c4f8cd3a9f9512ade"
+    },
+    {
+      "name": "worker.js",
+      "bytes": 72949,
+      "sha256": "c8a5f5fb8a81397f88652ad5cb024a10df6f5e955ed537261b7375e22a13cbab"
+    },
+    {
+      "name": "demo.json",
+      "bytes": 297681,
+      "sha256": "fa7d3e595978b5a7bfb05a8cafbe3795ac3b6561af1f33a286ec9e76554e7240"
+    }
+  ]
+}

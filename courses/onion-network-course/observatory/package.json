@@ -1,0 +1,12 @@
+{
+  "name": "circuit-observatory-learner",
+  "version": "0.3.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node tools/lab.mjs check all",
+    "demo": "node tools/lab.mjs demo",
+    "capstone": "node tools/lab.mjs capstone",
+    "check:browser-adapter": "node tools/browser-lab.mjs check 6"
+  }
+}

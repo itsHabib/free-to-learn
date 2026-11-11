@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "scope": "Local course candidate; no claim of live publication or complete course acceptance.",
+  "files": [
+    {
+      "path": "CAPSTONE.md",
+      "bytes": 8992,
+      "sha256": "8d10c84a48c48568e212bcb67ee5ecbf89a43ecd6551efaad0801a9b9a24b9f2"
+    },
+    {
+      "path": "LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 11230,
+      "sha256": "e4fb55505189dc332987b991621f222df980ea63a585c62b840eb15384dcb11c"
+    },
+    {
+      "path": "SOURCES.md",
+      "bytes": 2163,
+      "sha256": "f8e52977e4050d2b23a527f2d62627e90c7dabf4ae7b47dc707a22e535324f49"
+    },
+    {
+      "path": "VERIFY.md",
+      "bytes": 2834,
+      "sha256": "e6b3fac9842d614d034e4a489ae7355671a421f6fa85102fa0e256489210e9c3"
+    },
+    {
+      "path": "advanced-feedback.json",
+      "bytes": 37519,
+      "sha256": "3bc6dc07daa4941ceee0e23b750ba0ea6b4c52ecd6cb4de78822a00d9c67fcbc"
+    },
+    {
+      "path": "capstone-feedback.json",
+      "bytes": 14929,
+      "sha256": "6bc723e5f4f034448ee0d50018ecf1466e814752e9eb6188ac75e4ddd0347759"
+    },
+    {
+      "path": "checks/advanced.mjs",
+      "bytes": 27314,
+      "sha256": "fe624df939a9332f04d2f0eb377c99a4f46042d2260a61c4a88f7bb9a9055358"
+    },
+    {
+      "path": "checks/check-utils.mjs",
+      "bytes": 3979,
+      "sha256": "c88b494c222b119076930db126ecbb267a89af1b62ab711cd140cc95018c8eb9"
+    },
+    {
+      "path": "checks/index.mjs",
+      "bytes": 11705,
+      "sha256": "21339002ad9628e0b9f46176e3f00d94b8978393b81525f485ddd997f8a853db"
+    },
+    {
+      "path": "checks/practice-trees.mjs",
+      "bytes": 2538,
+      "sha256": "1df23053485ee2ea19a8278cbf4b8cb50c47350fc21066cffa7c971ac5c2ca25"
+    },
+    {
+      "path": "cli.mjs",
+      "bytes": 25039,
+      "sha256": "9c87d4fdc2ad1c8a5ae87a71bed4374cca5644df2e273e783f3de8708df758c0"
+    },
+    {
+      "path": "development-league.json",
+      "bytes": 368,
+      "sha256": "3b0f5908b6829190aa5da958529b1dbd872b8f87ffe38106ca49fff06148d1df"
+    },
+    {
+      "path": "development-training.json",
+      "bytes": 252,
+      "sha256": "73bf1b24b998f5ce4f49db88dedfcbf7e0db03f58bc6623c6c6f186a4e7f8b0d"
+    },
+    {
+      "path": "index.html",
+      "bytes": 157158,
+      "sha256": "a01acd2578cbb7780ea435a67092f7537a811dd2321cd34a2eb243bab6af2019"
+    },
+    {
+      "path": "learner/baseline.mjs",
+      "bytes": 404,
+      "sha256": "812d8bc1d6d3efe6aaaf19352181512dcbe81de30bd10bb131878df650ea3d17"
+    },
+    {
+      "path": "learner/counter-policy.mjs",
+      "bytes": 892,
+      "sha256": "0a05c50c2d596bfb3461a8420ddbb074b0da3f502382b77340491552b5ca34a6"
+    },
+    {
+      "path": "learner/evaluation.mjs",
+      "bytes": 579,
+      "sha256": "b7d0940a06a1983a3d00dd22683e169c397ec38f0e01012a98df3d496201a08b"
+    },
+    {
+      "path": "learner/league-policy.mjs",
+      "bytes": 334,
+      "sha256": "94ed344a6b0939fa7e384ba657e9deb9b4ab6f9be7997acaa70052ed12d7ab54"
+    },
+    {
+      "path": "learner/learned-policy.mjs",
+      "bytes": 399,
+      "sha256": "e0c326c8ec5f9e4d61aedaec779591fe3178bcbb3885612eb5b380379b74ba2e"
+    },
+    {
+      "path": "learner/opponent-sampler.mjs",
+      "bytes": 435,
+      "sha256": "093181dd94515f617ff17dd382281d335ed1c3ad7ffd7aad44f23be433ed939e"
+    },
+    {
+      "path": "learner/report.mjs",
+      "bytes": 967,
+      "sha256": "79dd59578c49c15e541e76a8aa9f9fd564424100da4555bcf0ceedf2209c1795"
+    },
+    {
+      "path": "learner/search.mjs",
+      "bytes": 701,
+      "sha256": "38f69f8bd6e25333240ce985ece3eccf90a9473852cfaaafc3f8638eefe2ddf2"
+    },
+    {
+      "path": "learner/value-model.mjs",
+      "bytes": 1100,
+      "sha256": "4f200b35bf2cdc6c7a1880d98aef2e7b92ae3d90ed02ac6f711e7c6ee1d5a7ea"
+    },
+    {
+      "path": "learner/vulnerability.mjs",
+      "bytes": 1168,
+      "sha256": "d84e0ef30b07952fb2d1df4ebce25d3cb39c09fc6a61699e22b54f6d963f1f01"
+    },
+    {
+      "path": "lessons/01-1-decision-contract.md",
+      "bytes": 5885,
+      "sha256": "7dd1ccefbaaaff39682d49317df02697e3d1b00612d6c552704d6ae0adbfc22f"
+    },
+    {
+      "path": "lessons/01-2-reproducible-policy.md",
+      "bytes": 6132,
+      "sha256": "54e420d70b217137285b88a696d717441f4baf5727bbb824cc6d5170d4d77487"
+    },
+    {
+      "path": "lessons/01-3-failure-vs-strength.md",
+      "bytes": 6345,
+      "sha256": "a5238b8819c1e4223d9a71168ea7595fd59694bb7de4426d55fa17fa9a1e6b33"
+    },
+    {
+      "path": "lessons/02-1-player-perspective.md",
+      "bytes": 6081,
+      "sha256": "dc13aaefbb419a764c2a595c5dc1b8af91c57b73879f388a26205084c51f0ec5"
+    },
+    {
+      "path": "lessons/02-2-budgeted-search.md",
+      "bytes": 5873,
+      "sha256": "b2648b61992dfe30845a17c3e1efc6862f96133cce9a9b4d68a9b0b98ed26a40"
+    },
+    {
+      "path": "lessons/02-3-fair-deeper-search.md",
+      "bytes": 6537,
+      "sha256": "abee840d2796f0ecf3d73676b66e349dde9c81b27a108a4f368089ed3b56d73c"
+    },
+    {
+      "path": "lessons/03-1-outcome-labelled-examples.md",
+      "bytes": 7446,
+      "sha256": "9b323be9fd536edd978e2fa6112bb4143a7f67181aea47ea75c97e2bcb542c6c"
+    },
+    {
+      "path": "lessons/03-2-small-value-model.md",
+      "bytes": 4984,
+      "sha256": "e8c7ca9e727f058a1a1788ae86a55bb732fb8d28d2c40bb142dd4157e9410b94"
+    },
+    {
+      "path": "lessons/03-3-learned-values-in-search.md",
+      "bytes": 5606,
+      "sha256": "2a03f2e44368a7a6da36e21e9aaf0a82b72d0ddf7593aceddb02d3d73df9265d"
+    },
+    {
+      "path": "lessons/04-1-pair-positions-and-seats.md",
+      "bytes": 4416,
+      "sha256": "189be745c5a0bf87ae3bc0db07e47db284c65fb87552103e6b527e5b6bbd21ea"
+    },
+    {
+      "path": "lessons/04-2-uncertainty-at-the-right-unit.md",
+      "bytes": 4604,
+      "sha256": "a1abbbdd7ee53413f576c42d21f09673f4204e94aa7c99e813b0d92b499d03af"
+    },
+    {
+      "path": "lessons/04-3-freeze-selection.md",
+      "bytes": 4982,
+      "sha256": "6faa1b27b927eb17fa2adb6b957dba8fa8e73505a84640d22ec4e7c46f1e020d"
+    },
+    {
+      "path": "lessons/05-1-latest-only-forgetting.md",
+      "bytes": 4558,
+      "sha256": "81b41811f5f3df7ab68329da2a03ff73e27bb351dae624abf0dc459d63acbb9c"
+    },
+    {
+      "path": "lessons/05-2-archive-sampling.md",
+      "bytes": 4491,
+      "sha256": "8741eab366065fe28f9e431906f257c6117689ab8369705c021814d131dd32ed"
+    },
+    {
+      "path": "lessons/05-3-admit-without-erasing-history.md",
+      "bytes": 5483,
+      "sha256": "492794df6fae32d4cf3c609c6f02d327f1804439f640eacd7c70527c526baa29"
+    },
+    {
+      "path": "lessons/06-1-approximate-best-response.md",
+      "bytes": 4670,
+      "sha256": "9fabe94e0efb630668dc5125a0b55ffca712b753897345ee6bbfac87696781b0"
+    },
+    {
+      "path": "lessons/06-2-measured-exploitability.md",
+      "bytes": 4534,
+      "sha256": "ec515cb3bfdbf0d137f36d6ff0d7f2aa46596793e22fbb98cb7598b45ebdad5b"
+    },
+    {
+      "path": "lessons/06-3-cycles-and-rankings.md",
+      "bytes": 4543,
+      "sha256": "1354f301878e20cea198729a342dfb70d5ef0977ff6fb94cfbc6c55af27f689b"
+    },
+    {
+      "path": "lessons/07-1-replayable-season.md",
+      "bytes": 5298,
+      "sha256": "36c8eb334cf7221114f5113c2d5b658f504219f2125a10212f292d1809906659"
+    },
+    {
+      "path": "lessons/07-2-population.md",
+      "bytes": 5259,
+      "sha256": "5826b741abab07ee81c9457b7e9c2e5eb17093edb32523ef28d51e9711b0b626"
+    },
+    {
+      "path": "lessons/07-3-evidence-audit.md",
+      "bytes": 5012,
+      "sha256": "0f8675679cf1f8d77dba3c89d53f1ba27b789963c19cd35862054bd5b62519a7"
+    },
+    {
+      "path": "lessons/08-1-before-patch.md",
+      "bytes": 6017,
+      "sha256": "39790fe869c51b35ff2fa3b465bf97ca9a4441ea1dfca713bb56d7efd6a0f379"
+    },
+    {
+      "path": "lessons/08-2-adapt.md",
+      "bytes": 5706,
+      "sha256": "c4fc5f9b3eb95545dfb4efe4196ffa2848ad072b72ada09bbc6ab092653d38e1"
+    },
+    {
+      "path": "lessons/08-3-defend-transfer.md",
+      "bytes": 5428,
+      "sha256": "cb8ab8661fb1c20613d74ec803a21e35ab9df9bdb64332ddd95bd66c51ef8919"
+    },
+    {
+      "path": "lessons/advanced-index.json",
+      "bytes": 16877,
+      "sha256": "67e579ac8c1573c950273a9ad90bdf4b41e99bd2a7b362334835136280b2aa5e"
+    },
+    {
+      "path": "lessons/capstone-index.json",
+      "bytes": 6046,
+      "sha256": "b5844da9b9e2bc1eb88585477ad24ed12899d1e037b5d8e1f4292279f7583564"
+    },
+    {
+      "path": "lessons/lesson-index.json",
+      "bytes": 10727,
+      "sha256": "7768caef002bb35ab2857a20aec4bce313f529d9dfbebc312bb3e1c64ed6550c"
+    },
+    {
+      "path": "lib/check-worker.mjs",
+      "bytes": 2171,
+      "sha256": "3c81c9e1f0d2dfef7597139b0e49ca0586d314241361c60df6d7df77aa893209"
+    },
+    {
+      "path": "lib/fit-worker.mjs",
+      "bytes": 1728,
+      "sha256": "4cfd15e584e9af0de12946d068a0751a968027faba54c730ebdaaf501994cb60"
+    },
+    {
+      "path": "lib/game.mjs",
+      "bytes": 9607,
+      "sha256": "760cbc53ebc71bb63f2615463749687ae3b4064bb97cd8e23706871bceb9a2c7"
+    },
+    {
+      "path": "lib/identity.mjs",
+      "bytes": 1269,
+      "sha256": "8954fe82d393054e301b12c16fdacf599c47a1d2b48b32244c13fe3567d9f3aa"
+    },
+    {
+      "path": "lib/journal.mjs",
+      "bytes": 6657,
+      "sha256": "1bb2f60ca779031f7f20bd382444ab9ce7f135ab05083212cffab8ba18c9bfc9"
+    },
+    {
+      "path": "lib/league-config.mjs",
+      "bytes": 5154,
+      "sha256": "a328c6711421924a659e79cd6e6e8f4a18456f2c12f140353c81b8ab83203fce"
+    },
+    {
+      "path": "lib/league-worker.mjs",
+      "bytes": 1053,
+      "sha256": "24ba10242d7c4cc5ad0d344c822b8ad8fc4af979ab976979f7c36aea2208ede7"
+    },
+    {
+      "path": "lib/league.mjs",
+      "bytes": 5727,
+      "sha256": "3931c039ec8620eaa7aa20f531cbac4b74df4208d194eed9ae3bea8178950113"
+    },
+    {
+      "path": "lib/report-worker.mjs",
+      "bytes": 1098,
+      "sha256": "182ac490e8da8bc00c3de9e5c29ccc9587d484f831eb7b739bbb5885936d5cc7"
+    },
+    {
+      "path": "lib/rng.mjs",
+      "bytes": 1010,
+      "sha256": "9b4a1896eeb133cdb71bdbaf37d65b43214434a7e77a275f01948dbd8d33d058"
+    },
+    {
+      "path": "lib/roster.mjs",
+      "bytes": 3095,
+      "sha256": "ec2935980fbb1a24c1111db90358e2fc4634013ba3c2e0b664ee724f434fa07d"
+    },
+    {
+      "path": "lib/runner.mjs",
+      "bytes": 13379,
+      "sha256": "7c624f960f8cd03a9d17bce890ee2da8e4217471ff232dec79e6d7a13585886a"
+    },
+    {
+      "path": "lib/statistics.mjs",
+      "bytes": 5005,
+      "sha256": "c8c9a3220960b04d7d1ef7faf6a7719bd00e57d1a8dd5e49b101dc5c57c7b65b"
+    },
+    {
+      "path": "lib/supplied-policies.mjs",
+      "bytes": 1279,
+      "sha256": "69da6cb4b7b06badc9d1e73a20d4caa44bb263bbe593d101a8602d05b7eee499"
+    },
+    {
+      "path": "lib/training-worker.mjs",
+      "bytes": 2912,
+      "sha256": "baa2d8801c8701a200a425a1705c4d24d2fb0c39a49c363a27686c1ff6cd8c3b"
+    },
+    {
+      "path": "lib/training.mjs",
+      "bytes": 11273,
+      "sha256": "ad39b1e9c4df663bf8515155b09602ba96635f9f4f185ff4aeb87d34e51169ce"
+    },
+    {
+      "path": "lib/verify-worker.mjs",
+      "bytes": 2237,
+      "sha256": "8ffaaad5bbde0c30325df49ed754ab8a647afcab7baa104e420b5dad08eff3c9"
+    },
+    {
+      "path": "package.json",
+      "bytes": 335,
+      "sha256": "bdbfcae39166f6088818fa20cdda872969ca7660c33409074a2c4baf6f9eef65"
+    },
+    {
+      "path": "practice-feedback.json",
+      "bytes": 20641,
+      "sha256": "443a7132948c2ecbbb55c960e40dabd4b5f48eb91cf1ed4a55bcef5e17847449"
+    }
+  ],
+  "excluded": [
+    "instructor/",
+    "engineering/",
+    "evidence/",
+    "course/work/",
+    "private transfer assessment",
+    "reference policies"
+  ],
+  "redistribution": {
+    "terms": "MIT original code; CC BY 4.0 original lessons; existing exceptions and component notices retained",
+    "license": "LICENSE.md",
+    "publication": "not performed; separate release gates remain"
+  }
+}
