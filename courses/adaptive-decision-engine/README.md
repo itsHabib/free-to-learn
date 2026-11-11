@@ -1,6 +1,6 @@
 # Beacon Keep · Adaptive Decision Engine
 
-Build a director for a twelve-round expedition. Observe recent play, choose legal encounters, calibrate evidence, evaluate whole episodes and recover after interruption. A well-supported decision to keep rules is a successful outcome.
+Build a director for a twelve-round expedition. The beacon is lit, and the expedition succeeds, when it survives all twelve rounds with a charge of 12 or more. Observe recent play, choose legal encounters, calibrate evidence, evaluate whole episodes and recover after interruption. A well-supported decision to keep rules is a successful outcome.
 
 ## Start
 
@@ -19,7 +19,8 @@ Qualified terminal environment: Node 26.5.1 on macOS arm64. Browser checks are r
 ```
 node lab.mjs start ./work
 node lab.mjs check 01 ./work --help-used none --prediction 'Pressure is unknown initially'
-node lab.mjs play ./work --mode rules --seed demo-01
+node lab.mjs play ./work --mode rules --seed demo-01 --bot fixed
+node lab.mjs play --help
 node lab.mjs status ./work
 node lab.mjs support 04 ./work ./assisted-04
 node lab.mjs fingerprint ./work
@@ -33,7 +34,7 @@ node lab.mjs export ./work ./my-beacon.zip
 node generate-data.mjs ./work ./new-synthetic-data
 ```
 
-Start refuses an existing directory. Check 01 initially fails with an intentional TODO. Edit the named files, then rerun. Use --variant 1 for a repeatable fresh public case. Work runs in a bounded worker with a ten-second deadline. Node code has ordinary local permissions; this is not a hostile-code sandbox.
+Start refuses an existing directory. Check 01 initially fails with an intentional TODO. Edit the named files, then rerun. Each failed case says what was checked, what your code produced, what was expected and which lesson section to reread; the full JSON record is printed first. `play` accepts `--bot fixed|cautious|aggressive` and `--profile steady|pulse`; `node lab.mjs play --help` lists its options. Use --variant 1 for a repeatable fresh public case. Work runs in a bounded worker with a ten-second deadline. Node code has ordinary local permissions; this is not a hostile-code sandbox.
 
 `checkpoint` runs one complete episode with the selected rules or project policy and saves its terminal state, final policy memory, spent allowance, source/calibration identities and director mode. Use `--mode rules` for your rules policy or `--mode project` for your capstone; the default is rules. `resume` restores the saved result without another policy call. A browser checkpoint retains its selected encounter when exported. For a legacy checkpoint with no associated mode, choose explicitly with `node lab.mjs resume ./work --mode project` or `--mode rules`.
 
@@ -64,6 +65,6 @@ The optional Node HTTP transport is mock-tested only. No live request was run du
 
 ## Session storage and recovery
 
-Saved/exported sessions use an exact source-text table. Format 2 shares repeated source and results-file snapshots; format 3 also references attempt results that exactly match the result inside a retained results-file snapshot. Restoration preserves the exact source text and every attempt's question, prediction, help, status and result. The current tools read formats 1, 2 and 3. Keep an original export before moving to newer course tools; older tools cannot read format 3. Use `node lab.mjs import session.json NEWDIR` to restore an exported session, then the usual check commands.
+A saved or exported session keeps the exact text of every file you checked and every attempt's question, prediction, help, status and result. To keep the file small, it stores each distinct file text once and lets attempts point to it (format 2). Format 3 does the same for check results: when an attempt's result is identical to one already stored in a saved results.json, the attempt points to that copy instead of repeating it. Nothing is dropped; restoring gives back every attempt exactly. These tools read formats 1, 2 and 3. Older copies of the course tools cannot read format 3, so keep your original export before changing tools. Use `node lab.mjs import session.json NEWDIR` to restore an exported session, then the usual check commands.
 
 The limits remain bounded: at most 1,000 attempts and 20 MB of stored UTF-8 JSON evidence, with a 128 MB expanded-evidence bound. Legacy pretty-printed format-1 input is limited to 40 MB. Existing per-work-file limits still apply. Distinct large evaluations can still reach the stored limit. Export before reaching it; after a capacity refusal, preserve the complete existing workspace before starting another session. Export also applies these limits and is not a capacity bypass. No attempts are removed automatically. Browser local-storage quotas may be smaller; a browser save failure does not establish that an export or later check was saved.
