@@ -51,7 +51,7 @@ try {
     console.log(`Created ${dir}\nEdit engine.mjs, read lessons/01.md, then run check. Untouched target methods should fail.`);
   } else if (command === 'check') {
     const dir = project(args[1]), through = Number(args[2]); if (!Number.isInteger(through) || through < 1 || through > 7) throw Error('Choose cumulative unit 01 through 07.');
-    const out = attempt(dir, 'check', { through, contractVersion: 'prototype-v3-check-integrity' });
+    const out = attempt(dir, 'check', { through, contractVersion: 'prototype-v4-check-integrity' });
     let report;
     try { report = JSON.parse(execFileSync(process.execPath, [join(root, 'check-runner.mjs'), join(out, 'engine.mjs'), String(through)], { encoding: 'utf8', timeout: 15000, maxBuffer: 2 * 1024 * 1024 })); }
     catch (error) { report = { runtimeError: error.signal ? `Stopped after runtime limit: ${error.signal}` : (error.stdout?.toString() || error.message) }; }

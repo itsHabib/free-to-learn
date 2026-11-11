@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 26263,
-      "sha256": "bbba65dfc7deb4cc093bef1270c6e749b4b4a972580b145a7d1878b325a4e771"
+      "sha256": "f7ec8eca2261fb4a1b280bf8efcd5524a678343119cbcc3a16cbd8e9fed266f9"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -59,13 +59,13 @@
     },
     {
       "path": ".packages/advanced-storage.zip",
-      "bytes": 115577,
-      "sha256": "e3af0410a576def4e577ef5d89d50933a5e95cf5181351d96c9da8b1b12e0724"
+      "bytes": 117896,
+      "sha256": "3ffa0d0d4912a13066a14f2f33ed21a24c0232de1bcfc1f6d6b1979bf3cb58ab"
     },
     {
       "path": ".packages/advanced-storage.zip.sha256",
       "bytes": 87,
-      "sha256": "766095b972f6a119785151b8a5a9c33d3272c31c8b7b2915c8d69438add73d4a"
+      "sha256": "1cb614bb67f2ba29b74173998678d4d5ae4b1ab378ac9a402b2235ac115b0809"
     },
     {
       "path": ".packages/agent-league.zip",
@@ -89,13 +89,13 @@
     },
     {
       "path": ".packages/blockchain-laboratory.zip",
-      "bytes": 87023,
-      "sha256": "074b5c3e8bf088c354d333745d47c3027ec1f8ce60b67b431649becb9a9c4f09"
+      "bytes": 88037,
+      "sha256": "9d8ec091bda13089ed78a4d488aab3a65ff0d7fe9b72b365c6155fcc37d5f32b"
     },
     {
       "path": ".packages/blockchain-laboratory.zip.sha256",
       "bytes": 92,
-      "sha256": "ba2c5f4502d7b65e80340ebf0bff5b18c72a6fe0f365d4d66767182cf8899c56"
+      "sha256": "f3e00afdcc0ea4154f263e9aae461d5a5fb0a384c09d843de873018319ec5af6"
     },
     {
       "path": ".packages/compiler-optimizer.zip",
@@ -149,13 +149,13 @@
     },
     {
       "path": ".packages/sandbox-model.zip",
-      "bytes": 60410,
-      "sha256": "0ce28a8730e931ac5fb95c8132fb48b92f9ef833180d71c65a947d676284a337"
+      "bytes": 60398,
+      "sha256": "11c871d27c518579fea8ad60ec1f2784bf69d21fbff4e0b512d55c0ed392c6f9"
     },
     {
       "path": ".packages/sandbox-model.zip.sha256",
       "bytes": 84,
-      "sha256": "33dfa64a6432fe5f6f8faba897abfe6142c3ccda67d91b193f4f3978b77b03d0"
+      "sha256": "c610bc845e6ff00a01828ef26da8ce17f14f96438793cfcd88130842c257ea11"
     },
     {
       "path": ".packages/small-llm-runtime.zip",
@@ -739,8 +739,8 @@
     },
     {
       "path": "courses/advanced-storage/MANIFEST.json",
-      "bytes": 6607,
-      "sha256": "388af98ca4ef6d7726c2e28ce6e4711bd66138c832c90684a0285b40c6713866"
+      "bytes": 6732,
+      "sha256": "8dd5002e160483f81852625889b896dc450d288ff49b08eab2686e8d95c91e82"
     },
     {
       "path": "courses/advanced-storage/PROJECTS.md",
@@ -784,8 +784,8 @@
     },
     {
       "path": "courses/advanced-storage/checks.mjs",
-      "bytes": 22001,
-      "sha256": "6c3a1f5ea85accaa9acf94030cd44f2efe8f10b42b0c4eb1cf1eaabe7f693006"
+      "bytes": 30308,
+      "sha256": "a3119cb8b43fcfb804f024f987e1615932715925f34abbc9be1e7679fbaeb50c"
     },
     {
       "path": "courses/advanced-storage/index.html",
@@ -794,13 +794,13 @@
     },
     {
       "path": "courses/advanced-storage/investigation.mjs",
-      "bytes": 14640,
-      "sha256": "9885cc077b8482e2eb8e5f8f923bd6ef3b88a071561acb3e1c08f020dba0bff6"
+      "bytes": 15574,
+      "sha256": "1b97b30cfc86b1227c711f3611ada0d7b7aca7cf08ee0a923491fc768347ec02"
     },
     {
       "path": "courses/advanced-storage/lab.mjs",
       "bytes": 13541,
-      "sha256": "23963c7a6bb25ec88b85b9a885e1014f2546a29e4d5e0c5b71f670a605fafb56"
+      "sha256": "274b0cadbd215a9c4683c558e6a3cd340dd21e276b859a585f0fe1b641d3a3b8"
     },
     {
       "path": "courses/advanced-storage/lessons/01.md",
@@ -919,8 +919,8 @@
     },
     {
       "path": "courses/advanced-storage/workshop.mjs",
-      "bytes": 18041,
-      "sha256": "a530f7d094b36d45a5c1a00475887b2d93f44674dd0a8d86cf2fa31d92c19e8b"
+      "bytes": 17842,
+      "sha256": "2fa740be24a4bda927dc562499ea9a2b94ded185ac3b4a87dd898b6ced26d5b1"
     },
     {
       "path": "courses/anti-cheat-engineering/NOTICE.md",
@@ -2110,12 +2110,12 @@
     {
       "path": "courses/blockchain-laboratory/index.html",
       "bytes": 57184,
-      "sha256": "01955ba771a26358f233d6ef2439729e71fd80d6445362015477e84475ae8fc5"
+      "sha256": "259a9abcd1204924d42061c363be95fc23bda9652638e5302fbe32c8bad85dec"
     },
     {
       "path": "courses/blockchain-laboratory/lab.mjs",
-      "bytes": 6381,
-      "sha256": "0d2321937200820e899bbb46037224db7a5cab8167f8ee8b11d11fa1d9958030"
+      "bytes": 6569,
+      "sha256": "da80e68ea0086e77918aab6b66679e70a0674c7b2d665b1e427c99804792a10b"
     },
     {
       "path": "courses/blockchain-laboratory/lessons/01-bytes.md",
@@ -2164,8 +2164,8 @@
     },
     {
       "path": "courses/blockchain-laboratory/lib/checks.mjs",
-      "bytes": 17975,
-      "sha256": "1694e2ed18383b1330798b51c28453c2ac6841beb4fdec20e3bbb2190f9c4a80"
+      "bytes": 21701,
+      "sha256": "be54bd13546f426c9a08ff1d034d1f6e5bfa79695f3bb50e7afdf07698d8ea73"
     },
     {
       "path": "courses/blockchain-laboratory/lib/identity.mjs",
@@ -2200,7 +2200,7 @@
     {
       "path": "courses/blockchain-laboratory/manifest.json",
       "bytes": 3240,
-      "sha256": "38f1365a61dafa9f44f4812932b8fbd887534a210d36949a6cfd5a4f247af2f3"
+      "sha256": "cede6259812ec161ce19aa1baf36e11a5a85bfdeb07ba3a6314992ef7a978d40"
     },
     {
       "path": "courses/blockchain-laboratory/reader/app.js",
@@ -2245,12 +2245,12 @@
     {
       "path": "courses/boundary-lab/PACKAGE-MANIFEST.json",
       "bytes": 4019,
-      "sha256": "b357907691cc08418db557cd4b6c175cc605a70ba09e8a31ab4b23f812587b67"
+      "sha256": "5909baf0974f7aa7a386d9ab331cdafec7c1ffffe2799bb2aa7e9980bce0e5b3"
     },
     {
       "path": "courses/boundary-lab/README.md",
-      "bytes": 6750,
-      "sha256": "f3b1b6e5f5c569ec887fda36ccf4d6b11865997e6d64a6ab99dbabc3cbad47a5"
+      "bytes": 6726,
+      "sha256": "e82118ddc80d25f544beea17358dadb2b76f4e6e20720da1a360a2723aeda053"
     },
     {
       "path": "courses/boundary-lab/index.html",

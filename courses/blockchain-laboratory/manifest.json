@@ -1,5 +1,5 @@
 {
-  "createdAt": "2026-11-11T15:10:06.082Z",
+  "createdAt": "2026-11-11T17:17:53.437Z",
   "runtime": "v26.5.1",
   "source": {
     "algorithm": "SHA-256",
@@ -10,7 +10,7 @@
       "REPORT-TEMPLATE.md": "8062b29e709b0d69529e304d37a7070fa7834807325b3527cabebcb51418da23",
       "SOURCES.md": "17f06cb5317a95caec765a1561e20f7ded970e40c3b2f0208cb84f63339ea493",
       "build.mjs": "bdf486dfa2b826d979a5db1757d2f539f49070c2a16cd3339e2e3773066a35b5",
-      "lab.mjs": "0d2321937200820e899bbb46037224db7a5cab8167f8ee8b11d11fa1d9958030",
+      "lab.mjs": "da80e68ea0086e77918aab6b66679e70a0674c7b2d665b1e427c99804792a10b",
       "lessons/01-bytes.md": "6213f82a30de628a505f51d6031fe7d11edda47a7665da20d85f288cbd127df9",
       "lessons/02-transition.md": "ee16bda67f1d0bf317261c83dd937dbd8de194f10f418ddfa01b257008877a73",
       "lessons/03-proof.md": "38d04004df84c2094ecb90c71111d858b19d0843bd45efc06c5a16b91ae358a5",
@@ -20,7 +20,7 @@
       "lessons/07-quorum.md": "0417852cf1d4e0f9df47c38826076a3a92d2f3b7373c2da826093f4f16e6fa92",
       "lessons/08-recovery.md": "8d7196d951d863bca087d60c7a730e60f51c2e88a049d6831ba1d3a9e999d256",
       "lessons/09-restart.md": "f771eff24eccd0d3bc780815a672884917bbc74847616a7dcc5113fbdb3f03a7",
-      "lib/checks.mjs": "1694e2ed18383b1330798b51c28453c2ac6841beb4fdec20e3bbb2190f9c4a80",
+      "lib/checks.mjs": "be54bd13546f426c9a08ff1d034d1f6e5bfa79695f3bb50e7afdf07698d8ea73",
       "lib/identity.mjs": "4ca328ce732686dd548be1f5b55a631e97207c555e3b1147ad2bca45451252cd",
       "lib/practice.mjs": "c139aaf5877490bc1a45415739733cca15bb69b59024f3d09498c5c5dfdaf49b",
       "lib/restart-checks.mjs": "c956c6990caee95ee2ddd182145dddb5137a441feea5039d28eab587d31538cf",
@@ -34,10 +34,10 @@
       "starter/protocol.mjs": "6fcf7917030ae0b5cb5417b8c61a8df2017927d070b10b03ed8f012a0a561137",
       "starter/vote-guard.mjs": "2cf17f36f3819aedd8fb1b590ccc6fcb176c716a409c52b17e3ce49708fcec07"
     },
-    "hash": "6e47057293af32745a4104f656ee0e2b445168cc19791deb8cdc4b50f5d0f9ff"
+    "hash": "62db7667d2ea200924aa19ce3b9631cf3a39860b4ad6f22a1abf1845ec14069f"
   },
   "generated": {
-    "index.html": "01955ba771a26358f233d6ef2439729e71fd80d6445362015477e84475ae8fc5"
+    "index.html": "259a9abcd1204924d42061c363be95fc23bda9652638e5302fbe32c8bad85dec"
   },
   "excluded": [
     "instructor/",

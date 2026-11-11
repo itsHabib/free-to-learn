@@ -125,23 +125,43 @@ export function cases(p) {
   add('04','no-progress','Invalid or unfunded pools terminate without selecting anything',()=>{
     const f=fixture();assert.deepEqual(p.selectMempool(f.state,[f.transaction('a','b',101,0),f.transaction('c','d',1,0),null],f.ctx,16),[]);
   });
+  add('04','input-unchanged','The caller\'s transaction list is left unchanged',()=>{
+    const f=fixture(),list=[f.transaction('a','b',1,1),f.transaction('a','b',1,0),f.transaction('b','c',1,0)],copy=clone(list);p.selectMempool(f.state,list,f.ctx,16);
+    assert.deepEqual(list,copy,'Lesson 04: "Never mutate the caller\'s state or input list." CONTRACT: selectMempool must not mutate input.');
+  });
+  // CONTRACT selectMempool: "Use repeated passes over input arrival order" and "Conflicting ready spends use first eligible arrival order."
+  add('04','arrival-order','Repeated passes keep input arrival order; the first eligible arrival wins a conflict',()=>{
+    const f=fixture(),fromB=f.transaction('b','c',1,0),fromA=f.transaction('a','c',1,0);
+    assert.deepEqual(p.selectMempool(f.state,[fromB,fromA],f.ctx,16).map(txId),[fromB,fromA].map(txId),'independent ready senders keep arrival order');
+    const first=f.transaction('a','b',60,0),later=f.transaction('a','c',70,0);
+    assert.deepEqual(p.selectMempool(f.state,[first,later],f.ctx,16).map(txId),[txId(first)],'the earlier arrival wins a same-nonce conflict');
+  });
   add('05','valid-block','Recompute the state from its validated parent',()=>{
     const f=fixture(),g=genesis(f),b=makeBlock(f,g,[f.transaction('a','b',12,0)]),r=record(f,b,g);assert.equal(r.id,blockId(b));assert.equal(r.state.a.balance,88);assert.equal(r.height,1);
   });
   add('05','forged-root','A well-shaped but fabricated commitment is not accepted',()=>{
     const f=fixture(),g=genesis(f),b=makeBlock(f,g,[]);b.stateRoot='f'.repeat(64);assert.equal(p.validateBlock(b,g,f.ctx).code,'ROOT');
   });
+  // CONTRACT validateBlock: "Require exact parent ID, height parent.height+1, valid sequential transactions and an exact recomputed root."
+  add('05','root-after-transactions','The root must be recomputed after applying the block, not matched against the parent',()=>{
+    const f=fixture(),g=genesis(f),b={parent:g.id,height:1,transactions:[f.transaction('a','b',12,0)],stateRoot:p.stateRoot(g.state)};
+    assert.equal(p.validateBlock(b,g,f.ctx).code,'ROOT');
+  });
   add('05','parent-height','Parent hash and height are checked rather than trusted',()=>{
     const f=fixture(),g=genesis(f),b=makeBlock(f,g,[]);assert.equal(p.validateBlock({...b,parent:'1'.repeat(64)},g,f.ctx).code,'PARENT');assert.equal(p.validateBlock({...b,height:99},g,f.ctx).code,'HEIGHT');
   });
   add('05','ordered-transactions','Two individually signed conflicting transactions do not make a valid block',()=>{
-    const f=fixture(),g=genesis(f),b={parent:g.id,height:1,transactions:[f.transaction('a','b',1,0),f.transaction('a','c',1,0)],stateRoot:'0'.repeat(64)};assert.equal(p.validateBlock(b,g,f.ctx).code,'NONCE');
+    const f=fixture(),g=genesis(f),b={parent:g.id,height:1,transactions:[f.transaction('a','b',1,0),f.transaction('a','c',1,0)],stateRoot:'0'.repeat(64)};const code=p.validateBlock(b,g,f.ctx).code;assert.ok(['NONCE','TRANSACTIONS'].includes(code),`expected the transaction's own code (NONCE) or TRANSACTIONS, got ${code}`);
   });
   add('05','policy-not-validity','A valid block may choose another mempool conflict winner',()=>{
     const f=fixture(),g=genesis(f),other=f.transaction('a','c',11,0),b=makeBlock(f,g,[other]);assert.equal(p.validateBlock(b,g,f.ctx).ok,true);
   });
   add('05','block-bounds','Malformed or excessive transaction lists fail explicitly',()=>{
-    const f=fixture(),g=genesis(f),b=makeBlock(f,g,[]);assert.equal(p.validateBlock({...b,transactions:Array(17).fill(f.transaction('a','b',1,0))},g,f.ctx).code,'TRANSACTIONS');assert.equal(p.validateBlock({...b,extra:1},g,f.ctx).code,'SHAPE');
+    const f=fixture(),g=genesis(f),b=makeBlock(f,g,[]);const many=makeBlock(f,g,Array.from({length:17},(_,n)=>f.transaction('a','b',1,n)));const oversized=p.validateBlock(many,g,f.ctx).code;assert.ok(['TRANSACTIONS','SHAPE'].includes(oversized),`expected TRANSACTIONS or SHAPE for more than 16 transactions, got ${oversized}`);assert.equal(p.validateBlock({...b,extra:1},g,f.ctx).code,'SHAPE');
+  });
+  add('05','parent-unchanged','Validation leaves the supplied parent record unchanged',()=>{
+    const f=fixture(),g=genesis(f),before=clone(g),b=makeBlock(f,g,[f.transaction('a','b',12,0)]);record(f,b,g);
+    assert.deepEqual(g,before,'CONTRACT: "No function may mutate its arguments." Execute on a copy of the parent state.');
   });
   add('06','height','Choose greatest validated height; input order is irrelevant',()=>{
     const r=[{id:'c',height:2},{id:'b',height:4},{id:'a',height:1}];assert.equal(p.chooseHead(r),'b');assert.equal(p.chooseHead([...r].reverse()),'b');
@@ -190,6 +210,12 @@ export function cases(p) {
     assert.equal(p.verifyCertificate(['a','b','c'].map(k=>f.vote(k,-1,id)),-1,id,f.ctx),false);
     assert.equal(p.verifyCertificate(['a','b','c'].map(k=>f.vote(k,2,'not-a-block')),2,'not-a-block',f.ctx),false);
   });
+  // CONTRACT verifyCertificate: "Each vote has exactly voter,height,blockId,signature; require a valid supplied verifyVote for the exact requested height and block ID."
+  add('07','exact-target-and-shape','Only votes for the exact height and block ID, with exactly the four vote fields, count',()=>{
+    const f=fixture(),id='a'.repeat(64);
+    assert.equal(p.verifyCertificate([f.vote('a',2,id),f.vote('b',3,id),f.vote('c',3,id)],2,id,f.ctx),false,'votes for another height cannot be pooled');
+    assert.equal(p.verifyCertificate(['a','b','c'].map(k=>({...f.vote(k,2,id),note:'extra'})),2,id,f.ctx),false,'a vote with an extra field is malformed');
+  });
   add('08','orphan-revalidation','A losing-branch nonce conflict must not be resurrected',()=>{
     const f=fixture(),g=genesis(f),oldTx=f.transaction('a','b',20,0),newTx=f.transaction('a','c',30,0);
     const old=record(f,makeBlock(f,g,[oldTx]),g),next=record(f,makeBlock(f,g,[newTx]),g),r=p.reconcile([g,old],[g,next],[],f.ctx);
@@ -206,6 +232,14 @@ export function cases(p) {
   });
   add('08','copy-state','Returned state is independent of the supplied path state',()=>{
     const f=fixture(),g=genesis(f),r=p.reconcile([g],[g],[],f.ctx);r.state.a.balance=0;assert.equal(g.state.a.balance,100);
+  });
+  // CONTRACT reconcile: "Gather transactions from old path blocks in order, then pending; ... pass remaining candidates through selectMempool at the new head's state with limit 16."
+  add('08','old-path-first-and-limit','Old-path transactions precede pending ones, and the rebuilt pool holds at most 16',()=>{
+    const f=fixture(),g=genesis(f),oldTx=f.transaction('b','c',5,0),pendingTx=f.transaction('b','d',6,0);
+    const old=record(f,makeBlock(f,g,[oldTx]),g),next=record(f,makeBlock(f,g,[f.transaction('a','d',1,0)]),g);
+    assert.deepEqual(p.reconcile([g,old],[g,next],[pendingTx],f.ctx).mempool.map(txId),[txId(oldTx)],'an old-path transaction wins its nonce over a pending one');
+    const many=Array.from({length:17},(_,n)=>f.transaction('a','b',1,n));
+    assert.equal(p.reconcile([g],[g],many,f.ctx).mempool.length,16,'reconcile uses limit 16');
   });
   return out;
 }

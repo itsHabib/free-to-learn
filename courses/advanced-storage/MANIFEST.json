@@ -41,19 +41,19 @@
       "bytes": 595
     },
     "checks.mjs": {
-      "sha256": "6c3a1f5ea85accaa9acf94030cd44f2efe8f10b42b0c4eb1cf1eaabe7f693006",
-      "bytes": 22001
+      "sha256": "a3119cb8b43fcfb804f024f987e1615932715925f34abbc9be1e7679fbaeb50c",
+      "bytes": 30308
     },
     "index.html": {
       "sha256": "ea1ee062642bc30ac398d87f31bb4881b025b98b56df214a6939b744ce73a87a",
       "bytes": 61586
     },
     "investigation.mjs": {
-      "sha256": "9885cc077b8482e2eb8e5f8f923bd6ef3b88a071561acb3e1c08f020dba0bff6",
-      "bytes": 14640
+      "sha256": "1b97b30cfc86b1227c711f3611ada0d7b7aca7cf08ee0a923491fc768347ec02",
+      "bytes": 15574
     },
     "lab.mjs": {
-      "sha256": "23963c7a6bb25ec88b85b9a885e1014f2546a29e4d5e0c5b71f670a605fafb56",
+      "sha256": "274b0cadbd215a9c4683c558e6a3cd340dd21e276b859a585f0fe1b641d3a3b8",
       "bytes": 13541
     },
     "lessons/01.md": {
@@ -149,8 +149,8 @@
       "bytes": 3009
     },
     "workshop.mjs": {
-      "sha256": "a530f7d094b36d45a5c1a00475887b2d93f44674dd0a8d86cf2fa31d92c19e8b",
-      "bytes": 18041
+      "sha256": "2fa740be24a4bda927dc562499ea9a2b94ded185ac3b4a87dd898b6ced26d5b1",
+      "bytes": 17842
     }
   },
   "extension": {
@@ -160,12 +160,12 @@
     "scope": "Local CLI schedule experiments, learner predictions, policy comparisons and action traces; unchanged runtime and witness tools."
   },
   "qaSuccessor": {
-    "reason": "Explicit full-transaction answer variants retained. Direct-file reader worker and saved-response/source recovery repaired. Workshop now preserves exactly 5e9 internal bytes and actual destination capacity. Graders and unsolved starters unchanged.",
+    "reason": "Explicit full-transaction answer variants retained. Direct-file reader worker and saved-response/source recovery repaired. Workshop checks actual destination capacity, without imposing an operator-specific free-space floor on learners. Unsolved starters unchanged.",
     "baseArchiveSha256": "9a7ca9f6aeaeaeb0b0c54e7739395d61af02f2d52a72737b27c9c098c2ea21dd",
     "publication": "not authorized/not performed",
     "checkIntegrity": {
-      "version": "prototype-v3-check-integrity",
-      "scope": "Four public-check false passes closed; version-examination callback checked in terminal and bounded reader; read-only CSN, equal-value write conflict and full conflict count checked. Existing saved attempts stay immutable; new results use new execution identity. Unsolved starter unchanged."
+      "version": "prototype-v4-check-integrity",
+      "scope": "57 terminal checks: retains previous four repairs and adds ten contract-derived cases. Unit09 accepts clear conflict descriptions and independently excludes masking write conflicts. Prior attempts stay immutable; changed execution identity requires fresh runs and reassessment for units08/09. Bounded browser policy checks remain a separately scoped subset, not terminal engine/persistence checks."
     }
   }
 }

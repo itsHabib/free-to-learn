@@ -49,7 +49,7 @@ async function main(){
   if(command==='lesson'){
     if(!validModule(arg)&&arg!=='09')fail('Use lesson 01 through lesson 09');
     const name=(await readdir(join(root,'lessons'))).find(n=>n.startsWith(arg+'-'));
-    console.log((await read('lessons/'+name)).replace('{{diagram:merkle}}','[Optional diagram: reader/merkle.svg. The full path is described in the text above.]'));return;
+    console.log((await read('lessons/'+name)).replace('{{diagram:merkle}}','[Optional diagram: reader/merkle.svg. The full path is described in the text above.]').replace(/^\{\{practice:(\w+)\}\}$/gm,(_,id)=>`Practice ${id}: run node lab.mjs practice ${id} to read the question, then node lab.mjs practice ${id} OPTION_NUMBER to commit your choice.`));return;
   }
   if(command==='practice'){
     const item=items.find(x=>x.id===arg);if(!item)fail('Use a practice ID such as 01a; IDs appear in each lesson.');

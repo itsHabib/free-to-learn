@@ -105,7 +105,13 @@ export async function verifyTransfer(path, expectedSourceSha256, runRoot) {
   const countTable=table=>[...initial].filter(([id,row])=>JSON.parse(id)[0]===table&&row!==null).length;
   check('T00-transfer-domain',validRoles&&countTable('items')>=2&&countTable('collections')>=2,'Use distinct role aliases, one transaction per role, at least two initial items and two collections.');
   const siPurge=collect(si,'commit',roles.purger).at(-1), serPurge=collect(serial,'commit',roles.purger).at(-1);
-  check('T03-predicate-race',siPurge?.result.status==='committed'&&serPurge?.result.status==='aborted'&&serPurge?.result.conflicts?.some(c=>c.kind==='read'&&c.table==='holds')&&!serPurge?.result.conflicts?.some(c=>c.kind==='write'),'The purge succeeds under SI but is rejected for a holds read dependency, without a masking write conflict.');
+  // The contract leaves the description format of a conflict to the learner, so this check reads behaviour it can
+  // verify itself: the purge commits under SI, aborts with at least one conflict under Serializable, and no other
+  // transaction committed a write to a key the purge wrote (that would be a write conflict masking the read one).
+  // T04 separately requires the matching holds change that the purge's empty read depended on.
+  const purgeStart=collect(serial,'begin',roles.purger)[0]?.index, purgeKeys=new Set(serial.replay.results.filter(x=>x.action.tx===roles.purger&&['put','delete'].includes(x.action.op)).map(x=>identity(x.action.table,x.action.key)));
+  const maskingWrite=serial.oracle.facts.changes.some(c=>c.tx!==roles.purger&&c.index>purgeStart&&c.index<serPurge?.index&&purgeKeys.has(identity(c.table,c.key)));
+  check('T03-predicate-race',siPurge?.result.status==='committed'&&serPurge?.result.status==='aborted'&&Array.isArray(serPurge?.result.conflicts)&&serPurge.result.conflicts.length>0&&purgeKeys.size>0&&!maskingWrite,'The purge succeeds under SI but is rejected under Serializable with at least one reported conflict, and no other transaction committed a write to a key the purge wrote. Any clear conflict description format is accepted.');
   const facts=serial.oracle.facts;
   const causalHold=facts.changes.some(c=>c.tx===roles.holder&&c.table==='holds'&&c.row!==null&&c.index<serPurge?.index&&
     facts.reads.some(r=>r.tx===roles.purger&&r.table==='holds'&&r.complete&&r.rows.length===0&&r.index<c.index&&matches(c.row,r.predicate)&&

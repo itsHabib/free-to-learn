@@ -48,6 +48,11 @@ test(1, 'R03-overlay-scan', 'Scan merges private inserts and removes private del
   const db = fixture(E), t = db.begin(); db.put(t, 'items', 2, row(20)); db.delete(t, 'items', 1);
   assert.deepEqual(rows(db, t).map(x => x.key), [2]);
 });
+test(1, 'R03-examine-work', 'A reader several versions behind reports more than the one version it returns.', E => {
+  const db = fixture(E), h = [ver(1, 1, 10), ver(1, 4, 40), ver(1, 7, 70), ver(1, 9, 90)], seen = [];
+  assert.equal(db.visibleVersion(h, 5, v => seen.push(v))?.row.value, 40);
+  assert.ok(new Set(seen).size >= 2, 'With the snapshot between two commits, any search must look at a version on each side of it; report each version you examine.');
+});
 
 test(2, 'R05-two-row', 'A multi-row commit leaves an old reader on its entire old snapshot.', E => {
   const db = fixture(E, [ver(1, 1, 10), ver(2, 1, 20)], { stage: 2 }), old = db.begin(), w = db.begin();
@@ -65,6 +70,12 @@ test(2, 'R05-uncertain', 'Failure after durable acknowledgement poisons the engi
   const db = fixture(E, [], { stage: 2, fault: phase => { if (phase === 'after-durable') throw Error('injected stop'); } }), t = db.begin();
   db.put(t, 'items', 1, row(1)); db.put(t, 'items', 2, row(2)); assert.equal(db.commit(t).status, 'indeterminate');
   assert.throws(() => db.begin(), /reopen/); const restored = new E({ disk: db.disk }); assert.equal(rows(restored, restored.begin()).length, 2);
+});
+test(2, 'R05-uncertain-before-durable', 'A failure inside persistence, even before the durable acknowledgement, is indeterminate, never a definite abort.', E => {
+  // CONTRACTS 02: "A failure during persistence/publication must poison the coordinator and return indeterminate through the supplied helper."
+  const db = fixture(E, [], { stage: 2, fault: phase => { if (phase === 'before-persist') throw Error('injected stop'); } }), t = db.begin();
+  db.put(t, 'items', 1, row(1)); assert.equal(db.commit(t).status, 'indeterminate');
+  assert.throws(() => db.begin(), /reopen/);
 });
 test(2, 'R05-read-only-csn', 'A successful transaction without writes does not allocate or persist a write CSN.', E => {
   for (const declared of [false, true]) {
@@ -94,6 +105,16 @@ test(3, 'R06-same-key', 'The second writer of a shared key aborts after the firs
   const db = fixture(E), a = db.begin(), b = db.begin(); db.put(a, 'items', 1, row(11)); db.put(b, 'items', 1, row(12));
   assert.equal(db.commit(a).status, 'committed'); assert.equal(db.commit(b).status, 'aborted'); assert.equal(db.get(db.begin(), 'items', 1).value, 11);
 });
+test(3, 'R06-abort-not-durable', 'A validation abort reaches no storage: after reopening the store the aborted write is absent.', E => {
+  // CONTRACTS 02: "Your method must check this.conflicts(tx) before persistence. A nonempty conflict list finishes the transaction aborted."
+  const db = fixture(E), a = db.begin(), b = db.begin(); db.put(a, 'items', 1, row(11)); db.put(b, 'items', 1, row(12));
+  assert.equal(db.commit(a).status, 'committed'); const csn = db.csn, events = db.events.length;
+  assert.equal(db.commit(b).status, 'aborted');
+  assert.ok(!db.events.slice(events).some(e => ['persist-start', 'durable', 'published'].includes(e.type)), 'Check conflicts before persistence: an aborted commit must not persist or publish anything.');
+  const restored = new E({ disk: db.disk });
+  assert.equal(restored.csn, csn, 'Reopening must not find a commit that was reported aborted.');
+  assert.equal(restored.get(restored.begin(), 'items', 1)?.value, 11, 'Reopening must show the committed writer, not the aborted one.');
+});
 test(3, 'R09-independent', 'Independent active writers both commit and do not move an old reader.', E => {
   const db = fixture(E), r = db.begin(), a = db.begin(), b = db.begin(); db.put(a, 'items', 2, row(2)); db.put(b, 'items', 3, row(3));
   assert.equal(db.commit(a).status, 'committed'); assert.equal(db.commit(b).status, 'committed'); assert.equal(db.get(r, 'items', 2), null);
@@ -122,6 +143,11 @@ test(3, 'R06-all-conflicts', 'Write validation reports every conflicting key, no
 test(3, 'R06-delete-reinsert', 'A stale reinsertion conflicts with a committed deletion.', E => {
   const db = fixture(E), a = db.begin(), b = db.begin(); db.delete(a, 'items', 1); db.commit(a); db.put(b, 'items', 1, row(20));
   assert.equal(db.commit(b).status, 'aborted');
+});
+test(3, 'R04-abort-terminal', 'A validation abort finishes the handle: no pin remains and it cannot be used again.', E => {
+  const db = fixture(E), a = db.begin(), b = db.begin(); db.put(a, 'items', 1, row(11)); db.put(b, 'items', 1, row(12));
+  db.commit(a); assert.equal(db.commit(b).status, 'aborted');
+  assert.equal(db.pins().length, 0); assert.throws(() => db.get(b, 'items', 1), /active/);
 });
 
 test(4, 'R08-write-skew', 'Snapshot mode permits the disjoint-write anomaly; Serializable rejects a conflicting history.', E => {
@@ -157,6 +183,20 @@ test(4, 'R08-declared-read-only', 'A declared read-only view can serialize at it
   commitPut(db,1,20); assert.equal(db.get(t,'items',1).value,10); assert.equal(db.commit(t).status,'committed');
 });
 
+test(4, 'R07-read-then-deleted', 'A committed deletion of a row that was read is a conflict, for a point read and for a predicate read.', E => {
+  // CONTRACTS 04: "Return conflicts between the transaction's logical reads and committed changes after its snapshot." "A predicate depends on either a matching before-image or matching after-image."
+  for (const read of [(db, t) => db.get(t, 'items', 1), (db, t) => rows(db, t, range(20, 30))]) {
+    const db = fixture(E, [ver(1, 1, 25)], { mode: 'serializable' }), t = db.begin(); read(db, t);
+    const d = db.begin(); db.delete(d, 'items', 1); assert.equal(db.commit(d).status, 'committed');
+    assert.equal(db.commit(t).status, 'aborted');
+  }
+});
+test(4, 'R07-change-at-snapshot', 'A change committed at the snapshot itself is already visible and is not a conflict.', E => {
+  // CONTRACTS 04: "committed changes after its snapshot".
+  const db = fixture(E, undefined, { mode: 'serializable' }); commitPut(db, 1, 20);
+  const t = db.begin(); assert.equal(db.get(t, 'items', 1).value, 20); rows(db, t, range(0, 100));
+  assert.equal(db.commit(t).status, 'committed');
+});
 test(5, 'R10-old-index', 'Old and new index values both find their own visible version.', E => {
   const db = fixture(E), old = db.begin(); commitPut(db, 1, 20, 'B'); const fresh = db.begin();
   assert.deepEqual(rows(db, old, eq('group', 'A'), 'index'), rows(db, old, eq('group', 'A')));
@@ -180,6 +220,21 @@ test(5, 'R10-index-reopen', 'Reopened history supports index/full-scan equivalen
   assert.deepEqual(rows(restored, t, eq('group', 'B'), 'index'), rows(restored, t, eq('group', 'B')));
 });
 
+test(5, 'R10-tombstone-history', 'A history holding a tombstone still indexes its non-tombstone versions.', E => {
+  // CONTRACTS 05: "the distinct typed values appearing in any retained non-tombstone version".
+  const db = fixture(E), old = db.begin(), d = db.begin(); db.delete(d, 'items', 1); assert.equal(db.commit(d).status, 'committed');
+  assert.equal(rows(db, old, eq('group', 'A'), 'index').length, 1); assert.equal(rows(db, db.begin(), eq('group', 'A'), 'index').length, 0);
+});
+test(5, 'R10-null-and-typed', 'Null is an indexed value of its own, distinct from the text "null"; index and full scan agree.', E => {
+  // CONTRACTS 05: "distinct typed values"; operations: index access "supports equality and isNull".
+  const nullRow = { label: 'item-1', group: null, active: true, value: 1 };
+  const db = fixture(E, [{ table: 'items', key: 1, csn: 1, row: nullRow }, ver(2, 1, 2, 'B')]), old = db.begin();
+  const isNull = { op: 'isNull', field: 'group' };
+  assert.deepEqual(rows(db, old, isNull, 'index'), rows(db, old, isNull)); assert.equal(rows(db, old, isNull, 'index').length, 1);
+  commitPut(db, 1, 1, 'null'); const fresh = db.begin();
+  assert.deepEqual(rows(db, old, isNull, 'index').map(x => x.key), [1], 'The old reader still finds its null membership.');
+  assert.deepEqual(rows(db, fresh, eq('group', 'null'), 'index').map(x => x.key), [1]); assert.equal(rows(db, fresh, isNull, 'index').length, 0);
+});
 test(6, 'R11-boundary-version', 'Retention preserves the predecessor below an in-between watermark.', E => {
   const db = fixture(E), h = [ver(1, 1, 1), ver(1, 3, 3), ver(1, 8, 8)];
   const kept = db.retainedVersions(h, 6); assert.ok(kept.some(v => v.csn === 3)); assert.ok(kept.some(v => v.csn === 8));
@@ -268,6 +323,33 @@ test(7, 'R16-no-execution', 'Explaining a plan does not execute it or change mea
   const db = joinFixture(E), t = db.begin(), left = analyze(db, t, 'items', 'group'), right = analyze(db, t, 'bookings', 'group');
   const before = JSON.stringify({ metrics: db.metrics, events: db.events, histories: [...db.histories] });
   explain(db, t, query, left, right); assert.equal(JSON.stringify({ metrics: db.metrics, events: db.events, histories: [...db.histories] }), before);
+});
+
+test(7, 'R15-summary-contract', 'A summary returns its metadata unchanged, counts every visible row and keeps null as its own value.', E => {
+  // CONTRACTS 07: "Return that metadata unchanged with rowCount and frequencies:[{value,count}]. Include null as its own value."
+  const db = fixture(E), metadata = { table: 'items', field: 'group', snapshot: 3, physicalCSN: 7, physicalRevision: 9, physicalKeys: 4, versionProbes: 6, indexCandidates: [{ value: 'A', count: 2 }, { value: null, count: 1 }] };
+  const visible = [{ key: 1, row: row(1, 'A') }, { key: 2, row: { ...row(2), group: null } }, { key: 3, row: row(3, 'B') }];
+  const result = db.summarizeSnapshot(visible, 'group', structuredClone(metadata)), { rowCount, frequencies } = result;
+  for (const key of Object.keys(metadata)) assert.deepEqual(result[key], metadata[key], 'Metadata field ' + key + ' must come back unchanged.');
+  assert.equal(rowCount, 3);
+  assert.deepEqual(frequencies.map(f => [typeof f.value, f.value, f.count]).sort(), [['object', null, 1], ['string', 'A', 1], ['string', 'B', 1]]);
+});
+test(7, 'R16-estimate-formulas', 'Each candidate follows the published estimate formulas with the supplied weights.', E => {
+  // CONTRACTS 07: visits scan-loop (left.physicalKeys, m * right.physicalKeys); scan-hash (left.physicalKeys, right.physicalKeys);
+  // index-loop (a, m * b). Version examinations per side: ceiling of visits * versionProbes / physicalKeys. Predicate
+  // evaluations equal total visits. Every candidate estimates m*n rows. Hash build adds right.rowCount and hash probe adds m,
+  // only for scan-hash. Cost is the weighted sum. Equality to null gives m = n = 0.
+  const db = fixture(E), base = { snapshot: 5, physicalCSN: 5, physicalRevision: 5, field: 'group' };
+  const left = { ...base, table: 'items', physicalKeys: 10, versionProbes: 25, rowCount: 9, indexCandidates: [{ value: 'A', count: 4 }, { value: null, count: 2 }], frequencies: [{ value: 'A', count: 3 }, { value: 'B', count: 5 }, { value: null, count: 1 }] };
+  const right = { ...base, table: 'bookings', physicalKeys: 6, versionProbes: 9, rowCount: 5, indexCandidates: [{ value: 'A', count: 5 }], frequencies: [{ value: 'A', count: 2 }, { value: 'C', count: 3 }] };
+  const weights = { candidateVisits: 1, versionExaminations: 3, predicateEvaluations: 2, hashBuild: 5, hashProbe: 7, outputRows: 11 };
+  const shape = plan => Object.fromEntries(plan.candidates.map(c => [c.id, [c.work.candidateVisits, c.work.versionExaminations, c.work.predicateEvaluations, c.work.hashBuild, c.work.hashProbe, c.work.outputRows, c.estimatedRows, c.cost]]));
+  const plan = db.planEqualityJoin(structuredClone(left), structuredClone(right), 'A', { ...weights });
+  assert.deepEqual(shape(plan), { 'scan-loop': [28, 52, 28, 0, 0, 6, 6, 306], 'scan-hash': [16, 34, 16, 5, 3, 6, 6, 262], 'index-loop': [19, 33, 19, 0, 0, 6, 6, 222] });
+  assert.equal(plan.selected, 'index-loop');
+  const none = db.planEqualityJoin(structuredClone(left), structuredClone(right), null, { ...weights });
+  assert.ok(none.candidates.every(c => c.estimatedRows === 0 && c.work.outputRows === 0));
+  assert.equal(none.candidates.find(c => c.id === 'scan-loop').work.candidateVisits, 10, 'With m = 0 the scan-loop visits only the left side.');
 });
 
 export function runChecks(Engine, through = 7) {

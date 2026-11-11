@@ -666,7 +666,7 @@
     {
       "id": "sandbox-model",
       "archive": ".packages/sandbox-model.zip",
-      "sha256": "0ce28a8730e931ac5fb95c8132fb48b92f9ef833180d71c65a947d676284a337",
+      "sha256": "11c871d27c518579fea8ad60ec1f2784bf69d21fbff4e0b512d55c0ed392c6f9",
       "archive_prefix": "boundary-lab/",
       "direct_root": "courses/boundary-lab",
       "root": "boundary-lab",
@@ -708,7 +708,7 @@
     {
       "id": "advanced-storage",
       "archive": ".packages/advanced-storage.zip",
-      "sha256": "e3af0410a576def4e577ef5d89d50933a5e95cf5181351d96c9da8b1b12e0724",
+      "sha256": "3ffa0d0d4912a13066a14f2f33ed21a24c0232de1bcfc1f6d6b1979bf3cb58ab",
       "archive_prefix": "advanced-storage/",
       "direct_root": "courses/advanced-storage",
       "root": "advanced-storage",
@@ -759,7 +759,7 @@
     {
       "id": "blockchain-laboratory",
       "archive": ".packages/blockchain-laboratory.zip",
-      "sha256": "074b5c3e8bf088c354d333745d47c3027ec1f8ce60b67b431649becb9a9c4f09",
+      "sha256": "9d8ec091bda13089ed78a4d488aab3a65ff0d7fe9b72b365c6155fcc37d5f32b",
       "archive_prefix": "blockchain-laboratory/",
       "direct_root": "courses/blockchain-laboratory",
       "root": "blockchain-laboratory",

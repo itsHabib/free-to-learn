@@ -8,10 +8,10 @@ This is a teaching model, not a production sandbox. Guest programs are tiny byte
 
 Requires an existing Rust/Cargo toolchain and Python 3.12+; tested here with Rust/Cargo 1.97.1 and Python 3.14.6 on macOS arm64. The project has no external Cargo dependencies. No installation or network connection is part of these commands.
 
-Start in a fresh directory containing `low-level-sandbox-learner.zip`, with no existing `boundary-lab` subdirectory. The archive extracts to `boundary-lab/`. If you have already extracted it, enter that directory and start with the first `cargo` command below.
+Start in a fresh directory containing `sandbox-model.zip`, with no existing `boundary-lab` subdirectory. The archive extracts to `boundary-lab/`. If you have already extracted it, enter that directory and start with the first `cargo` command below.
 
 ```sh
-python3 -m zipfile -e low-level-sandbox-learner.zip .
+python3 -m zipfile -e sandbox-model.zip .
 cd boundary-lab
 cargo run --offline -- status
 cargo run --offline -- demo

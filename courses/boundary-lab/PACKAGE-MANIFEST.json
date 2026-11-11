@@ -16,8 +16,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 6750,
-      "sha256": "f3b1b6e5f5c569ec887fda36ccf4d6b11865997e6d64a6ab99dbabc3cbad47a5"
+      "bytes": 6726,
+      "sha256": "e82118ddc80d25f544beea17358dadb2b76f4e6e20720da1a360a2723aeda053"
     },
     {
       "path": "run.py",

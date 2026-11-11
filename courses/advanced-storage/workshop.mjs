@@ -18,11 +18,9 @@ function bounded(path, limit = 131072) {
   return readFileSync(path);
 }
 function headroom(path, bytes = 0) {
-  const internal = statfsSync('/');
-  requireThat(internal.bavail * internal.bsize >= 5_000_000_000, 'Stopped writing: internal free space is below 5,000,000,000 bytes.');
-  const space = statfsSync(path), remaining = space.bavail * space.bsize - bytes;
-  const onMountedVolume = resolve(path).startsWith('/Volumes/');
-  requireThat(remaining >= (onMountedVolume ? 0 : 5_000_000_000), onMountedVolume ? `Stopped writing: not enough space for ${bytes} bytes on the destination volume.` : 'Stopped writing: planned output would cross the 5,000,000,000-byte internal floor.');
+  // Only one question: is there room on the disk that holds this path for the bytes about to be written?
+  const space = statfsSync(path);
+  requireThat(space.bavail * space.bsize >= bytes, `Stopped before writing: this step needs ${bytes} bytes and the disk that holds ${path} has less than that free. Free some space, then run the command again with a new destination.`);
 }
 function newOutput(project, path) {
   const out = resolve(path);
