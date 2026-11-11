@@ -1,8 +1,8 @@
 {
   "kind": "learner-source-and-build",
   "status": "local-terminal-candidate-unreleased",
-  "supersedesArchiveSha256": "ef4c1beebff57261b7e1231e6e990c2362c232101eaac775c41d7a9c907c6b0f",
-  "buildId": "892de3195932df831b964db7f2a79b3c37b1647c8c4f5be284f1d68c819ee553",
+  "supersedesArchiveSha256": "a376d76c21c6ab59c343005a963dd5dc8f8520ae618f3ab634fc460b77d55928",
+  "buildId": "63f30945cf3e792bc4d08e67bac8b7e47aa73e2daa96462a7328d6a6740ec397",
   "privateAuthorFilesIncluded": false,
   "files": [
     {
@@ -12,13 +12,13 @@
     },
     {
       "path": "TERMINAL.md",
-      "bytes": 4375,
-      "sha256": "cd4d170f8e29cc00ef1f0da3d26390c0c7e415f7c9594a7f6ca9535fc357f862"
+      "bytes": 4783,
+      "sha256": "863f4f6cdf74a076b0427f31b9c9d246180e95f1691c070888d31da7b518a21a"
     },
     {
       "path": "build/CONTRACT.md",
-      "bytes": 14323,
-      "sha256": "b7f781a2bafa25cefe4f3724df6d69b935199d690a94211c2b163aeb0d5d8e1a"
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
     },
     {
       "path": "build/SOURCES.md",
@@ -33,12 +33,12 @@
     {
       "path": "build/build.json",
       "bytes": 2665,
-      "sha256": "4d2041e19e052bb80c96510103967e1ba4b5e52ce21734e2998cb9956fdac559"
+      "sha256": "c45a45dade125111c81873fdef3d9a8a7d93af42cfde54e7f9337acb84446246"
     },
     {
       "path": "build/checks.mjs",
-      "bytes": 16789,
-      "sha256": "4299a45cdf9a52e4a19fb2684a442a7d17c9ae0a8881681c285959d6e5eca002"
+      "bytes": 40566,
+      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
     },
     {
       "path": "build/content.mjs",
@@ -102,13 +102,13 @@
     },
     {
       "path": "build/worker.js",
-      "bytes": 48387,
-      "sha256": "5c2dc5bf7681ac551c9256ba03c4213fe0752a75bec56b9472a90629db2fbaa6"
+      "bytes": 72164,
+      "sha256": "deb436aceb9f1ad49b45f473f11f6875cd8f6f65ae280868732487152e52e0a2"
     },
     {
       "path": "public/CONTRACT.md",
-      "bytes": 14323,
-      "sha256": "b7f781a2bafa25cefe4f3724df6d69b935199d690a94211c2b163aeb0d5d8e1a"
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
     },
     {
       "path": "public/SOURCES.md",
@@ -122,8 +122,8 @@
     },
     {
       "path": "public/checks.mjs",
-      "bytes": 16789,
-      "sha256": "4299a45cdf9a52e4a19fb2684a442a7d17c9ae0a8881681c285959d6e5eca002"
+      "bytes": 40566,
+      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
     },
     {
       "path": "public/content.mjs",

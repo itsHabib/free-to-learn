@@ -51,6 +51,19 @@ export function checkBaseline(chooseAction) {
     requireCondition(context.oracle.used === 0, 'The baseline attempted a simulation with zero credits.');
     return { actor: state.currentPlayer, simulationCredits: 0 };
   }, '01.3'));
+  checks.push(runCheck('B04', 'Equal-width sampling over many seeds always lands inside the legal-action list.', () => {
+    callable(chooseAction, 'chooseAction');
+    const states = [initialState(), ...[3, 19, 47].map(seed => generateScenario(seed, 5).state)];
+    for (const state of states) for (let i = 0; i < 300; i++) {
+      const seed = Math.imul(i + 1, 2654435761) >>> 0; // spread over uint32; consecutive seeds start with similar values
+      const context = createDecisionContext(state, { seed, budget: 0 });
+      const output = synchronousResult(chooseAction, context), action = actionOf(output);
+      requireCondition(Number.isInteger(action) && context.legalActions.includes(action),
+        'Lesson 1.2: values lie in [0,1); "Divide the unit interval into" as many equal slots as there are legal actions. This seed selected outside the legal list, which an index of floor(r * (n + 1)) or similar does.',
+        { failureInput: { seed, state, legalActions: context.legalActions }, observed: output });
+    }
+    return { seedsPerState: 300, states: states.length };
+  }, '01.2'));
   return report('baseline', checks);
 }
 
@@ -113,6 +126,20 @@ export function checkEvaluation(evaluate) {
         { failureInput: { state, player }, observed: [first, second] });
     }
   }, '02.1'));
+  checks.push(runCheck('E04', 'Even a lopsided nonterminal position stays inside [-0.99, 0.99].', () => {
+    callable(evaluate, 'evaluate');
+    const states = [position([15, 16, 17, 18, 19], [24]), position([15, 16, 17, 18, 19], [24], 1), position([0], [5, 6, 7, 8, 9], 1), position([0], [5, 6, 7, 8, 9])];
+    for (const state of states) {
+      requireCondition(!state.terminal, 'Fixture error: this teaching position must be nonterminal.', { failureInput: state });
+      for (const player of [0, 1]) {
+        const value = evaluated(evaluate, state, player);
+        requireCondition(Math.abs(value) <= 0.99,
+          'Lesson 2.1: "Nonterminal heuristic scores in this course lie between -0.99 and +0.99. Terminal outcomes remain exactly -1 and +1." Cap or squash the score.',
+          { failureInput: { state, player }, observed: value });
+      }
+    }
+    return { positions: states.length };
+  }, '02.1'));
   return report('evaluation', checks);
 }
 
@@ -138,6 +165,22 @@ export function checkSearch(search, { evaluate } = {}) {
       return { budget, action, simulationCredits: context.oracle.used, strengthClaim: 'none at inadequate budget' };
     }, '02.3'));
   }
+  checks.push(runCheck('S-terminal-first', 'Test for a terminal state before applying the depth limit or the heuristic.', () => {
+    callable(search, 'search');
+    const fixture = { id: 'terminal-at-horizon', maxDepth: 1, nodes: {
+      root: { player: 0, moves: { 1: 'win', 2: 'promising' } },
+      win: { value: 1, heuristic: 0.5 },
+      promising: { player: 1, heuristic: 0.9, moves: { 21: 'draw' } },
+      draw: { value: 0 },
+    } };
+    const base = makeTreeContext(fixture, { maxDepth: 1, budget: 16 });
+    const context = { ...base, evaluate(input, player) { const h = fixture.nodes[input?.id]?.heuristic ?? 0; return player === 0 ? h : -h; } };
+    const action = decision(search, context);
+    requireCondition(action === 1,
+      'Lesson 2.1: "Terminal handling comes before any depth limit or heuristic." Move 1 reaches a terminal win (+1) on the last allowed edge; the heuristic would score it 0.5 and prefer move 2 (0.9).',
+      { failureInput: { tree: fixture, maxDepth: 1 }, observed: action, acceptedActions: [1] });
+    return { action, simulationCredits: context.oracle.used };
+  }, '02.1'));
   checks.push(runCheck('S-game', 'Connect the same search to the supplied real game and recognize an immediate win.', () => {
     callable(search, 'search');
     callable(evaluate, 'evaluate');

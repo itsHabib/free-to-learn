@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "status": "LOCAL_SIX_ADDITIONS_INTEGRATED_RELEASE_QA_PENDING",
+  "status": "LOCAL_SIX_ADDITIONS_REPAIRED_AWAITING_FINAL_RELEASE_CHECK",
   "files": [
     {
       "path": ".ci/courses.json",
       "bytes": 26263,
-      "sha256": "dbc70c48a74e29f42b18f1cbd9cc77c8f95e6633f2139aac19c9c8c8c2b0ae02"
+      "sha256": "f1b4eed0ba888333844035719177cf449b035eb9f856718c7858be8dd5747a85"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -69,13 +69,13 @@
     },
     {
       "path": ".packages/agent-league.zip",
-      "bytes": 211138,
-      "sha256": "85c8cce4412bf5395c8d4078d152113f93cfc03723279b72449b5ca04b2979c0"
+      "bytes": 216535,
+      "sha256": "9ffdad7469b12c248000ac453658d1d1c794ae234cc28467aa7e122f94d3346b"
     },
     {
       "path": ".packages/agent-league.zip.sha256",
       "bytes": 83,
-      "sha256": "311b3740e692599316e101791bce5b7d0da06a34e932f6098240ab0b0aa97386"
+      "sha256": "c779112b9b4fe139275dcef8da71c821515b5464a0ced74e694c30000faa607c"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -129,13 +129,13 @@
     },
     {
       "path": ".packages/onion-routing.zip",
-      "bytes": 210622,
-      "sha256": "ef160e0303ae02a8d05927a716f7b30f8dc5ec19015df6c32422650ccc67a56c"
+      "bytes": 212454,
+      "sha256": "7eefe49a90f28dfa3dbdbffc3764d12e64804d7b215936587cfd68e9ed7eaf9f"
     },
     {
       "path": ".packages/onion-routing.zip.sha256",
       "bytes": 84,
-      "sha256": "3dd7d55843200f96e55f39898fcf0f5d2a35d0009a343f2072d7ace5548a6cac"
+      "sha256": "d65d7d45e3148caf7b1aa1f2f6c0838c7e5a27a6f7c87e2349942cdd60eac0e7"
     },
     {
       "path": ".packages/recoverable-storage.zip",
@@ -149,13 +149,13 @@
     },
     {
       "path": ".packages/sandbox-model.zip",
-      "bytes": 59515,
-      "sha256": "1534573a57c61820698a56837a70e978bcc2295b7c5d526fcc17f1112fbc5b7d"
+      "bytes": 60410,
+      "sha256": "0ce28a8730e931ac5fb95c8132fb48b92f9ef833180d71c65a947d676284a337"
     },
     {
       "path": ".packages/sandbox-model.zip.sha256",
       "bytes": 84,
-      "sha256": "7a27a36efcd955e1ba70e6d37c4701f90ca2d7adc1e80344921567efb406684b"
+      "sha256": "33dfa64a6432fe5f6f8faba897abfe6142c3ccda67d91b193f4f3978b77b03d0"
     },
     {
       "path": ".packages/small-llm-runtime.zip",
@@ -179,13 +179,13 @@
     },
     {
       "path": ".packages/tiny-browser.zip",
-      "bytes": 161674,
-      "sha256": "a376d76c21c6ab59c343005a963dd5dc8f8520ae618f3ab634fc460b77d55928"
+      "bytes": 181690,
+      "sha256": "38e61665c640f3c88b6da8f74ac7efd28651bbb5afaad8eacd2141e71b17ee65"
     },
     {
       "path": ".packages/tiny-browser.zip.sha256",
       "bytes": 83,
-      "sha256": "fd48e2dde344f6d738b836892fa4415a0e101bb9dfcf5fb03f83279d2bf496c6"
+      "sha256": "829ba549be7ce77f30ec35eb0470c8092f1a03b1fdee4bc2c97ef6676ffa0ebf"
     },
     {
       "path": "BACKUP-AND-RESTORE.md",
@@ -2244,18 +2244,18 @@
     },
     {
       "path": "courses/boundary-lab/PACKAGE-MANIFEST.json",
-      "bytes": 3795,
-      "sha256": "07ed69a520f76d6d2df3a41e29d21ede5b94edbfc04e40f9b066c93510442199"
+      "bytes": 4019,
+      "sha256": "b357907691cc08418db557cd4b6c175cc605a70ba09e8a31ab4b23f812587b67"
     },
     {
       "path": "courses/boundary-lab/README.md",
       "bytes": 6750,
-      "sha256": "fb06a43f301ea36bbcc43074196aa33d12c89a03b9c925f1f359a6b064f043f9"
+      "sha256": "f3b1b6e5f5c569ec887fda36ccf4d6b11865997e6d64a6ab99dbabc3cbad47a5"
     },
     {
       "path": "courses/boundary-lab/index.html",
       "bytes": 48805,
-      "sha256": "86b69a70583f32d36ede9224d8935020a872e0ce04bc0fe5325a78422aa7ad2d"
+      "sha256": "8f89a8933f469ada65f30d238864cdc263a2596aedbbc53dd55b124b47c3979e"
     },
     {
       "path": "courses/boundary-lab/lessons/01-promises.md",
@@ -2280,7 +2280,7 @@
     {
       "path": "courses/boundary-lab/lessons/05-native.md",
       "bytes": 4563,
-      "sha256": "f227b64dc1baca3d30a6d933728cf0802d91a12e4330580dd63fe2cac13317f8"
+      "sha256": "b3843ea20ddb0a32a21afeb96ca7478d67f54c29c2e434e2cd6c176f97c4acc6"
     },
     {
       "path": "courses/boundary-lab/lessons/06-budgets.md",
@@ -2305,12 +2305,12 @@
     {
       "path": "courses/boundary-lab/scaffold-manifest.json",
       "bytes": 1231,
-      "sha256": "ffdb7d6c803cfe1d85ebf9dca28545d1a9005e07d04dda9fa50220e37b8796d7"
+      "sha256": "d362693f0270945a8d64e1915ded19e33056fb1cc22caa55cc2ca28133bae4b4"
     },
     {
       "path": "courses/boundary-lab/src/checks.rs",
-      "bytes": 25308,
-      "sha256": "46751b7e372e5aa37d6e64116d894d0131c54dcecb30de2484d04be98d4b9c11"
+      "bytes": 28342,
+      "sha256": "e4a680f4600428a48a3d9155b6d7b32aee5d43b20cff835daeef84a5246eaacf"
     },
     {
       "path": "courses/boundary-lab/src/codec.rs",
@@ -2959,18 +2959,18 @@
     },
     {
       "path": "courses/game-playing-agent-league/CAPSTONE.md",
-      "bytes": 8703,
-      "sha256": "09fb8943ab2c5a72777d870a92ff8a21d42a2e1dbfa4cdff82160728a1dddd7a"
+      "bytes": 8992,
+      "sha256": "8d10c84a48c48568e212bcb67ee5ecbf89a43ecd6551efaad0801a9b9a24b9f2"
     },
     {
       "path": "courses/game-playing-agent-league/MANIFEST.json",
-      "bytes": 11454,
-      "sha256": "f099d60eca30f542e526e9dceb7fe105f3ef385901d08c4672b3eedb86353871"
+      "bytes": 11455,
+      "sha256": "583712f2f4b0ad427124007d9aa35cb9a0b8433ab4f1c007cd53ebf32b6fd9b3"
     },
     {
       "path": "courses/game-playing-agent-league/README.md",
-      "bytes": 11145,
-      "sha256": "31517a8d07bad23784a837dc7c21345a812a4e57976a154f8ab4b0529486ba4f"
+      "bytes": 11230,
+      "sha256": "e4fb55505189dc332987b991621f222df980ea63a585c62b840eb15384dcb11c"
     },
     {
       "path": "courses/game-playing-agent-league/SOURCES.md",
@@ -2989,13 +2989,13 @@
     },
     {
       "path": "courses/game-playing-agent-league/capstone-feedback.json",
-      "bytes": 13028,
-      "sha256": "2e89ba0e436495dc7f3b42ab6d431a58f080b5a30d2ae777bbe3fc0824e3b494"
+      "bytes": 14929,
+      "sha256": "6bc723e5f4f034448ee0d50018ecf1466e814752e9eb6188ac75e4ddd0347759"
     },
     {
       "path": "courses/game-playing-agent-league/checks/advanced.mjs",
-      "bytes": 17709,
-      "sha256": "60284bd214ddbdc66e761f5d2d02ff8ef56623820cea27f872615a376bcc3ce6"
+      "bytes": 24288,
+      "sha256": "50f3d3d6c1847c928072ec9b5998a4fad21a611c0181e1e748ccf28c93ea24e5"
     },
     {
       "path": "courses/game-playing-agent-league/checks/check-utils.mjs",
@@ -3004,8 +3004,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/checks/index.mjs",
-      "bytes": 8566,
-      "sha256": "43fa72e1984a4db8ce4fa5c4bd085a4ffb1957444c5d41947b4f512b1152d528"
+      "bytes": 11705,
+      "sha256": "21339002ad9628e0b9f46176e3f00d94b8978393b81525f485ddd997f8a853db"
     },
     {
       "path": "courses/game-playing-agent-league/checks/practice-trees.mjs",
@@ -3029,8 +3029,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/index.html",
-      "bytes": 154263,
-      "sha256": "c070329ac5de7c71a46b363ff9652b24f19f75ad1f3189ad1766633d723a313f"
+      "bytes": 157158,
+      "sha256": "a01acd2578cbb7780ea435a67092f7537a811dd2321cd34a2eb243bab6af2019"
     },
     {
       "path": "courses/game-playing-agent-league/learner/baseline.mjs",
@@ -3064,8 +3064,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/learner/report.mjs",
-      "bytes": 802,
-      "sha256": "82d4aff509d6ab913ffd6f6110f570669a92e21ce52517d6f4dd23536f0eff83"
+      "bytes": 967,
+      "sha256": "79dd59578c49c15e541e76a8aa9f9fd564424100da4555bcf0ceedf2209c1795"
     },
     {
       "path": "courses/game-playing-agent-league/learner/search.mjs",
@@ -3189,18 +3189,18 @@
     },
     {
       "path": "courses/game-playing-agent-league/lessons/08-1-before-patch.md",
-      "bytes": 4574,
-      "sha256": "4187c10500eaa14db183248099aea8638c77e45e78b391206b72b6c60da5caa7"
+      "bytes": 6017,
+      "sha256": "39790fe869c51b35ff2fa3b465bf97ca9a4441ea1dfca713bb56d7efd6a0f379"
     },
     {
       "path": "courses/game-playing-agent-league/lessons/08-2-adapt.md",
-      "bytes": 4848,
-      "sha256": "473eef30125717fa022b5fd79f3981bc1210f95c74ea13fac282ab3177dc58a1"
+      "bytes": 5706,
+      "sha256": "c4fc5f9b3eb95545dfb4efe4196ffa2848ad072b72ada09bbc6ab092653d38e1"
     },
     {
       "path": "courses/game-playing-agent-league/lessons/08-3-defend-transfer.md",
-      "bytes": 4963,
-      "sha256": "1688647b7a3dc7fbf42369caa774d001d5f838c0805f3a89d0fb7cc4af817dc0"
+      "bytes": 5428,
+      "sha256": "cb8ab8661fb1c20613d74ec803a21e35ab9df9bdb64332ddd95bd66c51ef8919"
     },
     {
       "path": "courses/game-playing-agent-league/lessons/advanced-index.json",
@@ -3209,8 +3209,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/lessons/capstone-index.json",
-      "bytes": 5801,
-      "sha256": "46e36f872344e3db158fc92a6ea2df5eefb1b7a43195995959f6a3a73b1f0d33"
+      "bytes": 6046,
+      "sha256": "b5844da9b9e2bc1eb88585477ad24ed12899d1e037b5d8e1f4292279f7583564"
     },
     {
       "path": "courses/game-playing-agent-league/lessons/lesson-index.json",
@@ -4680,7 +4680,7 @@
     {
       "path": "courses/onion-network-course/MANIFEST.json",
       "bytes": 13034,
-      "sha256": "bc888ac9ba17835cc6151adddd039b737d6b4efe1497eb53ad322db33a2c8824"
+      "sha256": "b0330c08d21e8b595243d69e8a77b3298d08e8888d21f41c3e71a17590b17170"
     },
     {
       "path": "courses/onion-network-course/README.md",
@@ -4710,12 +4710,12 @@
     {
       "path": "courses/onion-network-course/observatory/MANIFEST.json",
       "bytes": 7815,
-      "sha256": "339b4cd79b4e8c12ae2fffc0dd818907e363a0ac11eec7882d036487e8a3a917"
+      "sha256": "bc327f728a998a936c232236132b151c685a9c1f750f93a131e6e15a2fc268f4"
     },
     {
       "path": "courses/onion-network-course/observatory/PROTOCOL.md",
-      "bytes": 7943,
-      "sha256": "a22b4373efd7f04e7c57263f84d848802ee2de6890218638477fe47785aeae32"
+      "bytes": 7952,
+      "sha256": "5b4046c163a5a9d24b7df8f24027a3eb235d34015f1b17e38d53361cf8ba832c"
     },
     {
       "path": "courses/onion-network-course/observatory/README.md",
@@ -4744,8 +4744,8 @@
     },
     {
       "path": "courses/onion-network-course/observatory/browser/cases.mjs",
-      "bytes": 13687,
-      "sha256": "a76d71eb286b81d4e308eacb08494930336741f8e3e948562c9589d755dcd363"
+      "bytes": 14134,
+      "sha256": "a42ac24b66f9de758975f00e26e0c061fa919d54f3c495b318a6259d196e02df"
     },
     {
       "path": "courses/onion-network-course/observatory/browser/crypto.mjs",
@@ -4779,8 +4779,8 @@
     },
     {
       "path": "courses/onion-network-course/observatory/checks/cases.mjs",
-      "bytes": 12875,
-      "sha256": "0165b79366cc3f607424e19727632c39eca93aa07366a820be4411b259a6fa3a"
+      "bytes": 13292,
+      "sha256": "3aa5b9ebeb44087f3385acb6e20e39d402f64e9ae141abe3226d778ae0ad2611"
     },
     {
       "path": "courses/onion-network-course/observatory/checks/practice.mjs",
@@ -4790,12 +4790,12 @@
     {
       "path": "courses/onion-network-course/observatory/course.json",
       "bytes": 3597,
-      "sha256": "6ee76ff99960047eb6af4f4aefa536331dff050143ee08d80f241b2d29831386"
+      "sha256": "353f64d9697fa5965e5c37c8ac3071406be606ca5f3be6dacefa70c8e979dab8"
     },
     {
       "path": "courses/onion-network-course/observatory/course.mjs",
-      "bytes": 30437,
-      "sha256": "2435e699b40b0d359fc62a1527dc3d0eee69fb0dbf5fb0f39f036643e4c5f997"
+      "bytes": 30452,
+      "sha256": "e49b1f66d17f781516e3cb1e033cd25cb955ce323cfca85d80f3ceae52b4d567"
     },
     {
       "path": "courses/onion-network-course/observatory/examples/browser-sibling.js",
@@ -4844,8 +4844,8 @@
     },
     {
       "path": "courses/onion-network-course/observatory/lessons/06.md",
-      "bytes": 5319,
-      "sha256": "d75d55c70f49ce5035ca32f61459fec295f23960a25b6f5b53fedb1756955d34"
+      "bytes": 5334,
+      "sha256": "5c11bb5003fc208bb70e16ad115e5edd04e758103fd8b1f8bc5eaddeb4dedd6d"
     },
     {
       "path": "courses/onion-network-course/observatory/package.json",
@@ -4919,13 +4919,13 @@
     },
     {
       "path": "courses/onion-network-course/observatory/workbench/index.html",
-      "bytes": 140353,
-      "sha256": "8401136ad4989497a713551ef6a699039802c333d861aeba860f5f826969c1f8"
+      "bytes": 140985,
+      "sha256": "6f827df61ecaf0c96f747de0dab01c531c9b5d8d0d124f634da8f2b90210cee8"
     },
     {
       "path": "courses/onion-network-course/observatory/workbench/learner-worker.js",
-      "bytes": 41613,
-      "sha256": "751b938f77cfe0abedb56c2a5b56e8e0d4e287703e5591aa95e095ee483743c4"
+      "bytes": 42060,
+      "sha256": "1c6b92eef351083fa58bb95f94a782aea226a1fcc59c617ee3dfb167304017b0"
     },
     {
       "path": "courses/onion-network-course/observatory/workbench/style.css",
@@ -4944,8 +4944,8 @@
     },
     {
       "path": "courses/onion-network-course/onion-process-lab/MANIFEST.json",
-      "bytes": 2273,
-      "sha256": "3e9385e193e1c627bddef50793f035e0a87bb848acc25abaa1b2dadb05a9bbbb"
+      "bytes": 2418,
+      "sha256": "580ad7ae75df43211567c0c9d801e7ec796dc42a5c24f3e368420771e77bd752"
     },
     {
       "path": "courses/onion-network-course/onion-process-lab/PROTOCOL.md",
@@ -4969,8 +4969,8 @@
     },
     {
       "path": "courses/onion-network-course/onion-process-lab/checks/requirements.mjs",
-      "bytes": 10698,
-      "sha256": "07de5587b5324d6a6dc545bf4811fe3055bc54cf00e7211c524b9b47a7e8295f"
+      "bytes": 15877,
+      "sha256": "16bf918e94c255a51a43f80fcab06eb7db5a596ac9166fc3e83dc75939a1bf6a"
     },
     {
       "path": "courses/onion-network-course/onion-process-lab/course.json",
@@ -5700,7 +5700,7 @@
     {
       "path": "courses/tiny-browser-engine/PACKAGE-MANIFEST.json",
       "bytes": 8570,
-      "sha256": "25b6877a13c97ead343f57bcaff42265b9ac02ba97cd7394017690b490b63f0f"
+      "sha256": "d2cfd70f34983582a731d0d391373a28d4f95984868e59bfbbce9b58cf77e1e5"
     },
     {
       "path": "courses/tiny-browser-engine/README.md",
@@ -5709,13 +5709,13 @@
     },
     {
       "path": "courses/tiny-browser-engine/TERMINAL.md",
-      "bytes": 4375,
-      "sha256": "cd4d170f8e29cc00ef1f0da3d26390c0c7e415f7c9594a7f6ca9535fc357f862"
+      "bytes": 4783,
+      "sha256": "863f4f6cdf74a076b0427f31b9c9d246180e95f1691c070888d31da7b518a21a"
     },
     {
       "path": "courses/tiny-browser-engine/build/CONTRACT.md",
-      "bytes": 14323,
-      "sha256": "b7f781a2bafa25cefe4f3724df6d69b935199d690a94211c2b163aeb0d5d8e1a"
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
     },
     {
       "path": "courses/tiny-browser-engine/build/SOURCES.md",
@@ -5730,12 +5730,12 @@
     {
       "path": "courses/tiny-browser-engine/build/build.json",
       "bytes": 2665,
-      "sha256": "4d2041e19e052bb80c96510103967e1ba4b5e52ce21734e2998cb9956fdac559"
+      "sha256": "c45a45dade125111c81873fdef3d9a8a7d93af42cfde54e7f9337acb84446246"
     },
     {
       "path": "courses/tiny-browser-engine/build/checks.mjs",
-      "bytes": 16789,
-      "sha256": "4299a45cdf9a52e4a19fb2684a442a7d17c9ae0a8881681c285959d6e5eca002"
+      "bytes": 40566,
+      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
     },
     {
       "path": "courses/tiny-browser-engine/build/content.mjs",
@@ -5799,13 +5799,13 @@
     },
     {
       "path": "courses/tiny-browser-engine/build/worker.js",
-      "bytes": 48387,
-      "sha256": "5c2dc5bf7681ac551c9256ba03c4213fe0752a75bec56b9472a90629db2fbaa6"
+      "bytes": 72164,
+      "sha256": "deb436aceb9f1ad49b45f473f11f6875cd8f6f65ae280868732487152e52e0a2"
     },
     {
       "path": "courses/tiny-browser-engine/public/CONTRACT.md",
-      "bytes": 14323,
-      "sha256": "b7f781a2bafa25cefe4f3724df6d69b935199d690a94211c2b163aeb0d5d8e1a"
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
     },
     {
       "path": "courses/tiny-browser-engine/public/SOURCES.md",
@@ -5819,8 +5819,8 @@
     },
     {
       "path": "courses/tiny-browser-engine/public/checks.mjs",
-      "bytes": 16789,
-      "sha256": "4299a45cdf9a52e4a19fb2684a442a7d17c9ae0a8881681c285959d6e5eca002"
+      "bytes": 40566,
+      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
     },
     {
       "path": "courses/tiny-browser-engine/public/content.mjs",

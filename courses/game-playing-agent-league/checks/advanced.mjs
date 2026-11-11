@@ -116,6 +116,10 @@ export function checkSampler(sampleOpponent) {
       const fixed = [{id: 'never', weight: 0}, {id: 'only', weight: 1}, {id: 'also-never', weight: 0}], rng = createRng(12);
       for (let i = 0; i < 30; i++) requireThat(sampleOpponent(fixed, rng) === 'only', 'A zero-weight item was selected.');
     }],
+    ['sampler-sum', 'Reject weights that do not sum to one (lesson 5.2: "rejects an unnormalized roster").', () => {
+      for (const bad of [[{id: 'first', weight: 0.2}, {id: 'middle', weight: 0.3}, {id: 'last', weight: 0.47}], [{id: 'first', weight: 0.2}, {id: 'middle', weight: 0.3}, {id: 'last', weight: 0.53}]])
+        rejects(() => sampleOpponent(bad, createRng(1)), `Weights summing to ${bad.reduce((s, e) => s + e.weight, 0).toFixed(2)} were accepted. Lesson 5.2: the contract requires probabilities summing to one; reject an unnormalized roster.`);
+    }],
     ['sampler-invalid', 'Reject negative, unnormalized, nonfinite or duplicate-ID archive distributions.', () => {
       for (const bad of [[], [{id: 'a', weight: -1}, {id: 'b', weight: 2}], [{id: 'a', weight: 0.5}], [{id: 'a', weight: NaN}], [{id: 'a', weight: 0.5}, {id: 'a', weight: 0.5}]]) rejects(() => sampleOpponent(bad, createRng(1)), 'Invalid archive was not rejected.');
     }],
@@ -127,6 +131,20 @@ export function reportPracticeFixture() {
   const records = plan.roster.map(slot => {
     const valueForA = slot.scenarioId === 'scenario-3' ? -1 : 1;
     const first = slot.policies[0] === 'A' ? valueForA : -valueForA;
+    return {slotId: slot.id, record: {planId: plan.id, scenario: {id: slot.scenarioId}, policySnapshots: slot.policies.map(id => ({id})), policySeeds: [...slot.policySeeds], budget: plan.budget, status: 'completed', result: {returns: [first, -first]}}};
+  });
+  return {plan, records};
+}
+
+// A's result depends on the scenario, A's seat and the replicate, so a reducer that keeps only one seat
+// or one replicate gets different scenario blocks. Expected blocks, in scenario order: 0.5, 1, -0.5.
+const SEAT_REPLICATE_VALUES = {'scenario-1': [[1, 1], [-1, 1]], 'scenario-2': [[1, 1], [1, 1]], 'scenario-3': [[-1, 1], [-1, -1]]};
+export function reportSeatReplicateFixture() {
+  const {plan} = reportPracticeFixture();
+  const records = plan.roster.map(slot => {
+    const seatOfA = slot.policies.indexOf('A'), replicate = plan.replicateSeeds.indexOf(slot.replicate);
+    const valueForA = SEAT_REPLICATE_VALUES[slot.scenarioId][seatOfA][replicate];
+    const first = seatOfA === 0 ? valueForA : -valueForA;
     return {slotId: slot.id, record: {planId: plan.id, scenario: {id: slot.scenarioId}, policySnapshots: slot.policies.map(id => ({id})), policySeeds: [...slot.policySeeds], budget: plan.budget, status: 'completed', result: {returns: [first, -first]}}};
   });
   return {plan, records};
@@ -164,6 +182,25 @@ export function checkReport(summarize) {
       const result = summarize(records, plan);
       requireThat(result.complete === false && result.observed <= 12, 'Conflicting duplicate evidence was silently accepted.');
     }],
+    ['report-seat-and-replicate', 'Average both seats and every replicate inside each scenario block (lessons 4.1 and 4.2).', () => {
+      const {records, plan} = reportSeatReplicateFixture();
+      const result = summarize(records, plan);
+      requireThat(result.complete === true && result.expected === 12 && result.observed === 12, 'A complete 12-game roster was not recognized.');
+      const comparison = result.comparisons?.find(item => item.pair?.[0] === 'A' && item.pair?.[1] === 'B');
+      const values = (comparison?.blocks ?? []).map(block => block.value).sort((a, b) => a - b);
+      requireThat(JSON.stringify(values) === JSON.stringify([-0.5, 0.5, 1]), `Scenario blocks ${JSON.stringify(values)} are not [-0.5, 0.5, 1]. Lesson 4.1: "If each scenario has two seats and two randomness replicates, first aggregate those four games into a scenario block." Reporting only one seat or one replicate answers a different question.`, records);
+      close(comparison.estimate, 1 / 3); close(result.matrix?.[0]?.[1], 1 / 3); close(result.matrix?.[1]?.[0], -1 / 3);
+    }],
+    ['report-mismatch', 'Reject a result for a slot the plan does not contain, or one that names the wrong scenario (lesson 4.1).', () => {
+      for (const kind of ['unknown-slot', 'scenario']) {
+        const {records, plan} = reportPracticeFixture();
+        if (kind === 'unknown-slot') { const extra = copyData(records[0]); extra.slotId = 'not-a-slot-in-this-plan'; records.push(extra); }
+        if (kind === 'scenario') records[0].record.scenario.id = records[0].record.scenario.id === 'scenario-1' ? 'scenario-2' : 'scenario-1';
+        const result = summarize(records, plan);
+        requireThat(result.complete === false && result.invalid?.length > 0, `A result with ${kind === 'unknown-slot' ? 'an unknown slot ID' : 'a mismatched scenario'} was accepted. Lesson 4.1: the slot ID "is the denominator's unit of identity", and the record "names its plan, scenario and policy snapshots so the reducer can reject a mismatched result."`);
+        if (kind === 'unknown-slot') requireThat(result.observed === 12, 'A result for a slot outside the plan was counted as an observation.');
+      }
+    }],
     ['report-wrong-plan', 'Reject wrong-plan, wrong-seat and unresolved infrastructure records.', () => {
       for (const field of ['plan', 'seat', 'seed', 'budget', 'failure']) {
         const {records, plan} = reportPracticeFixture();
@@ -173,7 +210,9 @@ export function checkReport(summarize) {
         if (field === 'budget') records[0].record.budget+=1;
         if (field === 'failure') { records[0].record.status = 'infrastructure-failure'; records[0].record.result = null; }
         const result = summarize(records, plan);
-        requireThat(result.complete === false && result.invalid?.length > 0, `Invalid ${field} record was accepted.`);
+        const unresolvedFailure = field === 'failure' && result.missing?.includes(records[0].slotId);
+        requireThat(result.complete === false && (result.invalid?.length > 0 || unresolvedFailure),
+          `Invalid ${field} record was accepted. Infrastructure failures may be reported as invalid evidence or as their unresolved planned slot; neither can establish completeness.`);
       }
     }],
   ]);
@@ -187,13 +226,17 @@ export function checkGap(nashGap) {
       close(nashGap(matrix, [1, 0, 0], [1, 0, 0]), 2);
     }],
     ['gap-rectangular', 'Handle different row/column roster sizes and mixed weights.', () => close(nashGap([[1, -1, 0], [0, 1, -1]], [0.5, 0.5], [0.2, 0.3, 0.5]), 0.4)],
+    ['gap-dimensions', 'Reject a mixture whose length differs from the matrix, and infinite payoffs (lesson 6.2).', () => {
+      for (const [matrix, x, y] of [[[[1, 0], [0, 1]], [0.5, 0.5], [0.5, 0.25, 0.25]], [[[1, 0], [0, 1]], [1 / 3, 1 / 3, 1 / 3], [0.5, 0.5]], [[[Infinity, 0], [0, 1]], [0.5, 0.5], [0.5, 0.5]]])
+        rejects(() => nashGap(matrix, x, y), 'Lesson 6.2: "Validate its shape, finite entries and the distributions\' dimensions and probabilities." This input was accepted.');
+    }],
     ['gap-invalid', 'Reject malformed matrices/distributions instead of coercing missing payoffs to zero.', () => {
       for (const [matrix, x, y] of [[[[]], [1], []], [[[NaN]], [1], [1]], [[[1, 2], [0]], [0.5, 0.5], [0.5, 0.5]], [[[0]], [0.2], [1]], [[[0]], [-1], [1]]]) rejects(() => nashGap(matrix, x, y), 'An invalid empirical game was accepted.');
     }],
   ]);
 }
 
-function responseContext({optimisticTrap = false, responder = 0, tied = false, budget = 20} = {}) {
+function responseContext({optimisticTrap = false, responder = 0, tied = false, budget = 20, left = null, maxDepth = 2, heuristics = null, model = null} = {}) {
   const leaf = value => ({terminal: true, returns: responder === 0 ? [value, -value] : [-value, value], currentPlayer: -1});
   const nodes = {
     root: {terminal: false, returns: null, currentPlayer: responder, actions: [{id: 11, to: 'left'}, {id: 29, to: 'right'}]},
@@ -206,9 +249,9 @@ function responseContext({optimisticTrap = false, responder = 0, tied = false, b
   const oracle = {next(s, action) { if (used >= budget) { exceeded=true; throw new Error('Response budget exceeded.'); } used++; const edge = nodes[s.id].actions?.find(edge => edge.id === action); if (!edge) throw new Error('Illegal tree action.'); return state(edge.to); },
     legal: s => nodes[s.id].actions?.map(edge => edge.id) ?? [], terminal: s => nodes[s.id].terminal, returns: s => nodes[s.id].returns,
     currentPlayer: s => nodes[s.id].currentPlayer, get used() {return used;}, get remaining() {return budget - used;}, get exceeded(){return exceeded;}};
-  return {state: state('root'), player: responder, legalActions: [11, 29], parameters: {maxDepth: 2}, oracle, rng: createRng(1),
-    evaluate: () => 0,
-    opponentPolicy(s) { const actions = nodes[s.id].actions; if (s.id === 'left') return [{actionId: 3, probability: optimisticTrap ? 0.1 : 0.9}, {actionId: 8, probability: optimisticTrap ? 0.9 : 0.1}]; return actions.map(edge => ({actionId: edge.id, probability: 1 / actions.length})); }};
+  return {state: state('root'), player: responder, legalActions: [11, 29], parameters: {maxDepth}, oracle, rng: createRng(1),
+    evaluate: (s, p) => { const h = heuristics?.[s.id] ?? 0; return p === responder ? h : -h; },
+    opponentPolicy(s) { const actions = nodes[s.id].actions; if (model) return model(s, actions); if (s.id === 'left') { const [p3, p8] = left ?? (optimisticTrap ? [0.1, 0.9] : [0.9, 0.1]); return [{actionId: 3, probability: p3}, {actionId: 8, probability: p8}]; } return actions.map(edge => ({actionId: edge.id, probability: 1 / actions.length})); }};
 }
 export function checkResponse(responsePolicy) {
   return suite('Counterpolicy against a fixed opponent model', [
@@ -221,6 +264,23 @@ export function checkResponse(responsePolicy) {
     ['response-not-optimism', 'An opponent is not assumed to select the action most favorable to you.', () => {
       const answer = responsePolicy(responseContext({optimisticTrap: true}));
       requireThat((answer?.actionId ?? answer) === 29, 'Expected action 29; the tempting branch has mean -0.8 under this opponent.');
+    }],
+    ['response-mean', 'Average over the model, not only its most likely reply (lesson 6.1).', () => {
+      const answer = responsePolicy(responseContext({left: [0.6, 0.4]}));
+      requireThat((answer?.actionId ?? answer) === 29, 'Expected action 29 (mean 0.4), not 11 (mean 0.6 - 0.4 = 0.2). Lesson 6.1: "At a modeled opponent turn, average over its declared probabilities." Following only the most likely reply gives 11.');
+    }],
+    ['response-model', 'Reject an invalid opponent model instead of using it (lesson 6.1).', () => {
+      const bad = {
+        'sum above one': (s, actions) => actions.map(edge => ({actionId: edge.id, probability: 0.7})),
+        'negative probability': (s, actions) => actions.map((edge, i) => ({actionId: edge.id, probability: i === 0 ? 1.5 : -0.5})),
+        'illegal action': (s, actions) => [{actionId: 999, probability: 1}],
+        'nonfinite probability': (s, actions) => actions.map(edge => ({actionId: edge.id, probability: NaN})),
+      };
+      for (const [name, model] of Object.entries(bad)) rejects(() => responsePolicy(responseContext({model})), `An opponent model with ${name} was used. Lesson 6.1: "Probabilities must be finite, nonnegative and sum to one within the declared tolerance. Every action must be legal in that state. An invalid distribution is a model error."`);
+    }],
+    ['response-depth', 'Respect parameters.maxDepth: evaluate at the horizon instead of searching past it (lesson 6.1).', () => {
+      const answer = responsePolicy(responseContext({maxDepth: 1, heuristics: {left: -0.5, right: 0.3}}));
+      requireThat((answer?.actionId ?? answer) === 29, 'With maxDepth 1 the horizon values are left -0.5 and right 0.3, so the response is 29. Lesson 6.1: the context supplies parameters.maxDepth, and "resource limits still apply". Searching past the horizon gives 11.');
     }],
     ['response-perspective', 'The responder may be either player; ties accept either maximizing action.', () => {
       const answer = responsePolicy(responseContext({responder: 1})); requireThat((answer?.actionId ?? answer) === 11, 'Player-1 utility was inverted.');

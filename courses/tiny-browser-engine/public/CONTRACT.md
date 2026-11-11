@@ -50,6 +50,8 @@ Viewport is `{width,height,scrollY}`. Layout uses width; scrolling does not move
 
 Each block box has `{nodeId,x,y,width,height,contentX,contentY,contentWidth,contentHeight,border,padding}`. x/y and width/height describe the border box; padding has top/right/bottom/left numbers. Boxes appear in document preorder. Used border is zero for style none. The four computed border widths/styles/colors must each be uniform, otherwise report unsupported geometry.
 
+`box.border` is the single used uniform border width, expressed as a number (not a per-side object).
+
 Block children stack at the parent's content origin. Auto width gets the available content width less its own horizontal padding/border, floored at zero. Explicit content width may overflow. Auto height encloses in-flow children or text lines; explicit height does not grow with overflow. A hidden subtree generates no geometry. Reject visible mixed block/inline content and block content inside an inline element. Ignore whitespace-only text between block children without deleting it from the DOM.
 
 Each glyph fragment has `{char,nodeId,offset,ownerId,blockId,line,x,y,width:8,height:16,ancestors}`. nodeId/offset locate the original decoded text, ownerId is its nearest element, blockId identifies its containing block, line starts at zero in that block, and ancestors records inline ancestors. Store geometry and ownership, not cached paint color.

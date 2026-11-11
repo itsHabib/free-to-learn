@@ -126,16 +126,16 @@
     "kind": "public-practice-self-check"
   },
   "8.1-p1": {
-    "answer": "A valid answer names an actual assumption, a predicted consequence and a falsifier; for example, actor-aware backup should survive a turn-order change, but a failing repeated-actor tree would refute that expectation.",
-    "reason": "The exact personal prediction can vary. It must be specific enough to compare with later evidence, rather than retroactively fit any outcome.",
+    "answer": "A valid answer names an assumption your agent actually makes, the consequence you expect and an observation that would show the prediction was wrong. It also declares what you had read before predicting. Which assumption you choose is yours; it does not have to match any later lesson.",
+    "reason": "The exact personal prediction can vary. It must be specific enough to compare with later evidence, rather than retroactively fit any outcome. The exposure declaration lets a reader tell an unassisted prediction from assisted practice.",
     "hints": [
       "Choose one dependency of your current implementation.",
       "Describe a behavior you expect if that dependency changes.",
       "Add a concrete test result that would contradict your expectation."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Names one assumption, the consequence you expect and an observation that would refute it; any assumption your agent actually makes is acceptable.",
+      "Declares what you had read before predicting (lesson 8.2, this feedback, any rule-change or challenge text), even if the answer is nothing."
     ],
     "kind": "public-practice-self-check"
   },
@@ -148,13 +148,13 @@
       "If recovery fails, report that limitation."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Names what was lost: the identity of the before agent (its source and parameters), not only its score.",
+      "Allows recovery only from an authentic retained copy and otherwise labels the comparison unreproducible; another honest course counts if it invents no old parameters and you say what it can and cannot support."
     ],
     "kind": "public-practice-self-check"
   },
   "8.1-p3": {
-    "answer": "No. The rule and solution strategy were disclosed. A new seed may give useful practice, but a genuine held-out claim requires a fresh independently issued instance and honest exposure records.",
+    "answer": "No. The rule and solution strategy were disclosed, so a new seed varies only the surface. The novelty that matters is a mechanism and solution the learner has not already seen. A new seed may give useful practice, but a genuine held-out claim requires a fresh independently issued instance and honest exposure records.",
     "reason": "Surface variation does not remove prior access to the mechanism or answer.",
     "hints": [
       "Which part of the task was unfamiliar?",
@@ -162,8 +162,8 @@
       "Retain the run as practice and seek a fresh assessment instance."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Says which novelty matters and why: the rule and its solution were already disclosed, and a new seed varies only the surface.",
+      "Says what a held-out claim would need, such as a fresh independently issued instance and an exposure record; a different condition counts if you explain how it removes the prior exposure."
     ],
     "kind": "public-practice-self-check"
   },
@@ -176,8 +176,8 @@
       "Trace actor identity and include rule-relevant state."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Names two components and says why each can be wrong while the board and action IDs look the same.",
+      "Any two you can justify count, for example search backup, cache or state identity, value features or outcome-label perspective; each reason must involve the phase or the actor."
     ],
     "kind": "public-practice-self-check"
   },
@@ -190,8 +190,8 @@
       "Use both regression and fresh transfer cases."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Says which repair addresses the hypothesis and why the other can pass the known trace without repairing the cause.",
+      "Lists what must still be tested: the original witness, fresh structurally different positions and ordinary-rule play; a different test set counts if you say what each test could reveal."
     ],
     "kind": "public-practice-self-check"
   },
@@ -204,8 +204,8 @@
       "Inspect both metrics and their data, rather than replacing one with the other."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Explains at least one way win rate can hold while value predictions worsen, such as search compensating for a worse leaf estimate, or a tournament too small or easy to show the difference.",
+      "Keeps playing strength, prediction quality and their uncertainty as separate claims, and says what you would inspect or report next."
     ],
     "kind": "public-practice-self-check"
   },
@@ -218,8 +218,8 @@
       "Include a test that might make the revised explanation fail."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Keeps the original prediction on record, unedited, and states what evidence showed it wrong or incomplete.",
+      "Names one observation or ablation that would weaken the new explanation; any test that could actually come out against it counts."
     ],
     "kind": "public-practice-self-check"
   },
@@ -232,8 +232,8 @@
       "Do not erase the old-rule regression."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Names the rules each result applies to and gives a recommendation for each; a single-policy recommendation counts if you justify it from the stated evidence and say what it gives up.",
+      "Keeps the old-rule regression and the uncertainty of both results visible."
     ],
     "kind": "public-practice-self-check"
   },
@@ -246,8 +246,8 @@
       "Keep exact, empirical and universal claims separate."
     ],
     "rubric": [
-      "Addresses the exact question and stated domain.",
-      "Explains the mechanism or evidence limit, not only a verdict."
+      "Gives each claim its scope: exact within the enumerated game; empirical for the tested season, responder family and budget; the universal claim unsupported.",
+      "Explains why, in terms of whether the set of opponents was exhausted or sampled; your own wording counts if the three scopes stay distinct."
     ],
     "kind": "public-practice-self-check"
   }

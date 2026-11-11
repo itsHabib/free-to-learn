@@ -31,7 +31,7 @@ The supplied game is a 5×5 version of Breakthrough. Each player starts with fiv
 | 5. Train against a population | `sampleOpponent`: sampling from a weighted immutable archive | Bounded self-play loop, model snapshots and lineage |
 | 6. Find counterstrategies | `responsePolicy` and `nashGap`: a modeled response and exact finite-game gap | Declared opponent model, tiny exact oracle and comparison fixtures |
 | 7. Run and defend your league | Frozen six-role population, replayable season and defensible report | Configuration assembly, export, source bundles and replay verification |
-| 8. Adapt to a rule change | Prediction, first transfer attempt, repair and limited claims | Separately administered challenge, kept outside the learner package |
+| 8. Adapt to a rule change | Prediction, first transfer attempt, repair and limited claims | Nine analysis items and worked examples, completable now; no patched simulator ships. An instructor supplies the challenge separately, after your freeze |
 
 Module 3 checks board information separately from requested-player perspective. Material-only, advancement, relative-count and other meaningful representations are supported; not every move or balanced position must change a vector. Bias, player ID or ply alone cannot replace a board measurement.
 

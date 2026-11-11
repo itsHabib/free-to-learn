@@ -27,8 +27,8 @@
     },
     {
       "path": "browser/cases.mjs",
-      "bytes": 13687,
-      "sha256": "a76d71eb286b81d4e308eacb08494930336741f8e3e948562c9589d755dcd363"
+      "bytes": 14134,
+      "sha256": "a42ac24b66f9de758975f00e26e0c061fa919d54f3c495b318a6259d196e02df"
     },
     {
       "path": "browser/crypto.mjs",
@@ -67,8 +67,8 @@
     },
     {
       "path": "checks/cases.mjs",
-      "bytes": 12875,
-      "sha256": "0165b79366cc3f607424e19727632c39eca93aa07366a820be4411b259a6fa3a"
+      "bytes": 13292,
+      "sha256": "3aa5b9ebeb44087f3385acb6e20e39d402f64e9ae141abe3226d778ae0ad2611"
     },
     {
       "path": "checks/practice.mjs",
@@ -78,12 +78,12 @@
     {
       "path": "course.json",
       "bytes": 3597,
-      "sha256": "6ee76ff99960047eb6af4f4aefa536331dff050143ee08d80f241b2d29831386"
+      "sha256": "353f64d9697fa5965e5c37c8ac3071406be606ca5f3be6dacefa70c8e979dab8"
     },
     {
       "path": "course.mjs",
-      "bytes": 30437,
-      "sha256": "2435e699b40b0d359fc62a1527dc3d0eee69fb0dbf5fb0f39f036643e4c5f997"
+      "bytes": 30452,
+      "sha256": "e49b1f66d17f781516e3cb1e033cd25cb955ce323cfca85d80f3ceae52b4d567"
     },
     {
       "path": "examples/browser-sibling.js",
@@ -132,8 +132,8 @@
     },
     {
       "path": "lessons/06.md",
-      "bytes": 5319,
-      "sha256": "d75d55c70f49ce5035ca32f61459fec295f23960a25b6f5b53fedb1756955d34"
+      "bytes": 5334,
+      "sha256": "5c11bb5003fc208bb70e16ad115e5edd04e758103fd8b1f8bc5eaddeb4dedd6d"
     },
     {
       "path": "package.json",
@@ -142,8 +142,8 @@
     },
     {
       "path": "PROTOCOL.md",
-      "bytes": 7943,
-      "sha256": "a22b4373efd7f04e7c57263f84d848802ee2de6890218638477fe47785aeae32"
+      "bytes": 7952,
+      "sha256": "5b4046c163a5a9d24b7df8f24027a3eb235d34015f1b17e38d53361cf8ba832c"
     },
     {
       "path": "README.md",
@@ -227,13 +227,13 @@
     },
     {
       "path": "workbench/index.html",
-      "bytes": 140353,
-      "sha256": "8401136ad4989497a713551ef6a699039802c333d861aeba860f5f826969c1f8"
+      "bytes": 140985,
+      "sha256": "6f827df61ecaf0c96f747de0dab01c531c9b5d8d0d124f634da8f2b90210cee8"
     },
     {
       "path": "workbench/learner-worker.js",
-      "bytes": 41613,
-      "sha256": "751b938f77cfe0abedb56c2a5b56e8e0d4e287703e5591aa95e095ee483743c4"
+      "bytes": 42060,
+      "sha256": "1c6b92eef351083fa58bb95f94a782aea226a1fcc59c617ee3dfb167304017b0"
     },
     {
       "path": "workbench/style.css",

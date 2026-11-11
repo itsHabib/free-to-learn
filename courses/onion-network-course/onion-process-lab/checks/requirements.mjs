@@ -31,6 +31,76 @@ export async function runChecks(source, stage = 'all') {
     }),{code:'SETUP_FAULT'});
     assert.deepEqual(attempted,['a','b']); assert.ok(closed.includes('a')); assert.ok(closed.includes('b'));
   });
+  // In-process contract checks; no relay processes are started for these.
+  const recordSetup = async path => {
+    const configs = [];
+    const circuit = await p.createCircuit(path, {install: async (id, config) => {configs.push({id, config: {...config}});}, close: async () => {}});
+    return {circuit, configs};
+  };
+  await check('P2 setup sends each relay only its own two keys and two neighbors', async () => {
+    const {configs} = await recordSetup(['a', 'b', 'c']);
+    const allowed = ['backwardSecret', 'circuitId', 'forwardSecret', 'next', 'previous', 'relayId'];
+    for (const {id, config} of configs) {
+      assert.deepEqual(Object.keys(config).sort(), allowed, 'relay ' + id + ' received fields beyond its own state');
+      assert.equal(config.relayId, id);
+    }
+  });
+  await check('P2 forward and backward secrets are independent for every hop', async () => {
+    const {configs} = await recordSetup(['a', 'b', 'c']);
+    const secrets = configs.flatMap(({config}) => [config.forwardSecret, config.backwardSecret]);
+    assert.equal(new Set(secrets).size, secrets.length, 'a secret is reused across directions or hops');
+  });
+  if (level >= 4) await check('P4 a downstream failure leaves the accepted sequence consumed (no second forward)', async () => {
+    const {circuit, configs} = await recordSetup(['a', 'b', 'c']);
+    const states = new Map(); p.installCircuit(configs[0].config, states);
+    const state = states.get(circuit.id), packet = p.wrapRequest(circuit.hops, {operation: 'lookup', item: 'luna'}, 5);
+    let forwards = 0;
+    const io = {observe() {}, archive: async () => assert.fail('entry must not serve the archive'),
+      forward: async () => {forwards++; throw Object.assign(new Error('down'), {code: 'DELIVERY_FAILED'});}};
+    await assert.rejects(p.handleCell(state, packet, io), {code: 'DELIVERY_FAILED'});
+    await assert.rejects(p.handleCell(state, packet, io), {code: 'REPLAY'});
+    assert.equal(forwards, 1, 'the resent packet was forwarded again');
+  });
+  // Contract-derived regression cases: setup secrecy and consumed failed sequences.
+  await check('P2 setup values name no relay beyond the two neighbors; UUID circuit id', async () => {
+    // PROTOCOL.md: "Generate a fresh randomUUID() circuit ID" and "Send only that relay's keys and two
+    // neighbors, never the full route or other keys."
+    const path = ['relay-north', 'relay-east', 'relay-south', 'relay-west'], calls = [];
+    const circuit = await p.createCircuit(path, {install: async (...args) => {calls.push(args);}, close: async () => {}});
+    assert.match(circuit.id, /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/, 'the circuit id is not a randomUUID() value');
+    assert.equal(calls.length, path.length);
+    for (const args of calls) {
+      const [id, config] = args, known = [id, config.previous, config.next], sent = JSON.stringify(config);
+      assert.equal(config.circuitId, circuit.id);
+      for (const other of path) if (!known.includes(other)) assert.ok(!sent.includes(other), 'relay ' + id + ' was told about ' + other);
+    }
+  });
+  await check('P2 secrets are fresh for every circuit, not only within one', async () => {
+    // PROTOCOL.md: "Keys are fresh per circuit, hop and direction."
+    const first = await recordSetup(['a', 'b', 'c']), second = await recordSetup(['a', 'b', 'c']);
+    assert.notEqual(first.circuit.id, second.circuit.id);
+    const secrets = [...first.configs, ...second.configs].flatMap(({config}) => [config.forwardSecret, config.backwardSecret]);
+    assert.equal(new Set(secrets).size, secrets.length, 'a secret from one circuit is used again in another');
+  });
+  if (level >= 4) await check('P4 a failure at any relay, with DELIVERY_FAILED, leaves the sequence consumed, also a moment later', async () => {
+    // PROTOCOL.md: "Propagate failures. A downstream failure leaves the accepted forward sequence consumed;
+    // do not clear it or try to encrypt another backward packet under the same key/nonce."
+    for (const position of [0, 1, 2]) for (const code of ['DELIVERY_FAILED']) {
+      const {circuit, configs} = await recordSetup(['a', 'b', 'c']);
+      const states = new Map(); p.installCircuit(configs[position].config, states);
+      const state = states.get(circuit.id), seq = 6;
+      let packet = p.wrapRequest(circuit.hops, {operation: 'lookup', item: 'luna'}, seq);
+      for (let i = 0; i < position; i++) packet = open(circuit.hops[i].forwardKey, context(circuit.id, circuit.hops[i].relayId, 'forward', seq), packet).body;
+      let attempts = 0;
+      const down = async () => {attempts++; throw Object.assign(new Error('down'), {code});};
+      const io = {observe() {}, archive: down, forward: down};
+      const where = 'hop ' + position + ', error ' + code;
+      await assert.rejects(p.handleCell(state, packet, io), {code}, where + ': the failure was not propagated');
+      await new Promise(resolve => setTimeout(resolve, 25));
+      await assert.rejects(p.handleCell(state, packet, io), {code: 'REPLAY'}, where + ': the resent packet was accepted');
+      assert.equal(attempts, 1, where + ': the resent packet went downstream again');
+    }
+  });
   let lab;
   try {
     lab = await startLab(source);

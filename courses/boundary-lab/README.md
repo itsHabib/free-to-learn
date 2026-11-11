@@ -53,7 +53,7 @@ cargo run --offline -- check all
 cargo run --offline -- native
 ```
 
-Available practice groups: `admission`, `memory`, `authority`, `syscall` (model only), `budget`, `runtime`, `wire`, `transfer`, `core` (all except transfer), and `all`. All 71 test cases in this package are public, including ten transfer cases. Final independent schedules, instructor solutions and grading controls are not in the learner export.
+Available practice groups: `admission`, `memory`, `authority`, `syscall` (model only), `budget`, `runtime`, `wire`, `transfer`, `core` (all except transfer), and `all`. All 84 test cases in this package are public, including ten transfer cases. Final independent schedules, instructor solutions and grading controls are not in the learner export.
 
 ## Evidence and completion
 

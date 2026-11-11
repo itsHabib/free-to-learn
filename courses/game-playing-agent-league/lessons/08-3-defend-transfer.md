@@ -1,6 +1,6 @@
 # 8.3 Defend what transferred and what did not
 
-Your adapted policy wins more often under the patch but regresses on ordinary play. Defend a conclusion that preserves both results and the limits of the experiment.
+Suppose your adapted policy wins more often under the changed rules but regresses on ordinary play. These gains and regressions are hypothetical until an instructor-supplied challenge produces actual results. Defend a conclusion that preserves both results and the limits of the experiment.
 
 ## Compare the prediction with the actual mechanism
 
@@ -8,9 +8,9 @@ Retrieve your pre-patch prediction without rewriting it. Identify the assumption
 
 Use a causal explanation proportional to the evidence. If changing one cache key fixes the minimal witness and several fresh structurally similar positions, that supports the cache hypothesis. It does not prove that every remaining loss has the same cause. If you changed search, features and training budget at once, the result describes that combined configuration. An ablation is needed to separate their contributions.
 
-**Commit:** item `8.3-p1` asks you to explain a mismatch between the original prediction and the observed repair. Include one observation that would weaken your new explanation.
+**Commit:** item `8.3-p1` asks you to explain a hypothetical mismatch between the original prediction and the observed repair, and to name one observation that would weaken your new explanation.
 
-**Practice 8.3-p1:** Your prediction blamed turn alternation, but fixing an omitted state counter repairs the witness. How should the final report handle the original prediction?
+**Practice 8.3-p1:** Your prediction blamed turn alternation, but fixing an omitted state counter repairs the witness. How should the final report handle the original prediction, and what observation would weaken your new explanation?
 
 ## The report needs a complete comparison
 
@@ -20,7 +20,7 @@ As a worked decision, imagine an adaptation that fixes every issued conformance 
 
 If there are too few independent scenarios or training replicas to distinguish candidates, say so. A wider honest interval is more useful than a narrow one obtained by counting correlated moves as independent evidence. Keep the finite-roster average visible even when you cannot generalize confidently beyond it.
 
-**Apply it:** commit item `8.3-p2` about an adaptation with new-rule gains and ordinary-rule losses. State a deployment recommendation with its domain.
+**Apply it:** commit item `8.3-p2` about a hypothetical adaptation with new-rule gains and ordinary-rule losses. State a deployment recommendation with its domain.
 
 **Practice 8.3-p2:** The adapted policy improves under the new rule and regresses under the old rule. Give a scoped deployment recommendation.
 
@@ -37,6 +37,8 @@ A separately issued held-out assessment is evidence about your performance on th
 **Practice 8.3-p3:** Separate these claims: exact zero gap in an enumerated tiny game; no exploit found in a six-policy season; no adversary can ever beat the agent. Which are supported by their stated evidence?
 
 ## Final evidence package
+
+Until an instructor-supplied challenge has produced actual results, you have no before/after numbers of your own. Your module 8 evidence then consists of the nine committed analysis items and the frozen before artifact, and it claims no transfer result.
 
 Export your first prediction, original and revised work, all assistance records, rule identities, before/after plans, raw matches, coverage, numerical summaries and selected replays. The package should let a reviewer reconstruct the decisions rather than rely on your summary alone.
 

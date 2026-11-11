@@ -102,6 +102,12 @@ add('M3-wrong-route', 3, 'Reject an authenticated instruction that disagrees wit
   const packet = seal(s.forwardKey,context(c.id,s.relayId,'forward',6),{next:'ash',body:{}});
   errorCode(() => impl.peelForward(s,packet),'BAD_ROUTE');
 });
+add('M3-missing-body', 3, 'Reject an authenticated matching route without a body before consuming its sequence.', { missing:'body' }, impl => {
+  const c=circuit(), s=c.states[0];
+  const packet=seal(s.forwardKey,context(c.id,s.relayId,'forward',10),{next:s.next});
+  errorCode(()=>impl.peelForward(s,packet),'BAD_ROUTE');
+  assert.equal(s.seenForward.size,0,'Rejected payload must not consume the sequence.');
+});
 add('M3-end-to-end', 3, 'Use the learner functions for the entire request and return.', { item:'luna' }, impl => {
   const c=circuit(); assert.deepEqual(exchange(impl,c),{item:'luna',record:'Luna: a fictional lunar atlas'});
   const v = views(c);
@@ -129,7 +135,7 @@ add('M4-header-tamper', 4, 'Changing the visible sequence must fail authenticati
 add('M4-freshness-policy', 4, 'Accept unseen in-range values even out of order; reject replay and invalid values.', { arrival:[8,2,8] }, impl => {
   const seen=new Set(); impl.acceptSequence(seen,8); impl.acceptSequence(seen,2);
   errorCode(()=>impl.acceptSequence(seen,8),'REPLAY');
-  for (const seq of [-1,1024,1.5,NaN]) errorCode(()=>impl.acceptSequence(seen,seq),'BAD_SEQUENCE');
+  for (const seq of [-1,1024,1.5,NaN,'5',null]) errorCode(()=>impl.acceptSequence(seen,seq),'BAD_SEQUENCE');
   assert.deepEqual([...seen].sort((a,b)=>a-b),[2,8]);
 });
 add('M4-circuit-separation', 4, 'A packet from another circuit must fail without poisoning this circuit.', { reusedSeq:0 }, impl => {
@@ -173,7 +179,7 @@ add('M6-shift', 6, 'Compare inter-event gaps, allowing an unknown constant delay
 });
 add('M6-ambiguity', 6, 'Keep every plausible match; matching is not proof of identity.', { matchingCandidates:2 }, impl => {
   const candidates=[{id:'x',times:[20,24,33]},{id:'y',times:[70,75,83]},{id:'z',times:[10,14]}];
-  assert.deepEqual([...impl.correlate([0,4,13],candidates,1)].sort(),['x','y']);
+  assert.deepEqual([...impl.correlate([0,4,13],candidates,1)],['x','y']);
 });
 add('M6-none', 6, 'Return no matches for incompatible or insufficient observations.', { events:1 }, impl => {
   assert.deepEqual(impl.correlate([0],[{id:'x',times:[10]}],1),[]);

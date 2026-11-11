@@ -63,7 +63,7 @@ The package supports direct `.mjs` policy files in `lib/` and `learner/`. Keep p
 
 Before receiving the administered challenge, freeze your source and write a falsifiable prediction about which parts of your policy and evaluation would survive an unfamiliar rule or information change. Retain that prediction even if it is wrong.
 
-The instructor supplies the separate challenge after this freeze. Its contract and private control set are not in the learner delivery. Apply the same resource limits, preserve the first attempt, and distinguish assistance from independent repair. Explain which assumption failed and why your repair is general within the new contract. If no code change is needed, establish that with evidence; cosmetic edits earn no credit.
+The instructor supplies the separate challenge after this freeze: the rules, the simulator, conformance examples, the challenge identity, and the budget and evaluation instructions. Its contract and private control set are not in the learner delivery, and no patched simulator ships in this package. The nine module 8 analysis items can be completed without it; stop executable transfer work until the challenge is supplied. Apply the same resource limits, preserve the first attempt, and distinguish assistance from independent repair. Explain which assumption failed and why your repair is general within the new contract. If no code change is needed, establish that with evidence; cosmetic edits earn no credit.
 
 After the challenge is revealed, it is revision material. A second independent transfer assessment requires a fresh challenge. The journal is a useful local history, not an authenticated credential or proof of independent work.
 

@@ -1,7 +1,7 @@
 {
   "course": "tiny-browser-engine",
   "status": "local-candidate-not-released",
-  "buildId": "892de3195932df831b964db7f2a79b3c37b1647c8c4f5be284f1d68c819ee553",
+  "buildId": "63f30945cf3e792bc4d08e67bac8b7e47aa73e2daa96462a7328d6a6740ec397",
   "files": [
     {
       "name": "index.html",
@@ -60,8 +60,8 @@
     },
     {
       "name": "checks.mjs",
-      "bytes": 16789,
-      "sha256": "4299a45cdf9a52e4a19fb2684a442a7d17c9ae0a8881681c285959d6e5eca002"
+      "bytes": 40566,
+      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
     },
     {
       "name": "starter.body.js",
@@ -70,8 +70,8 @@
     },
     {
       "name": "CONTRACT.md",
-      "bytes": 14323,
-      "sha256": "b7f781a2bafa25cefe4f3724df6d69b935199d690a94211c2b163aeb0d5d8e1a"
+      "bytes": 14425,
+      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
     },
     {
       "name": "SOURCES.md",
@@ -80,8 +80,8 @@
     },
     {
       "name": "worker.js",
-      "bytes": 48387,
-      "sha256": "5c2dc5bf7681ac551c9256ba03c4213fe0752a75bec56b9472a90629db2fbaa6"
+      "bytes": 72164,
+      "sha256": "deb436aceb9f1ad49b45f473f11f6875cd8f6f65ae280868732487152e52e0a2"
     },
     {
       "name": "demo.json",

@@ -14,7 +14,7 @@
     },
     {
       "path": "src/checks.rs",
-      "sha256": "46751b7e372e5aa37d6e64116d894d0131c54dcecb30de2484d04be98d4b9c11"
+      "sha256": "e4a680f4600428a48a3d9155b6d7b32aee5d43b20cff835daeef84a5246eaacf"
     },
     {
       "path": "src/codec.rs",

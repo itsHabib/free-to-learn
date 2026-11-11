@@ -628,7 +628,7 @@
     {
       "id": "tiny-browser",
       "archive": ".packages/tiny-browser.zip",
-      "sha256": "a376d76c21c6ab59c343005a963dd5dc8f8520ae618f3ab634fc460b77d55928",
+      "sha256": "38e61665c640f3c88b6da8f74ac7efd28651bbb5afaad8eacd2141e71b17ee65",
       "archive_prefix": "tiny-browser-engine/",
       "direct_root": "courses/tiny-browser-engine",
       "root": "tiny-browser-engine",
@@ -666,7 +666,7 @@
     {
       "id": "sandbox-model",
       "archive": ".packages/sandbox-model.zip",
-      "sha256": "1534573a57c61820698a56837a70e978bcc2295b7c5d526fcc17f1112fbc5b7d",
+      "sha256": "0ce28a8730e931ac5fb95c8132fb48b92f9ef833180d71c65a947d676284a337",
       "archive_prefix": "boundary-lab/",
       "direct_root": "courses/boundary-lab",
       "root": "boundary-lab",
@@ -807,7 +807,7 @@
     {
       "id": "onion-routing",
       "archive": ".packages/onion-routing.zip",
-      "sha256": "ef160e0303ae02a8d05927a716f7b30f8dc5ec19015df6c32422650ccc67a56c",
+      "sha256": "7eefe49a90f28dfa3dbdbffc3764d12e64804d7b215936587cfd68e9ed7eaf9f",
       "archive_prefix": "onion-network-course/",
       "direct_root": "courses/onion-network-course",
       "root": "onion-network-course",
@@ -848,7 +848,7 @@
     {
       "id": "agent-league",
       "archive": ".packages/agent-league.zip",
-      "sha256": "85c8cce4412bf5395c8d4078d152113f93cfc03723279b72449b5ca04b2979c0",
+      "sha256": "9ffdad7469b12c248000ac453658d1d1c794ae234cc28467aa7e122f94d3346b",
       "archive_prefix": "game-playing-agent-league/",
       "direct_root": "courses/game-playing-agent-league",
       "root": "game-playing-agent-league",

@@ -3,7 +3,7 @@
   "version": "0.3.0",
   "title": "Build Your Own Onion Routing Network",
   "goal": "Build and diagnose a multi-hop onion circuit, then defend exactly which observer can learn which facts from its traffic.",
-  "contentHash": "77d847f5207d6bc48a438ed5beaf0237f695dc5e669de11aff1dd1c0a13ce0c7",
+  "contentHash": "1abd297d5a398f78af98290f53558245de9f960c03087747389d499852ddd833",
   "modules": [
     {
       "id": 1,

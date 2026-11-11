@@ -4,13 +4,13 @@
   "files": [
     {
       "path": "CAPSTONE.md",
-      "bytes": 8703,
-      "sha256": "09fb8943ab2c5a72777d870a92ff8a21d42a2e1dbfa4cdff82160728a1dddd7a"
+      "bytes": 8992,
+      "sha256": "8d10c84a48c48568e212bcb67ee5ecbf89a43ecd6551efaad0801a9b9a24b9f2"
     },
     {
       "path": "README.md",
-      "bytes": 11145,
-      "sha256": "31517a8d07bad23784a837dc7c21345a812a4e57976a154f8ab4b0529486ba4f"
+      "bytes": 11230,
+      "sha256": "e4fb55505189dc332987b991621f222df980ea63a585c62b840eb15384dcb11c"
     },
     {
       "path": "SOURCES.md",
@@ -29,13 +29,13 @@
     },
     {
       "path": "capstone-feedback.json",
-      "bytes": 13028,
-      "sha256": "2e89ba0e436495dc7f3b42ab6d431a58f080b5a30d2ae777bbe3fc0824e3b494"
+      "bytes": 14929,
+      "sha256": "6bc723e5f4f034448ee0d50018ecf1466e814752e9eb6188ac75e4ddd0347759"
     },
     {
       "path": "checks/advanced.mjs",
-      "bytes": 17709,
-      "sha256": "60284bd214ddbdc66e761f5d2d02ff8ef56623820cea27f872615a376bcc3ce6"
+      "bytes": 24288,
+      "sha256": "50f3d3d6c1847c928072ec9b5998a4fad21a611c0181e1e748ccf28c93ea24e5"
     },
     {
       "path": "checks/check-utils.mjs",
@@ -44,8 +44,8 @@
     },
     {
       "path": "checks/index.mjs",
-      "bytes": 8566,
-      "sha256": "43fa72e1984a4db8ce4fa5c4bd085a4ffb1957444c5d41947b4f512b1152d528"
+      "bytes": 11705,
+      "sha256": "21339002ad9628e0b9f46176e3f00d94b8978393b81525f485ddd997f8a853db"
     },
     {
       "path": "checks/practice-trees.mjs",
@@ -69,8 +69,8 @@
     },
     {
       "path": "index.html",
-      "bytes": 154263,
-      "sha256": "c070329ac5de7c71a46b363ff9652b24f19f75ad1f3189ad1766633d723a313f"
+      "bytes": 157158,
+      "sha256": "a01acd2578cbb7780ea435a67092f7537a811dd2321cd34a2eb243bab6af2019"
     },
     {
       "path": "learner/baseline.mjs",
@@ -104,8 +104,8 @@
     },
     {
       "path": "learner/report.mjs",
-      "bytes": 802,
-      "sha256": "82d4aff509d6ab913ffd6f6110f570669a92e21ce52517d6f4dd23536f0eff83"
+      "bytes": 967,
+      "sha256": "79dd59578c49c15e541e76a8aa9f9fd564424100da4555bcf0ceedf2209c1795"
     },
     {
       "path": "learner/search.mjs",
@@ -229,18 +229,18 @@
     },
     {
       "path": "lessons/08-1-before-patch.md",
-      "bytes": 4574,
-      "sha256": "4187c10500eaa14db183248099aea8638c77e45e78b391206b72b6c60da5caa7"
+      "bytes": 6017,
+      "sha256": "39790fe869c51b35ff2fa3b465bf97ca9a4441ea1dfca713bb56d7efd6a0f379"
     },
     {
       "path": "lessons/08-2-adapt.md",
-      "bytes": 4848,
-      "sha256": "473eef30125717fa022b5fd79f3981bc1210f95c74ea13fac282ab3177dc58a1"
+      "bytes": 5706,
+      "sha256": "c4fc5f9b3eb95545dfb4efe4196ffa2848ad072b72ada09bbc6ab092653d38e1"
     },
     {
       "path": "lessons/08-3-defend-transfer.md",
-      "bytes": 4963,
-      "sha256": "1688647b7a3dc7fbf42369caa774d001d5f838c0805f3a89d0fb7cc4af817dc0"
+      "bytes": 5428,
+      "sha256": "cb8ab8661fb1c20613d74ec803a21e35ab9df9bdb64332ddd95bd66c51ef8919"
     },
     {
       "path": "lessons/advanced-index.json",
@@ -249,8 +249,8 @@
     },
     {
       "path": "lessons/capstone-index.json",
-      "bytes": 5801,
-      "sha256": "46e36f872344e3db158fc92a6ea2df5eefb1b7a43195995959f6a3a73b1f0d33"
+      "bytes": 6046,
+      "sha256": "b5844da9b9e2bc1eb88585477ad24ed12899d1e037b5d8e1f4292279f7583564"
     },
     {
       "path": "lessons/lesson-index.json",

@@ -81,7 +81,7 @@
       "practice": [
         {
           "id": "8.1-p1",
-          "question": "Write a testable prediction about one assumption your current search or value model makes. Name an observation that would show the prediction was wrong."
+          "question": "Write a testable prediction about one assumption your current search or value model makes. Name the consequence you expect and an observation that would show the prediction was wrong. Then declare what you had read before predicting: lesson 8.2, this item's feedback, or any rule-change or challenge text."
         },
         {
           "id": "8.1-p2",
@@ -89,7 +89,7 @@
         },
         {
           "id": "8.1-p3",
-          "question": "A learner has read a worked solution to a public rule patch. They rerun it with a new random seed. Is this automatically an unassisted held-out transfer assessment?"
+          "question": "A learner has read a worked solution to a public rule patch. They rerun it with a new random seed. Is this automatically an unassisted held-out transfer assessment? Which kind of novelty would matter?"
         }
       ]
     },
@@ -127,7 +127,7 @@
       "practice": [
         {
           "id": "8.3-p1",
-          "question": "Your prediction blamed turn alternation, but fixing an omitted state counter repairs the witness. How should the final report handle the original prediction?"
+          "question": "Your prediction blamed turn alternation, but fixing an omitted state counter repairs the witness. How should the final report handle the original prediction, and what observation would weaken your new explanation?"
         },
         {
           "id": "8.3-p2",

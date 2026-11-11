@@ -236,6 +236,11 @@ fn syscall_model<P: Policy>(out: &mut Vec<Check>) {
         ("S06", Abi::Other, Call::Read, 3, false),
         ("S07", Abi::NativeX86_64, Call::Unknown, 0, false),
         ("S08", Abi::NativeX86_64, Call::Exit, 0, true),
+        // 5.3 "READ on descriptor 3": a lower descriptor and the write descriptor are other uses.
+        ("S13", Abi::NativeX86_64, Call::Read, 0, false),
+        ("S14", Abi::NativeX86_64, Call::Read, 4, false),
+        // 5.3 "X32, other ABIs ... are denied": this holds for EXIT too.
+        ("S15", Abi::X32, Call::Exit, 0, false),
     ];
     for (id, abi, call, fd, expected) in samples {
         let query = SyscallQuery { abi, call, fd };
@@ -282,6 +287,14 @@ fn admission<P: Policy>(out: &mut Vec<Check>) {
         ("A06", vec![Const { dst: 0, value: 0 }], false),
         ("A07", vec![Jump { target: 0 }], true),
         ("A08", vec![Jz { reg: 0, target: 3 }, Halt], false),
+        // 2.2 "every operation": the unsupported operation is not the first instruction.
+        ("A09", vec![Const { dst: 0, value: 0 }, Unknown(250), Halt], false),
+        // 2.2: the branch target is legal, but the false path of JZ falls off the end.
+        ("A10", vec![Const { dst: 0, value: 0 }, Jz { reg: 0, target: 0 }], false),
+        // 2.2 "target an existing instruction index": the length itself is not an index.
+        ("A11", vec![Jump { target: 1 }], false),
+        // 2.2 "Registers are numbered 0 through 7" holds for every operand of every operation.
+        ("A12", vec![Invoke { write: false, handle: 0, offset: 1, mem: 2, len: 8, claimed_job: 1 }, Halt], false),
     ];
     for (id, code, valid) in samples {
         let actual = P::validate(&code);
@@ -413,6 +426,27 @@ fn authority<P: Policy>(out: &mut Vec<Check>) {
             format!("grant index {expected:?}"), format!("actual_job=1; request={request:?}; observed={actual:?}"),
             "4.2: channel principal, full live handle, rights and complete capability range all matter"));
     }
+    // 4.2 "The request's offset is relative to that window. First establish authority for the complete
+    // relative range": the window is bytes 8..24 of a 32-byte object; 12 + 8 is past its 16 bytes.
+    let mut windowed = tile_world(32);
+    windowed.grants[0].base = 8;
+    windowed.grants[0].len = 16;
+    // 4.1 "Choosing a grant table from the claim lets one principal ask the broker to exercise another
+    // principal's authority": only job 2 holds handle 0x10007.
+    let mut other_only = tile_world(16);
+    other_only.grants[2].slot = 7;
+    let extra = [
+        ("C11", &windowed, Request { offset: 12, len: 8, ..base }, None),
+        // 4.2 "A zero-byte operation still needs a live handle and the right."
+        ("C12", &world, Request { write: true, len: 0, ..base }, None),
+        ("C13", &other_only, Request { handle: 0x10007, claimed_job: 2, len: 14, ..base }, None),
+    ];
+    for (id, case_world, request, expected) in extra {
+        let actual = P::authorize(&case_world.grants, 1, request);
+        out.push(case(id, "authority", actual.as_ref().ok().copied() == expected,
+            format!("grant index {expected:?}"), format!("actual_job=1; request={request:?}; observed={actual:?}"),
+            "4.2: channel principal, full live handle, rights and complete capability range all matter"));
+    }
 }
 
 fn budget<P: Policy>(out: &mut Vec<Check>) {
@@ -448,6 +482,22 @@ fn budget<P: Policy>(out: &mut Vec<Check>) {
             }),
         ),
         ("B07", Budget::default(), Cost::Read(4097), None),
+        // 6.1 "A zero-byte call consumes a call, because the crossing itself is work."
+        ("B08", b, Cost::Write(0), Some(Budget { calls: 0, ..b })),
+        // 6.1 "The maximum payload of one call is 4,096 bytes": for a write as for a read.
+        ("B09", Budget::default(), Cost::Write(4097), None),
+        // 6.1 "Read and write budgets are separate": an empty read budget does not stop a write.
+        (
+            "B10",
+            Budget { read_bytes: 0, ..b },
+            Cost::Write(4),
+            Some(Budget {
+                calls: 0,
+                read_bytes: 0,
+                write_bytes: 0,
+                ..b
+            }),
+        ),
     ];
     for (id, before, cost, expected) in samples {
         let actual = P::charge(before, cost);
@@ -738,6 +788,7 @@ fn transfer<P: Policy>(out: &mut Vec<Check>) {
             "8.2: the supplied deterministic queue reveals the actual delayed effect; no service is built"));
     }
     competing_slot_schedules::<P>(out);
+
 }
 
 /// Revocation must bind to the whole handle, even when a live grant has the

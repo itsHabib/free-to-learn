@@ -23,7 +23,7 @@ All functions are synchronous. Do not mutate caller inputs except the explicitly
 | `unwrapReply(hops, packet, expectedSeq)` | Open each backward layer entry-to-exit using the caller's `expectedSeq` in every layer's context. Each layer's sequence must equal that expected request sequence; otherwise throw `BAD_PACKET`. Never derive the expected sequence from the packet. Return the final reply only after all layers validate. This function is stateless; the supplied client checks accepted reply sequences. |
 | `acceptSequence(seen, seq)` | Require an integer in 0…1023, else `BAD_SEQUENCE`. Reject a member of `seen` with `REPLAY`. Add a fresh sequence. Out-of-order unseen values are allowed. |
 | `recoveryPlan(relays, failedIds, oldPath)` | Return `{action:'rebuild',path}` preserving path length and selection rules, or `{action:'stop',reason:'NO_PATH'}`. The harness closes the old circuit and performs fresh setup. |
-| `correlate(entryTimes, candidates, tolerance)` | Return every candidate ID with equal event count and all corresponding gap differences ≤ tolerance. Require at least two entry events. Candidates are `{id,times}`; inputs have finite ascending times and nonnegative tolerance. Preserve input and candidate order. |
+| `correlate(entryTimes, candidates, tolerance)` | Return every candidate ID with equal event count and all corresponding gap differences ≤ tolerance. For fewer than two entry events, return []. Candidates are `{id,times}`; inputs have finite ascending times and nonnegative tolerance. Preserve input and candidate order. |
 
 Each hop has `circuitId`, `relayId`, `forwardKey`, `backwardKey`. Each relay state also has `previous`, `next`, `seenForward`. Key handles carry no serializable key bytes.
 

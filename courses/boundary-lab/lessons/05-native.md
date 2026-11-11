@@ -24,7 +24,7 @@ No-new-privileges is another specific mechanism. It prevents certain exec-relate
 
 Repair `modeled_syscall` and `modeled_seal` in `learner.rs`. The model admits only `NativeX86_64`, READ on descriptor 3, WRITE on descriptor 4, and EXIT (whose descriptor field is irrelevant). X32, other ABIs, unknown operations and other descriptor uses are denied. Guest interpretation may begin only if no-new-privileges was verified, the filter was installed, and descriptors were cleaned. Run the `syscall` practice group with a recorded prediction.
 
-These are original model enums and booleans, not actual syscall numbers, BPF or kernel observations. Passing S01–S12 establishes the modeled decision behavior only. In a real worker, each precondition needs independent actual evidence; the worker cannot prove it simply by emitting `true`.
+These are original model enums and booleans, not actual syscall numbers, BPF or kernel observations. Passing S01–S15 establishes the modeled decision behavior only. In a real worker, each precondition needs independent actual evidence; the worker cannot prove it simply by emitting `true`.
 
 Run `cargo run --offline -- native`. It reports NOT RUN and exits with code 2. That is the correct result for this slice. It does not install a filter or inspect private machine state.
 

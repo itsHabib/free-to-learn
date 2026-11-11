@@ -17,7 +17,7 @@
     {
       "path": "README.md",
       "bytes": 6750,
-      "sha256": "fb06a43f301ea36bbcc43074196aa33d12c89a03b9c925f1f359a6b064f043f9"
+      "sha256": "f3b1b6e5f5c569ec887fda36ccf4d6b11865997e6d64a6ab99dbabc3cbad47a5"
     },
     {
       "path": "run.py",
@@ -27,12 +27,12 @@
     {
       "path": "index.html",
       "bytes": 48805,
-      "sha256": "86b69a70583f32d36ede9224d8935020a872e0ce04bc0fe5325a78422aa7ad2d"
+      "sha256": "8f89a8933f469ada65f30d238864cdc263a2596aedbbc53dd55b124b47c3979e"
     },
     {
       "path": "scaffold-manifest.json",
       "bytes": 1231,
-      "sha256": "ffdb7d6c803cfe1d85ebf9dca28545d1a9005e07d04dda9fa50220e37b8796d7"
+      "sha256": "d362693f0270945a8d64e1915ded19e33056fb1cc22caa55cc2ca28133bae4b4"
     },
     {
       "path": "src/lib.rs",
@@ -61,8 +61,8 @@
     },
     {
       "path": "src/checks.rs",
-      "bytes": 25308,
-      "sha256": "46751b7e372e5aa37d6e64116d894d0131c54dcecb30de2484d04be98d4b9c11"
+      "bytes": 28342,
+      "sha256": "e4a680f4600428a48a3d9155b6d7b32aee5d43b20cff835daeef84a5246eaacf"
     },
     {
       "path": "src/learner.rs",
@@ -97,7 +97,7 @@
     {
       "path": "lessons/05-native.md",
       "bytes": 4563,
-      "sha256": "f227b64dc1baca3d30a6d933728cf0802d91a12e4330580dd63fe2cac13317f8"
+      "sha256": "b3843ea20ddb0a32a21afeb96ca7478d67f54c29c2e434e2cd6c176f97c4acc6"
     },
     {
       "path": "lessons/06-budgets.md",
@@ -119,6 +119,12 @@
     "parentSourceCommit": "5aca0e396caec982b2ec47ed570539564064a221",
     "parentArchiveSha256": "aa3801f395436207477c39a119cbb6ad7dec8b2cdb5024eb58d7cf8d67121a42",
     "instructionPatchSha256": "720c9861c7f195b555739a4aaf7c83642477b877b79622be238d190f08ef9e5c",
-    "status": "local-only-unreleased"
+    "status": "local-only-unreleased",
+    "checkerHardening": {
+      "addedPublicCases": 13,
+      "totalPublicCases": 84,
+      "transferCases": 10,
+      "deferred": "Q11 same-generation/new-epoch case not adopted; no new temporal grant rule implied."
+    }
   }
 }

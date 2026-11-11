@@ -42,12 +42,12 @@
     {
       "path": "observatory/MANIFEST.json",
       "bytes": 7815,
-      "sha256": "339b4cd79b4e8c12ae2fffc0dd818907e363a0ac11eec7882d036487e8a3a917"
+      "sha256": "bc327f728a998a936c232236132b151c685a9c1f750f93a131e6e15a2fc268f4"
     },
     {
       "path": "observatory/PROTOCOL.md",
-      "bytes": 7943,
-      "sha256": "a22b4373efd7f04e7c57263f84d848802ee2de6890218638477fe47785aeae32"
+      "bytes": 7952,
+      "sha256": "5b4046c163a5a9d24b7df8f24027a3eb235d34015f1b17e38d53361cf8ba832c"
     },
     {
       "path": "observatory/README.md",
@@ -76,8 +76,8 @@
     },
     {
       "path": "observatory/browser/cases.mjs",
-      "bytes": 13687,
-      "sha256": "a76d71eb286b81d4e308eacb08494930336741f8e3e948562c9589d755dcd363"
+      "bytes": 14134,
+      "sha256": "a42ac24b66f9de758975f00e26e0c061fa919d54f3c495b318a6259d196e02df"
     },
     {
       "path": "observatory/browser/crypto.mjs",
@@ -111,8 +111,8 @@
     },
     {
       "path": "observatory/checks/cases.mjs",
-      "bytes": 12875,
-      "sha256": "0165b79366cc3f607424e19727632c39eca93aa07366a820be4411b259a6fa3a"
+      "bytes": 13292,
+      "sha256": "3aa5b9ebeb44087f3385acb6e20e39d402f64e9ae141abe3226d778ae0ad2611"
     },
     {
       "path": "observatory/checks/practice.mjs",
@@ -122,12 +122,12 @@
     {
       "path": "observatory/course.json",
       "bytes": 3597,
-      "sha256": "6ee76ff99960047eb6af4f4aefa536331dff050143ee08d80f241b2d29831386"
+      "sha256": "353f64d9697fa5965e5c37c8ac3071406be606ca5f3be6dacefa70c8e979dab8"
     },
     {
       "path": "observatory/course.mjs",
-      "bytes": 30437,
-      "sha256": "2435e699b40b0d359fc62a1527dc3d0eee69fb0dbf5fb0f39f036643e4c5f997"
+      "bytes": 30452,
+      "sha256": "e49b1f66d17f781516e3cb1e033cd25cb955ce323cfca85d80f3ceae52b4d567"
     },
     {
       "path": "observatory/examples/browser-sibling.js",
@@ -176,8 +176,8 @@
     },
     {
       "path": "observatory/lessons/06.md",
-      "bytes": 5319,
-      "sha256": "d75d55c70f49ce5035ca32f61459fec295f23960a25b6f5b53fedb1756955d34"
+      "bytes": 5334,
+      "sha256": "5c11bb5003fc208bb70e16ad115e5edd04e758103fd8b1f8bc5eaddeb4dedd6d"
     },
     {
       "path": "observatory/package.json",
@@ -251,13 +251,13 @@
     },
     {
       "path": "observatory/workbench/index.html",
-      "bytes": 140353,
-      "sha256": "8401136ad4989497a713551ef6a699039802c333d861aeba860f5f826969c1f8"
+      "bytes": 140985,
+      "sha256": "6f827df61ecaf0c96f747de0dab01c531c9b5d8d0d124f634da8f2b90210cee8"
     },
     {
       "path": "observatory/workbench/learner-worker.js",
-      "bytes": 41613,
-      "sha256": "751b938f77cfe0abedb56c2a5b56e8e0d4e287703e5591aa95e095ee483743c4"
+      "bytes": 42060,
+      "sha256": "1c6b92eef351083fa58bb95f94a782aea226a1fcc59c617ee3dfb167304017b0"
     },
     {
       "path": "observatory/workbench/style.css",
@@ -276,8 +276,8 @@
     },
     {
       "path": "onion-process-lab/MANIFEST.json",
-      "bytes": 2273,
-      "sha256": "3e9385e193e1c627bddef50793f035e0a87bb848acc25abaa1b2dadb05a9bbbb"
+      "bytes": 2418,
+      "sha256": "580ad7ae75df43211567c0c9d801e7ec796dc42a5c24f3e368420771e77bd752"
     },
     {
       "path": "onion-process-lab/PROTOCOL.md",
@@ -301,8 +301,8 @@
     },
     {
       "path": "onion-process-lab/checks/requirements.mjs",
-      "bytes": 10698,
-      "sha256": "07de5587b5324d6a6dc545bf4811fe3055bc54cf00e7211c524b9b47a7e8295f"
+      "bytes": 15877,
+      "sha256": "16bf918e94c255a51a43f80fcab06eb7db5a596ac9166fc3e83dc75939a1bf6a"
     },
     {
       "path": "onion-process-lab/course.json",

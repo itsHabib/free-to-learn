@@ -47,3 +47,7 @@ node tools/replay.mjs my-export.json replay-report.json
 Restore uses the retained source, packet and input history in a fresh process. It verifies notebook structure and every source/packet hash before creating the new workspace. It does not authenticate grades or authorship. Source and inputs are the recovery data; JSON frames and PNGs are diagnostics. Keep exports private if your source or notes are private. Export paths and new workspaces must not already exist. No temporary-file cleanup or deletion is performed.
 
 For P3, freeze your first engine and notebook before receiving a reviewer-created unfamiliar packet. The visible field page and self-authored page are practice and own-project evidence, not a blind human transfer assessment. Retain the first failure, minimized case, general repair, regression results and limitations. Passing all finite checks does not establish full web compatibility or course release acceptance.
+
+## Worked assistance in the package
+
+`public/demo.json` (also copied to `build/demo.json`) contains precomputed outputs for the guided pages. These are worked demonstrations, not your implementation or private learner solutions. If you inspect or use those outputs while solving an exercise, record that as assistance in your work; reproducing a supplied demonstration is not independent transfer evidence.
