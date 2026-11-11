@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 26263,
-      "sha256": "f1b4eed0ba888333844035719177cf449b035eb9f856718c7858be8dd5747a85"
+      "sha256": "bbba65dfc7deb4cc093bef1270c6e749b4b4a972580b145a7d1878b325a4e771"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -69,13 +69,13 @@
     },
     {
       "path": ".packages/agent-league.zip",
-      "bytes": 216535,
-      "sha256": "9ffdad7469b12c248000ac453658d1d1c794ae234cc28467aa7e122f94d3346b"
+      "bytes": 217635,
+      "sha256": "77274ed98a6215e6b298c0c214f5599896caf8cbdf6b9618738ec4d217ca0cbc"
     },
     {
       "path": ".packages/agent-league.zip.sha256",
       "bytes": 83,
-      "sha256": "c779112b9b4fe139275dcef8da71c821515b5464a0ced74e694c30000faa607c"
+      "sha256": "d3089a5b47321b8d3981eba93dc326f5b092ed6b57a58294b51480e169ef8afa"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -179,13 +179,13 @@
     },
     {
       "path": ".packages/tiny-browser.zip",
-      "bytes": 181690,
-      "sha256": "38e61665c640f3c88b6da8f74ac7efd28651bbb5afaad8eacd2141e71b17ee65"
+      "bytes": 182637,
+      "sha256": "2aa930682a71c2114c6a25ca30d2abd8ede85d7b92514a00cfbf32944ce307f2"
     },
     {
       "path": ".packages/tiny-browser.zip.sha256",
       "bytes": 83,
-      "sha256": "829ba549be7ce77f30ec35eb0470c8092f1a03b1fdee4bc2c97ef6676ffa0ebf"
+      "sha256": "787e70b0200c0576ee835ed913fb895e4fb5f68ccfac1833e3f81f1d4337da17"
     },
     {
       "path": "BACKUP-AND-RESTORE.md",
@@ -2965,7 +2965,7 @@
     {
       "path": "courses/game-playing-agent-league/MANIFEST.json",
       "bytes": 11455,
-      "sha256": "583712f2f4b0ad427124007d9aa35cb9a0b8433ab4f1c007cd53ebf32b6fd9b3"
+      "sha256": "50977b5ec0e7f8104641dc977b46d510f5ecbeec305ddd42ffe4987b8cdeb647"
     },
     {
       "path": "courses/game-playing-agent-league/README.md",
@@ -2994,8 +2994,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/checks/advanced.mjs",
-      "bytes": 24288,
-      "sha256": "50f3d3d6c1847c928072ec9b5998a4fad21a611c0181e1e748ccf28c93ea24e5"
+      "bytes": 27314,
+      "sha256": "fe624df939a9332f04d2f0eb377c99a4f46042d2260a61c4a88f7bb9a9055358"
     },
     {
       "path": "courses/game-playing-agent-league/checks/check-utils.mjs",
@@ -3079,8 +3079,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/learner/vulnerability.mjs",
-      "bytes": 1022,
-      "sha256": "b77b511c84612da93c50fadb18b1c47c08d007482f6ac58315edac45efb2a6cc"
+      "bytes": 1168,
+      "sha256": "d84e0ef30b07952fb2d1df4ebce25d3cb39c09fc6a61699e22b54f6d963f1f01"
     },
     {
       "path": "courses/game-playing-agent-league/lessons/01-1-decision-contract.md",
@@ -5700,7 +5700,7 @@
     {
       "path": "courses/tiny-browser-engine/PACKAGE-MANIFEST.json",
       "bytes": 8570,
-      "sha256": "d2cfd70f34983582a731d0d391373a28d4f95984868e59bfbbce9b58cf77e1e5"
+      "sha256": "2fc11fc4a6df3ac6872d9b4b4f7659b84233416a874e1918773d9f38083182b7"
     },
     {
       "path": "courses/tiny-browser-engine/README.md",
@@ -5730,12 +5730,12 @@
     {
       "path": "courses/tiny-browser-engine/build/build.json",
       "bytes": 2665,
-      "sha256": "c45a45dade125111c81873fdef3d9a8a7d93af42cfde54e7f9337acb84446246"
+      "sha256": "f5a8b141bbc60f0fe2f562451a57b5163b0d900305498911c0051799adb77eff"
     },
     {
       "path": "courses/tiny-browser-engine/build/checks.mjs",
-      "bytes": 40566,
-      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
     },
     {
       "path": "courses/tiny-browser-engine/build/content.mjs",
@@ -5799,8 +5799,8 @@
     },
     {
       "path": "courses/tiny-browser-engine/build/worker.js",
-      "bytes": 72164,
-      "sha256": "deb436aceb9f1ad49b45f473f11f6875cd8f6f65ae280868732487152e52e0a2"
+      "bytes": 72949,
+      "sha256": "c8a5f5fb8a81397f88652ad5cb024a10df6f5e955ed537261b7375e22a13cbab"
     },
     {
       "path": "courses/tiny-browser-engine/public/CONTRACT.md",
@@ -5819,8 +5819,8 @@
     },
     {
       "path": "courses/tiny-browser-engine/public/checks.mjs",
-      "bytes": 40566,
-      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
     },
     {
       "path": "courses/tiny-browser-engine/public/content.mjs",

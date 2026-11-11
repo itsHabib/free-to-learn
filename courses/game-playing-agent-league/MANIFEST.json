@@ -34,8 +34,8 @@
     },
     {
       "path": "checks/advanced.mjs",
-      "bytes": 24288,
-      "sha256": "50f3d3d6c1847c928072ec9b5998a4fad21a611c0181e1e748ccf28c93ea24e5"
+      "bytes": 27314,
+      "sha256": "fe624df939a9332f04d2f0eb377c99a4f46042d2260a61c4a88f7bb9a9055358"
     },
     {
       "path": "checks/check-utils.mjs",
@@ -119,8 +119,8 @@
     },
     {
       "path": "learner/vulnerability.mjs",
-      "bytes": 1022,
-      "sha256": "b77b511c84612da93c50fadb18b1c47c08d007482f6ac58315edac45efb2a6cc"
+      "bytes": 1168,
+      "sha256": "d84e0ef30b07952fb2d1df4ebce25d3cb39c09fc6a61699e22b54f6d963f1f01"
     },
     {
       "path": "lessons/01-1-decision-contract.md",

@@ -628,7 +628,7 @@
     {
       "id": "tiny-browser",
       "archive": ".packages/tiny-browser.zip",
-      "sha256": "38e61665c640f3c88b6da8f74ac7efd28651bbb5afaad8eacd2141e71b17ee65",
+      "sha256": "2aa930682a71c2114c6a25ca30d2abd8ede85d7b92514a00cfbf32944ce307f2",
       "archive_prefix": "tiny-browser-engine/",
       "direct_root": "courses/tiny-browser-engine",
       "root": "tiny-browser-engine",
@@ -848,7 +848,7 @@
     {
       "id": "agent-league",
       "archive": ".packages/agent-league.zip",
-      "sha256": "9ffdad7469b12c248000ac453658d1d1c794ae234cc28467aa7e122f94d3346b",
+      "sha256": "77274ed98a6215e6b298c0c214f5599896caf8cbdf6b9618738ec4d217ca0cbc",
       "archive_prefix": "game-playing-agent-league/",
       "direct_root": "courses/game-playing-agent-league",
       "root": "game-playing-agent-league",

@@ -1,8 +1,8 @@
 {
   "kind": "learner-source-and-build",
   "status": "local-terminal-candidate-unreleased",
-  "supersedesArchiveSha256": "a376d76c21c6ab59c343005a963dd5dc8f8520ae618f3ab634fc460b77d55928",
-  "buildId": "63f30945cf3e792bc4d08e67bac8b7e47aa73e2daa96462a7328d6a6740ec397",
+  "supersedesArchiveSha256": "38e61665c640f3c88b6da8f74ac7efd28651bbb5afaad8eacd2141e71b17ee65",
+  "buildId": "2201e7d06346886dd41f19f2fd8137015549b83b344b0698c911d9a01d9e5b34",
   "privateAuthorFilesIncluded": false,
   "files": [
     {
@@ -33,12 +33,12 @@
     {
       "path": "build/build.json",
       "bytes": 2665,
-      "sha256": "c45a45dade125111c81873fdef3d9a8a7d93af42cfde54e7f9337acb84446246"
+      "sha256": "f5a8b141bbc60f0fe2f562451a57b5163b0d900305498911c0051799adb77eff"
     },
     {
       "path": "build/checks.mjs",
-      "bytes": 40566,
-      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
     },
     {
       "path": "build/content.mjs",
@@ -102,8 +102,8 @@
     },
     {
       "path": "build/worker.js",
-      "bytes": 72164,
-      "sha256": "deb436aceb9f1ad49b45f473f11f6875cd8f6f65ae280868732487152e52e0a2"
+      "bytes": 72949,
+      "sha256": "c8a5f5fb8a81397f88652ad5cb024a10df6f5e955ed537261b7375e22a13cbab"
     },
     {
       "path": "public/CONTRACT.md",
@@ -122,8 +122,8 @@
     },
     {
       "path": "public/checks.mjs",
-      "bytes": 40566,
-      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
     },
     {
       "path": "public/content.mjs",

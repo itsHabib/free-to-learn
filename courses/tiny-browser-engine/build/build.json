@@ -1,7 +1,7 @@
 {
   "course": "tiny-browser-engine",
   "status": "local-candidate-not-released",
-  "buildId": "63f30945cf3e792bc4d08e67bac8b7e47aa73e2daa96462a7328d6a6740ec397",
+  "buildId": "2201e7d06346886dd41f19f2fd8137015549b83b344b0698c911d9a01d9e5b34",
   "files": [
     {
       "name": "index.html",
@@ -60,8 +60,8 @@
     },
     {
       "name": "checks.mjs",
-      "bytes": 40566,
-      "sha256": "4e95f98554a853ba3f6879f126b4e3b816f1a2b27c1da69201be38c09b8627db"
+      "bytes": 41351,
+      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
     },
     {
       "name": "starter.body.js",
@@ -80,8 +80,8 @@
     },
     {
       "name": "worker.js",
-      "bytes": 72164,
-      "sha256": "deb436aceb9f1ad49b45f473f11f6875cd8f6f65ae280868732487152e52e0a2"
+      "bytes": 72949,
+      "sha256": "c8a5f5fb8a81397f88652ad5cb024a10df6f5e955ed537261b7375e22a13cbab"
     },
     {
       "name": "demo.json",

@@ -1,4 +1,4 @@
-import {initialState, createState} from '../lib/game.mjs';
+import {initialState, createState, GameError} from '../lib/game.mjs';
 import {checkFeatures, predictLinear} from '../lib/training.mjs';
 import {createRng} from '../lib/rng.mjs';
 import {createPlan} from '../lib/league.mjs';
@@ -74,10 +74,37 @@ export function checkValueModel({features, fit}) {
         'The tested representation never distinguishes the requested player. Keep the value target and feature perspective aligned; no exact sign convention or vector shape is required.');
       return {perspectiveWitnesses: witnesses};
     }],
+    ['features-range', 'Stay inside [-1, 1] on positions with a material difference of two or more pawns.', () => {
+      for (const [own, other] of [[[5, 6, 8], [18]], [[6], [15, 16, 18]], [[5, 6, 7, 8, 9], [18]]]) {
+        const {state} = featurePosition('wide-material-gap', own, other);
+        for (const player of [0, 1]) {
+          let vector;
+          try { vector = Array.from(features(copyData(state), player)); } catch (error) { throw Object.assign(new Error(`features threw: ${error.message}`), {input: {state, player}}); }
+          requireThat(vector.every(value => Number.isFinite(value) && Math.abs(value) <= 1), 'learner/value-model.mjs: "Return 1–32 finite values in [-1,1]". A raw pawn count leaves that range once the difference reaches two, and cli fit then refuses the features.', {state, player, vector});
+        }
+      }
+    }],
+    ['features-no-outcome', 'Use only the observable board, not the recorded outcome (lesson 3.1).', () => {
+      const won = createState({board: (() => { const b = Array(25).fill(-1); b[22] = 0; b[8] = 1; return b; })(), currentPlayer: 1, ply: 0});
+      requireThat(won.terminal, 'Fixture error: this position must be terminal.');
+      // Returns are fixed by the board, so no valid state differs only in returns. A feature that calls the supplied game
+      // functions (legalActions, observe, validateState) correctly refuses this contradictory copy with GameError
+      // INVALID_TERMINAL; that refusal is not an outcome leak and is accepted (v3, after Pine's review).
+      const flipped = {...copyData(won), returns: [...won.returns].reverse()};
+      const refused = [];
+      for (const player of [0, 1]) {
+        const a = JSON.stringify(Array.from(features(copyData(won), player)));
+        let b;
+        try { b = JSON.stringify(Array.from(features(copyData(flipped), player))); }
+        catch (error) { if (error instanceof GameError || error?.code === 'INVALID_TERMINAL') { refused.push(player); continue; } throw error; }
+        requireThat(a === b, 'Two states with the same board and different recorded returns got different features. learner/value-model.mjs: "Do not use final outcomes"; lesson 3.1: features measure "another quantity your policy can compute before the outcome."', {player, board: won.board});
+      }
+      return refused.length ? {contradictoryStateRefusedByGameValidation: refused} : undefined;
+    }],
     ['fit-synthetic', 'Fit an original small regression fixture rather than returning a fixed vector.', () => {
-      const input = copyData(samples), before = JSON.stringify(input);
+      const input = copyData([samples[3], samples[0], samples[4], samples[1], samples[2]]), before = JSON.stringify(input); // Lane ALP: unsorted, so a sort is visible
       const model = fit(input, {seed: 13, epochs: 600, learningRate: 0.1});
-      requireThat(JSON.stringify(input) === before, 'Fitting mutated supplied training examples.');
+      requireThat(JSON.stringify(input) === before, 'Fitting mutated supplied training examples (their order or contents changed). Train on the caller\'s examples without changing them.');
       const errors = samples.map(example => (predictLinear(model.weights, example.x) - example.target) ** 2);
       const mse = errors.reduce((sum, value) => sum + value, 0) / errors.length;
       requireThat(mse < 0.002, `Synthetic-fit MSE ${mse} is too large; verify labels, update direction and coefficient order.`, samples);
@@ -93,6 +120,7 @@ export function checkValueModel({features, fit}) {
     ['fit-invalid', 'Reject nonfinite and inconsistent training examples instead of producing unusable parameters.', () => {
       rejects(() => fit([{x: [1, NaN], target: 1}], {seed: 1, epochs: 2, learningRate: 0.1}), 'NaN input was not rejected.');
       rejects(() => fit([{x: [1], target: 1}, {x: [1, 0], target: 0}], {seed: 1, epochs: 2, learningRate: 0.1}), 'Inconsistent dimensions were not rejected.');
+      rejects(() => fit([{x: [1, 0], target: NaN}, {x: [1, 1], target: 1}], {seed: 1, epochs: 2, learningRate: 0.1}), 'A NaN target was not rejected. Lesson 3.2: "do not allow NaN weights to reach search"; reject nonfinite examples, including targets.');
     }],
   ]);
 }
@@ -116,8 +144,9 @@ export function checkSampler(sampleOpponent) {
       const fixed = [{id: 'never', weight: 0}, {id: 'only', weight: 1}, {id: 'also-never', weight: 0}], rng = createRng(12);
       for (let i = 0; i < 30; i++) requireThat(sampleOpponent(fixed, rng) === 'only', 'A zero-weight item was selected.');
     }],
-    ['sampler-sum', 'Reject weights that do not sum to one (lesson 5.2: "rejects an unnormalized roster").', () => {
-      for (const bad of [[{id: 'first', weight: 0.2}, {id: 'middle', weight: 0.3}, {id: 'last', weight: 0.47}], [{id: 'first', weight: 0.2}, {id: 'middle', weight: 0.3}, {id: 'last', weight: 0.53}]])
+    ['sampler-sum', 'Reject weights whose sum is plainly not one (lesson 5.2: "rejects an unnormalized roster").', () => {
+      // Lane ALP v2: gross sums only (0.7 and 1.5). No numeric tolerance is declared in the course, so values near one are left to the author.
+      for (const bad of [[{id: 'first', weight: 0.2}, {id: 'middle', weight: 0.3}, {id: 'last', weight: 0.2}], [{id: 'first', weight: 0.2}, {id: 'middle', weight: 0.3}, {id: 'last', weight: 1}]])
         rejects(() => sampleOpponent(bad, createRng(1)), `Weights summing to ${bad.reduce((s, e) => s + e.weight, 0).toFixed(2)} were accepted. Lesson 5.2: the contract requires probabilities summing to one; reject an unnormalized roster.`);
     }],
     ['sampler-invalid', 'Reject negative, unnormalized, nonfinite or duplicate-ID archive distributions.', () => {
@@ -136,7 +165,7 @@ export function reportPracticeFixture() {
   return {plan, records};
 }
 
-// A's result depends on the scenario, A's seat and the replicate, so a reducer that keeps only one seat
+// Lane ALP proposal: A's result depends on the scenario, A's seat and the replicate, so a reducer that keeps only one seat
 // or one replicate gets different scenario blocks. Expected blocks, in scenario order: 0.5, 1, -0.5.
 const SEAT_REPLICATE_VALUES = {'scenario-1': [[1, 1], [-1, 1]], 'scenario-2': [[1, 1], [1, 1]], 'scenario-3': [[-1, 1], [-1, -1]]};
 export function reportSeatReplicateFixture() {
