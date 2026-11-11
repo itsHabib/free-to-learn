@@ -157,8 +157,8 @@ consumer's previously delivered prefix. Do not emit a normal completion or
 invent an error stop. Later pulls may end or reject, with no new runtime work.
 Preserve caller inputs. This contract qualifies sequential pulls only; it adds
 no cancellation, concurrent-pull, transport, text-delta or resumption claim.
-Streaming is required baseline behavior and does not earn distinct beam-search
-extension credit. The current untrained fixture is numeric evidence only.
+Streaming is required baseline behavior; it is separate from the optional
+beam-search extension. The current untrained fixture is numeric evidence only.
 
 ## Trained final profile
 

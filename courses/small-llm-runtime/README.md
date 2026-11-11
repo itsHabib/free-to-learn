@@ -8,8 +8,7 @@ this course independent of the tensor/autograd course.
 
 ## Exact offline route
 
-Use Node 22+; **Node 26.5.1** was actually tested. Minimum-version qualification
-remains pending. Unzip the course ZIP into a fresh directory, then run:
+Use Node 22 or newer; the course was tested on **Node 26.5.1**. Unzip the course ZIP into a fresh directory, then run:
 
 ```sh
 node lab.mjs serve
@@ -44,14 +43,14 @@ The runnable export keeps numeric.mjs and spec.mjs beside work/runtime.mjs. Term
 
 ## Original slice and trained end product
 
-PocketDecoder-v1 remains the first numerical exercise:dim8/two blocks/two heads,
-character32/context32 and a deterministic original untrained21,661-byte fixture.
-Its SHA-256 is60867dbc492cc5978dfad4cf8a0bfef37f756a186edcdc18c8199db5ed474112.
+PocketDecoder-v1 remains the first numerical exercise: dimension 8, two blocks, two heads,
+a 32-character vocabulary, context 32 and a deterministic original untrained 21,661-byte fixture.
+Its SHA-256 is 60867dbc492cc5978dfad4cf8a0bfef37f756a186edcdc18c8199db5ed474112.
 Those earlier checks teach the mechanisms; their letters are not pretrained output.
 
 The final capstone adapts your own code to one MIT-declared pretrained Stories260K
-profile:dim64/five blocks/eight query/four KV heads,vocabulary512/context512.
-The exact checkpoint(1,056,540bytes) and BPE tokenizer(6,227bytes), model/card
+profile: dimension 64, five blocks, eight query and four key/value heads, vocabulary 512, context 512.
+The exact checkpoint (1,056,540 bytes) and BPE tokenizer (6,227 bytes), model/card
 identities and full retained notices are under fixtures/trained/. NOTICE.md explains
 attribution. No corpus, external inference engine or pretrained training is needed.
 
@@ -69,8 +68,10 @@ terminal. No browser action silently imports your terminal files.
 
 ## Checks and scope
 
-Checks print the violated requirement, input, observed discrepancy and repair
-pointer. Exit 0 means agreement on those public cases; 1 means failed criteria;
+Checks print, for each failed case, the requirement, the input, the first
+expected/observed difference and the lesson section to reread. Add `--json` after
+the help text to print the full machine-readable result instead; every attempt
+also keeps it in `.attempts/<id>/result.json`. Exit 0 means agreement on those public cases; 1 means failed criteria;
 2 means invalid invocation; 3 means execution error or the five-second process
 limit. Reading and practice have no timers. Each module declares its prerequisites. Supplied earlier-layer references let
 you practice a later module without completing earlier project code. For example:
@@ -86,7 +87,7 @@ optional support action. It never creates or replaces project.mjs. Using support
 is optional for the learner; supplying it is part of the course contract.
 
 Short readings focus on one mechanism; implementation and diagnosis supply most
-of the work. This deliberately differs from Ivy's 5–7 minute prose target.
+of the work.
 Human reading/project durations have not been measured.
 
 ## Candidate evidence and release boundary
