@@ -1,7 +1,7 @@
 {
   "format": "advanced-storage-local-package-v1",
   "localOnly": true,
-  "rights": "runtime/foundation.mjs and runtime/disk.mjs retain verified existing MIT coverage. Rights in other material and authorization for publication or deployment remain separate.",
+  "rights": "Project-owned original code uses MIT and original lesson content uses CC BY 4.0 under LICENSE.md. The supplied foundation and disk components retain their existing MIT notice. Third-party rights and publication authorization remain separate.",
   "runtime": "Node 26.5.1; built-in modules only",
   "files": {
     "CONTRACTS.md": {
@@ -17,8 +17,8 @@
       "bytes": 5514
     },
     "SOURCES.md": {
-      "sha256": "ca7be71c43d58c4d6d2b1fa043d549fc5553ef9f7dc34a1b0dca9e1364d5a962",
-      "bytes": 3030
+      "sha256": "49482b4e078c59c8e3a01e2ec06678ea1ca344688cce85ae1c7d33c4533431ee",
+      "bytes": 3104
     },
     "WITNESSES.md": {
       "sha256": "6f36a14bb4bc9ef2b3b1ec2c196082154d194d85f2061c33860afc98d9ed2c2c",
@@ -53,8 +53,8 @@
       "bytes": 15574
     },
     "lab.mjs": {
-      "sha256": "274b0cadbd215a9c4683c558e6a3cd340dd21e276b859a585f0fe1b641d3a3b8",
-      "bytes": 13541
+      "sha256": "74b13016ea828dbc7fa7a26f62601cba192dde0d13e7df54afacc7cbd392233a",
+      "bytes": 13567
     },
     "lessons/01.md": {
       "sha256": "0ebd47b22e0d5623b1bcf5d37d36a1f205b0601ff0874fb19e5dd538cb8f95da",
@@ -151,6 +151,18 @@
     "workshop.mjs": {
       "sha256": "2fa740be24a4bda927dc562499ea9a2b94ded185ac3b4a87dd898b6ced26d5b1",
       "bytes": 17842
+    },
+    "LICENSE.md": {
+      "bytes": 1576,
+      "sha256": "442573b712413ecb5d83034be7ca1fd31a4905a2dccbc9e0ba6329236fb92cf2"
+    },
+    "LICENSES/MIT.txt": {
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    "LICENSES/CC-BY-4.0.txt": {
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
     }
   },
   "extension": {
@@ -167,5 +179,10 @@
       "version": "prototype-v4-check-integrity",
       "scope": "57 terminal checks: retains previous four repairs and adds ten contract-derived cases. Unit09 accepts clear conflict descriptions and independently excludes masking write conflicts. Prior attempts stay immutable; changed execution identity requires fresh runs and reassessment for units08/09. Bounded browser policy checks remain a separately scoped subset, not terminal engine/persistence checks."
     }
+  },
+  "redistribution": {
+    "terms": "MIT original code; CC BY 4.0 original lessons; existing exceptions and component notices retained",
+    "license": "LICENSE.md",
+    "publication": "not performed; separate release gates remain"
   }
 }

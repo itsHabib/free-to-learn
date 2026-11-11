@@ -6,6 +6,21 @@
   "privateAuthorFilesIncluded": false,
   "files": [
     {
+      "path": "LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "README.md",
       "bytes": 7289,
       "sha256": "bd1b7ac33ae5afb3c639d6e9f82f92b44dc37e75089e01f4b998039917199f21"
@@ -248,5 +263,10 @@
     "additionalInstructionClarification": "M5/M6 terminal data evidence now; final PNG and hit table after M7; no runtime/checker/starter/quiz change.",
     "assessmentRegression": "Add two public controls for actual fresh-learner failures: M4 collapsed whitespace-only text between inline spans at40px/39px wrap boundary; M7 viewport reflow with exact geometry and actual layout counter. Preserve all original42 checks. No learner solution is included.",
     "learnerNavigationClarification": "Answer-free lesson CLI is the primary fresh route; include concrete width/height resize input example. No executable change."
+  },
+  "redistribution": {
+    "terms": "MIT original code; CC BY 4.0 original lessons; existing exceptions and component notices retained",
+    "license": "LICENSE.md",
+    "publication": "not performed; separate release gates remain"
   }
 }

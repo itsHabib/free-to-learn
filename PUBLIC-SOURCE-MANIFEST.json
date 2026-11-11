@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 26263,
-      "sha256": "f7ec8eca2261fb4a1b280bf8efcd5524a678343119cbcc3a16cbd8e9fed266f9"
+      "sha256": "47af756f441d06fe4bced8061ba459d5b5b3ec7cc99bca11deaad4d7ea8235db"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -59,23 +59,23 @@
     },
     {
       "path": ".packages/advanced-storage.zip",
-      "bytes": 117896,
-      "sha256": "3ffa0d0d4912a13066a14f2f33ed21a24c0232de1bcfc1f6d6b1979bf3cb58ab"
+      "bytes": 126000,
+      "sha256": "cd1afbaf06b5ac506fc548ed00691632afdf46837bd91f03f59354a16cb0c09e"
     },
     {
       "path": ".packages/advanced-storage.zip.sha256",
       "bytes": 87,
-      "sha256": "1cb614bb67f2ba29b74173998678d4d5ae4b1ab378ac9a402b2235ac115b0809"
+      "sha256": "93b6420c8371cf15267e18a42993845563efa6d3183b4a41cf3b8e666303f526"
     },
     {
       "path": ".packages/agent-league.zip",
-      "bytes": 217635,
-      "sha256": "77274ed98a6215e6b298c0c214f5599896caf8cbdf6b9618738ec4d217ca0cbc"
+      "bytes": 225724,
+      "sha256": "5cbe437454c43a84c993ebd33dbd92b105a28e46e4a4c2bbecc1a6742e06531a"
     },
     {
       "path": ".packages/agent-league.zip.sha256",
       "bytes": 83,
-      "sha256": "d3089a5b47321b8d3981eba93dc326f5b092ed6b57a58294b51480e169ef8afa"
+      "sha256": "268a725b936f69447fd0b03e80b0a34223c5b4bdd50ebb157e1251c067bf63ef"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -89,13 +89,13 @@
     },
     {
       "path": ".packages/blockchain-laboratory.zip",
-      "bytes": 88037,
-      "sha256": "9d8ec091bda13089ed78a4d488aab3a65ff0d7fe9b72b365c6155fcc37d5f32b"
+      "bytes": 96146,
+      "sha256": "c9121af40b8db13a6f1e6cf69d1b32842c2d6aa0c10162b094977c8fe665d5a0"
     },
     {
       "path": ".packages/blockchain-laboratory.zip.sha256",
       "bytes": 92,
-      "sha256": "f3e00afdcc0ea4154f263e9aae461d5a5fb0a384c09d843de873018319ec5af6"
+      "sha256": "87d9116e30ce8da9c207e7866c12b20310b6838b0d2e091d923205f4564b900f"
     },
     {
       "path": ".packages/compiler-optimizer.zip",
@@ -129,13 +129,13 @@
     },
     {
       "path": ".packages/onion-routing.zip",
-      "bytes": 212454,
-      "sha256": "7eefe49a90f28dfa3dbdbffc3764d12e64804d7b215936587cfd68e9ed7eaf9f"
+      "bytes": 220492,
+      "sha256": "ae5fd104658ef32eaef1928d6b666f8b65a21cc90c971f3da025bfbeec9d872b"
     },
     {
       "path": ".packages/onion-routing.zip.sha256",
       "bytes": 84,
-      "sha256": "d65d7d45e3148caf7b1aa1f2f6c0838c7e5a27a6f7c87e2349942cdd60eac0e7"
+      "sha256": "2a3310da207f4d746ea2fefe022b76c82f7d77cf85a6376b493f0a8db354c75c"
     },
     {
       "path": ".packages/recoverable-storage.zip",
@@ -149,13 +149,13 @@
     },
     {
       "path": ".packages/sandbox-model.zip",
-      "bytes": 60398,
-      "sha256": "11c871d27c518579fea8ad60ec1f2784bf69d21fbff4e0b512d55c0ed392c6f9"
+      "bytes": 68444,
+      "sha256": "f2793ab152d9a7ee41919415ca816beeb6aa2e707c182e5a69365142ab2806dd"
     },
     {
       "path": ".packages/sandbox-model.zip.sha256",
       "bytes": 84,
-      "sha256": "c610bc845e6ff00a01828ef26da8ce17f14f96438793cfcd88130842c257ea11"
+      "sha256": "2dcbf64a87f09a2b2523a13bd74e1a06595c5d352dc060ad4b788365039d2958"
     },
     {
       "path": ".packages/small-llm-runtime.zip",
@@ -179,13 +179,13 @@
     },
     {
       "path": ".packages/tiny-browser.zip",
-      "bytes": 182637,
-      "sha256": "2aa930682a71c2114c6a25ca30d2abd8ede85d7b92514a00cfbf32944ce307f2"
+      "bytes": 190660,
+      "sha256": "46ae6b8a707355625e7a5879abac8a54262e57ab427d47579820b210d0b6fa19"
     },
     {
       "path": ".packages/tiny-browser.zip.sha256",
       "bytes": 83,
-      "sha256": "787e70b0200c0576ee835ed913fb895e4fb5f68ccfac1833e3f81f1d4337da17"
+      "sha256": "5f056f6c11197461fa677b505032b9f0ec8c952cafd54c35613f61fa0bb3c26f"
     },
     {
       "path": "BACKUP-AND-RESTORE.md",
@@ -199,8 +199,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 318789,
-      "sha256": "f5b163a7e287dea0e3d09aa46d924fcff173b7a4f7dc899e85c52862c00adc5c"
+      "bytes": 322806,
+      "sha256": "b5e1bfc809bf04bfd68804ac65432d340aa01c8c64bb900d8de82ee82b55d8b1"
     },
     {
       "path": "LICENSE.md",
@@ -738,9 +738,24 @@
       "sha256": "5f0908f3008cf3aadf2464c1796f58af141fa702677be84da418e4a0e6d99107"
     },
     {
+      "path": "courses/advanced-storage/LICENSE.md",
+      "bytes": 1576,
+      "sha256": "442573b712413ecb5d83034be7ca1fd31a4905a2dccbc9e0ba6329236fb92cf2"
+    },
+    {
+      "path": "courses/advanced-storage/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/advanced-storage/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "courses/advanced-storage/MANIFEST.json",
-      "bytes": 6732,
-      "sha256": "8dd5002e160483f81852625889b896dc450d288ff49b08eab2686e8d95c91e82"
+      "bytes": 7449,
+      "sha256": "487daff20e6a531049053bbdecd4f91d9ea868630b66edbf93c3fdddd30748c1"
     },
     {
       "path": "courses/advanced-storage/PROJECTS.md",
@@ -754,8 +769,8 @@
     },
     {
       "path": "courses/advanced-storage/SOURCES.md",
-      "bytes": 3030,
-      "sha256": "ca7be71c43d58c4d6d2b1fa043d549fc5553ef9f7dc34a1b0dca9e1364d5a962"
+      "bytes": 3104,
+      "sha256": "49482b4e078c59c8e3a01e2ec06678ea1ca344688cce85ae1c7d33c4533431ee"
     },
     {
       "path": "courses/advanced-storage/WITNESSES.md",
@@ -799,8 +814,8 @@
     },
     {
       "path": "courses/advanced-storage/lab.mjs",
-      "bytes": 13541,
-      "sha256": "274b0cadbd215a9c4683c558e6a3cd340dd21e276b859a585f0fe1b641d3a3b8"
+      "bytes": 13567,
+      "sha256": "74b13016ea828dbc7fa7a26f62601cba192dde0d13e7df54afacc7cbd392233a"
     },
     {
       "path": "courses/advanced-storage/lessons/01.md",
@@ -2088,6 +2103,21 @@
       "sha256": "84f665491057215db871bc28959d40281c9fa8f63d4649a6cf82de9c4c467f8a"
     },
     {
+      "path": "courses/blockchain-laboratory/LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "courses/blockchain-laboratory/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/blockchain-laboratory/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "courses/blockchain-laboratory/README.md",
       "bytes": 7368,
       "sha256": "7c78c4bf00978efc901c567e4b98d1810aa013d11f9449f6f44f2b8f857fcd7a"
@@ -2109,8 +2139,8 @@
     },
     {
       "path": "courses/blockchain-laboratory/index.html",
-      "bytes": 57184,
-      "sha256": "259a9abcd1204924d42061c363be95fc23bda9652638e5302fbe32c8bad85dec"
+      "bytes": 57442,
+      "sha256": "b47ac544a8ecb4a5387fff00c7e056664dc45134326f897f669c55a70170e4b0"
     },
     {
       "path": "courses/blockchain-laboratory/lab.mjs",
@@ -2169,8 +2199,8 @@
     },
     {
       "path": "courses/blockchain-laboratory/lib/identity.mjs",
-      "bytes": 1042,
-      "sha256": "4ca328ce732686dd548be1f5b55a631e97207c555e3b1147ad2bca45451252cd"
+      "bytes": 1102,
+      "sha256": "7ce49162a8d1bca698b66e6b339b52e8c57a02a8311198467713a25da78171d7"
     },
     {
       "path": "courses/blockchain-laboratory/lib/practice.mjs",
@@ -2199,8 +2229,8 @@
     },
     {
       "path": "courses/blockchain-laboratory/manifest.json",
-      "bytes": 3240,
-      "sha256": "cede6259812ec161ce19aa1baf36e11a5a85bfdeb07ba3a6314992ef7a978d40"
+      "bytes": 3522,
+      "sha256": "e70c7a852c431b214d145eaeba69f249d1460dfe2fb1666624a10a63c5db139f"
     },
     {
       "path": "courses/blockchain-laboratory/reader/app.js",
@@ -2243,14 +2273,29 @@
       "sha256": "9824f1e43227d741c70be3650b413dec16459e752a0b3dfae9772dab9801e17a"
     },
     {
+      "path": "courses/boundary-lab/LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "courses/boundary-lab/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/boundary-lab/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "courses/boundary-lab/PACKAGE-MANIFEST.json",
-      "bytes": 4019,
-      "sha256": "5909baf0974f7aa7a386d9ab331cdafec7c1ffffe2799bb2aa7e9980bce0e5b3"
+      "bytes": 4709,
+      "sha256": "7dca053ffa28b48bbd88b91f79e28b9d2086327892fcfc94fd5b3b74401066e2"
     },
     {
       "path": "courses/boundary-lab/README.md",
-      "bytes": 6726,
-      "sha256": "e82118ddc80d25f544beea17358dadb2b76f4e6e20720da1a360a2723aeda053"
+      "bytes": 6834,
+      "sha256": "df37db33066bb4b5e3dd6fc9356432e521ec65418d481fcf07f7bb6c4a0ed76e"
     },
     {
       "path": "courses/boundary-lab/index.html",
@@ -2963,9 +3008,24 @@
       "sha256": "8d10c84a48c48568e212bcb67ee5ecbf89a43ecd6551efaad0801a9b9a24b9f2"
     },
     {
+      "path": "courses/game-playing-agent-league/LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "courses/game-playing-agent-league/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/game-playing-agent-league/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "courses/game-playing-agent-league/MANIFEST.json",
-      "bytes": 11455,
-      "sha256": "50977b5ec0e7f8104641dc977b46d510f5ecbeec305ddd42ffe4987b8cdeb647"
+      "bytes": 12145,
+      "sha256": "55ef100fe36bd3a3b5289224ea8865acc4c547493e1f34f743e99fa5e477c608"
     },
     {
       "path": "courses/game-playing-agent-league/README.md",
@@ -4678,9 +4738,24 @@
       "sha256": "b1930cede498f3c2354181c1de36dbc100d93aa9da3c7f4196790573c5ea5990"
     },
     {
+      "path": "courses/onion-network-course/LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "courses/onion-network-course/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/onion-network-course/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "courses/onion-network-course/MANIFEST.json",
-      "bytes": 13034,
-      "sha256": "b0330c08d21e8b595243d69e8a77b3298d08e8888d21f41c3e71a17590b17170"
+      "bytes": 13724,
+      "sha256": "5de7c801cabf0164b1a3bdd19bbfc341da331ebd4c9ca3706d26df34a8e52e55"
     },
     {
       "path": "courses/onion-network-course/README.md",
@@ -5698,9 +5773,24 @@
       "sha256": "0c08f8c3b254cfe01cc3f14fe7025f5703c08a51ff4f7bd0cb70afaa46278cbf"
     },
     {
+      "path": "courses/tiny-browser-engine/LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "courses/tiny-browser-engine/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/tiny-browser-engine/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "courses/tiny-browser-engine/PACKAGE-MANIFEST.json",
-      "bytes": 8570,
-      "sha256": "2fc11fc4a6df3ac6872d9b4b4f7659b84233416a874e1918773d9f38083182b7"
+      "bytes": 9260,
+      "sha256": "3dfc213324c4c7231dc9f4f8865ae9024b5ea20e5638898f6ea153e1fa1d410f"
     },
     {
       "path": "courses/tiny-browser-engine/README.md",

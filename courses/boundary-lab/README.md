@@ -63,4 +63,4 @@ The portable project is successful when all public checks pass **and** your repo
 
 ## Source and rights
 
-The runtime, filters, fixtures and instructional slice were originally authored for this project. No RE/Memory Corruption source or book material was copied. Public background references are linked in the lessons. Redistribution licensing for the future public course is still an owner decision; this local export is not a publication authorization.
+The runtime, filters, fixtures and instructional slice were originally authored for this project. No RE/Memory Corruption source or book material was copied. Public background references are linked in the lessons. Original code is available under MIT and original lesson content under CC BY 4.0; see LICENSE.md and the complete texts in LICENSES/. Retain applicable notices. These licenses do not claim complete course qualification or authorize deployment.

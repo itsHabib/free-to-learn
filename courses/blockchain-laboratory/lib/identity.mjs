@@ -4,6 +4,7 @@ import {sha256} from './support.mjs';
 
 // Positive allowlist: no instructor solutions, QA controls, work or private receipts.
 export const learnerFiles=[
+  'LICENSE.md','LICENSES/MIT.txt','LICENSES/CC-BY-4.0.txt',
   'README.md','COURSE.md','CONTRACT.md','SOURCES.md','REPORT-TEMPLATE.md','lab.mjs','build.mjs',
   'lib/support.mjs','lib/checks.mjs','lib/simulator.mjs','lib/practice.mjs','lib/identity.mjs',
   'starter/protocol.mjs','starter/vote-guard.mjs','restart.mjs','lib/restart-model.mjs','lib/restart-checks.mjs',

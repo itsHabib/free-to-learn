@@ -15,6 +15,21 @@
   "browserAcceptance": "NOT_RUN",
   "files": [
     {
+      "path": "LICENSE.md",
+      "bytes": 1406,
+      "sha256": "96aca648bea8ba9774e4dadc3f1e8fc9e04ca21d31129fe49a9641d8a7d9ba68"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "README.md",
       "bytes": 4949,
       "sha256": "c0c0cd12203ac4250154f5b2bc5b075907c79c3a3dc131fb33295ab9da88d809"
@@ -388,5 +403,10 @@
   "publicDocumentationDerivative": {
     "scope": "Privacy-only source-note scrub; runtime, starter, checker, crypto and lesson bytes remain unchanged. Original component/archive fields retain lineage.",
     "parentLearnerArchiveSha256": "14b29d823acbf4efdf84f411faaddd11c0b959eb1941fab5df2972073784e00f"
+  },
+  "redistribution": {
+    "terms": "MIT original code; CC BY 4.0 original lessons; existing exceptions and component notices retained",
+    "license": "LICENSE.md",
+    "publication": "not performed; separate release gates remain"
   }
 }

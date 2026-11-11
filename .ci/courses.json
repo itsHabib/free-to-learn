@@ -628,7 +628,7 @@
     {
       "id": "tiny-browser",
       "archive": ".packages/tiny-browser.zip",
-      "sha256": "2aa930682a71c2114c6a25ca30d2abd8ede85d7b92514a00cfbf32944ce307f2",
+      "sha256": "46ae6b8a707355625e7a5879abac8a54262e57ab427d47579820b210d0b6fa19",
       "archive_prefix": "tiny-browser-engine/",
       "direct_root": "courses/tiny-browser-engine",
       "root": "tiny-browser-engine",
@@ -666,7 +666,7 @@
     {
       "id": "sandbox-model",
       "archive": ".packages/sandbox-model.zip",
-      "sha256": "11c871d27c518579fea8ad60ec1f2784bf69d21fbff4e0b512d55c0ed392c6f9",
+      "sha256": "f2793ab152d9a7ee41919415ca816beeb6aa2e707c182e5a69365142ab2806dd",
       "archive_prefix": "boundary-lab/",
       "direct_root": "courses/boundary-lab",
       "root": "boundary-lab",
@@ -708,7 +708,7 @@
     {
       "id": "advanced-storage",
       "archive": ".packages/advanced-storage.zip",
-      "sha256": "3ffa0d0d4912a13066a14f2f33ed21a24c0232de1bcfc1f6d6b1979bf3cb58ab",
+      "sha256": "cd1afbaf06b5ac506fc548ed00691632afdf46837bd91f03f59354a16cb0c09e",
       "archive_prefix": "advanced-storage/",
       "direct_root": "courses/advanced-storage",
       "root": "advanced-storage",
@@ -759,7 +759,7 @@
     {
       "id": "blockchain-laboratory",
       "archive": ".packages/blockchain-laboratory.zip",
-      "sha256": "9d8ec091bda13089ed78a4d488aab3a65ff0d7fe9b72b365c6155fcc37d5f32b",
+      "sha256": "c9121af40b8db13a6f1e6cf69d1b32842c2d6aa0c10162b094977c8fe665d5a0",
       "archive_prefix": "blockchain-laboratory/",
       "direct_root": "courses/blockchain-laboratory",
       "root": "blockchain-laboratory",
@@ -807,7 +807,7 @@
     {
       "id": "onion-routing",
       "archive": ".packages/onion-routing.zip",
-      "sha256": "7eefe49a90f28dfa3dbdbffc3764d12e64804d7b215936587cfd68e9ed7eaf9f",
+      "sha256": "ae5fd104658ef32eaef1928d6b666f8b65a21cc90c971f3da025bfbeec9d872b",
       "archive_prefix": "onion-network-course/",
       "direct_root": "courses/onion-network-course",
       "root": "onion-network-course",
@@ -848,7 +848,7 @@
     {
       "id": "agent-league",
       "archive": ".packages/agent-league.zip",
-      "sha256": "77274ed98a6215e6b298c0c214f5599896caf8cbdf6b9618738ec4d217ca0cbc",
+      "sha256": "5cbe437454c43a84c993ebd33dbd92b105a28e46e4a4c2bbecc1a6742e06531a",
       "archive_prefix": "game-playing-agent-league/",
       "direct_root": "courses/game-playing-agent-league",
       "root": "game-playing-agent-league",
