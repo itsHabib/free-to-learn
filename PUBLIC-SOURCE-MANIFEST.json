@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 16976,
-      "sha256": "f42a1f579d1be51665463b97ad9528015c1fcdec8e3028cda475f4ebe9b92d5c"
+      "bytes": 17243,
+      "sha256": "94c5aea8128b2d1aaae04c076702dccc0a5cc9277c1f4e0da10e13895eec46bc"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -49,13 +49,13 @@
     },
     {
       "path": ".packages/adaptive-decision-engine.zip",
-      "bytes": 4429090,
-      "sha256": "2e2521b3171a0ea50b72c4497c17b83c1ec6625e72b78ac7e3e2e9b60de13ee9"
+      "bytes": 4469744,
+      "sha256": "e1b216cae9ea3e2363aece27cfd23b456b00e2339bed665509bb3750760f1e68"
     },
     {
       "path": ".packages/adaptive-decision-engine.zip.sha256",
       "bytes": 95,
-      "sha256": "af62851fcefdf46b410df7cf4b178bfea70eb944b5c10ac58bf7350f9546ca39"
+      "sha256": "b12f9d0dc2236da494aa271bb8f8ca983b06c2a9b8d529715ef044c84a16fad2"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -129,23 +129,13 @@
     },
     {
       "path": "CI.md",
-      "bytes": 4123,
-      "sha256": "4504a2cba05edd85e988bf772e25c81646546ab3362e722c998aaf83e122ef11"
-    },
-    {
-      "path": "CI.md",
-      "bytes": 4123,
-      "sha256": "4504a2cba05edd85e988bf772e25c81646546ab3362e722c998aaf83e122ef11"
-    },
-    {
-      "path": "CI.md",
-      "bytes": 4123,
-      "sha256": "4504a2cba05edd85e988bf772e25c81646546ab3362e722c998aaf83e122ef11"
+      "bytes": 4432,
+      "sha256": "62418170b49b1badf08f7858385fa9ad75c4d5ffbdfc99f4dbba72eb3098e91c"
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 249103,
-      "sha256": "4a00fa859d07d38b7cd502f89c63c7c640a72ec4133058444d98ef0ab6d37cd6"
+      "bytes": 249574,
+      "sha256": "82bff627a83be852a0582ddc2b4955efdce1fa0c849478e29443146bea4bb7c0"
     },
     {
       "path": "LICENSE.md",
@@ -184,8 +174,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/API.md",
-      "bytes": 16704,
-      "sha256": "61cd415bdeb2c850de23c7a0d0b53b39531ecdcffe889abb4c3d4143d6a94c0c"
+      "bytes": 17118,
+      "sha256": "397cc3cdc87b4bc2fa67427a85437cc8b7b36933a762ff501480b6f0d488d34e"
     },
     {
       "path": "courses/adaptive-decision-engine/BRIDGE.md",
@@ -199,8 +189,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/README.md",
-      "bytes": 6982,
-      "sha256": "ca952602bb48f973672c4e739a1272f92ac11e412c0a6274688beeefa9538feb"
+      "bytes": 7576,
+      "sha256": "364a9b67925f90be6e575f44aa233103895ae11a6ca02264defecf17b69f8e76"
     },
     {
       "path": "courses/adaptive-decision-engine/RUBRIC.md",
@@ -239,8 +229,13 @@
     },
     {
       "path": "courses/adaptive-decision-engine/checks.mjs",
-      "bytes": 18167,
-      "sha256": "d704242f1cb3efae923467c15a531b440e0840b333df40e0cd15ff83ed2c1326"
+      "bytes": 39897,
+      "sha256": "28a56b14f479c907c188a70026b3727e946765ac043fbd0c3e50618bd746a953"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/checks.test.mjs",
+      "bytes": 9755,
+      "sha256": "baa830d8c84814e8d0a1f8addc8693e99d43434c0ad57564931c215c0b461d43"
     },
     {
       "path": "courses/adaptive-decision-engine/contracts.d.ts",
@@ -255,7 +250,7 @@
     {
       "path": "courses/adaptive-decision-engine/course.json",
       "bytes": 4003,
-      "sha256": "1032d231d22cf930b13dc797cfd85a5043322b102126b2f6844d7dc9e76b24a5"
+      "sha256": "a0d0ae2be409ec2bffe3debe828aea4f8fc6b0237b2dab50059bc0dbb9a06ae0"
     },
     {
       "path": "courses/adaptive-decision-engine/data.mjs",
@@ -318,6 +313,11 @@
       "sha256": "0e97e34e72ce3172e7e641a386895a9e88165c46d6ca2cb8c87a8aae011c6690"
     },
     {
+      "path": "courses/adaptive-decision-engine/feedback.mjs",
+      "bytes": 3461,
+      "sha256": "7e3c67821f312393a06f2c73358bc3ada94d229fb439a137f7244d88c160fd2f"
+    },
+    {
       "path": "courses/adaptive-decision-engine/figures/boundary.svg",
       "bytes": 2018,
       "sha256": "9dd088fe19669874978b042c0a90374a12f0ea97c885415ddcda2d710bc901ee"
@@ -364,18 +364,18 @@
     },
     {
       "path": "courses/adaptive-decision-engine/index.html",
-      "bytes": 6603,
-      "sha256": "edd772a6550a9b25f07d40f93fc81f1260f3c9db1e4d5f340816a33957fa3a9a"
+      "bytes": 6590,
+      "sha256": "24048ddcb9e8e25881b99a486c76692a91327d1d17abce9b747a988a41dc14cb"
     },
     {
       "path": "courses/adaptive-decision-engine/lab.mjs",
-      "bytes": 11131,
-      "sha256": "554e43544d5608f9491eb28ae92f8fcef3cd5dd44b6a21d0876c8c88f9c441d4"
+      "bytes": 12619,
+      "sha256": "133c6959a1bc0a66e5883a09ca90338007cda3907b0756be2ad4816e99f4e4c4"
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/01.md",
-      "bytes": 4922,
-      "sha256": "3fa2d1786d2f9f2765e7d2ae1ff5b9f244a7d9a7188c4bd9a95b19d93eff1328"
+      "bytes": 5181,
+      "sha256": "5fcd71fb2bf41945849e49d1316e65d4914d6584b0d1cee53948b141dd7f0058"
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/02.md",
@@ -384,8 +384,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/03.md",
-      "bytes": 4874,
-      "sha256": "30230a84084b1d5c78d1f1af496193a691bfe29da824462f26aab6dd61df423c"
+      "bytes": 5047,
+      "sha256": "45a5365a64102ea9c9c35e558ed995330fe5cfccd3c366a24ba34af9125758e4"
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/04-worked.md",
@@ -404,8 +404,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/05.md",
-      "bytes": 5973,
-      "sha256": "3631807ad24167d642d4aa21a68c89d21586a9fdc5aec84fbeaef1ef42db406d"
+      "bytes": 6636,
+      "sha256": "4226785c4bba9a1154566edaf65853146da5d28de18f69b7fd853b40f65fe902"
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/06-worked.md",
@@ -424,8 +424,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/07.md",
-      "bytes": 4719,
-      "sha256": "bf50209541dd81788b36da8552bd7adea3781fe1787fb815050ac6a920e09e4a"
+      "bytes": 4844,
+      "sha256": "e378dd6dec66f455855630becf7c081b7420810134e589304312efdbdd957111"
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/08-worked.md",
@@ -454,8 +454,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/lessons/10.md",
-      "bytes": 6354,
-      "sha256": "092c99792c5c405b2d0cc27214552d4e7ec7bd266c12b877e8ff18f9a07b55a2"
+      "bytes": 6419,
+      "sha256": "90965a3ba3ff6f2350a820e326a85e009146696be49d5db0bd3b03d2b291323d"
     },
     {
       "path": "courses/adaptive-decision-engine/live.mjs",
@@ -479,8 +479,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/package-manifest.json",
-      "bytes": 15939,
-      "sha256": "d619b70d5d0e8007a097d74ef28a3d465f483394903294a9e23ba663d9e93e27"
+      "bytes": 16836,
+      "sha256": "e9749c710ff799119a39686aa823be0ce21a4cb60b67c28de5c21d7411f0402c"
     },
     {
       "path": "courses/adaptive-decision-engine/practice.json",
@@ -504,8 +504,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/public-files.json",
-      "bytes": 2135,
-      "sha256": "27a447e1a6d1c6e730be21a5784f6508c2cb37956e63899f3c9110c1d752b4eb"
+      "bytes": 2174,
+      "sha256": "9918189cd81a7c222eaacbb859728ac8ef1f3cd845dcd2ae71a528098157d8a1"
     },
     {
       "path": "courses/adaptive-decision-engine/recovery.mjs",
@@ -594,8 +594,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/style.css",
-      "bytes": 5111,
-      "sha256": "78a2395ba2de0c98e3b8d2cfc84f1490cf1332b80493155c916af33336eb62bf"
+      "bytes": 5870,
+      "sha256": "a43371bece6f94280f6e8575eecf2917cae2f1df004dd0449b1e4955c2f3b185"
     },
     {
       "path": "courses/adaptive-decision-engine/support/01.json",
@@ -654,8 +654,8 @@
     },
     {
       "path": "courses/adaptive-decision-engine/web.mjs",
-      "bytes": 21164,
-      "sha256": "f435a8600a0bf4527935e44cbb906b3cf274e437495dfeff1e37842e9a208045"
+      "bytes": 21203,
+      "sha256": "0913f76e403787d1b354fd4896e81b7e11cc5adad1ee351db385d9bcecaa0315"
     },
     {
       "path": "courses/adaptive-decision-engine/worker.mjs",

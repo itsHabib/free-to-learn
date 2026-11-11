@@ -52,7 +52,10 @@ CI was explicitly deferred; no credential infrastructure is being added for it.
 
 Adaptive runs generated lossless session-capacity controls (formats 1/2/3,
 continued saving, malformed references and existing bounds) without private learner
-work. Firmware starts with the parser-only checker; its separate staged-checker
+work. Adaptive also runs checks.test.mjs: one-line wrong edits of the already-public
+support layers (a pooled row rate used as p, `now > deadline`) must fail with messages
+naming the rule and lesson, the unedited layers must pass, `play --help` must print
+usage, and progress wording must not shrink after an edit. Firmware starts with the parser-only checker; its separate staged-checker
 regression verifies that later feedback remains gated until the documented stage.
 These deterministic regressions do not establish full learner completion.
 

@@ -279,6 +279,12 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": "courses/adaptive-decision-engine/checks.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/adaptive-decision-engine/contracts.d.ts",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
@@ -367,6 +373,12 @@
       "kind": "original-prose-with-possible-code-examples",
       "contentLicense": "CC-BY-4.0",
       "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/adaptive-decision-engine/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
       "path": "courses/adaptive-decision-engine/figures/boundary.svg",
