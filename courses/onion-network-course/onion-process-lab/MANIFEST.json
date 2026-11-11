@@ -1,0 +1,31 @@
+{
+  "name": "onion-process-lab",
+  "version": "0.1.0",
+  "files": {
+    "README.md": "2984d8ca02d9e61b3ceefafffcc4f257c2a4c8e826bb778f7daf93bd15c46050",
+    "PROTOCOL.md": "858fec66712d3170cb7fd408dea9615696298b0f04cf93f7dc5bed403d44fd62",
+    "LIMITS.md": "1506edef8d0f4b1ec4c43800800596a76bbc044dc3265a07dbab0d7c90d40fde",
+    "SOURCES.md": "7020314c08c4306d7de9f5e09e2d3a48b2984f77d7a2abdf4f6623bb9c9373a9",
+    "REPORT.md": "2ca442d73d4851a74b245d79f430f59002f1bbb9f26713d134b354865313f7a5",
+    "course.json": "e31395d2b7707bec3cf2cb7807f0a6f4f7dfbdb66a3d0658be956c213f13daea",
+    "package.json": "a192014a6cc91c1f6483fc1c6b3d432a2dcb6869703bb48aeaf49df6b1ddf7b6",
+    "learner/protocol.mjs": "ebc67319912f2a4a9de20a4db06500aa3dd6f5fcd41f0a46a026b518dc47fe56",
+    "runtime/crypto.mjs": "850312526a045f3fb9a19859c28d61dddb4def3aaddff3e1e79802177328bdd3",
+    "runtime/wire.mjs": "3c99998031874d65999e422999c86773b7699263a77c2445ce11293fbf2c3c27",
+    "runtime/relay-process.mjs": "de4cd45b752ac68419599d4869998c98f5a348e7ae7f2f307b37334e7e6f729e",
+    "runtime/lab.mjs": "121f442ae38ae7b34a3f885727ffae2ae559dbff9b45b71ddea0de4edaa881c0",
+    "checks/requirements.mjs": "07de5587b5324d6a6dc545bf4811fe3055bc54cf00e7211c524b9b47a7e8295f",
+    "tools/check.mjs": "359e8573aa28cdccf074db89d59adec0e98903c0c2f699ca2650aecd80b0fd96",
+    "tools/lab.mjs": "f56fb42afc7b42789e12a8bee3233db132cd0b065127964ef363df2baec4439b",
+    "lessons/01.md": "ae4af093929f701428bd63e56e17776b5139b4dd267922cbc88ec069e92d6393",
+    "lessons/02.md": "4750173815d5c0764c9e4d0bab977b9135729c1f99bcf69771af77cd302befe1",
+    "lessons/03.md": "046bab655d63954cbe4ad768be132b2ac676f737a71c6293bb7ec4f57aeebfd7",
+    "lessons/04.md": "80e73b89fedce33582d0a109de287435f183c1b71529ddc15e37848af5043f68",
+    "lessons/05.md": "a78392dc870c5d405ce2323c8665231185abb6330f024fa0458ea1831d132b19",
+    "lessons/06.md": "d84120fe5b1c7fb46ece154d1d869c7993a65dda6a086ef942e8abca644f2f58"
+  },
+  "publicDocumentationDerivative": {
+    "scope": "Privacy-only source-note scrub; runtime, starter, checker, crypto and lesson bytes remain unchanged. Original component/archive fields retain lineage.",
+    "parentLearnerArchiveSha256": "14b29d823acbf4efdf84f411faaddd11c0b959eb1941fab5df2972073784e00f"
+  }
+}

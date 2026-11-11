@@ -1,0 +1,44 @@
+{
+  "format": "boundary-lab-scaffold/v1",
+  "editable": [
+    "src/learner.rs"
+  ],
+  "files": [
+    {
+      "path": "Cargo.toml",
+      "sha256": "9824f1e43227d741c70be3650b413dec16459e752a0b3dfae9772dab9801e17a"
+    },
+    {
+      "path": "run.py",
+      "sha256": "a7b611070181ef95f8842180b9bdcad04cddf58df685dc5db77b9fdeef52d129"
+    },
+    {
+      "path": "src/checks.rs",
+      "sha256": "46751b7e372e5aa37d6e64116d894d0131c54dcecb30de2484d04be98d4b9c11"
+    },
+    {
+      "path": "src/codec.rs",
+      "sha256": "6c873429ff92f8a6c9a8b07b10b8d65aeb98ee2cae9ea9a6fdd2cadd66c72bc2"
+    },
+    {
+      "path": "src/lib.rs",
+      "sha256": "f7b3fdb26d8c1d2b43b749127b9e2d6094265b187a5705dc6570b59f7e375dc0"
+    },
+    {
+      "path": "src/main.rs",
+      "sha256": "e50ea14bbb3d338e40b963413f58b5767fc29f8535751cf549632f3c4f6e182d"
+    },
+    {
+      "path": "src/model.rs",
+      "sha256": "a8a0c5f6a8bee2bfcb1e04d41171db4a584250dc3a4267aad402f7a21c0ae572"
+    },
+    {
+      "path": "src/runtime.rs",
+      "sha256": "272991e8d2125aa2dde09149c33230fd3136fa1a849563f6aaae0e8ae8a9e3f7"
+    },
+    {
+      "path": "src/schedule.rs",
+      "sha256": "67b7f2d0c37f922c4ccf1c73a186086cc337a435bae13ad58d1501ec06f5d578"
+    }
+  ]
+}

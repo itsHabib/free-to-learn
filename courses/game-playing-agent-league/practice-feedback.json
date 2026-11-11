@@ -1,0 +1,146 @@
+{
+  "1.1-p1": {
+    "answer": "Only (2,0) is legal. The straight destination (2,1) is occupied, and straight captures are forbidden. The diagonal destination (2,2) is friendly occupied, so it is also forbidden.",
+    "reason": "Player 1 advances toward smaller row numbers. An empty diagonal is permitted; a diagonal does not have to capture. If you selected the occupied forward cell, you applied capture permission to the wrong direction.",
+    "hints": ["Mark the actor's forward direction first.","Check straight occupancy separately from diagonal occupancy.","An empty diagonal is legal; neither a straight enemy capture nor a friendly overwrite is legal."],
+    "rubric": ["Names (2,0) as the only legal destination.","Rejects the straight capture for the correct reason.","Rejects the friendly occupied diagonal."]
+  },
+  "1.1-p2": {
+    "answer": "The encoded ID is 8*25+13 = 213. That does not establish legality. Inspect the actor/source ownership and movement direction, destination occupancy, bounds and terminal status.",
+    "reason": "The codec identifies a requested edge between cells. The game contract determines whether that request can be applied. A well-formed ID can encode a backward move, an opponent's piece or an occupied straight destination.",
+    "hints": ["Separate encoding from validation.","Apply fromCell*25+toCell.","The arithmetic gives 213; at least actor/source ownership and destination legality still need checking."],
+    "rubric": ["Computes 213.","Does not infer legality from encoding.","Names two relevant game facts rather than policy preferences."]
+  },
+  "1.1-p3": {
+    "answer": "The referee must validate and apply the returned action to its authoritative pre-move state. The policy's edited copied observation is not authoritative state and cannot establish a capture or victory.",
+    "reason": "The observation exists to inform a decision. Allowing its edits to decide outcomes would let a policy award itself a win without a legal transition. Even if the returned action happens to be legal, the extra mutation supplies no valid game evidence.",
+    "hints": ["Which component owns the rules?","An observation and a referee state have different authority.","Use the returned legal action on the referee's original state, not the policy's edited copy."],
+    "rubric": ["Identifies the action as a proposal, not a score.","Keeps authoritative state with the referee.","Rejects the edited observation as victory evidence."]
+  },
+  "1.1-transfer": {
+    "answer": "The cache may return a move for the wrong actor, including an illegal move or a value with the wrong perspective. It must include current player and applicable rule identity/counters in addition to the board; decision caches must also distinguish relevant policy parameters and budget/configuration.",
+    "reason": "A board does not determine whose choice is being made. If your answer merely says 'clear the cache,' that avoids one occurrence but does not define a correct identity for future reuse.",
+    "hints": ["Ask whether both players own the same legal actions.","Identify the state fields that affect legal continuation.","Include actor and rules/counters; include policy/configuration identity for cached decisions."],
+    "rubric": ["Explains a wrong-actor failure.","Includes actor and rule identity.","Distinguishes state-value identity from policy-decision identity when relevant."]
+  },
+  "1.2-p1": {
+    "answer": "Equal-width sampling selects the fourth action, 55, because 0.76 lies in [0.75,1). An extra random call advances the stream; the choice then uses a different value and may select another action.",
+    "reason": "A seed determines a sequence, not a single value reused forever. Reproducing an action requires the same call order as well as the same initial seed. The next draw could coincidentally choose the same action, so 'must change' is too strong.",
+    "hints": ["Divide [0,1) into four equal intervals.","Locate 0.76 among those intervals.","The selected action is 55; consuming an extra draw changes which sequence element drives the choice."],
+    "rubric": ["Selects 55.","Explains stream advancement.","Says the action may change, not that it necessarily changes."]
+  },
+  "1.2-p2": {
+    "answer": "No. Different parameters and budget are already different inputs. Hold source, parameter bytes, game/rules identity, starting observation/state, side, policy seed and call order, budget/configuration, and the declared runtime boundary fixed before diagnosing nondeterminism.",
+    "reason": "The same label and seed do not define the same computation. A disagreement after changing inputs can be entirely deterministic. If you omitted the budget, you may have compared searches that can inspect different continuations.",
+    "hints": ["List what changed besides the name and seed.","A search's available work is an input.","Different parameters and twice the budget prevent this from being a same-input test."],
+    "rubric": ["Rejects the nondeterminism conclusion.","Includes source/parameters and game/state identity.","Includes seed/call order and budget/configuration."]
+  },
+  "1.2-p3": {
+    "answer": "Trajectory replay passed; policy rerun failed. The report can say the recorded actions lead to the stated result, but cannot say that the identified policy reproduced or generated those actions under the frozen conditions.",
+    "reason": "A legal action trace can be mislabeled. Recomputing transitions verifies the referee's consequence of those actions, while rerunning the policy verifies the claimed decision process. These claims should remain separate in the evidence record.",
+    "hints": ["Separate who chose actions from what actions caused.","Which check runs the policy's code?","State-transition replay passed, but the policy-to-action link failed."],
+    "rubric": ["Names both different checks.","Retains the bounded passed claim.","Does not claim policy provenance/reproducibility from trajectory validity alone."]
+  },
+  "1.2-transfer": {
+    "answer": "Logging consumed an extra element of the decision RNG stream, so disabling it changed the values used for action selection. Draw the decision value once and log that already-used value, or use a separately seeded diagnostic stream whose calls do not affect decisions.",
+    "reason": "The diagnostic had become part of the policy's behavior. A separate stream or logging the existing value preserves observability without changing the decision stream. Keeping the same top-level seed alone does not repair a shifted call sequence.",
+    "hints": ["Count RNG calls with logging on and off.","Can the log observe a value without requesting another one?","Log the actual decision draw, or isolate diagnostic randomness into its own stream."],
+    "rubric": ["Identifies changed random-call order.","Proposes a repair that does not consume the decision stream differently.","Retains useful diagnostics."]
+  },
+  "1.3-p1": {
+    "answer": "A is a legal game loss. B is a policy forfeit. C is an unresolved infrastructure failure. A measures strategy within the rules, B measures failure to obey the decision contract, and C has no established completed game result.",
+    "reason": "The three causes need different repairs and carry different evidence. Calling C a loss invents a result. Treating B as an ordinary legal loss hides the interface failure. Removing A conceals a genuine strategic weakness.",
+    "hints": ["Ask whether legal play reached a terminal state.","Then ask whether the policy or the host failed.","Legal terminal loss, illegal-action forfeit, and incomplete host execution are distinct statuses."],
+    "rubric": ["Classifies A/B/C correctly.","Distinguishes policy violation from infrastructure uncertainty.","Explains why the categories affect interpretation."]
+  },
+  "1.3-p2": {
+    "answer": "Eight matches have resolved outcomes: four wins, three legal losses and one forfeit. Two are unresolved. 'Ten completed games' is incorrect. Report ten planned, eight resolved, two unresolved, and retain the outcome categories; any narrower win rate must name its denominator.",
+    "reason": "Planned and completed are different counts. A forfeit is a resolved policy-contract outcome, but an interrupted host has not supplied a winner. Dividing by a chosen denominator without naming its meaning can hide failures.",
+    "hints": ["Count the categories separately.","A forfeit resolves a match; a host interruption does not.","There are eight resolved and two unresolved entries in the ten-match plan."],
+    "rubric": ["Reports eight resolved and two unresolved.","Rejects 'ten completed.'","Preserves win/loss/forfeit/incomplete counts and denominator meaning."]
+  },
+  "1.3-p3": {
+    "answer": "The referee result re-derived from the correct initial state, legal action trace and matching rules should determine the official outcome. First compare rules/runtime and starting-state identity, then the recorded transitions/terminal result against the dashboard's summary. Preserve the discrepancy before changing policies.",
+    "reason": "A display label is downstream of the game. A mismatch can be a summary or identity error rather than a strategic defect. The replay itself must use the intended rules and starting state; otherwise it does not establish the original match's outcome.",
+    "hints": ["Which record is a computed consequence and which is a summary?","Check that the replay is for the same game identity.","Verify initial state/rules, then transitions and terminal score before editing strategy."],
+    "rubric": ["Uses authoritative matched replay rather than the dashboard label.","Checks identity before trusting the replay.","Avoids changing policy as the first diagnostic step."]
+  },
+  "1.3-transfer": {
+    "answer": "Dropping error records can remove the first policy's forfeits while retaining the second policy's legal losses, making the unreliable policy appear stronger. Retain the full planned roster, legal wins/losses, forfeits with reasons, incomplete infrastructure records and linked retries; report comparable denominators.",
+    "reason": "Missingness is related to policy behavior here. Filtering it away is not a neutral cleanup. Infrastructure failures require a different disposition from illegal-action forfeits, and neither should vanish from the audit trail.",
+    "hints": ["Which policy loses more records under the filter?","Compare the denominator before and after filtering.","Retain forfeits and unresolved entries as distinct categories instead of dropping every error."],
+    "rubric": ["Explains the direction of selection bias.","Retains the full planned count and policy forfeits.","Keeps infrastructure uncertainty and retries separately visible."]
+  },
+  "2.1-p1": {
+    "answer": "The value for player 0 is -0.35 under the stated antisymmetric evaluator. A turn change does not by itself require a sign flip while the requested perspective remains player 1. Turn information may change the estimate for substantive strategic reasons, but not by an automatic perspective switch.",
+    "reason": "The value's owner is the explicit player argument. The actor and that owner can differ. If you changed the sign solely because currentPlayer changed, you conflated whose turn it is with whose interests the score represents.",
+    "hints": ["Name the player who owns each score.","Antisymmetry relates two player perspectives on the same state.","The other perspective is -0.35; changing the actor is not the same as changing the score's owner."],
+    "rubric": ["Computes -0.35.","Rejects automatic sign flip for unchanged perspective.","Allows actor information to affect strategy without confusing perspective."]
+  },
+  "2.1-p2": {
+    "answer": "Use +1, the exact terminal return for player 1. Check terminal status before applying the depth-limit heuristic.",
+    "reason": "The game is already resolved, so the rough material estimate is irrelevant. Reaching the horizon at the same time does not make a known outcome unknown. Using -0.2 would replace a fact with a contradictory estimate.",
+    "hints": ["Index the return by the requested player.","Ask whether a terminal state needs prediction.","Terminal takes precedence; returns[1] is +1."],
+    "rubric": ["Selects +1.","Uses player 1's return.","Checks terminal before horizon/evaluation."]
+  },
+  "2.1-p3": {
+    "answer": "Raw row increases toward player 0's goal but decreases toward player 1's. Measure progress or remaining distance relative to each player's target row, then compare the normalized quantities. Both given pawns have equal remaining distance of one.",
+    "reason": "The feature encoded absolute geometry while being interpreted as player-relative advancement. Equal strategic progress should not become unequal merely because the two players face opposite directions.",
+    "hints": ["Locate each target row.","Compute each pawn's distance to its own target.","Use distance/progress relative to player direction; both examples are one step away."],
+    "rubric": ["Identifies the opposing directions.","Recognizes equal one-move distance.","Proposes player-relative progress or distance."]
+  },
+  "2.1-transfer": {
+    "answer": "An unconditional edge-based sign flip treats the next decision as the opponent's even when the same player moves again. Determine maximize/minimize or perspective conversion from the actual currentPlayer of each state and the explicit value owner, not recursion depth parity.",
+    "reason": "Alternating turns is a rule property, not a universal property of game trees. A search can be correct on the ordinary game and fail when that hidden assumption changes.",
+    "hints": ["Does one edge necessarily change the actor?","Keep the value owner fixed while inspecting each actor.","Use currentPlayer against the explicit maximizing/root player; do not infer it from depth."],
+    "rubric": ["Explains why the repeated turn breaks the assumption.","Uses actual actor identity.","Keeps score perspective explicit."]
+  },
+  "2.2-p1": {
+    "answer": "A backs up -0.4 and B backs up 0. Player 0 selects B because 0 is larger than -0.4.",
+    "reason": "Player 1 chooses the smaller value for player 0 at each reply node. Selecting A because it contains +0.8 assumes a cooperative opponent and ignores the reply that defeats that optimism.",
+    "hints": ["Evaluate each opponent node before the root.","The opponent chooses the lower root-player value.","The minima are -0.4 and 0; then the root selects the larger of those."],
+    "rubric": ["Computes A=-0.4 and B=0.","Chooses B.","Uses adversarial reply rather than largest leaf."]
+  },
+  "2.2-p2": {
+    "answer": "Back up +0.25, because the root player acts again and can choose the larger value. A rule that always minimizes on the second level assigns that decision to the wrong player.",
+    "reason": "The transition depth is not the actor. Explicit player identity makes the same backup procedure work for both alternating and consecutive-turn trees.",
+    "hints": ["Who chooses at the intermediate state?","Whose perspective are both child values in?","The same player maximizes again and chooses +0.25."],
+    "rubric": ["Selects +0.25.","Identifies the repeated root-player turn.","Rejects depth-parity actor inference."]
+  },
+  "2.2-p3": {
+    "answer": "B's opponent may have an unexamined reply below +0.7, potentially below A's completed value 0. The partial result does not prove B's minimax value. Retain a documented complete/safe result or label the incomplete search rather than claiming +0.7 is established.",
+    "reason": "At a minimizing node, more inspected replies can lower the backed-up value. Missing the dangerous reply makes unfinished search systematically optimistic. Catching a quota error does not create the missing evidence.",
+    "hints": ["Can additional opponent replies lower B's value?","Distinguish the best observed leaf from the value guaranteed against replies.","B needs the remaining relevant hostile replies or a justified bound; +0.7 is only partial evidence."],
+    "rubric": ["Identifies an unexamined harmful reply.","Does not call the partial value proved.","Proposes an honest complete/safe fallback or bounded claim."]
+  },
+  "2.2-transfer": {
+    "answer": "The cached value may describe a maximizing turn when the new state is minimizing, or vice versa, and can therefore change which root option appears best. Include actor, rules/counters and relevant search-value identity (perspective, depth/remaining horizon and evaluator identity) along with the board.",
+    "reason": "A transposition means the same relevant decision state, not merely the same picture. A value obtained at a different horizon or perspective also cannot be blindly reused as if it answered the current query.",
+    "hints": ["Ask what operation follows from the actor.","A value cache must identify the question it answered.","Actor and rule identity are essential; depth, perspective and evaluator context matter for truncated values."],
+    "rubric": ["Explains wrong maximize/minimize reuse.","Includes current player and rules/counters.","Notes relevant horizon/perspective/evaluator context."]
+  },
+  "2.3-p1": {
+    "answer": "Completing depth three uses 2+4+8 = 14 simulated transitions. Ten credits are insufficient.",
+    "reason": "The budget counts simulated edges across all branches, not just the deepest path or the eight leaves. If you answered three, you counted depth. If you answered eight, you counted only the last layer.",
+    "hints": ["Count outgoing transitions at every layer.","The layers contain 2, then 4, then 8 edges.","Add all three layers: 14 exceeds the budget of ten."],
+    "rubric": ["Computes 14.","Rejects budget ten as sufficient.","Counts edges across every expanded layer."]
+  },
+  "2.3-p2": {
+    "answer": "The completed depth-two result selecting C remains available. D's partially explored depth-three value is not a completed minimax result; an unseen reply could change it.",
+    "reason": "Iterative deepening preserves a completed earlier iteration. It does not make unfinished later work complete. You can retain diagnostics about D, but must not label them a proved depth-three choice.",
+    "hints": ["Which iteration finished all required work?","Separate the retained answer from the latest inspected branch.","Return/report completed depth two unless another justified safe partial-search method applies."],
+    "rubric": ["Retains the completed C/depth-two result.","States the missing opponent-reply evidence for D.","Does not claim completed depth three."]
+  },
+  "2.3-p3": {
+    "answer": "No. Once the minimizing opponent has a reply worth 0.2, that option's minimax value is at most 0.2. More replies can keep or lower it, so it cannot beat the root's completed 0.4 option; a cutoff is justified for selecting the root action.",
+    "reason": "The cutoff follows from a bound, not a guess about unseen moves. It does not establish the option's exact value is 0.2; an unseen reply could be worse.",
+    "hints": ["At a minimum, what happens when you add another candidate?","Use 'at most' rather than 'exactly' for the partial opponent value.","The option is bounded above by 0.2 and cannot beat 0.4."],
+    "rubric": ["Shows the option is at most 0.2.","Justifies the cutoff relative to 0.4.","Does not confuse a bound with an exact value."]
+  },
+  "2.3-transfer": {
+    "answer": "Freeze one shared scenario/seat/seed plan. Compare old versus new evaluator with identical ordering and 256 credits; compare old versus new ordering with identical evaluator and 256 credits; compare 256 versus 1,024 credits with identical evaluator and ordering. Additional factorial comparisons can test interactions. The original bundled change cannot isolate which change caused the gain or support an evaluator-only improvement claim.",
+    "reason": "Several treatments and the test roster changed at once. A common baseline plus one-factor changes separates their individual effects under that baseline, while interactions require additional combinations. A different, well-justified factorial design is also valid.",
+    "hints": ["List each changed factor, including the positions.","Hold all other factors fixed when changing one.","Use a shared roster and separate evaluator, ordering and budget comparisons; add combinations to examine interactions."],
+    "rubric": ["Freezes scenarios, seats, seeds and result definition.","Separates evaluator, ordering and budget effects.","Rejects the original isolated-cause claim and acknowledges possible interactions."]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "id": "onion-circuit-lab",
+  "version": "0.3.0",
+  "title": "Build Your Own Onion Routing Network",
+  "goal": "Build and diagnose a multi-hop onion circuit, then defend exactly which observer can learn which facts from its traffic.",
+  "contentHash": "77d847f5207d6bc48a438ed5beaf0237f695dc5e669de11aff1dd1c0a13ce0c7",
+  "modules": [
+    {
+      "id": 1,
+      "title": "Choose a path and name the observer",
+      "goal": "Choose a three-relay path and distinguish a relay’s local view from the simulator’s complete view.",
+      "kind": "procedure",
+      "depends": [],
+      "artifact": "selectPath returns three distinct usable relay IDs or reports NO_PATH.",
+      "difficulty": "Directory filtering, distinctness and observer scope interact; crypto is not introduced yet."
+    },
+    {
+      "id": 2,
+      "title": "Wrap the onion from the destination outward",
+      "goal": "Construct a nested authenticated packet that each relay can open exactly one layer at a time.",
+      "kind": "procedure",
+      "depends": [
+        1
+      ],
+      "artifact": "wrapRequest builds the entry packet using a separate forward key for each hop.",
+      "difficulty": "Nested values, reverse construction order, key scope and associated data interact."
+    },
+    {
+      "id": 3,
+      "title": "Forward one layer and bring the reply back",
+      "goal": "Open a single local instruction and build the reverse encryption path for the archive reply.",
+      "kind": "procedure",
+      "depends": [
+        1,
+        2
+      ],
+      "artifact": "peelForward, addReturnLayer and unwrapReply complete an offline round trip.",
+      "difficulty": "Forward removal and backward addition run in opposite directions; state belongs to one relay."
+    },
+    {
+      "id": 4,
+      "title": "Separate authenticity from freshness",
+      "goal": "Reject changed and repeated packets while preserving receiver state when authentication fails.",
+      "kind": "procedure",
+      "depends": [
+        2,
+        3
+      ],
+      "artifact": "acceptSequence and peelForward enforce bounded, circuit-local replay tracking.",
+      "difficulty": "Authentication order, state mutation and out-of-order valid arrival must remain distinct."
+    },
+    {
+      "id": 5,
+      "title": "Rebuild after a failed hop",
+      "goal": "Choose a valid replacement circuit and explain why retrying cannot prove exactly-once delivery.",
+      "kind": "procedure",
+      "depends": [
+        1,
+        3,
+        4
+      ],
+      "artifact": "recoveryPlan chooses rebuild or stop; supplied lifecycle closes the old circuit and generates fresh keys.",
+      "difficulty": "Availability, key lifecycle and uncertainty about endpoint receipt interact."
+    },
+    {
+      "id": 6,
+      "title": "Challenge the privacy claim",
+      "goal": "Use synthetic timing evidence and endpoint observations to state defensible limits on an onion circuit.",
+      "kind": "procedure",
+      "depends": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "artifact": "correlate returns all compatible timing candidates; the capstone combines the working circuit with an evidence report.",
+      "difficulty": "A compatible pattern is evidence, not identity; multiple observers and endpoint content differ."
+    }
+  ],
+  "status": "local construction; browser acceptance NOT_RUN; not published",
+  "runtime": "Node v26.5.1 tested",
+  "browserRuntimeHash": "751b938f77cfe0abedb56c2a5b56e8e0d4e287703e5591aa95e095ee483743c4",
+  "browserViewHash": "a215a0b654fc459ca282e07808fb2d6d98a3dca234e25fae812bcd3cef649d05"
+}

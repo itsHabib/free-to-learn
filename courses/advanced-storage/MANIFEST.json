@@ -1,0 +1,171 @@
+{
+  "format": "advanced-storage-local-package-v1",
+  "localOnly": true,
+  "rights": "runtime/foundation.mjs and runtime/disk.mjs retain verified existing MIT coverage. Rights in other material and authorization for publication or deployment remain separate.",
+  "runtime": "Node 26.5.1; built-in modules only",
+  "files": {
+    "CONTRACTS.md": {
+      "sha256": "5f0908f3008cf3aadf2464c1796f58af141fa702677be84da418e4a0e6d99107",
+      "bytes": 11470
+    },
+    "PROJECTS.md": {
+      "sha256": "095e0f56c0eb8ffbbe4016dc0e04f330b5c672e2c469b52783638448bed877c1",
+      "bytes": 7880
+    },
+    "README.md": {
+      "sha256": "82e6900c7f2b2b9c92e73e721e49f937b9a6b1e051ef4c8cf6ff461771662b62",
+      "bytes": 5514
+    },
+    "SOURCES.md": {
+      "sha256": "ca7be71c43d58c4d6d2b1fa043d549fc5553ef9f7dc34a1b0dca9e1364d5a962",
+      "bytes": 3030
+    },
+    "WITNESSES.md": {
+      "sha256": "6f36a14bb4bc9ef2b3b1ec2c196082154d194d85f2061c33860afc98d9ed2c2c",
+      "bytes": 4965
+    },
+    "WORKSHOP.md": {
+      "sha256": "c8cbe3c2ae7495bd4e3827f350457bd67ac5444b5c26eef4e92d31126c18f20c",
+      "bytes": 12846
+    },
+    "assessment-runner.mjs": {
+      "sha256": "9506ee65141fdaae79b19fe03f66c3393bb2635a3454df22c9f25603c5dde8b4",
+      "bytes": 376
+    },
+    "browser-policy-checks.mjs": {
+      "sha256": "60dad9bae68bed49cd130adae83e61cfb04a1408c073cab99cebde925e2ff715",
+      "bytes": 2349
+    },
+    "check-runner.mjs": {
+      "sha256": "41a52f7d6263787432f6512048cccd9d0f28b76160fd6ed25e8f2a3465bcadde",
+      "bytes": 595
+    },
+    "checks.mjs": {
+      "sha256": "6c3a1f5ea85accaa9acf94030cd44f2efe8f10b42b0c4eb1cf1eaabe7f693006",
+      "bytes": 22001
+    },
+    "index.html": {
+      "sha256": "ea1ee062642bc30ac398d87f31bb4881b025b98b56df214a6939b744ce73a87a",
+      "bytes": 61586
+    },
+    "investigation.mjs": {
+      "sha256": "9885cc077b8482e2eb8e5f8f923bd6ef3b88a071561acb3e1c08f020dba0bff6",
+      "bytes": 14640
+    },
+    "lab.mjs": {
+      "sha256": "23963c7a6bb25ec88b85b9a885e1014f2546a29e4d5e0c5b71f670a605fafb56",
+      "bytes": 13541
+    },
+    "lessons/01.md": {
+      "sha256": "0ebd47b22e0d5623b1bcf5d37d36a1f205b0601ff0874fb19e5dd538cb8f95da",
+      "bytes": 4087
+    },
+    "lessons/02.md": {
+      "sha256": "ed5e88884d9dad6c6fbbe003c85861e2c141442e5566bf1090690c572ef77edd",
+      "bytes": 3941
+    },
+    "lessons/03.md": {
+      "sha256": "c93b9131d13deb363073993eff531d4cc3c891f8902e8c1bfd616be5ef59e73a",
+      "bytes": 3494
+    },
+    "lessons/04.md": {
+      "sha256": "8a603792a54213a3ebf666fc189c0f0bdcd533d8b22a79acc5c82fa65c3a2811",
+      "bytes": 4991
+    },
+    "lessons/05.md": {
+      "sha256": "ce58afcfd8ea54df212cfcc4f4cdf1dc975e81583a8b17721b574c7411648564",
+      "bytes": 3770
+    },
+    "lessons/06.md": {
+      "sha256": "8a5a1e64b6378395bc79dcb790cfc2e1c9f7fca346c8ce52594ea2d8744c7398",
+      "bytes": 3951
+    },
+    "lessons/07.md": {
+      "sha256": "df8e5471ef7d9201724e200fe9b8c1050c10f2ef043f6c403d78e89de1e78d5a",
+      "bytes": 4130
+    },
+    "lessons/08.md": {
+      "sha256": "95bdd2d61471de582150ab85a09b87de33cbe91f869a94baae4cdcb841d8b220",
+      "bytes": 4045
+    },
+    "lessons/09.md": {
+      "sha256": "6a599bdb1fa905a64d60cb8366e8a37081faa5c8074d44903f13ee2747b54553",
+      "bytes": 3463
+    },
+    "practice.json": {
+      "sha256": "e4def8dd874e2aba95efdb62b9c6a6a5cfafb95674622059da63a59ad6ab0738",
+      "bytes": 11265
+    },
+    "runtime/FOUNDATION-NOTICE.md": {
+      "sha256": "21aefa7814e311df0ecbfadcbe543d4013b9b3cc07174578993db5351a020c22",
+      "bytes": 2061
+    },
+    "runtime/LICENSE-FOUNDATION-MIT.txt": {
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b",
+      "bytes": 1070
+    },
+    "runtime/base.mjs": {
+      "sha256": "02f95ac84058212cf20f4dc78f9925cefb444875e74bd978b6bf85675a9c50fd",
+      "bytes": 16757
+    },
+    "runtime/disk.mjs": {
+      "sha256": "687b715b521a4a4c4c49021ca7971cf869f17d93ad1c854624e41a3d92169dde",
+      "bytes": 3090
+    },
+    "runtime/foundation.mjs": {
+      "sha256": "dffd993b862ce0a657eb75018acc3aea8ae2dd33d55bce7e0c4ddc35eaa53473",
+      "bytes": 5202
+    },
+    "runtime/identity.mjs": {
+      "sha256": "268971018e5894f5175c66d7366517989ef14e2e01b6a0f8e4b93bea03e7f031",
+      "bytes": 596
+    },
+    "runtime/plans.mjs": {
+      "sha256": "b1a1f780e231fef086355df1bde1bfae54f34ac7f5f4fc4f827f4f5ea83ca5cd",
+      "bytes": 6541
+    },
+    "runtime/scenario.mjs": {
+      "sha256": "e37760dde288e31bd8a4090a48d8f64629bdcbe604d2c374141992bd8e8f320a",
+      "bytes": 2519
+    },
+    "starter/engine.mjs": {
+      "sha256": "2a94a57085c29d6f2f1bf4d5f3422638f26c8685d08f7cf02bd1d630df7ffd31",
+      "bytes": 950
+    },
+    "witness-worker.mjs": {
+      "sha256": "a2991abb22eacce0c0c8bbbd2714af66899b427b87999701a770042f515ace33",
+      "bytes": 2720
+    },
+    "witness.mjs": {
+      "sha256": "a27be3dc6a984b9f0ab9b624505634d141e58bb37803b4e3470cbfdf1fb672b5",
+      "bytes": 17272
+    },
+    "workshop-templates.mjs": {
+      "sha256": "ef9b59a610320523899eea3ddb36cc3b08195cc16c33b07877276d99d941b5bb",
+      "bytes": 5359
+    },
+    "workshop-worker.mjs": {
+      "sha256": "db0bf66b8c3ba716cad4cb5a4f89fef4dcc73cb997cd02fe27720c6e89180901",
+      "bytes": 3009
+    },
+    "workshop.mjs": {
+      "sha256": "a530f7d094b36d45a5c1a00475887b2d93f44674dd0a8d86cf2fa31d92c19e8b",
+      "bytes": 18041
+    }
+  },
+  "extension": {
+    "name": "schedule-workshop-r1",
+    "predecessorPackageSha256": "8d4f96b7ef7887344f27604ee2408dba4d44e0364fb4e23dea1a9b656e3e9e23",
+    "predecessorManifestSha256": "74b7e83becda753d2de7d00c9a57d4552ae62562c321f4e2d336b127bd8a647e",
+    "scope": "Local CLI schedule experiments, learner predictions, policy comparisons and action traces; unchanged runtime and witness tools."
+  },
+  "qaSuccessor": {
+    "reason": "Explicit full-transaction answer variants retained. Direct-file reader worker and saved-response/source recovery repaired. Workshop now preserves exactly 5e9 internal bytes and actual destination capacity. Graders and unsolved starters unchanged.",
+    "baseArchiveSha256": "9a7ca9f6aeaeaeb0b0c54e7739395d61af02f2d52a72737b27c9c098c2ea21dd",
+    "publication": "not authorized/not performed",
+    "checkIntegrity": {
+      "version": "prototype-v3-check-integrity",
+      "scope": "Four public-check false passes closed; version-examination callback checked in terminal and bounded reader; read-only CSN, equal-value write conflict and full conflict count checked. Existing saved attempts stay immutable; new results use new execution identity. Unsolved starter unchanged."
+    }
+  }
+}

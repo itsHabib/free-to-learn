@@ -56,10 +56,30 @@ release scope without changing those original first attempts or prior reports.
 
 ## Anti-cheat Git source publication
 
-The eight-course source repository now also exposes the existing Courier Lab
+The public source repository also exposes the existing Courier Lab
 beta as a clean clone path. Its 228 original project files are exact to the
 published package. Public deterministic runtime/control tests and sealed
 workspace preparation are checked separately from exercise completion. The
 retained listener restriction means no new HTTP/browser/capstone completion
 claim. No blind trial or private reference/learner fixture is used by CI.
 Labelled public worked examples and grader controls are shipped intentionally.
+
+## Six locally qualified terminal additions
+
+Tiny Browser completed eight modules, all42 public engine cases, an own interactive
+page and actual session export/fresh-process restore/resume. Portable Sandbox covered
+all eight model slices,71 public cases, an own10-case assurance project and real file
+backup/recovery. Advanced Storage covered nine units,43 public cases, schedule
+workshops, own investigations/transfers, minimized witnesses and exported replay.
+Blockchain covered eight core units46/46 plus optional restart12/12 and real backup
+replay. Onion covered twelve lessons,29 Observatory and12 process requirements and
+fresh recovered experiments. Agent League covered24 lessons, public practice/code,
+an own feature project, a frozen league season and restored continuation.
+
+These retained original-owner runs were source-aware/reference-assisted, not blind or
+human trials. Text reports are self-assessed, and initial failures remain separate.
+Only the exact executable/starter bytes are reused; Tiny/Onion source-note scrubs are
+documentation-only derivatives. Browser/device/accessibility, native Linux confinement,
+TCP/public Tor, real distributed concurrency and physical durability are not claimed.
+The new local Git and public-contract checks prove only their recorded current setup
+and packaging scope. Public availability requires separate actual release verification.

@@ -1,0 +1,47 @@
+{
+  "id": "onion-process-lab",
+  "version": "0.1.0",
+  "title": "Build and run your own local onion relays",
+  "extends": {
+    "id": "onion-circuit-lab",
+    "version": "0.3.0",
+    "contentHash": "77d847f5207d6bc48a438ed5beaf0237f695dc5e669de11aff1dd1c0a13ce0c7"
+  },
+  "status": "local educational extension; not integrated or published",
+  "defaultTransport": "parent-routed IPC between separate relay processes",
+  "tcpStatus": "source supplied; initial listener startup failed; no retry; runtime unqualified",
+  "entry": "README.md",
+  "learnerImplementation": "learner/protocol.mjs",
+  "modules": [
+    {
+      "id": "P1",
+      "lesson": "lessons/01.md",
+      "artifact": "path selection and process map"
+    },
+    {
+      "id": "P2",
+      "lesson": "lessons/02.md",
+      "artifact": "client setup and per-process relay state"
+    },
+    {
+      "id": "P3",
+      "lesson": "lessons/03.md",
+      "artifact": "layered authenticated request"
+    },
+    {
+      "id": "P4",
+      "lesson": "lessons/04.md",
+      "artifact": "asynchronous relay handler and authenticated return path"
+    },
+    {
+      "id": "P5",
+      "lesson": "lessons/05.md",
+      "artifact": "process failure, replacement and explicit stop"
+    },
+    {
+      "id": "P6",
+      "lesson": "lessons/06.md",
+      "artifact": "observer-scoped evidence and limitation report"
+    }
+  ]
+}

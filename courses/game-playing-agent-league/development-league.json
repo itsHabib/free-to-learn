@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "partition": "development",
+  "budget": 256,
+  "prefixPlies": 6,
+  "scenarioSeeds": [7, 29, 113],
+  "policySeeds": [11],
+  "policies": [
+    {"name": "supplied-random", "module": "./lib/supplied-policies.mjs", "export": "randomPolicy"},
+    {"name": "supplied-greedy", "module": "./lib/supplied-policies.mjs", "export": "greedyPolicy"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "title": "Move the failure boundary",
+  "predictions": [],
+  "steps": [
+    {"action":"open","circuit":"alpha","length":3,"avoid":[]},
+    {"action":"send","circuit":"alpha","packet":"damaged","item":"tide","fault":{"kind":"corrupt-forward","hop":0}},
+    {"action":"replay","circuit":"alpha","packet":"damaged"},
+    {"action":"replay","circuit":"alpha","packet":"damaged"},
+    {"action":"send","circuit":"alpha","packet":"dropped","item":"luna","fault":{"kind":"drop-forward","hop":1}},
+    {"action":"replay","circuit":"alpha","packet":"dropped"},
+    {"action":"recover","circuit":"alpha","replacement":"beta","failed":[]},
+    {"action":"send","circuit":"beta","packet":"fresh","item":"luna"}
+  ]
+}

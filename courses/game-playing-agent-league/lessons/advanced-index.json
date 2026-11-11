@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "lessons": [
+    {
+      "id": "3.1",
+      "title": "Build outcome-labelled training examples",
+      "file": "03-1-outcome-labelled-examples.md",
+      "objective": "O3.1: A search policy can play a complete game without knowing whether its position scores were useful. You will turn completed games into training examples whose labels mean the same thing from either player's seat.",
+      "depends": [
+        "2.3"
+      ],
+      "practice": [
+        {
+          "id": "3.1-p1",
+          "question": "A game ends with returns `[-1,+1]`. Its stored observations have perspectives `[1,1,0]`. Give the three outcome labels and explain why alternating signs by row number would be wrong."
+        },
+        {
+          "id": "3.1-p2",
+          "question": "A dataset column named `eventualWinner` reduces validation error nearly to zero. Another column is current pawn count. Explain which can enter `features`, which belongs elsewhere, and how you would detect this leakage in a code review."
+        },
+        {
+          "id": "3.1-p3",
+          "question": "A new dataset contains ten random continuations from each of four starting positions. Propose a split that tests transfer beyond a known starting position, and identify one limitation that remains even after grouping correctly."
+        },
+        {
+          "id": "3.1-p4",
+          "question": "Feature A returns only a bias and the requested player's ID. Feature B returns a material difference and is unchanged after a non-capturing move. Explain why A is insufficient and why that one unchanged move does not invalidate B. Describe separate board and perspective comparisons that would provide relevant evidence."
+        }
+      ]
+    },
+    {
+      "id": "3.2",
+      "title": "Fit and inspect a small value model",
+      "file": "03-2-small-value-model.md",
+      "objective": "O3.2: Your examples have meaningful labels, but fixed hand-written weights cannot learn from them. You will fit a small linear model and show that its predictions respond to relevant training data.",
+      "depends": [
+        "3.1"
+      ],
+      "practice": [
+        {
+          "id": "3.2-p1",
+          "question": "A saved model expects `[bias, materialDifference, advancement]`, but a refactor returns `[bias, advancement, materialDifference]`. Both vectors contain finite numbers and the same length. Explain why shape validation cannot catch the full error and what identity must change."
+        },
+        {
+          "id": "3.2-p2",
+          "question": "Training loss grows every epoch, and doubling the learning rate makes growth faster. Name two checks that distinguish a wrong gradient sign from an excessively large correct step. Explain why running more epochs is not the first repair."
+        },
+        {
+          "id": "3.2-p3",
+          "question": "A fitter reduces training error, barely changes validation error, and chooses worse moves. Give one data explanation and one feature/model explanation. State the next controlled comparison you would run rather than declaring learning a success or failure from one number."
+        }
+      ]
+    },
+    {
+      "id": "3.3",
+      "title": "Put learned values inside search",
+      "file": "03-3-learned-values-in-search.md",
+      "objective": "O3.3: A new agent wins more games, but it also searches four times as many positions. You will compare learned and hand-written evaluations while keeping computation and evaluation conditions visible.",
+      "depends": [
+        "3.2"
+      ],
+      "practice": [
+        {
+          "id": "3.3-p1",
+          "question": "A model predicts -1.7 for a nonterminal position. Should the training-error report, the search score and the terminal-return field all contain the same number? Explain the purpose of each field."
+        },
+        {
+          "id": "3.3-p2",
+          "question": "You can afford only one additional comparison after observing B beat A under different budgets. Specify the comparison that best isolates the learned value's contribution, including which settings you freeze."
+        },
+        {
+          "id": "3.3-p3",
+          "question": "A learned evaluation improves average outcome but repeatedly misses a rare forced defense. Propose an intervention and an evaluation that could reveal whether you fixed that weakness without erasing the evidence of the original failure."
+        }
+      ]
+    },
+    {
+      "id": "4.1",
+      "title": "Pair positions and swap seats",
+      "file": "04-1-pair-positions-and-seats.md",
+      "objective": "O4.1: Your candidate wins every game in one starting seat and loses every game in the other. You will construct a complete paired comparison that separates a policy's result from the opportunities its seat received.",
+      "depends": [
+        "3.3"
+      ],
+      "practice": [
+        {
+          "id": "4.1-p1",
+          "question": "On scenario S, A loses in seat 0 and wins in seat 1. On scenario T, A wins in both seats. Compute A's per-scenario means and equal-scenario overall mean utility. Explain why the four individual results should remain available."
+        },
+        {
+          "id": "4.1-p2",
+          "question": "A 12-slot plan has ten valid results, one duplicate of a completed slot and one result from an unknown plan. What are the expected count and valid unique observed count? What must happen before the report can claim complete coverage?"
+        },
+        {
+          "id": "4.1-p3",
+          "question": "A second experiment adds extra games only on scenarios where the candidate initially lost. Propose a valid use of those games and an invalid use. Explain how your retained report can keep the new evidence without silently rewriting the original estimand."
+        }
+      ]
+    },
+    {
+      "id": "4.2",
+      "title": "Quantify uncertainty at the right unit",
+      "file": "04-2-uncertainty-at-the-right-unit.md",
+      "objective": "O4.2: A report claims certainty because it contains thousands of moves, although those moves came from eight starting scenarios. You will choose a sampling unit that matches the question and interpret an interval without overstating what it measures.",
+      "depends": [
+        "4.1"
+      ],
+      "practice": [
+        {
+          "id": "4.2-p1",
+          "question": "A report has 16 scenarios, two seats and two randomness replicates per scenario. It resamples its 64 games independently. Identify the sampling unit the planned scenario-distribution claim requires and explain what structure the resampling must preserve."
+        },
+        {
+          "id": "4.2-p2",
+          "question": "Your interval crosses zero. A teammate writes “the policies are equally strong.” Explain what is missing from that conclusion. Then explain why raising bootstrap resamples from 2,000 to 20,000 does not by itself solve the evidence problem."
+        },
+        {
+          "id": "4.2-p3",
+          "question": "You have one trained checkpoint, 1,000 evaluation games and no other training runs. Write one supported claim and one unsupported algorithm-level claim. Describe the additional evidence needed for the latter."
+        }
+      ]
+    },
+    {
+      "id": "4.3",
+      "title": "Freeze selection before final evaluation",
+      "file": "04-3-freeze-selection.md",
+      "objective": "O4.3: After seeing a final evaluation loss, you repair the policy and run the same cases again. You will distinguish useful development from confirmation and preserve the history that makes the distinction visible.",
+      "depends": [
+        "4.2"
+      ],
+      "practice": [
+        {
+          "id": "4.3-p1",
+          "question": "A policy fails final scenario Q. You add a feature targeting Q and rerun all final scenarios. Which results can still be retained, how should the new report be labelled, and what would support a new confirmatory claim?"
+        },
+        {
+          "id": "4.3-p2",
+          "question": "Mid-run, you discover that one policy's parameter file changed while its display name stayed the same. Explain why averaging the completed games is unsafe and identify what must be frozen and rerun."
+        },
+        {
+          "id": "4.3-p3",
+          "question": "A colleague tests 30 candidate/opponent comparisons and wants to headline the only positive nominal 95% interval. Propose an honest report of what happened and a follow-up experiment that tests the resulting hypothesis."
+        }
+      ]
+    },
+    {
+      "id": "5.1",
+      "title": "See what latest-only self-play forgets",
+      "file": "05-1-latest-only-forgetting.md",
+      "objective": "O5.1: The newest policy defeats yesterday's checkpoint but loses to a policy from several generations ago. You will diagnose that regression without assuming that each generation has become generally stronger.",
+      "depends": [
+        "4.3"
+      ],
+      "practice": [
+        {
+          "id": "5.1-p1",
+          "question": "Your new snapshot wins against its immediate predecessor but its aggregate score against a frozen three-opponent roster decreases. Give two distinct explanations to investigate, one strategic and one experimental, before concluding that self-play caused forgetting."
+        },
+        {
+          "id": "5.1-p2",
+          "question": "A chart shows performance at generations 1–5, but each point used a different opponent roster. What can the chart legitimately show? Design a second chart that can reveal regression against historical opponents."
+        },
+        {
+          "id": "5.1-p3",
+          "question": "You have a budget for 600 training games and six archived opponents. Propose a comparison between latest-only and uniform-history training that keeps the budget honest. State which historical evidence you retain even if uniform-history performs worse."
+        }
+      ]
+    },
+    {
+      "id": "5.2",
+      "title": "Sample opponents from an archive",
+      "file": "05-2-archive-sampling.md",
+      "objective": "O5.2: You want half your training games against a recent rival and the rest against older weaknesses. You will implement a reproducible discrete sampler whose actual choices match the declared archive weights.",
+      "depends": [
+        "5.1"
+      ],
+      "practice": [
+        {
+          "id": "5.2-p1",
+          "question": "An archive has weights `[0,2/3,1/3]`. Explain which IDs may be returned, what their probabilities should be, and why an all-zero archive needs an explicit error rather than an arbitrary choice."
+        },
+        {
+          "id": "5.2-p2",
+          "question": "A sampler reproduces its sequence for a fixed seed, but the last archive item is never chosen. Why does reproducibility alone not establish correctness? Describe a boundary test and a distribution test that would expose different causes."
+        },
+        {
+          "id": "5.2-p3",
+          "question": "A supplied host calls your sampler at every turn instead of once at game start. Explain why correcting only the reported probabilities would not restore the original experiment. Identify which evidence must be regenerated after fixing the host."
+        }
+      ]
+    },
+    {
+      "id": "5.3",
+      "title": "Admit a new policy without erasing history",
+      "file": "05-3-admit-without-erasing-history.md",
+      "objective": "O5.3: A candidate has the highest average score but reopens a weakness your league had already repaired. You will make an admission decision using a declared objective, comparable evidence and preserved historical snapshots.",
+      "depends": [
+        "5.2"
+      ],
+      "practice": [
+        {
+          "id": "5.3-p1",
+          "question": "A candidate improves average utility by 0.08 but loses 0.4 against a previously important opponent. Give two defensible admission decisions under different explicitly stated objectives. Explain why the raw average alone cannot choose between them."
+        },
+        {
+          "id": "5.3-p2",
+          "question": "Two archive entries have different names but identical source, parameters and configuration hashes. A third has the same source as the first but different learned weights. Explain how you would classify them and what further behavior evidence could help."
+        },
+        {
+          "id": "5.3-p3",
+          "question": "The archive has reached its active-size limit. Design a retention decision that frees one training slot while preserving the ability to reproduce an old failure and measure future regression. State exactly what remains stored and what changes."
+        }
+      ]
+    },
+    {
+      "id": "6.1",
+      "title": "Build an approximate best response",
+      "file": "06-1-approximate-best-response.md",
+      "objective": "O6.1: A cautious policy protects against the worst possible reply, but a particular rival rarely makes that reply. You will build a response to a fixed opponent model and test whether its advantage survives fresh games against the actual opponent.",
+      "depends": [
+        "5.3"
+      ],
+      "practice": [
+        {
+          "id": "6.1-p1",
+          "question": "A response implementation always takes the minimum child value at opponent turns, even though a fixed probability model was supplied. What problem does it solve, and why can it miss a profitable counter-strategy? State the appropriate backup operation without assuming the modeled opponent is perfect."
+        },
+        {
+          "id": "6.1-p2",
+          "question": "Your counter-policy performs well against its model but poorly against fresh games from the real opponent. Give one model explanation, one search-budget explanation and an experiment that distinguishes them while preserving the original failure."
+        },
+        {
+          "id": "6.1-p3",
+          "question": "A test runner secretly selects one of two opponents at game start. Your responder is handed the chosen snapshot ID. Explain why this changes the task and what must be removed or relabelled before claiming vulnerability against the hidden mixture."
+        }
+      ]
+    },
+    {
+      "id": "6.2",
+      "title": "Distinguish measured exploitability from a proof",
+      "file": "06-2-measured-exploitability.md",
+      "objective": "O6.2: Your responder found no winning strategy, and the report calls the champion “unexploitable.” You will compute a precisely defined gap on a finite matrix and limit larger-game claims to the response space actually tested.",
+      "depends": [
+        "6.1"
+      ],
+      "practice": [
+        {
+          "id": "6.2-p1",
+          "question": "One report calls a value of 0.4 the Nash gap; another calls 0.2 exploitability for the same x, y and matrix. Can both be correct? State the convention that would reconcile them and one additional identity you must verify before comparing the numbers."
+        },
+        {
+          "id": "6.2-p2",
+          "question": "A zero-gap result was computed on a matrix containing three archived policies. A new fourth policy defeats every member of that archive. Explain which earlier statement remains correct and which broader statement the new evidence refutes."
+        },
+        {
+          "id": "6.2-p3",
+          "question": "Three response searches with different seeds find no advantage within 256 credits per move. Write a defensible headline and a short limitation. Then name one additional experiment that would probe the limitation without pretending to prove it away."
+        }
+      ]
+    },
+    {
+      "id": "6.3",
+      "title": "Read cycles that a single ranking hides",
+      "file": "06-3-cycles-and-rankings.md",
+      "objective": "O6.3: Agent A beats B, B beats C, and C beats A. You will recognize this nontransitive structure and explain why a single ordered leaderboard cannot capture every matchup.",
+      "depends": [
+        "6.2"
+      ],
+      "practice": [
+        {
+          "id": "6.3-p1",
+          "question": "A scoreboard sorts the synthetic cycle by policy name after all three receive the same average. Explain what the order means and why calling the first row the strongest policy would be misleading. Identify the information a reader needs beside the scalar score."
+        },
+        {
+          "id": "6.3-p2",
+          "question": "A beats B in complete paired evidence and B beats C, but A versus C was never run. What graph can you draw? What claim must remain open, and which missing comparison would resolve it under the same plan?"
+        },
+        {
+          "id": "6.3-p3",
+          "question": "A deployment expects one opponent 90% of the time and the other two only 5% each. Explain why the best expected-return choice may differ from a low-gap mixture. Propose a report that shows the tradeoff and a test for what happens if the opponent distribution changes."
+        }
+      ]
+    }
+  ]
+}

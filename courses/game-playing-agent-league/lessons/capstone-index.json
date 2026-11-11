@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "lessons": [
+    {
+      "id": "7.1",
+      "title": "Assemble a replayable season",
+      "file": "07-1-replayable-season.md",
+      "objective": "Construct and reproduce a complete seat-paired season.",
+      "depends": [
+        "6.3"
+      ],
+      "practice": [
+        {
+          "id": "7.1-p1",
+          "question": "A season has six policies, three scenarios, both seats and two randomness replicates. How many games are planned? Explain the unit you counted."
+        },
+        {
+          "id": "7.1-p2",
+          "question": "Your planned twelve-game season has eleven distinct results and a duplicate of one of those results. May you report twelve completed games? What should happen next?"
+        },
+        {
+          "id": "7.1-p3",
+          "question": "A recorded action sequence replays legally to the reported winner, but its named policy hash differs from the supplied policy file. What can you claim?"
+        }
+      ]
+    },
+    {
+      "id": "7.2",
+      "title": "Choose a population rather than one lucky winner",
+      "file": "07-2-population.md",
+      "objective": "Choose and justify a population against a declared objective.",
+      "depends": [
+        "7.1"
+      ],
+      "practice": [
+        {
+          "id": "7.2-p1",
+          "question": "Policy A has the higher mean score while policy B has the better worst measured matchup. What is missing from the statement that A is better?"
+        },
+        {
+          "id": "7.2-p2",
+          "question": "An old policy loses to most of the pool but exposes a reproducible weakness in the newest candidate. Give a defensible reason to retain it."
+        },
+        {
+          "id": "7.2-p3",
+          "question": "You evaluated a mixture that chooses one policy per game. You now choose a fresh policy each move using the same weights. Does the old payoff matrix certify the new policy?"
+        }
+      ]
+    },
+    {
+      "id": "7.3",
+      "title": "Audit the evidence behind the headline",
+      "file": "07-3-evidence-audit.md",
+      "objective": "Restrict a league claim to the evidence that supports it.",
+      "depends": [
+        "7.2"
+      ],
+      "practice": [
+        {
+          "id": "7.3-p1",
+          "question": "One trained checkpoint beats its predecessor on a fixed roster, but used twice the search budget. Rewrite the claim without attributing the gain to learning alone."
+        },
+        {
+          "id": "7.3-p2",
+          "question": "You chose the best of three feature variants after looking at final-test scores. How should those scores now be labeled, and what would confirmation require?"
+        },
+        {
+          "id": "7.3-p3",
+          "question": "A responder searched for ten minutes and found no winning policy. Is the champion unexploitable? State a defensible conclusion."
+        }
+      ]
+    },
+    {
+      "id": "8.1",
+      "title": "Freeze a prediction before the patch",
+      "file": "08-1-before-patch.md",
+      "objective": "Commit a testable transfer prediction before the rule is revealed.",
+      "depends": [
+        "7.3"
+      ],
+      "practice": [
+        {
+          "id": "8.1-p1",
+          "question": "Write a testable prediction about one assumption your current search or value model makes. Name an observation that would show the prediction was wrong."
+        },
+        {
+          "id": "8.1-p2",
+          "question": "You overwrote the old champion parameters while adapting. Why is this a problem, and what can you honestly do now?"
+        },
+        {
+          "id": "8.1-p3",
+          "question": "A learner has read a worked solution to a public rule patch. They rerun it with a new random seed. Is this automatically an unassisted held-out transfer assessment?"
+        }
+      ]
+    },
+    {
+      "id": "8.2",
+      "title": "Adapt under the original compute budget",
+      "file": "08-2-adapt.md",
+      "objective": "Diagnose and repair a changed game assumption within budget.",
+      "depends": [
+        "8.1"
+      ],
+      "practice": [
+        {
+          "id": "8.2-p1",
+          "question": "The board and action IDs look unchanged, but a new visible phase field changes who moves next. Name two components that may still be wrong."
+        },
+        {
+          "id": "8.2-p2",
+          "question": "A repair returns the known winning move whenever the failing board appears. Another repair includes the new phase in the state representation and follows the actual actor. Which better addresses the hypothesis, and what must still be tested?"
+        },
+        {
+          "id": "8.2-p3",
+          "question": "After a patch, win rate appears unchanged but value prediction error increases. Does unchanged win rate prove the model still represents the game equally well?"
+        }
+      ]
+    },
+    {
+      "id": "8.3",
+      "title": "Defend what transferred and what did not",
+      "file": "08-3-defend-transfer.md",
+      "objective": "Defend the limits and mechanism of a transfer result.",
+      "depends": [
+        "8.2"
+      ],
+      "practice": [
+        {
+          "id": "8.3-p1",
+          "question": "Your prediction blamed turn alternation, but fixing an omitted state counter repairs the witness. How should the final report handle the original prediction?"
+        },
+        {
+          "id": "8.3-p2",
+          "question": "The adapted policy improves under the new rule and regresses under the old rule. Give a scoped deployment recommendation."
+        },
+        {
+          "id": "8.3-p3",
+          "question": "Separate these claims: exact zero gap in an enumerated tiny game; no exploit found in a six-policy season; no adversary can ever beat the agent. Which are supported by their stated evidence?"
+        }
+      ]
+    }
+  ]
+}

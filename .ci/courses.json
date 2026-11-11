@@ -624,6 +624,273 @@
         "Retained listener restriction is not bypassed by remote CI.",
         "Labelled public controls are source-aware deterministic checks, not blind or human learning evidence."
       ]
+    },
+    {
+      "id": "tiny-browser",
+      "archive": ".packages/tiny-browser.zip",
+      "sha256": "a376d76c21c6ab59c343005a963dd5dc8f8520ae618f3ab634fc460b77d55928",
+      "archive_prefix": "tiny-browser-engine/",
+      "direct_root": "courses/tiny-browser-engine",
+      "root": "tiny-browser-engine",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "read_first_module",
+          "argv": [
+            "node",
+            "tools/lesson.mjs",
+            "M1"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "tools/check.mjs",
+            "public/starter.body.js",
+            "M1"
+          ],
+          "exit": 1,
+          "match": "not_implemented"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate.",
+        "Complete source-aware owner route is separate retained evidence; this public contract executes only the named setup/starter checks."
+      ]
+    },
+    {
+      "id": "sandbox-model",
+      "archive": ".packages/sandbox-model.zip",
+      "sha256": "1534573a57c61820698a56837a70e978bcc2295b7c5d526fcc17f1112fbc5b7d",
+      "archive_prefix": "boundary-lab/",
+      "direct_root": "courses/boundary-lab",
+      "root": "boundary-lab",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "offline_compile_and_status",
+          "argv": [
+            "cargo",
+            "run",
+            "--offline",
+            "--locked",
+            "--",
+            "status"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_demo",
+          "argv": [
+            "cargo",
+            "run",
+            "--offline",
+            "--locked",
+            "--",
+            "demo"
+          ],
+          "exit": 0
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate.",
+        "Complete source-aware owner route is separate retained evidence; this public contract executes only the named setup/starter checks."
+      ]
+    },
+    {
+      "id": "advanced-storage",
+      "archive": ".packages/advanced-storage.zip",
+      "sha256": "e3af0410a576def4e577ef5d89d50933a5e95cf5181351d96c9da8b1b12e0724",
+      "archive_prefix": "advanced-storage/",
+      "direct_root": "courses/advanced-storage",
+      "root": "advanced-storage",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "runtime_doctor",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "doctor"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "work"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "work",
+            "01",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "Unfinished: 01 visibleVersion"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate.",
+        "Complete source-aware owner route is separate retained evidence; this public contract executes only the named setup/starter checks."
+      ]
+    },
+    {
+      "id": "blockchain-laboratory",
+      "archive": ".packages/blockchain-laboratory.zip",
+      "sha256": "074b5c3e8bf088c354d333745d47c3027ec1f8ce60b67b431649becb9a9c4f09",
+      "archive_prefix": "blockchain-laboratory/",
+      "direct_root": "courses/blockchain-laboratory",
+      "root": "blockchain-laboratory",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "read_first_module",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "lesson",
+            "01"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "01"
+          ],
+          "exit": 1,
+          "match": "NOT_IMPLEMENTED"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate.",
+        "Complete source-aware owner route is separate retained evidence; this public contract executes only the named setup/starter checks."
+      ]
+    },
+    {
+      "id": "onion-routing",
+      "archive": ".packages/onion-routing.zip",
+      "sha256": "ef160e0303ae02a8d05927a716f7b30f8dc5ec19015df6c32422650ccc67a56c",
+      "archive_prefix": "onion-network-course/",
+      "direct_root": "courses/onion-network-course",
+      "root": "onion-network-course",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "untouched_observatory_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "observatory/tools/lab.mjs",
+            "check",
+            "1",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "TODO_M1"
+        },
+        {
+          "stage": "untouched_process_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "onion-process-lab/tools/check.mjs",
+            "1"
+          ],
+          "exit": 1,
+          "match": "TODO_P1"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate.",
+        "Complete source-aware owner route is separate retained evidence; this public contract executes only the named setup/starter checks."
+      ]
+    },
+    {
+      "id": "agent-league",
+      "archive": ".packages/agent-league.zip",
+      "sha256": "85c8cce4412bf5395c8d4078d152113f93cfc03723279b72449b5ca04b2979c0",
+      "archive_prefix": "game-playing-agent-league/",
+      "direct_root": "courses/game-playing-agent-league",
+      "root": "game-playing-agent-league",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "runtime_doctor",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "doctor"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "lesson_catalog",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "list"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "cli.mjs",
+            "check",
+            "1"
+          ],
+          "exit": 1,
+          "match": "LEARNER_TODO"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise/capstone success needs a learner-owned implementation; none is published as a CI fixture.",
+        "This public CI profile verifies packaging/syntax/documented setup, specific starter diagnostics and configured recovery only.",
+        "One-time blind trials and private source-aware full replay evidence remain separate.",
+        "Complete source-aware owner route is separate retained evidence; this public contract executes only the named setup/starter checks."
+      ]
     }
   ]
 }

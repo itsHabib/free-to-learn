@@ -57,3 +57,28 @@ Its Git publication has safe offline/setup checks; the real HTTP/browser
 learner route remains not newly qualified. Labelled public controls/reference
 examples are assistance. Recovery details and absolute-path limits are explicit
 in its README. Existing browser introduction and ZIP remain available.
+
+## Six additional terminal projects
+
+These directories preserve the validated learner starters, not completed answers.
+Use installed Node26.5.1; portable Sandbox also needs installed Rust/Cargo and
+Python3. Run from each listed directory and follow its own README and contracts.
+
+| Course | Git directory | First commands |
+| --- | --- | --- |
+| Tiny Browser | courses/tiny-browser-engine | node tools/lesson.mjs M1; node tools/check.mjs public/starter.body.js M1 |
+| Portable Sandbox | courses/boundary-lab | cargo run --offline --locked -- status; cargo run --offline --locked -- demo |
+| Advanced Storage | courses/advanced-storage | node lab.mjs doctor; node lab.mjs start work; node lab.mjs check work 01 --help-used none |
+| Blockchain | courses/blockchain-laboratory | node lab.mjs start; node lab.mjs lesson 01; node lab.mjs check 01 |
+| Onion | courses/onion-network-course | cd observatory; node tools/lab.mjs check 1 --help-used none; follow the root map before the process project |
+| Agent League | courses/game-playing-agent-league | node cli.mjs doctor; node cli.mjs list; node cli.mjs check 1 |
+
+Each unfinished check should report its named TODO, not a missing import/tool.
+Tiny Browser's TERMINAL.md covers own-page rendering and session export/restore.
+Storage provides node lab.mjs export; Agent League provides CLI export/import.
+For portable Sandbox, Blockchain or the Onion process project, preserve the whole
+matching course directory and learner work using ordinary file backup. The process
+course has no automatic attempt history or live-key migration. BACKUP-AND-RESTORE.md
+gives a non-overwriting terminal copy route; it is not a new built-in course command.
+Browser workbenches, native Linux confinement, real TCP/anonymity and hardware
+durability remain outside these supported terminal claims.

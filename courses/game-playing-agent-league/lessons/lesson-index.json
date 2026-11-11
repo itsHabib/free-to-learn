@@ -1,0 +1,194 @@
+{
+  "schemaVersion": 1,
+  "status": "local-first-two-modules",
+  "feedbackMode": "committed-self-assessment",
+  "lessons": [
+    {
+      "id": "1.1",
+      "title": "Read the decision contract",
+      "file": "01-1-decision-contract.md",
+      "objective": "O1.1: Identify state, actor, legal action and terminal return, then implement a policy respecting the supplied contract.",
+      "depends": [],
+      "practice": [
+        {
+          "id": "1.1-p1",
+          "kind": "practice",
+          "question": "Player 1 has a pawn at (3,1). Its forward cell (2,1) contains an opponent, (2,0) is empty, and (2,2) contains a friendly pawn. Which destinations are legal, and what rule excludes each other destination?"
+        },
+        {
+          "id": "1.1-p2",
+          "kind": "practice",
+          "question": "An action moves from cell 8 to cell 13. What is its encoded ID? Does knowing that ID establish legality? Name two additional facts you would inspect."
+        },
+        {
+          "id": "1.1-p3",
+          "kind": "practice",
+          "question": "A policy returns a valid-looking action ID and also sets the opponent's last pawn to empty in its copied observation. Which part should the referee use to determine the next state, and why must the modified observation not establish victory?"
+        },
+        {
+          "id": "1.1-transfer",
+          "kind": "transfer",
+          "question": "A cache stores decisions using only the 25 board cells. The same board is later queried with the other player to move. Describe the failure this can cause and the additional identity the cache must preserve."
+        }
+      ]
+    },
+    {
+      "id": "1.2",
+      "title": "Make one policy reproducible",
+      "file": "01-2-reproducible-policy.md",
+      "objective": "O1.2: Reproduce a policy's decisions and bind the claim to source, parameters, seed and experiment conditions.",
+      "depends": [
+        "1.1"
+      ],
+      "practice": [
+        {
+          "id": "1.2-p1",
+          "kind": "practice",
+          "question": "The legal actions are [27,30,54,55] and the next private random value is 0.76. Which action does equal-width sampling select? What changes if the program consumes one extra random value before selecting?"
+        },
+        {
+          "id": "1.2-p2",
+          "kind": "practice",
+          "question": "Two runs have the same policy name and random seed. The second run has different parameter bytes and twice the simulation budget. Can their disagreement establish nondeterminism? List what would have to be held fixed for that diagnosis."
+        },
+        {
+          "id": "1.2-p3",
+          "kind": "practice",
+          "question": "Every recorded action replays to the recorded final state. The reported policy, rerun with its frozen inputs, chooses a different first action. Which reproducibility claim passed, which failed, and what should the report avoid claiming?"
+        },
+        {
+          "id": "1.2-transfer",
+          "kind": "transfer",
+          "question": "A program logs a random number for debugging by calling context.rng() and then calls it again to choose its move. Debug logging is later disabled, and decisions change. Explain the cause and propose a repair preserving the intended choice sequence without removing useful diagnostics."
+        }
+      ]
+    },
+    {
+      "id": "1.3",
+      "title": "Separate playing strength from harness failure",
+      "file": "01-3-failure-vs-strength.md",
+      "objective": "O1.3: Classify legal losses, policy forfeits and unresolved infrastructure failures without concealing the experiment's denominator.",
+      "depends": [
+        "1.1",
+        "1.2"
+      ],
+      "practice": [
+        {
+          "id": "1.3-p1",
+          "kind": "practice",
+          "question": "Classify these cases as legal game loss, policy forfeit, or unresolved infrastructure failure: (A) the opponent reaches the final row after legal play; (B) the policy returns an action absent from the current legal list; (C) the host process stops before a result is committed. Explain why they must not be collapsed into one label."
+        },
+        {
+          "id": "1.3-p2",
+          "kind": "practice",
+          "question": "A report has four wins, three legal losses, one forfeit by the evaluated policy and two host interruptions in ten planned games. Give the counts of resolved and unresolved matches. Is 'four wins out of ten completed games' accurate? Explain the correction."
+        },
+        {
+          "id": "1.3-p3",
+          "kind": "practice",
+          "question": "A dashboard says 'player 0 won,' but replaying its recorded legal actions ends with player 1 reaching the target row. Which evidence should decide the official result? Identify the first two things you would compare before changing either policy."
+        },
+        {
+          "id": "1.3-transfer",
+          "kind": "transfer",
+          "question": "A developer removes every record with a nonzero error count before ranking policies. One policy has many illegal-action forfeits; another has no forfeits but loses strategically. Explain how this filter can reverse the apparent ranking, and state which records or counts the report must retain."
+        }
+      ]
+    },
+    {
+      "id": "2.1",
+      "title": "Value a position from the correct player's perspective",
+      "file": "02-1-player-perspective.md",
+      "objective": "O2.1: Implement a finite bounded evaluator with explicit player perspective and exact terminal values.",
+      "depends": [
+        "1.1",
+        "1.2",
+        "1.3"
+      ],
+      "practice": [
+        {
+          "id": "2.1-p1",
+          "kind": "practice",
+          "question": "A nonterminal state has heuristic value +0.35 for player 1 under an antisymmetric evaluation. What value should the same evaluator give player 0? If currentPlayer changes but the question still asks for player 1's prospects, should the sign automatically change? Explain."
+        },
+        {
+          "id": "2.1-p2",
+          "kind": "practice",
+          "question": "A search reaches a terminal state with returns=[-1,+1] exactly at its depth limit. The requested perspective is player 1, and the material heuristic would give -0.2. Which value belongs in the search, and which condition must be checked first?"
+        },
+        {
+          "id": "2.1-p3",
+          "kind": "practice",
+          "question": "Player 0 has a pawn on row 3; player 1 has a pawn on row 1. Each is one move from its target row. A feature uses raw row number and therefore assigns greater advancement to player 0. Explain the representation error and describe a perspective-consistent replacement."
+        },
+        {
+          "id": "2.1-transfer",
+          "kind": "transfer",
+          "question": "A future rule gives the same player another turn after a particular move. A programmer flips the sign whenever one move is simulated, assuming that each edge changes the player. Explain why this can fail and which explicit state information should determine the backup's role."
+        }
+      ]
+    },
+    {
+      "id": "2.2",
+      "title": "Search adversarial replies under a node budget",
+      "file": "02-2-budgeted-search.md",
+      "objective": "O2.2: Choose legal actions by actor-aware adversarial search while respecting the simulation-credit contract.",
+      "depends": [
+        "2.1"
+      ],
+      "practice": [
+        {
+          "id": "2.2-p1",
+          "kind": "practice",
+          "question": "At a root where player 0 acts, move A lets player 1 choose between +0.8 and -0.4 for player 0. Move B lets player 1 choose between +0.2 and 0. What are the two backed-up values, and which root move should player 0 select?"
+        },
+        {
+          "id": "2.2-p2",
+          "kind": "practice",
+          "question": "A root move leads to another decision by the root player. Its two possible children have values -0.6 and +0.25 from that player's perspective. What value should this intermediate state back up? Explain why 'always minimize on the second level' gives the wrong answer."
+        },
+        {
+          "id": "2.2-p3",
+          "kind": "practice",
+          "question": "A search fully checks candidate A and finds value 0. It starts candidate B, sees one favorable reply worth +0.7, and runs out of credits before examining B's other replies. Why is selecting B as a proved +0.7 move unjustified? State what evidence is missing."
+        },
+        {
+          "id": "2.2-transfer",
+          "kind": "transfer",
+          "question": "A tree contains two different states with the same board layout but different players to move. A transposition cache returns the first stored value for both. Describe how this can change the selected root move and which information the cache key must include."
+        }
+      ]
+    },
+    {
+      "id": "2.3",
+      "title": "Use deeper search without changing the experiment",
+      "file": "02-3-fair-deeper-search.md",
+      "objective": "O2.3: Interpret bounded search and compare pruning, ordering and compute changes under matched experiment conditions.",
+      "depends": [
+        "2.2"
+      ],
+      "practice": [
+        {
+          "id": "2.3-p1",
+          "kind": "practice",
+          "question": "In a full tree with two actions at every nonterminal node, how many simulated transitions are required to complete depth three from the root? Can a budget of ten complete that expansion? Explain your counting unit."
+        },
+        {
+          "id": "2.3-p2",
+          "kind": "practice",
+          "question": "A policy completed depth two and selected move C. Its depth-three iteration saw a promising move D before exhausting credits halfway through D's opponent replies. What result can it safely describe as a completed search result, and which claim about D remains unsupported?"
+        },
+        {
+          "id": "2.3-p3",
+          "kind": "practice",
+          "question": "A maximizing root already has a completed option worth 0.4. In a second option, its minimizing opponent has an inspected reply worth 0.2. Does exploring more replies allow that second option's minimax value to become greater than 0.4? Explain whether a cutoff is justified."
+        },
+        {
+          "id": "2.3-transfer",
+          "kind": "transfer",
+          "question": "Version A searches with a hand-built evaluator and 256 credits. Version B uses a new evaluator, a different move order and 1,024 credits, then wins more games on newly chosen positions. Propose matched comparisons separating evaluator, ordering and compute effects. State which claim the original comparison cannot support."
+        }
+      ]
+    }
+  ]
+}

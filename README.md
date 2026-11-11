@@ -2,7 +2,9 @@
 
 Source for Time-travel Debugger, Recoverable Storage, Small Language-model
 Runtime, Firmware Forensics (terminal route), Adaptive Decision Engine, Inside
-the Shot, Compiler and Optimizer, and Anti-cheat Engineering (beta).
+the Shot, Compiler and Optimizer, Anti-cheat Engineering (beta), Tiny Browser Engine,
+portable Sandbox Model, Advanced Storage, Blockchain Laboratory, Onion Routing
+and Game-Playing Agent League.
 Canonical development remains private; this learner snapshot has one clean
 initial commit and contains no private development history.
 
@@ -16,7 +18,7 @@ Follow START-HERE.md for exact course directories and first commands. Source is
 directly readable under courses/. Implement your own project; the TODO starters
 are intentionally incomplete. Missing tools or import errors are setup failures.
 No installation, account, API key, paid provider or private Ivy access is needed
-when the documented Node/Python tools are already installed.
+when the documented Node/Python/Rust tools are already installed.
 
 The .packages/ archives match the direct course files and support repeatable
 validation/downloads. They contain no embedded Git history. Keep your actual

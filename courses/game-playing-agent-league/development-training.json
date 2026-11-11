@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "scenarioSeeds": [301, 307, 311, 313, 317, 331],
+  "prefixPlies": 6,
+  "generations": 3,
+  "gamesPerGeneration": 12,
+  "budget": 64,
+  "maxDepth": 2,
+  "seed": 41,
+  "fitConfiguration": {"epochs": 400, "learningRate": 0.05}
+}

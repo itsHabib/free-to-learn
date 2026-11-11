@@ -1,0 +1,124 @@
+{
+  "format": "boundary-lab-learner/v1",
+  "mode": "portable-core",
+  "native_linux": "NOT RUN",
+  "instructor_solutions_included": false,
+  "files": [
+    {
+      "path": "Cargo.toml",
+      "bytes": 251,
+      "sha256": "9824f1e43227d741c70be3650b413dec16459e752a0b3dfae9772dab9801e17a"
+    },
+    {
+      "path": "Cargo.lock",
+      "bytes": 156,
+      "sha256": "d7c77010a964de182b278b2c14df109a96b038e04e3801cc6fbad1c0e2d7406f"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6750,
+      "sha256": "fb06a43f301ea36bbcc43074196aa33d12c89a03b9c925f1f359a6b064f043f9"
+    },
+    {
+      "path": "run.py",
+      "bytes": 6402,
+      "sha256": "a7b611070181ef95f8842180b9bdcad04cddf58df685dc5db77b9fdeef52d129"
+    },
+    {
+      "path": "index.html",
+      "bytes": 48805,
+      "sha256": "86b69a70583f32d36ede9224d8935020a872e0ce04bc0fe5325a78422aa7ad2d"
+    },
+    {
+      "path": "scaffold-manifest.json",
+      "bytes": 1231,
+      "sha256": "ffdb7d6c803cfe1d85ebf9dca28545d1a9005e07d04dda9fa50220e37b8796d7"
+    },
+    {
+      "path": "src/lib.rs",
+      "bytes": 285,
+      "sha256": "f7b3fdb26d8c1d2b43b749127b9e2d6094265b187a5705dc6570b59f7e375dc0"
+    },
+    {
+      "path": "src/model.rs",
+      "bytes": 5106,
+      "sha256": "a8a0c5f6a8bee2bfcb1e04d41171db4a584250dc3a4267aad402f7a21c0ae572"
+    },
+    {
+      "path": "src/codec.rs",
+      "bytes": 4546,
+      "sha256": "6c873429ff92f8a6c9a8b07b10b8d65aeb98ee2cae9ea9a6fdd2cadd66c72bc2"
+    },
+    {
+      "path": "src/runtime.rs",
+      "bytes": 6959,
+      "sha256": "272991e8d2125aa2dde09149c33230fd3136fa1a849563f6aaae0e8ae8a9e3f7"
+    },
+    {
+      "path": "src/schedule.rs",
+      "bytes": 3685,
+      "sha256": "67b7f2d0c37f922c4ccf1c73a186086cc337a435bae13ad58d1501ec06f5d578"
+    },
+    {
+      "path": "src/checks.rs",
+      "bytes": 25308,
+      "sha256": "46751b7e372e5aa37d6e64116d894d0131c54dcecb30de2484d04be98d4b9c11"
+    },
+    {
+      "path": "src/learner.rs",
+      "bytes": 2131,
+      "sha256": "825f6a35ea5bb2bef0cf3f8beaff59f6bc5d2013e66e73198734d5a072643956"
+    },
+    {
+      "path": "src/main.rs",
+      "bytes": 2677,
+      "sha256": "e50ea14bbb3d338e40b963413f58b5767fc29f8535751cf549632f3c4f6e182d"
+    },
+    {
+      "path": "lessons/01-promises.md",
+      "bytes": 4641,
+      "sha256": "1f96e63e32fa62a7a04a5770ff2a007e0e06a86ef91661f5aff3f9695f8b7ca9"
+    },
+    {
+      "path": "lessons/02-admission.md",
+      "bytes": 4363,
+      "sha256": "e163359eb7ecdab1ce9ef2b832e85c02f9c8efc7b362e5292a7809ab32a24173"
+    },
+    {
+      "path": "lessons/03-memory.md",
+      "bytes": 4362,
+      "sha256": "1560fc713989c74e680b3fa4c173823e01fc60e1b334d1f64e10c7b369dac0e4"
+    },
+    {
+      "path": "lessons/04-authority.md",
+      "bytes": 4255,
+      "sha256": "1489e097c1145790561081ea2d1b2df4d1b14255d66be728751886fea21066a5"
+    },
+    {
+      "path": "lessons/05-native.md",
+      "bytes": 4563,
+      "sha256": "f227b64dc1baca3d30a6d933728cf0802d91a12e4330580dd63fe2cac13317f8"
+    },
+    {
+      "path": "lessons/06-budgets.md",
+      "bytes": 4295,
+      "sha256": "c8952d94c9fd512d8d2cb8f00d76749fec5f5e14311e3b2edb22927cfcdb4b98"
+    },
+    {
+      "path": "lessons/07-investigation.md",
+      "bytes": 3865,
+      "sha256": "87df815a728e78b6b3dc2c8053d185ef6bed92490a1a5552488300c116ed5810"
+    },
+    {
+      "path": "lessons/08-transfer.md",
+      "bytes": 4462,
+      "sha256": "90e4c69133dbf8dfd8afad62b32693dd42de82f19db815f35c3e963f9954607f"
+    }
+  ],
+  "successor": {
+    "parentSourceCommit": "5aca0e396caec982b2ec47ed570539564064a221",
+    "parentArchiveSha256": "aa3801f395436207477c39a119cbb6ad7dec8b2cdb5024eb58d7cf8d67121a42",
+    "instructionPatchSha256": "720c9861c7f195b555739a4aaf7c83642477b877b79622be238d190f08ef9e5c",
+    "status": "local-only-unreleased"
+  }
+}

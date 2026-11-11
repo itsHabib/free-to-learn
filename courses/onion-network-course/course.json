@@ -1,0 +1,146 @@
+{
+  "id": "onion-circuit-lab",
+  "version": "0.4.0",
+  "title": "Build your own local onion-routing system",
+  "goal": "Implement onion layers and observer reasoning, then provision and operate circuits across four local relay processes using parent-routed IPC; diagnose failure and justify recovery and privacy limits.",
+  "status": "owner-integrated local learner package; not published; browser/TCP/multi-machine acceptance not complete",
+  "entry": "index.html",
+  "start": "README.md",
+  "delivery": "download and run locally with installed Node; no school runner required",
+  "defaultTransport": "parent-routed IPC between real local processes",
+  "units": [
+    {
+      "id": "observatory",
+      "sourceVersion": "0.3.0",
+      "entry": "observatory/README.md",
+      "implementation": [
+        "observatory/learner/solution.mjs",
+        "observatory/learner/browser-solution.js"
+      ],
+      "modules": [
+        {
+          "id": 1,
+          "title": "Choose a path and name the observer",
+          "goal": "Choose a three-relay path and distinguish a relay\u2019s local view from the simulator\u2019s complete view.",
+          "kind": "procedure",
+          "depends": [],
+          "artifact": "selectPath returns three distinct usable relay IDs or reports NO_PATH.",
+          "difficulty": "Directory filtering, distinctness and observer scope interact; crypto is not introduced yet."
+        },
+        {
+          "id": 2,
+          "title": "Wrap the onion from the destination outward",
+          "goal": "Construct a nested authenticated packet that each relay can open exactly one layer at a time.",
+          "kind": "procedure",
+          "depends": [
+            1
+          ],
+          "artifact": "wrapRequest builds the entry packet using a separate forward key for each hop.",
+          "difficulty": "Nested values, reverse construction order, key scope and associated data interact."
+        },
+        {
+          "id": 3,
+          "title": "Forward one layer and bring the reply back",
+          "goal": "Open a single local instruction and build the reverse encryption path for the archive reply.",
+          "kind": "procedure",
+          "depends": [
+            1,
+            2
+          ],
+          "artifact": "peelForward, addReturnLayer and unwrapReply complete an offline round trip.",
+          "difficulty": "Forward removal and backward addition run in opposite directions; state belongs to one relay."
+        },
+        {
+          "id": 4,
+          "title": "Separate authenticity from freshness",
+          "goal": "Reject changed and repeated packets while preserving receiver state when authentication fails.",
+          "kind": "procedure",
+          "depends": [
+            2,
+            3
+          ],
+          "artifact": "acceptSequence and peelForward enforce bounded, circuit-local replay tracking.",
+          "difficulty": "Authentication order, state mutation and out-of-order valid arrival must remain distinct."
+        },
+        {
+          "id": 5,
+          "title": "Rebuild after a failed hop",
+          "goal": "Choose a valid replacement circuit and explain why retrying cannot prove exactly-once delivery.",
+          "kind": "procedure",
+          "depends": [
+            1,
+            3,
+            4
+          ],
+          "artifact": "recoveryPlan chooses rebuild or stop; supplied lifecycle closes the old circuit and generates fresh keys.",
+          "difficulty": "Availability, key lifecycle and uncertainty about endpoint receipt interact."
+        },
+        {
+          "id": 6,
+          "title": "Challenge the privacy claim",
+          "goal": "Use synthetic timing evidence and endpoint observations to state defensible limits on an onion circuit.",
+          "kind": "procedure",
+          "depends": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "artifact": "correlate returns all compatible timing candidates; the capstone combines the working circuit with an evidence report.",
+          "difficulty": "A compatible pattern is evidence, not identity; multiple observers and endpoint content differ."
+        }
+      ]
+    },
+    {
+      "id": "process-relays",
+      "sourceVersion": "0.1.0",
+      "entry": "onion-process-lab/README.md",
+      "implementation": [
+        "onion-process-lab/learner/protocol.mjs"
+      ],
+      "modules": [
+        {
+          "id": "P1",
+          "lesson": "lessons/01.md",
+          "artifact": "path selection and process map"
+        },
+        {
+          "id": "P2",
+          "lesson": "lessons/02.md",
+          "artifact": "client setup and per-process relay state"
+        },
+        {
+          "id": "P3",
+          "lesson": "lessons/03.md",
+          "artifact": "layered authenticated request"
+        },
+        {
+          "id": "P4",
+          "lesson": "lessons/04.md",
+          "artifact": "asynchronous relay handler and authenticated return path"
+        },
+        {
+          "id": "P5",
+          "lesson": "lessons/05.md",
+          "artifact": "process failure, replacement and explicit stop"
+        },
+        {
+          "id": "P6",
+          "lesson": "lessons/06.md",
+          "artifact": "observer-scoped evidence and limitation report"
+        }
+      ]
+    }
+  ],
+  "upstreamContentHash": "77d847f5207d6bc48a438ed5beaf0237f695dc5e669de11aff1dd1c0a13ce0c7",
+  "browserRuntimeHash": "751b938f77cfe0abedb56c2a5b56e8e0d4e287703e5591aa95e095ee483743c4",
+  "acceptance": {
+    "localIPC": "upstream qualified; extracted composition check recorded in owner handoff",
+    "TCP": "initial upstream listener startup failed; not retried",
+    "multipleMachines": "NOT_RUN",
+    "hostedBrowser": "BLOCKED_BY_POLICY; no security/origin change adopted",
+    "humanLearning": "UNASSESSED"
+  },
+  "preservation": "Original component learner files, manifests and history behavior are retained; root metadata describes their composition."
+}

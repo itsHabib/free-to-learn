@@ -1,0 +1,484 @@
+{
+  "3.1-p1": {
+    "answer": "The labels are +1, +1, -1. Index each terminal return by the recorded observation perspective.",
+    "reason": "Rows are observations, not a guarantee of alternating actors. Repeated perspectives can occur and must not change the outcome owner.",
+    "hints": [
+      "Identify the player owning each observation.",
+      "Read returns[1], returns[1], then returns[0].",
+      "Both player-1 observations receive +1; player 0 receives -1."
+    ],
+    "rubric": [
+      "The labels are +1, +1, -1. Index each terminal return by the recorded observation perspective.",
+      "Rows are observations, not a guarantee of alternating actors. Repeated perspectives can occur and must not change the outcome owner."
+    ]
+  },
+  "3.1-p2": {
+    "answer": "Current pawn count is available at decision time and can be a feature. Eventual winner belongs in the training target, never in decision-time features. Trace every feature back to fields available in the actual observation.",
+    "reason": "A nearly perfect held-out score can result from leaked outcomes. Splitting rows cannot repair a feature containing the answer.",
+    "hints": [
+      "Ask when each field becomes known.",
+      "A policy cannot know the eventual winner when choosing.",
+      "Remove outcome-derived fields from feature extraction and rerun the experiment."
+    ],
+    "rubric": [
+      "Current pawn count is available at decision time and can be a feature. Eventual winner belongs in the training target, never in decision-time features. Trace every feature back to fields available in the actual observation.",
+      "A nearly perfect held-out score can result from leaked outcomes. Splitting rows cannot repair a feature containing the answer."
+    ]
+  },
+  "3.1-p3": {
+    "answer": "Keep all continuations from a starting-position group in the same partition, including equivalent reflected starts. Hold out whole groups. Four groups are still few, and internal positions or strategy patterns can overlap.",
+    "reason": "Row splitting tests familiar starts under new continuations. Grouping asks a stronger question but does not prove broad game generalization.",
+    "hints": [
+      "Find the common source of the ten continuations.",
+      "Split the four starting groups, not their forty rows.",
+      "State the small number of groups and possible internal-state overlap."
+    ],
+    "rubric": [
+      "Keep all continuations from a starting-position group in the same partition, including equivalent reflected starts. Hold out whole groups. Four groups are still few, and internal positions or strategy patterns can overlap.",
+      "Row splitting tests familiar starts under new continuations. Grouping asks a stronger question but does not prove broad game generalization."
+    ]
+  },
+  "3.2-p1": {
+    "answer": "The vector is numerically valid but each coefficient now multiplies the wrong meaning. Version and hash the feature order/function with the weights; refit or apply a verified matching permutation.",
+    "reason": "Shape checks establish dimensions, not semantic compatibility. Unchanged weight bytes do not mean an unchanged policy.",
+    "hints": [
+      "Track which coefficient multiplies advancement.",
+      "Compare feature names at each index.",
+      "Bind the feature mapping and weights as one model identity."
+    ],
+    "rubric": [
+      "The vector is numerically valid but each coefficient now multiplies the wrong meaning. Version and hash the feature order/function with the weights; refit or apply a verified matching permutation.",
+      "Shape checks establish dimensions, not semantic compatibility. Unchanged weight bytes do not mean an unchanged policy."
+    ]
+  },
+  "3.2-p2": {
+    "answer": "Check a one-example derivative with a finite difference, and repeat one update using a much smaller learning rate. A wrong sign increases local loss even for a sufficiently small step; an excessive correct step can improve when reduced.",
+    "reason": "More epochs repeat the error. A small controlled update separates direction from step size better than a long unstable run.",
+    "hints": [
+      "Inspect the direction of the first update.",
+      "Approximate the loss derivative numerically.",
+      "Compare one small step in each direction before changing epoch count."
+    ],
+    "rubric": [
+      "Check a one-example derivative with a finite difference, and repeat one update using a much smaller learning rate. A wrong sign increases local loss even for a sufficiently small step; an excessive correct step can improve when reduced.",
+      "More epochs repeat the error. A small controlled update separates direction from step size better than a long unstable run."
+    ]
+  },
+  "3.2-p3": {
+    "answer": "The data may underrepresent decisive defensive states; the features may fail to distinguish them. Compare the same search with old and learned evaluations on a frozen paired roster, and inspect a changed losing decision.",
+    "reason": "Prediction error weights examples, whereas a single tactical mistake can decide a game. A lower average error does not guarantee better action ranking.",
+    "hints": [
+      "Separate data coverage from representational capacity.",
+      "Hold search and computation fixed while changing the evaluator.",
+      "Preserve the failed model and test a targeted change on fresh evidence."
+    ],
+    "rubric": [
+      "The data may underrepresent decisive defensive states; the features may fail to distinguish them. Compare the same search with old and learned evaluations on a frozen paired roster, and inspect a changed losing decision.",
+      "Prediction error weights examples, whereas a single tactical mistake can decide a game. A lower average error does not guarantee better action ranking."
+    ]
+  },
+  "3.3-p1": {
+    "answer": "Keep -1.7 as the raw prediction for error diagnostics; use -0.99 at the nonterminal search boundary; keep terminal returns null until the rules actually terminate the game.",
+    "reason": "Clipping protects the distinction between a forecast and a proved outcome. It must not hide the raw model error.",
+    "hints": [
+      "Which value is a model guess?",
+      "Nonterminal heuristic scores cannot equal or exceed a proved win/loss.",
+      "The three fields answer different questions; do not overwrite the rules with a prediction."
+    ],
+    "rubric": [
+      "Keep -1.7 as the raw prediction for error diagnostics; use -0.99 at the nonterminal search boundary; keep terminal returns null until the rules actually terminate the game.",
+      "Clipping protects the distinction between a forecast and a proved outcome. It must not hide the raw model error."
+    ]
+  },
+  "3.3-p2": {
+    "answer": "Compare the same search with hand-written versus learned evaluation at one common budget, using identical scenarios, both seats, policy seeds, depth limits and selection rules. Record actual credits as well as the cap.",
+    "reason": "Changing evaluation and computation together prevents attributing an outcome difference to learning alone.",
+    "hints": [
+      "List everything changed between A and B.",
+      "Choose a shared computation setting.",
+      "Vary only the evaluator and preserve the paired evaluation protocol."
+    ],
+    "rubric": [
+      "Compare the same search with hand-written versus learned evaluation at one common budget, using identical scenarios, both seats, policy seeds, depth limits and selection rules. Record actual credits as well as the cap.",
+      "Changing evaluation and computation together prevents attributing an outcome difference to learning alone."
+    ]
+  },
+  "3.3-p3": {
+    "answer": "Preserve the failing checkpoint and trace, add or improve a feature or training coverage for that defense, and evaluate the repair under matched resources on fresh scenarios including a held-out defense family.",
+    "reason": "Repeatedly tuning the known failing final case turns it into development data. Average improvement can coexist with a serious subgroup regression.",
+    "hints": [
+      "Save the original mistake before repairing it.",
+      "Separate the known regression case from new evaluation cases.",
+      "Report both aggregate performance and the relevant defensive subgroup."
+    ],
+    "rubric": [
+      "Preserve the failing checkpoint and trace, add or improve a feature or training coverage for that defense, and evaluate the repair under matched resources on fresh scenarios including a held-out defense family.",
+      "Repeatedly tuning the known failing final case turns it into development data. Average improvement can coexist with a serious subgroup regression."
+    ]
+  },
+  "4.1-p1": {
+    "answer": "S has mean 0 and T has mean +1. Equal weighting of the two scenarios gives +0.5. Keep all four results to inspect seat asymmetry, failures and pairing.",
+    "reason": "A single aggregate cannot reveal whether a policy only succeeds in one seat. The retained raw records permit a new audit.",
+    "hints": [
+      "Translate wins/losses to +1/-1.",
+      "Average within S and T before averaging the two groups.",
+      "Compute (-1+1)/2, (1+1)/2, then their mean."
+    ],
+    "rubric": [
+      "S has mean 0 and T has mean +1. Equal weighting of the two scenarios gives +0.5. Keep all four results to inspect seat asymmetry, failures and pairing.",
+      "A single aggregate cannot reveal whether a policy only succeeds in one seat. The retained raw records permit a new audit."
+    ]
+  },
+  "4.1-p2": {
+    "answer": "Expected is 12; valid unique observed is 10. Identify the two missing planned slots, reject the unknown-plan record and flag the duplicate. Resolve the roster without silently counting either extra row as coverage.",
+    "reason": "A row count of twelve is not twelve scheduled outcomes. Identity, validity and uniqueness all matter.",
+    "hints": [
+      "Count planned identities rather than rows.",
+      "The duplicate contributes zero new coverage.",
+      "Two planned slots remain unresolved despite twelve received rows."
+    ],
+    "rubric": [
+      "Expected is 12; valid unique observed is 10. Identify the two missing planned slots, reject the unknown-plan record and flag the duplicate. Resolve the roster without silently counting either extra row as coverage.",
+      "A row count of twelve is not twelve scheduled outcomes. Identity, validity and uniqueness all matter."
+    ]
+  },
+  "4.1-p3": {
+    "answer": "Use the added games as adaptive diagnosis or a separately labelled exploratory experiment. Do not fold them into the original equal-scenario confirmatory average without disclosing the changed sampling design.",
+    "reason": "Choosing extra observations based on outcomes changes their distribution. Retaining both experiments preserves the original estimand and the new findings.",
+    "hints": [
+      "What determined which scenarios received more games?",
+      "Keep the frozen original roster intact.",
+      "Label the extra loss-focused sample and its distinct purpose."
+    ],
+    "rubric": [
+      "Use the added games as adaptive diagnosis or a separately labelled exploratory experiment. Do not fold them into the original equal-scenario confirmatory average without disclosing the changed sampling design.",
+      "Choosing extra observations based on outcomes changes their distribution. Retaining both experiments preserves the original estimand and the new findings."
+    ]
+  },
+  "4.2-p1": {
+    "answer": "Resample sixteen whole scenario blocks. Each chosen block carries both seats and both randomness replicates together, then contributes its planned block statistic.",
+    "reason": "Within-scenario games are dependent for this claim. Treating sixty-four games as independent misstates the evidence unit.",
+    "hints": [
+      "Which games share the same starting scenario?",
+      "Keep each four-game family together.",
+      "Draw sixteen block IDs with replacement, not sixty-four independent game rows."
+    ],
+    "rubric": [
+      "Resample sixteen whole scenario blocks. Each chosen block carries both seats and both randomness replicates together, then contributes its planned block statistic.",
+      "Within-scenario games are dependent for this claim. Treating sixty-four games as independent misstates the evidence unit."
+    ]
+  },
+  "4.2-p2": {
+    "answer": "Crossing zero is inconclusive under this procedure, not proof of equal strength. Equality or practical equivalence needs a stated margin and appropriate evidence. More resamples reduce Monte Carlo noise, not uncertainty caused by too few independent scenarios.",
+    "reason": "Failure to establish a difference does not establish its absence. Computation cannot manufacture new experimental units.",
+    "hints": [
+      "Distinguish no detected difference from evidence of equivalence.",
+      "What changes when only the resampling loop is longer?",
+      "Collect more relevant independent evidence or report the present uncertainty."
+    ],
+    "rubric": [
+      "Crossing zero is inconclusive under this procedure, not proof of equal strength. Equality or practical equivalence needs a stated margin and appropriate evidence. More resamples reduce Monte Carlo noise, not uncertainty caused by too few independent scenarios.",
+      "Failure to establish a difference does not establish its absence. Computation cannot manufacture new experimental units."
+    ]
+  },
+  "4.2-p3": {
+    "answer": "You can describe this frozen checkpoint on the declared evaluation distribution. You cannot claim the training algorithm is reliably better across training runs. Repeat training with independent seeds, retain weak runs and evaluate them under matched conditions.",
+    "reason": "Evaluation games vary opponents/scenarios or policy randomness; they do not recreate randomness in training.",
+    "hints": [
+      "Identify what was independently retrained.",
+      "The thousand games share one fitted checkpoint.",
+      "Use training runs as the upper-level replicate for a method comparison."
+    ],
+    "rubric": [
+      "You can describe this frozen checkpoint on the declared evaluation distribution. You cannot claim the training algorithm is reliably better across training runs. Repeat training with independent seeds, retain weak runs and evaluate them under matched conditions.",
+      "Evaluation games vary opponents/scenarios or policy randomness; they do not recreate randomness in training."
+    ]
+  },
+  "4.3-p1": {
+    "answer": "Retain the original final result and the repair result. Q and the reused final roster are now development/selection evidence for the repair. A new confirmatory claim needs a fresh, frozen evaluation roster.",
+    "reason": "A useful repair does not erase the fact that its test influenced design. Honest relabelling preserves both learning and experimental validity.",
+    "hints": [
+      "When did Q start influencing the policy?",
+      "Keep the original checkpoint and failure.",
+      "Use fresh evaluation after selection instead of renaming reused results final."
+    ],
+    "rubric": [
+      "Retain the original final result and the repair result. Q and the reused final roster are now development/selection evidence for the repair. A new confirmatory claim needs a fresh, frozen evaluation roster.",
+      "A useful repair does not erase the fact that its test influenced design. Honest relabelling preserves both learning and experimental validity."
+    ]
+  },
+  "4.3-p2": {
+    "answer": "The completed games may involve different policies under one name. Freeze exact source, parameters, runtime/rules, seed and budget identities; separate known versions and rerun the intended complete paired comparison.",
+    "reason": "Averaging versions hides which treatment produced each outcome. A display name is not an implementation identity.",
+    "hints": [
+      "Compare parameter hashes, not labels.",
+      "Can each game be assigned to one exact snapshot?",
+      "Reconstruct a complete matched roster for the chosen frozen version."
+    ],
+    "rubric": [
+      "The completed games may involve different policies under one name. Freeze exact source, parameters, runtime/rules, seed and budget identities; separate known versions and rerun the intended complete paired comparison.",
+      "Averaging versions hides which treatment produced each outcome. A display name is not an implementation identity."
+    ]
+  },
+  "4.3-p3": {
+    "answer": "Report all thirty exploratory comparisons and the selection process. Treat the positive result as a hypothesis and test a prespecified comparison on fresh evidence, with a multiplicity-aware plan if testing a family again.",
+    "reason": "Selecting the only favorable interval after looking inflates apparent certainty. A nominal per-comparison level does not describe the selected headline.",
+    "hints": [
+      "How was the highlighted comparison chosen?",
+      "Show the search over all thirty results.",
+      "Freeze the follow-up hypothesis before collecting its evaluation."
+    ],
+    "rubric": [
+      "Report all thirty exploratory comparisons and the selection process. Treat the positive result as a hypothesis and test a prespecified comparison on fresh evidence, with a multiplicity-aware plan if testing a family again.",
+      "Selecting the only favorable interval after looking inflates apparent certainty. A nominal per-comparison level does not describe the selected headline."
+    ]
+  },
+  "5.1-p1": {
+    "answer": "Strategically, the new policy may specialize against its predecessor and lose an old defense. Experimentally, its apparent regression could come from changed seats, budgets, scenarios or noise. Compare exact snapshots on the same frozen cross-play roster.",
+    "reason": "Forgetting is a hypothesis about lost capability. A changing evaluation protocol can imitate it.",
+    "hints": [
+      "Separate a policy change from a measurement change.",
+      "Inspect an old opponent the candidate now loses to.",
+      "Repeat matched cross-play and retain the relevant decision trace."
+    ],
+    "rubric": [
+      "Strategically, the new policy may specialize against its predecessor and lose an old defense. Experimentally, its apparent regression could come from changed seats, budgets, scenarios or noise. Compare exact snapshots on the same frozen cross-play roster.",
+      "Forgetting is a hypothesis about lost capability. A changing evaluation protocol can imitate it."
+    ]
+  },
+  "5.1-p2": {
+    "answer": "The chart shows scores under five different evaluation distributions. It cannot directly show a consistent improvement trend. Add a chart evaluating every generation against one fixed opponent/scenario/seat/budget roster.",
+    "reason": "Changing the ruler changes the meaning of its numbers. Historical evaluation can reveal a lost matchup hidden by aggregate progress.",
+    "hints": [
+      "Ask whether a point answers the same question as the previous point.",
+      "Freeze the evaluation roster across generations.",
+      "Plot generation by opponent or a fixed-weight aggregate with uncertainty."
+    ],
+    "rubric": [
+      "The chart shows scores under five different evaluation distributions. It cannot directly show a consistent improvement trend. Add a chart evaluating every generation against one fixed opponent/scenario/seat/budget roster.",
+      "Changing the ruler changes the meaning of its numbers. Historical evaluation can reveal a lost matchup hidden by aggregate progress."
+    ]
+  },
+  "5.1-p3": {
+    "answer": "Allocate matched total training games to the two methods, such as 300 each, with comparable independent seeds, initialization and decision budgets. Evaluate both on the same frozen historical roster. Retain all snapshots, sampled opponents, computation and failures even if history sampling loses.",
+    "reason": "The comparison is about an opponent-sampling treatment, so extra training or selective reporting would confound it. The six archive entries need not each receive exactly their expected random count.",
+    "hints": [
+      "Choose whether 600 is total or per treatment and say so.",
+      "Hold resources and evaluation constant.",
+      "Retain unfavorable runs and archive coverage, not only the winner."
+    ],
+    "rubric": [
+      "Allocate matched total training games to the two methods, such as 300 each, with comparable independent seeds, initialization and decision budgets. Evaluate both on the same frozen historical roster. Retain all snapshots, sampled opponents, computation and failures even if history sampling loses.",
+      "The comparison is about an opponent-sampling treatment, so extra training or selective reporting would confound it. The six archive entries need not each receive exactly their expected random count."
+    ]
+  },
+  "5.2-p1": {
+    "answer": "The first ID has zero probability; the second has probability 2/3 and the third 1/3. The runtime accepts normalized nonnegative weights summing to one. An all-zero vector has no defined distribution and must be rejected.",
+    "reason": "Zero mass must remain unselectable, including a random draw of zero. Arbitrary fallback invents an undeclared training objective.",
+    "hints": [
+      "Read each weight as probability mass.",
+      "Check nonnegativity and that the total is one.",
+      "Reject an all-zero distribution before drawing."
+    ],
+    "rubric": [
+      "The first ID has zero probability; the second has probability 2/3 and the third 1/3. The runtime accepts normalized nonnegative weights summing to one. An all-zero vector has no defined distribution and must be rejected.",
+      "Zero mass must remain unselectable, including a random draw of zero. Arbitrary fallback invents an undeclared training objective."
+    ]
+  },
+  "5.2-p2": {
+    "answer": "Repeatability can reproduce the same biased algorithm. Test draws near the boundary entering the final interval and run a fixed-seed frequency check against the declared masses. Also test zero-weight entries at exact boundaries.",
+    "reason": "Boundary off-by-one errors and incorrect interval widths can both exclude the last item. They need different diagnostic inputs.",
+    "hints": [
+      "A deterministic error is still an error.",
+      "Probe a draw close to one.",
+      "Compare many selections with each expected probability, allowing sampling variation."
+    ],
+    "rubric": [
+      "Repeatability can reproduce the same biased algorithm. Test draws near the boundary entering the final interval and run a fixed-seed frequency check against the declared masses. Also test zero-weight entries at exact boundaries.",
+      "Boundary off-by-one errors and incorrect interval widths can both exclude the last item. They need different diagnostic inputs."
+    ]
+  },
+  "5.2-p3": {
+    "answer": "Per-turn resampling creates a different policy that combines actions from different snapshots. Move the draw to game start and hold the chosen opponent fixed; regenerate affected trajectories, training data and derived fitted checkpoints/evaluations.",
+    "reason": "Correcting a label cannot change decisions that already occurred under the wrong process. Descendant models inherit the altered training distribution.",
+    "hints": [
+      "Identify which executed decisions changed.",
+      "One game should use one sampled snapshot.",
+      "Rerun affected games and downstream training instead of editing their reported probabilities."
+    ],
+    "rubric": [
+      "Per-turn resampling creates a different policy that combines actions from different snapshots. Move the draw to game start and hold the chosen opponent fixed; regenerate affected trajectories, training data and derived fitted checkpoints/evaluations.",
+      "Correcting a label cannot change decisions that already occurred under the wrong process. Descendant models inherit the altered training distribution."
+    ]
+  },
+  "5.3-p1": {
+    "answer": "An expected-return objective under fixed weights may admit the candidate despite the regression. A constraint protecting the important matchup may reject it or retain both policies. State the weights or constraint before interpreting the tradeoff.",
+    "reason": "A scalar average does not encode every deployment objective. Two decisions can be defensible under different explicit goals.",
+    "hints": [
+      "Identify how important the regressed opponent is.",
+      "Contrast weighted mean optimization with a minimum-performance constraint.",
+      "Preserve both aggregate and matchup-level evidence."
+    ],
+    "rubric": [
+      "An expected-return objective under fixed weights may admit the candidate despite the regression. A constraint protecting the important matchup may reject it or retain both policies. State the weights or constraint before interpreting the tradeoff.",
+      "A scalar average does not encode every deployment objective. Two decisions can be defensible under different explicit goals."
+    ]
+  },
+  "5.3-p2": {
+    "answer": "The first two are aliases of the same declared implementation, not evidence of additional diversity. Different learned weights create a distinct parameter snapshot, but may still act identically. Compare decisions on a varied shared state set and cross-play outcomes.",
+    "reason": "Distinct identity is necessary for version tracking, not sufficient for strategic diversity. Names alone prove neither.",
+    "hints": [
+      "Separate naming, parameter identity and behavior.",
+      "Inspect action agreement under the same observations.",
+      "Treat new weights as a new snapshot while testing its behavioral difference."
+    ],
+    "rubric": [
+      "The first two are aliases of the same declared implementation, not evidence of additional diversity. Different learned weights create a distinct parameter snapshot, but may still act identically. Compare decisions on a varied shared state set and cross-play outcomes.",
+      "Distinct identity is necessary for version tracking, not sufficient for strategic diversity. Names alone prove neither."
+    ]
+  },
+  "5.3-p3": {
+    "answer": "Remove an entry from the active sampling distribution but retain its source, parameters, rules, seeds, traces and old results in a frozen archive. Keep it in a regression evaluation roster when relevant; record the changed active distribution.",
+    "reason": "An active-memory limit need not destroy historical evidence. Sampling and retention are separate choices.",
+    "hints": [
+      "Which bytes are needed to recreate the old failure?",
+      "Separate inactive from deleted.",
+      "Record the new active weights while preserving the frozen checkpoint and evidence."
+    ],
+    "rubric": [
+      "Remove an entry from the active sampling distribution but retain its source, parameters, rules, seeds, traces and old results in a frozen archive. Keep it in a regression evaluation roster when relevant; record the changed active distribution.",
+      "An active-memory limit need not destroy historical evidence. Sampling and retention are separate choices."
+    ]
+  },
+  "6.1-p1": {
+    "answer": "It solves a worst-case minimax response, not a best response to the supplied stochastic model. At modeled-opponent nodes use the probability-weighted expected child value; at your own nodes maximize your return.",
+    "reason": "A fixed opponent may reliably choose a nonoptimal action. Minimax can ignore a profitable response by assuming behavior the model does not assign to it.",
+    "hints": [
+      "Compare worst-case and expected value.",
+      "Whose distribution was supplied?",
+      "Use a weighted sum at modeled-opponent nodes, with explicit player perspective."
+    ],
+    "rubric": [
+      "It solves a worst-case minimax response, not a best response to the supplied stochastic model. At modeled-opponent nodes use the probability-weighted expected child value; at your own nodes maximize your return.",
+      "A fixed opponent may reliably choose a nonoptimal action. Minimax can ignore a profitable response by assuming behavior the model does not assign to it."
+    ]
+  },
+  "6.1-p2": {
+    "answer": "The model may assign wrong action probabilities or miss hidden history; the search may truncate before the decisive consequence. Hold one factor fixed while improving model data or increasing matched search budget, using fresh real-opponent games.",
+    "reason": "Model error and planning error can look similar in final outcomes. Inspecting predicted versus observed actions and depth-sensitive decisions separates them.",
+    "hints": [
+      "Check whether real opponent actions match predicted frequencies.",
+      "Keep the model fixed when testing a larger search budget.",
+      "Keep the failed checkpoint and compare one controlled change at a time."
+    ],
+    "rubric": [
+      "The model may assign wrong action probabilities or miss hidden history; the search may truncate before the decisive consequence. Hold one factor fixed while improving model data or increasing matched search budget, using fresh real-opponent games.",
+      "Model error and planning error can look similar in final outcomes. Inspecting predicted versus observed actions and depth-sensitive decisions separates them."
+    ]
+  },
+  "6.1-p3": {
+    "answer": "Providing the sampled identity gives privileged information absent from the hidden-mixture task. Remove it from the observation or label the result as an informed response. A legal responder may only infer identity from information the actual task reveals.",
+    "reason": "Knowing the latent opponent can enable different actions even when board observations match. It changes the feasible response class.",
+    "hints": [
+      "What information does the real player receive?",
+      "Separate latent selection from observable play.",
+      "Remove the ID and reevaluate under the original information boundary."
+    ],
+    "rubric": [
+      "Providing the sampled identity gives privileged information absent from the hidden-mixture task. Remove it from the observation or label the result as an informed response. A legal responder may only infer identity from information the actual task reveals.",
+      "Knowing the latent opponent can enable different actions even when board observations match. It changes the feasible response class."
+    ]
+  },
+  "6.2-p1": {
+    "answer": "Both can be correct if exploitability is defined as half the two-sided Nash gap: 0.4/2=0.2. Verify the same payoff scale, row/column policy order, mixtures and restricted game before comparing.",
+    "reason": "A naming convention can explain a factor of two, but mismatched games or payoffs can also produce different numbers.",
+    "hints": [
+      "Check the normalization convention.",
+      "Compare utility units and policy order.",
+      "State gap and half-gap explicitly rather than relying on the word exploitability."
+    ],
+    "rubric": [
+      "Both can be correct if exploitability is defined as half the two-sided Nash gap: 0.4/2=0.2. Verify the same payoff scale, row/column policy order, mixtures and restricted game before comparing.",
+      "A naming convention can explain a factor of two, but mismatched games or payoffs can also produce different numbers."
+    ]
+  },
+  "6.2-p2": {
+    "answer": "The earlier zero gap remains correct within the three-policy restricted game. It never proved equilibrium against every possible policy. The fourth policy refutes a broader unexploitable-in-the-full-game claim.",
+    "reason": "Optimization over an incomplete response set can miss an omitted profitable deviation. Enlarging the population changes the game being analyzed.",
+    "hints": [
+      "Name the set over which responses were optimized.",
+      "Was the fourth policy in that set?",
+      "Preserve the restricted result and retract only the unsupported universal claim."
+    ],
+    "rubric": [
+      "The earlier zero gap remains correct within the three-policy restricted game. It never proved equilibrium against every possible policy. The fourth policy refutes a broader unexploitable-in-the-full-game claim.",
+      "Optimization over an incomplete response set can miss an omitted profitable deviation. Enlarging the population changes the game being analyzed."
+    ]
+  },
+  "6.2-p3": {
+    "answer": "No profitable response was found by these three searches at 256 credits per move against the declared target. This is a search-limited empirical result. Try another response family, richer opponent model or larger separately labelled budget on fresh evaluation.",
+    "reason": "Failure to discover an exploit is not a bound on all possible exploits. Repeating similar searches may share the same blind spot.",
+    "hints": [
+      "State what was searched and how far.",
+      "Avoid replacing not found with does not exist.",
+      "Use a meaningfully different search or model while retaining the original limit."
+    ],
+    "rubric": [
+      "No profitable response was found by these three searches at 256 credits per move against the declared target. This is a search-limited empirical result. Try another response family, richer opponent model or larger separately labelled budget on fresh evaluation.",
+      "Failure to discover an exploit is not a bound on all possible exploits. Repeating similar searches may share the same blind spot."
+    ]
+  },
+  "6.3-p1": {
+    "answer": "The order is an alphabetical tie-break, not a strength ranking. Show the payoff matrix or directed matchup graph, opponent weights, evaluation protocol and uncertainty beside the aggregate.",
+    "reason": "Equal averages can conceal cyclic advantages. Sorting adds a presentation order without adding strategic evidence.",
+    "hints": [
+      "Ask which data changed when names changed.",
+      "Inspect pairwise wins rather than only the mean.",
+      "Label the tie-break and show the cycle."
+    ],
+    "rubric": [
+      "The order is an alphabetical tie-break, not a strength ranking. Show the payoff matrix or directed matchup graph, opponent weights, evaluation protocol and uncertainty beside the aggregate.",
+      "Equal averages can conceal cyclic advantages. Sorting adds a presentation order without adding strategic evidence."
+    ]
+  },
+  "6.3-p2": {
+    "answer": "Draw the measured A→B and B→C edges, with their uncertainty and scope. Leave A versus C unmeasured. Run their paired matchup under the same frozen protocol before adding that edge.",
+    "reason": "Game-playing strength need not be transitive. Two measured relationships do not establish the third.",
+    "hints": [
+      "Do not infer an unplayed edge.",
+      "The missing comparison is A against C.",
+      "Retain the same seats, scenarios, seeds and budget for that test."
+    ],
+    "rubric": [
+      "Draw the measured A→B and B→C edges, with their uncertainty and scope. Leave A versus C unmeasured. Run their paired matchup under the same frozen protocol before adding that edge.",
+      "Game-playing strength need not be transitive. Two measured relationships do not establish the third."
+    ]
+  },
+  "6.3-p3": {
+    "answer": "A weighted expected-return objective may favor a specialist against the 90% opponent, while a low-gap mixture protects against profitable deviations more broadly. Report weighted expected payoff, full cross-play and restricted gap, then stress-test alternate opponent weights on held-out evidence.",
+    "reason": "Average reward under a known deployment distribution and robustness to opponent choice are distinct objectives. Neither dominates without a goal.",
+    "hints": [
+      "Separate the deployment distribution from an adversarial opponent choice.",
+      "Show both expected return and vulnerability.",
+      "Vary opponent weights and disclose where the preferred choice changes."
+    ],
+    "rubric": [
+      "A weighted expected-return objective may favor a specialist against the 90% opponent, while a low-gap mixture protects against profitable deviations more broadly. Report weighted expected payoff, full cross-play and restricted gap, then stress-test alternate opponent weights on held-out evidence.",
+      "Average reward under a known deployment distribution and robustness to opponent choice are distinct objectives. Neither dominates without a goal."
+    ]
+  },
+  "3.1-p4": {
+    "answer": "A cannot distinguish any two boards for the same requested player. B may correctly ignore a quiet move because no pawn count changed. With actor and ply fixed, compare boards with different material; then compare the requested players on an imbalanced board. Balanced material may legitimately give equal values for both players.",
+    "reason": "Board information and player perspective are separate requirements. One arbitrary move is not a universal test of a chosen representation. Passing finite sensitivity checks still does not establish strategic usefulness.",
+    "hints": [
+      "Hold the requested player fixed while changing the board.",
+      "Ask which board fact B measures and whether the quiet move changes it.",
+      "Use different-material boards for board sensitivity and an imbalanced board for perspective; do not require every move to change the vector."
+    ],
+    "rubric": [
+      "Rejects A because its board information is absent.",
+      "Accepts that B can remain constant on a quiet move.",
+      "Separates controlled board comparisons from perspective comparisons and states their limits."
+    ]
+  }
+}

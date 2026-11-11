@@ -1,0 +1,392 @@
+{
+  "format": 1,
+  "kind": "clean learner composition",
+  "version": "0.4.0",
+  "componentLearnerArchives": {
+    "learner-1793892489423.zip": "de298e93157f24c0b9afa440d0e74ad22b6c449688d7053631048d4fc24f34db",
+    "onion-process-lab-0.1.0-learner.zip": "372fb9081a72edf47e0f1f6aa625cad77a802c1a00251c6613ab133172c91e88"
+  },
+  "excluded": [
+    "private source and reference implementations",
+    "instructor controls",
+    "attempts and QA records"
+  ],
+  "transport": "real local processes; parent-routed simulated IPC links",
+  "browserAcceptance": "NOT_RUN",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 4949,
+      "sha256": "c0c0cd12203ac4250154f5b2bc5b075907c79c3a3dc131fb33295ab9da88d809"
+    },
+    {
+      "path": "course.json",
+      "bytes": 5957,
+      "sha256": "d034155919f1ed149a097275f0fd90697a752b80dd68751afa6ed311b3b4b2d4"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3679,
+      "sha256": "13c41329fe354225884a874ba84c35c2e793edb20c4233799dd06267f737fd59"
+    },
+    {
+      "path": "observatory/BROWSER.md",
+      "bytes": 5732,
+      "sha256": "140000e950988fa9dc5ecdf3f169ec48fca629269b7cc8fc7f16e7e419213ab6"
+    },
+    {
+      "path": "observatory/CAPSTONE.md",
+      "bytes": 6043,
+      "sha256": "e6960a74fa91d3ce06392d77a6382a5cf2e3c4e21bc7de59b31d84dd67d9de04"
+    },
+    {
+      "path": "observatory/MANIFEST.json",
+      "bytes": 7815,
+      "sha256": "339b4cd79b4e8c12ae2fffc0dd818907e363a0ac11eec7882d036487e8a3a917"
+    },
+    {
+      "path": "observatory/PROTOCOL.md",
+      "bytes": 7943,
+      "sha256": "a22b4373efd7f04e7c57263f84d848802ee2de6890218638477fe47785aeae32"
+    },
+    {
+      "path": "observatory/README.md",
+      "bytes": 7194,
+      "sha256": "81e03112beb75ba1ace51d64b431bf8cee2c88990aafe0876a8f77a513b2ddb4"
+    },
+    {
+      "path": "observatory/REPORT-TEMPLATE.md",
+      "bytes": 1390,
+      "sha256": "4d146a87069e28584bbb5e6f6b84f35c564497f1f6618f4d8fd685f034a200fc"
+    },
+    {
+      "path": "observatory/SOURCES.md",
+      "bytes": 3220,
+      "sha256": "e4bf895a559785fae7697216aec921d40fd8a4d4397d7c952595373b7fe8b710"
+    },
+    {
+      "path": "observatory/WORKSHOP.md",
+      "bytes": 10684,
+      "sha256": "b76d8529d912b95afc764612bc0e78c4afeb7bb13c040b41283bf7adde02c51e"
+    },
+    {
+      "path": "observatory/browser/assert.mjs",
+      "bytes": 960,
+      "sha256": "6732c49d3216163217160251c391c7a819cc663355a354e024f89d78cd57aea2"
+    },
+    {
+      "path": "observatory/browser/cases.mjs",
+      "bytes": 13687,
+      "sha256": "a76d71eb286b81d4e308eacb08494930336741f8e3e948562c9589d755dcd363"
+    },
+    {
+      "path": "observatory/browser/crypto.mjs",
+      "bytes": 3980,
+      "sha256": "15081583454da7a74dff091f34b3f882e1e91e94eea05a33c869df835dc87df1"
+    },
+    {
+      "path": "observatory/browser/network.mjs",
+      "bytes": 5452,
+      "sha256": "f6fb1fb529f5ecc3250a75405bf23a30014f8606d475760269f41cec05553f93"
+    },
+    {
+      "path": "observatory/browser/runner.mjs",
+      "bytes": 5409,
+      "sha256": "32a49ad804728781985d82c52baa6c704eff65028795cc2917f2e32ea1245c97"
+    },
+    {
+      "path": "observatory/browser/session.mjs",
+      "bytes": 4955,
+      "sha256": "13813eb0d1dedaa0400243ee7fb959c5b3658ebdc0acad038e980e1953d2f1ee"
+    },
+    {
+      "path": "observatory/browser/worker-entry.js",
+      "bytes": 966,
+      "sha256": "3605cfded94b5ac75a55c8701b64128fbcbb00e33573e467e978b13941e51b57"
+    },
+    {
+      "path": "observatory/browser/workshop.mjs",
+      "bytes": 10887,
+      "sha256": "39c0c118614bcc802dc81e9c6faa9a791d3bf8dc673e160f9d4cbf7caf0ce1d6"
+    },
+    {
+      "path": "observatory/checks/cases.mjs",
+      "bytes": 12875,
+      "sha256": "0165b79366cc3f607424e19727632c39eca93aa07366a820be4411b259a6fa3a"
+    },
+    {
+      "path": "observatory/checks/practice.mjs",
+      "bytes": 9359,
+      "sha256": "0bb253dbcfd89c7594a8c67d5020572258212c0651ad36ebf28868f9ac1ccb34"
+    },
+    {
+      "path": "observatory/course.json",
+      "bytes": 3597,
+      "sha256": "6ee76ff99960047eb6af4f4aefa536331dff050143ee08d80f241b2d29831386"
+    },
+    {
+      "path": "observatory/course.mjs",
+      "bytes": 30437,
+      "sha256": "2435e699b40b0d359fc62a1527dc3d0eee69fb0dbf5fb0f39f036643e4c5f997"
+    },
+    {
+      "path": "observatory/examples/browser-sibling.js",
+      "bytes": 358,
+      "sha256": "646847641382e2bf0670407f2d2024463c6af5cf6e8ac478350b0d23569319d2"
+    },
+    {
+      "path": "observatory/examples/sibling.mjs",
+      "bytes": 428,
+      "sha256": "0ba18cc06c53add917f1e8c0864e76f7df7898567c6eaad53175b92f94135cf7"
+    },
+    {
+      "path": "observatory/learner/browser-solution.js",
+      "bytes": 1479,
+      "sha256": "d958f130011c8b2741a8698b8682ac1ad0dcf33a3120d87a43706b5b6990c309"
+    },
+    {
+      "path": "observatory/learner/solution.mjs",
+      "bytes": 1586,
+      "sha256": "11f43c220ce8f0d3076af2bcdda145177078493cad0c1c44ce994283ee3c261b"
+    },
+    {
+      "path": "observatory/lessons/01.md",
+      "bytes": 4918,
+      "sha256": "61f5c457ed5fe54585cb5ba7fc7d4f390089492bd2e1166207bebb127445401e"
+    },
+    {
+      "path": "observatory/lessons/02.md",
+      "bytes": 5258,
+      "sha256": "c9d025b50ab0e05570b96d3ecdd522c5e970097b7654e3033bbb04bf12889829"
+    },
+    {
+      "path": "observatory/lessons/03.md",
+      "bytes": 6857,
+      "sha256": "970b6061fccb8996111ac89b518c0837874491d1244c9bd7bff6335b56740d05"
+    },
+    {
+      "path": "observatory/lessons/04.md",
+      "bytes": 4789,
+      "sha256": "d6d1e1dbbe2620ba868da2ce8f5214a2d20b87f4f8b58caddf574daea5022d9d"
+    },
+    {
+      "path": "observatory/lessons/05.md",
+      "bytes": 5020,
+      "sha256": "5cf4b10faa8b2c145d15c5f42609f9bdc205477b0c0581dcf12bc483bb7036af"
+    },
+    {
+      "path": "observatory/lessons/06.md",
+      "bytes": 5319,
+      "sha256": "d75d55c70f49ce5035ca32f61459fec295f23960a25b6f5b53fedb1756955d34"
+    },
+    {
+      "path": "observatory/package.json",
+      "bytes": 322,
+      "sha256": "530e81da42392c97f8a10d638e4be65364390b506260ff80be54401975cd32e7"
+    },
+    {
+      "path": "observatory/runtime/capstone.mjs",
+      "bytes": 3585,
+      "sha256": "755912f7bb639bb8586856ba1054d6272ea4a3849dcff25fc8e2d6167b7bce70"
+    },
+    {
+      "path": "observatory/runtime/crypto.mjs",
+      "bytes": 3618,
+      "sha256": "4b8e3333c072553bf17c3a82b5160a545756035aa68369527daa833c78d74c66"
+    },
+    {
+      "path": "observatory/runtime/network.mjs",
+      "bytes": 4985,
+      "sha256": "b79b1f5b99e56c1c80fdfdce88ad0e847728684ea88be80f52e1f4a8c875ae56"
+    },
+    {
+      "path": "observatory/scenarios/exhaustion.json",
+      "bytes": 610,
+      "sha256": "2b05b36f24e39157a85d53efc47646051ab5e6878e40a3a0c9688db6294fe230"
+    },
+    {
+      "path": "observatory/scenarios/integrity.json",
+      "bytes": 725,
+      "sha256": "8b4adb30f09423a4b31ec2b9d99b4d862cac9bd3ca907f46da3e53f8c456a622"
+    },
+    {
+      "path": "observatory/scenarios/recovery.json",
+      "bytes": 1015,
+      "sha256": "323b06a13edbd40e6ee96fa1433ee8c3eff7b5a8fdbeb02da9933e937033a518"
+    },
+    {
+      "path": "observatory/tools/browser-lab.mjs",
+      "bytes": 2637,
+      "sha256": "73a3b6510d505f102ded1236fd3d744d2b01531856b2226199d5c0f9dc4c2bdf"
+    },
+    {
+      "path": "observatory/tools/lab.mjs",
+      "bytes": 4140,
+      "sha256": "095185fd80323f11ac6361f64a272b3c891fe6747be4369812c650e60f2727a0"
+    },
+    {
+      "path": "observatory/tools/offline-worker.mjs",
+      "bytes": 1795,
+      "sha256": "f50a58ef738ee6497f9a128c4c5679449a5578e100db9164122c120bc3661c25"
+    },
+    {
+      "path": "observatory/tools/practice.mjs",
+      "bytes": 1949,
+      "sha256": "d45b547783a70001ab969b65923e940bc56c5b8c2e3f3633b508f92cca80843f"
+    },
+    {
+      "path": "observatory/tools/worker.mjs",
+      "bytes": 1729,
+      "sha256": "a05ba9686efbd0cee625fb0aac4c20a76df7f1188c6eb5b7cbb53924b856101f"
+    },
+    {
+      "path": "observatory/workbench/app.js",
+      "bytes": 10102,
+      "sha256": "55a088149e261b3c8c262f47fc1a841d5dac701cb7124f7eaaadffd7658f7f74"
+    },
+    {
+      "path": "observatory/workbench/code-ui.js",
+      "bytes": 15378,
+      "sha256": "256af2530f6b0fe0440ef2adc19ba6b623ee14b5624ed464c8f187297cd9c341"
+    },
+    {
+      "path": "observatory/workbench/index.html",
+      "bytes": 140353,
+      "sha256": "8401136ad4989497a713551ef6a699039802c333d861aeba860f5f826969c1f8"
+    },
+    {
+      "path": "observatory/workbench/learner-worker.js",
+      "bytes": 41613,
+      "sha256": "751b938f77cfe0abedb56c2a5b56e8e0d4e287703e5591aa95e095ee483743c4"
+    },
+    {
+      "path": "observatory/workbench/style.css",
+      "bytes": 5978,
+      "sha256": "d3ddd2a0293144c1c32a143a5c2220667cdd1c2165fca901eb96cdc6a0599ada"
+    },
+    {
+      "path": "observatory/workbench/workshop-ui.js",
+      "bytes": 9637,
+      "sha256": "73d4f8ab00b5aea31894527e1a32633e7ba40afabe8cac42ac1953c753b8380c"
+    },
+    {
+      "path": "onion-process-lab/LIMITS.md",
+      "bytes": 2678,
+      "sha256": "1506edef8d0f4b1ec4c43800800596a76bbc044dc3265a07dbab0d7c90d40fde"
+    },
+    {
+      "path": "onion-process-lab/MANIFEST.json",
+      "bytes": 2273,
+      "sha256": "3e9385e193e1c627bddef50793f035e0a87bb848acc25abaa1b2dadb05a9bbbb"
+    },
+    {
+      "path": "onion-process-lab/PROTOCOL.md",
+      "bytes": 8258,
+      "sha256": "858fec66712d3170cb7fd408dea9615696298b0f04cf93f7dc5bed403d44fd62"
+    },
+    {
+      "path": "onion-process-lab/README.md",
+      "bytes": 4930,
+      "sha256": "2984d8ca02d9e61b3ceefafffcc4f257c2a4c8e826bb778f7daf93bd15c46050"
+    },
+    {
+      "path": "onion-process-lab/REPORT.md",
+      "bytes": 1989,
+      "sha256": "2ca442d73d4851a74b245d79f430f59002f1bbb9f26713d134b354865313f7a5"
+    },
+    {
+      "path": "onion-process-lab/SOURCES.md",
+      "bytes": 1609,
+      "sha256": "7020314c08c4306d7de9f5e09e2d3a48b2984f77d7a2abdf4f6623bb9c9373a9"
+    },
+    {
+      "path": "onion-process-lab/checks/requirements.mjs",
+      "bytes": 10698,
+      "sha256": "07de5587b5324d6a6dc545bf4811fe3055bc54cf00e7211c524b9b47a7e8295f"
+    },
+    {
+      "path": "onion-process-lab/course.json",
+      "bytes": 1368,
+      "sha256": "e31395d2b7707bec3cf2cb7807f0a6f4f7dfbdb66a3d0658be956c213f13daea"
+    },
+    {
+      "path": "onion-process-lab/learner/protocol.mjs",
+      "bytes": 1331,
+      "sha256": "ebc67319912f2a4a9de20a4db06500aa3dd6f5fcd41f0a46a026b518dc47fe56"
+    },
+    {
+      "path": "onion-process-lab/lessons/01.md",
+      "bytes": 1681,
+      "sha256": "ae4af093929f701428bd63e56e17776b5139b4dd267922cbc88ec069e92d6393"
+    },
+    {
+      "path": "onion-process-lab/lessons/02.md",
+      "bytes": 2226,
+      "sha256": "4750173815d5c0764c9e4d0bab977b9135729c1f99bcf69771af77cd302befe1"
+    },
+    {
+      "path": "onion-process-lab/lessons/03.md",
+      "bytes": 1586,
+      "sha256": "046bab655d63954cbe4ad768be132b2ac676f737a71c6293bb7ec4f57aeebfd7"
+    },
+    {
+      "path": "onion-process-lab/lessons/04.md",
+      "bytes": 2297,
+      "sha256": "80e73b89fedce33582d0a109de287435f183c1b71529ddc15e37848af5043f68"
+    },
+    {
+      "path": "onion-process-lab/lessons/05.md",
+      "bytes": 2198,
+      "sha256": "a78392dc870c5d405ce2323c8665231185abb6330f024fa0458ea1831d132b19"
+    },
+    {
+      "path": "onion-process-lab/lessons/06.md",
+      "bytes": 1985,
+      "sha256": "d84120fe5b1c7fb46ece154d1d869c7993a65dda6a086ef942e8abca644f2f58"
+    },
+    {
+      "path": "onion-process-lab/package.json",
+      "bytes": 219,
+      "sha256": "a192014a6cc91c1f6483fc1c6b3d432a2dcb6869703bb48aeaf49df6b1ddf7b6"
+    },
+    {
+      "path": "onion-process-lab/runtime/crypto.mjs",
+      "bytes": 4049,
+      "sha256": "850312526a045f3fb9a19859c28d61dddb4def3aaddff3e1e79802177328bdd3"
+    },
+    {
+      "path": "onion-process-lab/runtime/lab.mjs",
+      "bytes": 7122,
+      "sha256": "121f442ae38ae7b34a3f885727ffae2ae559dbff9b45b71ddea0de4edaa881c0"
+    },
+    {
+      "path": "onion-process-lab/runtime/relay-process.mjs",
+      "bytes": 5964,
+      "sha256": "de4cd45b752ac68419599d4869998c98f5a348e7ae7f2f307b37334e7e6f729e"
+    },
+    {
+      "path": "onion-process-lab/runtime/wire.mjs",
+      "bytes": 2207,
+      "sha256": "3c99998031874d65999e422999c86773b7699263a77c2445ce11293fbf2c3c27"
+    },
+    {
+      "path": "onion-process-lab/tools/check.mjs",
+      "bytes": 658,
+      "sha256": "359e8573aa28cdccf074db89d59adec0e98903c0c2f699ca2650aecd80b0fd96"
+    },
+    {
+      "path": "onion-process-lab/tools/lab.mjs",
+      "bytes": 3077,
+      "sha256": "f56fb42afc7b42789e12a8bee3233db132cd0b065127964ef363df2baec4439b"
+    },
+    {
+      "path": "style.css",
+      "bytes": 1264,
+      "sha256": "d8f6f0fcbdf530f8c05271175d8e78188fcff6d7006db3e0771974261a082a3b"
+    }
+  ],
+  "publicDocumentationDerivative": {
+    "scope": "Privacy-only source-note scrub; runtime, starter, checker, crypto and lesson bytes remain unchanged. Original component/archive fields retain lineage.",
+    "parentLearnerArchiveSha256": "14b29d823acbf4efdf84f411faaddd11c0b959eb1941fab5df2972073784e00f"
+  }
+}

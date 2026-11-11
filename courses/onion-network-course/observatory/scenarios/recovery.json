@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "title": "Two circuits, one lost reply, one failed relay",
+  "predictions": [],
+  "steps": [
+    {"action":"open","circuit":"alpha","length":3,"avoid":["elm","ash"]},
+    {"action":"open","circuit":"beta","length":2,"avoid":["cedar","birch","maple"]},
+    {"action":"send","circuit":"alpha","packet":"lost","item":"luna","fault":{"kind":"drop-reply"}},
+    {"action":"send","circuit":"beta","packet":"sibling","item":"tide"},
+    {"action":"offline","relays":["birch"]},
+    {"action":"send","circuit":"alpha","packet":"interrupted","item":"luna"},
+    {"action":"send","circuit":"beta","packet":"stillWorks","item":"tide"},
+    {"action":"recover","circuit":"alpha","replacement":"gamma","failed":["birch"]},
+    {"action":"replay","circuit":"gamma","packet":"lost"},
+    {"action":"send","circuit":"gamma","packet":"retry","item":"luna"},
+    {"action":"replay","circuit":"alpha","packet":"interrupted"},
+    {"action":"close","circuit":"beta"},
+    {"action":"close","circuit":"gamma"}
+  ]
+}

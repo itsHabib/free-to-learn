@@ -1,0 +1,255 @@
+[
+  {
+    "id": "01a",
+    "version": 1,
+    "objective": "O1",
+    "stem": "A row was committed with value 5 at CSN 2 and value 9 at CSN 7. A reader begins at snapshot 6. What value must its get return?",
+    "answerFormat": "one integer",
+    "answer": 5,
+    "feedback": "Snapshot 6 includes CSN 2 and excludes CSN 7. Physical recency is not visibility."
+  },
+  {
+    "id": "01b",
+    "version": 1,
+    "objective": "O1",
+    "stem": "A key has value 12 at CSN 3, a tombstone at CSN 8 and value 20 at CSN 11. At snapshot 9, is it present? Answer true or false.",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "The newest visible version is the tombstone at 8. Falling back to the older value would resurrect a deleted row."
+  },
+  {
+    "id": "01c",
+    "version": 1,
+    "objective": "O1",
+    "stem": "Reader R begins at CSN 4. Another transaction commits changes to two tables at CSN 5 while R is paused between reads. Which snapshot must both reads use?",
+    "answerFormat": "one integer",
+    "answer": 4,
+    "feedback": "The transaction snapshot belongs to R, not to each operator invocation. Both reads use 4."
+  },
+  {
+    "id": "02a",
+    "version": 1,
+    "objective": "O2",
+    "stem": "Put these events in the safe acknowledgement order: publish, prepare, acknowledge, persist. Answer an array of their names.",
+    "answerFormat": "four strings in an array",
+    "answer": [
+      "prepare",
+      "persist",
+      "publish",
+      "acknowledge"
+    ],
+    "feedback": "Preparation performs checks without effects. The durable batch precedes complete logical publication, which precedes acknowledgement."
+  },
+  {
+    "id": "02b",
+    "version": 1,
+    "objective": "O2",
+    "stem": "A commit batch reached durable storage, but the process stops before the client receives success. May the client assume the transaction is absent after reopen?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "A lost acknowledgement is an uncertain outcome. The whole batch may be present. Blindly repeating it is not a safe inference."
+  },
+  {
+    "id": "02c",
+    "version": 1,
+    "objective": "O2",
+    "stem": "A read-only transaction commits with no private writes. Must this slice create a new row version?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Read completion changes transaction state. It does not create a write or advance a row history."
+  },
+  {
+    "id": "03a",
+    "version": 1,
+    "objective": "O3",
+    "stem": "A and B both begin at 7 and stage different values for key 2. A commits at 8. Under SI, what must happen when B commits: commit or abort?",
+    "answerFormat": "a JSON string",
+    "answer": "abort",
+    "feedback": "Key 2 changed after B\u2019s snapshot. First-committer validation rejects B instead of losing A\u2019s update."
+  },
+  {
+    "id": "03b",
+    "version": 1,
+    "objective": "O3",
+    "stem": "A and B begin together, each reads a shared multi-row condition, and they write different keys. Is SI alone enough to guarantee that shared condition remains true?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "SI protects each view and rejects concurrent same-key writes. It does not validate all read dependencies. Disjoint writes can produce write skew."
+  },
+  {
+    "id": "03c",
+    "version": 1,
+    "objective": "O3",
+    "stem": "A key changes from value 10 to 20 and then back to 10 after T began. T stages a write to that key. Does equality with T\u2019s starting value eliminate its write conflict?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "The conflict concerns committed write occurrences after T\u2019s snapshot. Equal endpoint values do not erase the intervening commits."
+  },
+  {
+    "id": "04a",
+    "version": 1,
+    "objective": "O4",
+    "stem": "T reads key 5 as absent. U inserts key 5 and commits after T\u2019s snapshot. Does T have a read dependency to validate in Serializable mode?",
+    "answerFormat": "a Boolean",
+    "answer": true,
+    "feedback": "Absence is information used by a transaction. Tracking only rows that were returned misses this dependency."
+  },
+  {
+    "id": "04b",
+    "version": 1,
+    "objective": "O4",
+    "stem": "T scans 20 <= value < 30. U changes a row from 25 to 40 and commits. Which image detects the changed dependency: before, after, or neither?",
+    "answerFormat": "a JSON string",
+    "answer": "before",
+    "feedback": "The old row matched T\u2019s predicate. Checking only the new row misses changes that remove a matching row."
+  },
+  {
+    "id": "04c",
+    "version": 1,
+    "objective": "O4",
+    "stem": "A validation abort is retried. Which must be repeated: only commit, or the whole transaction?",
+    "answerFormat": "a JSON string",
+    "answer": "whole transaction",
+    "feedback": "Read values and branch decisions belong to the old snapshot. A valid retry starts a new transaction and recomputes them.",
+    "acceptedAnswers": [
+      "the whole transaction",
+      "entire transaction",
+      "the entire transaction"
+    ]
+  },
+  {
+    "id": "05a",
+    "version": 1,
+    "objective": "O5",
+    "stem": "An indexed row moves from group A to B while an old reader still needs A. Can its historical A membership be discarded immediately?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Candidate coverage must include versions needed by live snapshots. The candidate is filtered by visibility after lookup."
+  },
+  {
+    "id": "05b",
+    "version": 1,
+    "objective": "O5",
+    "stem": "One key has three historical versions with the same indexed value. At one snapshot, how many logical rows can that key contribute to a single-table scan?",
+    "answerFormat": "one integer",
+    "answer": 1,
+    "feedback": "Historical candidates are not three logical rows. Deduplicate the identity and apply the visible-version rule."
+  },
+  {
+    "id": "05c",
+    "version": 1,
+    "objective": "O5",
+    "stem": "The same logical empty-range query is executed through a faster index path. Can it stop recording the range dependency because it found no candidates?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Validation follows the logical predicate. Physical work and candidate count cannot determine which future insertions matter."
+  },
+  {
+    "id": "06a",
+    "version": 1,
+    "objective": "O6",
+    "stem": "One key has versions at 2, 7 and 12. The oldest active snapshot is 10. What is the earliest version this simple watermark policy must retain?",
+    "answerFormat": "one integer",
+    "answer": 7,
+    "feedback": "Snapshot 10 needs the predecessor at 7. Keeping only versions newer than 10 would lose its visible value."
+  },
+  {
+    "id": "06b",
+    "version": 1,
+    "objective": "O6",
+    "stem": "A transaction began at 4 but has not read anything yet. Does it still pin snapshot 4 in this contract?",
+    "answerFormat": "a Boolean",
+    "answer": true,
+    "feedback": "Its first read is entitled to snapshot 4. Cleanup cannot guess that an idle transaction will never read."
+  },
+  {
+    "id": "06c",
+    "version": 1,
+    "objective": "O6",
+    "stem": "Vacuum removes two logical version records using delete operations in the append-only foundation. Does that alone prove the physical log file shrank?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Logical deletes themselves append records. Physical compaction is a separate supplied operation with its own evidence."
+  },
+  {
+    "id": "07a",
+    "version": 1,
+    "objective": "O7",
+    "stem": "Two readers see the same count of visible rows. One must skip several newer versions per row. Does equal visible cardinality prove equal lookup work?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Visible rows and physical version examinations measure different things. Retained history can change the latter without changing the former."
+  },
+  {
+    "id": "07b",
+    "version": 1,
+    "objective": "O7",
+    "stem": "A join changes from one matching left row to many matching left rows. Does a previously cheapest index-loop plan have to remain cheapest?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Repeated probes grow with matching left rows. A fixed hash-build cost can become cheaper under the declared profile."
+  },
+  {
+    "id": "07c",
+    "version": 1,
+    "objective": "O7",
+    "stem": "A candidate is executed to count its actual work, and that count is then reported as a prediction made before execution. Is this a valid estimate/measurement comparison?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "The observation was used to construct its own prediction. Explain must use only its permitted pre-execution summary inputs."
+  },
+  {
+    "id": "08a",
+    "version": 1,
+    "objective": "O8",
+    "stem": "You changed both the source and scenario, and the failure disappeared. Does that isolate the source repair as the cause?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Hold the scenario fixed for broken versus repaired source. Use a separate variation to test generality afterward."
+  },
+  {
+    "id": "08b",
+    "version": 1,
+    "objective": "O8",
+    "stem": "A proposed bad implementation cannot import. Does that establish a semantic snapshot defect?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "An import failure is a runtime/setup failure. A discriminating wrong-solution control must execute and violate the intended semantic criterion."
+  },
+  {
+    "id": "08c",
+    "version": 1,
+    "objective": "O8",
+    "stem": "The report claims cost 12 but the recorded and replayed plan measured 18. Which value belongs in an observed-cost claim?",
+    "answerFormat": "one integer",
+    "answer": 18,
+    "feedback": "Observed claims must match the actual referenced run, even when that disagrees with the estimate or preferred outcome."
+  },
+  {
+    "id": "09a",
+    "version": 1,
+    "objective": "O9",
+    "stem": "The purge deletes an item while the concurrent holder inserts into the holds table. Is the absence of same-key writes enough to prove the hold dependency is safe under SI?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "The condition depended on a negative predicate read. A disjoint table write can invalidate it without a same-key write conflict."
+  },
+  {
+    "id": "09b",
+    "version": 1,
+    "objective": "O9",
+    "stem": "An exporter declared read-only keeps an old snapshot. May it stage a write later to avoid a validation conflict?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "The read-only declaration is the reason it can serialize at its snapshot. Writes are forbidden, not merely absent so far."
+  },
+  {
+    "id": "09c",
+    "version": 1,
+    "objective": "O9",
+    "stem": "Old and current snapshots produce different row sets. May their elapsed or work-cost difference be called a same-result plan speedup?",
+    "answerFormat": "a Boolean",
+    "answer": false,
+    "feedback": "Compare physical alternatives within each fixed snapshot. Comparing distinct logical results answers a different question."
+  }
+]
