@@ -5,7 +5,7 @@ import {createHash,randomUUID} from 'node:crypto';
 import {fork} from 'node:child_process';
 import {createServer} from 'node:http';
 import {PUBLIC_FILES} from './manifest.mjs';
-import {REQUIREMENTS,cases} from './checks.mjs';
+import {REQUIREMENTS,cases,formatResult} from './checks.mjs';
 import {trainedCases} from './trained-checks.mjs';
 import {zipFiles} from './zip.mjs';
 const root=dirname(fileURLToPath(import.meta.url)),config=JSON.parse(readFileSync(join(root,'course.json'),'utf8'));
@@ -36,7 +36,7 @@ function useReference(lesson,work){
 }
 function startTrained(work){validateWork(work);if(!existsSync(join(work,'trained-spec.mjs')))writeFileSync(join(work,'trained-spec.mjs'),readFileSync(join(root,'trained-spec.mjs')),{flag:'wx'});writeFileSync(join(work,'trained.mjs'),readFileSync(join(root,'trained-starter.mjs')),{flag:'wx'});console.log('Created trained.mjs without replacing earlier work; create trained-project.mjs yourself. Check: node lab.mjs check trained DIR --help-used TEXT.');}
 function start(work){mkdirSync(work);writeFileSync(join(work,config.entry),readFileSync(join(root,config.starter)),{flag:'wx'});copySupport(work);writeFileSync(join(work,'trained.mjs'),readFileSync(join(root,'trained-starter.mjs')),{flag:'wx'});writeFileSync(join(work,'course-work.json'),JSON.stringify({format:'ivy-course-work-v1',course:config.id}),{flag:'wx'});console.log(`Created ${work}. Edit ${config.entry}; early TODO failures are expected. No capstone implementation was created.\nCheck: node ${fileURLToPath(import.meta.url)} check 01 ${work} --help-used none`);}
-async function runCheck(lesson,work,help){
+async function runCheck(lesson,work,help,json=false){
  if(!config.lessons.some(l=>l.id===lesson)&&lesson!=='all'&&lesson!=='trained')throw new Error('unknown lesson; choose 01..08, all or trained');if(help===undefined)throw new Error('declare help: --help-used none, or describe the help used');validateWork(work);
  const history=attemptRoot(work);
  const trained=lesson==='trained',sourceFile=trained?'trained.mjs':config.entry,projectFile=trained?'trained-project.mjs':'project.mjs';
@@ -52,7 +52,7 @@ async function runCheck(lesson,work,help){
    child.once('message',finish);child.once('error',e=>finish({kind:'execution-error',message:e.message}));child.once('exit',(code,signal)=>finish({kind:'execution-error',message:`execution ended before result: code=${code}, signal=${signal}`}));
    child.send({source:join(dir,sourceFile),project:project?join(dir,projectFile):null,lesson});
  });
- const receipt={...result,ms:performance.now()-begin,attempt:id};writeFileSync(join(dir,'result.json'),JSON.stringify(receipt,null,2),{flag:'wx'});console.log(JSON.stringify(receipt,null,2));process.exitCode=result.kind==='check'?(result.report.pass?0:1):3;
+ const receipt={...result,ms:performance.now()-begin,attempt:id};writeFileSync(join(dir,'result.json'),JSON.stringify(receipt,null,2),{flag:'wx'});console.log(json?JSON.stringify(receipt,null,2):formatResult(receipt,{lesson,footer:`Attempt kept in ${join(dir,'result.json')}. Add --json after the help text for the machine-readable result.`}));process.exitCode=result.kind==='check'?(result.report.pass?0:1):3;
 }
 function status(work){validateWork(work);const sourceHash=hash(readRegular(join(work,config.entry))),projectSibling=readProjectSibling(work),projectHash=hash(projectSibling??''),current=identity();const dir=attemptRoot(work);const reports=existsSync(dir)?readdirSync(dir).sort().map(id=>{const p=join(dir,id);requireDirectory(p);const r=JSON.parse(readRegular(join(p,'request.json'))),result=existsSync(join(p,'result.json'))?JSON.parse(readRegular(join(p,'result.json'))):{kind:'pending'};return {id,lesson:r.lesson,help:r.help,referenceSupport:(r.referenceSupport??[]).map(a=>({id:a.id,lesson:a.lesson,providedModules:a.providedModules,state:a.result.state})),result:result.kind,pass:result.report?.pass??null,current:r.sourceHash===(r.sourceFile==='trained.mjs'?(existsSync(join(work,'trained.mjs'))?hash(readRegular(join(work,'trained.mjs'))):null):sourceHash)&&r.projectHash===(r.projectFile==='trained-project.mjs'?hash(existsSync(join(work,'trained-project.mjs'))?readRegular(join(work,'trained-project.mjs')):''):projectHash)&&(!r.prerequisiteHash||r.prerequisiteHash===sourceHash)&&(!Object.hasOwn(r,'projectSiblingHash')||r.projectSiblingHash===(projectSibling===null?null:hash(projectSibling)))&&r.identity.inputHash===current.inputHash};}):[];console.log(JSON.stringify({course:config.id,reports},null,2));}
 function exportWork(work,out){validateWork(work);const sibling=readProjectSibling(work),history=attemptRoot(work);if(existsSync(join(work,'trained.mjs'))&&!existsSync(join(work,config.entry)))throw new Error('Missing required earlier runtime.mjs dependency in trained work; export stopped before writing. Restore the preserved earlier source or its disclosed prerequisite support.');const files=PUBLIC_FILES.map(n=>[n,readFileSync(join(root,n))]);files.push(['package-manifest.json',JSON.stringify(identity(),null,2)]);for(const name of [config.entry,'project.mjs','trained.mjs','trained-project.mjs','course-work.json','workspace.json','data.json','REPORT.md']){if(name==='project.mjs'){if(sibling!==null)files.push(['work/'+name,sibling]);continue;}const p=join(work,name);if(existsSync(p))files.push(['work/'+name,readRegular(p)]);}
@@ -67,9 +67,9 @@ try{
  if(command==='start'&&args.length===1)start(resolve(args[0]));
  else if(command==='trained-start'&&args.length===1)startTrained(resolve(args[0]));
  else if(command==='support'&&args.length===2)useReference(args[0],resolve(args[1]));
- else if(command==='check'&&args.length===4&&args[2]==='--help-used')await runCheck(args[0],resolve(args[1]),args[3]);
+ else if(command==='check'&&(args.length===4||(args.length===5&&args[4]==='--json'))&&args[2]==='--help-used')await runCheck(args[0],resolve(args[1]),args[3],args.length===5);
  else if(command==='status'&&args.length===1)status(resolve(args[0]));
  else if(command==='export'&&args.length===2)exportWork(resolve(args[0]),resolve(args[1]));
  else if(command==='serve'&&args.length<=1){const port=Number(args[0]??0);if(!Number.isInteger(port)||port<0||port>65535)throw new Error('port must be 0..65535');serve(port);}
- else throw new Error('Usage: node lab.mjs start DIR | trained-start DIR | support 02..08 DIR | check 01..08/all/trained DIR --help-used TEXT | status DIR | export DIR OUTPUT.zip | serve [PORT]');
+ else throw new Error('Usage: node lab.mjs start DIR | trained-start DIR | support 02..08 DIR | check 01..08/all/trained DIR --help-used TEXT [--json] | status DIR | export DIR OUTPUT.zip | serve [PORT]');
 }catch(error){console.error('Invocation refused: '+error.message);process.exitCode=2;}
