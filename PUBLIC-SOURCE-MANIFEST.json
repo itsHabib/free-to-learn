@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 26263,
-      "sha256": "47af756f441d06fe4bced8061ba459d5b5b3ec7cc99bca11deaad4d7ea8235db"
+      "sha256": "92e89a729d005d26d985ed0022194648dd6cfd364be669ae225fdd9a2a6071f6"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -59,13 +59,13 @@
     },
     {
       "path": ".packages/advanced-storage.zip",
-      "bytes": 126000,
-      "sha256": "cd1afbaf06b5ac506fc548ed00691632afdf46837bd91f03f59354a16cb0c09e"
+      "bytes": 126031,
+      "sha256": "efa75c418d99dea42bae45389abb00cde4298bbb325a46de34ac0356637e25be"
     },
     {
       "path": ".packages/advanced-storage.zip.sha256",
       "bytes": 87,
-      "sha256": "93b6420c8371cf15267e18a42993845563efa6d3183b4a41cf3b8e666303f526"
+      "sha256": "c85b5f16000b4d1dde4ba3f4e26af371de287521ef2cfcf7e5197e65133c5301"
     },
     {
       "path": ".packages/agent-league.zip",
@@ -755,7 +755,7 @@
     {
       "path": "courses/advanced-storage/MANIFEST.json",
       "bytes": 7449,
-      "sha256": "487daff20e6a531049053bbdecd4f91d9ea868630b66edbf93c3fdddd30748c1"
+      "sha256": "8877e638057369debdbb59bf333b4c302e8ffd47229f7745351866cd86341fc1"
     },
     {
       "path": "courses/advanced-storage/PROJECTS.md",
@@ -764,8 +764,8 @@
     },
     {
       "path": "courses/advanced-storage/README.md",
-      "bytes": 5514,
-      "sha256": "82e6900c7f2b2b9c92e73e721e49f937b9a6b1e051ef4c8cf6ff461771662b62"
+      "bytes": 5573,
+      "sha256": "dca93161a1b11c78a0efb8afac9a9d4adef821cef97de535fd01ae3a26e1ffce"
     },
     {
       "path": "courses/advanced-storage/SOURCES.md",
