@@ -20,3 +20,25 @@ export const practice={
  'r08-audit':[q('08','A replay matches keys but disagrees with value rows. Which component should the report identify: "keys" or "values"?','values','Inspect component content as well as dimensions. Then test whether repairing that component removes logit divergence.'),q('08','A cache has valid dimensions and finite numbers. Does that establish that it belongs to the stated prompt?',false,'Replay the prompt with the same model and compare cache content. Dimensions cannot establish the sequence history.')],
  'r08-evidence':[q('08','A repair changes both sampling seed and cache code. Does the output change isolate the cache fix?',false,'Keep prompt, checkpoint, seed and sampling settings fixed. Compare logits before token draws.'),q('08','The original untrained tiny fixture emits readable-looking letters. Does that establish pretrained language quality?',false,'This fixture checks arithmetic and state handling. No corpus training or language-quality benchmark was supplied.')],
 };
+
+// Practice answers are typed in plain words. A boolean accepts yes/no/true/false, a number
+// accepts a plain number, a list accepts comma- or space-separated numbers (brackets optional)
+// and a word answer is compared without case or surrounding quotes. Anything else is a
+// format problem the learner can correct; it is not recorded or graded.
+export function answerFormat(expected){
+ if(typeof expected==="boolean")return "Answer yes or no.";
+ if(typeof expected==="number")return "Answer with a number.";
+ if(Array.isArray(expected))return "Answer with a list of numbers, such as 1, 2, 3.";
+ return "Answer with one word.";
+}
+export function parseAnswer(text,expected){
+ const raw=String(text??"").trim(),problem=()=>({ok:false,hint:`That answer could not be read. ${answerFormat(expected)} Nothing was recorded; correct it and commit again.`});
+ if(!raw)return problem();
+ const number=/^[-+]?(\d+(\.\d*)?|\.\d+)(e[-+]?\d+)?$/i;
+ if(typeof expected==="boolean"){const word=raw.toLowerCase();if(word==="yes"||word==="true")return {ok:true,value:true};if(word==="no"||word==="false")return {ok:true,value:false};return problem();}
+ if(typeof expected==="number")return number.test(raw)?{ok:true,value:Number(raw)}:problem();
+ if(Array.isArray(expected)){const parts=raw.replace(/^\[|\]$/g,"").split(/[\s,]+/).filter(Boolean);return parts.length&&parts.every(p=>number.test(p))?{ok:true,value:parts.map(Number)}:problem();}
+ const word=raw.replace(/^["']+|["']+$/g,"").trim().toLowerCase();
+ return word&&!/\s/.test(word)?{ok:true,value:word}:problem();
+}
+export const describeAnswer=value=>typeof value==="boolean"?(value?"yes":"no"):Array.isArray(value)?value.join(", "):String(value);
