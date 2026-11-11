@@ -1,0 +1,728 @@
+{
+  "schema": 2,
+  "corpusVersion": "courier-synthetic-evaluation-v2",
+  "runtime": {
+    "node": "v26.5.1",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "evaluations": [
+    {
+      "name": "Threshold 1 / 20 ticks · exploration",
+      "split": "exploration",
+      "settings": {
+        "threshold": 1,
+        "windowTicks": 20,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "affd9f419d6bf42019d645254fc397a4f5ac47f35ff71eb547a594fb3f4d9fab",
+      "result": {
+        "decisions": [
+          {
+            "id": "exploration/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "exploration/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "exploration/anticipatory-presses",
+            "flagged": true
+          },
+          {
+            "id": "exploration/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "exploration/isolated-distant-errors",
+            "flagged": true
+          },
+          {
+            "id": "exploration/repeated-distant-invalid",
+            "flagged": true
+          },
+          {
+            "id": "exploration/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 1,
+          "fp": 2,
+          "tn": 4,
+          "fn": 0,
+          "precision": 0.3333333333333333,
+          "recall": 1,
+          "falsePositiveRate": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "name": "Threshold 1 / 20 ticks · evaluation",
+      "split": "evaluation",
+      "settings": {
+        "threshold": 1,
+        "windowTicks": 20,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "affd9f419d6bf42019d645254fc397a4f5ac47f35ff71eb547a594fb3f4d9fab",
+      "result": {
+        "decisions": [
+          {
+            "id": "evaluation/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/anticipatory-presses",
+            "flagged": true
+          },
+          {
+            "id": "evaluation/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/isolated-distant-errors",
+            "flagged": true
+          },
+          {
+            "id": "evaluation/repeated-distant-invalid",
+            "flagged": true
+          },
+          {
+            "id": "evaluation/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 1,
+          "fp": 2,
+          "tn": 4,
+          "fn": 0,
+          "precision": 0.3333333333333333,
+          "recall": 1,
+          "falsePositiveRate": 0.3333333333333333
+        }
+      }
+    },
+    {
+      "name": "Threshold 3 / 8 ticks · exploration",
+      "split": "exploration",
+      "settings": {
+        "threshold": 3,
+        "windowTicks": 8,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "606c3146310025cf8eec45e6220d5f22ce8c49cde44c0939a7fcac972d7f375b",
+      "result": {
+        "decisions": [
+          {
+            "id": "exploration/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "exploration/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "exploration/anticipatory-presses",
+            "flagged": false
+          },
+          {
+            "id": "exploration/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "exploration/isolated-distant-errors",
+            "flagged": false
+          },
+          {
+            "id": "exploration/repeated-distant-invalid",
+            "flagged": true
+          },
+          {
+            "id": "exploration/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 1,
+          "fp": 0,
+          "tn": 6,
+          "fn": 0,
+          "precision": 1,
+          "recall": 1,
+          "falsePositiveRate": 0
+        }
+      }
+    },
+    {
+      "name": "Threshold 3 / 8 ticks · evaluation",
+      "split": "evaluation",
+      "settings": {
+        "threshold": 3,
+        "windowTicks": 8,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "606c3146310025cf8eec45e6220d5f22ce8c49cde44c0939a7fcac972d7f375b",
+      "result": {
+        "decisions": [
+          {
+            "id": "evaluation/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/anticipatory-presses",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/isolated-distant-errors",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/repeated-distant-invalid",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 0,
+          "fp": 0,
+          "tn": 6,
+          "fn": 1,
+          "precision": null,
+          "recall": 0,
+          "falsePositiveRate": 0
+        }
+      }
+    },
+    {
+      "name": "Threshold 3 / 20 ticks · exploration",
+      "split": "exploration",
+      "settings": {
+        "threshold": 3,
+        "windowTicks": 20,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "c9f2df745ecd38d7bc1019f268d4dccfe0aeb655f5b9c72401011f6ea1bbdda5",
+      "result": {
+        "decisions": [
+          {
+            "id": "exploration/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "exploration/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "exploration/anticipatory-presses",
+            "flagged": false
+          },
+          {
+            "id": "exploration/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "exploration/isolated-distant-errors",
+            "flagged": false
+          },
+          {
+            "id": "exploration/repeated-distant-invalid",
+            "flagged": true
+          },
+          {
+            "id": "exploration/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 1,
+          "fp": 0,
+          "tn": 6,
+          "fn": 0,
+          "precision": 1,
+          "recall": 1,
+          "falsePositiveRate": 0
+        }
+      }
+    },
+    {
+      "name": "Threshold 3 / 20 ticks · evaluation",
+      "split": "evaluation",
+      "settings": {
+        "threshold": 3,
+        "windowTicks": 20,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "c9f2df745ecd38d7bc1019f268d4dccfe0aeb655f5b9c72401011f6ea1bbdda5",
+      "result": {
+        "decisions": [
+          {
+            "id": "evaluation/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/anticipatory-presses",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/isolated-distant-errors",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/repeated-distant-invalid",
+            "flagged": true
+          },
+          {
+            "id": "evaluation/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 1,
+          "fp": 0,
+          "tn": 6,
+          "fn": 0,
+          "precision": 1,
+          "recall": 1,
+          "falsePositiveRate": 0
+        }
+      }
+    },
+    {
+      "name": "No positives / no predictions",
+      "split": "diagnostic",
+      "settings": {
+        "threshold": 3,
+        "windowTicks": 20,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "c9f2df745ecd38d7bc1019f268d4dccfe0aeb655f5b9c72401011f6ea1bbdda5",
+      "result": {
+        "decisions": [
+          {
+            "id": "diagnostic/negative-quiet",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 1,
+          "tp": 0,
+          "fp": 0,
+          "tn": 1,
+          "fn": 0,
+          "precision": null,
+          "recall": null,
+          "falsePositiveRate": 0
+        }
+      }
+    },
+    {
+      "name": "Threshold 6 / 20 ticks · exploration",
+      "split": "exploration",
+      "settings": {
+        "threshold": 6,
+        "windowTicks": 20,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "4ca303a3e8e8d0d1adc6899538d0a8fd8ab6b99e44a6b24994741b4c13296de3",
+      "result": {
+        "decisions": [
+          {
+            "id": "exploration/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "exploration/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "exploration/anticipatory-presses",
+            "flagged": false
+          },
+          {
+            "id": "exploration/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "exploration/isolated-distant-errors",
+            "flagged": false
+          },
+          {
+            "id": "exploration/repeated-distant-invalid",
+            "flagged": false
+          },
+          {
+            "id": "exploration/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 0,
+          "fp": 0,
+          "tn": 6,
+          "fn": 1,
+          "precision": null,
+          "recall": 0,
+          "falsePositiveRate": 0
+        }
+      }
+    },
+    {
+      "name": "Threshold 6 / 20 ticks · evaluation",
+      "split": "evaluation",
+      "settings": {
+        "threshold": 6,
+        "windowTicks": 20,
+        "minDistanceMm": 500
+      },
+      "settingsHash": "4ca303a3e8e8d0d1adc6899538d0a8fd8ab6b99e44a6b24994741b4c13296de3",
+      "result": {
+        "decisions": [
+          {
+            "id": "evaluation/honest-delivery",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/pickup-repress",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/anticipatory-presses",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/delayed-reordered-retries",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/isolated-distant-errors",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/repeated-distant-invalid",
+            "flagged": false
+          },
+          {
+            "id": "evaluation/valid-automation",
+            "flagged": false
+          }
+        ],
+        "metrics": {
+          "total": 7,
+          "tp": 0,
+          "fp": 0,
+          "tn": 6,
+          "fn": 1,
+          "precision": null,
+          "recall": 0,
+          "falsePositiveRate": 0
+        }
+      }
+    }
+  ],
+  "retention": [
+    {
+      "name": "2048 ticks / 1024 events",
+      "settings": {
+        "nowTick": 4095,
+        "maxAgeTicks": 2048,
+        "maxEvents": 1024
+      },
+      "inputBytes": 751531,
+      "outputBytes": 88953,
+      "inputCount": 4096,
+      "outputCount": 1024,
+      "timingSummary": {
+        "wholeOperation": {
+          "sampleCount": 5,
+          "medianMs": 5.382666,
+          "maxMs": 5.7835409999999925,
+          "p95Ms": null,
+          "tailStatistic": "max",
+          "tailMs": 5.7835409999999925
+        },
+        "policyAndEncode": {
+          "sampleCount": 5,
+          "medianMs": 0.12258400000000336,
+          "maxMs": 0.1534160000000071,
+          "p95Ms": null,
+          "tailStatistic": "max",
+          "tailMs": 0.1534160000000071
+        }
+      },
+      "elapsedMs": [
+        5.664166000000002,
+        5.7835409999999925,
+        5.382666,
+        5.0804589999999905,
+        5.283708000000004
+      ],
+      "policyAndEncodeMs": [
+        0.11299999999999955,
+        0.1282510000000059,
+        0.11129099999999426,
+        0.12258400000000336,
+        0.1534160000000071
+      ],
+      "samples": 5,
+      "warmup": 2,
+      "workload": {
+        "name": "courier-denials-v1",
+        "version": 1,
+        "eventCount": 4096,
+        "inputJsonBytes": 751531,
+        "sha256": "4d20d8cc18decfba0769098522e17ed861bdb0a9f39f8e961016f2c9de50c1e0"
+      }
+    },
+    {
+      "name": "256 ticks / 128 events",
+      "settings": {
+        "nowTick": 4095,
+        "maxAgeTicks": 256,
+        "maxEvents": 128
+      },
+      "inputBytes": 751531,
+      "outputBytes": 11223,
+      "inputCount": 4096,
+      "outputCount": 128,
+      "timingSummary": {
+        "wholeOperation": {
+          "sampleCount": 5,
+          "medianMs": 5.1376670000000075,
+          "maxMs": 5.391166999999996,
+          "p95Ms": null,
+          "tailStatistic": "max",
+          "tailMs": 5.391166999999996
+        },
+        "policyAndEncode": {
+          "sampleCount": 5,
+          "medianMs": 0.032875000000004206,
+          "maxMs": 0.04820800000000247,
+          "p95Ms": null,
+          "tailStatistic": "max",
+          "tailMs": 0.04820800000000247
+        }
+      },
+      "elapsedMs": [
+        5.391166999999996,
+        5.318583000000004,
+        4.667332999999999,
+        4.984583999999998,
+        5.1376670000000075
+      ],
+      "policyAndEncodeMs": [
+        0.04820800000000247,
+        0.03287399999999252,
+        0.030874999999994657,
+        0.036040999999997325,
+        0.032875000000004206
+      ],
+      "samples": 5,
+      "warmup": 2,
+      "workload": {
+        "name": "courier-denials-v1",
+        "version": 1,
+        "eventCount": 4096,
+        "inputJsonBytes": 751531,
+        "sha256": "4d20d8cc18decfba0769098522e17ed861bdb0a9f39f8e961016f2c9de50c1e0"
+      }
+    }
+  ],
+  "measurement": {
+    "schema": 2,
+    "kind": "retention-measurement",
+    "workload": {
+      "name": "courier-denials-v1",
+      "version": 1,
+      "eventCount": 4096,
+      "inputJsonBytes": 751531,
+      "sha256": "4d20d8cc18decfba0769098522e17ed861bdb0a9f39f8e961016f2c9de50c1e0"
+    },
+    "environment": {
+      "node": "v26.5.1",
+      "platform": "darwin",
+      "arch": "arm64"
+    },
+    "operation": "Whole operation: validate, clone, retain, validate output and encode JSON; no disk I/O",
+    "policyAndEncodeOperation": "Policy call plus JSON encoding and byte counting; excludes source validation, cloning, mutation checks and output validation",
+    "settings": [
+      {
+        "nowTick": 4095,
+        "maxAgeTicks": 2048,
+        "maxEvents": 1024
+      },
+      {
+        "nowTick": 4095,
+        "maxAgeTicks": 256,
+        "maxEvents": 128
+      }
+    ],
+    "warmup": 2,
+    "samples": 5,
+    "runs": [
+      {
+        "settings": {
+          "nowTick": 4095,
+          "maxAgeTicks": 2048,
+          "maxEvents": 1024
+        },
+        "inputCount": 4096,
+        "retainedCount": 1024,
+        "removedCount": 3072,
+        "jsonBytes": 88953,
+        "maxBytes": 1048576,
+        "elapsedMs": [
+          5.664166000000002,
+          5.7835409999999925,
+          5.382666,
+          5.0804589999999905,
+          5.283708000000004
+        ],
+        "policyMs": [
+          0.046624999999998806,
+          0.05829200000000867,
+          0.04654100000000483,
+          0.05845899999999915,
+          0.07020800000000804
+        ],
+        "encodeMs": [
+          0.06637500000000074,
+          0.06995899999999722,
+          0.06474999999998943,
+          0.0641250000000042,
+          0.08320799999999906
+        ],
+        "policyAndEncodeMs": [
+          0.11299999999999955,
+          0.1282510000000059,
+          0.11129099999999426,
+          0.12258400000000336,
+          0.1534160000000071
+        ],
+        "jsonByteSamples": [
+          88953,
+          88953,
+          88953,
+          88953,
+          88953
+        ],
+        "timingSummary": {
+          "wholeOperation": {
+            "sampleCount": 5,
+            "medianMs": 5.382666,
+            "maxMs": 5.7835409999999925,
+            "p95Ms": null,
+            "tailStatistic": "max",
+            "tailMs": 5.7835409999999925
+          },
+          "policyAndEncode": {
+            "sampleCount": 5,
+            "medianMs": 0.12258400000000336,
+            "maxMs": 0.1534160000000071,
+            "p95Ms": null,
+            "tailStatistic": "max",
+            "tailMs": 0.1534160000000071
+          }
+        }
+      },
+      {
+        "settings": {
+          "nowTick": 4095,
+          "maxAgeTicks": 256,
+          "maxEvents": 128
+        },
+        "inputCount": 4096,
+        "retainedCount": 128,
+        "removedCount": 3968,
+        "jsonBytes": 11223,
+        "maxBytes": 1048576,
+        "elapsedMs": [
+          5.391166999999996,
+          5.318583000000004,
+          4.667332999999999,
+          4.984583999999998,
+          5.1376670000000075
+        ],
+        "policyMs": [
+          0.032540999999994824,
+          0.02158299999999258,
+          0.021040999999996757,
+          0.02508299999999508,
+          0.021332999999998492
+        ],
+        "encodeMs": [
+          0.015667000000007647,
+          0.01129099999999994,
+          0.0098339999999979,
+          0.010958000000002244,
+          0.011542000000005714
+        ],
+        "policyAndEncodeMs": [
+          0.04820800000000247,
+          0.03287399999999252,
+          0.030874999999994657,
+          0.036040999999997325,
+          0.032875000000004206
+        ],
+        "jsonByteSamples": [
+          11223,
+          11223,
+          11223,
+          11223,
+          11223
+        ],
+        "timingSummary": {
+          "wholeOperation": {
+            "sampleCount": 5,
+            "medianMs": 5.1376670000000075,
+            "maxMs": 5.391166999999996,
+            "p95Ms": null,
+            "tailStatistic": "max",
+            "tailMs": 5.391166999999996
+          },
+          "policyAndEncode": {
+            "sampleCount": 5,
+            "medianMs": 0.032875000000004206,
+            "maxMs": 0.04820800000000247,
+            "p95Ms": null,
+            "tailStatistic": "max",
+            "tailMs": 0.04820800000000247
+          }
+        }
+      }
+    ],
+    "limits": "Local sequential synthetic workload. JSON bytes are the direct cost changed by the limits; whole-operation time can be dominated by fixed validation and cloning. Timings include allocation and garbage-collection noise. Fewer than 20 samples report an observed maximum, not p95; even a reported p95 is only this sample percentile, not a capacity estimate. No production capacity or anonymization claim."
+  }
+}

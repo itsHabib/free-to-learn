@@ -1,0 +1,17 @@
+{
+  "id": "courier-telemetry-01",
+  "version": 1,
+  "objective": "Implement a replay policy that accepts a complete bounded causal window and refuses missing, reordered, incompatible or inconsistent evidence.",
+  "question": "Implement replayWindow(record, engine) in telemetry/policy.mjs. Validate the window, restore its checkpoint through the supplied facade, apply each indexed event in its supplied order, and compare the resulting canonical state with final. Return {ok:true,state} only when all checks pass; otherwise return {ok:false,reason}. Record your predictions, assistance and explanations in response.md before your first check, and append repairs without replacing your original answers.",
+  "constraints": [
+    "The only submitted executable file is telemetry/policy.mjs. Keep the function independent of Node, files, clocks and network APIs; do not import a reference solution.",
+    "The envelope fields are schema, runtimeRelease, startIndex, checkpoint, events, endIndex, complete and final. Schema must equal 1; runtimeRelease must equal engine.release. Refuse unexpected envelope fields.",
+    "The complete flag must be true and events must be an array of at most 256 entries. An empty complete window is allowed.",
+    "startIndex is the number of the last operation before the retained window. Each entry has exactly index and event. Its index is startIndex+1, startIndex+2 and so on in the given order. endIndex equals startIndex+events.length; both boundaries are nonnegative safe integers.",
+    "Use engine.restore(checkpoint) to create a fresh world and engine.apply(world,event) for each event. The facade validates checkpoint and event shape, including input limits, and throws on invalid data. Valid stale input is still an event and must not be dropped.",
+    "Use engine.canonical(world) and engine.equal(state,final); object key order is irrelevant. Do not accept final as evidence of execution.",
+    "Failure reasons are schema for an unsupported schema or unexpected envelope field, incompatible for a runtime release mismatch, incomplete for incomplete/oversized/invalid event storage, sequence for bad boundaries or indexed entries, event for an invalid checkpoint/event, and final for a missing or mismatched canonical result. Apply checks in that order.",
+    "Replay checks deterministic gameplay reproduction. It does not authenticate who supplied the record or prove HTTP identity, network delivery order, wall-clock timing or unmodified client execution."
+  ],
+  "assessment": "Owner-side fixtures run captured learner code with the real engine facade. Two independently structured correct policies must pass; policies that trust final, ignore completeness/version, sort or renumber evidence, discard stale input or skip final comparison must fail by their behavior. Passing these bounded cases establishes agreement with the stated contract, not production security or measured learning."
+}

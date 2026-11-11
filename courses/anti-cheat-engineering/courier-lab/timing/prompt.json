@@ -1,0 +1,17 @@
+{
+  "id": "courier-timing-01",
+  "version": 1,
+  "objective": "Predict owner-clock movement windows, distinguish delayed and stale input, and recover a connection without silently resetting server state.",
+  "question": "Implement predictTiming(record) in timing/policy.mjs for the validated timing records described in LEARNER.md. Predict each labelled checkpoint before checking it against the real engine and owner clock. Track receipts, inclusive four-tick expiry, capped clock work and fractional remainder. Explain what persists during an outage, what resumes with the existing connection binding, and what changes when a new actor joins. Record original predictions in response.md before the first check and append repairs afterward.",
+  "constraints": [
+    "Implement a pure function without files, network, wall-clock reads or imports from author/reference code.",
+    "Input is {schema:1,startMs,actions}. The owner validates at most 80 actions, four joins, finite nondecreasing samples and unobstructed E/W/idle movement before assessment.",
+    "Every action has a unique label. join/disconnect/resume have id; input has id, seq, move and optional untrusted sentAtMs; sample has nowMs.",
+    "Return {ok:true,checkpoints:[{label,tick,actors:[{id,connection,connected,lastSeq,expiresAt,x}],receipt,clock}]}. Use null for receipt or clock on other action types. Actor order is join order; actors start at x=1000, sequence/expiry zero, idle, with IDs actor-1 through actor-4.",
+    "Only a connected input with seq strictly larger than that actor's lastSeq is admitted. It sets expiresAt to current processed tick+4 and replaces direction without immediate movement. Stale input changes nothing; disconnected input has status offline and never reaches admission. receipt is {status,tick,seq}.",
+    "Owner samples process floor((nowMs-previousMs+remainder)/50) due ticks, at most five per sample. Drop excess whole ticks, retain the fractional remainder, and increment overruns once per sample with dropped work. clock is {ticks,dropped,overruns,remainder}.",
+    "Each processed tick increments tick before movement. An actor moves 250 mm in its latest admitted E/W direction while tick<=expiresAt. idle is zero movement. Disconnected actors still finish their current server-owned window.",
+    "resume restores the same binding and all its actor state. join with a fresh connection label creates a separate actor; it does not inherit the old actor's sequence, position or expiry. No bearer token appears in the exported record."
+  ],
+  "assessment": "Captured predictions are compared with the existing owner clock and game engine on bounded open-floor scripts. Two independent correct policies pass and eleven distinct wrong timing policies fail. Connection outage is a controlled delivery gate, not a TCP simulator or authentication test. Written explanations and transfer are preserved and ungraded; AI passes do not measure human learning."
+}

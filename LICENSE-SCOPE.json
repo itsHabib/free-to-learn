@@ -69,6 +69,18 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": ".packages/anti-cheat-engineering.zip",
+      "kind": "archive-of-the-corresponding-course-files",
+      "terms": "Same per-file original/third-party terms as matching courses directory; no private Git history."
+    },
+    {
+      "path": ".packages/anti-cheat-engineering.zip.sha256",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
       "path": ".packages/compiler-optimizer.zip",
       "kind": "archive-of-the-corresponding-course-files",
       "terms": "Same original/third-party terms as matching course files; no private Git history."
@@ -769,6 +781,1582 @@
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/NOTICE.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/.gitignore",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/admission.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/adequate-scenario.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/component-fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/variants.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/worker.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/author-cold-clone-scenario.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/author-scenario.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/client.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/controls.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/policy.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/scenario-template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/scenario-worker.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/server.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/state.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/adversarial.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/honest.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/http-client.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/live.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/scenarios.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/schedules.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clock.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/defense.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/engine.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/controls.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/corpus.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/custody.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/policy.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/report.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/controls.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/package.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/policy.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/check.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/check.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/grade.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/lock.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/predictions.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/prepare.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/recover.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/reference.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/registry.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/seal.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/snapshot.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/trust.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/worker.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/admission-template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/check.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/grade.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/prepare.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/reference.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/scenario-template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/seal.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/seeds.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/prepare.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/reference-snapshot.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/reference.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/replay.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/spatial-reporter.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/trust.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/capstone-receipts.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/http-tests.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/timing-predictor.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/grade.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/service.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/capstone.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/evaluation.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/integrity.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/order.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/recovery.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/retention.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/spatial.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/telemetry.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/testing.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/timing.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/package-lock.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/package.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/protocol.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/analysis.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/analysis.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/analysis.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/app.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/completion.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/completion.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/course.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/evidence.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/evidence.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/evidence.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/index.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/learn.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/learn.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/learn.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/order.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/order.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/prediction-notebook.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/prediction-notebook.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/samples/analysis-cases.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/samples/completion-cases.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/samples/evidence-cases.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/sources.html",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/style.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/controls.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/policy.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/controls.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/measure.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/policy.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/store.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/server.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/controls.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/policy.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/accessibility-browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/admission.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/analysis-browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/analysis-integration.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/capstone.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/clock.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/completion-browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/completion-integration.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/core-lab.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/core-prediction-feedback.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/e2e.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/engine.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/evaluation-custody.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/evaluation.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/evidence-integration.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/harness.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/integrity.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/lab-workflow.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-course-browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-early.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-late.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-runtime.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/mutant-runner.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/mutants.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/order-lab.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/prediction-browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/prediction-notebook.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/preparation-continuity.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/preparation.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/proximity.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/recovery.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/retention.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/schedules.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/source-prediction-flow.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/teaching-examples.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/telemetry.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/timing.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/LEARNER.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/controls.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/feedback.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/policy.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/prompt.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/response-template.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/template.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/analysis-cli.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/approve-runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/audit-learning.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/build-analysis-examples.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/build-completion-examples.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/build-evidence-examples.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/capture-window.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/copy-runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/final-cli.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/read-json.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/replay-window.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/trusted/runtime-manifest.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/verified-server.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
+    },
+    {
+      "path": "courses/anti-cheat-engineering/provenance.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence; package lock describes non-vendored dependency terms."
     },
     {
       "path": "courses/compiler-optimizer/API.md",

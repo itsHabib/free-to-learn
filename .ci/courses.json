@@ -477,6 +477,142 @@
         "Owner full-path evidence and independent AI blind trials are separate from this deterministic public regression job.",
         "Browser/human/other profiles retain original qualifications."
       ]
+    },
+    {
+      "id": "anti-cheat-engineering",
+      "archive": ".packages/anti-cheat-engineering.zip",
+      "sha256": "8535921d8026dde09bde03d778a0fad21edcb3b0fab3656303ce88ab66411500",
+      "archive_prefix": "",
+      "direct_root": "courses/anti-cheat-engineering",
+      "root": ".",
+      "runner": "ubuntu-24.04",
+      "commands": [
+        {
+          "stage": "public_offline_runtime_and_control_regressions",
+          "argv": [
+            "node",
+            "--test",
+            "--test-reporter=tap",
+            "courier-lab/tests/admission.test.mjs",
+            "courier-lab/tests/clock.test.mjs",
+            "courier-lab/tests/engine.test.mjs",
+            "courier-lab/tests/timing.test.mjs",
+            "courier-lab/tests/recovery.test.mjs"
+          ],
+          "exit": 0,
+          "match": "# fail 0"
+        },
+        {
+          "stage": "documented_m1_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/prepare.mjs"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_order_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/order/prepare.mjs"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_timing_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/core/prepare.mjs",
+            "timing",
+            "--name",
+            "ci-start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_integrity_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/core/prepare.mjs",
+            "integrity",
+            "--name",
+            "ci-start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_telemetry_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/core/prepare.mjs",
+            "telemetry",
+            "--name",
+            "ci-start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_evaluation_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/core/prepare.mjs",
+            "evaluation",
+            "--name",
+            "ci-start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_retention_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/core/prepare.mjs",
+            "retention",
+            "--name",
+            "ci-start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_recovery_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/core/prepare.mjs",
+            "recovery",
+            "--name",
+            "ci-start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_capstone_preparation",
+          "argv": [
+            "node",
+            "courier-lab/lab/core/prepare.mjs",
+            "capstone",
+            "--name",
+            "ci-start"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "blank_prediction_refused_before_grading",
+          "argv": [
+            "node",
+            "courier-lab/artifacts/core/timing-ci-start-workspace/lab/core/check.mjs",
+            "--assistance",
+            "public setup smoke only"
+          ],
+          "exit": 2,
+          "match": "fill answer OR an explicit skipReason before checking"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Full HTTP/browser and learner-owned exercise/capstone completion are not established by these safe offline/setup checks.",
+        "Retained listener restriction is not bypassed by remote CI.",
+        "Labelled public controls are source-aware deterministic checks, not blind or human learning evidence."
+      ]
     }
   ]
 }
