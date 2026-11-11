@@ -1,6 +1,6 @@
 import {renderMarkdown,escape} from './render.mjs';
 import {PUBLIC_FILES} from './manifest.mjs';
-import {practice,parseAnswer,answerFormat,describeAnswer} from './practice.mjs';
+import {practice,parseAnswer,answerLabel,describeAnswer} from './practice.mjs';
 import {REQUIREMENTS,cases,formatResult} from './checks.mjs';
 import {zipFiles} from './zip.mjs';
 const $=id=>document.getElementById(id),read=async name=>{const r=await fetch(name);if(!r.ok)throw new Error(`Read ${name}: ${r.status}`);return r.text();};
@@ -109,7 +109,7 @@ for(const host of document.querySelectorAll('[data-practice]')){
  let variant=Number(practiceLatest(records().filter(matches))?.variant??0);
  const draw=()=>{const q=variants[variant],id='practice-'+base.replace(/[^A-Za-z0-9_-]/g,'-')+'-'+variant,saved=practiceLatest(records().filter(r=>matches(r)&&Number(r.variant)===variant)),done=typeof saved?.feedback==='string';
  const savedNote=!saved?'':done?'Committed '+saved.at+' on this build. Your saved answer, help note and stored feedback are shown unchanged.':'Saved '+saved.at+' on this build without stored feedback. Nothing was recomputed; commit again to get feedback as a new record.';
- host.innerHTML=`<p><strong>${escape(q.kind||'Practice')} · ${escape(q.objective)}</strong></p><p id="${id}-q">${escape(q.prompt)}</p><label for="${id}-a">Your answer (${escape(answerFormat(q.answer))}) <input id="${id}-a" autocomplete="off" aria-describedby="${id}-q ${id}-s ${id}-f"></label><label for="${id}-h">Help used for this practice answer <textarea id="${id}-h" rows="2" autocomplete="off"></textarea></label><button type="button">Commit answer</button><p id="${id}-s"${savedNote?'':' hidden'}>${escape(savedNote)}</p><output id="${id}-f" aria-live="polite">${done?escape(saved.feedback):''}</output>`;
+ host.innerHTML=`<p><strong>${escape(q.kind||'Practice')} · ${escape(q.objective)}</strong></p><p id="${id}-q">${escape(q.prompt)}</p><label for="${id}-a">Your answer (${escape(answerLabel(q.answer))}) <input id="${id}-a" autocomplete="off" aria-describedby="${id}-q ${id}-s ${id}-f"></label><label for="${id}-h">Help used for this practice answer <textarea id="${id}-h" rows="2" autocomplete="off"></textarea></label><button type="button">Commit answer</button><p id="${id}-s"${savedNote?'':' hidden'}>${escape(savedNote)}</p><output id="${id}-f" aria-live="polite">${done?escape(saved.feedback):''}</output>`;
  const answerBox=$(id+'-a'),helpBox=$(id+'-h'),commit=host.querySelector('button'),note=$(id+'-s'),out=$(id+'-f');
  answerBox.value=saved?String(saved.answer??''):'';helpBox.value=saved?String(saved.help??''):'none declared';answerBox.readOnly=helpBox.readOnly=commit.disabled=done;
  const offerFreshCase=feedback=>{if(!String(feedback).startsWith('This answer differs.')||variant+1>=variants.length)return;const retry=document.createElement('button');retry.type='button';retry.textContent='Try a fresh case on this concept';retry.addEventListener('click',()=>{variant++;draw();host.querySelector('input').focus();});out.after(retry);};

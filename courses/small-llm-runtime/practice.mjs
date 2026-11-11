@@ -31,6 +31,8 @@ export function answerFormat(expected){
  if(Array.isArray(expected))return "Answer with a list of numbers, such as 1, 2, 3.";
  return "Answer with one word.";
 }
+// Short form for the answer box label, e.g. "Your answer (yes or no)".
+export const answerLabel=expected=>typeof expected==="boolean"?"yes or no":typeof expected==="number"?"a number":Array.isArray(expected)?"numbers separated by commas":"one word";
 export function parseAnswer(text,expected){
  const raw=String(text??"").trim(),problem=()=>({ok:false,hint:`That answer could not be read. ${answerFormat(expected)} Nothing was recorded; correct it and commit again.`});
  if(!raw)return problem();
