@@ -1,0 +1,22 @@
+{
+  "schema": "anti-cheat-github-learner-source/v1",
+  "status": "public-source-beta-with-runtime-qualification-limits",
+  "projectAttribution": "Free to Learn",
+  "publishedPackageSha256": "c5dc842e9aeb718af729d8d5c216da366d6153dba321bd13b7a19a056fea18e4",
+  "publishedProjectFiles": 228,
+  "projectBytesUnchanged": true,
+  "historicalReviewedCourseHead": "394eb765e44d74ba2fe10a53385c3707eb4df6c8",
+  "historicGeneratorModelIds": "Unavailable in original records; not inferred",
+  "publicControls": "Labelled worked examples, reference policies and grader calibration already included in the public teaching package. Not learner-authored work.",
+  "limits": [
+    "This publication does not establish a new complete HTTP/browser learner run.",
+    "Local validation preserves a retained listener restriction; only offline/setup contracts run.",
+    "Human learning/time, native zoom and VoiceOver qualifications are unchanged."
+  ],
+  "licenses": {
+    "originalCode": "MIT",
+    "originalLessonContent": "CC-BY-4.0",
+    "attribution": "Free to Learn",
+    "thirdParty": "Original terms unchanged; see repository notices"
+  }
+}

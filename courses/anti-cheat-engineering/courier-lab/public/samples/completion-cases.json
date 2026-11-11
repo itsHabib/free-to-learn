@@ -1,0 +1,3148 @@
+{
+  "schema": 1,
+  "timing": [
+    {
+      "name": "receipt-before-movement",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "admitted-at-zero",
+            "id": "tab-a",
+            "seq": 1,
+            "move": "E"
+          },
+          {
+            "type": "sample",
+            "label": "first-owner-tick",
+            "nowMs": 50
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "admitted-at-zero",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 1
+            },
+            "clock": null
+          },
+          {
+            "label": "first-owner-tick",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1250
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "admitted-at-zero",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 1
+        }
+      ]
+    },
+    {
+      "name": "inclusive-expiry",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "start",
+            "id": "tab-a",
+            "seq": 1,
+            "move": "E"
+          },
+          {
+            "type": "sample",
+            "label": "fourth-tick",
+            "nowMs": 200
+          },
+          {
+            "type": "sample",
+            "label": "fifth-tick-stopped",
+            "nowMs": 250
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "start",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 1
+            },
+            "clock": null
+          },
+          {
+            "label": "fourth-tick",
+            "tick": 4,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 4,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "fifth-tick-stopped",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "start",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 1
+        }
+      ]
+    },
+    {
+      "name": "delayed-client-time",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "sample",
+            "label": "owner-waited",
+            "nowMs": 150
+          },
+          {
+            "type": "input",
+            "label": "delayed-receipt",
+            "id": "tab-a",
+            "seq": 1,
+            "move": "E",
+            "sentAtMs": 0
+          },
+          {
+            "type": "sample",
+            "label": "four-after-receipt",
+            "nowMs": 350
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "owner-waited",
+            "tick": 3,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 3,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "delayed-receipt",
+            "tick": 3,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 7,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 3,
+              "seq": 1
+            },
+            "clock": null
+          },
+          {
+            "label": "four-after-receipt",
+            "tick": 7,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 7,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 4,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "delayed-receipt",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 3,
+          "seq": 1,
+          "sentAtMs": 0
+        }
+      ]
+    },
+    {
+      "name": "duplicate-retry",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "original",
+            "id": "tab-a",
+            "seq": 4,
+            "move": "E"
+          },
+          {
+            "type": "sample",
+            "label": "three-ticks",
+            "nowMs": 150
+          },
+          {
+            "type": "input",
+            "label": "duplicate-opposite",
+            "id": "tab-a",
+            "seq": 4,
+            "move": "W"
+          },
+          {
+            "type": "sample",
+            "label": "original-expiry",
+            "nowMs": 200
+          },
+          {
+            "type": "sample",
+            "label": "no-renewal",
+            "nowMs": 250
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "original",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 4,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 4
+            },
+            "clock": null
+          },
+          {
+            "label": "three-ticks",
+            "tick": 3,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 4,
+                "expiresAt": 4,
+                "x": 1750
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 3,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "duplicate-opposite",
+            "tick": 3,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 4,
+                "expiresAt": 4,
+                "x": 1750
+              }
+            ],
+            "receipt": {
+              "status": "stale",
+              "tick": 3,
+              "seq": 4
+            },
+            "clock": null
+          },
+          {
+            "label": "original-expiry",
+            "tick": 4,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 4,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "no-renewal",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 4,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "original",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 4
+        },
+        {
+          "label": "duplicate-opposite",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "stale",
+          "tick": 3,
+          "seq": 4
+        }
+      ]
+    },
+    {
+      "name": "reordered-older-input",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "newer-first",
+            "id": "tab-a",
+            "seq": 9,
+            "move": "E"
+          },
+          {
+            "type": "sample",
+            "label": "one-tick",
+            "nowMs": 50
+          },
+          {
+            "type": "input",
+            "label": "older-arrives",
+            "id": "tab-a",
+            "seq": 8,
+            "move": "W"
+          },
+          {
+            "type": "sample",
+            "label": "continue-east",
+            "nowMs": 100
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "newer-first",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 9,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 9
+            },
+            "clock": null
+          },
+          {
+            "label": "one-tick",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 9,
+                "expiresAt": 4,
+                "x": 1250
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "older-arrives",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 9,
+                "expiresAt": 4,
+                "x": 1250
+              }
+            ],
+            "receipt": {
+              "status": "stale",
+              "tick": 1,
+              "seq": 8
+            },
+            "clock": null
+          },
+          {
+            "label": "continue-east",
+            "tick": 2,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 9,
+                "expiresAt": 4,
+                "x": 1500
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "newer-first",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 9
+        },
+        {
+          "label": "older-arrives",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "stale",
+          "tick": 1,
+          "seq": 8
+        }
+      ]
+    },
+    {
+      "name": "fractional-callbacks",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "start",
+            "id": "tab-a",
+            "seq": 1,
+            "move": "E"
+          },
+          {
+            "type": "sample",
+            "label": "fraction-24",
+            "nowMs": 24
+          },
+          {
+            "type": "sample",
+            "label": "fraction-49",
+            "nowMs": 49
+          },
+          {
+            "type": "sample",
+            "label": "whole-tick",
+            "nowMs": 50
+          },
+          {
+            "type": "sample",
+            "label": "same-sample",
+            "nowMs": 50
+          },
+          {
+            "type": "sample",
+            "label": "fraction-99",
+            "nowMs": 99
+          },
+          {
+            "type": "sample",
+            "label": "next-tick",
+            "nowMs": 100
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "start",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 1
+            },
+            "clock": null
+          },
+          {
+            "label": "fraction-24",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 0,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 24
+            }
+          },
+          {
+            "label": "fraction-49",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 0,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 49
+            }
+          },
+          {
+            "label": "whole-tick",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1250
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "same-sample",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1250
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 0,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "fraction-99",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1250
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 0,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 49
+            }
+          },
+          {
+            "label": "next-tick",
+            "tick": 2,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1500
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "start",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 1
+        }
+      ]
+    },
+    {
+      "name": "bounded-pause",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "start",
+            "id": "tab-a",
+            "seq": 1,
+            "move": "E"
+          },
+          {
+            "type": "sample",
+            "label": "long-pause",
+            "nowMs": 826.5
+          },
+          {
+            "type": "input",
+            "label": "renew-after-pause",
+            "id": "tab-a",
+            "seq": 2,
+            "move": "W"
+          },
+          {
+            "type": "sample",
+            "label": "remainder-carries",
+            "nowMs": 850
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "start",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 1
+            },
+            "clock": null
+          },
+          {
+            "label": "long-pause",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 5,
+              "dropped": 11,
+              "overruns": 1,
+              "remainder": 26.5
+            }
+          },
+          {
+            "label": "renew-after-pause",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 2,
+                "expiresAt": 9,
+                "x": 2000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 5,
+              "seq": 2
+            },
+            "clock": null
+          },
+          {
+            "label": "remainder-carries",
+            "tick": 6,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 2,
+                "expiresAt": 9,
+                "x": 1750
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 1,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "start",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 1
+        },
+        {
+          "label": "renew-after-pause",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 5,
+          "seq": 2
+        }
+      ]
+    },
+    {
+      "name": "outage-and-resume",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "start",
+            "id": "tab-a",
+            "seq": 5,
+            "move": "E"
+          },
+          {
+            "type": "disconnect",
+            "label": "link-lost",
+            "id": "tab-a"
+          },
+          {
+            "type": "sample",
+            "label": "still-active-server-intent",
+            "nowMs": 100
+          },
+          {
+            "type": "input",
+            "label": "undelivered-input",
+            "id": "tab-a",
+            "seq": 6,
+            "move": "W"
+          },
+          {
+            "type": "sample",
+            "label": "intent-expired",
+            "nowMs": 250
+          },
+          {
+            "type": "resume",
+            "label": "same-binding-restored",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "retry-original",
+            "id": "tab-a",
+            "seq": 5,
+            "move": "W"
+          },
+          {
+            "type": "input",
+            "label": "fresh-recovery-input",
+            "id": "tab-a",
+            "seq": 6,
+            "move": "W"
+          },
+          {
+            "type": "sample",
+            "label": "recovered-one-step",
+            "nowMs": 300
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "start",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 5,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 5
+            },
+            "clock": null
+          },
+          {
+            "label": "link-lost",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 5,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "still-active-server-intent",
+            "tick": 2,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 5,
+                "expiresAt": 4,
+                "x": 1500
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 2,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "undelivered-input",
+            "tick": 2,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 5,
+                "expiresAt": 4,
+                "x": 1500
+              }
+            ],
+            "receipt": {
+              "status": "offline",
+              "tick": 2,
+              "seq": 6
+            },
+            "clock": null
+          },
+          {
+            "label": "intent-expired",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 5,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 3,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "same-binding-restored",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 5,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "retry-original",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 5,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": {
+              "status": "stale",
+              "tick": 5,
+              "seq": 5
+            },
+            "clock": null
+          },
+          {
+            "label": "fresh-recovery-input",
+            "tick": 5,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 6,
+                "expiresAt": 9,
+                "x": 2000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 5,
+              "seq": 6
+            },
+            "clock": null
+          },
+          {
+            "label": "recovered-one-step",
+            "tick": 6,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 6,
+                "expiresAt": 9,
+                "x": 1750
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "start",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 5
+        },
+        {
+          "label": "undelivered-input",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "offline",
+          "tick": 2,
+          "seq": 6
+        },
+        {
+          "label": "retry-original",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "stale",
+          "tick": 5,
+          "seq": 5
+        },
+        {
+          "label": "fresh-recovery-input",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 5,
+          "seq": 6
+        }
+      ]
+    },
+    {
+      "name": "fresh-rejoin",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "old-session-start",
+            "id": "tab-a",
+            "seq": 10,
+            "move": "E"
+          },
+          {
+            "type": "disconnect",
+            "label": "old-link-lost",
+            "id": "tab-a"
+          },
+          {
+            "type": "sample",
+            "label": "old-intent-continues",
+            "nowMs": 50
+          },
+          {
+            "type": "join",
+            "label": "join-tab-b",
+            "id": "tab-b"
+          },
+          {
+            "type": "input",
+            "label": "new-session-sequence-one",
+            "id": "tab-b",
+            "seq": 1,
+            "move": "W"
+          },
+          {
+            "type": "sample",
+            "label": "independent-actors",
+            "nowMs": 100
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "old-session-start",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 10,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 10
+            },
+            "clock": null
+          },
+          {
+            "label": "old-link-lost",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 10,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "old-intent-continues",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 10,
+                "expiresAt": 4,
+                "x": 1250
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "join-tab-b",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 10,
+                "expiresAt": 4,
+                "x": 1250
+              },
+              {
+                "id": "actor-2",
+                "connection": "tab-b",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "new-session-sequence-one",
+            "tick": 1,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 10,
+                "expiresAt": 4,
+                "x": 1250
+              },
+              {
+                "id": "actor-2",
+                "connection": "tab-b",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 5,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 1,
+              "seq": 1
+            },
+            "clock": null
+          },
+          {
+            "label": "independent-actors",
+            "tick": 2,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": false,
+                "lastSeq": 10,
+                "expiresAt": 4,
+                "x": 1500
+              },
+              {
+                "id": "actor-2",
+                "connection": "tab-b",
+                "connected": true,
+                "lastSeq": 1,
+                "expiresAt": 5,
+                "x": 750
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "old-session-start",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 10
+        },
+        {
+          "label": "new-session-sequence-one",
+          "connection": "tab-b",
+          "actorId": "actor-2",
+          "status": "admitted",
+          "tick": 1,
+          "seq": 1
+        }
+      ]
+    },
+    {
+      "name": "renew-on-boundary",
+      "record": {
+        "schema": 1,
+        "startMs": 0,
+        "actions": [
+          {
+            "type": "join",
+            "label": "join-tab-a",
+            "id": "tab-a"
+          },
+          {
+            "type": "input",
+            "label": "start",
+            "id": "tab-a",
+            "seq": 20,
+            "move": "E"
+          },
+          {
+            "type": "sample",
+            "label": "at-boundary",
+            "nowMs": 200
+          },
+          {
+            "type": "input",
+            "label": "fresh-boundary-reversal",
+            "id": "tab-a",
+            "seq": 21,
+            "move": "W"
+          },
+          {
+            "type": "sample",
+            "label": "new-window-fourth",
+            "nowMs": 400
+          },
+          {
+            "type": "sample",
+            "label": "stop-again",
+            "nowMs": 450
+          }
+        ]
+      },
+      "observed": {
+        "ok": true,
+        "checkpoints": [
+          {
+            "label": "join-tab-a",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": null
+          },
+          {
+            "label": "start",
+            "tick": 0,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 20,
+                "expiresAt": 4,
+                "x": 1000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 0,
+              "seq": 20
+            },
+            "clock": null
+          },
+          {
+            "label": "at-boundary",
+            "tick": 4,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 20,
+                "expiresAt": 4,
+                "x": 2000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 4,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "fresh-boundary-reversal",
+            "tick": 4,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 21,
+                "expiresAt": 8,
+                "x": 2000
+              }
+            ],
+            "receipt": {
+              "status": "admitted",
+              "tick": 4,
+              "seq": 21
+            },
+            "clock": null
+          },
+          {
+            "label": "new-window-fourth",
+            "tick": 8,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 21,
+                "expiresAt": 8,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 4,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          },
+          {
+            "label": "stop-again",
+            "tick": 9,
+            "actors": [
+              {
+                "id": "actor-1",
+                "connection": "tab-a",
+                "connected": true,
+                "lastSeq": 21,
+                "expiresAt": 8,
+                "x": 1000
+              }
+            ],
+            "receipt": null,
+            "clock": {
+              "ticks": 1,
+              "dropped": 0,
+              "overruns": 0,
+              "remainder": 0
+            }
+          }
+        ]
+      },
+      "receipts": [
+        {
+          "label": "start",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 0,
+          "seq": 20
+        },
+        {
+          "label": "fresh-boundary-reversal",
+          "connection": "tab-a",
+          "actorId": "actor-1",
+          "status": "admitted",
+          "tick": 4,
+          "seq": 21
+        }
+      ]
+    }
+  ],
+  "recovery": {
+    "schema": "courier-recovery-trial-v2",
+    "baseline": {
+      "phase": "baseline",
+      "lineage": "original",
+      "inputSeq": 4,
+      "identity": {
+        "releaseId": "courier-baseline",
+        "packageHash": "66bfd43fc2cb9f09173fdb446bd124feb43da45936e9829f2bf61936bdf0d3de",
+        "configId": "range-250-v1",
+        "configHash": "04e99907d9775d11e76ffcb73428b3ccdf3934514dbd588e5dda34213b436400",
+        "snapshotId": "baseline-ready",
+        "snapshotHash": "15d6964fc0a7d6b669e01ad79502e37b2101a5124f191b25e62d27e0ad6348fe",
+        "stateSchema": 1
+      },
+      "action": {
+        "move": "idle",
+        "interact": true,
+        "distanceSquared": 62500,
+        "baselineRadiusMm": 250
+      },
+      "status": "applied",
+      "reason": "pickup",
+      "before": {
+        "tick": 3,
+        "actor": {
+          "id": "actor-1",
+          "x": 1750,
+          "y": 1000,
+          "score": 0,
+          "cargo": false,
+          "lastSeq": 3,
+          "expiresAt": 6,
+          "nextInteractTick": 0
+        },
+        "lastDecision": null
+      },
+      "after": {
+        "tick": 4,
+        "actor": {
+          "id": "actor-1",
+          "x": 1750,
+          "y": 1000,
+          "score": 0,
+          "cargo": true,
+          "lastSeq": 4,
+          "expiresAt": 7,
+          "nextInteractTick": 8
+        },
+        "lastDecision": {
+          "status": "applied",
+          "reason": "pickup",
+          "tick": 4
+        }
+      },
+      "engineDecision": {
+        "status": "applied",
+        "reason": "pickup",
+        "tick": 4
+      }
+    },
+    "candidate": {
+      "phase": "candidate",
+      "lineage": "original",
+      "inputSeq": 12,
+      "identity": {
+        "releaseId": "courier-candidate",
+        "packageHash": "099a481034d29e853d17a1ffe6cb1b9338edc694ad1bd6594a681b5dfcbd0ec5",
+        "configId": "range-100-v2",
+        "configHash": "302eed338b1d97c1afcf0a367671862b8090f5e338afa1bd67983a710eec36cd",
+        "snapshotId": "candidate-converted",
+        "snapshotHash": "7f2df434ad14da142b39880e1f6a58c4aeae075710e1b1c218006263447b1137",
+        "stateSchema": 2
+      },
+      "action": {
+        "move": "idle",
+        "interact": true,
+        "distanceSquared": 62500,
+        "baselineRadiusMm": 250
+      },
+      "status": "denied",
+      "reason": "configuration-range",
+      "before": {
+        "tick": 11,
+        "actor": {
+          "id": "actor-1",
+          "x": 1750,
+          "y": 1000,
+          "score": 1,
+          "cargo": false,
+          "lastSeq": 11,
+          "expiresAt": 14,
+          "nextInteractTick": 12
+        },
+        "lastDecision": {
+          "status": "applied",
+          "reason": "deposit",
+          "tick": 8
+        }
+      },
+      "after": {
+        "tick": 12,
+        "actor": {
+          "id": "actor-1",
+          "x": 1750,
+          "y": 1000,
+          "score": 1,
+          "cargo": false,
+          "lastSeq": 12,
+          "expiresAt": 15,
+          "nextInteractTick": 12
+        },
+        "lastDecision": {
+          "status": "applied",
+          "reason": "deposit",
+          "tick": 8
+        }
+      },
+      "engineDecision": null
+    },
+    "codeOnly": {
+      "phase": "code-only",
+      "lineage": null,
+      "inputSeq": null,
+      "identity": {
+        "releaseId": "courier-baseline",
+        "packageHash": "66bfd43fc2cb9f09173fdb446bd124feb43da45936e9829f2bf61936bdf0d3de",
+        "configId": "range-100-v2",
+        "configHash": "302eed338b1d97c1afcf0a367671862b8090f5e338afa1bd67983a710eec36cd",
+        "snapshotId": "candidate-after-failure",
+        "snapshotHash": "b39cf0108c792871e202900c61399e901ba52750502f54f2a5f6cebdff25ebbb",
+        "stateSchema": 2
+      },
+      "status": "refused",
+      "reason": "state-schema",
+      "stateIncompatible": true,
+      "configurationIncompatible": true
+    },
+    "recovered": {
+      "phase": "recovered",
+      "lineage": "restored-from:baseline-ready@tick3",
+      "inputSeq": 4,
+      "identity": {
+        "releaseId": "courier-baseline",
+        "packageHash": "66bfd43fc2cb9f09173fdb446bd124feb43da45936e9829f2bf61936bdf0d3de",
+        "configId": "range-250-v1",
+        "configHash": "04e99907d9775d11e76ffcb73428b3ccdf3934514dbd588e5dda34213b436400",
+        "snapshotId": "baseline-ready",
+        "snapshotHash": "15d6964fc0a7d6b669e01ad79502e37b2101a5124f191b25e62d27e0ad6348fe",
+        "stateSchema": 1
+      },
+      "action": {
+        "move": "idle",
+        "interact": true,
+        "distanceSquared": 62500,
+        "baselineRadiusMm": 250
+      },
+      "status": "applied",
+      "reason": "pickup",
+      "before": {
+        "tick": 3,
+        "actor": {
+          "id": "actor-1",
+          "x": 1750,
+          "y": 1000,
+          "score": 0,
+          "cargo": false,
+          "lastSeq": 3,
+          "expiresAt": 6,
+          "nextInteractTick": 0
+        },
+        "lastDecision": null
+      },
+      "after": {
+        "tick": 4,
+        "actor": {
+          "id": "actor-1",
+          "x": 1750,
+          "y": 1000,
+          "score": 0,
+          "cargo": true,
+          "lastSeq": 4,
+          "expiresAt": 7,
+          "nextInteractTick": 8
+        },
+        "lastDecision": {
+          "status": "applied",
+          "reason": "pickup",
+          "tick": 4
+        }
+      },
+      "engineDecision": {
+        "status": "applied",
+        "reason": "pickup",
+        "tick": 4
+      }
+    },
+    "selection": {
+      "ok": true,
+      "releaseId": "courier-baseline",
+      "packageHash": "66bfd43fc2cb9f09173fdb446bd124feb43da45936e9829f2bf61936bdf0d3de",
+      "configId": "range-250-v1",
+      "configHash": "04e99907d9775d11e76ffcb73428b3ccdf3934514dbd588e5dda34213b436400",
+      "snapshotId": "baseline-ready",
+      "snapshotHash": "15d6964fc0a7d6b669e01ad79502e37b2101a5124f191b25e62d27e0ad6348fe"
+    },
+    "identities": {
+      "targetReleaseId": "courier-baseline",
+      "releases": [
+        {
+          "id": "courier-baseline",
+          "stateSchema": 1,
+          "configId": "range-250-v1",
+          "packageHash": "66bfd43fc2cb9f09173fdb446bd124feb43da45936e9829f2bf61936bdf0d3de",
+          "sourceHashes": {
+            "../engine.mjs": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7",
+            "../admission.mjs": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40",
+            "../defense.mjs": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd",
+            "../telemetry/runtime.mjs": "d61ed1ef00b98389939da665b750c5f55503c1636507521e84a4a986d873b21c",
+            "./runtime.mjs": "0fe185b0ee595dc1ff505e929a04a4184a446eba82304a8dc00da8890feb5150"
+          },
+          "configHash": "04e99907d9775d11e76ffcb73428b3ccdf3934514dbd588e5dda34213b436400"
+        },
+        {
+          "id": "courier-candidate",
+          "stateSchema": 2,
+          "configId": "range-100-v2",
+          "packageHash": "099a481034d29e853d17a1ffe6cb1b9338edc694ad1bd6594a681b5dfcbd0ec5",
+          "sourceHashes": {
+            "../engine.mjs": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7",
+            "../admission.mjs": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40",
+            "../defense.mjs": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd",
+            "../telemetry/runtime.mjs": "d61ed1ef00b98389939da665b750c5f55503c1636507521e84a4a986d873b21c",
+            "./runtime.mjs": "0fe185b0ee595dc1ff505e929a04a4184a446eba82304a8dc00da8890feb5150"
+          },
+          "configHash": "302eed338b1d97c1afcf0a367671862b8090f5e338afa1bd67983a710eec36cd"
+        }
+      ],
+      "configurations": [
+        {
+          "id": "range-250-v1",
+          "releaseId": "courier-baseline",
+          "stateSchema": 1,
+          "maxInteractionDistanceMm": 250,
+          "hash": "04e99907d9775d11e76ffcb73428b3ccdf3934514dbd588e5dda34213b436400"
+        },
+        {
+          "id": "range-100-v2",
+          "releaseId": "courier-candidate",
+          "stateSchema": 2,
+          "maxInteractionDistanceMm": 100,
+          "hash": "302eed338b1d97c1afcf0a367671862b8090f5e338afa1bd67983a710eec36cd"
+        }
+      ],
+      "snapshots": [
+        {
+          "id": "candidate-after-failure",
+          "ordinal": 4,
+          "stateSchema": 2,
+          "configId": "range-100-v2",
+          "configHash": "302eed338b1d97c1afcf0a367671862b8090f5e338afa1bd67983a710eec36cd",
+          "hash": "b39cf0108c792871e202900c61399e901ba52750502f54f2a5f6cebdff25ebbb",
+          "state": {
+            "schema": 2,
+            "payload": {
+              "world": {
+                "schema": 1,
+                "seed": 0,
+                "tick": 12,
+                "core": {
+                  "x": 2000,
+                  "y": 1000
+                },
+                "actors": [
+                  {
+                    "id": "actor-1",
+                    "x": 1750,
+                    "y": 1000,
+                    "score": 1,
+                    "cargo": false,
+                    "lastSeq": 12,
+                    "lastSeen": 11,
+                    "expiresAt": 15,
+                    "nextInteractTick": 12,
+                    "move": "idle",
+                    "pendingInteract": false,
+                    "lastDecision": {
+                      "status": "applied",
+                      "reason": "deposit",
+                      "tick": 8
+                    },
+                    "detector": {
+                      "buckets": [
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        }
+                      ],
+                      "findings": []
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "eventIndex": 25
+        },
+        {
+          "id": "baseline-before-approach",
+          "ordinal": 1,
+          "stateSchema": 1,
+          "configId": "range-250-v1",
+          "configHash": "04e99907d9775d11e76ffcb73428b3ccdf3934514dbd588e5dda34213b436400",
+          "hash": "13d02bfe626c2e6af77cd04240ca2bc832c96d1fdf71cd2fbf76bb491a8171bc",
+          "state": {
+            "schema": 1,
+            "checkpoint": {
+              "schema": 1,
+              "seed": 0,
+              "tick": 2,
+              "core": {
+                "x": 2000,
+                "y": 1000
+              },
+              "actors": [
+                {
+                  "id": "actor-1",
+                  "x": 1500,
+                  "y": 1000,
+                  "score": 0,
+                  "cargo": false,
+                  "lastSeq": 2,
+                  "lastSeen": 1,
+                  "expiresAt": 5,
+                  "nextInteractTick": 0,
+                  "move": "E",
+                  "pendingInteract": false,
+                  "lastDecision": null,
+                  "detector": {
+                    "buckets": [
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      }
+                    ],
+                    "findings": []
+                  }
+                }
+              ]
+            }
+          },
+          "eventIndex": 5
+        },
+        {
+          "id": "baseline-ready",
+          "ordinal": 2,
+          "stateSchema": 1,
+          "configId": "range-250-v1",
+          "configHash": "04e99907d9775d11e76ffcb73428b3ccdf3934514dbd588e5dda34213b436400",
+          "hash": "15d6964fc0a7d6b669e01ad79502e37b2101a5124f191b25e62d27e0ad6348fe",
+          "state": {
+            "schema": 1,
+            "checkpoint": {
+              "schema": 1,
+              "seed": 0,
+              "tick": 3,
+              "core": {
+                "x": 2000,
+                "y": 1000
+              },
+              "actors": [
+                {
+                  "id": "actor-1",
+                  "x": 1750,
+                  "y": 1000,
+                  "score": 0,
+                  "cargo": false,
+                  "lastSeq": 3,
+                  "lastSeen": 2,
+                  "expiresAt": 6,
+                  "nextInteractTick": 0,
+                  "move": "E",
+                  "pendingInteract": false,
+                  "lastDecision": null,
+                  "detector": {
+                    "buckets": [
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      },
+                      {
+                        "tick": -1,
+                        "observations": []
+                      }
+                    ],
+                    "findings": []
+                  }
+                }
+              ]
+            }
+          },
+          "eventIndex": 7
+        },
+        {
+          "id": "candidate-converted",
+          "ordinal": 3,
+          "stateSchema": 2,
+          "configId": "range-100-v2",
+          "configHash": "302eed338b1d97c1afcf0a367671862b8090f5e338afa1bd67983a710eec36cd",
+          "hash": "7f2df434ad14da142b39880e1f6a58c4aeae075710e1b1c218006263447b1137",
+          "state": {
+            "schema": 2,
+            "payload": {
+              "world": {
+                "schema": 1,
+                "seed": 0,
+                "tick": 11,
+                "core": {
+                  "x": 2000,
+                  "y": 1000
+                },
+                "actors": [
+                  {
+                    "id": "actor-1",
+                    "x": 1750,
+                    "y": 1000,
+                    "score": 1,
+                    "cargo": false,
+                    "lastSeq": 11,
+                    "lastSeen": 10,
+                    "expiresAt": 14,
+                    "nextInteractTick": 12,
+                    "move": "E",
+                    "pendingInteract": false,
+                    "lastDecision": {
+                      "status": "applied",
+                      "reason": "deposit",
+                      "tick": 8
+                    },
+                    "detector": {
+                      "buckets": [
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        },
+                        {
+                          "tick": -1,
+                          "observations": []
+                        }
+                      ],
+                      "findings": []
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "eventIndex": 23
+        }
+      ]
+    },
+    "dataLoss": {
+      "restored": true,
+      "restoredActionApplied": true,
+      "fromTick": 12,
+      "restoredTick": 3,
+      "discardedTicks": 9,
+      "discardedRecordedOperations": 18,
+      "scoreBeforeRecovery": 1,
+      "scoreAtRestoredSnapshot": 0,
+      "lostScore": 1,
+      "acknowledgedSequences": {
+        "highestBeforeRestore": 12,
+        "restoredLastSeq": 3,
+        "reopened": "4–12"
+      },
+      "discardedSuccessfulActions": [
+        {
+          "lineage": "original",
+          "inputSeq": 4,
+          "tick": 4,
+          "status": "applied",
+          "reason": "pickup"
+        },
+        {
+          "lineage": "original",
+          "inputSeq": 8,
+          "tick": 8,
+          "status": "applied",
+          "reason": "deposit"
+        }
+      ],
+      "note": "Lost actions belong to the original lineage; the restored pickup belongs to a new branch. Restoring the checkpoint does not compensate deliveries, merge later history or prevent reuse of acknowledged sequence numbers."
+    },
+    "limitations": "Owned local deterministic trial only. Restoring an older snapshot discards later state and actions, and reopens acknowledged sequence numbers. No recovery epoch or retained sequence floor is implemented. This is not a transactionally safe production rollback or a deployment."
+  },
+  "capstone": {
+    "steps": [
+      {
+        "name": "1 · Legal boundary repair",
+        "status": 200,
+        "data": {
+          "reason": "repaired",
+          "receipt": {
+            "requestId": "job-1",
+            "stationId": "alpha",
+            "energyAdded": 3,
+            "creditsSpent": 2,
+            "energy": 7,
+            "credits": 4
+          },
+          "state": {
+            "config": {
+              "repairCost": 2,
+              "repairEnergy": 3,
+              "energyCap": 10,
+              "rangeMm": 400,
+              "receiptLimit": 2
+            },
+            "stations": [
+              {
+                "id": "alpha",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": "beta",
+                "x": 2000,
+                "y": 0
+              }
+            ],
+            "actors": [
+              {
+                "id": "actor-1",
+                "x": 400,
+                "y": 0,
+                "energy": 7,
+                "credits": 4,
+                "receipts": [
+                  {
+                    "requestId": "job-1",
+                    "stationId": "alpha",
+                    "energyAdded": 3,
+                    "creditsSpent": 2,
+                    "energy": 7,
+                    "credits": 4
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "2 · Same ID after moving away",
+        "status": 200,
+        "data": {
+          "reason": "duplicate",
+          "receipt": {
+            "requestId": "job-1",
+            "stationId": "alpha",
+            "energyAdded": 3,
+            "creditsSpent": 2,
+            "energy": 7,
+            "credits": 4
+          },
+          "state": {
+            "config": {
+              "repairCost": 2,
+              "repairEnergy": 3,
+              "energyCap": 10,
+              "rangeMm": 400,
+              "receiptLimit": 2
+            },
+            "stations": [
+              {
+                "id": "alpha",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": "beta",
+                "x": 2000,
+                "y": 0
+              }
+            ],
+            "actors": [
+              {
+                "id": "actor-1",
+                "x": 900,
+                "y": 0,
+                "energy": 7,
+                "credits": 4,
+                "receipts": [
+                  {
+                    "requestId": "job-1",
+                    "stationId": "alpha",
+                    "energyAdded": 3,
+                    "creditsSpent": 2,
+                    "energy": 7,
+                    "credits": 4
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "3 · New distant request",
+        "status": 200,
+        "data": {
+          "reason": "range",
+          "receipt": null,
+          "state": {
+            "config": {
+              "repairCost": 2,
+              "repairEnergy": 3,
+              "energyCap": 10,
+              "rangeMm": 400,
+              "receiptLimit": 2
+            },
+            "stations": [
+              {
+                "id": "alpha",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": "beta",
+                "x": 2000,
+                "y": 0
+              }
+            ],
+            "actors": [
+              {
+                "id": "actor-1",
+                "x": 900,
+                "y": 0,
+                "energy": 7,
+                "credits": 4,
+                "receipts": [
+                  {
+                    "requestId": "job-1",
+                    "stationId": "alpha",
+                    "energyAdded": 3,
+                    "creditsSpent": 2,
+                    "energy": 7,
+                    "credits": 4
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "4 · Retry denied ID after moving back",
+        "status": 200,
+        "data": {
+          "reason": "repaired",
+          "receipt": {
+            "requestId": "job-2",
+            "stationId": "alpha",
+            "energyAdded": 3,
+            "creditsSpent": 2,
+            "energy": 10,
+            "credits": 2
+          },
+          "state": {
+            "config": {
+              "repairCost": 2,
+              "repairEnergy": 3,
+              "energyCap": 10,
+              "rangeMm": 400,
+              "receiptLimit": 2
+            },
+            "stations": [
+              {
+                "id": "alpha",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": "beta",
+                "x": 2000,
+                "y": 0
+              }
+            ],
+            "actors": [
+              {
+                "id": "actor-1",
+                "x": 0,
+                "y": 0,
+                "energy": 10,
+                "credits": 2,
+                "receipts": [
+                  {
+                    "requestId": "job-1",
+                    "stationId": "alpha",
+                    "energyAdded": 3,
+                    "creditsSpent": 2,
+                    "energy": 7,
+                    "credits": 4
+                  },
+                  {
+                    "requestId": "job-2",
+                    "stationId": "alpha",
+                    "energyAdded": 3,
+                    "creditsSpent": 2,
+                    "energy": 10,
+                    "credits": 2
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      {
+        "name": "5 · New ID after receipt capacity",
+        "status": 200,
+        "data": {
+          "reason": "history-full",
+          "receipt": null,
+          "state": {
+            "config": {
+              "repairCost": 2,
+              "repairEnergy": 3,
+              "energyCap": 10,
+              "rangeMm": 400,
+              "receiptLimit": 2
+            },
+            "stations": [
+              {
+                "id": "alpha",
+                "x": 0,
+                "y": 0
+              },
+              {
+                "id": "beta",
+                "x": 2000,
+                "y": 0
+              }
+            ],
+            "actors": [
+              {
+                "id": "actor-1",
+                "x": 0,
+                "y": 0,
+                "energy": 10,
+                "credits": 2,
+                "receipts": [
+                  {
+                    "requestId": "job-1",
+                    "stationId": "alpha",
+                    "energyAdded": 3,
+                    "creditsSpent": 2,
+                    "energy": 7,
+                    "credits": 4
+                  },
+                  {
+                    "requestId": "job-2",
+                    "stationId": "alpha",
+                    "energyAdded": 3,
+                    "creditsSpent": 2,
+                    "energy": 10,
+                    "credits": 2
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "trace": [
+      {
+        "actorId": "actor-1",
+        "request": {
+          "requestId": "job-1",
+          "stationId": "alpha"
+        },
+        "reason": "repaired",
+        "receipt": {
+          "requestId": "job-1",
+          "stationId": "alpha",
+          "energyAdded": 3,
+          "creditsSpent": 2,
+          "energy": 7,
+          "credits": 4
+        },
+        "state": {
+          "config": {
+            "repairCost": 2,
+            "repairEnergy": 3,
+            "energyCap": 10,
+            "rangeMm": 400,
+            "receiptLimit": 2
+          },
+          "stations": [
+            {
+              "id": "alpha",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "beta",
+              "x": 2000,
+              "y": 0
+            }
+          ],
+          "actors": [
+            {
+              "id": "actor-1",
+              "x": 400,
+              "y": 0,
+              "energy": 7,
+              "credits": 4,
+              "receipts": [
+                {
+                  "requestId": "job-1",
+                  "stationId": "alpha",
+                  "energyAdded": 3,
+                  "creditsSpent": 2,
+                  "energy": 7,
+                  "credits": 4
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "actorId": "actor-1",
+        "request": {
+          "requestId": "job-1",
+          "stationId": "alpha"
+        },
+        "reason": "duplicate",
+        "receipt": {
+          "requestId": "job-1",
+          "stationId": "alpha",
+          "energyAdded": 3,
+          "creditsSpent": 2,
+          "energy": 7,
+          "credits": 4
+        },
+        "state": {
+          "config": {
+            "repairCost": 2,
+            "repairEnergy": 3,
+            "energyCap": 10,
+            "rangeMm": 400,
+            "receiptLimit": 2
+          },
+          "stations": [
+            {
+              "id": "alpha",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "beta",
+              "x": 2000,
+              "y": 0
+            }
+          ],
+          "actors": [
+            {
+              "id": "actor-1",
+              "x": 900,
+              "y": 0,
+              "energy": 7,
+              "credits": 4,
+              "receipts": [
+                {
+                  "requestId": "job-1",
+                  "stationId": "alpha",
+                  "energyAdded": 3,
+                  "creditsSpent": 2,
+                  "energy": 7,
+                  "credits": 4
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "actorId": "actor-1",
+        "request": {
+          "requestId": "job-2",
+          "stationId": "alpha"
+        },
+        "reason": "range",
+        "receipt": null,
+        "state": {
+          "config": {
+            "repairCost": 2,
+            "repairEnergy": 3,
+            "energyCap": 10,
+            "rangeMm": 400,
+            "receiptLimit": 2
+          },
+          "stations": [
+            {
+              "id": "alpha",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "beta",
+              "x": 2000,
+              "y": 0
+            }
+          ],
+          "actors": [
+            {
+              "id": "actor-1",
+              "x": 900,
+              "y": 0,
+              "energy": 7,
+              "credits": 4,
+              "receipts": [
+                {
+                  "requestId": "job-1",
+                  "stationId": "alpha",
+                  "energyAdded": 3,
+                  "creditsSpent": 2,
+                  "energy": 7,
+                  "credits": 4
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "actorId": "actor-1",
+        "request": {
+          "requestId": "job-2",
+          "stationId": "alpha"
+        },
+        "reason": "repaired",
+        "receipt": {
+          "requestId": "job-2",
+          "stationId": "alpha",
+          "energyAdded": 3,
+          "creditsSpent": 2,
+          "energy": 10,
+          "credits": 2
+        },
+        "state": {
+          "config": {
+            "repairCost": 2,
+            "repairEnergy": 3,
+            "energyCap": 10,
+            "rangeMm": 400,
+            "receiptLimit": 2
+          },
+          "stations": [
+            {
+              "id": "alpha",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "beta",
+              "x": 2000,
+              "y": 0
+            }
+          ],
+          "actors": [
+            {
+              "id": "actor-1",
+              "x": 0,
+              "y": 0,
+              "energy": 10,
+              "credits": 2,
+              "receipts": [
+                {
+                  "requestId": "job-1",
+                  "stationId": "alpha",
+                  "energyAdded": 3,
+                  "creditsSpent": 2,
+                  "energy": 7,
+                  "credits": 4
+                },
+                {
+                  "requestId": "job-2",
+                  "stationId": "alpha",
+                  "energyAdded": 3,
+                  "creditsSpent": 2,
+                  "energy": 10,
+                  "credits": 2
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "actorId": "actor-1",
+        "request": {
+          "requestId": "job-3",
+          "stationId": "alpha"
+        },
+        "reason": "history-full",
+        "receipt": null,
+        "state": {
+          "config": {
+            "repairCost": 2,
+            "repairEnergy": 3,
+            "energyCap": 10,
+            "rangeMm": 400,
+            "receiptLimit": 2
+          },
+          "stations": [
+            {
+              "id": "alpha",
+              "x": 0,
+              "y": 0
+            },
+            {
+              "id": "beta",
+              "x": 2000,
+              "y": 0
+            }
+          ],
+          "actors": [
+            {
+              "id": "actor-1",
+              "x": 0,
+              "y": 0,
+              "energy": 10,
+              "credits": 2,
+              "receipts": [
+                {
+                  "requestId": "job-1",
+                  "stationId": "alpha",
+                  "energyAdded": 3,
+                  "creditsSpent": 2,
+                  "energy": 7,
+                  "credits": 4
+                },
+                {
+                  "requestId": "job-2",
+                  "stationId": "alpha",
+                  "energyAdded": 3,
+                  "creditsSpent": 2,
+                  "energy": 10,
+                  "credits": 2
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

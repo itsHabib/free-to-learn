@@ -1,0 +1,18 @@
+{
+  "id": "courier-retention-01",
+  "version": 2,
+  "objective": "Implement a bounded, minimized denial-event export policy and explain the evidence lost when its retention limits shrink.",
+  "question": "Implement retain(events, settings) in retention/policy.mjs. Keep only events inside the declared age window, keep the newest maxEvents, and return each event with exactly tick, actorId, reason and distanceSquared. Preserve input values and order without mutating the source. Record first predictions, assistance, measurement settings and export-deletion evidence in response.md; append repairs without replacing earlier answers.",
+  "constraints": [
+    "The submitted executable file is retention/policy.mjs. It exports retain(events, {nowTick,maxAgeTicks,maxEvents}) and uses no files, network, clocks or reference solution.",
+    "Inputs are already validated: events is an array in nondecreasing integer tick order, actorId and reason are strings, distanceSquared is finite and nonnegative, nowTick is a nonnegative integer and both bounds are positive integers. Valid-input behavior is assessed; optional extra input validation is outside the required policy exercise.",
+    "The age window is nowTick-maxAgeTicks < tick <= nowTick. Drop the old boundary itself and all future events. An empty result is valid.",
+    "After applying the age window, keep the newest maxEvents. Preserve original order, including ties at the same tick.",
+    "Return exactly tick, actorId, reason and distanceSquared, preserving their values. Do not copy capability, address, device or other extra fields. Do not alter source events, the input array or settings.",
+    "All source data in this exercise is synthetic and remains in memory. The owner supplies bounded file export, exact-export deletion and local measurements; your pure policy does not implement those mechanisms.",
+    "The minimized denial-event export is separate from a causal replay checkpoint. Minimizing an export does not remove replay state or turn pseudonymous behavior into anonymous data.",
+    "Compare two declared settings with the named synthetic workload, warmup and sample count. Check the report echoes your declaration. Report every whole-operation and policy-plus-encoding sample and JSON byte length; use the observed maximum rather than p95 for fewer than 20 samples. Do not claim production capacity or that deleting one export deletes other records or copies.",
+    "After the first captured code check, compare preserved predictions with the keyed feedback and answer its fresh variants. Written predictions and the transfer proposal remain ungraded; a separate advisory rubric supports transfer review."
+  ],
+  "assessment": "Synthetic boundary, count, projection, order and mutation cases return structured expected/actual feedback with teaching links. Two independently structured correct policies must pass; eight plausible wrong policies must fail for their intended behavior. Local file tests check actual bytes, bounds and deletion. Passing establishes agreement with these cases, not production readiness or measured learning."
+}

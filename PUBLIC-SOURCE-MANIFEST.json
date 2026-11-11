@@ -1,11 +1,11 @@
 {
   "schema": 1,
-  "status": "LEARNER_SOURCE_SEVEN_QUALIFIED_TERMINAL_ROUTES",
+  "status": "SEVEN_QUALIFIED_TERMINAL_ROUTES_PLUS_ANTI_CHEAT_SOURCE_BETA",
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 13388,
-      "sha256": "4640551a8e9c7cde9e6e4549c65b848d92853e631911f4f5ab11d86b2fe5e4c5"
+      "bytes": 17243,
+      "sha256": "b5b0f994bd8dbb359b02a11c796a5c61e68fb52534d819d0f63e011d1c559182"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -51,6 +51,16 @@
       "path": ".packages/adaptive-decision-engine.zip.sha256",
       "bytes": 95,
       "sha256": "b12f9d0dc2236da494aa271bb8f8ca983b06c2a9b8d529715ef044c84a16fad2"
+    },
+    {
+      "path": ".packages/anti-cheat-engineering.zip",
+      "bytes": 559007,
+      "sha256": "8535921d8026dde09bde03d778a0fad21edcb3b0fab3656303ce88ab66411500"
+    },
+    {
+      "path": ".packages/anti-cheat-engineering.zip.sha256",
+      "bytes": 93,
+      "sha256": "41232dbfcf28c48e5473fdd4b57d907e183d9c8efaa8afaa1647975ba66020a6"
     },
     {
       "path": ".packages/compiler-optimizer.zip",
@@ -114,13 +124,13 @@
     },
     {
       "path": "CI.md",
-      "bytes": 3818,
-      "sha256": "6e7816d6d2a0b74a99b662b070539eaf5bc6214cb8bea1fbefa27f7c90edf808"
+      "bytes": 4117,
+      "sha256": "05e1fcea4f5f769749b23991b4670e8b4df4bbb1c006ba6109db5b2e4ad94681"
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 168212,
-      "sha256": "e80cd44ff7e47fc6724289521aa2e2c19ec973dd0b67d460263fa52b82d8e45c"
+      "bytes": 249346,
+      "sha256": "b6ee7e0b0893d46f8d8697869cd211c4f6d508e1514b86cea4d7d759d72c77a2"
     },
     {
       "path": "LICENSE.md",
@@ -139,23 +149,23 @@
     },
     {
       "path": "QUALIFICATION.md",
-      "bytes": 3468,
-      "sha256": "a6332b5ade5a9dbcc891211ad35588358ae4f13d8ece6f09025b77b124ad12b1"
+      "bytes": 4037,
+      "sha256": "de510c362d28c757054278a6967889b1217a43bdb6ec46e0dcba0888971422df"
     },
     {
       "path": "README.md",
-      "bytes": 2055,
-      "sha256": "df9077c97104ceca34558a432f087554ba834e0b9f9101de586f1eb18769684e"
+      "bytes": 2223,
+      "sha256": "40e6d1f6cc8f050a9a18f15d53d515ed9389a9718836e126e96fffae3c6ca8ce"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 3036,
-      "sha256": "2b0103191b49c18c3251f71c70df41deac16d49182556870baaacc8d85655d08"
+      "bytes": 3686,
+      "sha256": "b705b1defd812f7332a5b51cdb604265bfa2ea581328979f00eab3ced31f5dca"
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "bytes": 2321,
-      "sha256": "ff748b448680b0f9da049ac72b9410de125595a8a9e1f73759c668a3de7d4e04"
+      "bytes": 2727,
+      "sha256": "c46915ffbf2a6ef5c9ee5761c2169603033a83591595433a26ea83cd44598c0a"
     },
     {
       "path": "courses/adaptive-decision-engine/API.md",
@@ -651,6 +661,1161 @@
       "path": "courses/adaptive-decision-engine/zip.mjs",
       "bytes": 1981,
       "sha256": "9ae0c43720448c4169b2b00f927af46050247c35608aad36143e8ea6db9e9fb6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/NOTICE.md",
+      "bytes": 1074,
+      "sha256": "f6693836eeec275da891f3f74a55571af7a93d96070d9d73335c12fc0e4b677d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/README.md",
+      "bytes": 5725,
+      "sha256": "7a4c2762bf8ff8205afe87749b26b32393ede2597675d4f51940e1c5eed90322"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/.gitignore",
+      "bytes": 25,
+      "sha256": "88fb46e2962f11707a8db01675a9460715ecbe2e6585c681b8433cbbaec6e64f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/README.md",
+      "bytes": 7621,
+      "sha256": "1e57a7f8773acc521fc6ce87057069bcd24464ccd873502b10b4034f406020dd"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/admission.mjs",
+      "bytes": 594,
+      "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/adequate-scenario.mjs",
+      "bytes": 1699,
+      "sha256": "b8a85de7b12029854e6d5051c0a43aae2535756b01903d27957c08209e48bb43"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/component-fixtures.mjs",
+      "bytes": 2173,
+      "sha256": "52b2870c077d63a9993dadf9b9a9afdecf9c4587348871d4c0ee617f82b1ec6d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/variants.mjs",
+      "bytes": 3038,
+      "sha256": "f24d90fb44f92bf5970775b912fce94ee434944553242f2135533e1447066fe0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/author/order/worker.mjs",
+      "bytes": 3296,
+      "sha256": "4662b102a855178b6ae4c9202ed0d43e9e21878060adf9cb87bc7afe7fa71a8a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/LEARNER.md",
+      "bytes": 15617,
+      "sha256": "540a022335fd5f9d5de197bd2bfb3543613811100514eb6e3f8715d08cee3622"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/README.md",
+      "bytes": 8141,
+      "sha256": "5126637f67b33054002f4dad80b0376fc43202374dc66fa2f537fad994290f2c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/author-cold-clone-scenario.mjs",
+      "bytes": 3979,
+      "sha256": "9df6b351fd044b2d548dc3f9e18a5bea510dd0c1c911edc2b1f408fd1e854af4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/author-scenario.mjs",
+      "bytes": 3549,
+      "sha256": "6f8512e1daa90abd6f46314cba2d46b4b02432f1ccf5cdb6a53a59e35a66fadb"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/client.mjs",
+      "bytes": 2148,
+      "sha256": "db9c4ce199e073520ab9155e199e55948b1663bcab899a6fa47871c5342d242a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/controls.mjs",
+      "bytes": 8832,
+      "sha256": "c657b6f364eb04780f91c31d823b3a1f5a74c41127f03ecc9a343bce406a83f5"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/feedback.mjs",
+      "bytes": 8656,
+      "sha256": "069c68e183a4595c8cd9649d81a86b9ebc9777cd5b82b400619637dde1d80c7e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/fixtures.mjs",
+      "bytes": 12282,
+      "sha256": "06a0809fe9d8b1ca379e85b28842ed74ad268d49aaeb016fd7e6090776316eff"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/policy.mjs",
+      "bytes": 1461,
+      "sha256": "9f71bb32e15d820fe56a5c505e43977b42859bf241218e0eca87799bf9cd9aef"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/prompt.json",
+      "bytes": 5284,
+      "sha256": "24e46d0e882b0a698ee35292648c3d2e22791108925f4fb9279db87c5081f535"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/response-template.md",
+      "bytes": 2415,
+      "sha256": "9ba3bc7ec09bd111c206eaf99ab15f3130463249515170c365fcfff90417145d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/scenario-template.mjs",
+      "bytes": 459,
+      "sha256": "fc533a79129ea007fbae05f93520a1bf48b1216c7b2f4aece9cced52abfc5425"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/scenario-worker.mjs",
+      "bytes": 3779,
+      "sha256": "e389de37dff8c793e4681d92f5ed1b5708d57e60715581a092c4d03644f15516"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/server.mjs",
+      "bytes": 5240,
+      "sha256": "69afcd392dcc2682adf889da422efc6af991dd2a4c3850162f8eb6e710ddbf25"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/state.mjs",
+      "bytes": 447,
+      "sha256": "8fd07b21ec592d1baaa6a1df7825c6f8155e5c939e4ba3cfd17d982e1e542bbd"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/capstone/template.mjs",
+      "bytes": 272,
+      "sha256": "1c5d3e76ef9af4e5bfd5a735d57dd4b570a1081aadcda5ae1f72bde9c30eb60e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/adversarial.mjs",
+      "bytes": 2488,
+      "sha256": "14a92e20d6078b6d0425e5bbb1508a06a9dce89e7534ab6f7e2cb8988ae2b915"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/honest.mjs",
+      "bytes": 483,
+      "sha256": "6825a9b98fd85981cec9821f9d7a1bf5b94a2a4c3631945fe3360a735116fda9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/http-client.mjs",
+      "bytes": 2907,
+      "sha256": "397f9789711a1830ee84f5c7bb109f5fe0c936f18a553dee7af0f6a93431ae5f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/live.mjs",
+      "bytes": 2774,
+      "sha256": "1c81377baf3e9626d6fc1083bc7acc053ac5185ea1b6c36b4f4cd34ef381265b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/scenarios.mjs",
+      "bytes": 3824,
+      "sha256": "008888c56d0b52177e1eb9ea35b8f5e33c3eae26a7ef438c6accf047478c4f94"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clients/schedules.mjs",
+      "bytes": 11716,
+      "sha256": "f6f4a22c7ad6aaa0e2e02d6d5ab54dc21b10d2ec717bc5b35795448a5ad453d7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/clock.mjs",
+      "bytes": 1068,
+      "sha256": "3eb07795998ff3ba9557cfc64ea58aabf0ecde7103a64b9bc560aff2645c1acb"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/defense.mjs",
+      "bytes": 2094,
+      "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/engine.mjs",
+      "bytes": 8739,
+      "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/LEARNER.md",
+      "bytes": 16075,
+      "sha256": "20b21f4de676bbbf2fe4f0a5b72e2277c9d6bfe694d0af8c1fc195961a8fbe03"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/README.md",
+      "bytes": 10287,
+      "sha256": "b886f5fa911980b4546f61f98b49a57cf44d1a912eaf2d134680176889d3b438"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/controls.mjs",
+      "bytes": 4466,
+      "sha256": "e144486d9dc445bf6e32b37425e320f2be32824be6e5739bcf59b82f7950b65a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/corpus.mjs",
+      "bytes": 10352,
+      "sha256": "3258fc1d66ac8005ceae2b7dd9f038d8c2769991b4473e0240883535ae011df4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/custody.mjs",
+      "bytes": 14300,
+      "sha256": "905ad02ec26c6f9671a1e7c78eebe196fcb9647cfebd050cdfc016c53c1b1212"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/feedback.mjs",
+      "bytes": 8808,
+      "sha256": "f22d2a6d5b5d09998137b7f392ba76ff3042bbca530fb87847b04369ac5bf71d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/fixtures.mjs",
+      "bytes": 7005,
+      "sha256": "7db6a5dfeaec325ac36da43d3c3a8cab46d21c4e5ad52f0386aa87760cf59206"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/policy.mjs",
+      "bytes": 1434,
+      "sha256": "b7633666127c95ac68894223ccde1542c40a3fa2cee4f151291d872459152b1d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/prompt.json",
+      "bytes": 3599,
+      "sha256": "24821d2485a2426878b524f47f7a1e916853462bda547493e51b703186ddc7b3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/report.mjs",
+      "bytes": 4690,
+      "sha256": "f0b6b6f535fc5186799916b3917bd91009095dae84390ff7a666038c72bf30c9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/response-template.md",
+      "bytes": 3609,
+      "sha256": "b87c7ef89cf2242e1ceeb7232002fb8299d56d3d9c399cf072facdaed7ff7c87"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/evaluation/template.mjs",
+      "bytes": 604,
+      "sha256": "5462815047fef87f704629926cb24bace2661d0b0a8f05a67ea783336678ea2e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/LEARNER.md",
+      "bytes": 13467,
+      "sha256": "c75203c2427ed4e5228b33c42ac467ce645d3ad6ad38dc27941d439f035b74fc"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/controls.mjs",
+      "bytes": 4759,
+      "sha256": "6a73bb5cf962484ba1ca898bf983e9f8c1b039abe3f1b81154edaf718aab7822"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/feedback.mjs",
+      "bytes": 8092,
+      "sha256": "029a05dde9d83e3279c18315abc3ec52c16a23177206d6860e1222d8f7217441"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/fixtures.mjs",
+      "bytes": 8017,
+      "sha256": "28222876dae0bf258958fbc3d25e0ab050fe422801d8461bcd63ebb57b35aadd"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/package.mjs",
+      "bytes": 5519,
+      "sha256": "9ec48cede2fa43ed0e4e2d36950deb72b5113af855cbf515a30103076709e72e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/policy.mjs",
+      "bytes": 2451,
+      "sha256": "d742ee627c94ff0f7324a39202a785b0ea407766fc33e20b1aa36a9d8421a578"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/prompt.json",
+      "bytes": 3053,
+      "sha256": "8f39483fd38dcdefa561926553b7ee9fc4ba0e53180e9b0b8d45684a8b7b547a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/response-template.md",
+      "bytes": 2047,
+      "sha256": "4b7467e44fb1d85722d9ac30a4e7b375ed37a994c7d9aafb35d9f66da7f6d3a3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/integrity/template.mjs",
+      "bytes": 434,
+      "sha256": "4314c4521ea1087eebf1cf2f8958508468085a300b4708a739ab87df6ab3a7f0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/LEARNER.md",
+      "bytes": 9797,
+      "sha256": "8166467ebfa88c6d9ef2803b004f656305907edcf0d76807ce0238b65e98235c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/check.mjs",
+      "bytes": 17724,
+      "sha256": "b54b2cd3ee162680af1dfe2560adafcb1b836fb70ac27602fa09c551bc9b939f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/README.md",
+      "bytes": 6833,
+      "sha256": "c84a29e20ca7a943a18ff86934b8751ebc9352eb4c452325028a16ed60f08ee8"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/check.mjs",
+      "bytes": 5030,
+      "sha256": "5982fb01f4b3ec6c5d92def0b5da00e8fe9df389ef8caa180790ad7bf97365b1"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/grade.mjs",
+      "bytes": 14504,
+      "sha256": "5ff7ec217841cad2fa4db29194c3aa08200c3e8818af82a0a5af4415a52e04c6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/lock.mjs",
+      "bytes": 4989,
+      "sha256": "9ecd7ef05268fded421ce36338fcf2539e0c88555d3414b7465bbf3c4d3814f6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/predictions.mjs",
+      "bytes": 8793,
+      "sha256": "2afe67c74107ca38502670a198a90ee47637a38673a64be09c67081c0e68486e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/prepare.mjs",
+      "bytes": 4777,
+      "sha256": "d509ead63786542a6ec34f9f1e0dd6aecdf334af701da73b9e15243a124709eb"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/recover.mjs",
+      "bytes": 4435,
+      "sha256": "05eabdf419a2e9b6b472946405dbceb40a5798eafb035bdfb66c141c9f54f712"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/reference.json",
+      "bytes": 20811,
+      "sha256": "85aa9fb3a35d1806556803fbf8e3f6ec4bd8e11b9934db55025d59cb3dde6893"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/registry.mjs",
+      "bytes": 915,
+      "sha256": "e7d1cd626526767c5f39d0cbf8185753a06891aac066626bdcdabfc963bcb34e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/seal.mjs",
+      "bytes": 883,
+      "sha256": "f41f5dcb3b0fb854bd47590c1933e60e3ac3e444e8d0b4204b2f169a91bf1955"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/snapshot.mjs",
+      "bytes": 2024,
+      "sha256": "87bdc631a03387d64d6fe0b1fb002e290253327dc41be25cca33c38b9802ce5c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/trust.mjs",
+      "bytes": 7330,
+      "sha256": "b809ed61dbed8ac7b85effc341ff55e46866f8bc3788fa9adfc8db7662752901"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/core/worker.mjs",
+      "bytes": 3232,
+      "sha256": "182ff65f92a8391984ea508ca6382ec0a97d3f4d9c6f1cf101d30e98e58b03a1"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/feedback.mjs",
+      "bytes": 4547,
+      "sha256": "41132e7a68394566a0fd31421eaf6ab93af95b6c4642d7c7eee39826da300ed8"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/LEARNER.md",
+      "bytes": 13771,
+      "sha256": "c005dccaba907ff4e3032bf7270f2cbade1bafd31a331fe4366ee2050b7972ad"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/admission-template.mjs",
+      "bytes": 485,
+      "sha256": "d9d299563eb56971869d4056c749ff340e9ac8d719790ea8a077cdd239852a22"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/check.mjs",
+      "bytes": 2417,
+      "sha256": "17bdcea86ece6004f7c6e85855e40cff5b37dda269afe3558b0b87bb00ed1125"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/feedback.mjs",
+      "bytes": 6052,
+      "sha256": "9a4fcc5cfd387920d328d51570196ef4bae635e4dd3ae4f2f2f9d02516da6985"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/grade.mjs",
+      "bytes": 13588,
+      "sha256": "b685b31027751f9da32f075eb07a64b552895f4472fecb8e901a770445317d6d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/prepare.mjs",
+      "bytes": 3220,
+      "sha256": "eacb68f374f07c7285ab82d92420326e7341a17889f42d21b284d0e7e160e73b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/prompt.json",
+      "bytes": 2285,
+      "sha256": "7c4a6893d0eb0a2a6c68db6debd8828a4ffe21b99c12137a40d6ec4e79889466"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/reference.json",
+      "bytes": 6752,
+      "sha256": "92a96b44ef85067fd6c4c34f1676cb5ee376d7d847363950f69ecf4c7a3439c5"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/response-template.md",
+      "bytes": 1716,
+      "sha256": "35c90f02095e294e8f4e42bd50d9abbe36400c16bfb442a73395fd64f344a72c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/scenario-template.mjs",
+      "bytes": 468,
+      "sha256": "12959ee73758002c70733d656c70fd86254a62c16fd1167a4e742f26ebb30e98"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/seal.mjs",
+      "bytes": 2198,
+      "sha256": "ab5a5ffb72b76869fdba034b5af1643550f8abbcc8525c9ede2fb0665c0decea"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/order/seeds.json",
+      "bytes": 28,
+      "sha256": "ed1e74d438bd777134fd3c7bb0e0e73458512ca5ba90743530bb21082b96bc7f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/prepare.mjs",
+      "bytes": 5517,
+      "sha256": "0a4db038c48860abf7d5e4de3b10a0e81bc1773d2fdbe1855cf550c35b28fdcd"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/prompt.json",
+      "bytes": 1133,
+      "sha256": "ae75db658363d2cc3be71333056efc8cad7a04d31cb96179b0cbdfc71b20fd93"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/reference-snapshot.mjs",
+      "bytes": 1987,
+      "sha256": "44760aed36f44ce7b624f638e5c931b87c54dc64ab17d8003d82b5e738937219"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/reference.json",
+      "bytes": 196,
+      "sha256": "712e451c62e8bab8c668153b733cd6616fbda6c18182d6fb96e7f783ee6e53dc"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/replay.mjs",
+      "bytes": 431,
+      "sha256": "38651d55370ce77c1a0592f859289e21d59d25cbbcb39dd794ce66f3705d284f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/response-template.md",
+      "bytes": 963,
+      "sha256": "fec516334d3e639d74e308c6367a42e35a0d04c290f27cb6def9814fcbe68220"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/spatial-reporter.mjs",
+      "bytes": 1475,
+      "sha256": "1d0cc532e8b04f03d366c65ea50bfcb77863ad45e8e85a43851424707a41658c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/lab/trust.mjs",
+      "bytes": 3482,
+      "sha256": "a8b8b96c786e4b289bec73b5176f46b19a237b28f8352f2f6641986aa8d42ce9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/README.md",
+      "bytes": 5725,
+      "sha256": "5c41e5ad84af53582bf51e40f260e503b3d884478da3b38ee6824e77b50ea6aa"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/capstone-receipts.md",
+      "bytes": 7327,
+      "sha256": "b3e00c96927f5574dbc53c1b1520a2ea3339d530420864a83888de4f6aee79dc"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/http-tests.md",
+      "bytes": 7303,
+      "sha256": "c16ba19734a6d07946c2f7745c74cf4d31c89d2886642797cd465d9228def17b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning-support/timing-predictor.md",
+      "bytes": 6524,
+      "sha256": "b2c8f9b9efd958a6888adc8f98b9eecfa632315ffd384865f9c9b4a9d9bf100e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/grade.mjs",
+      "bytes": 2552,
+      "sha256": "8157dfb720948600beba70b62872f907cb57ea3b9f859157ff5f573a9be1ee9c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/runtime.mjs",
+      "bytes": 13443,
+      "sha256": "8097e8351b17c0f3527aed3e5bed2f4833fea03885ac74ac9391c48e82bd7af7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/service.mjs",
+      "bytes": 8269,
+      "sha256": "00afce3ff840486caa3731c2cdea2c9e20838fe1faca9af1f0e80449a36d1d0a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/capstone.mjs",
+      "bytes": 19400,
+      "sha256": "080f83d2e51b3d86e7ffc9e3072f3a68591182b4db51e2551e470ab250d8faa4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/evaluation.mjs",
+      "bytes": 13727,
+      "sha256": "5c16474b77103862f87d14cb00023e533654d0a7d26c63c98966d7ae6a67e12a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/integrity.mjs",
+      "bytes": 12227,
+      "sha256": "f9bd7079883496ae492a7aa7be33fdd75a9ff459819565fdeda4a32e4f79f961"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/order.mjs",
+      "bytes": 14677,
+      "sha256": "4eccee734f71e9d17efe382fb4e75c4b7f6be34a16fcf468494098347f91d4ba"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/recovery.mjs",
+      "bytes": 13562,
+      "sha256": "fcdf512330d2057a014ea624354cee1e9609fea970c6623a424d4fc300db7218"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/retention.mjs",
+      "bytes": 11622,
+      "sha256": "46c8f1b28896aa7ca31a8b6ff5603e13d6a0c38ad5697756ce2ec0ae36b88431"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/spatial.mjs",
+      "bytes": 15582,
+      "sha256": "597b8224df73ac612ed2630cb2a991e702a718b18d84af95b2d808da30ed5004"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/telemetry.mjs",
+      "bytes": 11633,
+      "sha256": "e9e64cff66c3900dbbd8a57e1e1f6dbb6de5007c98e558c0d1bb5f9c1c6c1cec"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/testing.mjs",
+      "bytes": 21497,
+      "sha256": "afb5a82e490b1710f87f08f27462857ec9e0b6de695307f0d63e155c24cd7f43"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/learning/units/timing.mjs",
+      "bytes": 15508,
+      "sha256": "c4db1525db5e63d71ebc69afbbfda3816cd7c621e297d5dac26620a97826d1f0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/package-lock.json",
+      "bytes": 689,
+      "sha256": "bc10b52e0b55271bb90ed86b8c7446985cf9c6aee074b0bf2c573bb2416d0788"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/package.json",
+      "bytes": 2503,
+      "sha256": "4524e91e0a2ac24f3a6fb34ceccda3d5a424c45d8f6c85d2a86ea8e16cf91b5c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/protocol.mjs",
+      "bytes": 1128,
+      "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/analysis.css",
+      "bytes": 967,
+      "sha256": "24a3da521494bb754e42083005774e3084312ea34f54af188e00b281c2e30f47"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/analysis.html",
+      "bytes": 11176,
+      "sha256": "738bdcfca82ec91216d18999c2ecdd95ea87bfd60701d51a62bd562e99465da0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/analysis.js",
+      "bytes": 11266,
+      "sha256": "1194948e1765b78d0765b4c1b7df623e2d6f81c4a6160e6c65136cdf1bd9adfe"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/app.js",
+      "bytes": 9343,
+      "sha256": "b2d09ab26632517875b74920feeaae89b711db5a714aaa4e7cd3b82e0e973ba9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/completion.html",
+      "bytes": 9535,
+      "sha256": "89c08223a66a5da79ab3a7690cb93a8569577d152cd3192ffe8eb2d6680d2b45"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/completion.js",
+      "bytes": 5620,
+      "sha256": "4b1066556337667b13cc85787b316a49b51f93bdb4477aa9200e90798645eaf4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/course.html",
+      "bytes": 7201,
+      "sha256": "f4a73106435f4396f5341aeaef61b354c1be4dae43f499f66bf3754610432fc3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/evidence.css",
+      "bytes": 2408,
+      "sha256": "96c3990ec6902fc6feac36dcb06ecf776a564f808498516df772607b2c88db67"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/evidence.html",
+      "bytes": 11559,
+      "sha256": "802fbf4bc0b1e59d48ec8a7c7a0611d61cc3adf68e0e1e13fdb7f960034808d1"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/evidence.js",
+      "bytes": 4802,
+      "sha256": "425ad86d215da8dd9a2e39ea82c3ec0d205775c03bb4cb2385eaeabf303d24a6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/index.html",
+      "bytes": 7509,
+      "sha256": "fe923643d13a16630129953a1a3dce148122852ab2b5ad364241767663babdab"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/learn.css",
+      "bytes": 6369,
+      "sha256": "0400da43b86d5eb72858f2a8d15ec55753e23594d8fe9b42f659c7ee8b22eae6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/learn.html",
+      "bytes": 2189,
+      "sha256": "794a158ca264db277ff070ac946489c348df860008d08eb6ef8a4a5e16f48928"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/learn.js",
+      "bytes": 17298,
+      "sha256": "2ed7cd43daac9b7e21c92ca7ad585affc94ae33006f97d3d0e466796ce74b8d9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/order.css",
+      "bytes": 2457,
+      "sha256": "372a943d6d89151887ddc33f4114f78279fc4f51e79fbedc47ebfed44a7c7836"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/order.html",
+      "bytes": 9749,
+      "sha256": "dd091f3cee302791338980875aa8320a6c8644a620525f062f4615d317493542"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/prediction-notebook.css",
+      "bytes": 1094,
+      "sha256": "8a5c8c8d355f1c4753e93f0b237368530896817071141c2f92019e54ee8df91c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/prediction-notebook.js",
+      "bytes": 6515,
+      "sha256": "03eb1a10bb264c8cf6b1e1ff08ed7fb1bd9c234e30e8644e086742765a01c4e0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/samples/analysis-cases.json",
+      "bytes": 19058,
+      "sha256": "3a71a9b3618601990d0b0aba1e8643e78f2b1c5a45dc250e428e3e42d5700056"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/samples/completion-cases.json",
+      "bytes": 82550,
+      "sha256": "fdbaa2adac1ff74802c76a0c5cc16565b63ace9f2b1bae8c711728d32441fda4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/samples/evidence-cases.json",
+      "bytes": 175184,
+      "sha256": "ab4c002172001c8edebfc69b50f8e60304a10091573c407159cd00ef067d5c22"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/sources.html",
+      "bytes": 4292,
+      "sha256": "4e46c12c765a7c7a6f99055cc8ddd947f01e1b95d984723d9731eb35ff24072e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/public/style.css",
+      "bytes": 8218,
+      "sha256": "3e2fea02fb6a5325d6ef669dd13edcbd97f768b04c83f8465f5bbc541fcf5deb"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/LEARNER.md",
+      "bytes": 14494,
+      "sha256": "76926fead50094689beec03e2b663b461929491d0027fd15fb95667402651205"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/README.md",
+      "bytes": 8352,
+      "sha256": "51e7488a33a927869b84147760bf2b4f04b0876e43868c66aad69cf31ed7b8d9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/controls.mjs",
+      "bytes": 5158,
+      "sha256": "6930d91573936467ed2de99cf62791ac2173c6a944ae2f63012d46d0cc973a8b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/feedback.mjs",
+      "bytes": 9486,
+      "sha256": "28c51eebaecae9f09fbf0c5721e56b1d9790a1798f1554e89ada91394adfcfe5"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/fixtures.mjs",
+      "bytes": 7314,
+      "sha256": "bfa439f4a840b347fa750cff88695cc92a4f8f6e1fc65d8bcef60c27673b30bb"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/policy.mjs",
+      "bytes": 1151,
+      "sha256": "d327456757fa87d06b44788f9e32045fba88908b3d615344a1c1b6dfad8eba47"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/prompt.json",
+      "bytes": 3513,
+      "sha256": "99acf0d89a0b28ef7e5a01141425a56e0be2b2a3c3886e55cbb88454e8ad56d0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/response-template.md",
+      "bytes": 3098,
+      "sha256": "2d307a2fb3ddfd62f4f35367a04a6b66b11798adbc9704b6fad8ee27dbd8bf22"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/runtime.mjs",
+      "bytes": 11547,
+      "sha256": "0fe185b0ee595dc1ff505e929a04a4184a446eba82304a8dc00da8890feb5150"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/recovery/template.mjs",
+      "bytes": 437,
+      "sha256": "5d05ea139541998d16f0daac5e8e46ec8f3b2902d4ac8b2d00b00bb6f2ea1175"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/LEARNER.md",
+      "bytes": 13895,
+      "sha256": "7f4183167f5cdd05f50947de07efb01d18af78d3e04f212a9739f8e4bd1e6b30"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/README.md",
+      "bytes": 7022,
+      "sha256": "e5bf8024acb7fe294997e89881d725bbf3b46be8d404355f2cb8cf327afca379"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/controls.mjs",
+      "bytes": 3021,
+      "sha256": "ef167cbd14b8c27c1d14f1823e6c259ae6fd8e367b3d2a50c79b6f1d6d851ff7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/feedback.mjs",
+      "bytes": 6579,
+      "sha256": "7ab551e5b2220fda2eb1bdc0e15bfc3ff78d34d44f401f1449d3c4ba86cbc125"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/fixtures.mjs",
+      "bytes": 5155,
+      "sha256": "7bcc3b4821dc62d27db22da0abbaea925007541ec2103f07f3b06ed96d0496c8"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/measure.mjs",
+      "bytes": 5028,
+      "sha256": "2abbc8e56dc3e33c3be1c9ddafe8cb0f71696b1cba3d0db14c3824ca09e558fe"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/policy.mjs",
+      "bytes": 375,
+      "sha256": "d4402c2d5a089c73555c8c725f33077e5cbea2cdb7457f344384802dab49bc1e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/prompt.json",
+      "bytes": 3120,
+      "sha256": "65d76946ba5e4213f9edd5d03cb2aa3d60908234c174d0f4c4ea0470f28e3414"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/response-template.md",
+      "bytes": 3028,
+      "sha256": "541c27e64c254faa13ae0b2b0e358fbeae6a7669c44c45a2f3b2c3165fcca6af"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/store.mjs",
+      "bytes": 6746,
+      "sha256": "995b2a4f3458ef4757ee7bc3cece1db577838f07ddc8dc77f2b7534d1b95ae92"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/retention/template.mjs",
+      "bytes": 433,
+      "sha256": "1dc366d1dde954b23d385ccb9647c1173662043f23586c86e84ba0e622ca0764"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/server.mjs",
+      "bytes": 14473,
+      "sha256": "fe74bae9db89d64ca1aad69ec7b2cd7e08edd33cf38f26d0a825fdc4c2363e11"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/LEARNER.md",
+      "bytes": 11344,
+      "sha256": "7c3683ba8d8265f01735aad9c3121d996be28937b66b2000817c00fe7d372443"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/README.md",
+      "bytes": 4163,
+      "sha256": "03e42c906553ab7d47342f27de5d18fdbf2d72184a99a22479b5640fdb6c8d4b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/controls.mjs",
+      "bytes": 3953,
+      "sha256": "c3e3c514cb45f2198f93f228490887a66af904a151b0418ee94ab7048653cc81"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/feedback.mjs",
+      "bytes": 6744,
+      "sha256": "09589f55729596185aa2d405dfc0fe534833a3cb3cc2ab1dd34ce3a8b46c7624"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/fixtures.mjs",
+      "bytes": 7203,
+      "sha256": "86da50a33648238868de5091a074cea758100bdbbdf0b16aea0c20cebfb3bbd2"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/policy.mjs",
+      "bytes": 1889,
+      "sha256": "543d9e9bbd21f5e4ab82c25c4f3505711ce0cd1c2f3756d9220fc261ce9077e8"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/prompt.json",
+      "bytes": 2941,
+      "sha256": "cea3d76cf14658e1db73d5907f71bda744c0f7494204cfe5b41d245eebdf35c4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/response-template.md",
+      "bytes": 1651,
+      "sha256": "6757c3e458bbc923921308e2d46462f9899e273a885d1051e840b0bbbee851cf"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/runtime.mjs",
+      "bytes": 9685,
+      "sha256": "d61ed1ef00b98389939da665b750c5f55503c1636507521e84a4a986d873b21c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/telemetry/template.mjs",
+      "bytes": 523,
+      "sha256": "9e6c359b4d8a8b4392a30b4c4d3540af05a84457556f792352858c06ffca37ff"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/README.md",
+      "bytes": 2628,
+      "sha256": "6cdd2224f6db3c917fa0a8e722411a912cbda5ea641b0bdee624c6f2e59a0624"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/accessibility-browser.mjs",
+      "bytes": 17708,
+      "sha256": "02cd30e49599f30bb7eaaca577b51197c7c29ce9ec0f033233e70828c1527028"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/admission.test.mjs",
+      "bytes": 2502,
+      "sha256": "998f208108fdd16dc736f865e8e33092d393f572d2f58309bb00adb093d90701"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/analysis-browser.mjs",
+      "bytes": 2586,
+      "sha256": "359190c006724a3436920a4d0d7683f79c4e2979b25c9f87e54f1a9df194faac"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/analysis-integration.test.mjs",
+      "bytes": 7043,
+      "sha256": "f3ac45aa33c8521b7cdaddb73c7c8da070ab4152f60773b0d47955562c984148"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/browser.mjs",
+      "bytes": 8183,
+      "sha256": "c8746d69c24883e7a51915951dd3508febbd45743e0d596f9f96129bea87e748"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/capstone.test.mjs",
+      "bytes": 26558,
+      "sha256": "56c78925049d7c619e623243216231596c9c918fbfe2745f8f07bd89cf8f770d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/clock.test.mjs",
+      "bytes": 2074,
+      "sha256": "4960b1d1dc853b7631263932793a868525e62fa0f6b702924110f8a5156d5253"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/completion-browser.mjs",
+      "bytes": 2908,
+      "sha256": "baaabb5bca9ee90433791c4a0d3de8b5702504933a7293381229e6ba3bcc456e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/completion-integration.test.mjs",
+      "bytes": 3915,
+      "sha256": "fa8439b3afdac32da22ddf85b439e2045d5908f9596603709505ae8bd7e83292"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/core-lab.test.mjs",
+      "bytes": 36251,
+      "sha256": "73b86b8ba9e6f6c81e53f1c9120ab3f06622ac7f521fd01bdf9f5c029952ddc1"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/core-prediction-feedback.test.mjs",
+      "bytes": 14657,
+      "sha256": "a4c0a2e818f3d2a1fd0dc519b7874e0144e7c67224a5de9bd315143edab53617"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/e2e.test.mjs",
+      "bytes": 22053,
+      "sha256": "bc61b18a836475ef627a573cb13173ac71016a5483aeb45c258e7c720832334f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/engine.test.mjs",
+      "bytes": 20109,
+      "sha256": "5572a9f6c37ed5db0d825ce8a0785f847a8ba2878cafdfb33a32e06d2b20b523"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/evaluation-custody.test.mjs",
+      "bytes": 12849,
+      "sha256": "ad6cc0821916171c02148dd083cc10cf401f3d16131d86910b2ef97c19f7426f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/evaluation.test.mjs",
+      "bytes": 17149,
+      "sha256": "9a36537efa90ca0ac5747e0261a6d09a2893c6d399e1ef8e5b576f7df2a2449e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/evidence-integration.test.mjs",
+      "bytes": 5793,
+      "sha256": "ea3a872b336bb9f0fbad5284638b70c9527c6d436e6e20a79cf4f554e80701b3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/harness.mjs",
+      "bytes": 4529,
+      "sha256": "674bc1b6db28f621b03bb59b2cba91245c6cad93fdaf46bce57122470dc31c3c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/integrity.test.mjs",
+      "bytes": 11788,
+      "sha256": "4578d050d25d7723ea38bfad55631c04ed379ef1316a2e33aa97b73c37bde167"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/lab-workflow.test.mjs",
+      "bytes": 4919,
+      "sha256": "dd1d6ddf4057c1dd3e1ecc4d5bb30d73ecbd912ed37e19942e5b48aa1be668d7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-browser.mjs",
+      "bytes": 7270,
+      "sha256": "acb13ae85bf73b3ccf04fd8c065867de6289dfc060639738846784cfb7d0ff9c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-course-browser.mjs",
+      "bytes": 5454,
+      "sha256": "2661afe66c6c7752a65ba2727daf1d1dc4160bc2d63d45d6f2f52bd0e86fcba9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-early.test.mjs",
+      "bytes": 25637,
+      "sha256": "0d4e4383c0d31efa16418f6f80e09ec4de0403c0b3bf3bb65c72e75b3084e1e6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-fixtures.mjs",
+      "bytes": 1733,
+      "sha256": "082a930656241392cbdcad332d00f133d923e5ed3fb88777b7b8f5cd781b3917"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-late.test.mjs",
+      "bytes": 23528,
+      "sha256": "bd3a0408c9867abd20bfbf141cde4bcba866ca64ff1b7725e463f53c96b6880e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/learning-runtime.test.mjs",
+      "bytes": 15412,
+      "sha256": "1e8ce6cb4ad7241d54aa5a6877dcd1f03300bd0e0cf052438fbaa98d712a5518"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/mutant-runner.test.mjs",
+      "bytes": 1075,
+      "sha256": "f40b61a2666fad4e3be48721f53f47baf9ce636d69ad1e7240208abd8b3b8f43"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/mutants.mjs",
+      "bytes": 1980,
+      "sha256": "b73f186536644ee899f1c2c521801f4211323edd5205cc7100a1f8b0f811214e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/order-lab.test.mjs",
+      "bytes": 15474,
+      "sha256": "28774f046a3d6aabdc822234a4c7b76787f06629796de7d9b2a2b3ffeca6c3d0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/prediction-browser.mjs",
+      "bytes": 7470,
+      "sha256": "aa035735ad724abc0acbf3eb981bf31ea75d210229d71f640d0b07169bc34f36"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/prediction-notebook.test.mjs",
+      "bytes": 4008,
+      "sha256": "365084294d32e2bdac7d27c4ca36a812db52e6e0d45b744b404f42ad1f359f40"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/preparation-continuity.test.mjs",
+      "bytes": 10259,
+      "sha256": "176f7671d9b31d8deba60ec6d87d977cc08d622d50d96d8212c2d96b696eab8c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/preparation.test.mjs",
+      "bytes": 9791,
+      "sha256": "5c9583de1c4a5e186822b65838da15c452070f0d2d964983fbe0cdd793f50a9a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/proximity.test.mjs",
+      "bytes": 5300,
+      "sha256": "368517c96fe100bd361557077230960065005613047fe9ba8875776e958ac6ba"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/recovery.test.mjs",
+      "bytes": 10326,
+      "sha256": "44ce2340a9608247ea9a5001cb6c6cedf7beaf0cb1e8dcb510b37be963aea803"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/retention.test.mjs",
+      "bytes": 16157,
+      "sha256": "c5f622b3b7447695fc9001858db207b1e1fb29f529ea55c37f1c627e6c04d7a9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/schedules.test.mjs",
+      "bytes": 1049,
+      "sha256": "de5bc3c641e25a75e6def53a0a12948716f0dd3c542ae65d0b304af29134b861"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/source-prediction-flow.test.mjs",
+      "bytes": 11249,
+      "sha256": "1dd499c23be48781e91e9bb1c82fc491a6be8c177246382ad8d9fd4c9780fd8c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/teaching-examples.test.mjs",
+      "bytes": 1203,
+      "sha256": "f8712887bcf1c272cd047ee0c310d13874d449b4c6c419618181b3ebc023fe52"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/telemetry.test.mjs",
+      "bytes": 16448,
+      "sha256": "54fca23bd20c22225f9ad29493a43fc90ce47476e918fb936e528e4cefbc7c52"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tests/timing.test.mjs",
+      "bytes": 6730,
+      "sha256": "7accb4c8ede435a694432528fdf53ac94f048a56f49969928eb0ac50b42c9c4d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/LEARNER.md",
+      "bytes": 12004,
+      "sha256": "e0342e0998fddcd968230050277c31bcb701b6d68078e4df8a5e98aae58c19b2"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/README.md",
+      "bytes": 2245,
+      "sha256": "d1911c7e861caa4969725dbadfed4007dc894358f7a4a07957d77d80c16afd81"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/controls.mjs",
+      "bytes": 2518,
+      "sha256": "599b6a8b86c9154d79468367194ad0ff8e2c644cf01799bac7e366d07b5dfb7c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/feedback.mjs",
+      "bytes": 7008,
+      "sha256": "cbed6846e4df8d1807c7a981de62204afb2fbe4a03f9a214ec00a3d19eedd8ad"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/fixtures.mjs",
+      "bytes": 2136,
+      "sha256": "69868c960a6d5e1a3c5eb97999bdb4b5d5af20716cc7ebf4fbdb15c1ef9a8da3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/policy.mjs",
+      "bytes": 3047,
+      "sha256": "c893c47895337bdd714962a3b87bad8f9fb068080d36f414cdf71a9ca59bdebe"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/prompt.json",
+      "bytes": 2960,
+      "sha256": "27c71465bdbe1e36cd35731c843c20ac643959352151dd3e560f39cb2d87eac7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/response-template.md",
+      "bytes": 1872,
+      "sha256": "82540e43db0aff43a21877babc5e1c1494336de722b43c667062f282b0ff43e4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/runtime.mjs",
+      "bytes": 7730,
+      "sha256": "8eceeff9884df41c99a95e35d77289bb0513dd3aa86ab5c830c7f7860c66027b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/timing/template.mjs",
+      "bytes": 323,
+      "sha256": "6ba2b3d6b6678d9e2f1b3910139a420299f7bf7f9a616ece071016ec63c0d779"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/analysis-cli.mjs",
+      "bytes": 5649,
+      "sha256": "c82756fd36a0c014cba3ed6b68160f68c7b0c8a4a839ece1990bf51a153d7ff7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/approve-runtime.mjs",
+      "bytes": 917,
+      "sha256": "e73c8f3322db8ee913f6f45089c478851f2060fe3b315f0892c76ad115dfe510"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/audit-learning.mjs",
+      "bytes": 5271,
+      "sha256": "49874e93678b489b2c8e79de4eaa32d47351e09b7800958cdd9f672d834a41b6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/build-analysis-examples.mjs",
+      "bytes": 1889,
+      "sha256": "96b5097b9ff5c6826ee74e418876b4ca400af6e00c4ce1f4e8ecd4ac26f939d8"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/build-completion-examples.mjs",
+      "bytes": 1684,
+      "sha256": "4e5d90f0be0e999e6c49759b8d91ebb0209d12e2eb7ab457efb7026c8347df5e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/build-evidence-examples.mjs",
+      "bytes": 3740,
+      "sha256": "cd773927d02b7c63b6e554530372be8b726dc5fbbfebee4ca8c80b2394c62649"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/capture-window.mjs",
+      "bytes": 1193,
+      "sha256": "46a925b8d1b766547267899244f64a3d7341f89aac9f45d6535390bcd817bdb1"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/copy-runtime.mjs",
+      "bytes": 936,
+      "sha256": "03b68ec64ab654a1800ae24506099709cf39ca8108c7e360a3dbda46dd454c97"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/final-cli.mjs",
+      "bytes": 1965,
+      "sha256": "efb5fd180694d31d7e2bd28573353daaba6a8b9866716187716e5cb61544ab67"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/read-json.mjs",
+      "bytes": 1500,
+      "sha256": "2f83d34b811187fa9f0191c53a3167bb3e5ae42280408dc7131770c8d5b6a9b4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/tools/replay-window.mjs",
+      "bytes": 532,
+      "sha256": "92e532dc4183561c9fcac6f8467dce513337930cf12dfb52068847fc724186e6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/trusted/runtime-manifest.json",
+      "bytes": 1521,
+      "sha256": "6cf9165829aa867a38f1c8c931211c86e2c36961b96e8e47fa5d88f6eb915a7c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/courier-lab/verified-server.mjs",
+      "bytes": 2636,
+      "sha256": "610cf8e3ea51d7440c8ff324580fd5aaccc1c1b1ce3f5d81313c6624c12bc498"
+    },
+    {
+      "path": "courses/anti-cheat-engineering/provenance.json",
+      "bytes": 1131,
+      "sha256": "5277f7e0d8a102ead570011bc19371a718fc228f818b340204225483348b0de9"
     },
     {
       "path": "courses/compiler-optimizer/API.md",

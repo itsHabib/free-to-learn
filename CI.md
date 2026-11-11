@@ -58,3 +58,8 @@ naming the rule and lesson, the unedited layers must pass, `play --help` must pr
 usage, and progress wording must not shrink after an edit. Firmware starts with the parser-only checker; its separate staged-checker
 regression verifies that later feedback remains gated until the documented stage.
 These deterministic regressions do not establish full learner completion.
+
+Anti-cheat's contract checks exact packaging, JavaScript syntax, five public
+offline runtime/control suites, sealed M1/order/seven-core workspace preparation
+and blank-prediction refusal. It never starts HTTP/browser listeners and does
+not establish complete learner exercises or capstone success.

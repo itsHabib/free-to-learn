@@ -1,0 +1,7149 @@
+{
+  "kind": "recorded worked examples, not learner submissions",
+  "hashes": {
+    "engine.mjs": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7",
+    "server.mjs": "00ea2aba7f22233b43d9586988f8463dfcd4ecb788c0b5ea141bdbfa975aa350",
+    "telemetry/runtime.mjs": "d61ed1ef00b98389939da665b750c5f55503c1636507521e84a4a986d873b21c",
+    "telemetry/policy.mjs": "543d9e9bbd21f5e4ab82c25c4f3505711ce0cd1c2f3756d9220fc261ce9077e8",
+    "integrity/policy.mjs": "c445750d84503521703d35a0784cac5fb9c3d13cd3212ef45b59e55d1ecaebba"
+  },
+  "packages": {
+    "approved": {
+      "manifest": {
+        "schema": 1,
+        "packageId": "courier-runtime",
+        "release": "courier-runtime-1",
+        "files": [
+          {
+            "path": "admission.mjs",
+            "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+          },
+          {
+            "path": "defense.mjs",
+            "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+          },
+          {
+            "path": "engine.mjs",
+            "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+          },
+          {
+            "path": "protocol.mjs",
+            "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+          }
+        ]
+      },
+      "observed": [
+        {
+          "path": "admission.mjs",
+          "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+        },
+        {
+          "path": "defense.mjs",
+          "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+        },
+        {
+          "path": "engine.mjs",
+          "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+        },
+        {
+          "path": "protocol.mjs",
+          "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+        }
+      ],
+      "supported": [
+        "courier-runtime-1",
+        "courier-runtime-2"
+      ],
+      "result": {
+        "ok": true,
+        "reason": "verified"
+      }
+    },
+    "changed": {
+      "manifest": {
+        "schema": 1,
+        "packageId": "courier-runtime",
+        "release": "courier-runtime-1",
+        "files": [
+          {
+            "path": "admission.mjs",
+            "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+          },
+          {
+            "path": "defense.mjs",
+            "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+          },
+          {
+            "path": "engine.mjs",
+            "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+          },
+          {
+            "path": "protocol.mjs",
+            "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+          }
+        ]
+      },
+      "observed": [
+        {
+          "path": "admission.mjs",
+          "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+        },
+        {
+          "path": "defense.mjs",
+          "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+        },
+        {
+          "path": "engine.mjs",
+          "sha256": "cd46fadfef976adfcb72ce269319d18a67fba75fa3f695e24fd5e56f6fa13343"
+        },
+        {
+          "path": "protocol.mjs",
+          "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+        }
+      ],
+      "supported": [
+        "courier-runtime-1",
+        "courier-runtime-2"
+      ],
+      "result": {
+        "ok": false,
+        "reason": "digest"
+      }
+    },
+    "claim": {
+      "manifest": {
+        "schema": 1,
+        "packageId": "courier-runtime",
+        "release": "courier-runtime-1",
+        "files": [
+          {
+            "path": "admission.mjs",
+            "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+          },
+          {
+            "path": "defense.mjs",
+            "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+          },
+          {
+            "path": "engine.mjs",
+            "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+          },
+          {
+            "path": "protocol.mjs",
+            "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+          }
+        ]
+      },
+      "observed": [
+        {
+          "path": "admission.mjs",
+          "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+        },
+        {
+          "path": "defense.mjs",
+          "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+        },
+        {
+          "path": "engine.mjs",
+          "sha256": "cd46fadfef976adfcb72ce269319d18a67fba75fa3f695e24fd5e56f6fa13343"
+        },
+        {
+          "path": "protocol.mjs",
+          "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+        }
+      ],
+      "supported": [
+        "courier-runtime-1",
+        "courier-runtime-2"
+      ],
+      "result": {
+        "ok": false,
+        "reason": "digest"
+      },
+      "clientClaim": "approved (a claim, not an observation)"
+    },
+    "self": {
+      "manifest": {
+        "schema": 1,
+        "packageId": "courier-runtime",
+        "release": "courier-runtime-1",
+        "files": [
+          {
+            "path": "admission.mjs",
+            "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+          },
+          {
+            "path": "defense.mjs",
+            "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+          },
+          {
+            "path": "engine.mjs",
+            "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+          },
+          {
+            "path": "protocol.mjs",
+            "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+          }
+        ]
+      },
+      "observed": [
+        {
+          "path": "admission.mjs",
+          "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+        },
+        {
+          "path": "defense.mjs",
+          "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+        },
+        {
+          "path": "engine.mjs",
+          "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+        },
+        {
+          "path": "protocol.mjs",
+          "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+        }
+      ],
+      "supported": [
+        "courier-runtime-1",
+        "courier-runtime-2"
+      ],
+      "result": {
+        "ok": true,
+        "reason": "verified"
+      },
+      "clientClaim": "hashes copied from the reference by an untrusted client; actual files are unknown"
+    },
+    "missing": {
+      "manifest": {
+        "schema": 1,
+        "packageId": "courier-runtime",
+        "release": "courier-runtime-1",
+        "files": [
+          {
+            "path": "admission.mjs",
+            "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+          },
+          {
+            "path": "defense.mjs",
+            "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+          },
+          {
+            "path": "engine.mjs",
+            "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+          },
+          {
+            "path": "protocol.mjs",
+            "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+          }
+        ]
+      },
+      "observed": [
+        {
+          "path": "admission.mjs",
+          "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+        },
+        {
+          "path": "defense.mjs",
+          "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+        },
+        {
+          "path": "engine.mjs",
+          "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+        }
+      ],
+      "supported": [
+        "courier-runtime-1",
+        "courier-runtime-2"
+      ],
+      "result": {
+        "ok": false,
+        "reason": "inventory"
+      }
+    },
+    "new": {
+      "manifest": {
+        "schema": 1,
+        "packageId": "courier-runtime",
+        "release": "courier-runtime-2",
+        "files": [
+          {
+            "path": "admission.mjs",
+            "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+          },
+          {
+            "path": "defense.mjs",
+            "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+          },
+          {
+            "path": "engine.mjs",
+            "sha256": "cd46fadfef976adfcb72ce269319d18a67fba75fa3f695e24fd5e56f6fa13343"
+          },
+          {
+            "path": "protocol.mjs",
+            "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+          }
+        ]
+      },
+      "observed": [
+        {
+          "path": "admission.mjs",
+          "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+        },
+        {
+          "path": "defense.mjs",
+          "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+        },
+        {
+          "path": "engine.mjs",
+          "sha256": "cd46fadfef976adfcb72ce269319d18a67fba75fa3f695e24fd5e56f6fa13343"
+        },
+        {
+          "path": "protocol.mjs",
+          "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+        }
+      ],
+      "supported": [
+        "courier-runtime-1",
+        "courier-runtime-2"
+      ],
+      "result": {
+        "ok": true,
+        "reason": "verified"
+      }
+    },
+    "both": {
+      "manifest": {
+        "schema": 1,
+        "packageId": "courier-runtime",
+        "release": "courier-runtime-1",
+        "files": [
+          {
+            "path": "admission.mjs",
+            "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+          },
+          {
+            "path": "defense.mjs",
+            "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+          },
+          {
+            "path": "engine.mjs",
+            "sha256": "cd46fadfef976adfcb72ce269319d18a67fba75fa3f695e24fd5e56f6fa13343"
+          },
+          {
+            "path": "protocol.mjs",
+            "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+          }
+        ]
+      },
+      "observed": [
+        {
+          "path": "admission.mjs",
+          "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+        },
+        {
+          "path": "defense.mjs",
+          "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+        },
+        {
+          "path": "engine.mjs",
+          "sha256": "cd46fadfef976adfcb72ce269319d18a67fba75fa3f695e24fd5e56f6fa13343"
+        },
+        {
+          "path": "protocol.mjs",
+          "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+        }
+      ],
+      "supported": [
+        "courier-runtime-1",
+        "courier-runtime-2"
+      ],
+      "result": {
+        "ok": true,
+        "reason": "verified"
+      }
+    }
+  },
+  "traces": {
+    "complete": {
+      "record": {
+        "schema": 1,
+        "runtimeRelease": "courier-runtime-1",
+        "startIndex": 0,
+        "checkpoint": {
+          "schema": 1,
+          "seed": 17,
+          "tick": 0,
+          "core": {
+            "x": 2500,
+            "y": 1000
+          },
+          "actors": []
+        },
+        "events": [
+          {
+            "index": 1,
+            "event": {
+              "type": "join",
+              "id": "actor-1"
+            }
+          },
+          {
+            "index": 2,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 1,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 3,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 4,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 5,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 6,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 7,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 2,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 8,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 9,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 10,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 3,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 11,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 12,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 4,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 13,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 14,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 15,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 16,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 17,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 5,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 18,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 19,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 20,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 6,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 21,
+            "event": {
+              "type": "tick"
+            }
+          }
+        ],
+        "endIndex": 21,
+        "complete": true,
+        "final": {
+          "tick": 14,
+          "actors": [
+            {
+              "tick": 14,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "result": {
+        "ok": true,
+        "state": {
+          "tick": 14,
+          "actors": [
+            {
+              "tick": 14,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "frames": [
+        {
+          "tick": 0,
+          "actors": []
+        },
+        {
+          "tick": 0,
+          "actors": [
+            {
+              "tick": 0,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 0,
+                "expiresAt": 0,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 0,
+          "actors": [
+            {
+              "tick": 0,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 1,
+          "actors": [
+            {
+              "tick": 1,
+              "actor": {
+                "id": "actor-1",
+                "x": 1250,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 2,
+          "actors": [
+            {
+              "tick": 2,
+              "actor": {
+                "id": "actor-1",
+                "x": 1500,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 3,
+          "actors": [
+            {
+              "tick": 3,
+              "actor": {
+                "id": "actor-1",
+                "x": 1750,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 4,
+          "actors": [
+            {
+              "tick": 4,
+              "actor": {
+                "id": "actor-1",
+                "x": 2000,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 1,
+                "expiresAt": 4,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 4,
+          "actors": [
+            {
+              "tick": 4,
+              "actor": {
+                "id": "actor-1",
+                "x": 2000,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 2,
+                "expiresAt": 8,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 5,
+          "actors": [
+            {
+              "tick": 5,
+              "actor": {
+                "id": "actor-1",
+                "x": 2250,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 2,
+                "expiresAt": 8,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 6,
+          "actors": [
+            {
+              "tick": 6,
+              "actor": {
+                "id": "actor-1",
+                "x": 2500,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 2,
+                "expiresAt": 8,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 6,
+          "actors": [
+            {
+              "tick": 6,
+              "actor": {
+                "id": "actor-1",
+                "x": 2500,
+                "y": 1000,
+                "score": 0,
+                "cargo": false,
+                "lastSeq": 3,
+                "expiresAt": 10,
+                "nextInteractTick": 0
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": null,
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 7,
+          "actors": [
+            {
+              "tick": 7,
+              "actor": {
+                "id": "actor-1",
+                "x": 2500,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 3,
+                "expiresAt": 10,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 7,
+          "actors": [
+            {
+              "tick": 7,
+              "actor": {
+                "id": "actor-1",
+                "x": 2500,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 4,
+                "expiresAt": 11,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 8,
+          "actors": [
+            {
+              "tick": 8,
+              "actor": {
+                "id": "actor-1",
+                "x": 2250,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 4,
+                "expiresAt": 11,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 9,
+          "actors": [
+            {
+              "tick": 9,
+              "actor": {
+                "id": "actor-1",
+                "x": 2000,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 4,
+                "expiresAt": 11,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 10,
+          "actors": [
+            {
+              "tick": 10,
+              "actor": {
+                "id": "actor-1",
+                "x": 1750,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 4,
+                "expiresAt": 11,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 11,
+          "actors": [
+            {
+              "tick": 11,
+              "actor": {
+                "id": "actor-1",
+                "x": 1500,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 4,
+                "expiresAt": 11,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 11,
+          "actors": [
+            {
+              "tick": 11,
+              "actor": {
+                "id": "actor-1",
+                "x": 1500,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 5,
+                "expiresAt": 15,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 12,
+          "actors": [
+            {
+              "tick": 12,
+              "actor": {
+                "id": "actor-1",
+                "x": 1250,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 5,
+                "expiresAt": 15,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 13,
+          "actors": [
+            {
+              "tick": 13,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 5,
+                "expiresAt": 15,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 13,
+          "actors": [
+            {
+              "tick": 13,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 0,
+                "cargo": true,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 11
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "pickup",
+                "tick": 7
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 14,
+          "actors": [
+            {
+              "tick": 14,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      ]
+    },
+    "rolled": {
+      "record": {
+        "schema": 1,
+        "runtimeRelease": "courier-runtime-1",
+        "startIndex": 128,
+        "checkpoint": {
+          "schema": 1,
+          "seed": 17,
+          "tick": 121,
+          "core": {
+            "x": 2500,
+            "y": 1000
+          },
+          "actors": [
+            {
+              "id": "actor-1",
+              "x": 1000,
+              "y": 1000,
+              "score": 1,
+              "cargo": false,
+              "lastSeq": 6,
+              "lastSeen": 13,
+              "expiresAt": 17,
+              "nextInteractTick": 18,
+              "move": "idle",
+              "pendingInteract": false,
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "detector": {
+                "buckets": [
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  },
+                  {
+                    "tick": -1,
+                    "observations": []
+                  }
+                ],
+                "findings": []
+              }
+            }
+          ]
+        },
+        "events": [
+          {
+            "index": 129,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 130,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 131,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 132,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 133,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 134,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 135,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 136,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 137,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 138,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 139,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 140,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 141,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 142,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 143,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 144,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 145,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 146,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 147,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 148,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 149,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 150,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 151,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 152,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 153,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 154,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 155,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 156,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 157,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 158,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 159,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 160,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 161,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 162,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 163,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 164,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 165,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 166,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 167,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 168,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 169,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 170,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 171,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 172,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 173,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 174,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 175,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 176,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 177,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 178,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 179,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 180,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 181,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 182,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 183,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 184,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 185,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 186,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 187,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 188,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 189,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 190,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 191,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 192,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 193,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 194,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 195,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 196,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 197,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 198,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 199,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 200,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 201,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 202,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 203,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 204,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 205,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 206,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 207,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 208,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 209,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 210,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 211,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 212,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 213,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 214,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 215,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 216,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 217,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 218,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 219,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 220,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 221,
+            "event": {
+              "type": "tick"
+            }
+          }
+        ],
+        "endIndex": 221,
+        "complete": true,
+        "final": {
+          "tick": 214,
+          "actors": [
+            {
+              "tick": 214,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "result": {
+        "ok": true,
+        "state": {
+          "tick": 214,
+          "actors": [
+            {
+              "tick": 214,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "frames": [
+        {
+          "tick": 121,
+          "actors": [
+            {
+              "tick": 121,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 122,
+          "actors": [
+            {
+              "tick": 122,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 123,
+          "actors": [
+            {
+              "tick": 123,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 124,
+          "actors": [
+            {
+              "tick": 124,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 125,
+          "actors": [
+            {
+              "tick": 125,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 126,
+          "actors": [
+            {
+              "tick": 126,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 127,
+          "actors": [
+            {
+              "tick": 127,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 128,
+          "actors": [
+            {
+              "tick": 128,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 129,
+          "actors": [
+            {
+              "tick": 129,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 130,
+          "actors": [
+            {
+              "tick": 130,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 131,
+          "actors": [
+            {
+              "tick": 131,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 132,
+          "actors": [
+            {
+              "tick": 132,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 133,
+          "actors": [
+            {
+              "tick": 133,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 134,
+          "actors": [
+            {
+              "tick": 134,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 135,
+          "actors": [
+            {
+              "tick": 135,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 136,
+          "actors": [
+            {
+              "tick": 136,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 137,
+          "actors": [
+            {
+              "tick": 137,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 138,
+          "actors": [
+            {
+              "tick": 138,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 139,
+          "actors": [
+            {
+              "tick": 139,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 140,
+          "actors": [
+            {
+              "tick": 140,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 141,
+          "actors": [
+            {
+              "tick": 141,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 142,
+          "actors": [
+            {
+              "tick": 142,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 143,
+          "actors": [
+            {
+              "tick": 143,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 144,
+          "actors": [
+            {
+              "tick": 144,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 145,
+          "actors": [
+            {
+              "tick": 145,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 146,
+          "actors": [
+            {
+              "tick": 146,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 147,
+          "actors": [
+            {
+              "tick": 147,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 148,
+          "actors": [
+            {
+              "tick": 148,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 149,
+          "actors": [
+            {
+              "tick": 149,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 150,
+          "actors": [
+            {
+              "tick": 150,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 151,
+          "actors": [
+            {
+              "tick": 151,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 152,
+          "actors": [
+            {
+              "tick": 152,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 153,
+          "actors": [
+            {
+              "tick": 153,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 154,
+          "actors": [
+            {
+              "tick": 154,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 155,
+          "actors": [
+            {
+              "tick": 155,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 156,
+          "actors": [
+            {
+              "tick": 156,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 157,
+          "actors": [
+            {
+              "tick": 157,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 158,
+          "actors": [
+            {
+              "tick": 158,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 159,
+          "actors": [
+            {
+              "tick": 159,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 160,
+          "actors": [
+            {
+              "tick": 160,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 161,
+          "actors": [
+            {
+              "tick": 161,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 162,
+          "actors": [
+            {
+              "tick": 162,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 163,
+          "actors": [
+            {
+              "tick": 163,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 164,
+          "actors": [
+            {
+              "tick": 164,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 165,
+          "actors": [
+            {
+              "tick": 165,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 166,
+          "actors": [
+            {
+              "tick": 166,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 167,
+          "actors": [
+            {
+              "tick": 167,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 168,
+          "actors": [
+            {
+              "tick": 168,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 169,
+          "actors": [
+            {
+              "tick": 169,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 170,
+          "actors": [
+            {
+              "tick": 170,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 171,
+          "actors": [
+            {
+              "tick": 171,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 172,
+          "actors": [
+            {
+              "tick": 172,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 173,
+          "actors": [
+            {
+              "tick": 173,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 174,
+          "actors": [
+            {
+              "tick": 174,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 175,
+          "actors": [
+            {
+              "tick": 175,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 176,
+          "actors": [
+            {
+              "tick": 176,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 177,
+          "actors": [
+            {
+              "tick": 177,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 178,
+          "actors": [
+            {
+              "tick": 178,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 179,
+          "actors": [
+            {
+              "tick": 179,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 180,
+          "actors": [
+            {
+              "tick": 180,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 181,
+          "actors": [
+            {
+              "tick": 181,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 182,
+          "actors": [
+            {
+              "tick": 182,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 183,
+          "actors": [
+            {
+              "tick": 183,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 184,
+          "actors": [
+            {
+              "tick": 184,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 185,
+          "actors": [
+            {
+              "tick": 185,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 186,
+          "actors": [
+            {
+              "tick": 186,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 187,
+          "actors": [
+            {
+              "tick": 187,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 188,
+          "actors": [
+            {
+              "tick": 188,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 189,
+          "actors": [
+            {
+              "tick": 189,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 190,
+          "actors": [
+            {
+              "tick": 190,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 191,
+          "actors": [
+            {
+              "tick": 191,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 192,
+          "actors": [
+            {
+              "tick": 192,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 193,
+          "actors": [
+            {
+              "tick": 193,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 194,
+          "actors": [
+            {
+              "tick": 194,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 195,
+          "actors": [
+            {
+              "tick": 195,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 196,
+          "actors": [
+            {
+              "tick": 196,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 197,
+          "actors": [
+            {
+              "tick": 197,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 198,
+          "actors": [
+            {
+              "tick": 198,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 199,
+          "actors": [
+            {
+              "tick": 199,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 200,
+          "actors": [
+            {
+              "tick": 200,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 201,
+          "actors": [
+            {
+              "tick": 201,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 202,
+          "actors": [
+            {
+              "tick": 202,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 203,
+          "actors": [
+            {
+              "tick": 203,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 204,
+          "actors": [
+            {
+              "tick": 204,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 205,
+          "actors": [
+            {
+              "tick": 205,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 206,
+          "actors": [
+            {
+              "tick": 206,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 207,
+          "actors": [
+            {
+              "tick": 207,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 208,
+          "actors": [
+            {
+              "tick": 208,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 209,
+          "actors": [
+            {
+              "tick": 209,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 210,
+          "actors": [
+            {
+              "tick": 210,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 211,
+          "actors": [
+            {
+              "tick": 211,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 212,
+          "actors": [
+            {
+              "tick": 212,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 213,
+          "actors": [
+            {
+              "tick": 213,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        },
+        {
+          "tick": 214,
+          "actors": [
+            {
+              "tick": 214,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      ]
+    },
+    "missing": {
+      "record": {
+        "schema": 1,
+        "runtimeRelease": "courier-runtime-1",
+        "startIndex": 0,
+        "checkpoint": {
+          "schema": 1,
+          "seed": 17,
+          "tick": 0,
+          "core": {
+            "x": 2500,
+            "y": 1000
+          },
+          "actors": []
+        },
+        "events": [
+          {
+            "index": 1,
+            "event": {
+              "type": "join",
+              "id": "actor-1"
+            }
+          },
+          {
+            "index": 3,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 4,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 5,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 6,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 7,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 2,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 8,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 9,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 10,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 3,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 11,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 12,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 4,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 13,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 14,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 15,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 16,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 17,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 5,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 18,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 19,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 20,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 6,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 21,
+            "event": {
+              "type": "tick"
+            }
+          }
+        ],
+        "endIndex": 21,
+        "complete": true,
+        "final": {
+          "tick": 14,
+          "actors": [
+            {
+              "tick": 14,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "result": {
+        "ok": false,
+        "reason": "sequence"
+      },
+      "frames": []
+    },
+    "duplicate": {
+      "record": {
+        "schema": 1,
+        "runtimeRelease": "courier-runtime-1",
+        "startIndex": 0,
+        "checkpoint": {
+          "schema": 1,
+          "seed": 17,
+          "tick": 0,
+          "core": {
+            "x": 2500,
+            "y": 1000
+          },
+          "actors": []
+        },
+        "events": [
+          {
+            "index": 1,
+            "event": {
+              "type": "join",
+              "id": "actor-1"
+            }
+          },
+          {
+            "index": 1,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 1,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 3,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 4,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 5,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 6,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 7,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 2,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 8,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 9,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 10,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 3,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 11,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 12,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 4,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 13,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 14,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 15,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 16,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 17,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 5,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 18,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 19,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 20,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 6,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 21,
+            "event": {
+              "type": "tick"
+            }
+          }
+        ],
+        "endIndex": 21,
+        "complete": true,
+        "final": {
+          "tick": 14,
+          "actors": [
+            {
+              "tick": 14,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "result": {
+        "ok": false,
+        "reason": "sequence"
+      },
+      "frames": []
+    },
+    "version": {
+      "record": {
+        "schema": 1,
+        "runtimeRelease": "unknown-release",
+        "startIndex": 0,
+        "checkpoint": {
+          "schema": 1,
+          "seed": 17,
+          "tick": 0,
+          "core": {
+            "x": 2500,
+            "y": 1000
+          },
+          "actors": []
+        },
+        "events": [
+          {
+            "index": 1,
+            "event": {
+              "type": "join",
+              "id": "actor-1"
+            }
+          },
+          {
+            "index": 2,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 1,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 3,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 4,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 5,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 6,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 7,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 2,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 8,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 9,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 10,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 3,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 11,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 12,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 4,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 13,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 14,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 15,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 16,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 17,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 5,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 18,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 19,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 20,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 6,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 21,
+            "event": {
+              "type": "tick"
+            }
+          }
+        ],
+        "endIndex": 21,
+        "complete": true,
+        "final": {
+          "tick": 14,
+          "actors": [
+            {
+              "tick": 14,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 1,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "result": {
+        "ok": false,
+        "reason": "incompatible"
+      },
+      "frames": []
+    },
+    "final": {
+      "record": {
+        "schema": 1,
+        "runtimeRelease": "courier-runtime-1",
+        "startIndex": 0,
+        "checkpoint": {
+          "schema": 1,
+          "seed": 17,
+          "tick": 0,
+          "core": {
+            "x": 2500,
+            "y": 1000
+          },
+          "actors": []
+        },
+        "events": [
+          {
+            "index": 1,
+            "event": {
+              "type": "join",
+              "id": "actor-1"
+            }
+          },
+          {
+            "index": 2,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 1,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 3,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 4,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 5,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 6,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 7,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 2,
+                "move": "E",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 8,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 9,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 10,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 3,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 11,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 12,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 4,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 13,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 14,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 15,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 16,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 17,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 5,
+                "move": "W",
+                "interact": false
+              }
+            }
+          },
+          {
+            "index": 18,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 19,
+            "event": {
+              "type": "tick"
+            }
+          },
+          {
+            "index": 20,
+            "event": {
+              "type": "input",
+              "id": "actor-1",
+              "input": {
+                "v": 1,
+                "seq": 6,
+                "move": "idle",
+                "interact": true
+              }
+            }
+          },
+          {
+            "index": 21,
+            "event": {
+              "type": "tick"
+            }
+          }
+        ],
+        "endIndex": 21,
+        "complete": true,
+        "final": {
+          "tick": 14,
+          "actors": [
+            {
+              "tick": 14,
+              "actor": {
+                "id": "actor-1",
+                "x": 1000,
+                "y": 1000,
+                "score": 2,
+                "cargo": false,
+                "lastSeq": 6,
+                "expiresAt": 17,
+                "nextInteractTick": 18
+              },
+              "core": {
+                "x": 2500,
+                "y": 1000
+              },
+              "depot": {
+                "x": 1000,
+                "y": 1000
+              },
+              "arena": {
+                "width": 8000,
+                "height": 4000,
+                "wall": {
+                  "x": 4000,
+                  "y": 0,
+                  "width": 250,
+                  "height": 2500
+                }
+              },
+              "lastDecision": {
+                "status": "applied",
+                "reason": "deposit",
+                "tick": 14
+              },
+              "findings": []
+            }
+          ]
+        }
+      },
+      "result": {
+        "ok": false,
+        "reason": "final"
+      },
+      "frames": []
+    }
+  }
+}

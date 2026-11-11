@@ -2,7 +2,7 @@
 
 Source for Time-travel Debugger, Recoverable Storage, Small Language-model
 Runtime, Firmware Forensics (terminal route), Adaptive Decision Engine, Inside
-the Shot and Compiler and Optimizer.
+the Shot, Compiler and Optimizer, and Anti-cheat Engineering (beta).
 Canonical development remains private; this learner snapshot has one clean
 initial commit and contains no private development history.
 
@@ -25,9 +25,10 @@ your only export. Public worked/prerequisite support is labelled assistance.
 
 Read QUALIFICATION.md for exactly what was exercised. Some course documents
 retain historical build-status statements; they do not claim new human learning
-or browser qualification. No private author/reference implementation, private
-assessment, actual learner attempt, conversation, credential or user record is
-included in this repository.
+or browser qualification. No private assessment, actual learner attempt, conversation, credential or user
+record is included. Anti-cheat includes explicitly labelled public reference
+policies/worked examples and grader controls already in its teaching package;
+consulting them is assistance, not independent learner work.
 
 Original code is MIT and original lesson prose/illustrations CC BY4.0, with Free
 to Learn attribution. Third-party/model terms remain unchanged. Retain LICENSE.md,

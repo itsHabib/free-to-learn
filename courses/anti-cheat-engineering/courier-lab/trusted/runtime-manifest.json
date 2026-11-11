@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "packageId": "courier-runtime",
+  "release": "courier-runtime-1",
+  "files": [
+    {
+      "path": "admission.mjs",
+      "sha256": "7142c22cb652fe0fb80cb8a33d618bc07e1ca5b896bcb4c72c88f574d0f97a40"
+    },
+    {
+      "path": "clock.mjs",
+      "sha256": "3eb07795998ff3ba9557cfc64ea58aabf0ecde7103a64b9bc560aff2645c1acb"
+    },
+    {
+      "path": "defense.mjs",
+      "sha256": "3bdff8128e272dc7e3cd41e13d366fdc3fefc244e7e97550698d9148ae7fc9fd"
+    },
+    {
+      "path": "engine.mjs",
+      "sha256": "1640cd199e469eb0e6dfbae8e4dbabc13739369db9662e1068632b5d574e84b7"
+    },
+    {
+      "path": "learning/grade.mjs",
+      "sha256": "8157dfb720948600beba70b62872f907cb57ea3b9f859157ff5f573a9be1ee9c"
+    },
+    {
+      "path": "learning/runtime.mjs",
+      "sha256": "8097e8351b17c0f3527aed3e5bed2f4833fea03885ac74ac9391c48e82bd7af7"
+    },
+    {
+      "path": "learning/service.mjs",
+      "sha256": "00afce3ff840486caa3731c2cdea2c9e20838fe1faca9af1f0e80449a36d1d0a"
+    },
+    {
+      "path": "protocol.mjs",
+      "sha256": "e1c753898db99f613cfe84dcf29be052375f64a4a6fa4f46e1ffd86a1236159c"
+    },
+    {
+      "path": "server.mjs",
+      "sha256": "fe74bae9db89d64ca1aad69ec7b2cd7e08edd33cf38f26d0a825fdc4c2363e11"
+    },
+    {
+      "path": "telemetry/policy.mjs",
+      "sha256": "543d9e9bbd21f5e4ab82c25c4f3505711ce0cd1c2f3756d9220fc261ce9077e8"
+    },
+    {
+      "path": "telemetry/runtime.mjs",
+      "sha256": "d61ed1ef00b98389939da665b750c5f55503c1636507521e84a4a986d873b21c"
+    }
+  ]
+}

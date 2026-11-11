@@ -1,0 +1,11 @@
+.prediction-notebook { margin: 18px 0 8px; padding-top: 16px; border-top: 1px solid #98aaa0; min-width: 0; }
+.prediction-notebook .prediction-question { font-size: 16px; font-weight: 650; }
+.prediction-notebook textarea { display: block; width: 100%; box-sizing: border-box; padding: 12px; border: 1px solid #738a7b; border-radius: 6px; background: #fff; color: #18262d; font: inherit; font-size: 16px; line-height: 1.5; resize: vertical; }
+.prediction-notebook textarea:focus-visible, .prediction-notebook summary:focus-visible { outline: 3px solid #bd5a22; outline-offset: 3px; }
+.prediction-notebook .prediction-status, .prediction-notebook .prediction-note { font-size: 16px; overflow-wrap: anywhere; }
+.prediction-notebook .save-error { color: #963d2c; font-weight: 650; }
+.prediction-notebook details { margin: 12px 0; font-size: 16px; }
+.prediction-notebook summary { cursor: pointer; padding: 8px 0; }
+.prediction-notebook ol { padding-left: 22px; }
+.prediction-notebook li { white-space: pre-wrap; overflow-wrap: anywhere; margin-bottom: 12px; }
+[hidden] { display: none !important; }

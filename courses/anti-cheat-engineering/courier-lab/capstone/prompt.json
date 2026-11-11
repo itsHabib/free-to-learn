@@ -1,0 +1,33 @@
+{
+  "id": "courier-capstone-01",
+  "version": 4,
+  "objective": "Build a server-owned resource transaction with bounded retry receipts and independently test it through HTTP.",
+  "question": "Implement repair(state, actorId, request) in capstone/policy.mjs and independently write async scenario({base,moveActor}) in capstone/scenario.mjs. A repair costs 2 credits and adds up to 3 energy, capped at 10, within a squared distance of 400 squared. Preserve a successful request's original receipt for retries, reject station conflicts, leave failed IDs reusable, and refuse new IDs when the receipt history is full. Return fresh state without mutating inputs. Use HTTP assertions to expose the declared wrong variants while allowing both correct implementations. Preserve first predictions and append repairs in response.md.",
+  "constraints": [
+    "The required executable files are capstone/policy.mjs and capstone/scenario.mjs. Relative helper modules are supported when captured with the submission. The supplied capstone/client.mjs is unchanged HTTP plumbing, not a test solution. Do not import a reference policy or author scenario.",
+    "Policy inputs are validated and server-owned. State is {config,stations,actors}; config is {repairCost:2,repairEnergy:3,energyCap:10,rangeMm:400,receiptLimit:2}. Stations are {id,x,y}; actors are {id,x,y,energy,credits,receipts}. New actors start with energy 4, credits 6 and no receipts. The server supplies actorId from the authenticated session.",
+    "The request has exactly requestId and stationId. A receipt is exactly {requestId,stationId,energyAdded,creditsSpent,energy,credits}, with balances at the original successful operation. Return exactly {reason,receipt,state}; failed operations have receipt:null.",
+    "Look for an existing successful requestId in this actor's receipts first. A different stationId returns conflict; the same stationId returns duplicate and the original receipt without reevaluating distance, balances or capacity.",
+    "For a new ID, check station existence, history capacity, squared distance, full energy, then credits, in that order. Failure reasons are station, history-full, range, full and funds. On success return repaired, debit once, add min(3,10-energy), and append one receipt atomically. Failures change no state and do not reserve the ID.",
+    "Distance at exactly 400 mm is valid. Both x and y matter. Receipt capacity is per actor and never evicts an old receipt. No client position, balance, price, score, timestamp or counter determines resource changes.",
+    "HTTP requests go only to the supplied loopback base. POST /session with {} creates a session; GET /state and POST /repair require its token. Unknown repair-body fields are rejected with HTTP 400. Rule decisions return HTTP 200 and {reason,receipt,state}.",
+    "moveActor(session.id,{x,y}) is an owner-only test control, not a gameplay endpoint. Coordinates are integer millimetres in [-10000,10000]. Use at most 8 sessions and 256 total HTTP requests per scenario run. The scenario must assert actual balances, receipts and unchanged state, not just status text.",
+    "Every completed successful run must perform a repair and read state through the supplied HTTP helper. A genuine assertion on a wrong response may stop that run before its next state read. Use normal Node assertions to compare balances, receipt contents and unchanged state after refusals. The whole variant panel tests behavioral discrimination; the runner does not infer arbitrary assertion dataflow or patch JSON, cloning, sorting or assertion methods. Each variant imports the captured scenario and its helpers in a fresh process. A real assert.AssertionError can detect a wrong variant; forged codes, imports, networking errors and timeouts do not count. The captured scenario also runs against the captured submitted policy. Written reasoning is preserved for review, not automatically graded."
+  ],
+  "wrongVariants": [
+    "duplicate charged again",
+    "range checked before receipt",
+    "conflict treated as duplicate",
+    "failed ID reserved",
+    "exclusive distance boundary",
+    "one-credit repair",
+    "two-energy repair",
+    "wrong receipt balance",
+    "range refusal debits credit",
+    "evict oldest receipt",
+    "ignore vertical distance",
+    "globally scoped request IDs",
+    "accept client resource claims"
+  ],
+  "assessment": "Pure fixtures check full energy, insufficient funds, partial top-ups, per-actor ID and capacity scope, detached state, and multi-failure decision precedence. Separate fresh HTTP processes check the submitted pair, two independently structured correct implementations and thirteen wrong policy/adapter variants. Each case has a 1000 ms timeout and the scenario panel has an absolute 8-second budget; those are teaching-runner limits, not production performance claims. This local bounded test does not establish production safety, identity assurance or learning gains. Timeout, output overflow and panel-budget exhaustion are runner failures. The finite panel is not proof of arbitrary assertion quality or an OS sandbox. Incomplete runs retain completed criteria and bounded scenario diagnostics; a timeout may be caused by learner code and is not by itself an infrastructure diagnosis."
+}
