@@ -1,0 +1,6 @@
+begin: tick=0, running=true
+1 i32.const stack=[0]
+2 i32.load stack=[0]
+3 f32.load stack=[0]
+4 end stack=[]
+returned=0; this is cold memory, before game_init
