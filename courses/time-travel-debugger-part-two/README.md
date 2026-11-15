@@ -23,12 +23,16 @@ You need Node.js 22 or later and nothing else: no install, no account, no networ
 
 ## Start
 
-```
+Read [lesson 08](lessons/08.md), or open [its formatted offline edition](lessons/08.html) in your browser. It starts with a runnable getter, then lets you choose a fresh project with either the important interpreter methods left to write or a complete supplied interpreter. Supporting opcode code is provided on both routes; an AI-assisted route is also explained. Choose your route there before creating `project/`. The browser edition reads locally without a server; commands still run in your terminal from the folder containing `lab.mjs`.
+
+For a completely blank implementation instead of the guided build, the original commands remain available:
+
+```sh
 node lab.mjs start project
 node lab.mjs check project 08
 ```
 
-Then read `lessons/08.md`. `API.md` is the contract for every function you write. `node lab.mjs` lists every lab command.
+`API.md` is the contract for every function you write. `node lab.mjs` lists every lab command. Existing project folders are never overwritten; resume your own work or choose a new name for a fresh route.
 
 Each lesson asks questions before it explains their answers. Commit an answer with `node lab.mjs predict project ID ANSWER`, and the lab then shows the right answer and why. After a wrong answer it points to the section that teaches the idea and gives you a fresh case to try, or, when the course has no other case, lists the question in `status` as due for another try after your next lesson. `practice.json` holds those questions with their answers, because the lab checks them on your own computer. Leave it unread until you've committed your own. Each `check` saves your files and the results under `project/attempts/`, and `node lab.mjs status project` lists your checks and predictions. The lessons also ask you to keep notes in `project/report.md`. They're yours, and no check reads them.
 

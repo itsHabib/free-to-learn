@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 30890,
-      "sha256": "58104d08d9a8d41c72e921ecb52c1dd9e1579294cb5aaad82d7faa2e80576437"
+      "sha256": "c3d499f99ea8409531fe22e29f72f286b98bf57e8e039ba08af777c505445d98"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -189,13 +189,13 @@
     },
     {
       "path": ".packages/time-travel-debugger-part-two.zip",
-      "bytes": 714375,
-      "sha256": "1dd4cdb585bbc64492d9621f39d4dd0d983c22e394e4f11f2d2cdf7cd4582286"
+      "bytes": 756237,
+      "sha256": "1e0add5b76ff43d163fce08f9cc85bc0392c9e297b3ca05aa76bd663e5305f05"
     },
     {
       "path": ".packages/time-travel-debugger-part-two.zip.sha256",
       "bytes": 100,
-      "sha256": "917d572ca31fcbf1e5b15ac52d2338b7199ed19fe32dbd1a378b6ff64d917593"
+      "sha256": "73fc40f39b429271d24092346f33047effa060f10dc2a858159bede7736904ef"
     },
     {
       "path": ".packages/time-travel-debugger.zip",
@@ -229,8 +229,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 371786,
-      "sha256": "8075085bb4b3c1708ebc95bebf265ed31853c845718901b458a77f4d9513f9aa"
+      "bytes": 374539,
+      "sha256": "7989d31f43f240f30151c0cc1c6b4c1cc072480cbcf4b33c1a3f56a81508827e"
     },
     {
       "path": "LICENSE.md",
@@ -6244,8 +6244,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/README.md",
-      "bytes": 6824,
-      "sha256": "e1f58959654928de0d18b9d70a15e7bed190db0e4eb576853babec2ff49e78c9"
+      "bytes": 7560,
+      "sha256": "b75633355c52e0add315ad474fe8a6e25d719b213421dcab94fd312f13d90645"
     },
     {
       "path": "courses/time-travel-debugger-part-two/checks/08.mjs",
@@ -6378,14 +6378,39 @@
       "sha256": "8b01ca3ebdaaec6b756747210d044bc367d92a686dcce681fe1c86bca12e08fb"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/examples/check-slice.mjs",
+      "bytes": 9210,
+      "sha256": "f9294c5848ed14d09e07901645636b73ae26ad2b76605d62ea8c9d4d9f883ff9"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/getter-output.txt",
+      "bytes": 157,
+      "sha256": "ee3905779444b391e87c6750ceb83445752f433339218e5ca3085e1a68702fe1"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/machine-checkpoint.mjs",
+      "bytes": 17777,
+      "sha256": "2382de0a6eae880727076c966ffb05121936094901ad79baa4c5b6a821f7cec6"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/start-chapter.mjs",
+      "bytes": 2246,
+      "sha256": "5aced376c925b8abe8d05a39b2a0fcce6a2b7f5ab0c26810347935d0e8632bf5"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/step-getter.mjs",
+      "bytes": 939,
+      "sha256": "66c4367552329157f4804b66086630a4d6f208569fdd03eb80279cb5bcf86124"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/fallback/part-one-debugger.mjs",
       "bytes": 3252,
       "sha256": "24945ec90278c4410ac5e085cc3d3dd5d02e9f55abb4fa8f3a19ac10b292dd74"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lab.mjs",
-      "bytes": 27494,
-      "sha256": "769de7350bcea9c0262916b346303453e59e07c5f53159fffce035a20f4ce759"
+      "bytes": 27863,
+      "sha256": "6f65fbdd7cb06599736dd66aa0628faf71ead69258e7488241693d72ee2aeccc"
     },
     {
       "path": "courses/time-travel-debugger-part-two/ladder.json",
@@ -6393,9 +6418,14 @@
       "sha256": "4db663b821d93bfdc4063b067c13d7305af498d9a0470dcfc6aa0965f23cc668"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/lessons/08.html",
+      "bytes": 59043,
+      "sha256": "67749fec160dfb68044a26afa8bdfe84cd2614b09ba229165efcbcdcfcb17006"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/lessons/08.md",
-      "bytes": 18282,
-      "sha256": "9d99da7123a02d7370425c22cb2d55a9b43baf99189ddbda58a6745a049667ae"
+      "bytes": 38481,
+      "sha256": "399bcd387f56f00f0a01c226c1113dfee2c94d9a743330dcb94fb0787c67ec67"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/09.md",
@@ -6476,6 +6506,21 @@
       "path": "courses/time-travel-debugger-part-two/programs/lob2.json",
       "bytes": 86988,
       "sha256": "f0a56d2e4c59d812251a52729d1bcc6f6b17bc5871e5d32fffc32b919bc2581a"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/public/chapter.css",
+      "bytes": 2709,
+      "sha256": "5d38de78c80b7fe116cc4673543fc275c0094b72500d12b904d3b2a21b116f28"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/public/code-example.css",
+      "bytes": 1995,
+      "sha256": "4bfc888966174a24f3bafa82db1878563fdab631ccd99c6aff7d715c8bdff36c"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/public/code-example.mjs",
+      "bytes": 3203,
+      "sha256": "5728768f4af74f4219addf8ab60a7e7daaf82142e97676667055e05a60eb29ad"
     },
     {
       "path": "courses/time-travel-debugger-part-two/public/hash.mjs",
@@ -6568,6 +6613,11 @@
       "sha256": "4c451bc01604b68c0c19c030c5865f2e889730f489d97878772b7223ef11743f"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/starter/machine-build.mjs",
+      "bytes": 14705,
+      "sha256": "efb9a65fb4f38dcecf86aa5ebb76f034dde4222c72f41152b150f7b17d99e482"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/starter/machine.mjs",
       "bytes": 566,
       "sha256": "9a0575f69e58298f71b1ae91d9c8f471abb9ab7bdf8ebdcab09ecb58dc77bc5f"
@@ -6586,6 +6636,11 @@
       "path": "courses/time-travel-debugger-part-two/starter/recorder.mjs",
       "bytes": 721,
       "sha256": "4a6c7613150c00b358eff8edd1e1d4806d837b2d18701205796f33fe802bca16"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/starter/run-slice.mjs",
+      "bytes": 289,
+      "sha256": "b94d6362e6f4ebf02e943e7da2bc0b0975194efa5a89084bd38675c3ed310f5d"
     },
     {
       "path": "courses/time-travel-debugger-part-two/targets/MANIFEST.json",

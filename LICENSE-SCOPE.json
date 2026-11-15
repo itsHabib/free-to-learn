@@ -8103,6 +8103,36 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/examples/check-slice.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/getter-output.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/machine-checkpoint.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/start-chapter.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/step-getter.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/fallback/part-one-debugger.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
@@ -8116,6 +8146,12 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/ladder.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/08.html",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"
@@ -8218,6 +8254,24 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/programs/lob2.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/public/chapter.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/public/code-example.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/public/code-example.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"
@@ -8331,6 +8385,12 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/starter/machine-build.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/starter/machine.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
@@ -8350,6 +8410,12 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/starter/recorder.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/starter/run-slice.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"

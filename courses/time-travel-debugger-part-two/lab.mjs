@@ -74,6 +74,9 @@ async function check(dir, unit, help) {
   if (!units.every((u) => UNITS.includes(u))) throw Error(`Choose a unit: ${UNITS.join(', ')} or all`);
   const attempt = join(p, 'attempts', `${new Date().toISOString().replaceAll(':', '-')}-${randomUUID().slice(0, 8)}`);
   mkdirSync(attempt, { recursive: true });
+  copyFileSync(join(p, 'PROJECT.json'), join(attempt, 'PROJECT.json'));
+  const route = JSON.parse(readFileSync(join(attempt, 'PROJECT.json'), 'utf8')).unit08_start_route;
+  const initialRoute = ['write', 'supplied'].includes(route) ? { unit08_start_route: route } : {};
   for (const f of config.workFiles) if (existsSync(join(p, f))) { mkdirSync(dirname(join(attempt, f)), { recursive: true }); copyFileSync(join(p, f), join(attempt, f)); }
   let allPass = true;
   const saved = [];
@@ -98,7 +101,7 @@ async function check(dir, unit, help) {
     allPass &&= report.pass;
     saved.push({ unit: u, results: report.results.map(({ id, pass, kind, fields, message, ms, requirement }) => ({ id, pass, kind, requirement, fields, message, ms })) });
   }
-  writeFileSync(join(attempt, 'receipt.json'), JSON.stringify({ course: config.id, help_used: help, units: saved, at: new Date().toISOString() }, null, 2) + '\n');
+  writeFileSync(join(attempt, 'receipt.json'), JSON.stringify({ course: config.id, ...initialRoute, help_used: help, units: saved, at: new Date().toISOString() }, null, 2) + '\n');
   if (units.length > 1) say(allPass ? `All ${units.length} units pass.` : 'Some checks fail.');
   say(`Help used (--help-used): ${help}`);
   say(`Saved this attempt in ${attempt}. A pass covers these cases only.`);
@@ -132,7 +135,7 @@ function status(dir) {
     const file = join(folder, name, 'receipt.json');
     if (!existsSync(file)) continue;
     const r = JSON.parse(readFileSync(file, 'utf8'));
-    for (const u of r.units) { say(`  ${name} unit ${u.unit}: ${u.results.filter((x) => x.pass).length} of ${u.results.length} pass (help used: ${r.help_used ?? 'not declared'})`); checks++; }
+    for (const u of r.units) { say(`  ${name} unit ${u.unit}: ${u.results.filter((x) => x.pass).length} of ${u.results.length} pass (help used: ${r.help_used ?? 'not declared'}${r.unit08_start_route ? '; unit 08 initial route: ' + r.unit08_start_route : ''})`); checks++; }
   }
   if (!checks) say('  none yet');
   const committed = predictions(p);
