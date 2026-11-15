@@ -891,6 +891,127 @@
         "One-time blind trials and private source-aware full replay evidence remain separate.",
         "Complete source-aware owner route is separate retained evidence; this public contract executes only the named setup/starter checks."
       ]
+    },
+    {
+      "id": "sightline",
+      "archive": ".packages/sightline.zip",
+      "sha256": "f3b458c93235dca7cbcf704067955cdfaf6111e30523ee22eb7da14bd5b7dbf5",
+      "archive_prefix": "sightline/",
+      "direct_root": "courses/sightline",
+      "root": "sightline",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "./work"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "01",
+            "./work"
+          ],
+          "exit": 1,
+          "match": "Your findStrings in scan\\.mjs is not written yet"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise and capstone success needs a learner-owned implementation. None is published as a CI fixture.",
+        "This public CI profile checks packaging, syntax, the documented setup and the untouched starter's named diagnostic only.",
+        "The three AI learner runs, the cold read and the bare-clone run recorded in QUALIFICATION.md are separate from this contract and are not replayed here.",
+        "node lab.mjs serve and the browser lesson and practice route aren't run by this contract.",
+        "The optional live decision model on Ollama is never called. Every check uses the course's offline stand-ins."
+      ]
+    },
+    {
+      "id": "time-travel-debugger-part-two",
+      "archive": ".packages/time-travel-debugger-part-two.zip",
+      "sha256": "86a8d632eaa618f195b0eb631916838067db529e91182f14635b33424cb4f88c",
+      "archive_prefix": "time-travel-debugger-part-two/",
+      "direct_root": "courses/time-travel-debugger-part-two",
+      "root": "time-travel-debugger-part-two",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "project"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "project",
+            "08"
+          ],
+          "exit": 1,
+          "match": "08\\.memory-starts: Machine constructor: not written yet"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise and capstone success needs a learner-owned implementation. None is published as a CI fixture.",
+        "This public CI profile checks packaging, syntax, the documented setup and the untouched starter's named diagnostic only.",
+        "The three AI learner runs, the cold read and the bare-clone run recorded in QUALIFICATION.md are separate from this contract and are not replayed here.",
+        "Part one is a separate course. Lab commands that read part one's or Sightline's files aren't run here."
+      ]
+    },
+    {
+      "id": "anti-cheat-engineering-part-two",
+      "archive": ".packages/anti-cheat-engineering-part-two.zip",
+      "sha256": "a86047cbc9ecc3d049bbb05ec3a8ba05340d8d997f0d4177f247c3fe00fcd906",
+      "archive_prefix": "anti-cheat-engineering-part-two/",
+      "direct_root": "courses/anti-cheat-engineering-part-two",
+      "root": "anti-cheat-engineering-part-two",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "init",
+            "project"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "project",
+            "12"
+          ],
+          "exit": 1,
+          "match": "12\\.parse-accepts: parseInput: not written yet"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise and capstone success needs a learner-owned implementation. None is published as a CI fixture.",
+        "This public CI profile checks packaging, syntax, the documented setup and the untouched starter's named diagnostic only.",
+        "The three AI learner runs, the cold read and the bare-clone run recorded in QUALIFICATION.md are separate from this contract and are not replayed here.",
+        "The legal players are course models and the network is simulated. No real client, server or person is involved."
+      ]
     }
   ]
 }

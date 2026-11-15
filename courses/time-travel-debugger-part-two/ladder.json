@@ -1,0 +1,56 @@
+[
+  {
+    "n": 1,
+    "title": "Build 1",
+    "program": "programs/ladder/1.json",
+    "wasm": "targets/ladder/1.wasm",
+    "recording": "recordings/ladder/1.json",
+    "symptom": "The first shell lands 13 paces past the flag and the message line reads LONG BY 13. The second lands 10 paces short of it (r_impact_x 446.4, r_target_x 456.6) and the message line reads SHORT BY 10, although the help text says a shell that lands within 12 paces of the flag scores; the status line ends with SCORE 0/2. On the same calls lob.wasm, the last good build, shows HIT! and ends with SCORE 1/2.",
+    "budget": 856000
+  },
+  {
+    "n": 2,
+    "title": "Build 2",
+    "program": "programs/ladder/2.json",
+    "wasm": "targets/ladder/2.wasm",
+    "recording": "recordings/ladder/2.json",
+    "symptom": "In round 4 the status line shows WIND -5.0, but r_wind_level, the level of the wind arrow (from -3 to 3, its sign the direction of the wind), is 3. On the same calls lob.wasm shows the same status line and reports r_wind_level -3.",
+    "budget": 2167000
+  },
+  {
+    "n": 3,
+    "title": "Build 3",
+    "program": "programs/ladder/3.json",
+    "wasm": "targets/ladder/3.wasm",
+    "recording": "recordings/ladder/3.json",
+    "symptom": "The status line ends with SCORE 1/3, but only two shells landed in the recording: round 1's, which hit, and round 2's, which landed 44 paces short. On the same calls lob.wasm ends with SCORE 1/2, and its last shell landed earlier: at the end its r_impact_age, the frames since the last landing, is 48, against 3 here.",
+    "budget": 1090000
+  },
+  {
+    "n": 4,
+    "title": "Build 4",
+    "program": "programs/ladder/4.json",
+    "wasm": "targets/ladder/4.wasm",
+    "recording": "recordings/ladder/4.json",
+    "symptom": "At the end of the recording the message line (the text at r_msg_ptr) is empty, though the last shell has landed. On the same calls lob.wasm's message line reads LONG BY 491. The two builds show the same status line, and every getter agrees with lob.wasm's after every call.",
+    "budget": 1319000
+  },
+  {
+    "n": 5,
+    "title": "Build 5",
+    "program": "programs/ladder/5.json",
+    "wasm": "targets/ladder/5.wasm",
+    "recording": "recordings/ladder/5.json",
+    "symptom": "On the same calls lob.wasm puts round 4's flag at x = 606.8 and its status line shows WIND -4.6; this build puts the flag at x = 707.1 and shows WIND -3.9 (r_target_x and the status line at the end of the recording).",
+    "budget": 2617000
+  },
+  {
+    "n": 6,
+    "title": "Build 6",
+    "program": "programs/ladder/6.json",
+    "wasm": "targets/ladder/6.wasm",
+    "recording": "recordings/ladder/6.json",
+    "symptom": "This is a build of Lob II; its last good build is lob2.wasm. In rounds 2 and 3 the shells land far past the flag: round 3's lands at x = 1643.8 (g5) and the message line reads LONG BY 896. On the same calls both of lob2.wasm's shells hit: its round 3 shell lands at x = 745.4, and its status line ends with SCORE 2/3 where this build's ends with SCORE 0/3. The flag (g3), the angle, the power and the wind are the same in both builds.",
+    "budget": 2480000
+  }
+]

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="ld-t ld-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="ld-t">What a delay the plan didn't count costs</title>
+<desc id="ld-d">A plan counts on the shot leaving at a certain frame and aims at where the flag will be when that shell lands. If the shot leaves L frames later than the plan counted on, the shell lands L frames late. By then the flag has moved on by L × speed ÷ 60 paces, and that distance is the miss. L is the surprise: the delay less the frames the plan counted.</desc>
+<line x1="20" y1="70" x2="700" y2="70" stroke="#57606a" stroke-width="2"/>
+<line x1="40" y1="58" x2="40" y2="82" stroke="#1b1f24" stroke-width="3"/><text x="14" y="44">read</text>
+<line x1="180" y1="58" x2="180" y2="82" stroke="#57606a" stroke-width="3" stroke-dasharray="5 5"/><text x="96" y="44" fill="#57606a">planned to fire</text>
+<line x1="350" y1="58" x2="350" y2="82" stroke="#1b1f24" stroke-width="3"/><text x="322" y="44">fired</text>
+<line x1="470" y1="58" x2="470" y2="82" stroke="#57606a" stroke-width="3" stroke-dasharray="5 5"/><text x="398" y="44" fill="#57606a">planned landing</text>
+<line x1="640" y1="58" x2="640" y2="82" stroke="#1b1f24" stroke-width="3"/><text x="612" y="44">lands</text>
+<line x1="180" y1="104" x2="350" y2="104" stroke="#3553d4" stroke-width="3"/><line x1="180" y1="96" x2="180" y2="112" stroke="#3553d4" stroke-width="3"/><line x1="350" y1="96" x2="350" y2="112" stroke="#3553d4" stroke-width="3"/><text x="218" y="136" fill="#3553d4">L frames</text>
+<line x1="470" y1="104" x2="640" y2="104" stroke="#3553d4" stroke-width="3"/><line x1="470" y1="96" x2="470" y2="112" stroke="#3553d4" stroke-width="3"/><line x1="640" y1="96" x2="640" y2="112" stroke="#3553d4" stroke-width="3"/><text x="508" y="136" fill="#3553d4">L frames</text>
+<line x1="40" y1="330" x2="690" y2="330" stroke="#57606a" stroke-width="2"/>
+<line x1="150" y1="282" x2="150" y2="330" stroke="#94a3b8" stroke-width="2"/><rect x="152" y="282" width="22" height="14" fill="none" stroke="#94a3b8" stroke-width="2"/>
+<text x="64" y="366" fill="#57606a">flag when read</text>
+<line x1="400" y1="282" x2="400" y2="330" stroke="#475569" stroke-width="2" stroke-dasharray="6 5"/><rect x="402" y="282" width="22" height="14" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="6 5"/>
+<path d="M392 322 l16 16 m0 -16 l-16 16" stroke="#334155" stroke-width="4"/>
+<text x="286" y="366">the shell lands here</text>
+<text x="286" y="394" fill="#57606a">(where the plan aimed)</text>
+<line x1="590" y1="282" x2="590" y2="330" stroke="#475569" stroke-width="2"/><rect x="592" y="282" width="22" height="14" fill="#e5484d"/>
+<text x="556" y="366">flag now</text>
+<line x1="400" y1="240" x2="590" y2="240" stroke="#3553d4" stroke-width="3"/><line x1="400" y1="230" x2="400" y2="250" stroke="#3553d4" stroke-width="3"/><line x1="590" y1="230" x2="590" y2="250" stroke="#3553d4" stroke-width="3"/>
+<text x="330" y="214" fill="#3553d4">the miss: L × speed ÷ 60 paces</text>
+</svg>

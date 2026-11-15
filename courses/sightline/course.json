@@ -1,0 +1,309 @@
+{
+ "id": "sightline",
+ "slug": "sightline",
+ "version": "sightline-0.3.0",
+ "title": "Sightline",
+ "subtitle": "Build the tools that work out a game from its memory and its code, and one loop where a decision model picks what to test next on a budget",
+ "format": "ivy-course-contract-v1",
+ "entry": "engine.mjs",
+ "workFiles": [
+  "scan.mjs",
+  "find.mjs",
+  "learn.mjs",
+  "wasm.mjs",
+  "lift.mjs",
+  "flight.mjs",
+  "reader.mjs",
+  "race.mjs",
+  "engine.mjs"
+ ],
+ "given": [
+  "opcodes.mjs"
+ ],
+ "support": [
+  "lab.mjs",
+  "web.mjs",
+  "host.mjs",
+  "models.mjs",
+  "levels.mjs",
+  "watch.mjs",
+  "checks/",
+  "fixtures/",
+  "game/",
+  "starter/",
+  "lessons/",
+  "API.md",
+  "README.md"
+ ],
+ "lead": "Build one engine that climbs ten levels of a small artillery game, with no model writing any of its code. It reads the game's memory, runs experiments, takes the compiled WebAssembly apart and lifts it into expressions, then works out the physics, a reader for state that moves and is scrambled, and the flag's motion from what the code says, testing every finding against the game before relying on it. Each level has a budget of rounds and shots. Where more than one thing is worth trying, a small decision model picks what to test first, and the course measures whether its picks beat always taking the first option, picking at random, and a rule you write: on these games they did not beat the rule. The last three levels are a game your engine has never seen.",
+ "prerequisites": "JavaScript for Node 22: functions, arrays, objects, ES modules, async/await; running node in a terminal; high-school mathematics: algebra, square roots, and sine and cosine. Hexadecimal and bits are taught where they are first needed. No WebAssembly, reverse engineering or machine learning background.",
+ "scope": "Two small WebAssembly games the course ships, read only through memory, the file, key presses, the screen and time. Memory scanning, a WebAssembly decoder for the instructions the games use, a lifter that turns functions into guarded expressions, an evaluator for the game's own arithmetic, cross-references, constant tracking, slicing and shape recognition, a least-squares fit, tests that confirm or refute what the passes find, budgets of rounds and shots, and a decision model measured against stand-ins. The engine reads and decodes the game file; it never runs it.",
+ "runtime": "Node 22 or newer. No dependency install, account, API key or network. Optional live route: Ollama on this computer, for the decision model.",
+ "checks": {
+  "count": 89,
+  "perModule": {
+   "01": 11,
+   "02": 12,
+   "03": 11,
+   "04": 9,
+   "05": 14,
+   "06": 15,
+   "07": 11,
+   "08": 6
+  }
+ },
+ "timeEstimateHours": "23 (estimate, not yet measured with learners)",
+ "lessons": [
+  {
+   "id": "01",
+   "title": "Text in memory",
+   "objectiveId": "o01-text",
+   "objective": "Pull the strings out of the game's memory, find the status line and the message by what changes when a key is pressed, and work out the controls by pressing each key, keeping keys that still work",
+   "type": "procedure",
+   "dependencies": [],
+   "files": [
+    "scan.mjs",
+    "engine.mjs"
+   ],
+   "file": "lessons/01.md",
+   "practice": [
+    "p01a",
+    "r01-strings",
+    "p01b",
+    "r01-label",
+    "r01-status",
+    "r01-ladder",
+    "r01-roles",
+    "p01c",
+    "r01-engine"
+   ]
+  },
+  {
+   "id": "02",
+   "title": "Pin the values",
+   "objectiveId": "o02-values",
+   "objective": "Find where the game keeps angle, power, wind and the flag by filtering memory across experiments chosen from a menu inside a budget, and see why a pick from a menu on which every option works can't matter",
+   "type": "procedure",
+   "dependencies": [
+    "01"
+   ],
+   "files": [
+    "scan.mjs",
+    "find.mjs",
+    "engine.mjs"
+   ],
+   "file": "lessons/02.md",
+   "practice": [
+    "p02a",
+    "r02-delta",
+    "r02-bits",
+    "p02b",
+    "p02c",
+    "r02-write",
+    "r02-line",
+    "r02-menu",
+    "r02-choose",
+    "p02d",
+    "r02-matter"
+   ]
+  },
+  {
+   "id": "03",
+   "title": "An aim from practice shots",
+   "objectiveId": "o03-fit",
+   "objective": "Fire practice shots, fit an aim to them by least squares, judge the fit on shots it never saw, search for the setting that lands on the flag, and play level 1 inside a budget of rounds and shots",
+   "type": "procedure",
+   "dependencies": [
+    "02"
+   ],
+   "files": [
+    "learn.mjs",
+    "engine.mjs"
+   ],
+   "file": "lessons/03.md",
+   "practice": [
+    "p03a",
+    "r03-features",
+    "r03-message",
+    "r03-lsq",
+    "p03c",
+    "r03-judge",
+    "r03-held",
+    "p03b",
+    "r03-baseline",
+    "r03-round",
+    "r03-search",
+    "r03-budget",
+    "r03-loop",
+    "r03-level"
+   ]
+  },
+  {
+   "id": "04",
+   "title": "Take the code apart",
+   "objectiveId": "o04-decode",
+   "objective": "Decode the game's WebAssembly into listings with block depths and exact immediates: the evidence every later pass reads",
+   "type": "procedure",
+   "dependencies": [
+    "01",
+    "02"
+   ],
+   "files": [
+    "wasm.mjs"
+   ],
+   "file": "lessons/04.md",
+   "practice": [
+    "p04a",
+    "r04-leb",
+    "r04-entry",
+    "r04-names",
+    "r04-imm",
+    "r04-depth",
+    "p04b",
+    "r04-listing"
+   ]
+  },
+  {
+   "id": "05",
+   "title": "Lift the code",
+   "objectiveId": "o05-lift",
+   "objective": "Lift the game's functions into guarded expressions, evaluate them with the game's own arithmetic, find the launch, the flight and the landing by their shapes, and install the physics they make only after check shots confirm it",
+   "type": "procedure",
+   "dependencies": [
+    "02",
+    "03",
+    "04"
+   ],
+   "files": [
+    "lift.mjs",
+    "flight.mjs",
+    "engine.mjs"
+   ],
+   "file": "lessons/05.md",
+   "practice": [
+    "p05a",
+    "r05-model",
+    "r05-stack",
+    "r05-same",
+    "r05-place",
+    "r05-guard",
+    "r05-phi",
+    "p05b",
+    "r05-arrive",
+    "r05-forward",
+    "r05-loop",
+    "p05c",
+    "r05-const",
+    "r05-eval",
+    "p05d",
+    "r05-apply",
+    "r05-xref",
+    "r05-slice",
+    "r05-stepper",
+    "r05-decode",
+    "r05-launch",
+    "r05-flight",
+    "r05-sim",
+    "r05-check",
+    "r05-level"
+   ]
+  },
+  {
+   "id": "06",
+   "title": "The game fights back",
+   "objectiveId": "o06-reader",
+   "objective": "Recover the state's place and encoding from the code, test a reader built from it against the screen, and have the engine find what a level broke and pick a repair under a budget, with a rule of yours to measure the decision model against",
+   "type": "principle",
+   "dependencies": [
+    "05"
+   ],
+   "files": [
+    "reader.mjs",
+    "engine.mjs"
+   ],
+   "file": "lessons/06.md",
+   "practice": [
+    "p06a",
+    "r06-decode",
+    "r06-flag",
+    "r06-read",
+    "r06-check",
+    "r06-band",
+    "p06b",
+    "r06-aim",
+    "r06-learn",
+    "r06-kit",
+    "r06-menu",
+    "r06-rule",
+    "p06c",
+    "r06-budget",
+    "r06-levels"
+   ]
+  },
+  {
+   "id": "07",
+   "title": "Race the clock",
+   "objectiveId": "o07-race",
+   "objective": "Slice the flag's motion out of the code, judge the path it predicts against the frames that follow, lead a moving flag, and measure what planned and unplanned decision time cost",
+   "type": "principle",
+   "dependencies": [
+    "06"
+   ],
+   "files": [
+    "race.mjs",
+    "engine.mjs"
+   ],
+   "file": "lessons/07.md",
+   "practice": [
+    "r07-moves",
+    "r07-slice",
+    "p07a",
+    "r07-path",
+    "r07-judge",
+    "r07-lead",
+    "r07-wait",
+    "p07b",
+    "r07-surprise",
+    "r07-budget",
+    "r07-decider",
+    "r07-live",
+    "r07-levels"
+   ]
+  },
+  {
+   "id": "08",
+   "title": "A game you have never seen",
+   "objectiveId": "o08-climb",
+   "objective": "Climb a game the engine has never seen with the same passes and loop, and measure every picker over the whole ladder",
+   "type": "procedure",
+   "dependencies": [
+    "07"
+   ],
+   "files": [
+    "engine.mjs"
+   ],
+   "file": "lessons/08.md",
+   "practice": [
+    "p08a",
+    "r08-kit",
+    "r08-norun",
+    "r08-nohelp",
+    "p08-cleared",
+    "r08-passes",
+    "r08-levels",
+    "p08m",
+    "r08-measure",
+    "r08-claims",
+    "r08-review-strings",
+    "r08-review-filter",
+    "r08-review-held",
+    "r08-review-leb",
+    "r08-review-guard",
+    "r08-review-slice",
+    "r08-review-band",
+    "r08-review-rule",
+    "r08-review-delay"
+   ]
+  }
+ ]
+}

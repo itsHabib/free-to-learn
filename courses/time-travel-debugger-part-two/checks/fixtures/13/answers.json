@@ -1,0 +1,11 @@
+{
+ "salt": "ttd2-ladder-2026-11-13",
+ "builds": {
+  "1": "f5d729f0dad8fc08d7f118944d01e703fada4c6987af6994659e8d6898a58a90",
+  "2": "68d2ee32ebc0752aefc308ffedbae7f4f0cedcd17bb69eafffcff7aba3bb7a79",
+  "3": "491c8323723122ff334ecd29645bfc3cbfa5cbdf7a9dd4da35e5b9c49ff2d70e",
+  "4": "9cc0d167774101adcfd21a691cfc807e29342957b5ac2146ba334d1d479d1024",
+  "5": "61e3a6fc5be9fb6632fbe26e4c9dac2acd7d23360f9b64584c2477858d5eefdb",
+  "6": "e09fc357d20a3999bb6b91b51ed8a0a9b8035c88911af53f6054db3aebe8d304"
+ }
+}

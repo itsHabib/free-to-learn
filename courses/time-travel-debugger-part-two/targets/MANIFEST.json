@@ -1,0 +1,26 @@
+{
+  "source": {
+    "repository": "itsHabib/ivy",
+    "branch": "course/sightline",
+    "commit": "9ba8bc18b18cfb05db929ac6358505d6090ee84d",
+    "paths": [
+      "courses/sightline/game/lob.c",
+      "courses/sightline/game/lob.wasm",
+      "courses/sightline/game/lob2.c",
+      "courses/sightline/game/lob2.wasm"
+    ],
+    "build": "courses/sightline/tools/build-game.sh"
+  },
+  "build": {
+    "compile": "clang --target=wasm32 -O2 -ffreestanding -fno-builtin -nostdlib -Wall -Wextra -c NAME.c -o NAME.o",
+    "link": "rust-lld -flavor wasm --no-entry --strip-all -o NAME.wasm NAME.o",
+    "named": "lob-names.wasm is lob.c linked the same way without --strip-all, so it keeps the name section; its code section equals lob.wasm byte for byte"
+  },
+  "files": {
+    "targets/lob.c": "3f12e0a1ac5a7201bbab0308a099d2754738da810109d26e6092a958c7936cea",
+    "targets/lob.wasm": "91b6c2f7fc15f18214628f2b2ddc068ca6347cd8d14115dfcdf9d0e75e03541a",
+    "targets/lob2.c": "f4fab889f5ea85304780ac6ea9b2aed8143796c7254719e25e8a50cc891da976",
+    "targets/lob2.wasm": "d7b2f6c39199c2b2e2795f6545cfdacd5535c1d9c08359dcca77a4dc52b35bc4",
+    "targets/lob-names.wasm": "52cf2dc53aa845cd69a1a550a311a9b8767e6f8e5c9ef959a9ab13ead9d57bd0"
+  }
+}

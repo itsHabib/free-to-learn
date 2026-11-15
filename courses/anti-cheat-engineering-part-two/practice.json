@@ -1,0 +1,1056 @@
+{
+ "12a": {
+  "version": 1,
+  "lesson": "12",
+  "section": "Parse strictly",
+  "retry": "12a2",
+  "question": "How many of these five messages does parseInput refuse?\n(1) {\"v\":1,\"seq\":4,\"angle\":52,\"power\":71,\"fire\":true}\n(2) {\"v\":1,\"seq\":5,\"angle\":52,\"power\":71,\"fire\":true,\"hit\":true}\n(3) {\"v\":1,\"seq\":6,\"angle\":\"52\",\"power\":71,\"fire\":true}\n(4) {\"seq\":7,\"v\":1,\"fire\":false,\"power\":100,\"angle\":85}\n(5) {\"v\":1,\"seq\":8,\"angle\":52,\"power\":70.5,\"fire\":false}",
+  "format": "a whole number",
+  "expected": "3",
+  "reason": "Message 2 has an extra field (keys), message 3 sends the angle as a string (angle), and message 5 sends a power that is not whole (power). Message 4 is fine: key order does not matter, and 100 and 85 are inside the limits, which include their ends.",
+  "wrong": [
+   {
+    "answer": "2",
+    "feedback": "Message 4 is the one that looks odd but is fine, so which of the others did you let through? A string \"52\" is not a number, and 70.5 is not a whole number: both are refused, as is the extra field hit."
+   },
+   {
+    "answer": "4",
+    "feedback": "Message 4 is accepted: JSON objects have no key order, and the limits include their ends (angle 85, power 100)."
+   }
+  ]
+ },
+ "12a2": {
+  "version": 1,
+  "lesson": "12",
+  "section": "Parse strictly",
+  "retryOnly": true,
+  "variantOf": "12a",
+  "question": "How many of these five messages does parseInput refuse?\n(1) {\"v\":1,\"seq\":1,\"angle\":5,\"power\":10,\"fire\":false}\n(2) {\"v\":1,\"seq\":2,\"angle\":45,\"power\":60,\"fire\":\"true\"}\n(3) {\"v\":2,\"seq\":3,\"angle\":45,\"power\":60,\"fire\":false}\n(4) {\"v\":1,\"seq\":0,\"angle\":45,\"power\":60,\"fire\":false}\n(5) {\"v\":1,\"seq\":4,\"angle\":45,\"power\":60}",
+  "format": "a whole number",
+  "expected": "4",
+  "reason": "Message 1 is at the lower limits, which are allowed. Message 2 sends fire as a string (fire), message 3 has version 2 (version), message 4 has seq 0, below 1 (seq), and message 5 lacks fire (keys).",
+  "wrong": [
+   {
+    "answer": "3",
+    "feedback": "Count again: seq 0 is refused (seq starts at 1), and a missing field is refused as keys just like an extra one."
+   }
+  ]
+ },
+ "12b": {
+  "version": 1,
+  "lesson": "12",
+  "section": "One shot per round",
+  "retry": "12b2",
+  "question": "The state is { lastSeq: 7, firedRound: 2 }, it's round 3 and nothing is flying. These arrive in this order, with no tick between them: seq 9 without fire, seq 8 with fire, seq 10 with fire, seq 11 with fire. Which seqs are admitted?",
+  "format": "the seqs in order, separated by commas",
+  "expected": "9,10",
+  "accept": [
+   "9, 10",
+   "9 10"
+  ],
+  "reason": "Seq 9 is above 7: admitted, and lastSeq becomes 9. Seq 8 is now at or below lastSeq: stale. Seq 10 fires in round 3, and the last fire was in round 2: admitted, firedRound becomes 3. Seq 11 fires in round 3 again: refused (fired, or flying, since the shell left with seq 10).",
+  "wrong": [
+   {
+    "answer": "9,8,10",
+    "feedback": "Seq 8 arrives after seq 9 was admitted, so it is at or below lastSeq: stale. Order on arrival is what counts, not order of sending."
+   },
+   {
+    "answer": "9,10,11",
+    "feedback": "Seq 11 is a second fire in round 3: one shot per round."
+   },
+   {
+    "answer": "9",
+    "feedback": "Seq 10 fires in round 3, and firedRound is 2: the last fire was in an earlier round, so this one is admitted."
+   }
+  ]
+ },
+ "12b2": {
+  "version": 1,
+  "lesson": "12",
+  "section": "One shot per round",
+  "retryOnly": true,
+  "variantOf": "12b",
+  "question": "The state is { lastSeq: 3, firedRound: 4 }, it is round 4 and nothing is flying. These arrive in this order, with no tick between them: seq 5 with fire, seq 4 without fire, seq 6 without fire, seq 6 with fire. Which seqs are admitted?",
+  "format": "the seqs in order, separated by commas",
+  "expected": "4,6",
+  "accept": [
+   "4, 6",
+   "4 6"
+  ],
+  "reason": "Seq 5 fires in round 4, which already had its shot: refused (fired), and a refusal leaves lastSeq at 3. So seq 4 is above 3: admitted. Seq 6 without fire: admitted. The second seq 6 is at or below lastSeq: stale.",
+  "wrong": [
+   {
+    "answer": "6",
+    "feedback": "Seq 5 was refused, and a refused message does not move lastSeq. So seq 4, arriving next, is still above lastSeq 3."
+   },
+   {
+    "answer": "5,6",
+    "feedback": "Seq 5 is a fire in round 4, and firedRound is 4: this round already had its shot."
+   }
+  ]
+ },
+ "12c": {
+  "version": 1,
+  "lesson": "12",
+  "section": "Replay",
+  "retry": "12c2",
+  "question": "Take a genuine record, delete one input that doesn't fire and sits in the middle of a round, and renumber the rest so that n runs 1, 2, 3 again. Does replay accept it?",
+  "format": "yes or no",
+  "expected": "yes",
+  "reason": "Each input carries the whole intent: the fire input sets its own angle and power. So the deleted adjustment changed nothing that lasts: the shot, the landing and the final are the same, the ticks still rise and the seqs still go up. Replay shows the record is consistent, not that it is complete.",
+  "wrong": [
+   {
+    "answer": "no",
+    "feedback": "Check each reason: the shape is fine, n runs 1, 2, 3, the ticks and seqs still rise, every input would be admitted, and the final comes out the same because a later input sets the angle and power again. Nothing is refused."
+   }
+  ]
+ },
+ "12c2": {
+  "version": 1,
+  "lesson": "12",
+  "section": "Replay",
+  "retryOnly": true,
+  "variantOf": "12c",
+  "question": "In a genuine record, change the power of the session's last input from 70 to 71. 71 is inside the limits. Which reason does replay give?",
+  "format": "shape, order, refused, final or ok",
+  "expected": "final",
+  "reason": "Every check before the last passes: the shape is right, the order is unchanged and power 71 would be admitted. But the replayed game ends with power 71 where the record's final says 70.",
+  "wrong": [
+   {
+    "answer": "refused",
+    "feedback": "Power 71 is inside 10 to 100 and nothing else about the input changed, so your admission admits it."
+   },
+   {
+    "answer": "ok",
+    "feedback": "The final holds the angle and power the game ended with, and the last input set the power: 71 against the record's 70."
+   }
+  ]
+ },
+ "12d": {
+  "version": 1,
+  "lesson": "12",
+  "section": "Order and replays",
+  "retry": "12d2",
+  "question": "A client sends seqs 1, 2, 3, 4, 5. The network loses 3 and delivers 5 before 4. Which seqs does the server admit?",
+  "format": "the seqs in order of admission, separated by commas",
+  "expected": "1,2,5",
+  "accept": [
+   "1, 2, 5",
+   "1 2 5"
+  ],
+  "reason": "1 and 2 arrive in order. 3 never arrives, which leaves a gap; gaps are fine. 5 arrives next and is above 2: admitted. 4 then arrives at or below lastSeq 5: stale.",
+  "wrong": [
+   {
+    "answer": "1,2,4,5",
+    "feedback": "4 arrives after 5 was admitted, so it is at or below lastSeq: stale."
+   },
+   {
+    "answer": "1,2",
+    "feedback": "A gap is fine: a lost message leaves one, and 5 is above 2."
+   }
+  ]
+ },
+ "12d2": {
+  "version": 1,
+  "lesson": "12",
+  "section": "Order and replays",
+  "retryOnly": true,
+  "variantOf": "12d",
+  "question": "A client sends seqs 1 to 6. The network delivers 2 twice, loses 4, and delivers 6 before 5. Which seqs does the server admit?",
+  "format": "the seqs in order of admission, separated by commas",
+  "expected": "1,2,3,6",
+  "accept": [
+   "1, 2, 3, 6",
+   "1 2 3 6"
+  ],
+  "reason": "The second copy of 2 is at or below lastSeq: stale. 4 never arrives. 6 is admitted, so 5, arriving after it, is stale.",
+  "wrong": [
+   {
+    "answer": "1,2,3,5,6",
+    "feedback": "5 arrives after 6 was admitted, so it is stale."
+   },
+   {
+    "answer": "1,2,2,3,6",
+    "feedback": "The second copy of 2 is a repeat: at or below lastSeq, so stale."
+   }
+  ]
+ },
+ "13a": {
+  "version": 1,
+  "lesson": "13",
+  "section": "A client is bounded by what it is sent",
+  "retry": "13a2",
+  "question": "With only what the screen draws (the arrows instead of the wind, the flag to the nearest pace, nothing about its speed or timer), what share of its shots does the searching client hit at 50 ms each way? (a) about 95%, (b) about 65%, (c) about 25%, (d) about 5%",
+  "format": "one letter",
+  "expected": "b",
+  "reason": "It hits about 65% (the cost table: 65.2% at 50 ms). It can still estimate a lot: the arrows narrow the wind to a band, and the flag's speed follows from where the flag was in recent messages. What it cannot know is when the flag will pick a new speed, so a shot still in the air when that happens misses.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "That's the full view's rate. With only what the screen draws, the searcher has to estimate where the flag will be, and a change of speed during a flight usually means a miss."
+   },
+   {
+    "answer": "c",
+    "feedback": "That is roughly an expert player. The searcher still aims exactly for its best estimate, and the arrows plus the flag's recent positions are a good estimate most of the time."
+   },
+   {
+    "answer": "d",
+    "feedback": "That is a novice's rate. The searcher aims exactly for its best estimate; it misses only when its estimate of the wind or of the flag's motion is wrong, which is about one shot in three."
+   }
+  ]
+ },
+ "13a2": {
+  "version": 1,
+  "lesson": "13",
+  "section": "A client is bounded by what it is sent",
+  "retryOnly": true,
+  "variantOf": "13a",
+  "question": "With the full view, at 400 ms each way, what share of its shots does the searching client hit? (a) 100%, (b) about 65%, (c) about 54%, (d) about 25%",
+  "format": "one letter",
+  "expected": "a",
+  "reason": "With the full view it simulates the future exactly, including the flag's next speed, and it knows its own delay, so latency costs it nothing: 100.0% at every latency in the cost table. 54% is its rate with the drawn view at 400 ms.",
+  "wrong": [
+   {
+    "answer": "c",
+    "feedback": "54% is the drawn view at 400 ms. With the full view the searcher knows the flag's timer and random state, so it can run the flag forward past any delay."
+   },
+   {
+    "answer": "b",
+    "feedback": "About 65% is the drawn view at short latencies. The full view adds the exact wind and everything that decides the flag's next speed."
+   },
+   {
+    "answer": "d",
+    "feedback": "About 25% is an expert player. The searcher with the full view knows everything the server knows."
+   }
+  ]
+ },
+ "13b": {
+  "version": 1,
+  "lesson": "13",
+  "section": "Test by changing what is hidden",
+  "retry": "13b2",
+  "question": "A view adds a field drift: Math.sign(game.flagSpeed()). The flag's speed is now -50. setHidden('flagSpeed', k) sets -120.5 for k = 1, 33.25 for k = 2 and 97.75 for k = 3. For which values of k does the view's message change?",
+  "format": "the values of k, separated by commas",
+  "expected": "2,3",
+  "accept": [
+   "2, 3",
+   "2 3"
+  ],
+  "reason": "drift is -1 now. -120.5 is negative too, so k = 1 leaves the message as it was. 33.25 and 97.75 are positive: drift becomes 1. The leak shows only for some values, which is why the test tries all three.",
+  "wrong": [
+   {
+    "answer": "1,2,3",
+    "feedback": "drift keeps only the sign, and -120.5 has the same sign as -50: for k = 1 nothing in the message changes."
+   },
+   {
+    "answer": "1",
+    "feedback": "k = 1 keeps the speed negative. The message changes when the sign does: k = 2 and k = 3."
+   }
+  ]
+ },
+ "13b2": {
+  "version": 1,
+  "lesson": "13",
+  "section": "Test by changing what is hidden",
+  "retryOnly": true,
+  "variantOf": "13b",
+  "question": "A view adds a field soon: game.flagTimer() < 30. The timer is now 230. setHidden('flagTimer', k) sets it to 28 for k = 1, 125 for k = 2 and 222 for k = 3. For which values of k does the view's message change?",
+  "format": "the values of k, separated by commas",
+  "expected": "1",
+  "reason": "soon is false now. Only k = 1 brings the timer under 30, so only k = 1 turns it true. A test that tried only k = 2 or k = 3 would miss this leak.",
+  "wrong": [
+   {
+    "answer": "none",
+    "feedback": "k = 1 sets the timer to 28, which is under 30: soon turns from false to true."
+   },
+   {
+    "answer": "1,2,3",
+    "feedback": "soon is a yes-or-no: it changes only when the timer crosses 30, and only k = 1 does."
+   }
+  ]
+ },
+ "13c": {
+  "version": 1,
+  "lesson": "13",
+  "section": "What hiding costs",
+  "retry": "13c2",
+  "question": "At 0 ms the expert hits 23.8% of 2,400 shots with the full view and 25.0% with the drawn view. Does the drawn view help experts?",
+  "format": "yes or no",
+  "expected": "no",
+  "reason": "At 0 ms the two screens differ only by fractions of a pace, so the expert plays almost the same game, and small differences early send the sessions down different paths. The 1.2-point gap is noise: the standard error of a rate near 24% over 2,400 shots is about 0.9 points, and the difference of two such rates has a standard error of about 1.2.",
+  "wrong": [
+   {
+    "answer": "yes",
+    "feedback": "At 0 ms the two screens differ only by fractions of a pace. A difference of 1.2 points over 2,400 shots is about one standard error of the difference: noise."
+   }
+  ]
+ },
+ "13c2": {
+  "version": 1,
+  "lesson": "13",
+  "section": "What hiding costs",
+  "retryOnly": true,
+  "variantOf": "13c",
+  "question": "At 400 ms the expert hits 17.8% of 2,400 shots with the full view and 14.6% with the drawn view. The standard error of the difference of two such rates is about 1.1 points. Is the gap likely to be noise?",
+  "format": "yes or no",
+  "expected": "no",
+  "reason": "3.2 points is about three standard errors of the difference. At 400 ms the drawn screen extrapolates the flag across a long delay and the full screen runs it forward exactly, so a real cost is expected, and it is small next to what hiding costs the searcher (100.0% against 54.0%).",
+  "wrong": [
+   {
+    "answer": "yes",
+    "feedback": "3.2 points is nearly three times the standard error of the difference, and there is a reason for it: at 400 ms the drawn screen's guess about the flag is often wrong."
+   }
+  ]
+ },
+ "14a": {
+  "version": 1,
+  "lesson": "14",
+  "section": "Features",
+  "retry": "14a2",
+  "question": "On the dev split, which feature's median differs most between the searching client and the experts, measured in the experts' own spread (their upper quartile minus their lower quartile)?",
+  "format": "a feature's name, as API.md spells it",
+  "expected": "fireMedian",
+  "reason": "The experts' median fire time is 51.5 ticks with a spread of 8.5 (47.5 to 56); the searcher's is 10: 4.9 spreads apart. Next come inputsMedian (6.5 against 1, spread 1.5: 3.7), hitRate (0.25 against 0.667, spread 0.167: 2.5), fireSpread (2.0) and missMedian (27.6 against 7.4, spread 20.6: 1.0). The searcher stands out most in how it acts, not in how well it aims, because experts' misses vary a lot.",
+  "wrong": [
+   {
+    "answer": "missMedian",
+    "feedback": "The searcher lands closer (median 7.4 against 27.6), but experts' median misses spread from 20.2 to 40.8 across sessions: about one spread apart. Its fire time is 4.9 spreads apart."
+   },
+   {
+    "answer": "hitRate",
+    "feedback": "Its hit rate is 2.5 of the experts' spreads away (0.667 against 0.25, spread 0.167). Its fire time is further: 10 ticks against 51.5, with a spread of 8.5."
+   },
+   {
+    "answer": "inputsMedian",
+    "feedback": "Close: one message a round against the experts' 6.5, with a spread of 1.5, is 3.7 spreads. Its fire time is 4.9 spreads away."
+   }
+  ]
+ },
+ "14a2": {
+  "version": 1,
+  "lesson": "14",
+  "section": "Features",
+  "retryOnly": true,
+  "variantOf": "14a",
+  "question": "highLatency players are skilled players 250 ms away. On the dev split, which feature's median differs most between highLatency and skilled players, measured in the skilled players' interquartile range?",
+  "format": "a feature's name, as API.md spells it",
+  "expected": "fireMedian",
+  "reason": "The skilled players' median fire time is 74 ticks with an interquartile range of 11.5; the highLatency players' is 82.5, 0.7 of that range later. The round's first message reaches them 250 ms late and their fire takes 250 ms to come back, and the server measures fire time on its own clock. No other feature differs by as much as a third of its range: the same players, on a slower connection, aim and press keys the same way.",
+  "wrong": [
+   {
+    "answer": "missMedian",
+    "feedback": "Their shells land a little further off (70 against 63 paces), but skilled players' misses vary across sessions by 29 paces between the quartiles: under a quarter of that range."
+   },
+   {
+    "answer": "hitRate",
+    "feedback": "Both kinds have a median hit rate of 0.083: one hit in twelve shots."
+   },
+   {
+    "answer": "inputsMedian",
+    "feedback": "Both kinds send a median of 8.5 inputs a round: the connection does not change how a player presses keys."
+   }
+  ]
+ },
+ "14b": {
+  "version": 1,
+  "lesson": "14",
+  "section": "Base rates",
+  "retry": "14b2",
+  "question": "A detector catches 90% of cheats and flags 1% of legal sessions. One session in 100 is a cheat. What share of flagged sessions are cheats, to the nearest whole percent?",
+  "format": "a whole number of percent",
+  "expected": "48",
+  "accept": [
+   "48%",
+   "48 %"
+  ],
+  "reason": "Out of 10,000 sessions, 100 are cheats and 90 of them are flagged; 9,900 are legal and 99 of them are flagged. 90 / (90 + 99) is 48%: more than half the flags are legal players.",
+  "wrong": [
+   {
+    "answer": "90",
+    "feedback": "90% is the recall: the share of cheats flagged. Precision is the share of flags that are cheats, and with 99 times more legal players, 1% of them is more than all the caught cheats."
+   },
+   {
+    "answer": "99",
+    "feedback": "1% of legal sessions flagged is 99 of 9,900, which is more than the 90 cheats caught."
+   }
+  ]
+ },
+ "14b2": {
+  "version": 1,
+  "lesson": "14",
+  "section": "Base rates",
+  "retryOnly": true,
+  "variantOf": "14b",
+  "question": "A detector catches every cheat and flags 1 legal session in 1,000. One session in 100 is a cheat. What share of flagged sessions are cheats, to the nearest whole percent?",
+  "format": "a whole number of percent",
+  "expected": "91",
+  "accept": [
+   "91%",
+   "91 %"
+  ],
+  "reason": "Out of 100,000 sessions, 1,000 are cheats, all flagged; 99,000 are legal and 99 of them are flagged. 1,000 / 1,099 is 91%.",
+  "wrong": [
+   {
+    "answer": "100",
+    "feedback": "Every cheat is flagged, but so are 99 legal players in every 99,000: 1,000 / 1,099 is 91%."
+   }
+  ]
+ },
+ "14c": {
+  "version": 1,
+  "lesson": "14",
+  "section": "The adapted searcher",
+  "retry": "14c2",
+  "question": "The delay-misses sessions hit 31.1% of their shots, and the dev split's experts hit 27.5%. If your detector flags none of them, how many percentage points of hit rate has the cheat bought over an expert, to the nearest whole point?",
+  "format": "a whole number of points",
+  "expected": "4",
+  "reason": "31.1 - 27.5 is 3.6: about 4 points. To stay unflagged the cheat gave up most of what the searcher had (about 65%).",
+  "wrong": [
+   {
+    "answer": "39",
+    "feedback": "65% is the plain searcher's rate. The delay-misses sessions miss on purpose and hit 31.1%."
+   },
+   {
+    "answer": "31",
+    "feedback": "Compare with what an honest expert gets for nothing: 27.5%."
+   }
+  ]
+ },
+ "14c2": {
+  "version": 1,
+  "lesson": "14",
+  "section": "The adapted searcher",
+  "retryOnly": true,
+  "variantOf": "14c",
+  "question": "The delay sessions hit 68.1% of their shots; the dev split's experts hit 27.5%. How many percentage points over an expert does an unflagged delay session buy, to the nearest whole point?",
+  "format": "a whole number of points",
+  "expected": "41",
+  "reason": "68.1 - 27.5 is 40.6: about 41 points. That is why a detector must catch delay sessions even though they time their shots like experts: they still land far closer than experts do.",
+  "wrong": [
+   {
+    "answer": "68",
+    "feedback": "Compare with what an honest expert hits: 27.5%."
+   }
+  ]
+ },
+ "14d": {
+  "version": 1,
+  "lesson": "14",
+  "section": "A score and a budget",
+  "retry": "14d2",
+  "question": "Suppose the legal scores on dev were 1, 3, 3, 5, 9, 9, 12, 20, 25, 40, and the budget 0.2. What does chooseThreshold return?",
+  "format": "a number",
+  "expected": "25",
+  "reason": "0.2 of 10 sessions is 2, so at most 2 may score at or above the threshold. At 25, two do (25 and 40). At 20, three do. The smallest threshold that keeps it to two is 25.",
+  "wrong": [
+   {
+    "answer": "20",
+    "feedback": "At 20 three legal sessions are flagged (20, 25, 40): one more than 0.2 of 10."
+   },
+   {
+    "answer": "40",
+    "feedback": "40 meets the budget, but so does 25, which flags more cheats: chooseThreshold takes the smallest threshold within the budget."
+   }
+  ]
+ },
+ "14d2": {
+  "version": 1,
+  "lesson": "14",
+  "section": "A score and a budget",
+  "retryOnly": true,
+  "variantOf": "14d",
+  "question": "Suppose the legal scores on dev were 2, 4, 4, 4, 8, 15, 15, 30, and the budget 0.25. What does chooseThreshold return?",
+  "format": "a number",
+  "expected": "30",
+  "reason": "0.25 of 8 is 2. At 15, three sessions are at or above it (15, 15, 30), because the two 15s count together. At 30, one is. So 30.",
+  "wrong": [
+   {
+    "answer": "15",
+    "feedback": "Both sessions that score 15 are at or above 15, and so is 30: three flags, one more than the budget allows."
+   }
+  ]
+ },
+ "15a": {
+  "version": 1,
+  "lesson": "15",
+  "section": "A press, late",
+  "retry": "15a2",
+  "question": "The core is at x = 2,000 and the courier walks east at full speed. A player with a one-way latency of 100 ms and no jitter sees the courier at x = 1,750, the first view that shows it in range, and at that moment sends an input that stops and presses interact. The server judges at now. At what x is the courier when the server decides?",
+  "format": "a whole number of millimetres",
+  "expected": "2500",
+  "accept": [
+   "2,500"
+  ],
+  "reason": "The view of tick T left at T x 50 ms and arrived 100 ms later; the press arrives another 100 ms later, at the start of tick T + 4. The courier kept walking during ticks T + 1, T + 2 and T + 3: 2,000, 2,250, 2,500. The stop lands at T + 4, so the server decides at 2,500, 500 mm from the core: refused.",
+  "wrong": [
+   {
+    "answer": "1750",
+    "feedback": "That is where the screen showed it. The screen was 100 ms late, and the press takes another 100 ms: four ticks, three of them still walking."
+   },
+   {
+    "answer": "2000",
+    "feedback": "Count the ticks: the press arrives at the start of tick T + 4, and the courier walked on during T + 1, T + 2 and T + 3."
+   }
+  ]
+ },
+ "15a2": {
+  "version": 1,
+  "lesson": "15",
+  "section": "A press, late",
+  "retryOnly": true,
+  "variantOf": "15a",
+  "question": "The same approach as in 15a, but the player's one-way latency is 125 ms. At what x is the courier when the server decides?",
+  "format": "a whole number of millimetres",
+  "expected": "2750",
+  "accept": [
+   "2,750"
+  ],
+  "reason": "The view arrives at T x 50 + 125 and the press at T x 50 + 250, the start of tick T + 5. The courier walked during T + 1 to T + 4: four steps from 1,750 is 2,750.",
+  "wrong": [
+   {
+    "answer": "2500",
+    "feedback": "125 ms each way is 250 ms, five ticks: the courier walks during four of them."
+   }
+  ]
+ },
+ "15b": {
+  "version": 1,
+  "lesson": "15",
+  "section": "The judge",
+  "retry": "15b2",
+  "question": "The same player as in 15a, with a measured round trip of 200 ms, and a window of 2. At which x does your judge look?",
+  "format": "a whole number of millimetres",
+  "expected": "2250",
+  "accept": [
+   "2,250"
+  ],
+  "reason": "now is T + 4 and seen is T. The round trip is 4 ticks, so the bound is 4 + 1 = 5; the window is 2; the rewind allowed is 2. The judge looks at T + 2, where the courier stood at 2,250, exactly 250 mm from the core: in range, accepted.",
+  "wrong": [
+   {
+    "answer": "1750",
+    "feedback": "A window of 2 lets the judge go back only two ticks from now (T + 4), to T + 2, not all the way to seen."
+   },
+   {
+    "answer": "2500",
+    "feedback": "That is now. The judge rewinds as far as allowed: two ticks."
+   }
+  ]
+ },
+ "15b2": {
+  "version": 1,
+  "lesson": "15",
+  "section": "The judge",
+  "retryOnly": true,
+  "variantOf": "15b",
+  "question": "The 125 ms player of 15a2, with a measured round trip of 250 ms, and a window of 2. At which x does your judge look?",
+  "format": "a whole number of millimetres",
+  "expected": "2500",
+  "accept": [
+   "2,500"
+  ],
+  "reason": "now is T + 5 and seen is T. The bound is 5 + 1 = 6, the window 2, so the rewind allowed is 2: T + 3, where the courier stood at 2,500. Out of range: this player needs a window of 3.",
+  "wrong": [
+   {
+    "answer": "2250",
+    "feedback": "That is T + 2, three ticks before now. The window allows two."
+   }
+  ]
+ },
+ "15c": {
+  "version": 1,
+  "lesson": "15",
+  "section": "The judge",
+  "retry": "15c2",
+  "question": "A client on a 20 ms connection answers every ping at once, so its samples are 40 to 50 ms. It claims to have seen 6 ticks ago. With a window of 6, how many ticks back may the judge look?",
+  "format": "a whole number of ticks",
+  "expected": "2",
+  "reason": "Its largest sample is at most 50 ms, one tick, so ceil(rtt) + 1 is at most 2, and the window of 6 is larger: 2. Its claim of 6 ticks is judged 2 ticks back. This is the naive faker of the window table: claims that reach further than its own round trip are cut short.",
+  "wrong": [
+   {
+    "answer": "6",
+    "feedback": "The window is a ceiling for everyone; each client is also bounded by its own measured round trip plus one tick."
+   },
+   {
+    "answer": "1",
+    "feedback": "The bound is ceil(rtt) + 1: one tick for the round trip and one for a press that lands between ticks."
+   }
+  ]
+ },
+ "15c2": {
+  "version": 1,
+  "lesson": "15",
+  "section": "The judge",
+  "retryOnly": true,
+  "variantOf": "15c",
+  "question": "A slow-pong faker holds its pongs, so its largest recent sample is 380 ms. The window is 6. How many ticks may its claims rewind?",
+  "format": "a whole number of ticks",
+  "expected": "6",
+  "reason": "380 ms is 7.6 ticks; ceil gives 8, plus 1 is 9. The window, 6, is smaller, so the window decides. That is why only the window limits this faker.",
+  "wrong": [
+   {
+    "answer": "9",
+    "feedback": "9 is its own bound, but no client may rewind more than the window."
+   },
+   {
+    "answer": "8",
+    "feedback": "The bound is ceil(7.6) + 1 = 9, and the window of 6 is smaller still."
+   }
+  ]
+ },
+ "15d": {
+  "version": 1,
+  "lesson": "15",
+  "section": "Choosing a window",
+  "retry": "15d2",
+  "question": "Rows:\n- window 0, legit rate 20.8%, slow cheats 0\n- window 4, 4.7%, 4,681\n- window 6, 2.0%, 13,279\n- window 8, 0.0%, 22,283\nWhat does pickWindow return for a budget of 0.05?",
+  "format": "a whole number",
+  "expected": "4",
+  "reason": "Windows 4, 6 and 8 are within 5%. Among them, window 4 accepts the fewest slow-pong cheats.",
+  "wrong": [
+   {
+    "answer": "8",
+    "feedback": "8 refuses no honest press, but 4 is also within the budget and accepts far fewer cheats: pickWindow takes the fewest cheats within the budget."
+   },
+   {
+    "answer": "0",
+    "feedback": "Window 0 refuses 20.8% of honest presses: over the budget."
+   }
+  ]
+ },
+ "15d2": {
+  "version": 1,
+  "lesson": "15",
+  "section": "Choosing a window",
+  "retryOnly": true,
+  "variantOf": "15d",
+  "question": "The same rows as 15d. What does pickWindow return for a budget of 0.03?",
+  "format": "a whole number",
+  "expected": "6",
+  "reason": "Only windows 6 (2.0%) and 8 (0.0%) are within 3%. Window 6 accepts fewer slow-pong cheats.",
+  "wrong": [
+   {
+    "answer": "4",
+    "feedback": "Window 4 refuses 4.7% of honest presses: over 3%."
+   }
+  ]
+ },
+ "16a": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Four writes and a crash",
+  "retry": "16a2",
+  "question": "Ana holds a sword and a lamp and has 20 coins, and Bo holds a bow and has 100 coins. naiveTrade crashes after its first write. The server restarts and the client sends the same request again, and this time it runs to the end. Who holds a sword afterwards? (a) Bo holds one sword and Ana none (b) Ana and Bo hold one each (c) Bo holds two (d) nobody holds one",
+  "format": "one letter",
+  "expected": "c",
+  "reason": "The first write put the sword in Bo's inventory; the crash left Ana's copy too. The retry checks that Ana holds the sword (she does), adds it to Bo again and takes it from Ana: Bo now holds two swords.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "That is what a correct trade would leave. The retry runs all four writes on top of the first attempt's one, so Bo receives the sword twice."
+   },
+   {
+    "answer": "b",
+    "feedback": "That is the state right after the crash. The retry then runs: it gives Bo the sword again and takes Ana's, so both swords end up with Bo."
+   },
+   {
+    "answer": "d",
+    "feedback": "No write here destroys a sword: the first attempt gave Bo one, and the retry gave Bo another and took Ana's."
+   }
+  ]
+ },
+ "16a2": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Four writes and a crash",
+  "retryOnly": true,
+  "variantOf": "16a",
+  "question": "Same start: Ana 20 coins, Bo 100, Cy 60. naiveTrade crashes after its third write: Bo has the sword and has paid, Ana has not been paid. The client retries and the retry is refused as missing, because Ana no longer holds the sword. How many coins exist in total afterwards?",
+  "format": "a whole number",
+  "expected": "140",
+  "reason": "The third write took 40 coins from Bo; the fourth, which would have paid Ana, never happened, and the retry stopped before writing anything. 180 - 40 = 140: forty coins are gone.",
+  "wrong": [
+   {
+    "answer": "180",
+    "feedback": "Bo paid 40 and Ana never received them: the total fell by 40."
+   }
+  ]
+ },
+ "16b": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Write what you will do first",
+  "retry": "16b2",
+  "question": "With the journal written first and absolute writes, a crash happens after the write that adds the sword to Bo. Recovery finishes the trade from the journal. How many coins does Bo have afterwards, starting from 100?",
+  "format": "a whole number",
+  "expected": "60",
+  "reason": "Recovery writes the end state from the journal's before values: Bo's coins become 100 - 40 = 60, however many times it is written.",
+  "wrong": [
+   {
+    "answer": "20",
+    "feedback": "Absolute writes: the journal says Bo had 100 before, so recovery writes 60, not 40 less than whatever Bo has now."
+   },
+   {
+    "answer": "100",
+    "feedback": "Recovery finishes the trade; it does not undo it. Bo pays 40."
+   }
+  ]
+ },
+ "16b2": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Write what you will do first",
+  "retryOnly": true,
+  "variantOf": "16b",
+  "question": "A trade written with relative writes instead (take 40 from Bo) crashes right after Bo's coin write. Recovery runs every write of the trade again. How many coins does Bo have afterwards, starting from 100?",
+  "format": "a whole number",
+  "expected": "20",
+  "reason": "The first attempt took 40 (100 to 60); recovery takes 40 again (60 to 20). A relative write is not safe to repeat.",
+  "wrong": [
+   {
+    "answer": "60",
+    "feedback": "That is what an absolute write gives. A relative write repeated takes the 40 twice."
+   }
+  ]
+ },
+ "16c": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Request keys",
+  "retry": "16c2",
+  "question": "A request with key k1 (Ana sells Bo the sword for 40) has been carried out. The client sends key k1 again, with price 45. What does trade return?",
+  "format": "ok, or the reason",
+  "expected": "conflict",
+  "reason": "The key was carried out with a different body. Guessing which body the client meant would be worse than saying it has a bug.",
+  "wrong": [
+   {
+    "answer": "ok",
+    "feedback": "The stored receipt is for price 40. A different body under the same key is a conflict."
+   },
+   {
+    "answer": "missing",
+    "feedback": "The key is checked before the item: this request is refused for reusing the key with another body."
+   }
+  ]
+ },
+ "16c2": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Request keys",
+  "retryOnly": true,
+  "variantOf": "16c",
+  "question": "A request with key k1 (Ana sells Bo the sword for 40) has been carried out, and later Bo sold the sword on to Cy. The client sends key k1 again with exactly the same body. What does trade return?",
+  "format": "ok, or the reason",
+  "expected": "ok",
+  "reason": "Same key, same body: the stored receipt comes back and nothing is written. The key is checked before whether Ana holds the sword, so the retry is not refused as missing.",
+  "wrong": [
+   {
+    "answer": "missing",
+    "feedback": "The key comes first: a request already carried out returns its receipt, whatever has happened to the sword since."
+   }
+  ]
+ },
+ "17a": {
+  "version": 1,
+  "lesson": "17",
+  "section": "The budgets",
+  "retry": "17a2",
+  "question": "Your view adds a field windExact holding the server's exact wind. Which budget fails? (a) legal players: no input refused (b) the searching client's hit-rate ceiling (c) the courier (d) trades",
+  "format": "one letter",
+  "expected": "b",
+  "reason": "The searching client reads windExact, the full view's name for it, and with the exact wind its hit rate rises past the ceiling: about 84% against the 75% allowed. Your leak tests in lesson 13 would fail too.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "Admission is unchanged: legal players' messages are still admitted. What changes is what the searcher knows."
+   },
+   {
+    "answer": "c",
+    "feedback": "The courier arena does not use your Lob view at all."
+   },
+   {
+    "answer": "d",
+    "feedback": "Trades do not use your Lob view at all."
+   }
+  ]
+ },
+ "17a2": {
+  "version": 1,
+  "lesson": "17",
+  "section": "The budgets",
+  "retryOnly": true,
+  "variantOf": "17a",
+  "question": "Your admission refuses every message that does not fire. Which budget fails? (a) legal players: no input refused (b) the searching client's hit-rate ceiling (c) the courier (d) trades",
+  "format": "one letter",
+  "expected": "a",
+  "reason": "Legal players send several messages a round as they adjust the angle and power, and only the last one fires. Every adjustment would be refused, and the legal row allows none. The searching client sends one message a round, a fire, so it would not notice.",
+  "wrong": [
+   {
+    "answer": "b",
+    "feedback": "The searching client sends a single fire a round; refusing messages that do not fire changes nothing for it. The players who send adjustments are the honest ones."
+   },
+   {
+    "answer": "c",
+    "feedback": "The courier arena has its own admission, part one's; your Lob admission does not touch it."
+   },
+   {
+    "answer": "d",
+    "feedback": "Trades do not go through your Lob admission."
+   }
+  ]
+ },
+ "15e": {
+  "version": 1,
+  "lesson": "15",
+  "section": "Part one's rules still apply",
+  "question": "A courier client sends inputs with seqs 1, 2, 3, 4. The network delivers 4 before 3. Which seqs does the courier server admit, in the order it admits them?",
+  "format": "the seqs in order of admission, separated by commas",
+  "expected": "1,2,4",
+  "accept": [
+   "1, 2, 4",
+   "1 2 4"
+  ],
+  "reason": "The courier server keeps part one's rule, the same one your Lob admission uses: a seq at or below the highest admitted is stale. 4 arrives before 3 and is admitted, so 3 is stale when it arrives.",
+  "wrong": [
+   {
+    "answer": "1,2,3,4",
+    "feedback": "Order of arrival decides: 4 was admitted first, so 3 is at or below the highest admitted seq when it arrives."
+   },
+   {
+    "answer": "1,2",
+    "feedback": "4 is above 2, so it is admitted; only 3, arriving after it, is stale."
+   }
+  ],
+  "variantOf": "12d"
+ },
+ "17b": {
+  "version": 1,
+  "lesson": "17",
+  "section": "Four questions first",
+  "question": "A detector flags 95% of cheats and 2 legal sessions in 1,000. One session in 100 is a cheat. What share of flagged sessions are cheats, to the nearest whole percent?",
+  "format": "a whole number of percent",
+  "expected": "83",
+  "accept": [
+   "83%",
+   "83 %"
+  ],
+  "reason": "Out of 100,000 sessions, 1,000 are cheats and 950 of them are flagged; 99,000 are legal and 198 of them are flagged. 950 / 1,148 is 83%.",
+  "wrong": [
+   {
+    "answer": "95",
+    "feedback": "95% is the recall. Precision counts the flagged legal players too: 198 of them against 950 cheats."
+   },
+   {
+    "answer": "99",
+    "feedback": "Even 2 in 1,000 legal sessions is 198 players when 99,000 are legal."
+   }
+  ],
+  "variantOf": "14b"
+ },
+ "17c": {
+  "version": 1,
+  "lesson": "17",
+  "section": "Four questions first",
+  "question": "A view adds calm: Math.abs(game.serverWind()) < 0.5. The exact wind is 0.3 and the arrows show ~ (its band is -0.75 to 0.75). setHidden('wind', k) sets -0.375, 0 and 0.375 for k = 1, 2 and 3. For which values of k does the message change?",
+  "format": "the values of k, separated by commas, or none",
+  "expected": "none",
+  "reason": "calm is true now, and all three test winds are under 0.5 in size, so calm stays true and the message never changes. The view leaks the wind all the same: a wind of 0.6 would turn calm false. Three variants catch many leaks, but they cannot rule out a leak that shows only at a value none of them reaches. A passing test is evidence about the cases it tried.",
+  "wrong": [
+   {
+    "answer": "1,3",
+    "feedback": "0.375 is under 0.5 in size, so calm stays true for k = 1 and k = 3."
+   },
+   {
+    "answer": "2",
+    "feedback": "A wind of 0 is calm, as 0.3 was: no change."
+   }
+  ],
+  "variantOf": "13b"
+ },
+ "13d": {
+  "version": 1,
+  "lesson": "13",
+  "section": "What hiding costs",
+  "retry": "13d2",
+  "question": "Why does the searching client hit every shot with the full view, even at 400 ms each way? (a) the full view tells it the flag's speed, its timer and the game's random state, so it can run the flag forward past any delay (b) it fires the moment a round starts, before latency matters (c) the full view sends where the shell will land (d) the server waits for its messages",
+  "format": "one letter",
+  "expected": "a",
+  "reason": "Latency only matters to a client that has to guess where the flag will be. With the speed, the frames until the next change and the random state that picks the next speed, the searcher's own copy of the game plays the flag forward exactly, however old the message is.",
+  "wrong": [
+   {
+    "answer": "b",
+    "feedback": "It fires 400 to 500 ms after a round's first message arrives, and at 400 ms each way that message is already 400 ms old. What saves it is that it can compute where the flag is now."
+   },
+   {
+    "answer": "c",
+    "feedback": "No view sends a landing point: the shell has not been fired when the searcher aims. It computes landings itself with its own copy of the game."
+   },
+   {
+    "answer": "d",
+    "feedback": "The server never waits: it runs a tick every 50 ms whoever is late."
+   }
+  ]
+ },
+ "13d2": {
+  "version": 1,
+  "lesson": "13",
+  "section": "What hiding costs",
+  "retryOnly": true,
+  "variantOf": "13d",
+  "question": "At 400 ms each way, the searching client hits 54.0% with the drawn view, against 64.2% at 200 ms. Why does a longer delay cost it hits? (a) the flag's newest position on its screen is older, so the flag has more time to pick a new speed it cannot foresee (b) the server refuses late fires (c) the wind changes during the flight (d) its messages are lost",
+  "format": "one letter",
+  "expected": "a",
+  "reason": "With the drawn view it can extrapolate the flag only from positions it has seen. The older those are, the longer the stretch it must guess, and the more often the flag changes speed inside it.",
+  "wrong": [
+   {
+    "answer": "b",
+    "feedback": "A fire is refused only while a shell flies or when the round already had a shot, never for being late."
+   },
+   {
+    "answer": "c",
+    "feedback": "The exact wind is fixed for the whole round; only the flag's motion changes on its own."
+   },
+   {
+    "answer": "d",
+    "feedback": "These runs lose no messages; the delay alone does it."
+   }
+  ]
+ },
+ "14e": {
+  "version": 1,
+  "lesson": "14",
+  "section": "Freeze, then held-out",
+  "retry": "14e2",
+  "question": "Why must the threshold come from the dev split, and not from the sessions you will report? (a) held-out sessions are harder (b) a threshold chosen on the sessions it's then measured on is measured too kindly (c) the dev split has more cheats (d) chooseThreshold accepts only dev scores",
+  "format": "one letter",
+  "expected": "b",
+  "reason": "Choosing the threshold fits it to the sessions it was chosen on: their particular lucky experts and unlucky searchers. Measured on those same sessions, it looks better than it will on any others. Fresh sessions give the honest number.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "The held-out split is played the same way, by the same kinds of player, from other seeds. It is not harder; it is unseen."
+   },
+   {
+    "answer": "c",
+    "feedback": "The dev split has 100 cheats in 1,100 sessions and held-out 200 in 2,200: the same share."
+   },
+   {
+    "answer": "d",
+    "feedback": "chooseThreshold takes any list of scores. The rule is about which sessions you may use, not what the function accepts."
+   }
+  ]
+ },
+ "14e2": {
+  "version": 1,
+  "lesson": "14",
+  "section": "Freeze, then held-out",
+  "retryOnly": true,
+  "variantOf": "14e",
+  "question": "You froze, ran held-out once and got 9 false flags. You change a weight, freeze again and run held-out again: 2 false flags. Which number belongs in your report? (a) 2 (b) 9, together with a note that you changed the detector after seeing it (c) the average (d) neither",
+  "format": "one letter",
+  "expected": "b",
+  "reason": "The second run was chosen after looking at held-out results, so held-out is no longer held out for it. Report the first, and say what you changed and when; your receipt shows both runs in order.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "The second detector was tuned after a look at held-out sessions, so its held-out number is measured too kindly, like a threshold set on the sessions it is reported on."
+   },
+   {
+    "answer": "c",
+    "feedback": "An average of a fair number and a number measured too kindly is not a fair number."
+   },
+   {
+    "answer": "d",
+    "feedback": "The first run is a fair measurement of the first detector; report it, and what you changed after."
+   }
+  ]
+ },
+ "16d": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Four writes and a crash",
+  "retry": "16d2",
+  "question": "In the naive table's row for write 4 the trade is whole: the sword is Bo's, and the coins are right. Why does the command still count a problem there? (a) the sword exists twice (b) the client's retry is answered missing, so the player is told a trade that worked failed (c) 40 coins are lost (d) the rival sale goes through",
+  "format": "one letter",
+  "expected": "b",
+  "reason": "naiveTrade keeps no receipt, so the retry runs the trade again, finds that Ana no longer holds the sword and answers missing. The trade happened; the player is told it did not.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "After write 4 only Bo holds the sword: all four writes happened. The problem is the answer to the retry."
+   },
+   {
+    "answer": "c",
+    "feedback": "After write 4 every coin moved: 180 in all, as at the start."
+   },
+   {
+    "answer": "d",
+    "feedback": "The rival sale is refused as missing, rightly: Ana no longer holds the sword."
+   }
+  ]
+ },
+ "16d2": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Four writes and a crash",
+  "retryOnly": true,
+  "variantOf": "16d",
+  "question": "A trade keeps a receipt under its key but writes it last, after the four moves. It crashes after the second move and the client retries. Why can the item still end up wrong? (a) without a receipt the retry runs the whole trade again on top of the half that happened (b) receipts cannot be stored (c) the key is too short (d) it cannot: the receipt fixes it",
+  "format": "one letter",
+  "expected": "a",
+  "reason": "The receipt is written only if the trade finishes. A crash before it leaves half a trade and no receipt, so the retry starts again from the top and repeats the moves that already happened.",
+  "wrong": [
+   {
+    "answer": "d",
+    "feedback": "The receipt helps only a retry that comes after it was written. This crash came before."
+   },
+   {
+    "answer": "b",
+    "feedback": "The store holds receipts like anything else; the trouble is when this one is written."
+   },
+   {
+    "answer": "c",
+    "feedback": "Any key of 1 to 40 allowed characters works; the trouble is when the receipt is written."
+   }
+  ]
+ },
+ "17d": {
+  "version": 1,
+  "lesson": "17",
+  "section": "Four questions first",
+  "question": "Suppose a sweep on other sessions gave:\n- window 5, honest presses refused 1.6%, slow-pong cheats 7,900\n- window 6, 0.9%, 12,800\n- window 7, 0.2%, 19,500\n- window 8, 0.0%, 21,900\nWhat does pickWindow return for a budget of 0.01?",
+  "format": "a whole number",
+  "expected": "6",
+  "reason": "Windows 6, 7 and 8 are within 1%, and window 6 accepts the fewest slow-pong cheats. On these sessions 6 meets the budget by a hair, which is exactly the case lesson 17 warns about: on fresh sessions it may not.",
+  "wrong": [
+   {
+    "answer": "7",
+    "feedback": "7 is within the budget, but so is 6, with 6,700 fewer cheats accepted."
+   },
+   {
+    "answer": "5",
+    "feedback": "Window 5 refuses 1.6% of honest presses: over 1%."
+   }
+  ],
+  "variantOf": "15d"
+ },
+ "17e": {
+  "version": 1,
+  "lesson": "17",
+  "section": "Four questions first",
+  "question": "A request with key k9 was refused as funds, because the buyer was short of coins. Later the buyer has enough, and the client sends k9 again with exactly the same body. What does trade return: ok, or a reason?",
+  "format": "ok, or the reason",
+  "expected": "ok",
+  "reason": "A refusal writes nothing, so k9 was never stored. The second request is a new trade, and now the buyer can pay.",
+  "wrong": [
+   {
+    "answer": "funds",
+    "feedback": "The buyer has enough now, and a refusal stored nothing to repeat: the request is judged afresh."
+   },
+   {
+    "answer": "conflict",
+    "feedback": "conflict needs a trade already carried out under the key with a different body. Nothing was carried out under k9."
+   }
+  ],
+  "variantOf": "16c"
+ }
+}

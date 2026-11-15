@@ -1,0 +1,1414 @@
+{
+ "source": "recorded 2026-11-14 with Ollama on one Mac, temperature 0, one climb of the reference engine from an empty kit, then levels 3 and 9 from the kit option 0 leaves",
+ "model": "qwen2.5:7b",
+ "rows": [
+  {
+   "level": 1,
+   "pass": true,
+   "hits": 10,
+   "rounds": 18,
+   "shots": 13,
+   "seconds": 15.9
+  },
+  {
+   "level": 2,
+   "pass": true,
+   "hits": 10,
+   "rounds": 10,
+   "shots": 10,
+   "seconds": 0.5
+  },
+  {
+   "level": 3,
+   "pass": true,
+   "hits": 10,
+   "rounds": 10,
+   "shots": 10,
+   "seconds": 0.3
+  },
+  {
+   "level": 4,
+   "pass": true,
+   "hits": 10,
+   "rounds": 10,
+   "shots": 10,
+   "seconds": 0.5
+  },
+  {
+   "level": 5,
+   "pass": true,
+   "hits": 10,
+   "rounds": 10,
+   "shots": 10,
+   "seconds": 0.1
+  },
+  {
+   "level": 6,
+   "pass": true,
+   "hits": 10,
+   "rounds": 12,
+   "shots": 10,
+   "seconds": 2.4
+  },
+  {
+   "level": 7,
+   "pass": true,
+   "hits": 10,
+   "rounds": 10,
+   "shots": 10,
+   "seconds": 2.1
+  },
+  {
+   "level": 8,
+   "pass": true,
+   "hits": 10,
+   "rounds": 20,
+   "shots": 13,
+   "seconds": 3.8
+  },
+  {
+   "level": 9,
+   "pass": true,
+   "hits": 10,
+   "rounds": 10,
+   "shots": 10,
+   "seconds": 2.5
+  },
+  {
+   "level": 10,
+   "pass": true,
+   "hits": 10,
+   "rounds": 10,
+   "shots": 10,
+   "seconds": 2.1
+  }
+ ],
+ "summary": {
+  "repair": 2,
+  "experiment": 0,
+  "fire": 15,
+  "unlikeRule": 0,
+  "experimentNotFirst": 0,
+  "waits": 15,
+  "medianMs": 735,
+  "fastestMs": 601,
+  "slowestMs": 15506,
+  "levelsPassed": 10
+ },
+ "scenarios": [
+  {
+   "level": 3,
+   "from": "option 0's kit",
+   "pass": true,
+   "hits": 10,
+   "rounds": 14,
+   "shots": 10
+  },
+  {
+   "level": 9,
+   "from": "option 0's kit",
+   "pass": true,
+   "hits": 10,
+   "rounds": 14,
+   "shots": 10
+  }
+ ],
+ "calls": [
+  {
+   "level": 1,
+   "kind": "repair",
+   "text": "Level 1, Open range: The plain build. Find the controls and the values, and get an aim. Problem: nothing reads the state yet. Left for learning: 16 rounds and 20 shots.",
+   "labels": [
+    "Search memory for the values (about 6 rounds; what it finds stops working if the state moves or is scrambled, and it needs the wind on the screen)",
+    "Test what the code says about the state (3 rounds against the screen): The state is the struct at *0x13120, values stored XORed with the word at +92: angle at +0, power at +4, flag at +16, wind at +8, or from the server in builds that take it from there."
+   ],
+   "choice": 1,
+   "heuristic": 1,
+   "ms": 15506
+  },
+  {
+   "level": 6,
+   "kind": "fire",
+   "text": "The planned shot lands in 96 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 695
+  },
+  {
+   "level": 6,
+   "kind": "fire",
+   "text": "The planned shot lands in 106 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 601
+  },
+  {
+   "level": 6,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.6 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 602
+  },
+  {
+   "level": 7,
+   "kind": "fire",
+   "text": "The planned shot lands in 96 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 720
+  },
+  {
+   "level": 7,
+   "kind": "fire",
+   "text": "The planned shot lands in 106 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 601
+  },
+  {
+   "level": 7,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.6 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 611
+  },
+  {
+   "level": 8,
+   "kind": "repair",
+   "text": "Level 8, A new game: Lob II: a game you have never seen. Nothing in the kit is known to be right for it. Problem: nothing reads the state yet. Left for learning: 12 rounds and 6 shots.",
+   "labels": [
+    "Search memory for the values (about 6 rounds; what it finds stops working if the state moves or is scrambled, and it needs the wind on the screen)",
+    "Test what the code says about the state (3 rounds against the screen): The state is the struct at *0x14120+4+0, values stored with the word at +8 added: angle at +100, power at +96, flag at +36, wind at +56, or from the server in builds that take it from there."
+   ],
+   "choice": 1,
+   "heuristic": 1,
+   "ms": 1007
+  },
+  {
+   "level": 8,
+   "kind": "fire",
+   "text": "The planned shot lands in 96 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 706
+  },
+  {
+   "level": 8,
+   "kind": "fire",
+   "text": "The planned shot lands in 106 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 601
+  },
+  {
+   "level": 8,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.6 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 611
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 96 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 751
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 106 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 602
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.6 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 607
+  },
+  {
+   "level": 10,
+   "kind": "fire",
+   "text": "The planned shot lands in 96 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 768
+  },
+  {
+   "level": 10,
+   "kind": "fire",
+   "text": "The planned shot lands in 106 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 622
+  },
+  {
+   "level": 10,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.6 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 607
+  },
+  {
+   "level": 3,
+   "kind": "repair",
+   "text": "Level 3, Moving memory: The game moves its state to a new address every round. Problem: a round later the addresses found by searching no longer hold what the screen shows (angle 0 there, 45 on screen). Left for learning: 7 rounds and 2 shots.",
+   "labels": [
+    "Search memory for the values (about 6 rounds; what it finds stops working if the state moves or is scrambled, and it needs the wind on the screen)",
+    "Test what the code says about the state (3 rounds against the screen): The state is the struct at *0x13120, values stored XORed with the word at +92: angle at +0, power at +4, flag at +16, wind at +8, or from the server in builds that take it from there."
+   ],
+   "choice": 1,
+   "heuristic": 1,
+   "ms": 1007,
+   "scenario": "level 3 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "repair",
+   "text": "Level 9, A new game, hidden: Lob II with its state moving and scrambled. Problem: a round later the addresses found by searching no longer hold what the screen shows (angle -1.3876560348180199e-31 there, 45 on screen). Left for learning: 7 rounds and 2 shots.",
+   "labels": [
+    "Search memory for the values (about 6 rounds; what it finds stops working if the state moves or is scrambled, and it needs the wind on the screen)",
+    "Test what the code says about the state (3 rounds against the screen): The state is the struct at *0x14120+4+0, values stored with the word at +8 added: angle at +100, power at +96, flag at +36, wind at +56, or from the server in builds that take it from there."
+   ],
+   "choice": 1,
+   "heuristic": 1,
+   "ms": 836,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 96 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 628,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 106 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 607,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.6 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 602,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 186 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 744,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 112 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 741,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 147 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 762,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 121 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 728,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 105 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 755,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 102 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 740,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 144 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 730,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 134 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 630,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 110 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 736,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 143 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 687,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 121 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 764,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 168 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 753,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 157 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 773,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 163 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 750,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 111 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 746,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 174 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 749,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 125 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 666,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 165 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 742,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 148 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 631,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 157 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 744,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 108 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 744,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 132 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 621,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 68 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 745,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 716,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 124 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 744,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 140 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 729,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 150 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 651,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 98 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 743,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 143 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 601,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 747,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 99 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 739,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 158 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 735,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 132 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 642,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 113 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 741,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 168 frames, 0.0 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 0,
+   "heuristic": null,
+   "ms": 743,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 122 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 674,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 173 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 746,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 84 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 670,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 115 frames, 0.0 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 0,
+   "heuristic": null,
+   "ms": 758,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 147 frames, 0.0 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 0,
+   "heuristic": null,
+   "ms": 662,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 136 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 669,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 110 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 750,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 183 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 740,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 163 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 682,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 100 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 753,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 153 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 681,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 124 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 776,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 122 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 729,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 80 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 0,
+   "heuristic": null,
+   "ms": 771,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 126 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 688,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 114 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 0,
+   "heuristic": null,
+   "ms": 696,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 120 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 733,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 698,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 78 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 743,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 102 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 760,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 135 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 729,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 68 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 745,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 90 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 747,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 116 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 670,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 140 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 745,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 118 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 639,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 139 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 757,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 120 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 721,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 109 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 644,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 103 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 666,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 143 frames, 0.2 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 749,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 104 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 601,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 101 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 669,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 103 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 768,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 96 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 775,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 113 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 691,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 124 frames, 0.5 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 738,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 104 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 726,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 142 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 0,
+   "heuristic": null,
+   "ms": 761,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 137 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 747,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 107 frames, 0.4 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 636,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 206 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 745,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 80 frames, 0.3 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 1,
+   "heuristic": null,
+   "ms": 774,
+   "scenario": "level 9 from option 0's kit"
+  },
+  {
+   "level": 9,
+   "kind": "fire",
+   "text": "The planned shot lands in 112 frames, 0.1 paces from where the flag will be.",
+   "labels": [
+    "Fire now",
+    "Wait and look again"
+   ],
+   "choice": 0,
+   "heuristic": null,
+   "ms": 740,
+   "scenario": "level 9 from option 0's kit"
+  }
+ ]
+}

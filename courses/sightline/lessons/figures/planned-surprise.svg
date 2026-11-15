@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 520" role="img" aria-labelledby="pl-t pl-d" font-family="system-ui, sans-serif" font-size="22" fill="#1b1f24">
+<title id="pl-t">Hits against delay, planned and unplanned</title>
+<desc id="pl-d">Hits out of 10 on level 6 at ten delays, by the course's own engine. When the engine planned for the delay it hit 10 of 10 at every delay: 1, 2, 3, 4, 6, 9, 12, 18, 30 and 54 frames. When the engine planned for 1 frame and the shot still left after the whole delay, the unplanned runs, it hit 10 of 10 up to 6 frames, then 5 at 9 frames, 4 at 12, 4 at 18, 3 at 30 and 1 at 54. The delays are spaced evenly along the axis, not to scale.</desc>
+<text x="20" y="34">hits of 10</text>
+<line x1="80" y1="70" x2="80" y2="400" stroke="#57606a" stroke-width="2"/>
+<line x1="80" y1="400" x2="700" y2="400" stroke="#57606a" stroke-width="2"/>
+<line x1="80" y1="80" x2="700" y2="80" stroke="#d8dee4" stroke-width="1"/>
+<line x1="80" y1="240" x2="700" y2="240" stroke="#d8dee4" stroke-width="1"/>
+<text x="42" y="88">10</text>
+<text x="54" y="248">5</text>
+<text x="54" y="408">0</text>
+<g text-anchor="middle">
+<text x="110" y="434">1</text><text x="174" y="434">2</text><text x="238" y="434">3</text><text x="302" y="434">4</text><text x="366" y="434">6</text><text x="430" y="434">9</text><text x="494" y="434">12</text><text x="558" y="434">18</text><text x="622" y="434">30</text><text x="686" y="434">54</text>
+</g>
+<text x="170" y="474">delay, in frames (not to scale)</text>
+<polyline points="110,80 174,80 238,80 302,80 366,80 430,80 494,80 558,80 622,80 686,80" fill="none" stroke="#3553d4" stroke-width="4"/>
+<g fill="#3553d4">
+<circle cx="110" cy="80" r="7"/><circle cx="174" cy="80" r="7"/><circle cx="238" cy="80" r="7"/><circle cx="302" cy="80" r="7"/><circle cx="366" cy="80" r="7"/><circle cx="430" cy="80" r="7"/><circle cx="494" cy="80" r="7"/><circle cx="558" cy="80" r="7"/><circle cx="622" cy="80" r="7"/><circle cx="686" cy="80" r="7"/>
+</g>
+<polyline points="110,80 174,80 238,80 302,80 366,80 430,240 494,272 558,272 622,304 686,368" fill="none" stroke="#1b1f24" stroke-width="3" stroke-dasharray="9 6"/>
+<g fill="none" stroke="#1b1f24" stroke-width="3">
+<rect x="98" y="68" width="24" height="24"/><rect x="162" y="68" width="24" height="24"/><rect x="226" y="68" width="24" height="24"/><rect x="290" y="68" width="24" height="24"/><rect x="354" y="68" width="24" height="24"/>
+</g>
+<g fill="#fff" stroke="#1b1f24" stroke-width="3">
+<rect x="423" y="233" width="14" height="14"/><rect x="487" y="265" width="14" height="14"/><rect x="551" y="265" width="14" height="14"/><rect x="615" y="297" width="14" height="14"/><rect x="679" y="361" width="14" height="14"/>
+</g>
+<text x="400" y="56" fill="#3553d4">planned (dots)</text>
+<text x="380" y="376">unplanned (squares)</text>
+<text x="398" y="264">5</text><text x="500" y="256">4</text><text x="564" y="256">4</text><text x="616" y="288">3</text><text x="680" y="352">1</text>
+</svg>

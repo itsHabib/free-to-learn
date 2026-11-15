@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 660" role="img" aria-labelledby="ls-t ls-d" font-family="system-ui, sans-serif" font-size="22" fill="#1b1f24">
+<title id="ls-t">The store that lowers the angle, as a tree</title>
+<desc id="ls-d">The store game_key makes for key code 1, the key that lowers the angle, drawn as a tree. At the root is the place it writes, i*0x13120: the angle's word, field +0 of the struct whose address is kept at 0x13120. Below it is the value it writes, (k ^ asbits((asfloat((k ^ a)) + -1))), with k the load of i*0x13120+92 and a the load of i*0x13120: an XOR of k with asbits of a sum, the sum adding -1 to asfloat of an XOR of k with a. k is drawn once, with two edges into it: it is loaded once and both XORs use it. Beside the tree is the store's guard in words: it runs when the key code is not 6, the flying flag is not set, the key code is 1 and the angle is above 5.</desc>
+<g stroke="#57606a" stroke-width="2" fill="none">
+<line x1="200" y1="84" x2="200" y2="122"/>
+<line x1="219" y1="160" x2="277" y2="202"/>
+<line x1="310" y1="250" x2="310" y2="282"/>
+<line x1="294" y1="324" x2="261" y2="362"/>
+<line x1="327" y1="323" x2="366" y2="362"/>
+<line x1="240" y1="410" x2="240" y2="442"/>
+<line x1="258" y1="482" x2="305" y2="522"/>
+</g>
+<g stroke="#3553d4" stroke-width="3" fill="none">
+<path d="M176 146 H110 V522"/>
+<line x1="221" y1="480" x2="163" y2="522"/>
+</g>
+<g stroke="#57606a" stroke-width="2">
+<rect x="108" y="32" width="184" height="52" rx="8" fill="#f6f8fa"/>
+<circle cx="200" cy="146" r="24" fill="#fff"/>
+<rect x="252" y="202" width="116" height="48" rx="8" fill="#fff"/>
+<circle cx="310" cy="306" r="24" fill="#fff"/>
+<rect x="176" y="362" width="128" height="48" rx="8" fill="#fff"/>
+<rect x="358" y="362" width="64" height="48" rx="8" fill="#fff"/>
+<circle cx="240" cy="466" r="24" fill="#fff"/>
+<rect x="20" y="522" width="180" height="76" rx="8" fill="#e7ecfb" stroke="#3553d4"/>
+<rect x="280" y="522" width="140" height="76" rx="8" fill="#f6f8fa"/>
+</g>
+<g font-family="ui-monospace, Menlo, monospace" text-anchor="middle">
+<text x="200" y="66" font-size="24">i*0x13120 =</text>
+<text x="200" y="165" font-size="36" font-weight="700">^</text>
+<text x="310" y="234" font-size="24">asbits</text>
+<text x="310" y="316" font-size="30" font-weight="700">+</text>
+<text x="240" y="394" font-size="24">asfloat</text>
+<text x="390" y="394" font-size="24">-1</text>
+<text x="240" y="485" font-size="36" font-weight="700">^</text>
+<text x="110" y="553" font-size="24" font-weight="700" fill="#3553d4">k</text>
+<text x="110" y="585">i*0x13120+92</text>
+<text x="350" y="553" font-size="24" font-weight="700">a</text>
+<text x="350" y="585">i*0x13120</text>
+</g>
+<g fill="#57606a">
+<text x="312" y="52">the place written:</text>
+<text x="312" y="80">the angle's word, field +0</text>
+<text x="214" y="110">value written</text>
+</g>
+<rect x="456" y="186" width="248" height="204" rx="8" fill="#f6f8fa" stroke="#57606a" stroke-width="2"/>
+<text x="474" y="224" font-size="24" font-weight="700">runs when</text>
+<text x="474" y="262">key code not 6</text>
+<text x="474" y="296">and not flying</text>
+<text x="474" y="330">and key code 1</text>
+<text x="474" y="364">and angle above 5</text>
+<text x="20" y="636" fill="#3553d4">k is loaded once; both XORs use it</text>
+</svg>

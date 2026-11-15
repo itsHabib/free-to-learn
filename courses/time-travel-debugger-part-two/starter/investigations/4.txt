@@ -1,0 +1,2 @@
+# Investigation of ladder build 4. One debugger command per line;
+# lines starting with # are notes. End with: answer

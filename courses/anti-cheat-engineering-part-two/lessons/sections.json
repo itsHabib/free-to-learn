@@ -1,0 +1,140 @@
+{
+ "checks": {
+  "12.parse-accepts": {
+   "lesson": "12",
+   "section": "Parse strictly"
+  },
+  "12.parse-refuses": {
+   "lesson": "12",
+   "section": "Parse strictly"
+  },
+  "12.admit-order": {
+   "lesson": "12",
+   "section": "Order and replays"
+  },
+  "12.admit-rounds": {
+   "lesson": "12",
+   "section": "One shot per round"
+  },
+  "12.clients": {
+   "lesson": "12",
+   "section": "The protocol cheats"
+  },
+  "12.recorder": {
+   "lesson": "12",
+   "section": "Write it down"
+  },
+  "12.replay-genuine": {
+   "lesson": "12",
+   "section": "Replay"
+  },
+  "12.replay-tampered": {
+   "lesson": "12",
+   "section": "Replay"
+  },
+  "12.replay-own": {
+   "lesson": "12",
+   "section": "Replay"
+  },
+  "13.view-fields": {
+   "lesson": "13",
+   "section": "Precision is information"
+  },
+  "13.view-noninterference": {
+   "lesson": "13",
+   "section": "Test by changing what is hidden"
+  },
+  "13.view-encodings": {
+   "lesson": "13",
+   "section": "Test by changing what is hidden"
+  },
+  "13.leaks-finds": {
+   "lesson": "13",
+   "section": "Test by changing what is hidden"
+  },
+  "14.features": {
+   "lesson": "14",
+   "section": "Features"
+  },
+  "14.threshold": {
+   "lesson": "14",
+   "section": "A score and a budget"
+  },
+  "14.counting": {
+   "lesson": "14",
+   "section": "Base rates"
+  },
+  "14.frozen": {
+   "lesson": "14",
+   "section": "Freeze, then held-out"
+  },
+  "14.heldout": {
+   "lesson": "14",
+   "section": "Freeze, then held-out"
+  },
+  "14.recordings": {
+   "lesson": "14",
+   "section": "The adapted searcher"
+  },
+  "15.position-at": {
+   "lesson": "15",
+   "section": "The position ring"
+  },
+  "15.measure-rtt": {
+   "lesson": "15",
+   "section": "Measuring the round trip"
+  },
+  "15.judge": {
+   "lesson": "15",
+   "section": "The judge"
+  },
+  "15.tally": {
+   "lesson": "15",
+   "section": "The window table"
+  },
+  "15.sweep": {
+   "lesson": "15",
+   "section": "The window table"
+  },
+  "15.pick": {
+   "lesson": "15",
+   "section": "Choosing a window"
+  },
+  "16.trade": {
+   "lesson": "16",
+   "section": "Crash at every write"
+  },
+  "16.crash-trade": {
+   "lesson": "16",
+   "section": "Crash at every write"
+  },
+  "16.crash-recover": {
+   "lesson": "16",
+   "section": "Crash at every write"
+  },
+  "16.double-sell": {
+   "lesson": "16",
+   "section": "Crash at every write"
+  },
+  "17.protocol": {
+   "lesson": "17",
+   "section": "The budgets"
+  },
+  "17.legal": {
+   "lesson": "17",
+   "section": "The budgets"
+  },
+  "17.searcher": {
+   "lesson": "17",
+   "section": "The budgets"
+  },
+  "17.courier": {
+   "lesson": "17",
+   "section": "The budgets"
+  },
+  "17.trade": {
+   "lesson": "17",
+   "section": "The budgets"
+  }
+ }
+}

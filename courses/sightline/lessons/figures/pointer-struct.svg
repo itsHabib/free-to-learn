@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" aria-labelledby="ps-t ps-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="ps-t">A pointer at a fixed address and the struct it leads to</title>
+<desc id="ps-d">The four bytes at the fixed address 0x13120 hold a number that is itself an address, 65840 with seed 1. The game's state starts there, and each field sits at a fixed offset from that start: the angle at +0, the power at +4, the wind at +8, the flag at +16.</desc>
+<text x="20" y="40" fill="#57606a">fixed address</text>
+<text x="20" y="72" font-family="ui-monospace, Menlo, monospace">0x13120</text>
+<rect x="20" y="92" width="190" height="64" fill="#f6f8fa" stroke="#57606a" stroke-width="2"/>
+<text x="54" y="134" font-family="ui-monospace, Menlo, monospace">65840</text>
+<text x="20" y="190" fill="#57606a">holds an address</text>
+<path d="M210 124 H 330 V 100 H 398" fill="none" stroke="#3553d4" stroke-width="3"/><path d="M410 100 l-12 -7 v14 z" fill="#3553d4"/>
+<text x="410" y="40" fill="#57606a">the state, at 65840</text>
+<g font-family="ui-monospace, Menlo, monospace">
+<rect x="410" y="68" width="290" height="60" fill="#fff" stroke="#57606a" stroke-width="2"/><text x="426" y="107">+0</text><text x="520" y="107" font-family="system-ui, sans-serif">angle</text>
+<rect x="410" y="128" width="290" height="60" fill="#fff" stroke="#57606a" stroke-width="2"/><text x="426" y="167">+4</text><text x="520" y="167" font-family="system-ui, sans-serif">power</text>
+<rect x="410" y="188" width="290" height="60" fill="#fff" stroke="#57606a" stroke-width="2"/><text x="426" y="227">+8</text><text x="520" y="227" font-family="system-ui, sans-serif">wind</text>
+<rect x="410" y="248" width="290" height="60" fill="#f6f8fa" stroke="#57606a" stroke-width="2"/><text x="426" y="287">+12</text><text x="520" y="287" font-family="system-ui, sans-serif" fill="#57606a">…</text>
+<rect x="410" y="308" width="290" height="60" fill="#fff" stroke="#57606a" stroke-width="2"/><text x="426" y="347">+16</text><text x="520" y="347" font-family="system-ui, sans-serif">flag</text>
+</g>
+<text x="410" y="404" fill="#57606a">more fields follow</text>
+</svg>

@@ -37,3 +37,11 @@ runtime/LICENSE-FOUNDATION-MIT.txt for its supplied Free to Learn foundation. Th
 notices remain byte-identical. Original project code is MIT and original lesson prose
 and illustrations CC BY4.0 under LICENSE.md; existing explicit third-party/model terms
 and notices take precedence. Keep these notices with copies, including matching ZIPs.
+
+## Sightline and two part-two courses
+
+Sightline, Time-travel Debugger part two and Anti-cheat Engineering part two are
+original Free to Learn material under the split licenses in LICENSE.md. Sightline's
+fixtures/recorded/ holds measurement records of two models run locally on Ollama,
+llama3.2:1b and qwen2.5:7b. No model weights, Ollama code or other third-party
+code is included, and those models keep their own terms.

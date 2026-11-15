@@ -1,0 +1,82 @@
+{
+  "id": "anti-cheat-engineering-part-two",
+  "title": "Anti-cheat engineering, part two: defend the game",
+  "requires": "anti-cheat-engineering",
+  "units": [
+    {
+      "id": "12",
+      "title": "Lob behind a server",
+      "lesson": "lessons/12.md",
+      "files": [
+        "server/admission.mjs",
+        "server/recorder.mjs"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Hide what the client doesn't draw",
+      "lesson": "lessons/13.md",
+      "files": [
+        "server/view.mjs",
+        "server/leaks.mjs"
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Meet the limit, then detect",
+      "lesson": "lessons/14.md",
+      "files": [
+        "detect/features.mjs",
+        "detect/detector.mjs",
+        "detect/settings.json"
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Latency on the courier game",
+      "lesson": "lessons/15.md",
+      "files": [
+        "courier/rewind.mjs"
+      ]
+    },
+    {
+      "id": "16",
+      "title": "The duplicated item",
+      "lesson": "lessons/16.md",
+      "files": [
+        "trade/trade.mjs"
+      ]
+    },
+    {
+      "id": "17",
+      "title": "The scoreboard",
+      "lesson": "lessons/17.md",
+      "files": [
+        "capstone/defence.json"
+      ]
+    }
+  ],
+  "workFiles": [
+    "server/admission.mjs",
+    "server/recorder.mjs",
+    "server/view.mjs",
+    "server/leaks.mjs",
+    "detect/features.mjs",
+    "detect/detector.mjs",
+    "detect/settings.json",
+    "courier/rewind.mjs",
+    "trade/trade.mjs",
+    "capstone/defence.json"
+  ],
+  "checks": {
+    "count": 34,
+    "perUnit": {
+      "12": 9,
+      "13": 4,
+      "14": 6,
+      "15": 6,
+      "16": 4,
+      "17": 5
+    }
+  }
+}

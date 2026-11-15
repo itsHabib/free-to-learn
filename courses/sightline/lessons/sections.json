@@ -1,0 +1,361 @@
+{
+ "about": "Lesson section that teaches each check id. Every section value is a '## ' heading in lessons/<lesson>.md. Failure text: reread lessons/<lesson>.md · <section>.",
+ "checks": {
+  "01-changed": {
+   "lesson": "01",
+   "section": "What changes when you press a key"
+  },
+  "01-keep": {
+   "lesson": "01",
+   "section": "The engine's first step"
+  },
+  "01-label": {
+   "lesson": "01",
+   "section": "What changes when you press a key"
+  },
+  "01-probe": {
+   "lesson": "01",
+   "section": "The engine's first step"
+  },
+  "01-read": {
+   "lesson": "01",
+   "section": "Finding strings"
+  },
+  "01-recheck": {
+   "lesson": "01",
+   "section": "The engine's first step"
+  },
+  "01-seed24": {
+   "lesson": "01",
+   "section": "The engine's first step"
+  },
+  "01-snapshot": {
+   "lesson": "01",
+   "section": "What changes when you press a key"
+  },
+  "01-status": {
+   "lesson": "01",
+   "section": "Reading the status line"
+  },
+  "01-strings": {
+   "lesson": "01",
+   "section": "Finding strings"
+  },
+  "01-wordy": {
+   "lesson": "01",
+   "section": "What changes when you press a key"
+  },
+  "02-any-pick": {
+   "lesson": "02",
+   "section": "When a pick can matter"
+  },
+  "02-choose-pick": {
+   "lesson": "02",
+   "section": "Asking the picker"
+  },
+  "02-choose-safe": {
+   "lesson": "02",
+   "section": "Asking the picker"
+  },
+  "02-filters": {
+   "lesson": "02",
+   "section": "Filtering by change"
+  },
+  "02-find": {
+   "lesson": "02",
+   "section": "The wind and the flag"
+  },
+  "02-gives-up": {
+   "lesson": "02",
+   "section": "Experiments from a menu"
+  },
+  "02-line": {
+   "lesson": "02",
+   "section": "The wind and the flag"
+  },
+  "02-menu": {
+   "lesson": "02",
+   "section": "Experiments from a menu"
+  },
+  "02-near": {
+   "lesson": "02",
+   "section": "The wind and the flag"
+  },
+  "02-red": {
+   "lesson": "02",
+   "section": "The wind and the flag"
+  },
+  "02-views": {
+   "lesson": "02",
+   "section": "Slots and candidates"
+  },
+  "02-write-test": {
+   "lesson": "02",
+   "section": "Which copy is real"
+  },
+  "03-budget": {
+   "lesson": "03",
+   "section": "The engine's loop"
+  },
+  "03-features": {
+   "lesson": "03",
+   "section": "Five numbers for a shot"
+  },
+  "03-fit": {
+   "lesson": "03",
+   "section": "A fit by least squares"
+  },
+  "03-judge": {
+   "lesson": "03",
+   "section": "Judging the fit"
+  },
+  "03-learn-fit": {
+   "lesson": "03",
+   "section": "Practice shots, some held back"
+  },
+  "03-least-squares": {
+   "lesson": "03",
+   "section": "A fit by least squares"
+  },
+  "03-level-1": {
+   "lesson": "03",
+   "section": "The engine's loop"
+  },
+  "03-nearest": {
+   "lesson": "03",
+   "section": "From a fit to a setting"
+  },
+  "03-play": {
+   "lesson": "03",
+   "section": "The engine's loop"
+  },
+  "03-search": {
+   "lesson": "03",
+   "section": "From a fit to a setting"
+  },
+  "03-test-shot": {
+   "lesson": "03",
+   "section": "Measuring a shot"
+  },
+  "04-decode": {
+   "lesson": "04",
+   "section": "Instructions and their immediates"
+  },
+  "04-depth": {
+   "lesson": "04",
+   "section": "Blocks and depth"
+  },
+  "04-immediates": {
+   "lesson": "04",
+   "section": "Instructions and their immediates"
+  },
+  "04-leb": {
+   "lesson": "04",
+   "section": "Signed numbers and the first bytes"
+  },
+  "04-listing": {
+   "lesson": "04",
+   "section": "The listing"
+  },
+  "04-lob2": {
+   "lesson": "04",
+   "section": "Instructions and their immediates"
+  },
+  "04-names": {
+   "lesson": "04",
+   "section": "Names and types of functions"
+  },
+  "04-prefix": {
+   "lesson": "04",
+   "section": "Instructions and their immediates"
+  },
+  "04-sections": {
+   "lesson": "04",
+   "section": "What each section holds"
+  },
+  "05-apply": {
+   "lesson": "05",
+   "section": "Memory the engine can write"
+  },
+  "05-decoding": {
+   "lesson": "05",
+   "section": "The decode step"
+  },
+  "05-evaluate": {
+   "lesson": "05",
+   "section": "The game's arithmetic"
+  },
+  "05-flight": {
+   "lesson": "05",
+   "section": "The flight and the landing"
+  },
+  "05-forward": {
+   "lesson": "05",
+   "section": "A load after a store"
+  },
+  "05-guards": {
+   "lesson": "05",
+   "section": "Code after an early exit"
+  },
+  "05-launch": {
+   "lesson": "05",
+   "section": "The launch"
+  },
+  "05-level-2": {
+   "lesson": "05",
+   "section": "Level 2 with your engine"
+  },
+  "05-lift": {
+   "lesson": "05",
+   "section": "Stores and their guards"
+  },
+  "05-physics": {
+   "lesson": "05",
+   "section": "Check shots"
+  },
+  "05-simulate": {
+   "lesson": "05",
+   "section": "The simulator"
+  },
+  "05-slice": {
+   "lesson": "05",
+   "section": "Slices"
+  },
+  "05-steppers": {
+   "lesson": "05",
+   "section": "Steppers"
+  },
+  "05-xrefs": {
+   "lesson": "05",
+   "section": "Cross-references and constants"
+  },
+  "06-aim-band": {
+   "lesson": "06",
+   "section": "Aiming inside the band"
+  },
+  "06-budget": {
+   "lesson": "06",
+   "section": "Budgets make the order matter"
+  },
+  "06-check-kit": {
+   "lesson": "06",
+   "section": "The engine checks its kit"
+  },
+  "06-check-reader": {
+   "lesson": "06",
+   "section": "The screen check"
+  },
+  "06-flag": {
+   "lesson": "06",
+   "section": "The flag, found by the hit test"
+  },
+  "06-heuristic": {
+   "lesson": "06",
+   "section": "A rule to measure the decision model against"
+  },
+  "06-learn-reader": {
+   "lesson": "06",
+   "section": "Learning the reader"
+  },
+  "06-level-3": {
+   "lesson": "06",
+   "section": "Levels 3 to 5"
+  },
+  "06-level-4": {
+   "lesson": "06",
+   "section": "Levels 3 to 5"
+  },
+  "06-level-5": {
+   "lesson": "06",
+   "section": "Levels 3 to 5"
+  },
+  "06-menu": {
+   "lesson": "06",
+   "section": "The menu: options, costs and limits"
+  },
+  "06-picks": {
+   "lesson": "06",
+   "section": "Budgets make the order matter"
+  },
+  "06-read-state": {
+   "lesson": "06",
+   "section": "A reader made of the code's expressions"
+  },
+  "06-stuck": {
+   "lesson": "06",
+   "section": "Budgets make the order matter"
+  },
+  "06-wind-band": {
+   "lesson": "06",
+   "section": "Wind the client never sees"
+  },
+  "07-decider": {
+   "lesson": "07",
+   "section": "When the decision model may decide"
+  },
+  "07-judge-motion": {
+   "lesson": "07",
+   "section": "The motion judge"
+  },
+  "07-lead": {
+   "lesson": "07",
+   "section": "Leading the flag"
+  },
+  "07-learn-motion": {
+   "lesson": "07",
+   "section": "The motion judge"
+  },
+  "07-level-6": {
+   "lesson": "07",
+   "section": "Levels 6 and 7"
+  },
+  "07-level-7": {
+   "lesson": "07",
+   "section": "Levels 6 and 7"
+  },
+  "07-mover": {
+   "lesson": "07",
+   "section": "The flag's motion is a slice"
+  },
+  "07-path": {
+   "lesson": "07",
+   "section": "Running the slice on a copy of memory"
+  },
+  "07-ready": {
+   "lesson": "07",
+   "section": "Leading the flag"
+  },
+  "07-sweep": {
+   "lesson": "07",
+   "section": "The frame budget"
+  },
+  "07-wait": {
+   "lesson": "07",
+   "section": "Fire or wait"
+  },
+  "08-climb": {
+   "lesson": "08",
+   "section": "Run the climb"
+  },
+  "08-new-game": {
+   "lesson": "08",
+   "section": "A kit from another game"
+  },
+  "08-no-run": {
+   "lesson": "08",
+   "section": "The engine never runs the game"
+  },
+  "08-option0": {
+   "lesson": "08",
+   "section": "When no picker helps"
+  },
+  "08-passes": {
+   "lesson": "08",
+   "section": "What to write"
+  },
+  "08-unavailable": {
+   "lesson": "08",
+   "section": "When no picker helps"
+  }
+ }
+}

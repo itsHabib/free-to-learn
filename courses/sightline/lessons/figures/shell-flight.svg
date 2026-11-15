@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" role="img" aria-labelledby="sf-t sf-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="sf-t">How a shell flies</title>
+<desc id="sf-d">The cannon stands at cannonX. Its barrel turns about a point that is the launch height above the ground, and the angle is measured up from level. The shell starts at the tip of the barrel, not at the left edge and not on the ground. From there it moves across at vx and up at vy, while gravity pulls it down and the wind pushes it sideways, until its height reaches 0.</desc>
+<line x1="20" y1="340" x2="700" y2="340" stroke="#57606a" stroke-width="2"/>
+<line x1="20" y1="332" x2="20" y2="348" stroke="#57606a" stroke-width="2"/>
+<text x="14" y="376">x = 0</text>
+<line x1="150" y1="340" x2="150" y2="300" stroke="#475569" stroke-width="10"/>
+<circle cx="150" cy="300" r="9" fill="#475569"/>
+<line x1="150" y1="300" x2="204" y2="246" stroke="#334155" stroke-width="8" stroke-linecap="round"/>
+<line x1="150" y1="340" x2="150" y2="352" stroke="#57606a" stroke-width="2"/>
+<text x="112" y="376">cannonX</text>
+<line x1="118" y1="300" x2="118" y2="340" stroke="#1b1f24" stroke-width="2"/><line x1="110" y1="300" x2="126" y2="300" stroke="#1b1f24" stroke-width="2"/><line x1="110" y1="340" x2="126" y2="340" stroke="#1b1f24" stroke-width="2"/>
+<text x="30" y="328">height</text>
+<line x1="150" y1="300" x2="196" y2="300" stroke="#57606a" stroke-width="2" stroke-dasharray="4 4"/>
+<path d="M184 300 A34 34 0 0 0 174 276" fill="none" stroke="#1b1f24" stroke-width="2"/>
+<text x="200" y="322">angle</text>
+<text x="190" y="288">barrel</text>
+<path d="M204 246 Q 404 0 610 340" fill="none" stroke="#3553d4" stroke-width="3" stroke-dasharray="7 7"/>
+<circle cx="204" cy="246" r="6" fill="#3553d4"/>
+<text x="14" y="214">tip of the barrel</text>
+<text x="14" y="242">(x0, y0)</text>
+<line x1="204" y1="246" x2="270" y2="246" stroke="#1b1f24" stroke-width="3"/><path d="M270 246 l-10 -6 v12 z"/>
+<text x="276" y="254">vx</text>
+<line x1="204" y1="246" x2="204" y2="180" stroke="#1b1f24" stroke-width="3"/><path d="M204 180 l-6 10 h12 z"/>
+<text x="212" y="186">vy</text>
+<line x1="405" y1="150" x2="405" y2="206" stroke="#1b1f24" stroke-width="3"/><path d="M405 206 l-6 -10 h12 z"/>
+<text x="336" y="236">gravity g</text>
+<circle cx="487" cy="189" r="5" fill="#1b1f24"/>
+<line x1="487" y1="189" x2="553" y2="189" stroke="#1b1f24" stroke-width="3"/><path d="M553 189 l-10 -6 v12 z"/>
+<text x="470" y="168">wind push k × wind</text>
+<circle cx="610" cy="340" r="6" fill="#3553d4"/>
+<text x="520" y="376">lands at height 0</text>
+</svg>

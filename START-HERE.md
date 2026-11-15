@@ -82,3 +82,22 @@ course has no automatic attempt history or live-key migration. BACKUP-AND-RESTOR
 gives a non-overwriting terminal copy route; it is not a new built-in course command.
 Browser workbenches, native Linux confinement, real TCP/anonymity and hardware
 durability remain outside these supported terminal claims.
+
+## Sightline and two part-two courses
+
+These three terminal courses need only installed Node. They were tested with
+Node 26.5.1 on macOS arm64. Run each command from the listed directory and follow
+that course's README and API.md. The untouched starter's first check should fail
+with a named "not written yet" message, not a missing import or tool.
+
+| Course | Git directory | Setup | First check |
+| --- | --- | --- | --- |
+| Sightline | courses/sightline | node lab.mjs start ./work | node lab.mjs check 01 ./work |
+| Time-travel Debugger, part two | courses/time-travel-debugger-part-two | node lab.mjs start project | node lab.mjs check project 08 |
+| Anti-cheat Engineering, part two | courses/anti-cheat-engineering-part-two | node lab.mjs init project | node lab.mjs check project 12 |
+
+Sightline's README also has you run node lab.mjs serve and read the lessons in a
+browser. That page was opened once for this release. Its optional live decision model
+needs Ollama, and no check uses it. Your work lives in each course's work/ or
+project/ folder. None of the three has an export command, so keep your own copy
+of that folder.

@@ -3,8 +3,9 @@
 Source for Time-travel Debugger, Recoverable Storage, Small Language-model
 Runtime, Firmware Forensics (terminal route), Adaptive Decision Engine, Inside
 the Shot, Compiler and Optimizer, Anti-cheat Engineering (beta), Tiny Browser Engine,
-portable Sandbox Model, Advanced Storage, Blockchain Laboratory, Onion Routing
-and Game-Playing Agent League.
+portable Sandbox Model, Advanced Storage, Blockchain Laboratory, Onion Routing,
+Game-Playing Agent League, Sightline, Time-travel Debugger part two and
+Anti-cheat Engineering part two.
 Canonical development remains private; this learner snapshot has one clean
 initial commit and contains no private development history.
 

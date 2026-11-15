@@ -1,0 +1,7 @@
+{
+ "about": "SHA-256 of the shipped game builds; tools/build-game.sh rebuilds them byte for byte",
+ "files": {
+  "game/lob.wasm": "91b6c2f7fc15f18214628f2b2ddc068ca6347cd8d14115dfcdf9d0e75e03541a",
+  "game/lob2.wasm": "d7b2f6c39199c2b2e2795f6545cfdacd5535c1d9c08359dcca77a4dc52b35bc4"
+ }
+}

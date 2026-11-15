@@ -1,0 +1,85 @@
+{
+  "id": "time-travel-debugger-part-two",
+  "title": "Build a time-travel debugger, part two: debug a real game",
+  "requires": "time-travel-debugger",
+  "units": [
+    {
+      "id": "08",
+      "title": "A machine worth debugging",
+      "lesson": "lessons/08.md",
+      "files": [
+        "machine.mjs"
+      ]
+    },
+    {
+      "id": "09",
+      "title": "Record and replay",
+      "lesson": "lessons/09.md",
+      "files": [
+        "recorder.mjs"
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Run backwards",
+      "lesson": "lessons/10.md",
+      "files": [
+        "debugger.mjs"
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Question a recording",
+      "lesson": "lessons/11.md",
+      "files": [
+        "query.mjs"
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Stack and names",
+      "lesson": "lessons/12.md",
+      "files": [
+        "names.mjs",
+        "debugger.mjs"
+      ]
+    },
+    {
+      "id": "13",
+      "title": "The ladder",
+      "lesson": "lessons/13.md",
+      "files": [
+        "investigations/1.txt",
+        "investigations/2.txt",
+        "investigations/3.txt",
+        "investigations/4.txt",
+        "investigations/5.txt",
+        "investigations/6.txt"
+      ]
+    }
+  ],
+  "workFiles": [
+    "machine.mjs",
+    "recorder.mjs",
+    "debugger.mjs",
+    "query.mjs",
+    "names.mjs",
+    "investigations/1.txt",
+    "investigations/2.txt",
+    "investigations/3.txt",
+    "investigations/4.txt",
+    "investigations/5.txt",
+    "investigations/6.txt"
+  ],
+  "checks": {
+    "count": 44,
+    "perUnit": {
+      "08": 11,
+      "09": 8,
+      "10": 9,
+      "11": 5,
+      "12": 5,
+      "13": 6
+    }
+  }
+}

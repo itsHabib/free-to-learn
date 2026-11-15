@@ -68,3 +68,13 @@ Anti-cheat's contract checks exact packaging, JavaScript syntax, five public
 offline runtime/control suites, sealed M1/order/seven-core workspace preparation
 and blank-prediction refusal. It never starts HTTP/browser listeners and does
 not establish complete learner exercises or capstone success.
+
+## Sightline and two part-two courses
+
+The configured matrix now also includes Sightline, Time-travel Debugger part two
+and Anti-cheat Engineering part two. Each contract checks exact packaging,
+JavaScript syntax, the documented setup command and the untouched starter's first
+check, which must fail with a named "not written yet" message. None of the three
+documents an export command, so no export stage is configured. Sightline's serve
+command and its optional live model aren't run. These remain public interface
+regressions, not complete learner solutions.

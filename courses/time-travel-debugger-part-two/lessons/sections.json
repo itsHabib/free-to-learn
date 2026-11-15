@@ -1,0 +1,180 @@
+{
+ "checks": {
+  "10.seek": {
+   "lesson": "10",
+   "section": "Going back"
+  },
+  "10.step-back": {
+   "lesson": "10",
+   "section": "Going back"
+  },
+  "10.continue": {
+   "lesson": "10",
+   "section": "Going back"
+  },
+  "10.continue-back": {
+   "lesson": "10",
+   "section": "Going back"
+  },
+  "10.last-write": {
+   "lesson": "10",
+   "section": "Going back"
+  },
+  "10.state": {
+   "lesson": "10",
+   "section": "Positions"
+  },
+  "10.page-sharing": {
+   "lesson": "10",
+   "section": "Snapshots that share pages"
+  },
+  "10.budget": {
+   "lesson": "10",
+   "section": "Budgets"
+  },
+  "10.lob2": {
+   "lesson": "10",
+   "section": "Going back"
+  },
+  "12.names": {
+   "lesson": "12",
+   "section": "Where names live"
+  },
+  "12.lines": {
+   "lesson": "12",
+   "section": "Lines"
+  },
+  "12.stack": {
+   "lesson": "12",
+   "section": "The call stack"
+  },
+  "12.function-stops": {
+   "lesson": "12",
+   "section": "Stopping at a function"
+  },
+  "12.step-out": {
+   "lesson": "12",
+   "section": "Stopping at a function"
+  },
+  "11.last-writer": {
+   "lesson": "11",
+   "section": "Last writers, indexed"
+  },
+  "11.sources-lob": {
+   "lesson": "11",
+   "section": "How to follow a value"
+  },
+  "11.sources-lob2": {
+   "lesson": "11",
+   "section": "How to follow a value"
+  },
+  "11.sources-rules": {
+   "lesson": "11",
+   "section": "How to follow a value"
+  },
+  "11.no-replay": {
+   "lesson": "11",
+   "section": "Cost"
+  },
+  "08.memory-starts": {
+   "lesson": "08",
+   "section": "One plain object"
+  },
+  "08.one-step": {
+   "lesson": "08",
+   "section": "One plain object"
+  },
+  "08.control": {
+   "lesson": "08",
+   "section": "Blocks, loops and branches"
+  },
+  "08.memory": {
+   "lesson": "08",
+   "section": "Memory: widths, order and writes"
+  },
+  "08.numbers": {
+   "lesson": "08",
+   "section": "Integers and floats"
+  },
+  "08.writes": {
+   "lesson": "08",
+   "section": "Memory: widths, order and writes"
+  },
+  "08.lob-agrees": {
+   "lesson": "08",
+   "section": "The answer key"
+  },
+  "08.lob2-agrees": {
+   "lesson": "08",
+   "section": "The answer key"
+  },
+  "08.plain-state": {
+   "lesson": "08",
+   "section": "One plain object"
+  },
+  "08.speed": {
+   "lesson": "08",
+   "section": "The answer key"
+  },
+  "09.record": {
+   "lesson": "09",
+   "section": "Record"
+  },
+  "09.recording-json": {
+   "lesson": "09",
+   "section": "Record"
+  },
+  "09.replay": {
+   "lesson": "09",
+   "section": "Replay"
+  },
+  "09.replay-questions": {
+   "lesson": "09",
+   "section": "Replay"
+  },
+  "09.replay-check": {
+   "lesson": "09",
+   "section": "Replay"
+  },
+  "09.divergence": {
+   "lesson": "09",
+   "section": "Finding where a tampered replay first differs"
+  },
+  "09.divergence-none": {
+   "lesson": "09",
+   "section": "Finding where a tampered replay first differs"
+  },
+  "09.divergence-budget": {
+   "lesson": "09",
+   "section": "Finding where a tampered replay first differs"
+  },
+  "13.build-1": {
+   "lesson": "13",
+   "section": "The method"
+  },
+  "13.build-2": {
+   "lesson": "13",
+   "section": "The method"
+  },
+  "13.build-3": {
+   "lesson": "13",
+   "section": "The method"
+  },
+  "13.build-4": {
+   "lesson": "13",
+   "section": "The method"
+  },
+  "13.build-5": {
+   "lesson": "13",
+   "section": "The method"
+  },
+  "13.build-6": {
+   "lesson": "13",
+   "section": "The method"
+  },
+  "08.frames": {
+   "lesson": "08",
+   "section": "Calls and the outside world"
+  }
+ }
+}

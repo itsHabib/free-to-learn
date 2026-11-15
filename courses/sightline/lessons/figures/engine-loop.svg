@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 760" role="img" aria-labelledby="el-t el-d" font-family="system-ui, sans-serif" font-size="22" fill="#1b1f24">
+<title id="el-t">The engine's loop</title>
+<desc id="el-d">The engine's loop, top to bottom. Code checks the kit against the game. If nothing is missing or wrong, the engine plays the level's scored rounds; it also plays when a problem is left and nothing that could fix it fits what is left of the allowance. If there is a problem, code lists the options that could fix it, each with an estimated cost in rounds and shots, and only those that fit what is left of the allowance. The decision model picks one; your rule or option 0 can stand in for it. The engine tests the pick against the game, paying for the test from the level's allowance. A confirmed part goes into the kit; a refuted one does not, and is not offered again on that level. Either way the kit is checked again.</desc>
+<g fill="#f6f8fa" stroke="#57606a" stroke-width="2">
+<rect x="60" y="20" width="380" height="96" rx="8"/>
+<rect x="500" y="20" width="200" height="144" rx="8" fill="#e7ecfb" stroke="#3553d4"/>
+<rect x="60" y="160" width="380" height="96" rx="8"/>
+<rect x="60" y="300" width="380" height="96" rx="8"/>
+<rect x="60" y="440" width="380" height="96" rx="8"/>
+<rect x="60" y="580" width="380" height="96" rx="8"/>
+</g>
+<g font-size="24" font-weight="700">
+<text x="78" y="58">Check the kit</text>
+<text x="516" y="58">Play</text>
+<text x="78" y="198">Menu of options</text>
+<text x="78" y="338">Pick one</text>
+<text x="78" y="478">Test it on the game</text>
+<text x="78" y="618">Install in the kit</text>
+</g>
+<text x="78" y="94">code: what is missing or wrong?</text>
+<text x="516" y="90">when nothing is</text>
+<text x="516" y="118">wrong, or nothing</text>
+<text x="516" y="146">fits what is left</text>
+<text x="78" y="234">options that fit what is left</text>
+<text x="78" y="374">decision model, rule or option 0</text>
+<text x="78" y="514">rounds and shots from the allowance</text>
+<text x="78" y="654">only what the test confirmed</text>
+<g stroke="#1b1f24" stroke-width="3" fill="none">
+<line x1="440" y1="68" x2="488" y2="68"/>
+<line x1="250" y1="116" x2="250" y2="148"/>
+<line x1="250" y1="256" x2="250" y2="288"/>
+<line x1="250" y1="396" x2="250" y2="428"/>
+<line x1="250" y1="536" x2="250" y2="568"/>
+<path d="M440 488 H480 V100 H452"/>
+<path d="M60 628 H28 V68 H48"/>
+</g>
+<path d="M500 68 l-12 -7 v14 z"/>
+<path d="M250 160 l-7 -12 h14 z"/>
+<path d="M250 300 l-7 -12 h14 z"/>
+<path d="M250 440 l-7 -12 h14 z"/>
+<path d="M250 580 l-7 -12 h14 z"/>
+<path d="M440 100 l12 -7 v14 z"/>
+<path d="M60 68 l-12 -7 v14 z"/>
+<text x="264" y="146">a problem</text>
+<text x="264" y="566">confirmed</text>
+<text x="496" y="330">refuted:</text>
+<text x="496" y="358">not offered</text>
+<text x="496" y="386">again on</text>
+<text x="496" y="414">this level</text>
+<text x="60" y="728">then the kit is checked again</text>
+</svg>

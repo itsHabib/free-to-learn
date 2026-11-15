@@ -1,0 +1,812 @@
+{
+  "08a": {
+    "version": 1,
+    "lesson": "08",
+    "section": "What you are given",
+    "retry": "08a2",
+    "question": "In r_target_x (function 12 of programs/lob.json), how many values are on the value stack after instruction 4, local.get 0, has run?",
+    "format": "a whole number",
+    "expected": "2",
+    "reason": "Instruction 1 leaves the pointer g. local.tee 0 saves g in local 0 and leaves it on the stack. Instruction 3 pops g and pushes the 4 bytes at g + 92. local.get 0 pushes g again, so two values sit on the stack: the loaded integer and g. Instruction 5 replaces g with the integer at g + 16, and i32.xor combines the two.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "local.get pushes a copy of the local; it does not replace the top of the stack. After instruction 3 one value is there, the integer loaded from g + 92, and instruction 4 adds g on top: 2."
+      },
+      {
+        "answer": "3",
+        "feedback": "local.tee does not push an extra copy: it stores the top value in the local and leaves the stack as it was. After instruction 2 the stack holds one value, g; instruction 3 replaces it; instruction 4 adds one: 2."
+      }
+    ]
+  },
+  "08a2": {
+    "version": 1,
+    "variantOf": "08a",
+    "lesson": "10",
+    "section": "Earlier ideas, new cases",
+    "question": "In r_trail_n (function 22 of programs/lob.json: i32.const 0, i32.load offset 78112, i32.load offset 88, local.tee 0, i32.const 64, local.get 0, i32.const 64, i32.lt_s, select, end), how many values are on the value stack after instruction 6, the second i32.const 64?",
+    "format": "a whole number",
+    "expected": "4",
+    "reason": "After instruction 2 the stack holds the trail count. local.tee 0 keeps it there and saves it; i32.const 64 pushes 64; local.get 0 pushes the count again; i32.const 64 pushes 64 again: count, 64, count, 64. i32.lt_s then turns the top two into one condition and select picks one of the other two.",
+    "wrong": [
+      {
+        "answer": "2",
+        "feedback": "local.tee leaves its value on the stack, and local.get and each i32.const push one more: count, 64, count, 64 are 4 values."
+      }
+    ]
+  },
+  "08b": {
+    "version": 1,
+    "lesson": "08",
+    "section": "Blocks, loops and branches",
+    "retry": "08b2",
+    "question": "game_init's first loop starts with local 2 at -12288 and adds 8 to it each time round; br_if 0 at instruction 47 branches back to instruction 3 while local 2 is not zero. How many times does br_if 0 branch back?",
+    "format": "a whole number",
+    "expected": "1535",
+    "accept": [
+      "1,535"
+    ],
+    "reason": "The body runs 12,288 / 8 = 1,536 times. br_if branches after each time round except the last: on the 1,536th, local 2 has just become 0, br_if pops 0 and the machine falls through to end.",
+    "wrong": [
+      {
+        "answer": "1536",
+        "feedback": "1,536 is how many times the body runs. The branch happens only after a time round that leaves local 2 below 0; on the last one local 2 becomes 0 and br_if falls through, so it branches 1,535 times."
+      },
+      {
+        "answer": "12288",
+        "feedback": "The loop clears 8 bytes each time round (eight i32.store8 instructions), so it goes round 12,288 / 8 = 1,536 times and branches back after all but the last: 1,535."
+      }
+    ]
+  },
+  "08b2": {
+    "version": 1,
+    "variantOf": "08b",
+    "lesson": "11",
+    "section": "Earlier ideas, new cases",
+    "question": "A loop starts with local 0 at -40, adds 4 to it each time round, and ends with br_if 0, which branches back to the loop's first instruction while local 0 is not zero. How many times does br_if 0 branch back?",
+    "format": "a whole number",
+    "expected": "9",
+    "reason": "The body runs 40 / 4 = 10 times. br_if branches after each run except the last, when local 0 has just become 0: 9 times.",
+    "wrong": [
+      {
+        "answer": "10",
+        "feedback": "10 is how many times the body runs; on the last time round local 0 becomes 0 and br_if falls through. It branches back 9 times."
+      }
+    ]
+  },
+  "08c": {
+    "version": 2,
+    "lesson": "08",
+    "section": "Memory: widths, order and writes",
+    "retry": "08c2",
+    "question": "An i32.store with offset 0 pops the value 1000 and then the address 70000. What is the byte at address 70001 afterwards, as a decimal number?",
+    "format": "a whole number from 0 to 255",
+    "expected": "3",
+    "reason": "1000 is 0x000003E8. Little-endian puts the lowest byte first: address 70000 gets 0xE8 (232), 70001 gets 0x03, and 70002 and 70003 get 0.",
+    "wrong": [
+      {
+        "answer": "232",
+        "feedback": "232 (0xE8) is the lowest byte of 1000, and little-endian puts it at 70000 itself. The next byte, at 70001, is 0x03: 3."
+      },
+      {
+        "answer": "0",
+        "feedback": "0 is what big-endian order would put at 70001 (00 00 03 E8). WebAssembly stores the lowest byte first: E8 03 00 00, so 70001 holds 3."
+      }
+    ]
+  },
+  "08c2": {
+    "version": 1,
+    "variantOf": "08c",
+    "lesson": "10",
+    "section": "Earlier ideas, new cases",
+    "question": "An i32.store16 with offset 0 pops the value 4660 (0x1234) and then the address 3000. What is the byte at address 3000 afterwards, as a decimal number?",
+    "format": "a whole number from 0 to 255",
+    "expected": "52",
+    "reason": "i32.store16 writes the low 2 bytes, lowest first: 3000 gets 0x34 (52) and 3001 gets 0x12 (18).",
+    "wrong": [
+      {
+        "answer": "18",
+        "feedback": "18 (0x12) is the higher byte, and little-endian puts it second, at 3001. Address 3000 gets the lower byte, 0x34: 52."
+      }
+    ]
+  },
+  "08d": {
+    "version": 1,
+    "lesson": "08",
+    "section": "Integers and floats",
+    "retry": "08d2",
+    "question": "f32.convert_i32_u pops the i32 value -1. What number does it push?",
+    "format": "a number written in full, without commas",
+    "expected": "4294967296",
+    "accept": [
+      "4,294,967,296",
+      "2^32"
+    ],
+    "reason": "Read as unsigned, the 32 bits of -1 are 4,294,967,295. A 32-bit float carries 24 bits of precision, so the nearest one is 4,294,967,296, which is 2 to the power 32: Math.fround(4294967295) gives it.",
+    "wrong": [
+      {
+        "answer": "4294967295",
+        "feedback": "That is the unsigned reading of -1, but it needs 32 bits of precision and an f32 has 24. Math.fround(4294967295) rounds it to 4294967296."
+      },
+      {
+        "answer": "-1",
+        "feedback": "That is what f32.convert_i32_s pushes. The _u version reads the bits as unsigned first: 4,294,967,295, which rounds to 4,294,967,296 as a 32-bit float."
+      }
+    ]
+  },
+  "08d2": {
+    "version": 1,
+    "variantOf": "08d",
+    "lesson": "12",
+    "section": "Earlier ideas, new cases",
+    "question": "f32.convert_i32_u pops the i32 value 16777217 (2 to the power 24, plus 1). What number does it push?",
+    "format": "a number written in full, without commas",
+    "expected": "16777216",
+    "accept": [
+      "16,777,216",
+      "2^24"
+    ],
+    "reason": "An f32 carries 24 bits of precision, so it holds every whole number up to 2 to the power 24 exactly but not the next one: 16,777,217 rounds to 16,777,216. Math.fround(16777217) gives it.",
+    "wrong": [
+      {
+        "answer": "16777217",
+        "feedback": "That needs 25 bits of precision and an f32 has 24: Math.fround(16777217) is 16,777,216."
+      }
+    ]
+  },
+  "08e": {
+    "version": 2,
+    "lesson": "08",
+    "section": "The wall",
+    "retry": "08e2",
+    "question": "The wall's run is 1,043,331 instructions, and part one's execute copies all 131,072 bytes of memory on every step. How many gigabytes (10^9 bytes) does one pass over the run copy? Round to a whole number.",
+    "format": "a whole number",
+    "expected": "137",
+    "accept": [
+      "136.75",
+      "136.8"
+    ],
+    "reason": "1,043,331 x 131,072 = 136,751,480,832 bytes, about 137 GB, to replay a run your machine alone finishes in a fraction of a second. Copying memory, not running instructions, sets part one's speed here.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "Each step copies 131,072 bytes, not one: 1,043,331 x 131,072 bytes is about 137 GB."
+      },
+      {
+        "answer": "0",
+        "feedback": "Copying 131,072 bytes a million times is 1,043,331 x 131,072 = 136,751,480,832 bytes: about 137 GB."
+      }
+    ]
+  },
+  "08e2": {
+    "version": 1,
+    "variantOf": "08e",
+    "retryOnly": true,
+    "question": "A run of 500,000 instructions, with part one's execute copying 131,072 bytes of memory on every step: how many gigabytes (10^9 bytes) does one pass copy? Round to a whole number.",
+    "format": "a whole number",
+    "expected": "66",
+    "accept": [
+      "65.5",
+      "65.536"
+    ],
+    "reason": "500,000 x 131,072 = 65,536,000,000 bytes, about 66 GB.",
+    "wrong": [],
+    "lesson": "08",
+    "section": "The wall"
+  },
+  "09a": {
+    "version": 1,
+    "lesson": "09",
+    "section": "Record",
+    "retry": "09a2",
+    "question": "The recording `node lab.mjs record project --world 42` makes (Lob, seed 5, mode 1, two shots) holds 277 answers. Which import gave most of them: server_round, cos, sin or server_wind?",
+    "format": "one of server_round, cos, sin, server_wind",
+    "expected": "server_wind",
+    "reason": "server_wind is asked on every frame a shell is in the air: 271 of the 277 answers. server_round is asked once per round (2), and cos and sin once per shot (2 each).",
+    "wrong": [
+      {
+        "answer": "server_round",
+        "feedback": "server_round is asked once per round: twice in this game. server_wind is asked on every frame a shell flies, 271 times."
+      },
+      {
+        "answer": "cos",
+        "feedback": "cos and sin are asked once per shot, when the shell is fired: twice each. server_wind is asked on every frame of every flight, 271 times."
+      },
+      {
+        "answer": "sin",
+        "feedback": "cos and sin are asked once per shot, when the shell is fired: twice each. server_wind is asked on every frame of every flight, 271 times."
+      }
+    ]
+  },
+  "09a2": {
+    "version": 1,
+    "variantOf": "09a",
+    "lesson": "11",
+    "section": "Earlier ideas, new cases",
+    "question": "Record lesson 09's game (Lob, seed 5, two shots) in mode 0 instead of mode 1, with no server defences. How many answers does the recording hold?",
+    "format": "a whole number",
+    "expected": "4",
+    "reason": "Without the server defences the game asks the outside world only when it fires: cos and sin once per shot, 4 answers for two shots. With them it also asks server_round each round and server_wind on every game frame of a flight.",
+    "wrong": [
+      {
+        "answer": "277",
+        "feedback": "277 is the mode 1 recording, where the server answers every game frame of a flight. In mode 0 only cos and sin are asked, once each per shot: 4."
+      }
+    ]
+  },
+  "09b": {
+    "version": 1,
+    "lesson": "09",
+    "section": "Finding where a tampered replay first differs",
+    "retry": "09b2",
+    "question": "Bisection over the 796 instructions of call 29 starts with memory known equal after 0 of them and different after all 796. Each test halves the interval between the two ends. At most how many tests until the ends are one instruction apart?",
+    "format": "a whole number",
+    "expected": "10",
+    "reason": "Each test halves the interval: 796, 398, 199, 100, 50, 25, 13, 7, 4, 2, 1. That is 10 halvings, because 2 to the power 10 = 1,024 is the first power of 2 at least 796.",
+    "wrong": [
+      {
+        "answer": "9",
+        "feedback": "2 to the power 9 is 512, less than 796, so 9 halvings leave an interval longer than one instruction. It takes 10: 2 to the power 10 = 1,024 is the first power of 2 at least 796."
+      },
+      {
+        "answer": "796",
+        "feedback": "That is the cost of testing every instruction in turn. Bisection halves the interval each time, so it needs about log2 of 796 tests: 10."
+      }
+    ]
+  },
+  "09b2": {
+    "version": 1,
+    "variantOf": "09b",
+    "lesson": "10",
+    "section": "Earlier ideas, new cases",
+    "question": "A tampered recording first differs inside game_init, a call of 75,513 instructions. Bisection inside it starts knowing memory is equal after 0 instructions and different after all of them. At most how many tests until the ends are one instruction apart?",
+    "format": "a whole number",
+    "expected": "17",
+    "reason": "2 to the power 16 is 65,536, less than 75,513; 2 to the power 17, 131,072, is the first power of 2 at least 75,513. So 17 halvings.",
+    "wrong": [
+      {
+        "answer": "16",
+        "feedback": "16 halvings cover 65,536 instructions, fewer than 75,513. It takes 17."
+      }
+    ]
+  },
+  "09c": {
+    "version": 1,
+    "lesson": "09",
+    "section": "A different tamper",
+    "retry": "09c2",
+    "question": "In the recording from `node lab.mjs record project --world 42`, call 12 is the last of eleven presses of up. If it is changed to down, does memory first differ at a tick inside call 12, or later?",
+    "format": "inside or later",
+    "expected": "inside",
+    "reason": "A key press the game handles changes memory during its own call: the press of down stores a lower power than up would have, 54 instructions into call 12 (tick 83,439). A changed server answer can wait until the value is stored; this changed call acts at once. (A key the game ignores would leave memory equal, and firstDivergence would return null.)",
+    "wrong": [
+      {
+        "answer": "later",
+        "feedback": "The game handles a key during the call that delivers it: game_key stores the new power before it returns, so memory differs inside call 12, 54 instructions in, at tick 83,439."
+      }
+    ]
+  },
+  "09c2": {
+    "version": 1,
+    "variantOf": "09c",
+    "retryOnly": true,
+    "question": "In project/run42.json, answer 3, the wind on the first game frame of the first flight, is changed. Does memory first differ at a tick inside the call that asked for that answer, or later?",
+    "format": "inside or later",
+    "expected": "inside",
+    "reason": "The game frame that asks server_wind uses the answer at once: the shell's next position is stored in the same call. So memory first differs inside that call.",
+    "wrong": [
+      {
+        "answer": "later",
+        "feedback": "The answer is used in the same game frame: the new position is computed from it and stored before the call returns."
+      }
+    ],
+    "lesson": "09",
+    "section": "A different tamper"
+  },
+  "10a": {
+    "version": 1,
+    "lesson": "10",
+    "section": "Snapshots that share pages",
+    "retry": "10a2",
+    "question": "In Lob, seed 3, mode 0, the first game frame after game_init runs 827 instructions. How many of the 32 pages of 4,096 bytes does it write to?",
+    "format": "a whole number from 0 to 32",
+    "expected": "3",
+    "reason": "Three: page 15, the top of the C stack just below address 65,536, where the game's functions keep the C variables that need memory; page 16, which holds the game's state (g is 65,872 for seed 3); and page 17, the status line the game frame rewrites. A snapshot taken after this game frame shares the other 29 pages with the one before it.",
+    "wrong": [
+      {
+        "answer": "32",
+        "feedback": "A game frame touches only the memory its code writes: the C stack, the game's state and the status line. That is 3 pages; the other 29 are shared with the previous snapshot."
+      },
+      {
+        "answer": "1",
+        "feedback": "The game's state is one page, but the game frame also writes the C stack (page 15, just below 65,536) and the status line (page 17): 3 pages."
+      }
+    ]
+  },
+  "10a2": {
+    "version": 2,
+    "variantOf": "10a",
+    "lesson": "12",
+    "section": "Earlier ideas, new cases",
+    "question": "In Lob, seed 3, mode 0, how many of the 32 pages of 4,096 bytes does game_init write to?",
+    "format": "a whole number from 0 to 32",
+    "expected": "5",
+    "reason": "Five. game_init's clearing loop writes the 12,288 bytes just below the pointer at 78,112, from 65,824 to 78,111, which lie on pages 16 to 19, and the pointer itself is on page 19 too. The functions it calls keep C variables on the C stack just below 65,536, page 15. The other pages keep the bytes they started with.",
+    "wrong": [
+      {
+        "answer": "3",
+        "feedback": "3 is what a game frame writes. game_init also clears the 12,288 bytes from 65,824 to 78,111, which cross pages 16 to 19, and it writes the C stack's page 15, so it writes 5 pages."
+      },
+      {
+        "answer": "4",
+        "feedback": "Every store counts, including zeros written over zeros. The clearing loop writes its bytes, 65,824 to 78,111, across pages 16 to 19, page 18 included, although every byte it writes there was 0 already. The functions game_init calls also write the C stack just below 65,536, on page 15, so game_init writes 5 pages."
+      },
+      {
+        "answer": "32",
+        "feedback": "game_init writes only the memory its code touches, the 12,288 bytes its loop clears on pages 16 to 19 and the C stack on page 15, so 5 pages."
+      }
+    ]
+  },
+  "10b": {
+    "version": 1,
+    "lesson": "10",
+    "section": "Going back",
+    "retry": "10b2",
+    "question": "Snapshots are every 1,000 instructions, at ticks 0, 1,000, 2,000 and so on. You stand at position 96,568 and call stepBack(1). How many instructions does the debugger replay?",
+    "format": "a whole number",
+    "expected": "567",
+    "reason": "The target is position 96,567. The last snapshot at or before it is the one at 96,000, so the debugger restores it and replays 567 instructions. A replay from tick 0 would run 96,567.",
+    "wrong": [
+      {
+        "answer": "568",
+        "feedback": "568 would take you back to 96,568, where you started. stepBack(1) targets 96,567, so from the snapshot at 96,000 it replays 567."
+      },
+      {
+        "answer": "96567",
+        "feedback": "That is the cost of replaying from tick 0. The snapshot at 96,000 is the last one at or before 96,567, so only 567 instructions are replayed."
+      },
+      {
+        "answer": "1",
+        "feedback": "A machine cannot run an instruction backwards; the debugger restores an earlier snapshot and replays forward. From the snapshot at 96,000 to 96,567 is 567 instructions."
+      }
+    ]
+  },
+  "10b2": {
+    "version": 1,
+    "variantOf": "10b",
+    "lesson": "11",
+    "section": "Earlier ideas, new cases",
+    "question": "Snapshots are every 1,000 instructions, at ticks 0, 1,000, 2,000 and so on. You stand at position 96,000, exactly on a snapshot, and call stepBack(1). How many instructions does the debugger replay?",
+    "format": "a whole number",
+    "expected": "999",
+    "reason": "The target is 95,999. The snapshot at 96,000 is after it, so the debugger restores the one at 95,000 and replays 999 instructions.",
+    "wrong": [
+      {
+        "answer": "0",
+        "feedback": "Standing on a snapshot does not help a step back: the target 95,999 is before it. The last snapshot at or before 95,999 is at 95,000: 999 instructions."
+      },
+      {
+        "answer": "1",
+        "feedback": "Nothing runs backward: the debugger restores the snapshot at 95,000 and replays forward to 95,999, 999 instructions."
+      }
+    ]
+  },
+  "10c": {
+    "version": 1,
+    "lesson": "10",
+    "section": "A question to ask backward",
+    "retry": "10c2",
+    "question": "In project/run42.json, at the start of call 301, ask last-write for the address g + 40 (g is the 4 bytes at 78,112). In which call was that write made?",
+    "format": "a call number",
+    "expected": "147",
+    "reason": "The shell landed in call 148: that frame found the next position below the ground and called land(), which stores the landing point but not the position at g + 40. So the last write to g + 40 is the position update of the frame before, call 147, at tick 191,487, made by game_tick (function 8). Nothing writes it again until the next shot.",
+    "wrong": [
+      {
+        "answer": "300",
+        "feedback": "The shell was no longer in the air: it landed in call 148, and after landing nothing writes g + 40 until the next shot. The last write was in call 147."
+      },
+      {
+        "answer": "148",
+        "feedback": "Call 148 is the frame in which the shell landed; it stores the landing point (another address) and leaves g + 40 alone. The last write to g + 40 was the position update in call 147."
+      }
+    ]
+  },
+  "10c2": {
+    "version": 1,
+    "variantOf": "10c",
+    "retryOnly": true,
+    "question": "In project/run42.json, at the start of call 600, ask last-write for the address g + 40 (g is the 4 bytes at 78,112). In which call was that write made?",
+    "format": "a call number",
+    "expected": "537",
+    "reason": "The second shot landed before call 600; its last position update, in call 537, is the last write to g + 40. Landing stores the landing point, not the position.",
+    "wrong": [],
+    "lesson": "10",
+    "section": "A question to ask backward"
+  },
+  "11a": {
+    "version": 1,
+    "lesson": "11",
+    "section": "Last writers, indexed",
+    "retry": "11a2",
+    "question": "In Lob, seed 3, mode 0, how many times is the byte at g + 72 (the game-frame counter's lowest byte, where g is the 4 bytes at 78,112) written during game_init and the first 10 game frames?",
+    "format": "a whole number",
+    "expected": "11",
+    "reason": "Once during game_init, by the loop that clears memory one byte at a time, and once in each of the 10 frames, which add 1 to the frame counter with a 4-byte store that covers this byte. The byte's list in the index has 11 ticks, and lastWriter finds any of them by binary search.",
+    "wrong": [
+      {
+        "answer": "10",
+        "feedback": "Each frame writes it once, but game_init wrote it first: its loop clears every byte of the game's memory, this one included. 11."
+      },
+      {
+        "answer": "1",
+        "feedback": "game_init writes it once, but every frame then adds 1 to the frame counter and stores all 4 of its bytes: 1 + 10 = 11."
+      },
+      {
+        "answer": "40",
+        "feedback": "A 4-byte store writes this byte once, not four times: count stores that touch the byte. One from game_init's loop and one per frame: 11."
+      }
+    ]
+  },
+  "11a2": {
+    "version": 1,
+    "variantOf": "11a",
+    "lesson": "13",
+    "section": "Earlier ideas, new cases",
+    "question": "In Lob, seed 3, mode 0, how many times is the byte at g + 76 (the cloud's position, which every game frame moves; g is the 4 bytes at 78,112) written during game_init and the first 5 game frames?",
+    "format": "a whole number",
+    "expected": "7",
+    "reason": "Twice during game_init: once by the loop that clears memory, and once when game_init places the cloud. Then once in each of the 5 game frames. 7 entries in that byte's list.",
+    "wrong": [
+      {
+        "answer": "6",
+        "feedback": "game_init writes it twice: its loop clears the byte, and it then stores the cloud's starting position. 2 + 5 = 7."
+      },
+      {
+        "answer": "5",
+        "feedback": "The 5 game frames write it, but so does game_init, twice: the clearing loop and the cloud's starting position. 7."
+      }
+    ]
+  },
+  "11b": {
+    "version": 2,
+    "lesson": "11",
+    "section": "How to follow a value",
+    "retry": "11b2",
+    "question": "In lesson 09's recording (server defences on), the shell's position is stored at g + 40 on every game frame of a flight. How many server_wind answers are on the chain of the position stored on the tenth game frame of the first flight?",
+    "format": "a whole number",
+    "expected": "10",
+    "reason": "Ten: answers 3 to 12, one for each game frame so far. Each game frame adds the wind's push to the speed and the speed to the position, so the tenth position depends on the wind of all ten game frames, as well as on the cosine (answer 1).",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "Only the tenth game frame's wind acts directly on its position, but the speed carries every earlier game frame's push forward: the chain holds all ten wind answers, 3 to 12."
+      },
+      {
+        "answer": "0",
+        "feedback": "With the server defences on, every game frame of a flight asks server_wind and adds the wind's push to the speed; the position adds the speed. The tenth position's chain holds ten wind answers."
+      }
+    ],
+    "accept": [
+      "ten"
+    ]
+  },
+  "11b2": {
+    "version": 1,
+    "variantOf": "11b",
+    "retryOnly": true,
+    "question": "In lesson 09's recording, how many server_wind answers are on the chain of the position stored on the twentieth game frame of the first flight?",
+    "format": "a whole number",
+    "expected": "20",
+    "accept": [
+      "twenty"
+    ],
+    "reason": "One per game frame so far: the speed carries every earlier game frame's push forward, so the twentieth position depends on twenty wind answers.",
+    "wrong": [],
+    "lesson": "11",
+    "section": "How to follow a value"
+  },
+  "11c": {
+    "version": 1,
+    "lesson": "11",
+    "section": "Cost",
+    "retry": "11c2",
+    "question": "In project/run42.json the second shot is fired by call 396, and the game adds 1 to its shot counter and stores it. How many stores are on the chain of the value that store writes?",
+    "format": "a whole number",
+    "expected": "5",
+    "reason": "The new count is the old count plus 1. The old count was stored by the first shot, at tick 88,535 in call 19. That value was in turn the count before it plus 1, and the count before it was the 4 bytes game_init's loop cleared one store at a time, at ticks 638, 643, 648 and 653. A constant has no sources, so the chain ends there: 5 stores, and no answers.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "The first shot's store is on the chain, but so is what it was computed from: the bytes it loaded, which game_init's loop had cleared with four one-byte stores. 1 + 4 = 5."
+      },
+      {
+        "answer": "2",
+        "feedback": "game_init's loop clears memory one byte at a time, so the counter's 4 bytes came from 4 separate stores, each on the chain: 1 + 4 = 5."
+      },
+      {
+        "answer": "0",
+        "feedback": "A store's value is followed back through the loads that fed it: the first shot's count, and the 4 one-byte stores that cleared the counter before it. 5."
+      }
+    ]
+  },
+  "11c2": {
+    "version": 2,
+    "variantOf": "11c",
+    "lesson": "12",
+    "section": "Earlier ideas, new cases",
+    "question": "In project/run42.json every game frame adds 1 to the game-frame counter at g + 72 and stores it. The first three game frames are calls 13, 14 and 15. How many stores are on the chain of the value stored in call 15?",
+    "format": "a whole number",
+    "expected": "6",
+    "reason": "Call 15 stored the count call 14 had stored, plus 1, and call 14 stored the count call 13 had stored, plus 1. Call 13 loaded the counter's 4 bytes as game_init's loop had left them, cleared by 4 one-byte stores, and the constant 1 adds nothing to a chain. So the chain holds the stores of calls 13 and 14 and the 4 clearing stores, 6 in all.",
+    "wrong": [
+      {
+        "answer": "2",
+        "feedback": "The stores of calls 13 and 14 are on the chain, but call 13 loaded bytes too, and game_init's loop had written them with 4 one-byte stores. That makes 6."
+      },
+      {
+        "answer": "3",
+        "feedback": "Count stores, not game frames. The chain holds the stores of calls 13 and 14, which call 15 built on, and the 4 one-byte stores of game_init's loop that cleared the counter before them, 6 in all."
+      },
+      {
+        "answer": "4",
+        "feedback": "The 4 clearing stores are on the chain, and so are the stores of calls 13 and 14, because each game frame loaded the count the one before it stored. That makes 6."
+      },
+      {
+        "answer": "7",
+        "feedback": "7 counts call 15's own store, and a store isn't on its own chain. The chain holds the stores of calls 13 and 14 and the 4 clearing stores, 6 in all."
+      }
+    ]
+  },
+  "11d": {
+    "version": 1,
+    "lesson": "11",
+    "section": "Decisions are not followed",
+    "question": "In project/run42.json the first shell lands in call 148, and the game stores 0 in its flying flag at g + 36 (tick 192,256). The store runs only because a br_if found the shell below the ground. How many entries does sources(192256) list, in all four lists together?",
+    "format": "a whole number",
+    "expected": "0",
+    "accept": [
+      "none",
+      "zero"
+    ],
+    "reason": "None. The stored value is the constant 0, which depends on nothing, and the branch that decided to run this store is a decision, which no chain follows. sources(192256) is four empty lists, although the store happened only because of the flight before it.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "The value stored is a constant, and constants depend on nothing; the br_if that chose to run the store is a decision, and decisions are not followed. All four lists are empty."
+      }
+    ],
+    "retry": "11d2"
+  },
+  "11d2": {
+    "version": 1,
+    "variantOf": "11d",
+    "retryOnly": true,
+    "question": "In the same landing (call 148 of project/run42.json), the game also stores 0 in the count of game frames since the landing, at g + 60 (tick 192,253). How many entries does sources(192253) list, in all four lists together?",
+    "format": "a whole number",
+    "expected": "0",
+    "accept": [
+      "none",
+      "zero"
+    ],
+    "reason": "A constant chosen by a decision: the constant depends on nothing and the decision is not followed, so all four lists are empty.",
+    "wrong": [],
+    "lesson": "11",
+    "section": "Decisions are not followed"
+  },
+  "12a": {
+    "version": 1,
+    "lesson": "12",
+    "section": "Where names live",
+    "retry": "12a2",
+    "question": "In the name section of targets/lob-names.wasm, the entry after server_round is the bytes 01 06 6A 73 5F 63 6F 73. What name does it give function 1?",
+    "format": "the name, as text",
+    "expected": "js_cos",
+    "reason": "01 is the index, 1. 06 is the name's length, 6 bytes: 6A 73 5F 63 6F 73 are the characters j, s, _, c, o, s. The name section holds the C names of the functions, and Lob's C code calls its cosine import js_cos; the import itself is named cos in the import section.",
+    "wrong": [
+      {
+        "answer": "cos",
+        "feedback": "cos is the name in the import section, the name the game asks the outside world for. The name section holds the C function's own name: 6A 73 5F 63 6F 73 spell js_cos."
+      },
+      {
+        "answer": "server_round",
+        "feedback": "server_round is function 0, the entry before. This entry starts 01: function 1, a name of 6 bytes, js_cos."
+      }
+    ]
+  },
+  "12a2": {
+    "version": 2,
+    "variantOf": "12a",
+    "lesson": "13",
+    "section": "Earlier ideas, new cases",
+    "question": "In the name section of targets/lob-names.wasm, one entry is the bytes 0A 07 72 5F 70 6F 77 65 72. What name does it give, and to which function index? Answer as INDEX NAME.",
+    "format": "an index, a space, a name",
+    "expected": "10 r_power",
+    "accept": [
+      "10, r_power"
+    ],
+    "reason": "0A is the index, 10. 07 is the length, 7 bytes, and 72 5F 70 6F 77 65 72 spell r_power. Function 10 is the getter that returns the power.",
+    "wrong": [
+      {
+        "answer": "7 r_power",
+        "feedback": "07 is the name's length, 7 bytes. The index comes first, 0A, which is 10."
+      }
+    ]
+  },
+  "12b": {
+    "version": 1,
+    "lesson": "12",
+    "section": "The call stack",
+    "retry": "12b2",
+    "question": "You stop where update_hud, function 6, begins during a call to game_tick. How many entries does stack() return?",
+    "format": "a whole number",
+    "expected": "2",
+    "reason": "Two frames: game_tick (function 8), which called update_hud and will carry on after it returns, and update_hud itself (function 6), about to run its instruction 0. game_tick calls update_hud directly, so no frame sits between them.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "update_hud's frame is not alone: game_tick's frame stays on the stack while update_hud runs, waiting at the instruction after its call. stack() returns 2 entries, game_tick first."
+      },
+      {
+        "answer": "3",
+        "feedback": "Only functions defined in the game push frames; a call into the outside world returns at once and pushes none. game_tick calls update_hud directly: 2 frames."
+      }
+    ]
+  },
+  "12b2": {
+    "version": 2,
+    "variantOf": "12b",
+    "lesson": "13",
+    "section": "Earlier ideas, new cases",
+    "question": "You set a function stop on game_key, function 7, and stop where a call to it begins, a press of the N key (code 6, new round). How many entries does stack() return?",
+    "format": "a whole number",
+    "expected": "0",
+    "accept": [
+      "none",
+      "zero"
+    ],
+    "reason": "None. game_key is called from outside the game, so a call to it begins between calls. At the stop, game_key's instruction 0 is what runs next, but no function is running yet, and stack() is []. game_key's frame appears when that instruction runs.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "A call into the game begins with its first instruction. Where it begins, that instruction hasn't run, so the debugger stands between calls and stack() is []."
+      },
+      {
+        "answer": "2",
+        "feedback": "Two frames would mean game_key had called another function. A stop on game_key itself is between calls, before its first instruction runs, so stack() is []."
+      }
+    ]
+  },
+  "12c": {
+    "version": 1,
+    "lesson": "12",
+    "section": "Lines",
+    "retry": "12c2",
+    "question": "Instruction 47 of game_init, the br_if 0 that closes the loop of lesson 08, is at file offset 568. The rows of lines/lob.json around it are at offsets 555, 561, 565, 566 and 571, with lines 259, 0, 259, 259 and 260. What line does lineAt give it?",
+    "format": "a line number",
+    "expected": "259",
+    "reason": "The last row at or before offset 568 is the row at offset 566, line 259, column 3, the loop statement itself. The rows between the loop's start and 566 alternate between line 259 and line 0, because the compiler put the local.get and i32.const that begin each unrolled copy of the body after the first, and the pair that begins the counter's increment, on rows of line 0.",
+    "wrong": [
+      {
+        "answer": "0",
+        "feedback": "Line 0 rows mark instructions the compiler made without a line of their own, such as the local.get and i32.const that begin each unrolled copy of the loop body after the first. The last row at or before 568 is at 566 and says line 259."
+      },
+      {
+        "answer": "257",
+        "feedback": "Line 257 is the row at the very start of game_init. Later rows take over: the last one at or before 568 is at offset 566, line 259."
+      },
+      {
+        "answer": "260",
+        "feedback": "260 is the row at offset 571, which starts after 568. An instruction belongs to the last row at or before its offset: the row at 566, line 259."
+      }
+    ]
+  },
+  "12c2": {
+    "version": 1,
+    "variantOf": "12c",
+    "lesson": "13",
+    "section": "Earlier ideas, new cases",
+    "question": "Instruction 0 of game_init is at file offset 441. In lines/lob.json, the row at offset 438 says line 257, and the next row, at offset 457, says line 259. What line does lineAt give instruction 0?",
+    "format": "a line number",
+    "expected": "257",
+    "reason": "The last row at or before offset 441 is the one at 438, line 257: the row at 457 starts after it.",
+    "wrong": []
+  },
+  "13a": {
+    "version": 3,
+    "lesson": "13",
+    "section": "The method",
+    "retry": "13a2",
+    "question": "In some build, a store writes 0 over 0 at the first byte of the message line. At that moment, on the same calls, the good build's message reads HIT!, so its first byte holds H. Can that store be the first bad write?",
+    "format": "yes or no",
+    "expected": "no",
+    "reason": "No. Just before it ran, the byte already held 0 where a correct build holds H, so the run had already parted from a correct one. In every build here the run first goes wrong at a store the build makes, never by leaving out a store (API.md, under investigations/N.txt), so the first bad write came earlier, and a store that finds its byte already wrong can't be it. A watch on the byte from the start of the run lists every store that changed it.",
+    "wrong": [
+      {
+        "answer": "yes",
+        "feedback": "It wrote 0 over 0 while a correct build holds H there, so the byte was already wrong before it ran, and a store that finds its byte already wrong can't be the first bad write. The first bad write came earlier, and a watch on the byte from the start lists every store that changed it."
+      }
+    ]
+  },
+  "13a2": {
+    "version": 1,
+    "variantOf": "13a",
+    "retryOnly": true,
+    "question": "A store writes 7 over 7 at an address, and a correct build holds 7 there too at that moment. Can that store be the first bad write?",
+    "format": "yes or no",
+    "expected": "no",
+    "reason": "Its value is what a correct build has there, so it wrote nothing a correct build would not have: it is not a bad write at all.",
+    "wrong": [],
+    "lesson": "13",
+    "section": "The method"
+  },
+  "13b": {
+    "version": 1,
+    "lesson": "13",
+    "section": "A worked investigation: build 1",
+    "retry": "13b2",
+    "question": "Your debugger keeps a snapshot every 2,000 instructions. Build 5's run is 647,416 instructions long. At most how many instructions can one stepBack(1) replay?",
+    "format": "a whole number",
+    "expected": "1999",
+    "accept": [
+      "1,999"
+    ],
+    "reason": "stepBack(1) from position t restores the last snapshot at or before t - 1 and replays forward to t - 1. The worst case is t - 1 just below the next snapshot, 1,999 instructions past the one before. The run's length does not matter; the snapshot interval does.",
+    "wrong": [
+      {
+        "answer": "2000",
+        "feedback": "A target exactly 2,000 past a snapshot is itself a snapshot, so nothing is replayed. The farthest a target can be from the last snapshot at or before it is 1,999."
+      },
+      {
+        "answer": "647415",
+        "feedback": "That is the cost without snapshots. With one every 2,000 instructions, a backward step replays at most 1,999."
+      }
+    ]
+  },
+  "13b2": {
+    "version": 1,
+    "variantOf": "13b",
+    "retryOnly": true,
+    "question": "Your debugger keeps a snapshot every 500 instructions. At most how many instructions can one stepBack(1) replay?",
+    "format": "a whole number",
+    "expected": "499",
+    "accept": [
+      "499"
+    ],
+    "reason": "The target can be at most 499 instructions past the last snapshot at or before it.",
+    "wrong": [],
+    "lesson": "13",
+    "section": "A worked investigation: build 1"
+  },
+  "13c": {
+    "version": 2,
+    "lesson": "13",
+    "section": "Your investigations",
+    "question": "In project/run42.json, the shot counter is stored by the first shot (call 19), and the second shot's increment (call 396) loads it. How did the first count reach the second shot's code? (a) as an argument of the call to game_key; (b) the first shot stored it in memory and the second loaded it; (c) through an import's answer.",
+    "format": "a, b or c",
+    "expected": "b",
+    "reason": "The value stack and the locals are gone when a call returns, so a value reaches a later call only through memory or a global. Here it went through memory: the first shot's store at tick 88,535 wrote the count, and the second shot's increment loaded those bytes. That load-after-store link is how a chain crosses from one call into another.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "game_key's argument is the key code, 5 for fire; the count is not passed in. The first shot stored the count in memory and the second shot loaded it."
+      },
+      {
+        "answer": "c",
+        "feedback": "No import is asked about the count: the outside world never sees it. The first shot stored it in memory and the second shot's code loaded it."
+      }
+    ],
+    "retry": "13c2"
+  },
+  "13c2": {
+    "version": 1,
+    "variantOf": "13c",
+    "retryOnly": true,
+    "question": "In project/run42.json, the shell's position stored on the first game frame of the flight (call 20) depends on the speed stored by firing (call 19). How did the speed reach call 20? (a) as game_tick's argument; (b) stored in memory by call 19 and loaded by call 20; (c) through an import's answer.",
+    "format": "a, b or c",
+    "expected": "b",
+    "reason": "game_tick takes no arguments, and the speed is no import's answer: firing stored it in memory, and the next game frame loaded it.",
+    "wrong": [],
+    "lesson": "13",
+    "section": "Your investigations"
+  }
+}

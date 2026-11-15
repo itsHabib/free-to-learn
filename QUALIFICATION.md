@@ -83,3 +83,35 @@ documentation-only derivatives. Browser/device/accessibility, native Linux confi
 TCP/public Tor, real distributed concurrency and physical durability are not claimed.
 The new local Git and public-contract checks prove only their recorded current setup
 and packaging scope. Public availability requires separate actual release verification.
+
+## Sightline and two part-two courses
+
+Each of these courses was tested in four ways before release. Three fresh AI
+learner runs per course worked from a learner copy, each with a different
+starting instruction. A separate AI cold reader graded the lessons for
+assumed context, and a writing pass edited the lessons and README. Then a bare
+clone ran under an empty environment with Node 26.5.1 on macOS arm64. The
+learners and readers were AI agents, not people.
+
+Sightline's three runs each passed all eight modules and all ten levels. Its bare
+clone ran 66 commands, with the starter and with the course's worked engine. One
+lesson claim didn't reproduce and was fixed, and the 66 commands then ran without
+a failure. Debugger part two's three runs each passed all 44 checks. Its bare
+clone ran 48 commands after setup, and 3 piped debug.mjs sessions failed until
+the input loop was fixed. Anti-cheat part two's three runs each passed all 34
+checks and all 9 scoreboard budgets. Its bare clone ran init, the six starter
+checks, the worked solution's check all and 47 lesson commands, all as the
+lessons say. The worked solutions aren't published. In every course the
+untouched starter failed each unit cleanly with a "not written yet" message.
+
+The runs took 13 to 54 minutes, far below the courses' estimates in hours.
+Passing checks shows working code, not that the lessons teach. In each course
+the run that went straight to the exercises passed every check without opening
+a lesson. Fixes from these runs are in the published text.
+
+One more AI learner then took each fixed course in order from its download. Each
+passed every check, and Sightline's climbed all ten levels. They found no garbled
+text and no command that failed. They did find unclear sentences, which are
+listed for the next update. Sightline's lesson page was opened once in a browser
+and its first practice questions were answered there. Nothing else was tried in
+a browser, and these runs didn't use Node 22.

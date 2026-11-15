@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 800" role="img" aria-labelledby="ee-t ee-d" font-family="system-ui, sans-serif" font-size="22" fill="#1b1f24">
+<title id="ee-t">Three paths through the flag's bounce</title>
+<desc id="ee-d">The flag's bounce in game_tick, with x for the flag's next position: two blocks, one inside the other, and three paths that start at the top of the inner block. br_if 0 leaves the inner block when x is below 420, so that path goes straight to the inner block's end. The other two paths reach br_if 1, which leaves the outer block when x is not above 900. The path with x from 420 to 900 leaves there, straight to the outer block's end, and the path with x above 900 falls through to the inner block's end. Between the inner block's end and the outer block's end sits the store that turns the flag's speed round, +96 = neg(+96). Only the two paths that arrive at the inner block's end reach it, so it runs when x is below 420 or above 900. All three paths arrive at the outer block's end.</desc>
+<text x="16" y="34" fill="#57606a">x is the flag's next position</text>
+<rect x="16" y="56" width="688" height="684" fill="#f6f8fa" stroke="#57606a" stroke-width="2"/>
+<rect x="36" y="104" width="608" height="416" fill="#fff" stroke="#57606a" stroke-width="2"/>
+<text x="32" y="88" fill="#57606a">outer block</text>
+<text x="52" y="136" fill="#57606a">inner block</text>
+<g font-size="24" font-weight="700" text-anchor="middle">
+<text x="120" y="174" fill="#3553d4">x &lt; 420</text>
+<text x="340" y="174" fill="#3553d4">x &gt; 900</text>
+<text x="560" y="174">420 to 900</text>
+</g>
+<g fill="#f6f8fa" stroke="#57606a" stroke-width="2">
+<rect x="56" y="222" width="568" height="88" rx="8"/>
+<rect x="260" y="350" width="364" height="108" rx="8"/>
+</g>
+<rect x="56" y="586" width="384" height="110" rx="8" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<g font-family="ui-monospace, Menlo, monospace" font-size="24" font-weight="700">
+<text x="76" y="256">br_if 0</text>
+<text x="280" y="384">br_if 1</text>
+<text x="76" y="620">+96 = neg(+96)</text>
+</g>
+<text x="76" y="292">leaves the inner block when x &lt; 420</text>
+<text x="280" y="416">leaves the outer block</text>
+<text x="280" y="446">when not (x &gt; 900)</text>
+<text x="76" y="652">turns the flag's speed round</text>
+<text x="76" y="682" fill="#3553d4" font-weight="700">runs when x &lt; 420 or x &gt; 900</text>
+<g stroke="#3553d4" stroke-width="3" fill="none">
+<line x1="120" y1="186" x2="120" y2="210"/>
+<line x1="340" y1="186" x2="340" y2="210"/>
+<line x1="120" y1="310" x2="120" y2="508"/>
+<line x1="340" y1="310" x2="340" y2="338"/>
+<line x1="340" y1="458" x2="340" y2="508"/>
+<line x1="120" y1="520" x2="120" y2="574"/>
+<line x1="340" y1="520" x2="340" y2="574"/>
+<line x1="120" y1="696" x2="120" y2="728"/>
+<line x1="340" y1="696" x2="340" y2="728"/>
+</g>
+<g fill="#3553d4">
+<path d="M120 222 l-7 -12 h14 z"/>
+<path d="M340 222 l-7 -12 h14 z"/>
+<path d="M120 520 l-7 -12 h14 z"/>
+<path d="M340 350 l-7 -12 h14 z"/>
+<path d="M340 520 l-7 -12 h14 z"/>
+<path d="M120 586 l-7 -12 h14 z"/>
+<path d="M340 586 l-7 -12 h14 z"/>
+<path d="M120 740 l-7 -12 h14 z"/>
+<path d="M340 740 l-7 -12 h14 z"/>
+</g>
+<g stroke="#1b1f24" stroke-width="3" fill="none">
+<line x1="560" y1="186" x2="560" y2="210"/>
+<line x1="560" y1="310" x2="560" y2="338"/>
+<path d="M624 404 H672 V728"/>
+</g>
+<path d="M560 222 l-7 -12 h14 z"/>
+<path d="M560 350 l-7 -12 h14 z"/>
+<path d="M672 740 l-7 -12 h14 z"/>
+<text x="134" y="404" fill="#3553d4">leaves by</text>
+<text x="134" y="434" fill="#3553d4" font-family="ui-monospace, Menlo, monospace">br_if 0</text>
+<text x="354" y="496" fill="#3553d4">falls through</text>
+<text x="354" y="556" fill="#57606a">inner block's end</text>
+<text x="470" y="632">never reaches</text>
+<text x="470" y="662">the store</text>
+<text x="16" y="778" fill="#57606a">outer block's end: all three paths arrive</text>
+</svg>
