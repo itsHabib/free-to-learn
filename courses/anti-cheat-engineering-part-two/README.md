@@ -93,7 +93,7 @@ Read `lessons/12.md` first. Lessons ask you to predict before you run something:
 node lab.mjs predict project 12a YOUR_ANSWER
 ```
 
-Your first answer is kept, and later answers are added after it.
+Your first answer is kept, and later answers are added after it. After a wrong answer the lab points to the section that teaches the idea and gives you a fresh case to try. When no fresh case is left, `status` lists the question as due for another try later.
 
 lab.mjs keeps your receipt in `project/attempts/`. It adds a new folder there for every
 check run, prediction, freeze and held-out run, and it never overwrites one. In lesson 14,

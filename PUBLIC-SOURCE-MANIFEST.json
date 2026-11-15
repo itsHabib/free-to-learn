@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 30890,
-      "sha256": "36bc1897ac0293cea1302e65c701380e747c4c0f286b700b9079961d4d4fc9b5"
+      "sha256": "58104d08d9a8d41c72e921ecb52c1dd9e1579294cb5aaad82d7faa2e80576437"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -79,13 +79,13 @@
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip",
-      "bytes": 399196,
-      "sha256": "a86047cbc9ecc3d049bbb05ec3a8ba05340d8d997f0d4177f247c3fe00fcd906"
+      "bytes": 399700,
+      "sha256": "fed02c4e07804c9f7f9bbcc0939c0589d34b14ce559d2b6850e199801d266e1e"
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip.sha256",
       "bytes": 102,
-      "sha256": "888dfde11ff51a436767307793c6ae6bae7200cf0e7ba4d6b3347ee735f12b27"
+      "sha256": "bb9114c609d2eae3e5f7ab0b5f10398fa94fa0147f3aefad38080183173b7edb"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -169,13 +169,13 @@
     },
     {
       "path": ".packages/sightline.zip",
-      "bytes": 332718,
-      "sha256": "f3b458c93235dca7cbcf704067955cdfaf6111e30523ee22eb7da14bd5b7dbf5"
+      "bytes": 333249,
+      "sha256": "0afbdb35fb89cf9d586d287afc8dc16bc130af187c4a90b9892abcf3a0a6bae9"
     },
     {
       "path": ".packages/sightline.zip.sha256",
       "bytes": 80,
-      "sha256": "bd83783c9f0bebd75f9df310e97992ab5b799be524edff38b38606c70d887492"
+      "sha256": "582bb4c83bd14dc771fc84a0cf98d4aa46d2b3ec3003a67f2a140a541248aa1f"
     },
     {
       "path": ".packages/small-llm-runtime.zip",
@@ -189,13 +189,13 @@
     },
     {
       "path": ".packages/time-travel-debugger-part-two.zip",
-      "bytes": 713502,
-      "sha256": "86a8d632eaa618f195b0eb631916838067db529e91182f14635b33424cb4f88c"
+      "bytes": 714375,
+      "sha256": "1dd4cdb585bbc64492d9621f39d4dd0d983c22e394e4f11f2d2cdf7cd4582286"
     },
     {
       "path": ".packages/time-travel-debugger-part-two.zip.sha256",
       "bytes": 100,
-      "sha256": "c7aa100fdbcbf215a138e8d19ac7a574746e9758db03e3dbb68b5f3502d7aae4"
+      "sha256": "917d572ca31fcbf1e5b15ac52d2338b7199ed19fe32dbd1a378b6ff64d917593"
     },
     {
       "path": ".packages/time-travel-debugger.zip",
@@ -989,13 +989,13 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/README.md",
-      "bytes": 7620,
-      "sha256": "67feeae83a793dc44e986ae035a461d80d1043f0fabc5b0df6d3ca915a9f7646"
+      "bytes": 7814,
+      "sha256": "4c4d15d9690be0c91ee1c1de67c32e3b573a40b9dd1aaf80748b1fb34e431670"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/RESULTS.md",
-      "bytes": 2309,
-      "sha256": "d5b533fd5a52ec8d4b2c44663068f084b776c815512a7d378d2c6a6425f3adfc"
+      "bytes": 2378,
+      "sha256": "4b400fca81e5b673c8d44a95eb46b82fd45fca69fb087260dcdff94f545910c1"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/checks/12.mjs",
@@ -1079,13 +1079,13 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lab.mjs",
-      "bytes": 28947,
-      "sha256": "2dc0409b148d17fdb835f623daee572d87b3d2e22cbef8a91b3bd99cfce0b9e0"
+      "bytes": 30152,
+      "sha256": "545daf234b9e3f27bc1fabe24a6b961bfeb4538d07c2352d08cd1319627a347a"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/12.mjs",
-      "bytes": 29202,
-      "sha256": "90f62aac6d09f57f4caa9e59e55c3cf355220c3a186ebf96521cb355e13a3b98"
+      "bytes": 29517,
+      "sha256": "f9b77f9a7a9dd77fbcf9a0c96c3db57b1bc62f9bea4e6ffc52e443b88d149b3a"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/13.mjs",
@@ -1104,33 +1104,33 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/12.md",
-      "bytes": 10637,
-      "sha256": "9bef3c67ac23f8ef6922b3fa84e6f312b97d17b3b6eca583f8a6cf10cf6da2c6"
+      "bytes": 10576,
+      "sha256": "536fd170ec8305c3c277bbb36bf3402bffc4e7b8eaf135e2389f8a7ef0cd5cdd"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/13.md",
-      "bytes": 9901,
-      "sha256": "e0b254b02ed4e3f854f6881c2e877e13803c0ff2de91fb0564d270379d40a36e"
+      "bytes": 9671,
+      "sha256": "f6879ccea05939592a4d3251964bd369448c88a6b85fca805adf588bf6551e14"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/14.md",
-      "bytes": 13619,
-      "sha256": "6491972ae69dec3cd59c77dc9b61cc9fa19f1769f126f9b7a2651f179aa10f19"
+      "bytes": 13415,
+      "sha256": "9ca46ebc718968df0258042af99d855a762e26813970bbd94ed62cb26e884ce8"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/15.md",
-      "bytes": 12651,
-      "sha256": "041282fe42966e8be585e9dadbb648bc28af98f87100f3e86918e8eb2a4e97b9"
+      "bytes": 12646,
+      "sha256": "377496e956ed9ac68f3ef0e9a6625a1f661f6839983ae7fdba731ac841b65834"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/16.md",
-      "bytes": 8804,
-      "sha256": "795fae6843c02ada4a5a636d4fc2818abc2893132e3782eca60219d282be6c3f"
+      "bytes": 8626,
+      "sha256": "aab85339f5a352d8f0ba57fc82308aa9c08295b3b85cccf565e9329be05bea7d"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/17.md",
-      "bytes": 8533,
-      "sha256": "8a87b4f7750612252f1f4662a2abd1716ef18ee667f63b3f8e3aea4749e140c1"
+      "bytes": 8251,
+      "sha256": "26d930e60d3db39ccfb05c1b3300e0a46b141e7a446dac29d72e71aebf0daebd"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/sections.json",
@@ -1139,8 +1139,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/practice.json",
-      "bytes": 46805,
-      "sha256": "f63dc56aeaa0ad2ab39ea75b651f7b457ea68eed19ee2d7aea23ab69e1c0f545"
+      "bytes": 47412,
+      "sha256": "fe0956e68080b231ddc8bf71fa50e75fc3948c983dab6cebd1f08c8e60e5696d"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/public/adversaries.mjs",
@@ -5644,8 +5644,8 @@
     },
     {
       "path": "courses/sightline/README.md",
-      "bytes": 12480,
-      "sha256": "cd796e596647350470bd0e9e25764b0702c11bbe94e9db9ba169cd1b0c25f533"
+      "bytes": 12678,
+      "sha256": "9c9ff4f52126216eb0d13039b7fbf9b6ad88d8d467afcd84570e20ba5afaaee9"
     },
     {
       "path": "courses/sightline/checks/01.mjs",
@@ -5764,23 +5764,23 @@
     },
     {
       "path": "courses/sightline/lessons/01.md",
-      "bytes": 29173,
-      "sha256": "22e3e19c38d16761d7dd971c73931dccd0a482187760cefb972f6714826f3e62"
+      "bytes": 29264,
+      "sha256": "f7f8bcbb9a8c6ab78b2c1d564707133e285fbc271a4a6dc2ccc267df4ad2f0c5"
     },
     {
       "path": "courses/sightline/lessons/02.md",
-      "bytes": 23811,
-      "sha256": "b8e6e912358e7c6a22886bc87c56bc7e1a133940a560f1110a0bd082540945ae"
+      "bytes": 23868,
+      "sha256": "9bccbe500cda948142524592d1432cd12c21603c4f6dcd7007b152a1c56ba86d"
     },
     {
       "path": "courses/sightline/lessons/03.md",
-      "bytes": 37888,
-      "sha256": "165d866ea0e281deba45d0571bc30c5d0ed12364e51e682735e347eb1cafd00a"
+      "bytes": 38149,
+      "sha256": "d88d9aaae6cfed603679eb9d31869a0bfdca4d9c1fd2f612219ef971db9e69fe"
     },
     {
       "path": "courses/sightline/lessons/04.md",
-      "bytes": 25897,
-      "sha256": "3b19ab552ad8a493c43ebb7dfc750979b173a1da5d0d916c272c452e2a16096e"
+      "bytes": 26226,
+      "sha256": "53587b55d28ab37ba9ac14b9415ac4375ca5ecc28c168916646c1f3d68900d8a"
     },
     {
       "path": "courses/sightline/lessons/05.md",
@@ -5794,13 +5794,13 @@
     },
     {
       "path": "courses/sightline/lessons/07.md",
-      "bytes": 27383,
-      "sha256": "c8d9c9f2843262cea6a6531a5ecf279dc16401412f6a32b76fd52c6714473dcc"
+      "bytes": 27590,
+      "sha256": "7814d466ebefb5dc23344fb6314dbd35e8f2ffc254cfb490f0dae68597c6c975"
     },
     {
       "path": "courses/sightline/lessons/08.md",
-      "bytes": 25684,
-      "sha256": "dd521dc531eebf0d28ca752cf333c095229fb7afad347bf40b42461a0952d5d7"
+      "bytes": 26071,
+      "sha256": "7bd0d20cc627672316ea6faef94506260b414129e49888e7d9a50cc7dc71e5f9"
     },
     {
       "path": "courses/sightline/lessons/figures/early-exit.svg",
@@ -6224,8 +6224,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/API.md",
-      "bytes": 22300,
-      "sha256": "f4d4a2ee21465393005b50549d97e73c775e78b55615da809f6c7200caba85fb"
+      "bytes": 22461,
+      "sha256": "2a89d197ac8c669d43ea7963d9f506ffea3a02869fadbf4cbb4328d3f444726c"
     },
     {
       "path": "courses/time-travel-debugger-part-two/LICENSE.md",
@@ -6244,8 +6244,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/README.md",
-      "bytes": 6604,
-      "sha256": "d31aea59d54ad3c6db370854bf4fdadc02278dfc9db262ff1673bacc7d638fa1"
+      "bytes": 6824,
+      "sha256": "e1f58959654928de0d18b9d70a15e7bed190db0e4eb576853babec2ff49e78c9"
     },
     {
       "path": "courses/time-travel-debugger-part-two/checks/08.mjs",
@@ -6374,8 +6374,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/debug.mjs",
-      "bytes": 21489,
-      "sha256": "0b77788243f44f6a5260b76a79c91bc65e36888e2851052ee2370ce32f484caa"
+      "bytes": 21698,
+      "sha256": "8b01ca3ebdaaec6b756747210d044bc367d92a686dcce681fe1c86bca12e08fb"
     },
     {
       "path": "courses/time-travel-debugger-part-two/fallback/part-one-debugger.mjs",
@@ -6384,8 +6384,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/lab.mjs",
-      "bytes": 26563,
-      "sha256": "e4b81371574a6c3334834500e6e06eb6cf916df65833dac12aaaf7765b7f84a0"
+      "bytes": 27494,
+      "sha256": "769de7350bcea9c0262916b346303453e59e07c5f53159fffce035a20f4ce759"
     },
     {
       "path": "courses/time-travel-debugger-part-two/ladder.json",
@@ -6399,13 +6399,13 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/09.md",
-      "bytes": 10005,
-      "sha256": "26d0ce5f785f132d2266f24ffb301e7e371cb3b8306126594ac25770ae418c76"
+      "bytes": 10198,
+      "sha256": "2898d4674b30b4c1313d5feb0520563a4a5e2a03f3f0e6faac587b6fd64b8fac"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/10.md",
-      "bytes": 9504,
-      "sha256": "475244af3549b84351c75778cee893014026d22b9da997b2309de831a54c6aa5"
+      "bytes": 9787,
+      "sha256": "4d2392b211601d65a4187b2475742e6cc8e79e96f6725e8ea91a6d27c318b283"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/11.md",
@@ -6414,13 +6414,13 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/12.md",
-      "bytes": 7898,
-      "sha256": "2954dceea49618ac9b7ae635f6eceb90705606784baf6941b9cdb789e3edb3b1"
+      "bytes": 8284,
+      "sha256": "04770daf180732b9cad4039994dc17ca1292ee8b767fcc8041ff6a56d1a47068"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/13.md",
-      "bytes": 11567,
-      "sha256": "87d2f06637297578237db18b99807d69d90d54f5a95026835c54fb8f2e6eb684"
+      "bytes": 11673,
+      "sha256": "17c5beeea25f4ac2f03dc9f69aa92ac07b10e7ba264b2fb81253775ca972e088"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/sections.json",
@@ -6434,8 +6434,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/practice.json",
-      "bytes": 41213,
-      "sha256": "de67c63690446013bb870d36a404484533c3d34923e84f27ccdf7d186f617ae9"
+      "bytes": 41377,
+      "sha256": "4754a77cdf6622ce28edf004d88c0bdb59999e77d4c26d17f767b0305a1802ba"
     },
     {
       "path": "courses/time-travel-debugger-part-two/programs/ladder/1.json",

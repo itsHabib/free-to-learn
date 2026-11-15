@@ -30,7 +30,7 @@ node lab.mjs check project 08
 
 Then read `lessons/08.md`. `API.md` is the contract for every function you write. `node lab.mjs` lists every lab command.
 
-Each lesson asks questions before it explains their answers. Commit an answer with `node lab.mjs predict project ID ANSWER`, and the lab then shows the right answer and why. `practice.json` holds those questions with their answers, because the lab checks them on your own computer. Leave it unread until you've committed your own. Each `check` saves your files and the results under `project/attempts/`, and `node lab.mjs status project` lists your checks and predictions. The lessons also ask you to keep notes in `project/report.md`. They're yours, and no check reads them.
+Each lesson asks questions before it explains their answers. Commit an answer with `node lab.mjs predict project ID ANSWER`, and the lab then shows the right answer and why. After a wrong answer it points to the section that teaches the idea and gives you a fresh case to try, or, when the course has no other case, lists the question in `status` as due for another try after your next lesson. `practice.json` holds those questions with their answers, because the lab checks them on your own computer. Leave it unread until you've committed your own. Each `check` saves your files and the results under `project/attempts/`, and `node lab.mjs status project` lists your checks and predictions. The lessons also ask you to keep notes in `project/report.md`. They're yours, and no check reads them.
 
 ## What was measured
 

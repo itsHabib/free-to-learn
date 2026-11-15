@@ -895,7 +895,7 @@
     {
       "id": "sightline",
       "archive": ".packages/sightline.zip",
-      "sha256": "f3b458c93235dca7cbcf704067955cdfaf6111e30523ee22eb7da14bd5b7dbf5",
+      "sha256": "0afbdb35fb89cf9d586d287afc8dc16bc130af187c4a90b9892abcf3a0a6bae9",
       "archive_prefix": "sightline/",
       "direct_root": "courses/sightline",
       "root": "sightline",
@@ -936,7 +936,7 @@
     {
       "id": "time-travel-debugger-part-two",
       "archive": ".packages/time-travel-debugger-part-two.zip",
-      "sha256": "86a8d632eaa618f195b0eb631916838067db529e91182f14635b33424cb4f88c",
+      "sha256": "1dd4cdb585bbc64492d9621f39d4dd0d983c22e394e4f11f2d2cdf7cd4582286",
       "archive_prefix": "time-travel-debugger-part-two/",
       "direct_root": "courses/time-travel-debugger-part-two",
       "root": "time-travel-debugger-part-two",
@@ -976,7 +976,7 @@
     {
       "id": "anti-cheat-engineering-part-two",
       "archive": ".packages/anti-cheat-engineering-part-two.zip",
-      "sha256": "a86047cbc9ecc3d049bbb05ec3a8ba05340d8d997f0d4177f247c3fe00fcd906",
+      "sha256": "fed02c4e07804c9f7f9bbcc0939c0589d34b14ce559d2b6850e199801d266e1e",
       "archive_prefix": "anti-cheat-engineering-part-two/",
       "direct_root": "courses/anti-cheat-engineering-part-two",
       "root": "anti-cheat-engineering-part-two",

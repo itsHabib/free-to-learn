@@ -712,11 +712,11 @@
     "wrong": []
   },
   "13a": {
-    "version": 3,
+    "version": 4,
     "lesson": "13",
     "section": "The method",
     "retry": "13a2",
-    "question": "In some build, a store writes 0 over 0 at the first byte of the message line. At that moment, on the same calls, the good build's message reads HIT!, so its first byte holds H. Can that store be the first bad write?",
+    "question": "In some build, a store writes 0 over 0 at the first byte of the message line. Just before this store, at the same point of the run, the good build's message already reads HIT!, so its first byte holds H. Can that store be the first bad write?",
     "format": "yes or no",
     "expected": "no",
     "reason": "No. Just before it ran, the byte already held 0 where a correct build holds H, so the run had already parted from a correct one. In every build here the run first goes wrong at a store the build makes, never by leaving out a store (API.md, under investigations/N.txt), so the first bad write came earlier, and a store that finds its byte already wrong can't be it. A watch on the byte from the start of the run lists every store that changed it.",
@@ -728,13 +728,13 @@
     ]
   },
   "13a2": {
-    "version": 1,
+    "version": 2,
     "variantOf": "13a",
     "retryOnly": true,
-    "question": "A store writes 7 over 7 at an address, and a correct build holds 7 there too at that moment. Can that store be the first bad write?",
+    "question": "A store writes 7 over 7 at an address, and a correct build holds 7 there too at the same point of the run. Can that store be the first bad write?",
     "format": "yes or no",
     "expected": "no",
-    "reason": "Its value is what a correct build has there, so it wrote nothing a correct build would not have: it is not a bad write at all.",
+    "reason": "No. It leaves the byte holding 7, which is what a correct build holds there, so it isn't a bad write at all, whether or not a correct build makes that store. The first bad write is the first store that leaves a byte different from a correct build's.",
     "wrong": [],
     "lesson": "13",
     "section": "The method"

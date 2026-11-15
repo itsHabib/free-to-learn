@@ -146,6 +146,11 @@ function status(dir) {
   const done = new Set(committed.filter(current).map((x) => x.id));
   const waiting = askedInOrder().filter((id) => !done.has(id));
   say(waiting.length ? `Asked in the lessons, not committed yet: ${waiting.join(', ')}` : 'Every question the lessons ask has a committed answer.');
+  // practice-10: a question missed with no fresh case left in the course is asked again later.
+  // Predictions are in time order, so the map keeps each question's latest answer.
+  const latest = new Map(committed.filter(current).map((x) => [x.id, x]));
+  const due = [...latest.values()].filter((x) => !x.correct && !items[x.id]?.retry).map((x) => x.id);
+  if (due.length) say(`Due for another try, after your next lesson: ${due.join(', ')}. Ask each with node lab.mjs question ID, then commit it again.`);
 }
 
 const practice = () => JSON.parse(readFileSync(join(root, 'practice.json'), 'utf8'));
@@ -172,7 +177,11 @@ function predict(dir, id, answer, help) {
   say(correct ? 'Correct.' : `Not this time. The answer is ${q.expected}.`);
   const wrong = (q.wrong ?? []).find((w) => normal(w.answer) === normal(answer));
   say(wrong ? wrong.feedback : q.reason);
-  if (!correct && q.section) say(`Read lesson ${q.lesson}, "${q.section}", then try a fresh case of the same idea: node lab.mjs question ${q.retry ?? id}`);
+  // A re-ask sits in a later lesson's list of earlier ideas; the idea is taught where its original is.
+  const home = q.variantOf ? item(q.variantOf) : q;
+  if (!correct && home.section) say(q.retry && q.retry !== id
+    ? `Read lesson ${home.lesson}, "${home.section}", then try a fresh case of the same idea: node lab.mjs question ${q.retry}`
+    : `Read lesson ${home.lesson}, "${home.section}". The course has no other case of this idea, so ask this one again after your next lesson: node lab.mjs status project lists it as due, and node lab.mjs question ${id} shows it.`);
 }
 
 // ------------------------------------------------------------------ agree

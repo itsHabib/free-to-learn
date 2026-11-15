@@ -29,7 +29,7 @@
 // links mixSeed(S, 3) and mixSeed(S, 4). Everything is seeded: the same command prints the
 // same lines.
 import { existsSync, readFileSync, writeFileSync, realpathSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { dirname, join, resolve } from 'node:path';
 import { createLobServer } from '../public/runtime.mjs';
 import { playSession } from '../public/sim.mjs';
 import { link } from '../public/net.mjs';
@@ -489,7 +489,9 @@ async function tamper(file, o) {
   }
   writeNew(o.out, `${formatJson(rec)}\n`);
   say(`Wrote ${o.out}: ${file} with ${did}.`);
-  say(`Try it: node lab.mjs replay PROJECT ${o.out}`);
+  // Name the project folder the files sit in (it holds PROJECT.json), so the line can be pasted.
+  const home = [dirname(o.out), dirname(file)].find((d) => existsSync(join(d, 'PROJECT.json')));
+  say(home ? `Try it: node lab.mjs replay ${home} ${o.out}` : `Try it: node lab.mjs replay project ${o.out} (with your project folder's name, if it isn't project)`);
 }
 
 // ------------------------------------------------------------------ the rows lab.mjs lists

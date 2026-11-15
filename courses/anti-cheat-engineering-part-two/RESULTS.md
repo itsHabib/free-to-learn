@@ -8,7 +8,7 @@ models and the network is simulated, so none of this is a measurement of people.
 
 ## What the server sends
 
-The full view averages 1,054 bytes a message; the drawn view 296 (`node lab.mjs leaks`).
+The full view averages 1,054 bytes a message and the drawn view 296, as `node lab.mjs leaks project --view full` and `node lab.mjs leaks project` count them.
 
 ## What hiding buys
 

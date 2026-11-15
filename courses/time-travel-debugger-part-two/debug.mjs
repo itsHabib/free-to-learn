@@ -42,7 +42,7 @@ export const HELP = `Commands (FUNC is a function index or name; ADDR a byte add
   compare               this build's getters beside the good build's after the same calls (and,
                         for a build of Lob, its status line, message line and help text)
   answer                name the write made by the instruction at this tick as your answer
-  cost                  instructions your machine has run so far
+  cost                  instructions your machine has run so far, opening included
   help | quit
 Typed or piped commands carry on after an error. A script file stops at its first error.`;
 
@@ -110,7 +110,9 @@ export async function openSession(dir, target) {
   };
   cost.reset();   // your Debugger's first pass, if it makes one, counts too
   const d = new Debugger(t.program, t.recording);
-  return { t, Machine, cost, d, query, names, lineOf, stops: { breakpoints: [], watches: [], functions: [] }, index: null, answer: null };
+  try { void d.end; } catch { /* a Debugger not written yet says so where it's used */ }
+  const opening = cost.count;
+  return { t, Machine, cost, opening, d, query, names, lineOf, stops: { breakpoints: [], watches: [], functions: [] }, index: null, answer: null };
 }
 
 const num = (s) => { if (s === undefined) return undefined; const n = /^0x/i.test(s) ? parseInt(s, 16) : Number(s); if (!Number.isInteger(n)) throw Error(`${s} is not a whole number`); return n; };
@@ -311,7 +313,7 @@ export async function command(S, text) {
       S.answer = { func: ev.func, name: S.names[ev.func] ?? null, at: ev.at, address: w.address, size: w.size, tick: t };
       return `answer: function ${ev.func}${S.names[ev.func] ? ` (${S.names[ev.func]})` : ''}, instruction ${ev.at} (${ev.op}), address ${w.address}, tick ${t}`;
     }
-    case 'cost': return `${S.cost.count} instructions run by your machine so far`;
+    case 'cost': return `${S.cost.count} instructions run by your machine so far, ${S.opening} of them while your Debugger opened the recording`;
     default: throw Error(`Unknown command ${verb}. Type help.`);
   }
 }

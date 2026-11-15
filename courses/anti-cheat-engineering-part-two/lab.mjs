@@ -164,6 +164,16 @@ function status(dir) {
     }
   }
   if (!shown) say('No attempts yet.');
+  // practice-10: a question missed with no fresh case left is asked again later. Attempts are
+  // in time order, so the map keeps each question's latest answer to its current version.
+  const items = practice();
+  const latest = new Map();
+  for (const name of existsSync(folder) ? readdirSync(folder).sort() : []) {
+    const r = record(join(folder, name, 'prediction.json'));
+    if (r && items[r.id] && (r.version ?? 1) === (items[r.id].version ?? 1)) latest.set(r.id, r);
+  }
+  const due = [...latest.values()].filter((r) => !r.correct && !items[r.id].retry).map((r) => r.id);
+  if (due.length) say(`Due for another try, later (after your next lesson, if there is one): ${due.join(', ')}. Ask each with node lab.mjs question ID, then commit it again.`);
 }
 
 // ------------------------------------------------------------------ practice
@@ -216,9 +226,13 @@ function predict(dir, id, answer, help) {
   say(correct ? 'Correct.' : `Not this time. The answer is ${q.expected}.`);
   const wrong = (q.wrong ?? []).find((w) => normal(w.answer) === normal(answer));
   say(wrong ? wrong.feedback : q.reason);
-  if (!correct && q.section) {
-    say(q.retry ? `Read lesson ${q.lesson}, "${q.section}", then try a fresh case of the same idea: node lab.mjs question ${q.retry}`
-      : `Read lesson ${q.lesson}, "${q.section}" again.`);
+  // practice-10: a pointer to the section that teaches the idea, then a fresh case, or, when
+  // none is left, the same question again later (status lists it as due).
+  const home = q.variantOf ? item(q.variantOf) : q;
+  if (!correct && home.section) {
+    say(q.retry && q.retry !== id
+      ? `Read lesson ${home.lesson}, "${home.section}", then try a fresh case of the same idea: node lab.mjs question ${q.retry}`
+      : `Read lesson ${home.lesson}, "${home.section}". No fresh case of this idea is left, so ask this one again later, after your next lesson if there is one: node lab.mjs status ${dir} lists it as due, and node lab.mjs question ${id} shows it.`);
   }
 }
 

@@ -342,9 +342,11 @@ One debugger command per line, for `node debug.mjs`. The last `answer`
 command the script runs is your answer for ladder build N.
 
 The **first bad write** of a ladder build is the earliest store in its run
-that a correct build wouldn't have made, or would have made with another value
-or at another address. In every build here, the run first goes wrong at a
-store the build makes, never by leaving out a store a correct build makes.
+that leaves a byte of memory holding a value a correct build wouldn't hold there
+at the same point of the run. In every build here, the run first goes wrong at a
+store the build makes, never by leaving out a store a correct build makes. Up
+to that store the build makes the same stores as a correct build, store for
+store, so the same point of the run means after the same earlier stores.
 
 ### debug.mjs (lessons 10 to 13)
 

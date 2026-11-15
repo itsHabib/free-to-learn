@@ -183,7 +183,7 @@
   "question": "With only what the screen draws (the arrows instead of the wind, the flag to the nearest pace, nothing about its speed or timer), what share of its shots does the searching client hit at 50 ms each way? (a) about 95%, (b) about 65%, (c) about 25%, (d) about 5%",
   "format": "one letter",
   "expected": "b",
-  "reason": "It hits about 65% (the cost table: 65.2% at 50 ms). It can still estimate a lot: the arrows narrow the wind to a band, and the flag's speed follows from where the flag was in recent messages. What it cannot know is when the flag will pick a new speed, so a shot still in the air when that happens misses.",
+  "reason": "It hits about 65%: 65.2% at 50 ms each way in the course's own measurement, the cell your cost run fills in. It can still estimate a lot: the arrows narrow the wind to a band, and the flag's speed follows from where the flag was in recent messages. What it cannot know is when the flag will pick a new speed, so a shot still in the air when that happens misses. That costs it about a third of its hits, against every shot with the full view.",
   "wrong": [
    {
     "answer": "a",
@@ -757,7 +757,7 @@
   "question": "Your view adds a field windExact holding the server's exact wind. Which budget fails? (a) legal players: no input refused (b) the searching client's hit-rate ceiling (c) the courier (d) trades",
   "format": "one letter",
   "expected": "b",
-  "reason": "The searching client reads windExact, the full view's name for it, and with the exact wind its hit rate rises past the ceiling: about 84% against the 75% allowed. Your leak tests in lesson 13 would fail too.",
+  "reason": "The searching client reads windExact, the full view's name for the exact wind, from any view, and with the exact wind its hit rate rises past the ceiling: about 84% against the 75% allowed. It uses the full view's other hidden values only when a message carries all five numbers it needs under game (windExact, flagSpeed, flagTimer, rng and targetX), as the full view does, so a leak under any other name or encoding doesn't raise its hit rate, and only unit 13's checks catch it. Your leak tests in lesson 13 would fail on windExact too.",
   "wrong": [
    {
     "answer": "a",
@@ -874,7 +874,7 @@
   "question": "Why does the searching client hit every shot with the full view, even at 400 ms each way? (a) the full view tells it the flag's speed, its timer and the game's random state, so it can run the flag forward past any delay (b) it fires the moment a round starts, before latency matters (c) the full view sends where the shell will land (d) the server waits for its messages",
   "format": "one letter",
   "expected": "a",
-  "reason": "Latency only matters to a client that has to guess where the flag will be. With the speed, the frames until the next change and the random state that picks the next speed, the searcher's own copy of the game plays the flag forward exactly, however old the message is.",
+  "reason": "Latency only matters to a client that has to guess where the flag will be. The full view tells a client everything the server knows: the flag's speed, the frames until its next change and the random state that picks the next speed. With those, the searcher's own copy of the game plays the flag forward exactly, however old the message is, the way the official client does to draw the flag where it is now.",
   "wrong": [
    {
     "answer": "b",
