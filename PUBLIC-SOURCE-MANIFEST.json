@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 30890,
-      "sha256": "c3d499f99ea8409531fe22e29f72f286b98bf57e8e039ba08af777c505445d98"
+      "bytes": 31448,
+      "sha256": "63473e426007358bd65ca2f29db003091295af061af76f1740c41f765dbc0c16"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -69,13 +69,13 @@
     },
     {
       "path": ".packages/agent-league.zip",
-      "bytes": 225724,
-      "sha256": "5cbe437454c43a84c993ebd33dbd92b105a28e46e4a4c2bbecc1a6742e06531a"
+      "bytes": 232198,
+      "sha256": "3ffd0331032a204117faf6d81bb0daf6d39313a86f7cf8902ab5af740cd9d95f"
     },
     {
       "path": ".packages/agent-league.zip.sha256",
       "bytes": 83,
-      "sha256": "268a725b936f69447fd0b03e80b0a34223c5b4bdd50ebb157e1251c067bf63ef"
+      "sha256": "2b21875175a152d65a0b07d7d35e2a43fde298e6499f9639516bbd4cd5ce5413"
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip",
@@ -229,8 +229,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 374539,
-      "sha256": "7989d31f43f240f30151c0cc1c6b4c1cc072480cbcf4b33c1a3f56a81508827e"
+      "bytes": 374792,
+      "sha256": "4fbc9ef2484d9d19ce75c32dad4adb8a293043d02b5b9d706d603e500c217d5b"
     },
     {
       "path": "LICENSE.md",
@@ -3359,13 +3359,13 @@
     },
     {
       "path": "courses/game-playing-agent-league/MANIFEST.json",
-      "bytes": 12145,
-      "sha256": "55ef100fe36bd3a3b5289224ea8865acc4c547493e1f34f743e99fa5e477c608"
+      "bytes": 12335,
+      "sha256": "ffca373db136dafac82a18dddfc0e7f75dd155fc4e91960bfd3bf392037422fd"
     },
     {
       "path": "courses/game-playing-agent-league/README.md",
-      "bytes": 11230,
-      "sha256": "e4fb55505189dc332987b991621f222df980ea63a585c62b840eb15384dcb11c"
+      "bytes": 12366,
+      "sha256": "d046213bd70f4ec21d78440227919754a72b7a8a618a0d77c17eabb6f91a4007"
     },
     {
       "path": "courses/game-playing-agent-league/SOURCES.md",
@@ -3374,8 +3374,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/VERIFY.md",
-      "bytes": 2834,
-      "sha256": "e6b3fac9842d614d034e4a489ae7355671a421f6fa85102fa0e256489210e9c3"
+      "bytes": 5247,
+      "sha256": "6dab4732bd2c09a21e1ad83916dbae30144b885d212bbb20e6b5e6b12bda050d"
     },
     {
       "path": "courses/game-playing-agent-league/advanced-feedback.json",
@@ -3409,8 +3409,8 @@
     },
     {
       "path": "courses/game-playing-agent-league/cli.mjs",
-      "bytes": 25039,
-      "sha256": "9c87d4fdc2ad1c8a5ae87a71bed4374cca5644df2e273e783f3de8708df758c0"
+      "bytes": 25037,
+      "sha256": "8d8f31c8e8ba45f21f3e0ac5671fe62d6f17f4099369e9c68ce1f51c2f8fc697"
     },
     {
       "path": "courses/game-playing-agent-league/development-league.json",
@@ -3423,9 +3423,14 @@
       "sha256": "73bf1b24b998f5ce4f49db88dedfcbf7e0db03f58bc6623c6c6f186a4e7f8b0d"
     },
     {
+      "path": "courses/game-playing-agent-league/examples/decision-contract.mjs",
+      "bytes": 2841,
+      "sha256": "79f36120dd8e678057a66c21dc9a47093df3fbe81a8d5cfd6b39add494c541ad"
+    },
+    {
       "path": "courses/game-playing-agent-league/index.html",
-      "bytes": 157158,
-      "sha256": "a01acd2578cbb7780ea435a67092f7537a811dd2321cd34a2eb243bab6af2019"
+      "bytes": 162802,
+      "sha256": "5b07c84bd6ff5ca33eaff0ee7d34909037b46b8182178245de69ed8afa72668b"
     },
     {
       "path": "courses/game-playing-agent-league/learner/baseline.mjs",
@@ -3479,13 +3484,13 @@
     },
     {
       "path": "courses/game-playing-agent-league/lessons/01-1-decision-contract.md",
-      "bytes": 5885,
-      "sha256": "7dd1ccefbaaaff39682d49317df02697e3d1b00612d6c552704d6ae0adbfc22f"
+      "bytes": 8763,
+      "sha256": "0b5a2d963b98d6e04cc954a9339356df3ad52f4d4d79f904181d43f898bf9eef"
     },
     {
       "path": "courses/game-playing-agent-league/lessons/01-2-reproducible-policy.md",
-      "bytes": 6132,
-      "sha256": "54e420d70b217137285b88a696d717441f4baf5727bbb824cc6d5170d4d77487"
+      "bytes": 7735,
+      "sha256": "76a470a3145d492e0f1f5c6c0f6ec0a81635737a60680cff86069bcebfab7be6"
     },
     {
       "path": "courses/game-playing-agent-league/lessons/01-3-failure-vs-strength.md",

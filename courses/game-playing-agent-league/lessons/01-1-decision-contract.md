@@ -2,7 +2,7 @@
 
 A pawn reaches the far edge, yet a program reports that the other player won. Before improving the program's strategy, you need to know which part of the system owns that result. In this lesson you will identify the actor, legal actions and terminal return for a supplied game state, then implement a policy that respects that contract.
 
-You need arrays, functions and zero-based indexing. Read time is approximately 5–7 minutes, with 20–35 minutes of practice and coding; these are targets awaiting learner trials.
+You need arrays, functions and zero-based indexing. Read time is approximately 8–10 minutes, with 30–45 minutes of experiments and coding; these are targets awaiting learner trials.
 
 ## A move is a request to the referee
 
@@ -36,17 +36,46 @@ node cli.mjs attempt 1.1-p2 --answer 'ID; legality explanation; two facts'
 node cli.mjs feedback 1.1-p2
 ```
 
+## Inspect one real decision
+
+From the course directory, run the supplied experiment in `examples/decision-contract.mjs`:
+
+```sh
+node examples/decision-contract.mjs contract
+```
+
+The file imports the referee from `lib/game.mjs` and `createDecisionContext` from `lib/runner.mjs`. It constructs the worked position above, with another opposing pawn so that an ordinary capture does not end the game. `A` denotes player 0, `B` player 1, and `.` an empty cell. This small excerpt shows the boundary you will use:
+
+```js
+const context = createDecisionContext(state, { seed: 7, budget: 1 });
+const actionId = encodeAction(7, 11); // the supplied worked capture
+const after = context.oracle.next(context.state, actionId);
+console.log(after.terminal, after.returns); // false, null
+```
+
+`state` and the imports are defined in the runnable file; the excerpt is not a standalone program. The context supplies an immutable observation and the legal-action list. `encodeAction` only encodes the chosen cells. The counted oracle validates and simulates the move, returning a new state. It consumes one credit; the old board is unchanged. This is a teaching probe, not code to put in your baseline: module 1 must choose an action with **zero** simulation credits. Later search must use `context.oracle.next`, not import the uncounted engine transition.
+
+Before each experiment, predict the result in your notes, then run it and explain any disagreement:
+
+1. Inspect the two destination cells listed for the pawn at cell 7: cells 11 and 12. Explain why cell 13 is excluded even though its encoded integer would be in range. Other friendly pawns also have actions in the full legal list.
+2. Change the probe's `encodeAction(7, 11)` to `encodeAction(7, 12)` in a scratch copy under `examples/`. Predict which board cells change, whether an opponent disappears, and whether either move earns an immediate terminal return. Restore the worked value after the comparison.
+3. Change that destination to 13. Predict whether the referee rejects it. The program should exit with `ILLEGAL_ACTION`, not display a new board or award a win. Restore the legal move before continuing.
+
+The probe prints `PASS` only when its legal simulation leaves the input unchanged and consumes one credit. It neither calls your baseline nor saves an assessment attempt. Keep scratch observations with your own notes. Leave `lib/`, `checks/` and the journal records unchanged.
+
 ## Build the smallest honest policy
 
-Open `learner/baseline.mjs`. Implement `chooseAction(context)` so that it returns a legal action ID. Choose a simple documented rule: a fixed position in the legal list is enough to establish the contract. A later lesson will make randomized choices reproducible. You do not need to implement movement, capture detection, game storage or a user interface.
+Your remaining work is in `learner/baseline.mjs`: replace its `LEARNER_TODO` with your own `chooseAction(context)` implementation that returns a legal action ID. Choose a simple documented rule: a fixed position in the legal list is enough to establish the contract. A later lesson will make randomized choices reproducible. You do not need to implement movement, capture detection, game storage or a user interface.
 
 The copied state is not a scratch board. For hypothetical moves, later search code will use the supplied simulation oracle. Mutating an observation would make the program's reasoning difficult to reproduce and could make one branch of a search affect another. A policy should return a decision; it should not try to make that decision happen by editing state.
 
-Run the actual policy checker:
+Run the actual policy checker once before editing to see the saved `LEARNER_TODO` failure, then again after your implementation:
 
 ```sh
 node cli.mjs check 1
 ```
+
+If instead you see a missing module, missing file or unsupported Node error, return to the README setup; that is not the intended unfinished-policy result. The CLI records the code snapshot and feedback in `work/attempts.json`; do not edit that file to turn a failure into a pass.
 
 A passing code check establishes the finite behaviors it reports. It does not establish playing strength. If a check fails, identify the violated requirement before changing code. Fix that requirement and rerun; preserve the earlier attempt in your history instead of rewriting its result.
 

@@ -1,12 +1,23 @@
-# Game-Playing Agent League — local course candidate
+# Game-Playing Agent League
 
 **Build a champion. Then build the agent that breaks it.** Construct search and learned policies, train against a population, and defend a league result with reproducible evidence. The final challenge changes an assumption after you freeze your prediction.
 
-This is an original local course candidate, not a published or accepted Free to Learn course. Its eight-module sequence is described below. Read [VERIFY.md](VERIFY.md) for the exact checks completed in this run. No human learner study or rendered browser verification is claimed.
+This is the public learner source for an original Free to Learn course candidate. Public source availability does not establish live delivery or full course acceptance. Its eight-module sequence is described below. Read [VERIFY.md](VERIFY.md) for the checks and qualification limits. No human learner study or rendered browser verification is claimed.
 
 ## Start
 
-Use **Node.js 22 or later** and a text editor. Development checks in this run use Node 26.5.1 on macOS arm64; other Node versions and platforms are not yet verified. No package installation, model download, GPU, API key, account, network connection or server is needed.
+Use **Git**, **Node.js 22 or later** and a text editor. From a directory where you keep projects, get the public source and record the exact revision you use:
+
+```sh
+git clone https://github.com/itsHabib/free-to-learn.git
+cd free-to-learn
+git rev-parse HEAD
+cd courses/game-playing-agent-league
+```
+
+If you already cloned the repository, start at its root, record `git rev-parse HEAD`, then run the last `cd` command. Keep that commit ID with your experiment notes and exports; a branch name alone can move. This route uses the checked-out source directly. No archive extraction or private development checkout is required. The clone needs network access; after checkout, the course runs locally without packages to install, a model download, GPU, API key, account or server. Development verification uses Node 26.5.1 on macOS arm64; Node 22 and other platforms have not been separately verified.
+
+Run all following commands from `courses/game-playing-agent-league`:
 
 ```sh
 node cli.mjs doctor
@@ -14,7 +25,7 @@ node cli.mjs list
 node cli.mjs lesson 1.1
 ```
 
-Open `index.html` directly to read the lesson viewer and inspect saved games. The command line is the authoritative place to commit responses and execute your code. The viewer reads only files you choose; it makes no external requests. The rendered page still needs browser and accessibility verification.
+Open `courses/game-playing-agent-league/index.html` from your checkout in a browser to read the lesson viewer and inspect saved games. From the course directory this is simply `index.html`. The command line is the authoritative place to commit responses and execute your code. The viewer reads only files you choose; it makes no external requests. The rendered page still needs browser and accessibility verification.
 
 Prerequisites: arrays, functions, recursion, basic algorithmic complexity, probability, averages and variance. For the learned value model, you should be comfortable with vectors, a weighted sum, a loss and a gradient update. No machine-learning framework is assumed. Plan roughly 30–40 hours across multiple sessions; that estimate awaits learner trials.
 
@@ -34,6 +45,8 @@ The supplied game is a 5×5 version of Breakthrough. Each player starts with fiv
 | 8. Adapt to a rule change | Prediction, first transfer attempt, repair and limited claims | Nine analysis items and worked examples, completable now; no patched simulator ships. An instructor supplies the challenge separately, after your freeze |
 
 Module 3 checks board information separately from requested-player perspective. Material-only, advancement, relative-count and other meaningful representations are supported; not every move or balanced position must change a vector. Bias, player ID or ply alone cannot replace a board measurement.
+
+Start lesson 1.1 with `node examples/decision-contract.mjs contract` to inspect a supplied decision context, then lesson 1.2 with `node examples/decision-contract.mjs randomness` to vary seeds and random-call order. These worked experiments do not implement or assess your policy.
 
 The starter functions are intentionally incomplete. They should fail their first code checks. You implement the named target logic; you do not need to build a web app, game engine, database or file format.
 
