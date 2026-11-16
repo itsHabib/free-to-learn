@@ -2,7 +2,21 @@
 
 Build a local node that rejects invalid transactions, authenticates state, follows a declared fork rule, and recovers from conflicting histories. The final artifact is an executable incident report for an unfamiliar partition and reorganization.
 
-This is an isolated course candidate, not a completed or published Free to Learn course. All balances are valueless counters. Keys are generated in memory and discarded after each process. No wallet, live chain, mining, token launch, external target, paid service, or production security claim is involved.
+This is an offline teaching laboratory. Passing its finite checks does not establish human learning or production readiness. All balances are valueless counters. Keys are generated in memory and discarded after each process. No wallet, live chain, mining, token launch, external target, paid service, or production security claim is involved.
+
+## Get the versioned source
+
+```sh
+git clone https://github.com/itsHabib/free-to-learn.git
+cd free-to-learn
+git rev-parse HEAD
+cd courses/blockchain-laboratory
+```
+
+Record the printed revision with your attempts. If your course page points to a
+specific GitHub revision, check it out before starting so lessons and runtime
+match. This local route needs Git and the Node runtime below, not a course ZIP,
+a private Ivy checkout, a wallet or an account.
 
 ## Start
 

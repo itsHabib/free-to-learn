@@ -768,7 +768,7 @@
     {
       "id": "blockchain-laboratory",
       "archive": ".packages/blockchain-laboratory.zip",
-      "sha256": "c9121af40b8db13a6f1e6cf69d1b32842c2d6aa0c10162b094977c8fe665d5a0",
+      "sha256": "927e42c9ae33eeaf6fcc41ac111ec8f6a96e97e1cd38213e9d67e5da153a101c",
       "archive_prefix": "blockchain-laboratory/",
       "direct_root": "courses/blockchain-laboratory",
       "root": "blockchain-laboratory",

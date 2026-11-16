@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 31103,
-      "sha256": "480799286a449934816514963b7b4cdc0367c9c8df441ca3c5d914555c1e0656"
+      "sha256": "19d6c73c53851df8712c725b7335478153175d5b5aea44446d37f0301ec52ddd"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -99,13 +99,13 @@
     },
     {
       "path": ".packages/blockchain-laboratory.zip",
-      "bytes": 96146,
-      "sha256": "c9121af40b8db13a6f1e6cf69d1b32842c2d6aa0c10162b094977c8fe665d5a0"
+      "bytes": 96340,
+      "sha256": "927e42c9ae33eeaf6fcc41ac111ec8f6a96e97e1cd38213e9d67e5da153a101c"
     },
     {
       "path": ".packages/blockchain-laboratory.zip.sha256",
       "bytes": 92,
-      "sha256": "87d9116e30ce8da9c207e7866c12b20310b6838b0d2e091d923205f4564b900f"
+      "sha256": "b980634577b81f85311098521c417390c001f9d37f0666edcd66038e9620e1ac"
     },
     {
       "path": ".packages/compiler-optimizer.zip",
@@ -2454,8 +2454,8 @@
     },
     {
       "path": "courses/blockchain-laboratory/README.md",
-      "bytes": 7368,
-      "sha256": "7c78c4bf00978efc901c567e4b98d1810aa013d11f9449f6f44f2b8f857fcd7a"
+      "bytes": 7856,
+      "sha256": "0baa7082185fbd99970aa2fb43ffbe9cf9442c4fea93f4786561aa78c7d05465"
     },
     {
       "path": "courses/blockchain-laboratory/REPORT-TEMPLATE.md",
