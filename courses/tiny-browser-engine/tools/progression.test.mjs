@@ -1,3 +1,5 @@
+import {readFileSync} from 'node:fs';
+import {support} from '../public/supplier.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {checkStage} from '../public/checks.mjs';
@@ -43,4 +45,19 @@ test('M4 retains the text-overflow requirement after introducing line layout',()
  assert.equal(result.results[0].id,'fixed-height-text-overflow');
  assert.deepEqual(visibleText(calls[0]),['AB CD']);
  assert.deepEqual(result.results[0].expected,[4,4]);
+});
+
+// Execute the actual displayed helper excerpt so documentation cannot drift from
+// the supplied JavaScript interface. This does not implement learner methods.
+test('displayed support helper calls match actual supplied types',()=>{
+ const doc=readFileSync(new URL('../public/CONTRACT.md',import.meta.url),'utf8');
+ const match=doc.match(/<!-- support-contract-example -->\s*```js\n([\s\S]*?)```/);
+ assert.ok(match,'documented helper example exists');
+ const result=new Function('support',match[1]+'\nreturn {supportsDiv,supportsImg,validId,text};')(support);
+ assert.deepEqual(result,{supportsDiv:true,supportsImg:false,validId:true,text:'hello\nworld'});
+ assert.ok(support.tags instanceof Set);
+ assert.ok(support.identifier instanceof RegExp);
+ for(const value of [12,'café','x'.repeat(support.LIMITS.text+1)]){
+  assert.throws(()=>support.textValue(value),error=>error.code==='unsupported_character');
+ }
 });

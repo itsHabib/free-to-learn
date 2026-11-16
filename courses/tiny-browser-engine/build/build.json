@@ -1,7 +1,7 @@
 {
   "course": "tiny-browser-engine",
   "status": "local-candidate-not-released",
-  "buildId": "2fb470c688c82f843ae04b535e5811c8cb46c2c0c05e05c9b8a96020c175fdc4",
+  "buildId": "23f4e696c7597d8b6e92f9b825e58dfa536f643f0b116a3157efcc6293cf26ec",
   "files": [
     {
       "name": "index.html",
@@ -70,8 +70,8 @@
     },
     {
       "name": "CONTRACT.md",
-      "bytes": 14425,
-      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
+      "bytes": 15967,
+      "sha256": "47f682c9c92661e05c4eccbe469e63a9fd1e455e2a34c9bd55be7754b0007860"
     },
     {
       "name": "SOURCES.md",
