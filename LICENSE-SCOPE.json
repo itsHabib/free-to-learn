@@ -8964,6 +8964,12 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": "courses/tiny-browser-engine/tools/progression.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/tiny-browser-engine/tools/render.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",

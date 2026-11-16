@@ -8,6 +8,37 @@ The editor accepts an ordinary JavaScript function body with a `support` argumen
 
 `fail(code,message,detail)` throws a located diagnostic; `copy(value)` clones plain records; `node(doc,id)` resolves a handle or throws; `connected(doc,id)` tests connection to the root. `defaults` is the property registry, `tags` the supported tag set, `identifier` the ID/class pattern, and `textValue` the ASCII/length validator. `inside(rect,x,y)` uses half-open membership. `intersect(a,b)` intersects rectangles. `LIMITS` names resource limits. Read the actual `support.LIMITS` fields instead of inventing fallback bounds: `nodes`, `depth`, `rules`, `text`, `packet`, `commands`, `width`, `height` and `extent`. Their values are part of the supplied profile; `nodes` bounds retained records (including detached records), while `depth` bounds nesting.
 
+### JavaScript types and calls
+
+Treat `support.tags` as a read-only `Set<string>`: use `.has(tag)`, not
+Array `.includes(tag)`, and do not mutate the shared set. `support.identifier`
+is a `RegExp`; use `.test(value)` on an ID/class string.
+`support.textValue(value)` accepts one string, checks the supplied text-length
+limit and printable ASCII plus tab/newline/carriage return, and returns that
+same string. It throws a diagnostic with code `unsupported_character` for
+non-strings, unsupported characters or excessive length; it is not a Boolean
+predicate and does not decode entities.
+
+The following calls can be used inside your engine body, where `support` is
+already supplied. They illustrate the helper interface, not the tree-building
+or mutation solution:
+
+<!-- support-contract-example -->
+```js
+const supportsDiv = support.tags.has('div'); // true
+const supportsImg = support.tags.has('img'); // false
+const validId = support.identifier.test('note_1'); // true
+const text = support.textValue('hello\nworld'); // returns the input string
+```
+<!-- /support-contract-example -->
+
+When a mutation validates user input, distinguish a thrown diagnostic from a
+false predicate result. Validate before changing the document so rejection does
+not leave a partially applied operation. Keep your first result honestly: if a
+check passes on the first attempt, record "no failure observed" rather than
+inventing a failed learner attempt. Deliberate fault-injection experiments are
+separate labeled controls, not your original learning history.
+
 Support does not implement matching, layout, painting order, hit selection, event propagation or invalidation for you.
 
 ## M1: buildDOM(tokens)

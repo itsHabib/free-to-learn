@@ -10,6 +10,34 @@ The M6 stage inspector passes the current viewport when rebuilding after dispatc
 
 See [TERMINAL.md](TERMINAL.md) for all eight lessons and conceptual practices, own packet files, cumulative stage/render work, and versioned session export/restore/resume. The browser route remains optional and unqualified here.
 
+## GitHub source and local setup
+
+Use this course directory from the public repository, not a private Ivy checkout
+or a required ZIP download:
+
+```sh
+git clone https://github.com/itsHabib/free-to-learn.git
+cd free-to-learn
+git rev-parse HEAD
+cd courses/tiny-browser-engine
+node --version
+node tools/lesson.mjs M1
+```
+
+Record the printed commit with your learner evidence. If the course page links
+a pinned revision, check out that revision before starting; do not silently mix
+lessons or starter files across revisions. Git and the Node version described
+below are the only prerequisites for the terminal route. No `npm install` or
+private author-generated files are required.
+
+The type-along route means implementing the eight methods in your own copy of
+`public/starter.body.js`, using the lesson and `public/CONTRACT.md`. The supplied
+files are scaffolding, not a completed engine. If you use AI to explain or write
+a method, record that assistance before checking it, predict a test result, and
+explain and repair a failure yourself. Passing generated code is not proof of
+independent mastery. Keep a separate copy or Git commit at each completed module
+instead of replacing your only working version with a later starter.
+
 ## Start as a learner
 
 Use an already installed recent Node with ES modules, `structuredClone` and Web Crypto. Author checks here ran on **Node v26.5.1**; other versions have not been qualified. There is no package installation step and no third-party runtime dependency.
