@@ -2,13 +2,25 @@
 
 Build a local optimizer for integer kernels, inspect its evidence, and investigate a wrong-result transformation. You implement the analyses and optimization decisions; the supplied runtime executes your IR and checks the proposed edits.
 
-This is a **local development candidate with nine implemented units**. Deterministic author checks are separate from independent course review, browser/accessibility checks and human learning evidence. Nothing here is published on Free to Learn.
+This public source course has **nine implemented units**. Source availability is separate from course acceptance: deterministic author checks do not establish independent review, browser/accessibility qualification or human learning outcomes.
 
 ## Run locally
 
 Use Node 26.x. Development observed **Node 26.5.1 on macOS arm64**; other operating systems and Node versions are not qualified. No npm install, external service, solver, API key, GPU or model download is needed.
 
-From the extracted course directory:
+Clone the public repository, record the revision you are using, and enter the course directory. Git is needed for this download; subsequent reading, coding and checks run offline. A ZIP, private repository, account and paid AI tool are not required.
+
+```sh
+git clone https://github.com/itsHabib/free-to-learn.git
+cd free-to-learn
+git rev-parse HEAD
+cd courses/compiler-optimizer
+node --version
+```
+
+Keep the printed 40-character Git revision with your work. The clone command selects the current default branch; it is not a fixed course version. To return to a recorded version in a fresh clone, run `git switch --detach YOUR_SAVED_40_CHARACTER_REVISION` from the repository root before entering the course directory. Do not switch revisions over unexported work. Restore requires the same course identity, which changes when public course files change.
+
+From `free-to-learn/courses/compiler-optimizer`, start a new cumulative workspace:
 
 ```sh
 node cli.mjs start work
@@ -18,7 +30,7 @@ node cli.mjs answer 01a work YOUR_LETTER --help-used none
 node cli.mjs check 01 work --help-used none
 ```
 
-Edit **work/optimizer.mjs**. The initial TODO failures are intentional and name the required function. `start` refuses an existing destination. Use unit numbers 01 through 09; there is no score gate on reading or later checks. Open `index.html` directly for the offline reading/practice interface; it does not execute learner code. Browser interaction is implemented but **not yet browser-qualified**. Use the tested terminal route if local browser storage is unavailable.
+Read [U01](lessons/01.md) for the first type-along, a deliberately incomplete scaffold and local diagnosis probes. Edit **work/optimizer.mjs**. The initial TODO failures are intentional and name the required function. `start` refuses an existing destination. Use unit numbers 01 through 09; there is no score gate on reading or later checks. Open `index.html` directly for the offline reading/practice interface; it does not execute learner code. Browser interaction is implemented but **not yet browser-qualified**. Use the tested terminal route if local browser storage is unavailable.
 
 The reader can commit reasoning choices before feedback, preserve attempts locally, export them and merge an earlier export. Its practice history is separate from terminal code history. Export both when using both routes. It refuses to reveal new answer feedback if it cannot save the commitment. Reading does not require storage or an account.
 
@@ -45,6 +57,14 @@ node cli.mjs optimize work calibration.json scalar --help-used none
 
 Compare pass orders with `node cli.mjs pipeline work calibration.json scalar,constants --learner-policy --help-used none`. Its receipt preserves accepted and rejected stage candidates plus an aggregate check. The scalar example declares all 256 i8 inputs through a finite-domain manifest; the generated list and coverage remain explicit.
 
+## Choose and record your route
+
+The type-along route builds one `work/optimizer.mjs` across U01–U08, then adds your U09 investigation. U01 walks the event comparison code; you implement the remaining observation decisions. Later units retain their own analysis and transformation work.
+
+The supplied runtime, verifier, Editor and public checks are available to inspect. The runtime includes an observation comparator used by the checker. Calling it directly can help you explore later units, but does not demonstrate that you implemented or understand U01. Record that choice as supplied help. There is no supplied final-project solution.
+
+AI assistance is optional. If you use it, ask for explanations or review of your specific failing pair, inspect every proposed edit, and predict its effect before running it. Record generated code, supplied helpers and other help in `--help-used`, for example `--help-used "U01 event scaffold; AI reviewed my heap loop"`. Use `none` only when accurate. A passing receipt records behavior on public cases, not independent authorship or mastery.
+
 ## Keep and restore your work
 
 ```sh
@@ -66,4 +86,4 @@ Read [API.md](API.md) for exact Kernel IR v1 behavior and interfaces, and [RUBRI
 
 Short mechanism readings accompany substantial coding and investigation. Their length is a deliberate prototype choice; reading and project times have not been measured. The public checker is a learning tool with inspectable cases, not a hidden exam. Independent held-out measurement and human tryouts remain pending.
 
-Author solutions, alternative controls, development evidence and packaging scripts are excluded from the learner ZIP. [NOTICE.md](NOTICE.md) records source provenance.
+The public source route includes everything needed for this project. Run `node --test teaching-examples.test.mjs` to verify the U01 teaching snippets; these author checks do not complete learner work. Optional archive distribution has a separate file inventory and qualification history. [NOTICE.md](NOTICE.md) records source provenance.

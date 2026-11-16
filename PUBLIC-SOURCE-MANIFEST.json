@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 30890,
-      "sha256": "c3d499f99ea8409531fe22e29f72f286b98bf57e8e039ba08af777c505445d98"
+      "bytes": 31098,
+      "sha256": "a303d36fb1d9533e2b822a96fc28eb3867809fb73c451ff1da08210fccaf9f4b"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -109,13 +109,13 @@
     },
     {
       "path": ".packages/compiler-optimizer.zip",
-      "bytes": 211972,
-      "sha256": "1d341f7d52c816d53759c9a19c16f97d7e81342032de8b651a230e72a201b8d0"
+      "bytes": 228751,
+      "sha256": "2428196edeaad9e1ccd885832b59e2e188373c488074c1c0e2de11228f13a30c"
     },
     {
       "path": ".packages/compiler-optimizer.zip.sha256",
       "bytes": 89,
-      "sha256": "bd943f094803fd0e429e17af457a69fe27c001a74cd81c3035cd5fea72c1cde1"
+      "sha256": "0d25fb3d850b1a9828694c965e35f3b00df53189f6461bf054660547122f213b"
     },
     {
       "path": ".packages/firmware-forensics.zip",
@@ -229,8 +229,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 374539,
-      "sha256": "7989d31f43f240f30151c0cc1c6b4c1cc072480cbcf4b33c1a3f56a81508827e"
+      "bytes": 375153,
+      "sha256": "4f8f784746d3cca1f8737cbce4a2a1f74caed675101274cd424e9b370364caae"
     },
     {
       "path": "LICENSE.md",
@@ -2734,8 +2734,8 @@
     },
     {
       "path": "courses/compiler-optimizer/BUNDLE-MANIFEST.json",
-      "bytes": 5392,
-      "sha256": "522cc6bf25dfeec90a670f0bf9bae03689a3669ba428d68b269375fba06fa124"
+      "bytes": 5860,
+      "sha256": "bbe2854c5eebb2ee947644430954cccdac2a6af65c8e55cd92115b35523804a2"
     },
     {
       "path": "courses/compiler-optimizer/NOTICE.md",
@@ -2744,8 +2744,8 @@
     },
     {
       "path": "courses/compiler-optimizer/README.md",
-      "bytes": 5647,
-      "sha256": "b7872c939be55fb021fd1a392c90c1d4a23bbad0607b005521f69b48e08a4ed7"
+      "bytes": 7918,
+      "sha256": "4bdfb9699f8073d7da7c16bb6e86d159e14abd0058435ae11668314849124819"
     },
     {
       "path": "courses/compiler-optimizer/RUBRIC.md",
@@ -2769,8 +2769,8 @@
     },
     {
       "path": "courses/compiler-optimizer/course.json",
-      "bytes": 853,
-      "sha256": "863805be7852e9f8c2e6370552dda7eeb11c46b9e8cba7b96dbddc941a03efee"
+      "bytes": 923,
+      "sha256": "3052974d25123ae9f7618160caf2bf0ddc2cd7850cf6a964783c357b0023f51d"
     },
     {
       "path": "courses/compiler-optimizer/curriculum.json",
@@ -2793,9 +2793,14 @@
       "sha256": "8bbfbced6ce080919a652f37223b74a99a903424441d000164736f1ddd940596"
     },
     {
+      "path": "courses/compiler-optimizer/examples/01-observations.mjs",
+      "bytes": 3785,
+      "sha256": "04cbf2e32f30df5fea4438e7158688635deebd9fb732047d16ae65c135922b69"
+    },
+    {
       "path": "courses/compiler-optimizer/index.html",
-      "bytes": 47657,
-      "sha256": "f429492777cb0009f618ccaf7ba3dc3f38702e221bc5fd8c8017b8726bc0b8c4"
+      "bytes": 53485,
+      "sha256": "9031b220e48c2756ad3c583beb0432f8d337576c7736c3ddbbc6145306f4c6d5"
     },
     {
       "path": "courses/compiler-optimizer/investigation.mjs",
@@ -2809,8 +2814,8 @@
     },
     {
       "path": "courses/compiler-optimizer/lessons/01.md",
-      "bytes": 2704,
-      "sha256": "7e11fb4d8b37178e5d63372662963261dce31842a3451d86f9b89946a9bac142"
+      "bytes": 7915,
+      "sha256": "d4ff89baa535e7c6d1cd5b613599a68ea34453d8eae676bcf7f6ce1979129f27"
     },
     {
       "path": "courses/compiler-optimizer/lessons/02.md",
@@ -2881,6 +2886,11 @@
       "path": "courses/compiler-optimizer/starter.mjs",
       "bytes": 1524,
       "sha256": "a26ca9b16568f44b89de93f75763b9933b5b1975e2b086b97098dc94fbdd81cc"
+    },
+    {
+      "path": "courses/compiler-optimizer/teaching-examples.test.mjs",
+      "bytes": 3175,
+      "sha256": "9be0bdfdf312ddf6999f2dd3bf2e3cd6cbb136dfa5321beb8cc379f5d44ea7c6"
     },
     {
       "path": "courses/compiler-optimizer/worker.mjs",

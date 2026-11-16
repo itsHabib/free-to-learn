@@ -325,7 +325,7 @@
     {
       "id": "compiler-optimizer",
       "archive": ".packages/compiler-optimizer.zip",
-      "sha256": "1d341f7d52c816d53759c9a19c16f97d7e81342032de8b651a230e72a201b8d0",
+      "sha256": "2428196edeaad9e1ccd885832b59e2e188373c488074c1c0e2de11228f13a30c",
       "archive_prefix": "compiler-optimizer/",
       "direct_root": "courses/compiler-optimizer",
       "root": "compiler-optimizer",
@@ -480,6 +480,15 @@
           ],
           "exit": 1,
           "match": "TODO U01"
+        },
+        {
+          "stage": "executable_teaching_examples",
+          "argv": [
+            "node",
+            "--test",
+            "teaching-examples.test.mjs"
+          ],
+          "exit": 0
         }
       ],
       "coverage_complete": false,
