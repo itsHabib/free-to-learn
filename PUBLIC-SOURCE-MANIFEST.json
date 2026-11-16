@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 30890,
-      "sha256": "c3d499f99ea8409531fe22e29f72f286b98bf57e8e039ba08af777c505445d98"
+      "bytes": 31238,
+      "sha256": "43aaf8bba1b637f09f3788151d35f6c03223cab76ca3f04ea5670f420e3a6f0f"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -119,13 +119,13 @@
     },
     {
       "path": ".packages/firmware-forensics.zip",
-      "bytes": 108155,
-      "sha256": "c1da7641cef596690b7514d4cd02c2108d0e6e9b0f5eabf4b2eaa93ae003729c"
+      "bytes": 116134,
+      "sha256": "d0ab8ec230bd297643f0c23c0f80aab96ee2eb935dd052c3874e766d9c819b1b"
     },
     {
       "path": ".packages/firmware-forensics.zip.sha256",
       "bytes": 89,
-      "sha256": "47c3d9fd514b40b2c53dfdabb6f6bea66c51e49fb1c09a89d39c672698ebfabd"
+      "sha256": "93ab8ca7fc608f3c37f6bdcea12697587188c55c5834825ada7b7d5938f9f8c2"
     },
     {
       "path": ".packages/inside-the-shot.zip",
@@ -229,8 +229,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 374539,
-      "sha256": "7989d31f43f240f30151c0cc1c6b4c1cc072480cbcf4b33c1a3f56a81508827e"
+      "bytes": 375228,
+      "sha256": "ff2a5a0c6d35dfcae8e6e23d72e5cd0244bee25eb98822a1cec9aa86f534f8a0"
     },
     {
       "path": "LICENSE.md",
@@ -2894,13 +2894,13 @@
     },
     {
       "path": "courses/firmware-forensics/PACKAGE-MANIFEST.json",
-      "bytes": 14819,
-      "sha256": "6404411dc5d564c822a318461038069239146bbd9f882a54a7b33053dc72487c"
+      "bytes": 15345,
+      "sha256": "458ffc39faf6068fa4b16c66106d1a96d88e99c9498462eb04fc6c5d87996e8e"
     },
     {
       "path": "courses/firmware-forensics/README.md",
-      "bytes": 3952,
-      "sha256": "f8f1794ec68e1780732e171587d3f967ef70f8b2112e7f2987755467b212b18d"
+      "bytes": 6646,
+      "sha256": "5aff01e5b5ea0a02eafd68a2f3f5bce9574a00e5f423a0067df3a189159fdf6b"
     },
     {
       "path": "courses/firmware-forensics/SOURCES.md",
@@ -2918,9 +2918,24 @@
       "sha256": "ba36b1cbae384d86d5a28fb197a21fd6e0317cf2e2199e2bcdfd8a19cd509208"
     },
     {
+      "path": "courses/firmware-forensics/checks/README.md",
+      "bytes": 2235,
+      "sha256": "889178839fef95d1fc5d0aa5e3c07fc3e60d839955d8c355506eaa1d9ce56761"
+    },
+    {
+      "path": "courses/firmware-forensics/checks/test_opening_slice.py",
+      "bytes": 3018,
+      "sha256": "c3bbbc667717aadd696670ea31e54b7375ce7e5e8fd6d2e6cf6b818d5eea4188"
+    },
+    {
+      "path": "courses/firmware-forensics/examples/slice_probe.py",
+      "bytes": 2415,
+      "sha256": "71d58009eb34cdf0a3579f21e256a025271f2e5005f520d985f5af8a45a02359"
+    },
+    {
       "path": "courses/firmware-forensics/lab/CONTENT-MANIFEST.json",
       "bytes": 7214,
-      "sha256": "e73bc80136b7107a85c5eacfb77200c664f4698ce805d05d0de8149de76fb590"
+      "sha256": "4f4a9085d6ca42aa2ae6379e16bfc0eb714fd174d30c1ab3f40dcdc31b9126fa"
     },
     {
       "path": "courses/firmware-forensics/lab/FORMAT.md",
@@ -3114,8 +3129,8 @@
     },
     {
       "path": "courses/firmware-forensics/lab/lessons/00-build-parser-and-map.md",
-      "bytes": 5231,
-      "sha256": "b1aaa5d2125e0f47ac780343dd9c3f4b1b0b10c4139f29af6b61aa0af8445cfd"
+      "bytes": 8414,
+      "sha256": "1f76e2269c679fc4fb395007723a5d430c015711e0264d6a8e7d335285d07e24"
     },
     {
       "path": "courses/firmware-forensics/lab/lessons/01-evidence-and-change.md",
@@ -3144,38 +3159,38 @@
     },
     {
       "path": "courses/firmware-forensics/reader/01/index.html",
-      "bytes": 9559,
-      "sha256": "b9937b96e60715aeac3426ce9508166c056b4f67eea9ed7d6596f945ae94396c"
+      "bytes": 12012,
+      "sha256": "87eae17af95cf59c209725120b75a018b1f1d2bd397e930bbf7587b3e484727d"
     },
     {
       "path": "courses/firmware-forensics/reader/02/index.html",
-      "bytes": 11012,
-      "sha256": "a7e89c4970da8c51d61d6f448f686b64066dfeab29b91170054bf62df9a8ab7d"
+      "bytes": 11121,
+      "sha256": "256eaa2adc50a56002e5e5bec7e792c842323ce18b883ba1a13510b3955e7c04"
     },
     {
       "path": "courses/firmware-forensics/reader/03/index.html",
-      "bytes": 8784,
-      "sha256": "412fce2e225a115a826c5f5c591f510f5ecdccc82b7cbf4fcff395076ad558ef"
+      "bytes": 8893,
+      "sha256": "4429a13551821b1620ca8c3358111a51919900326180b3776df5cee921e120c1"
     },
     {
       "path": "courses/firmware-forensics/reader/04/index.html",
-      "bytes": 9016,
-      "sha256": "f203e7682cd283a27d3906d5facf9096b9d32393d8c74ecde9f9c15287a72e03"
+      "bytes": 9125,
+      "sha256": "47a5399e1b74f9dee988de0287b0988cc99251ab0b660a0c028a41155dfdcdf3"
     },
     {
       "path": "courses/firmware-forensics/reader/05/index.html",
-      "bytes": 8903,
-      "sha256": "b48dfaba9047177368efbf87ceade61c5e6ea6228227545f34f3f7b31da8263b"
+      "bytes": 9012,
+      "sha256": "8a162ff59629a12c80c5450f5fd1715ef059b7ecfcbf7699c43deb45ea212349"
     },
     {
       "path": "courses/firmware-forensics/reader/06/index.html",
-      "bytes": 8940,
-      "sha256": "7382673401581724e5845c515cf34a2b68cd6d561a25b091a82f13211f709203"
+      "bytes": 9049,
+      "sha256": "0f6a7d4a818efbe31a9355a004bfd9c83708e92c9e8b79560668ac8e01565cfe"
     },
     {
       "path": "courses/firmware-forensics/reader/07/index.html",
-      "bytes": 8819,
-      "sha256": "88c60c4d6f564cbee0e58d556505a2f58ae7efeb350218adc74e95541b36fa6b"
+      "bytes": 8928,
+      "sha256": "87a632b1cecd45a1a1bfc75269874e9dc6b24f404c325f92cd0d2ed3fd14ae09"
     },
     {
       "path": "courses/firmware-forensics/reader/app.mjs",
@@ -3184,8 +3199,8 @@
     },
     {
       "path": "courses/firmware-forensics/reader/index.html",
-      "bytes": 3450,
-      "sha256": "ed21f62d3dd72a4d2bb4416f7b236b7ad791ab68c26396adc31f20fd33a89b11"
+      "bytes": 4212,
+      "sha256": "a0e85bacb1fe56bd41f50e28b7fc2efd7a254d6519b6e5fe23131c713caffb11"
     },
     {
       "path": "courses/firmware-forensics/reader/journal.mjs",

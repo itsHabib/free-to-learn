@@ -29,6 +29,66 @@ are identifiers, never paths. Reject traversal, absolute paths, non-ASCII bytes,
 empty labels and nonzero bytes after the first NUL. Do not normalize malicious
 labels into something that looks valid.
 
+## Experiment — a slice is not a bounds check
+
+Before implementing `parse_container`, isolate one byte-range claim. The runnable
+starter is `examples/slice_probe.py` relative to the **course root** (the folder
+with `work.py`). Its preconditions deliberately assume the caller already checked
+input types and the table boundary. It does not decode or validate a full header.
+
+```python
+def read_payload(data, table_end, offset, size):
+    """Precondition: bytes data; integer fields; 0 <= table_end <= len(data).
+
+    Return exactly size bytes after the table, or raise ValueError for a bad
+    range. A payload must be nonempty. This starter deliberately breaks that
+    contract: add validation BEFORE slicing in your own copy.
+    """
+    return data[offset:offset + size]
+```
+
+`offset` counts from byte zero; the stop argument to a slice is exclusive.
+`table_end` marks the first payload byte. The starter ignores that boundary and
+relies on a slice that silently shortens an oversized request. `ValueError` is
+this probe's error contract; your real parser must use the supplied `FormatError`.
+
+Before running the probe, write your predicted result for `(offset=8, size=7)`.
+After the run, explain why receiving `b'abcdef'` cannot establish that seven bytes
+were present. Save the prediction and explanation next to your first output.
+From the course root, after creating `attempts/002-parser` with `work.py`:
+
+```sh
+python3 examples/slice_probe.py > attempts/002-parser/slice-first.txt
+cp -n examples/slice_probe.py attempts/002-parser/slice_probe.py
+```
+
+The supplied probe exits **1**, with **2/8** cases passing. It returns six bytes
+for a seven-byte claim in `past-end`, and also accepts table bytes and empty or
+negative ranges. That is a deliberate failing experiment. Missing files, import
+errors or a missing interpreter are setup failures, not this expected result.
+The miniature `TABLE___abcdef` buffer is inert and is not an EDUFW1 fixture.
+
+Repair only `read_payload` in your copy: require a positive size, keep the start at or after the table and within
+the buffer, then prove the requested size fits the remaining bytes **before**
+slicing. Leave the case table and checker unchanged.
+
+```sh
+python3 examples/slice_probe.py --source attempts/002-parser/slice_probe.py > attempts/002-parser/slice-repaired.txt
+```
+
+A repaired probe exits **0** with **8/8**. Do not replace your first output. If
+you revise again, save another filename and record help in the attempt's
+`help.json`. This extra probe is not one of the three sources copied by `work.py`;
+copy it explicitly into later attempts if you want to retain it there.
+
+Now predict two new cases without adding hard-coded answers: with `table_end=8`
+and `len(data)=14`, compare `(offset=14, size=1)` with `(offset=13, size=1)`.
+Explain why exact-end acceptance needs an inclusive comparison. Try those in
+your copy, preserve the output, and transfer the invariant into `parse_container`.
+Header validation, names, hash evidence, all-range coverage, inventory and graph
+work remain yours. Passing this tiny range check is not a parser pass, a complete
+security boundary or evidence that anything may be flashed.
+
 ## Stage B — ownership of every byte
 
 Two individually in-bounds ranges can still overlap. Reject overlap, gaps and
