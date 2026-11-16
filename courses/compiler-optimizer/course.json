@@ -35,6 +35,8 @@
     "lessons/09.md",
     "practice-state.mjs",
     "reader-ui.js",
-    "curriculum.json"
+    "curriculum.json",
+    "examples/01-observations.mjs",
+    "teaching-examples.test.mjs"
   ]
 }

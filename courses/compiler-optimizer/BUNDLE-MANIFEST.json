@@ -1,12 +1,12 @@
 {
   "format": "optimizer-bundle/1",
   "kind": "learner",
-  "publicIdentity": "a4c81a3c6188bfe725230002264417dde4e62801d7380a2debe653bf948e8c80",
+  "publicIdentity": "eebf3f8e255e18167dc5c28f06a05563e0fc2ffd13a0b6f197c45b7115407ecd",
   "files": [
     {
       "path": "README.md",
-      "bytes": 5647,
-      "sha256": "b7872c939be55fb021fd1a392c90c1d4a23bbad0607b005521f69b48e08a4ed7"
+      "bytes": 7918,
+      "sha256": "4bdfb9699f8073d7da7c16bb6e86d159e14abd0058435ae11668314849124819"
     },
     {
       "path": "API.md",
@@ -25,8 +25,8 @@
     },
     {
       "path": "course.json",
-      "bytes": 853,
-      "sha256": "863805be7852e9f8c2e6370552dda7eeb11c46b9e8cba7b96dbddc941a03efee"
+      "bytes": 923,
+      "sha256": "3052974d25123ae9f7618160caf2bf0ddc2cd7850cf6a964783c357b0023f51d"
     },
     {
       "path": "practice.json",
@@ -100,13 +100,13 @@
     },
     {
       "path": "index.html",
-      "bytes": 47657,
-      "sha256": "f429492777cb0009f618ccaf7ba3dc3f38702e221bc5fd8c8017b8726bc0b8c4"
+      "bytes": 53485,
+      "sha256": "9031b220e48c2756ad3c583beb0432f8d337576c7736c3ddbbc6145306f4c6d5"
     },
     {
       "path": "lessons/01.md",
-      "bytes": 2704,
-      "sha256": "7e11fb4d8b37178e5d63372662963261dce31842a3451d86f9b89946a9bac142"
+      "bytes": 7915,
+      "sha256": "d4ff89baa535e7c6d1cd5b613599a68ea34453d8eae676bcf7f6ce1979129f27"
     },
     {
       "path": "lessons/02.md",
@@ -162,12 +162,23 @@
       "path": "curriculum.json",
       "bytes": 10862,
       "sha256": "8c1ae394507b5e147d55a0397242776a4fcad2e01eba813f0255c81dd8ddc656"
+    },
+    {
+      "path": "examples/01-observations.mjs",
+      "bytes": 3785,
+      "sha256": "04cbf2e32f30df5fea4438e7158688635deebd9fb732047d16ae65c135922b69"
+    },
+    {
+      "path": "teaching-examples.test.mjs",
+      "bytes": 3175,
+      "sha256": "9be0bdfdf312ddf6999f2dd3bf2e3cd6cbb136dfa5321beb8cc379f5d44ea7c6"
     }
   ],
   "qualification": "Targeted cosmetic-reduction repair: 18 regression checks and 8 affected alternative/invariant checks. Browser, independent successor review and human acceptance pending.",
-  "previousPublicIdentity": "964c480e2c7793cf652efaeae4b42a0715b65a68989913ca596a48a5c0d7bd30",
+  "previousPublicIdentity": "a4c81a3c6188bfe725230002264417dde4e62801d7380a2debe653bf948e8c80",
   "documentationDerivative": {
-    "scope": "Clarifies the existing U07 policy report interface; runtime, criteria and learner source are unchanged.",
-    "memberInventorySha256": "4352e85acb07d7490b262a7c3cd9b6d8fe39a7975a68149975c7e025f1ba96d2"
+    "scope": "Clone-first U01 build-along derivative: explanatory scaffolding and executable teaching examples; learner checks and starter behavior unchanged. No learner acceptance transferred.",
+    "memberInventorySha256": "b94488cc192b6f5821d7d9443ef82ee8a39e0824d9b2774b8ccb49a042cd8808",
+    "memberInventoryEncoding": "UTF-8 compact JSON of files array"
   }
 }

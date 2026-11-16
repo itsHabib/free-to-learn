@@ -3535,6 +3535,13 @@
       "terms": "Explicit third-party notices take precedence."
     },
     {
+      "path": "courses/compiler-optimizer/examples/01-observations.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
       "path": "courses/compiler-optimizer/index.html",
       "kind": "original-prose-or-illustration-with-possible-code-examples",
       "contentLicense": "CC-BY-4.0",
@@ -3655,6 +3662,13 @@
     },
     {
       "path": "courses/compiler-optimizer/starter.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0",
+      "terms": "Explicit third-party notices take precedence."
+    },
+    {
+      "path": "courses/compiler-optimizer/teaching-examples.test.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0",
