@@ -37,6 +37,34 @@ A useful claim has an actor, condition, action and observable result. For exampl
 
 Run `check core` in a new preserved attempt. Choose one failing line. Record its expected result, actual result and source snapshot hash. Do not patch yet. Explain how that observation contradicts one proposed promise. If the process merely failed to compile, you have no observation of guest behavior; record the setup failure instead.
 
+## 1.4 Build a small witness before repairing
+
+Open [`examples/range-probe.rs`](../examples/range-probe.rs). This runnable example uses the real `Learner` policy and supplied VM; it contains no replacement policy. It starts with four synthetic guest bytes, loads one byte from the offset you choose, then stores that value at guest offset 0 so you can see it. The five instructions are:
+
+```rust
+Const { dst: 0, value: offset }, // r0 holds the address to test
+Load8 { dst: 1, addr: 0 },      // r1 receives the byte at that address
+Const { dst: 0, value: 0 },     // choose a visible destination
+Store8 { addr: 0, src: 1 },     // copy r1 into guest byte 0
+Halt,
+```
+
+The `addr: 0` operand names register 0, not guest byte 0. The second `Const` changes that register before the store. `Program::memory_len` is 4; valid byte positions are 0 through 3. Predict the policy decision, outcome and first guest byte for offsets 3, 4 and 5 before running anything. Save your prediction in your own notes, together with the Git revision and copies of `examples/range-probe.rs` and `src/learner.rs` as they stand now.
+
+From `courses/boundary-lab` (or the extracted `boundary-lab` directory):
+
+```sh
+cargo run --offline --example range-probe -- 3
+cargo run --offline --example range-probe -- 4
+cargo run --offline --example range-probe -- 5
+```
+
+Read `range decision`, `outcome`, `steps` and `guest bytes` together. With the unchanged starter, offset 3 copies 78 and ends with `Ok(())`; offset 4 copies 167 and also ends with `Ok(())`; offset 5 ends with `Err(MemoryDenied)` before the load completes. The 167 is a supplied synthetic guard byte outside the four-byte guest region, not a byte from arbitrary host memory. Inspect `runtime.rs` to locate where those guard bytes are initialized. A denial at offset 5 does not rescue the false promise exposed at offset 4. The example exits 0 after printing an observation even when the modeled operation is denied; it is not a grader.
+
+**Your experiment:** choose another offset whose result distinguishes two candidate claims, such as “every successful read stays inside the guest region” and “some out-of-region reads are denied.” Explain your choice before running it, then keep the output and revise the narrower claim. You may change the example's synthetic bytes to make the source of a permitted read easier to recognize; preserve the original first. Do not change `src/learner.rs` yet or edit the required checks. Module 3 is where you repair the range decision and rerun this same witness plus the public checks. No expected-answer assertion in this example replaces those checks.
+
+The example is a separate exploratory run: `run.py` captures `src/*.rs`, not `examples/*.rs`, and cannot record this command. Keep your example source, policy snapshot, prediction and output together yourself. Use the normal `run.py check core` receipt for the required baseline evidence in section 1.3.
+
 **Checkpoint:** your report distinguishes output correctness, logical confinement and OS confinement; identifies guest-controlled versus trusted identity; and gives one falsifiable negative claim with a useful positive control. A later green check will not erase this first explanation.
 
 **Fresh application:** a plugin emits an all-black tile while obeying every range and authority rule. Is that enough to declare the sandbox broken? State which product requirement may have failed and which isolation evidence would still be needed. No keyword or single yes/no answer substitutes for the distinction.

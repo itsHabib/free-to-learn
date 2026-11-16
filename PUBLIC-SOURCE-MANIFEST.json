@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 30890,
-      "sha256": "c3d499f99ea8409531fe22e29f72f286b98bf57e8e039ba08af777c505445d98"
+      "bytes": 32571,
+      "sha256": "6ae0e58c004cf1036586fad7658b96e7f96bf6a0dbec91a56ab8a14ae66657c6"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -159,13 +159,13 @@
     },
     {
       "path": ".packages/sandbox-model.zip",
-      "bytes": 68444,
-      "sha256": "f2793ab152d9a7ee41919415ca816beeb6aa2e707c182e5a69365142ab2806dd"
+      "bytes": 72214,
+      "sha256": "81f8a241341d11b39d04ee84536058d303d395648b0d695759e59f1c2b5bf7df"
     },
     {
       "path": ".packages/sandbox-model.zip.sha256",
       "bytes": 84,
-      "sha256": "2dcbf64a87f09a2b2523a13bd74e1a06595c5d352dc060ad4b788365039d2958"
+      "sha256": "d79549d73ea6b280dbc26d93f34b128b774aa1abfd08dde6ad0447c8cf8fd024"
     },
     {
       "path": ".packages/sightline.zip",
@@ -229,8 +229,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 374539,
-      "sha256": "7989d31f43f240f30151c0cc1c6b4c1cc072480cbcf4b33c1a3f56a81508827e"
+      "bytes": 374772,
+      "sha256": "3c1fb30330a388994ab98a30abf7fb6c7890125db33e97d67c274b9d98361ca3"
     },
     {
       "path": "LICENSE.md",
@@ -2624,23 +2624,28 @@
     },
     {
       "path": "courses/boundary-lab/PACKAGE-MANIFEST.json",
-      "bytes": 4709,
-      "sha256": "7dca053ffa28b48bbd88b91f79e28b9d2086327892fcfc94fd5b3b74401066e2"
+      "bytes": 4867,
+      "sha256": "21cfeb7a0c500c5df024d779c0e52815a055f87defdea97f194efd83b1333652"
     },
     {
       "path": "courses/boundary-lab/README.md",
-      "bytes": 6834,
-      "sha256": "df37db33066bb4b5e3dd6fc9356432e521ec65418d481fcf07f7bb6c4a0ed76e"
+      "bytes": 8141,
+      "sha256": "82fd7d3895fc1d05050703b2df356bf2acb1515b8811c8f6a5b58d3d15d8bb91"
+    },
+    {
+      "path": "courses/boundary-lab/examples/range-probe.rs",
+      "bytes": 1536,
+      "sha256": "8104959d978c0a96398d7ca8e425a1b37ad0b69be945585cb583c368f9c320f4"
     },
     {
       "path": "courses/boundary-lab/index.html",
-      "bytes": 48805,
-      "sha256": "8f89a8933f469ada65f30d238864cdc263a2596aedbbc53dd55b124b47c3979e"
+      "bytes": 52196,
+      "sha256": "af7aef95d0a007ba6c1fe1571829da3ffae0779942014aa261d67f3c4457181a"
     },
     {
       "path": "courses/boundary-lab/lessons/01-promises.md",
-      "bytes": 4641,
-      "sha256": "1f96e63e32fa62a7a04a5770ff2a007e0e06a86ef91661f5aff3f9695f8b7ca9"
+      "bytes": 7581,
+      "sha256": "4bead6f095faf5ac47f7802c723cb64c37d585128793a25ff978194249174a66"
     },
     {
       "path": "courses/boundary-lab/lessons/02-admission.md",
