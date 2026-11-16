@@ -268,7 +268,7 @@ async function main() {
   if (command === 'doctor') {
     const major = Number(process.versions.node.split('.')[0]);
     if (major < 22) throw new Error(`Node 22+ required; found ${process.version}.`);
-    print({ok: true, node: process.version, platform: process.platform, architecture: process.arch, dependencies: 'none', course: 'local course candidate 0.1.1', note: 'This validates runtime availability, not your agent or course completion.'});
+    print({ok: true, node: process.version, platform: process.platform, architecture: process.arch, dependencies: 'none', course: 'public learner source 0.1.1', note: 'This validates runtime availability, not your agent or course completion.'});
     return;
   }
   if (command === 'list') {
@@ -324,7 +324,7 @@ async function main() {
     print(await importJournal(journalPath, resolve(args[0])));
     return;
   }
-  print(`Agent League — local course candidate
+  print(`Agent League — public learner source
 
 Read and practice:
   node cli.mjs doctor

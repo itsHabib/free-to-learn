@@ -848,7 +848,7 @@
     {
       "id": "agent-league",
       "archive": ".packages/agent-league.zip",
-      "sha256": "5cbe437454c43a84c993ebd33dbd92b105a28e46e4a4c2bbecc1a6742e06531a",
+      "sha256": "3ffd0331032a204117faf6d81bb0daf6d39313a86f7cf8902ab5af740cd9d95f",
       "archive_prefix": "game-playing-agent-league/",
       "direct_root": "courses/game-playing-agent-league",
       "root": "game-playing-agent-league",
@@ -882,6 +882,26 @@
           ],
           "exit": 1,
           "match": "LEARNER_TODO"
+        },
+        {
+          "stage": "opening_decision_contract",
+          "argv": [
+            "node",
+            "examples/decision-contract.mjs",
+            "contract"
+          ],
+          "exit": 0,
+          "match": "PASS: input unchanged; one counted simulation"
+        },
+        {
+          "stage": "opening_seed_experiment",
+          "argv": [
+            "node",
+            "examples/decision-contract.mjs",
+            "randomness"
+          ],
+          "exit": 0,
+          "match": "PASS: fresh contexts repeat the seed-7 choice"
         }
       ],
       "coverage_complete": false,

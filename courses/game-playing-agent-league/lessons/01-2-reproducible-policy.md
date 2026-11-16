@@ -2,7 +2,7 @@
 
 Your policy wins, but a rerun of the same match loses. That may reflect a different random choice, changed code or a different game—not a change in strength. In this lesson you will make a policy's decisions reproducible and identify the evidence needed to rerun them.
 
-You need lesson 1.1 and the idea of a deterministic function. Allow approximately 5–7 minutes to read and 25–40 minutes to implement and investigate; these are unmeasured targets.
+You need lesson 1.1 and the idea of a deterministic function. Allow approximately 7–10 minutes to read and 30–45 minutes to implement and investigate; these are unmeasured targets.
 
 ## Randomness can be controlled
 
@@ -18,6 +18,20 @@ Commit **item `1.2-p1`:** The legal actions are `[27,30,54,55]` and the next pri
 node cli.mjs attempt 1.2-p1 --answer 'Action and consequence of the extra draw'
 node cli.mjs feedback 1.2-p1
 ```
+
+## Observe the random-call sequence
+
+Run the companion experiment from the course directory:
+
+```sh
+node examples/decision-contract.mjs randomness
+```
+
+Read `drawChoice` in `examples/decision-contract.mjs`. It draws once from `context.rng()`, multiplies by the number of legal actions, rounds down to an array index and reads that action. Rounding down maps `[0,1)` to indices `0` through `length - 1`; multiplying by `length + 1` can produce an out-of-range index. The script uses the real initial state's ordered legal list and fresh contexts. It does not change `learner/baseline.mjs` or write a course attempt.
+
+Predict which rows will match before running it. The two seed-7 rows should reproduce the draw and action. Seed 8 changes the stream, but a different random number can still land in the same action slot. The last row consumes an extra seed-7 draw before choosing. It models how a new diagnostic can change a randomized policy's behavior. Equal results in a few rows do not prove two streams or policies are equivalent.
+
+In a scratch copy under `examples/`, replace the extra call to `skipped.rng()` with logging of the value already returned by `drawChoice`. Predict and check whether the original seed-7 choice returns. Then try a different seed and explain both the number and selected index. Keep the ordered legal list fixed so that you vary one cause at a time. These are supplied sampling mechanics; your remaining task is to select and document your own deterministic or seeded rule in `learner/baseline.mjs`, run its actual checks, and retain your failed and revised attempts.
 
 ## Freeze what “the same policy” means
 
