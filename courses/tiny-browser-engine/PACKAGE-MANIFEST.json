@@ -2,7 +2,7 @@
   "kind": "learner-source-and-build",
   "status": "local-terminal-candidate-unreleased",
   "supersedesArchiveSha256": "38e61665c640f3c88b6da8f74ac7efd28651bbb5afaad8eacd2141e71b17ee65",
-  "buildId": "2201e7d06346886dd41f19f2fd8137015549b83b344b0698c911d9a01d9e5b34",
+  "buildId": "2fb470c688c82f843ae04b535e5811c8cb46c2c0c05e05c9b8a96020c175fdc4",
   "privateAuthorFilesIncluded": false,
   "files": [
     {
@@ -22,13 +22,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 7289,
-      "sha256": "bd1b7ac33ae5afb3c639d6e9f82f92b44dc37e75089e01f4b998039917199f21"
+      "bytes": 8517,
+      "sha256": "281a3e12df606d2557a5edddb221cedcae930e2561c8566644b421a0626eb348"
     },
     {
       "path": "TERMINAL.md",
-      "bytes": 4783,
-      "sha256": "863f4f6cdf74a076b0427f31b9c9d246180e95f1691c070888d31da7b518a21a"
+      "bytes": 4912,
+      "sha256": "114eafb6214eaa611eeb6db9aa5d5d9fdc7de52dd1c92ce11547d98ff2d96bf7"
     },
     {
       "path": "build/CONTRACT.md",
@@ -48,17 +48,17 @@
     {
       "path": "build/build.json",
       "bytes": 2665,
-      "sha256": "f5a8b141bbc60f0fe2f562451a57b5163b0d900305498911c0051799adb77eff"
+      "sha256": "4c9759df94375f40044d73cf186f09eab9d4807c42567f4c64ff0743ce29f3b2"
     },
     {
       "path": "build/checks.mjs",
-      "bytes": 41351,
-      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
+      "bytes": 41831,
+      "sha256": "fc4deb75e46e249e4325733a057bbf517085da48a7fdb2844e2fda777abf260d"
     },
     {
       "path": "build/content.mjs",
-      "bytes": 32673,
-      "sha256": "b52994858acac80061535f56c6fcbe34bbf6c87ace5456b4d58e8e4c9bd2f32b"
+      "bytes": 32986,
+      "sha256": "85e0a22e1a8473a916462d77c234f7a1616a139b7662df5035a51fab07eb1c7a"
     },
     {
       "path": "build/demo.json",
@@ -117,8 +117,8 @@
     },
     {
       "path": "build/worker.js",
-      "bytes": 72949,
-      "sha256": "c8a5f5fb8a81397f88652ad5cb024a10df6f5e955ed537261b7375e22a13cbab"
+      "bytes": 73429,
+      "sha256": "ab73823e4105738012a52f43aad242da0b30d7f87478a39a005ce8f3ee942f72"
     },
     {
       "path": "public/CONTRACT.md",
@@ -137,13 +137,13 @@
     },
     {
       "path": "public/checks.mjs",
-      "bytes": 41351,
-      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
+      "bytes": 41831,
+      "sha256": "fc4deb75e46e249e4325733a057bbf517085da48a7fdb2844e2fda777abf260d"
     },
     {
       "path": "public/content.mjs",
-      "bytes": 32673,
-      "sha256": "b52994858acac80061535f56c6fcbe34bbf6c87ace5456b4d58e8e4c9bd2f32b"
+      "bytes": 32986,
+      "sha256": "85e0a22e1a8473a916462d77c234f7a1616a139b7662df5035a51fab07eb1c7a"
     },
     {
       "path": "public/demo.json",
@@ -224,6 +224,11 @@
       "path": "tools/packet.mjs",
       "bytes": 336,
       "sha256": "ad855deddaa6d98b71d224601b3c91ec18e5335a1e11a373e1acfa6d141f33d0"
+    },
+    {
+      "path": "tools/progression.test.mjs",
+      "bytes": 1927,
+      "sha256": "6e2ddb93c99928b2fd4a02f9ba7253bc77b030beb24b8818f63c1963fee586e3"
     },
     {
       "path": "tools/render.mjs",
