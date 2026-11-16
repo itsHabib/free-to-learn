@@ -6,7 +6,7 @@ No browser, server, installation or network is needed for this route. Use an alr
 
 1. Read `node tools/lesson.mjs M1` (replace M1 with M2 through M8 as you advance). It prints the lesson, three conceptual practices and the cumulative project.
 2. Record your predictions and first answers in your own file. Request feedback with `node tools/lesson.mjs M1 --answers A,B,C`, using your choices. Feedback is practice, not certification. Text diagnoses and project explanations remain self-/reviewer-graded.
-3. Copy `public/starter.body.js` to `my-engine.body.js`. Implement your current methods and retain later explicit stubs. Preserve numbered source versions when repairing a failure.
+3. Before M1 only, copy `public/starter.body.js` to a new `my-engine.body.js`. For M2 through M8, keep editing that same engine: do not copy the starter over completed work. Implement the current methods and retain later explicit stubs. Preserve a numbered copy or Git commit before each repair or new module.
 4. Run `node tools/check.mjs my-engine.body.js M1`. The starter must fail; do not treat that expected failure as completion.
 5. Run `node tools/stage.mjs my-engine.body.js M1 stage-M1.json`. M3 defaults to empty block fixtures. Other stages use the guided page. M6 invokes one action and rebuilds with the correct viewport. Later unimplemented methods are not invoked by an earlier stage.
 

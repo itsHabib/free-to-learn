@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 30890,
-      "sha256": "c3d499f99ea8409531fe22e29f72f286b98bf57e8e039ba08af777c505445d98"
+      "bytes": 31103,
+      "sha256": "480799286a449934816514963b7b4cdc0367c9c8df441ca3c5d914555c1e0656"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -209,13 +209,13 @@
     },
     {
       "path": ".packages/tiny-browser.zip",
-      "bytes": 190660,
-      "sha256": "46ae6b8a707355625e7a5879abac8a54262e57ab427d47579820b210d0b6fa19"
+      "bytes": 194337,
+      "sha256": "6d6184d9af4e0bf2d40a055d8e3343aeaf6e493dfb57af617d31129dcab5de0c"
     },
     {
       "path": ".packages/tiny-browser.zip.sha256",
       "bytes": 83,
-      "sha256": "5f056f6c11197461fa677b505032b9f0ec8c952cafd54c35613f61fa0bb3c26f"
+      "sha256": "a9458e011f2482c8cc135c8d9f23d85f687df8baa08cd3625fa1da32eec990ba"
     },
     {
       "path": "BACKUP-AND-RESTORE.md",
@@ -229,8 +229,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 374539,
-      "sha256": "7989d31f43f240f30151c0cc1c6b4c1cc072480cbcf4b33c1a3f56a81508827e"
+      "bytes": 374782,
+      "sha256": "315bf55c30f71fe58287504382e20b0c29d15ddbcd5ae766eabd39e6ae85cf60"
     },
     {
       "path": "LICENSE.md",
@@ -6889,23 +6889,23 @@
     },
     {
       "path": "courses/tiny-browser-engine/PACKAGE-MANIFEST.json",
-      "bytes": 9260,
-      "sha256": "3dfc213324c4c7231dc9f4f8865ae9024b5ea20e5638898f6ea153e1fa1d410f"
+      "bytes": 9421,
+      "sha256": "368f40f106f054a8bb50cf575d9e4595880717cc9916e86892cda46d22992876"
     },
     {
       "path": "courses/tiny-browser-engine/README.md",
-      "bytes": 7289,
-      "sha256": "bd1b7ac33ae5afb3c639d6e9f82f92b44dc37e75089e01f4b998039917199f21"
+      "bytes": 8517,
+      "sha256": "281a3e12df606d2557a5edddb221cedcae930e2561c8566644b421a0626eb348"
     },
     {
       "path": "courses/tiny-browser-engine/TERMINAL.md",
-      "bytes": 4783,
-      "sha256": "863f4f6cdf74a076b0427f31b9c9d246180e95f1691c070888d31da7b518a21a"
+      "bytes": 4912,
+      "sha256": "114eafb6214eaa611eeb6db9aa5d5d9fdc7de52dd1c92ce11547d98ff2d96bf7"
     },
     {
       "path": "courses/tiny-browser-engine/build/CONTRACT.md",
-      "bytes": 14425,
-      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
+      "bytes": 15967,
+      "sha256": "47f682c9c92661e05c4eccbe469e63a9fd1e455e2a34c9bd55be7754b0007860"
     },
     {
       "path": "courses/tiny-browser-engine/build/SOURCES.md",
@@ -6920,17 +6920,17 @@
     {
       "path": "courses/tiny-browser-engine/build/build.json",
       "bytes": 2665,
-      "sha256": "f5a8b141bbc60f0fe2f562451a57b5163b0d900305498911c0051799adb77eff"
+      "sha256": "29d51dac7dc704cf03696d965651612519a95696ce1039c85075097553015e26"
     },
     {
       "path": "courses/tiny-browser-engine/build/checks.mjs",
-      "bytes": 41351,
-      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
+      "bytes": 41831,
+      "sha256": "fc4deb75e46e249e4325733a057bbf517085da48a7fdb2844e2fda777abf260d"
     },
     {
       "path": "courses/tiny-browser-engine/build/content.mjs",
-      "bytes": 32673,
-      "sha256": "b52994858acac80061535f56c6fcbe34bbf6c87ace5456b4d58e8e4c9bd2f32b"
+      "bytes": 32986,
+      "sha256": "85e0a22e1a8473a916462d77c234f7a1616a139b7662df5035a51fab07eb1c7a"
     },
     {
       "path": "courses/tiny-browser-engine/build/demo.json",
@@ -6989,13 +6989,13 @@
     },
     {
       "path": "courses/tiny-browser-engine/build/worker.js",
-      "bytes": 72949,
-      "sha256": "c8a5f5fb8a81397f88652ad5cb024a10df6f5e955ed537261b7375e22a13cbab"
+      "bytes": 73429,
+      "sha256": "ab73823e4105738012a52f43aad242da0b30d7f87478a39a005ce8f3ee942f72"
     },
     {
       "path": "courses/tiny-browser-engine/public/CONTRACT.md",
-      "bytes": 14425,
-      "sha256": "ad53e07d10e0e26dd542ea9b8378322439f73ce74af676f6c42144a4d4d2ebf9"
+      "bytes": 15967,
+      "sha256": "47f682c9c92661e05c4eccbe469e63a9fd1e455e2a34c9bd55be7754b0007860"
     },
     {
       "path": "courses/tiny-browser-engine/public/SOURCES.md",
@@ -7009,13 +7009,13 @@
     },
     {
       "path": "courses/tiny-browser-engine/public/checks.mjs",
-      "bytes": 41351,
-      "sha256": "3670306fa8053012db9605a84f89a73130ed9df56a6d2ccd090f6ded8fbe5f52"
+      "bytes": 41831,
+      "sha256": "fc4deb75e46e249e4325733a057bbf517085da48a7fdb2844e2fda777abf260d"
     },
     {
       "path": "courses/tiny-browser-engine/public/content.mjs",
-      "bytes": 32673,
-      "sha256": "b52994858acac80061535f56c6fcbe34bbf6c87ace5456b4d58e8e4c9bd2f32b"
+      "bytes": 32986,
+      "sha256": "85e0a22e1a8473a916462d77c234f7a1616a139b7662df5035a51fab07eb1c7a"
     },
     {
       "path": "courses/tiny-browser-engine/public/demo.json",
@@ -7096,6 +7096,11 @@
       "path": "courses/tiny-browser-engine/tools/packet.mjs",
       "bytes": 336,
       "sha256": "ad855deddaa6d98b71d224601b3c91ec18e5335a1e11a373e1acfa6d141f33d0"
+    },
+    {
+      "path": "courses/tiny-browser-engine/tools/progression.test.mjs",
+      "bytes": 2930,
+      "sha256": "5017ea86dba9728d46e7938d5f35c048bfe28833ad40cfe4ddfa3b0418fd487f"
     },
     {
       "path": "courses/tiny-browser-engine/tools/render.mjs",
