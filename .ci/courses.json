@@ -178,7 +178,7 @@
     {
       "id": "firmware-forensics",
       "archive": ".packages/firmware-forensics.zip",
-      "sha256": "c1da7641cef596690b7514d4cd02c2108d0e6e9b0f5eabf4b2eaa93ae003729c",
+      "sha256": "d0ab8ec230bd297643f0c23c0f80aab96ee2eb935dd052c3874e766d9c819b1b",
       "archive_prefix": "",
       "direct_root": "courses/firmware-forensics",
       "root": ".",
@@ -204,6 +204,22 @@
           ],
           "exit": 1,
           "match": "NotImplementedError: Implement bounded header/table/range validation"
+        },
+        {
+          "stage": "opening_slice_regressions",
+          "argv": [
+            "python3",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "checks",
+            "-p",
+            "test_opening_slice.py"
+          ],
+          "exit": 0,
+          "match": "OK"
         }
       ],
       "coverage_complete": false,
