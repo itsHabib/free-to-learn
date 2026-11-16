@@ -3330,6 +3330,12 @@
       "codeExamplesLicense": "MIT"
     },
     {
+      "path": "courses/boundary-lab/examples/range-probe.rs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/boundary-lab/index.html",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",

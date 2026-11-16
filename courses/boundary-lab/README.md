@@ -6,18 +6,36 @@ This is a teaching model, not a production sandbox. Guest programs are tiny byte
 
 ## Start
 
-Requires an existing Rust/Cargo toolchain and Python 3.12+; tested here with Rust/Cargo 1.97.1 and Python 3.14.6 on macOS arm64. The project has no external Cargo dependencies. No installation or network connection is part of these commands.
+Requires an existing Rust/Cargo toolchain and Python 3.12+; tested here with Rust/Cargo 1.97.1 and Python 3.14.6 on macOS arm64. The project has no external Cargo dependencies. Once the source is on disk, the course commands below require no installation or network connection.
 
-Start in a fresh directory containing `sandbox-model.zip`, with no existing `boundary-lab` subdirectory. The archive extracts to `boundary-lab/`. If you have already extracted it, enter that directory and start with the first `cargo` command below.
+Clone the public source once while connected, then work locally. Git is needed only for this acquisition step. Use a fresh parent directory with no existing `free-to-learn` subdirectory:
 
 ```sh
-python3 -m zipfile -e sandbox-model.zip .
-cd boundary-lab
+git clone https://github.com/itsHabib/free-to-learn.git
+cd free-to-learn
+git rev-parse HEAD
+cd courses/boundary-lab
+```
+
+Record the full revision printed by `git rev-parse HEAD` with your first attempt. The reviewed public baseline is `0d420574b7648f4d09ea9fe95bb764de69d2eed0`; later revisions may include updated instructions and examples. To reproduce that baseline exactly in a fresh clone, run `git checkout --detach 0d420574b7648f4d09ea9fe95bb764de69d2eed0` from the repository root before entering the course. That historical revision predates the range-probe example in lesson 1. Do not check out an older revision over your only learner work.
+
+If the repository is already on disk, enter its `courses/boundary-lab` directory directly; no archive extraction is needed. All remaining commands run from that directory, using installed tools and no network:
+
+```sh
 cargo run --offline -- status
 cargo run --offline -- demo
 python3 run.py check core --attempt attempts/first \
   --prediction "The image will work, but at least one boundary will fail."
 ```
+
+If you need archive recovery, use an existing `sandbox-model.zip` (the repository also supplies `.packages/sandbox-model.zip`). Extract it into a fresh directory with no existing `boundary-lab` subdirectory:
+
+```sh
+python3 -m zipfile -e /path/to/sandbox-model.zip .
+cd boundary-lab
+```
+
+Then use the same `cargo` and `run.py` commands above. An older archive may predate the range-probe example; use the Git source for that activity. Keep existing attempts and learner edits separate from any fresh clone or extraction.
 
 The initial demo succeeds and the security checks fail intentionally. Read the expected and observed behavior before editing. An exit code of 1 from the initial checks means the starter still violates public requirements; it is not a broken installation. Code 2 from `native` means the required native profile is unavailable. An unknown command uses 64.
 

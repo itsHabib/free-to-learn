@@ -666,7 +666,7 @@
     {
       "id": "sandbox-model",
       "archive": ".packages/sandbox-model.zip",
-      "sha256": "f2793ab152d9a7ee41919415ca816beeb6aa2e707c182e5a69365142ab2806dd",
+      "sha256": "81f8a241341d11b39d04ee84536058d303d395648b0d695759e59f1c2b5bf7df",
       "archive_prefix": "boundary-lab/",
       "direct_root": "courses/boundary-lab",
       "root": "boundary-lab",
@@ -695,6 +695,79 @@
             "demo"
           ],
           "exit": 0
+        },
+        {
+          "stage": "opening_range_probe_3",
+          "argv": [
+            "cargo",
+            "run",
+            "--offline",
+            "--locked",
+            "--example",
+            "range-probe",
+            "--",
+            "3"
+          ],
+          "exit": 0,
+          "match": "guest bytes: \\[78, 34, 56, 78\\]"
+        },
+        {
+          "stage": "opening_range_probe_4",
+          "argv": [
+            "cargo",
+            "run",
+            "--offline",
+            "--locked",
+            "--example",
+            "range-probe",
+            "--",
+            "4"
+          ],
+          "exit": 0,
+          "match": "guest bytes: \\[167, 34, 56, 78\\]"
+        },
+        {
+          "stage": "opening_range_probe_5",
+          "argv": [
+            "cargo",
+            "run",
+            "--offline",
+            "--locked",
+            "--example",
+            "range-probe",
+            "--",
+            "5"
+          ],
+          "exit": 0,
+          "match": "MemoryDenied"
+        },
+        {
+          "stage": "wire_public_checks",
+          "argv": [
+            "cargo",
+            "run",
+            "--offline",
+            "--locked",
+            "--",
+            "check",
+            "wire"
+          ],
+          "exit": 0,
+          "match": "4/4 public practice checks passed"
+        },
+        {
+          "stage": "untouched_core_expected_incomplete",
+          "argv": [
+            "cargo",
+            "run",
+            "--offline",
+            "--locked",
+            "--",
+            "check",
+            "core"
+          ],
+          "exit": 1,
+          "match": "32/74 public practice checks passed"
         }
       ],
       "coverage_complete": false,
