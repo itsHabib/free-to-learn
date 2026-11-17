@@ -717,7 +717,7 @@
     {
       "id": "advanced-storage",
       "archive": ".packages/advanced-storage.zip",
-      "sha256": "efa75c418d99dea42bae45389abb00cde4298bbb325a46de34ac0356637e25be",
+      "sha256": "1a2d35f74eea6ebd14344829cc26bda4b6ed9b31deb504aff7bf7ef84043b2e7",
       "archive_prefix": "advanced-storage/",
       "direct_root": "courses/advanced-storage",
       "root": "advanced-storage",
@@ -755,6 +755,14 @@
           ],
           "exit": 1,
           "match": "Unfinished: 01 visibleVersion"
+        },
+        {
+          "stage": "opening_executable_examples",
+          "argv": [
+            "node",
+            "verify-opening.mjs"
+          ],
+          "exit": 0
         }
       ],
       "coverage_complete": false,
