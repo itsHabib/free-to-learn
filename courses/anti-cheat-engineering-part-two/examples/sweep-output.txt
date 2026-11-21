@@ -1,0 +1,18 @@
+Courier window table: seed 1, 100 sessions per model, 1200 ticks each, judged by your judgeInteract, measureRtt and positionAt, counted by your tally.
+
+window  honest  legit    rate      naive cheats       slow cheats    deliveries h / n / s
+     0    8432   1751  20.77%        0 of 16610        0 of 20239      33.1 / 41.2 / 50.3
+     1    8360   1477  17.67%        0 of 16610        0 of 20239      34.1 / 41.2 / 50.3
+     2    8291    987  11.90%        0 of 16610        0 of 20239      36.3 / 41.2 / 50.3
+     3    8343    656   7.86%        0 of 16610     1797 of 20292      38.2 / 41.2 / 54.9
+     4    8455    395   4.67%        0 of 16610     4681 of 20520      40.1 / 41.2 / 62.7
+     5    8511    327   3.84%        0 of 16610     8254 of 20873      40.7 / 41.2 / 72.5
+     6    8642    169   1.96%        0 of 16610    13279 of 21450      42.1 / 41.2 / 86.6
+     7    8760     21   0.24%        0 of 16610    20123 of 22211     43.5 / 41.2 / 105.5
+     8    8774      0   0.00%        0 of 16610    22283 of 22311     43.6 / 41.2 / 111.2
+    10    8774      0   0.00%        0 of 16610    22283 of 22311     43.6 / 41.2 / 111.2
+    12    8774      0   0.00%        0 of 16610    22283 of 22311     43.6 / 41.2 / 111.2
+window: the most ticks the server rewinds; honest: honest interactions; legit: those refused although in range at seen; rate: legit / honest; cheats: a faker's presses accepted while not in range now, of all its presses; deliveries: mean per session, honest / naive / slow-pong.
+
+pickWindow(rows, 0.01) = 7: legit rate 0.24%, slow-pong cheats 20123 of 22211, naive cheats 0
+pickWindow(rows, 0.02) = 6: legit rate 1.96%, slow-pong cheats 13279 of 21450, naive cheats 0

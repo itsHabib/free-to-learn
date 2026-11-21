@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Question a recording · Free to Learn</title>
+  <link rel="stylesheet" href="../public/chapter.css">
+  <link rel="stylesheet" href="../public/code-example.css">
+</head>
+<body>
+  <a class="skip" href="#chapter">Skip to chapter</a>
+  <header class="book-header"><a href="../README.md">Free to Learn · Time-travel debugger, part two</a><span>Unit 11</span></header>
+  <aside class="reading-note">Run terminal commands from the course folder containing <code>lab.mjs</code>. This page works offline; it does not execute or grade your code. <a href="11.md">Read the Markdown source</a>.</aside>
+  <nav aria-label="Chapter contents"><details><summary>In this chapter</summary><ol><li><a href="#start">Start</a></li>
+<li><a href="#last-writers-indexed">Last writers, indexed</a></li>
+<li><a href="#where-a-value-came-from">Where a value came from</a></li>
+<li><a href="#how-to-follow-a-value">How to follow a value</a></li>
+<li><a href="#cost">Cost</a></li>
+<li><a href="#decisions-are-not-followed">Decisions are not followed</a></li>
+<li><a href="#follow-an-address-then-repair-it">Follow an address, then repair it</a></li>
+<li><a href="#use-it-on-a-new-case-where-a-value-in-memory-came-from">Use it on a new case: where a value in memory came from</a></li>
+<li><a href="#keep-the-working-tool">Keep the working tool</a></li>
+<li><a href="#earlier-ideas-new-cases">Earlier ideas, new cases</a></li></ol></details></nav>
+  <main id="chapter"><h1 id="11-question-a-recording">11 · Question a recording</h1>
+<p>Lesson 10&#39;s <code>lastWrite</code> searches backward one snapshot at a time, so a byte last written long ago, on a page other code writes all the time, costs about as much as a replay from the start. And a single last write rarely explains a wrong value, because that write copied a value computed from other values. By the end of this lesson your <code>query.mjs</code> will build an index of a recording in one replay and then tell you, without replaying, who last wrote this byte before this tick, and which stores, answers and arguments the value stored at this tick was computed from.</p>
+<h2 id="start">Start</h2>
+<p>Run these commands from this course&#39;s directory, in the project you used for lessons 08 to 10. Before this lesson your debugger moves backward through <code>project/run42.json</code>, but <code>project/query.mjs</code> is a stub, so <code>who</code> and <code>sources</code> in <code>debug.mjs</code> stop with &quot;not written yet&quot;. After it, both answer from an index of the recording, built once, and no later question replays anything.</p>
+<p>Your machine and recorder must pass their checks first, <code>node lab.mjs check project 08</code> and <code>node lab.mjs check project 09</code>, because the index replays the recording on your machine with your recorder&#39;s <code>recordedImports</code>. <code>debug.mjs</code> also needs lesson 10&#39;s debugger to pass <code>node lab.mjs check project 10</code>. If any of them fails and you want to go on with this lesson, make a new project with <code>node examples/start-chapter.mjs project11 supplied</code>, then <code>node examples/start-recorder.mjs project11 supplied</code> and <code>node examples/start-debugger.mjs project11 supplied</code>, record its run with <code>node lab.mjs record project11 --world 42 --out project11/run42.json</code>, and use <code>project11</code> wherever this lesson says <code>project</code>.</p>
+<p><strong>Code scope:</strong> walk through ten marked regions of <code>project/query.mjs</code>, 320 lines including blank lines: <code>keep-writes</code>, <code>by-byte</code>, <code>last-writer</code>, <code>leaves</code>, <code>producers</code>, <code>frames</code>, <code>follow</code>, <code>memory</code>, <code>replay</code> and <code>sources</code>. The rest of the file is supplied, 178 lines: the imports, the table that sorts the 62 instructions by how they move values, a typed array that grows, the check that the recording belongs to the program, the machine set up to answer from the recording, and the call that hands what the replay kept to the questions. Two of those supplied parts are toured below. The finished file, the end-of-unit checkpoint, is <code>examples/query-checkpoint.mjs</code>, 518 lines.</p>
+<p><strong>Time:</strong> allow about 40 to 50 minutes to read and 2 to 4 hours to implement, diagnose and try the new application. These are planning estimates, not measured learner times.</p>
+<p>Choose a route. Each command below writes <code>project/query.mjs</code> only if the project has none yet, or if it is still the untouched stub that <code>node lab.mjs start</code> made. If you have edited that file, the command refuses and changes nothing.</p>
+<ul>
+<li><strong>Type in the important parts:</strong> <code>node examples/start-query.mjs project write</code>. This copies <code>starter/query-build.mjs</code>, which has the supplied parts and ten unfinished regions. Type or paste each located listing below.</li>
+<li><strong>Start with working code:</strong> <code>node examples/start-query.mjs project supplied</code>. This copies <code>examples/query-checkpoint.mjs</code>. Follow each explanation and run each command instead of transcribing, then do the failure and repair and the new application. This is supplied implementation, not your own work.</li>
+<li><strong>Use AI for the changes:</strong> start with the type-in route (<code>write</code>). Give the assistant <code>API.md</code>, this lesson and your file, one region at a time. Ask it to explain what each region keeps and why; run and inspect what it writes. Record the actual assistance you used.</li>
+</ul>
+<p>Both routes also create <code>project/value-sources.mjs</code>, the unfinished new application, if it doesn&#39;t exist yet. Prefer to write the whole index from <code>API.md</code> with no listings? Don&#39;t run either command, fill the stub <code>node lab.mjs start</code> gave you, and copy <code>starter/value-sources.mjs</code> to <code>project/value-sources.mjs</code> when you reach the new application.</p>
+<p>Run the first check with the description matching where you started:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># Type-in route (write), including AI users before requesting changes:</span>
+<span class="cex-line">node lab.mjs check project 11 --help-used &quot;chapter write starter; ten regions unfinished&quot;</span>
+<span class="cex-line"># Supplied route:</span>
+<span class="cex-line">node lab.mjs check project 11 --help-used &quot;supplied query checkpoint; initial baseline&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The route command records <code>write</code> or <code>supplied</code> in <code>PROJECT.json</code>, and every check receipt keeps it as <code>unit11_start_route</code>. That says where you began, not who wrote your current code; keep using <code>--help-used</code> to say what helped each attempt. The type-in route fails every unit 11 check with <code>not written yet</code>, and the supplied route passes them all. Either result is a baseline, not evidence of understanding.</p>
+<p>Keep the <code>// region: NAME</code> and <code>// endregion: NAME</code> markers. A listing replaces <strong>everything between its matching pair</strong>, including the line there that throws &quot;not written yet&quot;. The listings omit the marker lines. To recover later without losing edits, make a new project with the supplied commands above, run <code>node examples/start-query.mjs project-recovery supplied</code> in it, and compare its <code>query.mjs</code> with yours. Don&#39;t copy the checkpoint over your attempt.</p>
+<p>The index reads two parts of your machine&#39;s state that <code>API.md</code> doesn&#39;t name: <code>state.stack</code>, the value stack, and <code>state.result</code>, what a finished call returned. Lesson 08&#39;s machine keeps both under those names. If you wrote your machine without its listings and named them differently, change those reads in the <code>follow</code>, <code>memory</code> and <code>replay</code> regions.</p>
+<h2 id="last-writers-indexed">Last writers, indexed</h2>
+<p>Build the index during one replay. For every byte of memory, keep the list of ticks at which an instruction wrote it, in increasing order. Keep, beside each tick, what you need to report: the instruction&#39;s function and <code>at</code>, and where the write started and its size.</p>
+<p><code>lastWriter(address, beforeTick)</code> is then a binary search in that byte&#39;s list for the greatest tick below <code>beforeTick</code>. A byte written a thousand times is answered in about ten comparisons.</p>
+<p>The lists hold one entry per byte written, so a 4-byte store adds four entries. Lesson 09&#39;s recording makes 65,859 of them. Typed arrays that grow by doubling hold that many numbers in a few megabytes, while arrays of objects would hold the same in far more.</p>
+<p>Tour the supplied <code>List</code> near the top of your <code>query.mjs</code> now. It is that growing typed array: <code>push</code> doubles the array when it is full, and <code>done()</code> returns a copy of exactly what was pushed. Then tour the supplied lines at the start of <code>buildIndex</code>. They make one machine whose imports answer from the recording, as lesson 09&#39;s <code>replay</code> did, and <code>prepared</code>, which gives every instruction of every function a kind from the table <code>KIND</code> (<code>&#39;load&#39;</code>, <code>&#39;binary&#39;</code>, <code>&#39;call&#39;</code> and so on), so the replay looks up how an instruction moves values without reading its name again. An instruction outside the table stops the index before it runs anything.</p>
+<h3 id="keep-every-write">Keep every write</h3>
+<p>In <code>project/query.mjs</code>, replace the <code>keep-writes</code> region:</p>
+<figure class="code-example"><figcaption><strong>Keep each write, and who last wrote each byte so far</strong><span class="cex-location">examples/query-checkpoint.mjs · keep-writes</span></figcaption><p class="cex-change">Replace the keep-writes region.</p><pre tabindex="0" aria-label="Keep each write, and who last wrote each byte so far; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// Every write, one entry in each list, in tick order.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> wTick = <span class="cex-keyword">new</span> List(Int32Array);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> wFunc = <span class="cex-keyword">new</span> List(Int32Array);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> wAt = <span class="cex-keyword">new</span> List(Int32Array);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> wAddress = <span class="cex-keyword">new</span> List(Int32Array);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> wSize = <span class="cex-keyword">new</span> List(Int32Array);</span>
+<span class="cex-line">  <span class="cex-comment">// Per byte: the tick of the store that last wrote it so far, 0 if none.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> writer = <span class="cex-keyword">new</span> Int32Array(memorySize);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> keepWrites = (event, t) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">const</span> w <span class="cex-keyword">of</span> event.writes) {</span>
+<span class="cex-line">      wTick.push(t);</span>
+<span class="cex-line">      wFunc.push(event.func);</span>
+<span class="cex-line">      wAt.push(event.at);</span>
+<span class="cex-line">      wAddress.push(w.address);</span>
+<span class="cex-line">      wSize.push(w.size);</span>
+<span class="cex-line">      writer.fill(t, w.address, w.address + w.size);</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">  };</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The replay calls <code>keepWrites</code> after every instruction with the instruction&#39;s event and tick. Each write goes into five lists at the same position, so write number <code>w</code> is <code>wTick[w]</code>, <code>wFunc[w]</code>, <code>wAt[w]</code>, <code>wAddress[w]</code> and <code>wSize[w]</code>. The replay runs in tick order, so the lists are in tick order without any sorting. <code>writer</code> is different: it holds, for every byte, only the latest store that wrote it. <code>lastWriter</code> doesn&#39;t use it. The chains later in this lesson do, because a load needs to know which store wrote each byte it reads at the moment it reads it.</p>
+<h3 id="group-the-writes-by-byte">Group the writes by byte</h3>
+<p>After the replay, <code>makeIndex</code> turns the writes into one list per byte. Replace the <code>by-byte</code> region:</p>
+<figure class="code-example"><figcaption><strong>One list of writes per byte, still in tick order</strong><span class="cex-location">examples/query-checkpoint.mjs · by-byte</span></figcaption><p class="cex-change">Replace the by-byte region.</p><pre tabindex="0" aria-label="One list of writes per byte, still in tick order; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// Per byte, the writes that touched it in tick order:</span></span>
+<span class="cex-line">  <span class="cex-comment">// byteWrites[byteStart[a]] up to byteWrites[byteStart[a + 1]].</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> byteStart = <span class="cex-keyword">new</span> Int32Array(memorySize + <span class="cex-number">1</span>);</span>
+<span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> w = <span class="cex-number">0</span>; w &lt; writes.tick.length; w++)</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = <span class="cex-number">0</span>; i &lt; writes.size[w]; i++)</span>
+<span class="cex-line">      byteStart[writes.address[w] + i + <span class="cex-number">1</span>]++;</span>
+<span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> a = <span class="cex-number">0</span>; a &lt; memorySize; a++) byteStart[a + <span class="cex-number">1</span>] += byteStart[a];</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> byteWrites = <span class="cex-keyword">new</span> Int32Array(byteStart[memorySize]);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> next = byteStart.slice(<span class="cex-number">0</span>, memorySize);</span>
+<span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> w = <span class="cex-number">0</span>; w &lt; writes.tick.length; w++)</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = <span class="cex-number">0</span>; i &lt; writes.size[w]; i++)</span>
+<span class="cex-line">      byteWrites[next[writes.address[w] + i]++] = w;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>All the per-byte lists live in one <code>Int32Array</code>, <code>byteWrites</code>, one after another, and <code>byteStart[a]</code> is where byte <code>a</code>&#39;s list begins. The first loop counts how many writes cover each byte, the second turns the counts into starting places, and the third puts each write&#39;s number at the next free place of every byte it covers. Writes are placed in tick order, so each byte&#39;s list is in tick order too, which is what the binary search needs.</p>
+<h3 id="binary-search-one-byte-s-list">Binary search one byte&#39;s list</h3>
+<p>Replace the <code>last-writer</code> region:</p>
+<figure class="code-example"><figcaption><strong>lastWriter: the greatest tick below beforeTick</strong><span class="cex-location">examples/query-checkpoint.mjs · last-writer</span></figcaption><p class="cex-change">Replace the last-writer region.</p><pre tabindex="0" aria-label="lastWriter: the greatest tick below beforeTick; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-keyword">const</span> lastWriter = (address, beforeTick) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (!Number.isInteger(address) || address &lt; <span class="cex-number">0</span> || address &gt;= memorySize)</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> Error(</span>
+<span class="cex-line">        <span class="cex-string">`lastWriter: ${address} is not an address in memory (0 to ${memorySize - 1})`</span>,</span>
+<span class="cex-line">      );</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (typeof beforeTick !== <span class="cex-string">&#39;number&#39;</span> || Number.isNaN(beforeTick))</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> Error(<span class="cex-string">`lastWriter: beforeTick must be a number, got ${beforeTick}`</span>);</span>
+<span class="cex-line">    <span class="cex-comment">// Binary search for the first write at or after beforeTick.</span></span>
+<span class="cex-line">    <span class="cex-keyword">let</span> lo = byteStart[address];</span>
+<span class="cex-line">    <span class="cex-keyword">let</span> hi = byteStart[address + <span class="cex-number">1</span>];</span>
+<span class="cex-line">    while (lo &lt; hi) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> mid = (lo + hi) &gt;&gt; <span class="cex-number">1</span>;</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (writes.tick[byteWrites[mid]] &lt; beforeTick) lo = mid + <span class="cex-number">1</span>;</span>
+<span class="cex-line">      <span class="cex-keyword">else</span> hi = mid;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (lo === byteStart[address]) <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> w = byteWrites[lo - <span class="cex-number">1</span>];</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> {</span>
+<span class="cex-line">      tick: writes.tick[w],</span>
+<span class="cex-line">      func: writes.func[w],</span>
+<span class="cex-line">      at: writes.at[w],</span>
+<span class="cex-line">      address: writes.address[w],</span>
+<span class="cex-line">      size: writes.size[w],</span>
+<span class="cex-line">    };</span>
+<span class="cex-line">  };</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The loop narrows <code>lo</code> and <code>hi</code> to the first write at or after <code>beforeTick</code>, so the write just before it, at <code>lo - 1</code>, is the answer. If there is none, nothing wrote the byte before that tick. The answer is the whole write, its start and size, even when the byte is inside a wider store. The debugger&#39;s <code>lastWrite</code> at position <code>p</code> is <code>lastWriter(address, p + 1)</code>, because the instruction at tick <code>p</code> has already run at position <code>p</code>.</p>
+<p>Question 11a: in Lob, seed 3, mode 0 (no defences), how many times is the byte at the address <code>g + 72</code> written during <code>game_init</code> and the first 10 game frames, where <code>g</code> is the 4 bytes at 78,112? <code>g + 72</code> is the lowest byte of the game-frame counter, which counts game frames. Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 11a YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Check <code>11.last-writer</code> asks generated questions about recordings you haven&#39;t seen and compares with a scan of every write. It and the other checks this lesson names make up unit 11&#39;s checks, which one command runs:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs check project 11 --help-used &quot;describe what helped&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>On the type-in route they still fail with &quot;not written yet&quot; at this point, because <code>buildIndex</code> runs the regions that follow values before it returns. Run the command again once the <code>sources</code> region is filled.</p>
+<h2 id="where-a-value-came-from">Where a value came from</h2>
+<p>When a stored value is wrong, the question is why. The store copied a value off the stack, and that value was computed by an earlier instruction from its operands. Those came from loads, constants, locals or calls, and each load read bytes some earlier store had written. Following those links backward from a store gives the <strong>chain</strong> of the stored value.</p>
+<p><code>sources(tick)</code> takes the tick of a store and returns the chain&#39;s ends and joints:</p>
+<ul>
+<li><code>stores</code>: every earlier store on the chain, by tick</li>
+<li><code>answers</code>: every import answer on the chain, by its index in <code>recording.answers</code></li>
+<li><code>args</code>: every argument of a call into the game on the chain, as <code>[call, index]</code>, the call&#39;s index in <code>recording.calls</code> and the argument&#39;s index</li>
+<li><code>initial</code>: every byte on the chain that was loaded before any store had written it, from the data segment or the zeros memory starts with.</li>
+</ul>
+<p>The chain follows values, not addresses. A load depends on the bytes it read, not on the address it read them from, and a store passes on the value it stored, not its address. Otherwise every value in Lob would depend on the pointer <code>g</code>, and every chain would hold the same few hundred stores. The rules, from <code>API.md</code>:</p>
+<ul>
+<li>a value depends on every operand of the instruction that produced it, except the address of a load or store</li>
+<li><code>local.get</code>, <code>local.set</code>, <code>local.tee</code>, <code>global.get</code> and <code>global.set</code> pass a value along unchanged, and so does a call to a defined function, whose arguments become its parameters and whose result comes back</li>
+<li>an import&#39;s result depends only on that answer</li>
+<li>a constant depends on nothing.</li>
+</ul>
+<p><code>API.md</code> settles the cases that could go either way: <code>select</code> depends on its condition as well as both values, a one-byte store on the whole value it was given, and a load of bytes written by several stores on all of them.</p>
+<h2 id="how-to-follow-a-value">How to follow a value</h2>
+<p>Replay once and give every value a <strong>producer</strong>, the tick of the instruction that made it. Keep a producer beside every entry of the value stack, every local of every frame, every global and every byte of memory, and update them as each instruction runs:</p>
+<ul>
+<li>an arithmetic instruction pops its operands&#39; producers and pushes its own tick</li>
+<li>a constant pushes its own tick, with no inputs</li>
+<li><code>local.get</code> pushes the producer stored with the local, and <code>local.set</code> stores the popped producer with the local</li>
+<li>a load pushes its own tick and records, as its inputs, the producers of the bytes it read, which are the stores that last wrote them</li>
+<li>a store records its value operand&#39;s producer as its input and becomes the producer of the bytes it wrote</li>
+<li>an import call pushes its own tick, recorded as answer number k</li>
+<li>a call to a defined function moves the producers of its arguments into the new frame&#39;s locals, and its return moves the result&#39;s producer back</li>
+<li>an argument of a call into the game gets a producer of its own, reported as <code>[call, index]</code>. The other locals, and each global&#39;s starting value, have none.</li>
+</ul>
+<p>Branches cut the stack back, so cut the producers back with it, keeping a block&#39;s result.</p>
+<p>Record, for each tick, the producers it took as inputs. <code>sources(tick)</code> then walks backward from the store&#39;s input. Visit a tick, add its inputs to the walk, note each store, answer and argument met, and never visit a tick twice. The walk only touches the chain, so most questions finish in a few thousand steps whatever the recording&#39;s length.</p>
+<p>The seven listings below build that procedure. Three of their choices save memory without changing any answer: a constant gets the producer &quot;nothing&quot; instead of its own tick, since nothing can be on its chain; a value computed from a single producer takes that producer instead of a tick of its own, since its chain is the same; and an import call&#39;s value takes its answer&#39;s producer directly.</p>
+<h3 id="number-the-leaves">Number the leaves</h3>
+<p>A producer has to fit in one slot of an <code>Int32Array</code>. Replace the <code>leaves</code> region:</p>
+<figure class="code-example"><figcaption><strong>One whole number for every kind of producer</strong><span class="cex-location">examples/query-checkpoint.mjs · leaves</span></figcaption><p class="cex-change">Replace the leaves region.</p><pre tabindex="0" aria-label="One whole number for every kind of producer; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// A producer is one whole number: 0 is nothing (a constant), t &gt; 0 is the</span></span>
+<span class="cex-line">  <span class="cex-comment">// instruction at tick t, and the leaves are negative: the answers first, then</span></span>
+<span class="cex-line">  <span class="cex-comment">// every argument of every call, then the initial bytes by address.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> nAnswers = recording.answers.length;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> argBase = [];</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> nArgs = <span class="cex-number">0</span>;</span>
+<span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">const</span> c <span class="cex-keyword">of</span> calls) {</span>
+<span class="cex-line">    argBase.push(nArgs);</span>
+<span class="cex-line">    nArgs += c.args.length;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> argCall = <span class="cex-keyword">new</span> Int32Array(nArgs);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> argPos = <span class="cex-keyword">new</span> Int32Array(nArgs);</span>
+<span class="cex-line">  calls.forEach((c, k) =&gt;</span>
+<span class="cex-line">    c.args.forEach((_, i) =&gt; {</span>
+<span class="cex-line">      argCall[argBase[k] + i] = k;</span>
+<span class="cex-line">      argPos[argBase[k] + i] = i;</span>
+<span class="cex-line">    }),</span>
+<span class="cex-line">  );</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> answerId = (a) =&gt; -<span class="cex-number">1</span> - a;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> argId = (k, i) =&gt; -<span class="cex-number">1</span> - nAnswers - argBase[k] - i;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> initialId = (address) =&gt; -<span class="cex-number">1</span> - nAnswers - nArgs - address;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The <strong>leaves</strong> are the producers a chain ends at: an answer, an argument of a call into the game, or an initial byte. Ticks are positive, so the leaves take the negative numbers, one range after another: answer <code>a</code> is <code>-1 - a</code>, then every argument of every call, in call order, then every byte of memory by address. <code>argBase[k]</code> is where call <code>k</code>&#39;s arguments start in that range, and <code>argCall</code> and <code>argPos</code> turn an argument&#39;s number back into <code>[call, index]</code> when <code>sources</code> reports it. The number 0 is left for nothing.</p>
+<h3 id="producers-beside-the-machine-s-values">Producers beside the machine&#39;s values</h3>
+<p>Replace the <code>producers</code> region:</p>
+<figure class="code-example"><figcaption><strong>What the index records per tick, and the producers of what the machine holds</strong><span class="cex-location">examples/query-checkpoint.mjs · producers</span></figcaption><p class="cex-change">Replace the producers region.</p><pre tabindex="0" aria-label="What the index records per tick, and the producers of what the machine holds; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// Per tick: where its inputs start in deps, and whether it was a store.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> depStart = <span class="cex-keyword">new</span> List(Int32Array);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> deps = <span class="cex-keyword">new</span> List(Int32Array);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> isStore = <span class="cex-keyword">new</span> List(Uint8Array);</span>
+<span class="cex-line">  depStart.push(<span class="cex-number">0</span>); <span class="cex-comment">// tick 0 is no instruction</span></span>
+<span class="cex-line">  isStore.push(<span class="cex-number">0</span>);</span>
+<span class="cex-line"></span>
+<span class="cex-line">  <span class="cex-comment">// The producers of what the machine holds right now: one per stack value,</span></span>
+<span class="cex-line">  <span class="cex-comment">// one per global, and the frames with one per local.</span></span>
+<span class="cex-line">  <span class="cex-keyword">let</span> P = <span class="cex-keyword">new</span> Int32Array(<span class="cex-number">1024</span>);</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> sp = <span class="cex-number">0</span>;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> G = <span class="cex-keyword">new</span> Int32Array(program.globals.length);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> frames = []; <span class="cex-comment">// { func, locals, base, labels: [{ height, arity, loop }] }</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> push = (id) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (sp === P.length) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> bigger = <span class="cex-keyword">new</span> Int32Array(P.length * <span class="cex-number">2</span>);</span>
+<span class="cex-line">      bigger.set(P);</span>
+<span class="cex-line">      P = bigger;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    P[sp++] = id;</span>
+<span class="cex-line">  };</span>
+<span class="cex-line"></span>
+<span class="cex-line">  <span class="cex-comment">// A computed value. With no operand producer it is nothing; with one, it</span></span>
+<span class="cex-line">  <span class="cex-comment">// carries that operand&#39;s chain, so it takes its producer; with more, it is</span></span>
+<span class="cex-line">  <span class="cex-comment">// tick t, whose inputs are the operands&#39; producers.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> scratch = <span class="cex-keyword">new</span> Int32Array(<span class="cex-number">8</span>);</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> nScratch = <span class="cex-number">0</span>;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> add = (id) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (id === <span class="cex-number">0</span>) <span class="cex-keyword">return</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = <span class="cex-number">0</span>; i &lt; nScratch; i++) <span class="cex-keyword">if</span> (scratch[i] === id) <span class="cex-keyword">return</span>;</span>
+<span class="cex-line">    scratch[nScratch++] = id;</span>
+<span class="cex-line">  };</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> made = (t) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (nScratch === <span class="cex-number">0</span>) <span class="cex-keyword">return</span> <span class="cex-number">0</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (nScratch === <span class="cex-number">1</span>) <span class="cex-keyword">return</span> scratch[<span class="cex-number">0</span>];</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = <span class="cex-number">0</span>; i &lt; nScratch; i++) deps.push(scratch[i]);</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> t;</span>
+<span class="cex-line">  };</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>depStart</code>, <code>deps</code> and <code>isStore</code> are what the index keeps for the questions. Tick <code>t</code>&#39;s inputs are <code>deps[depStart[t]]</code> up to <code>deps[depStart[t + 1]]</code>, so every tick costs one number in <code>depStart</code> and one byte in <code>isStore</code>, however many inputs it has. <code>P</code> and <code>sp</code> mirror the machine&#39;s value stack, one producer per value, <code>G</code> mirrors the globals, and each frame will hold one producer per local. These last only as long as the replay.</p>
+<p><code>add</code> and <code>made</code> make a computed value&#39;s producer. <code>add</code> collects the operands&#39; producers, leaving out nothing (0) and repeats. <code>made(t)</code> returns 0 if none was collected, the one producer if only one was, and otherwise records them all as tick <code>t</code>&#39;s inputs and returns <code>t</code>. An <code>i32.add</code> of a loaded value and a constant therefore passes on the load&#39;s producer, and its chain is the load&#39;s chain, as the rules ask.</p>
+<h3 id="branches-returns-and-calls">Branches, returns and calls</h3>
+<p>Replace the <code>frames</code> region:</p>
+<figure class="code-example"><figcaption><strong>Cut the producers back as the stack is cut back</strong><span class="cex-location">examples/query-checkpoint.mjs · frames</span></figcaption><p class="cex-change">Replace the frames region.</p><pre tabindex="0" aria-label="Cut the producers back as the stack is cut back; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// A branch keeps its target&#39;s results and cuts the producers back with the</span></span>
+<span class="cex-line">  <span class="cex-comment">// stack; a loop&#39;s label stays, because the loop can be branched to again.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> branch = (frame, depth) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> label = frame.labels[frame.labels.length - <span class="cex-number">1</span> - depth];</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = <span class="cex-number">0</span>; i &lt; label.arity; i++)</span>
+<span class="cex-line">      P[label.height + i] = P[sp - label.arity + i];</span>
+<span class="cex-line">    sp = label.height + label.arity;</span>
+<span class="cex-line">    frame.labels.length -= label.loop ? depth : depth + <span class="cex-number">1</span>;</span>
+<span class="cex-line">  };</span>
+<span class="cex-line">  <span class="cex-comment">// A return hands the results&#39; producers back to the caller; the outermost</span></span>
+<span class="cex-line">  <span class="cex-comment">// call&#39;s result leaves the machine.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> leave = () =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> frame = frames.pop();</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> n = prepared.get(frame.func).results;</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = <span class="cex-number">0</span>; i &lt; n; i++) P[frame.base + i] = P[sp - n + i];</span>
+<span class="cex-line">    sp = frame.base + (frames.length ? n : <span class="cex-number">0</span>);</span>
+<span class="cex-line">  };</span>
+<span class="cex-line">  <span class="cex-comment">// A call&#39;s arguments become the new frame&#39;s first locals; the other locals</span></span>
+<span class="cex-line">  <span class="cex-comment">// start as nothing.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> enter = (func, args) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> locals = <span class="cex-keyword">new</span> Int32Array(args.length + prepared.get(func).locals);</span>
+<span class="cex-line">    locals.set(args);</span>
+<span class="cex-line">    frames.push({ func, locals, base: sp, labels: [] });</span>
+<span class="cex-line">  };</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>These three follow lesson 08&#39;s branch and return. A label remembers the stack&#39;s height when its block began and how many results the block leaves. <code>branch</code> copies those results&#39; producers down to that height and cuts <code>sp</code> there, so the values a branch drops take their producers with them. A branch to a <code>loop</code> keeps the loop&#39;s label, because the loop can be branched to again. <code>leave</code> does the same for a function&#39;s results, and <code>enter</code> starts a frame whose first locals are the producers of the call&#39;s arguments and whose other locals are nothing.</p>
+<h3 id="move-the-producers-instruction-by-instruction">Move the producers instruction by instruction</h3>
+<p>Replace the <code>follow</code> region:</p>
+<figure class="code-example"><figcaption><strong>follow: one case per kind of instruction</strong><span class="cex-location">examples/query-checkpoint.mjs · follow</span></figcaption><p class="cex-change">Replace the follow region.</p><pre tabindex="0" aria-label="follow: one case per kind of instruction; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// Move the producers as the instruction at tick t is about to move values.</span></span>
+<span class="cex-line">  <span class="cex-comment">// stack is the machine&#39;s value stack before the instruction runs.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> follow = (kind, ins, frame, t, stack) =&gt; {</span>
+<span class="cex-line">    switch (kind) {</span>
+<span class="cex-line">      case <span class="cex-string">&#39;block&#39;</span>:</span>
+<span class="cex-line">        frame.labels.push({ height: sp, arity: ins[<span class="cex-number">1</span>] ? <span class="cex-number">1</span> : <span class="cex-number">0</span>, loop: <span class="cex-keyword">false</span> });</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;loop&#39;</span>:</span>
+<span class="cex-line">        frame.labels.push({ height: sp, arity: <span class="cex-number">0</span>, loop: <span class="cex-keyword">true</span> });</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;br&#39;</span>:</span>
+<span class="cex-line">        branch(frame, ins[<span class="cex-number">1</span>]);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;br_if&#39;</span>:</span>
+<span class="cex-line">        sp--; <span class="cex-comment">// the condition is a decision: on no chain</span></span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (stack[stack.length - <span class="cex-number">1</span>] !== <span class="cex-number">0</span>) branch(frame, ins[<span class="cex-number">1</span>]);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;end&#39;</span>:</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (frame.labels.length) frame.labels.pop();</span>
+<span class="cex-line">        <span class="cex-keyword">else</span> leave();</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;return&#39;</span>:</span>
+<span class="cex-line">        leave();</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;call&#39;</span>: {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> n = program.typeOf(ins[<span class="cex-number">1</span>]).params.length;</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (ins[<span class="cex-number">1</span>] &lt; nImports) {</span>
+<span class="cex-line">          sp -= n; <span class="cex-comment">// an import&#39;s arguments are not followed</span></span>
+<span class="cex-line">          <span class="cex-keyword">if</span> (program.typeOf(ins[<span class="cex-number">1</span>]).results.length)</span>
+<span class="cex-line">            push(answerId(answered.position()));</span>
+<span class="cex-line">        } <span class="cex-keyword">else</span> {</span>
+<span class="cex-line">          <span class="cex-keyword">const</span> args = P.slice(sp - n, sp);</span>
+<span class="cex-line">          sp -= n;</span>
+<span class="cex-line">          enter(ins[<span class="cex-number">1</span>], args);</span>
+<span class="cex-line">        }</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      }</span>
+<span class="cex-line">      case <span class="cex-string">&#39;local.get&#39;</span>:</span>
+<span class="cex-line">        push(frame.locals[ins[<span class="cex-number">1</span>]]);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;local.set&#39;</span>:</span>
+<span class="cex-line">        frame.locals[ins[<span class="cex-number">1</span>]] = P[--sp];</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;local.tee&#39;</span>:</span>
+<span class="cex-line">        frame.locals[ins[<span class="cex-number">1</span>]] = P[sp - <span class="cex-number">1</span>];</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;global.get&#39;</span>:</span>
+<span class="cex-line">        push(G[ins[<span class="cex-number">1</span>]]);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;global.set&#39;</span>:</span>
+<span class="cex-line">        G[ins[<span class="cex-number">1</span>]] = P[--sp];</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;const&#39;</span>:</span>
+<span class="cex-line">        push(<span class="cex-number">0</span>);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;unary&#39;</span>:</span>
+<span class="cex-line">        break; <span class="cex-comment">// the same operand, so the same chain</span></span>
+<span class="cex-line">      case <span class="cex-string">&#39;binary&#39;</span>:</span>
+<span class="cex-line">        nScratch = <span class="cex-number">0</span>;</span>
+<span class="cex-line">        add(P[sp - <span class="cex-number">2</span>]);</span>
+<span class="cex-line">        add(P[sp - <span class="cex-number">1</span>]);</span>
+<span class="cex-line">        sp -= <span class="cex-number">1</span>;</span>
+<span class="cex-line">        P[sp - <span class="cex-number">1</span>] = made(t);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;select&#39;</span>:</span>
+<span class="cex-line">        nScratch = <span class="cex-number">0</span>;</span>
+<span class="cex-line">        add(P[sp - <span class="cex-number">3</span>]);</span>
+<span class="cex-line">        add(P[sp - <span class="cex-number">2</span>]);</span>
+<span class="cex-line">        add(P[sp - <span class="cex-number">1</span>]);</span>
+<span class="cex-line">        sp -= <span class="cex-number">2</span>;</span>
+<span class="cex-line">        P[sp - <span class="cex-number">1</span>] = made(t);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;load&#39;</span>:</span>
+<span class="cex-line">        load(ins, t, stack);</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">      case <span class="cex-string">&#39;store&#39;</span>:</span>
+<span class="cex-line">        store();</span>
+<span class="cex-line">        break;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">  };</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>follow</code> runs just before the machine runs the instruction, while the operands are still on the machine&#39;s stack, and does to <code>P</code> what the instruction is about to do to the stack. Most cases are one line. <code>br_if</code> drops its condition&#39;s producer without recording it anywhere, which is &quot;decisions are not followed&quot; in code; it reads the condition&#39;s value from the machine&#39;s stack only to know whether the branch will be taken. An import call drops its arguments&#39; producers and pushes the leaf of the answer the machine is about to use. A call to a defined function moves its arguments&#39; producers into the new frame. Loads and stores go to the next region.</p>
+<h3 id="loads-and-stores-bytes-not-addresses">Loads and stores: bytes, not addresses</h3>
+<p>Replace the <code>memory</code> region:</p>
+<figure class="code-example"><figcaption><strong>A load depends on the bytes it reads; a store on its value</strong><span class="cex-location">examples/query-checkpoint.mjs · memory</span></figcaption><p class="cex-change">Replace the memory region.</p><pre tabindex="0" aria-label="A load depends on the bytes it reads; a store on its value; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// A load depends on the bytes it read, each on the store that last wrote</span></span>
+<span class="cex-line">  <span class="cex-comment">// it, or on the byte itself if no store has. Its address is not followed.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> load = (ins, t, stack) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> address = (stack[stack.length - <span class="cex-number">1</span>] &gt;&gt;&gt; <span class="cex-number">0</span>) + ins[<span class="cex-number">2</span>];</span>
+<span class="cex-line">    nScratch = <span class="cex-number">0</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = <span class="cex-number">0</span>; i &lt; LOAD_SIZE[ins[<span class="cex-number">0</span>]]; i++) {</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (address + i &gt;= memorySize) break;</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> w = writer[address + i];</span>
+<span class="cex-line">      add(w !== <span class="cex-number">0</span> ? w : initialId(address + i));</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    P[sp - <span class="cex-number">1</span>] = made(t);</span>
+<span class="cex-line">  };</span>
+<span class="cex-line">  <span class="cex-comment">// A store&#39;s only input is its value&#39;s producer; its address is not</span></span>
+<span class="cex-line">  <span class="cex-comment">// followed. keepWrites then makes this tick the writer of every byte.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> store = () =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> value = P[--sp];</span>
+<span class="cex-line">    sp--;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (value !== <span class="cex-number">0</span>) deps.push(value);</span>
+<span class="cex-line">  };</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>A load reads its address from the machine&#39;s stack and looks up, in <code>writer</code>, the store that last wrote each byte it is about to read. A byte no store has written gives its initial leaf. The load&#39;s result replaces the address&#39;s producer on top of <code>P</code>, so the address is never an input. A store pops its value&#39;s producer and records it as its only input, then drops the address&#39;s producer. After the machine runs it, <code>keepWrites</code> makes this tick the writer of every byte it wrote, so the next load of those bytes depends on this store.</p>
+<h3 id="replay-once">Replay once</h3>
+<p>Replace the <code>replay</code> region:</p>
+<figure class="code-example"><figcaption><strong>Replay every call, keeping the producers in step with the machine</strong><span class="cex-location">examples/query-checkpoint.mjs · replay</span></figcaption><p class="cex-change">Replace the replay region.</p><pre tabindex="0" aria-label="Replay every call, keeping the producers in step with the machine; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> k = <span class="cex-number">0</span>; k &lt; calls.length; k++) {</span>
+<span class="cex-line">    m.begin(calls[k].name, calls[k].args);</span>
+<span class="cex-line">    enter(</span>
+<span class="cex-line">      program.exportIndex(calls[k].name),</span>
+<span class="cex-line">      calls[k].args.map((_, i) =&gt; argId(k, i)),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    while (m.running) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> top = s.frames[s.frames.length - <span class="cex-number">1</span>];</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> frame = frames[frames.length - <span class="cex-number">1</span>];</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> fn = prepared.get(top.func);</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> ins = fn.code[top.at];</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> kind = fn.kinds[top.at];</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> t = s.tick + <span class="cex-number">1</span>;</span>
+<span class="cex-line">      depStart.push(deps.n);</span>
+<span class="cex-line">      isStore.push(kind === <span class="cex-string">&#39;store&#39;</span> ? <span class="cex-number">1</span> : <span class="cex-number">0</span>);</span>
+<span class="cex-line">      follow(kind, ins, frame, t, s.stack);</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> asked = answered.position();</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> event = m.step();</span>
+<span class="cex-line">      keepWrites(event, t);</span>
+<span class="cex-line">      <span class="cex-comment">// The producers must still match the machine: its stack, its frames and</span></span>
+<span class="cex-line">      <span class="cex-comment">// the answers it has used.</span></span>
+<span class="cex-line">      <span class="cex-keyword">const</span> used = kind === <span class="cex-string">&#39;call&#39;</span> &amp;&amp; ins[<span class="cex-number">1</span>] &lt; nImports ? <span class="cex-number">1</span> : <span class="cex-number">0</span>;</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (</span>
+<span class="cex-line">        frame.func !== top.func ||</span>
+<span class="cex-line">        sp !== s.stack.length ||</span>
+<span class="cex-line">        frames.length !== s.frames.length ||</span>
+<span class="cex-line">        answered.position() !== asked + used ||</span>
+<span class="cex-line">        (event.writes.length !== <span class="cex-number">0</span>) !== (kind === <span class="cex-string">&#39;store&#39;</span>)</span>
+<span class="cex-line">      )</span>
+<span class="cex-line">        <span class="cex-keyword">throw</span> Error(</span>
+<span class="cex-line">          <span class="cex-string">`buildIndex: lost track of the machine at tick ${t} (${ins[0]} at (${event.func}, ${event.at}))`</span>,</span>
+<span class="cex-line">        );</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> result = s.result === <span class="cex-keyword">undefined</span> ? <span class="cex-keyword">null</span> : s.result;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (!Object.<span class="cex-keyword">is</span>(result, recording.results[k]))</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> Error(</span>
+<span class="cex-line">        <span class="cex-string">`buildIndex: call ${k} returned ${result}, the recording says ${recording.results[k]}`</span>,</span>
+<span class="cex-line">      );</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  depStart.push(deps.n);</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Each call begins with a frame whose locals are the call&#39;s argument leaves. Then, for every instruction, the loop records where its inputs start, moves the producers with <code>follow</code>, lets your machine run it and keeps its writes. After each instruction it compares the producers with the machine: the same stack height, the same number of frames, one answer used by an import call and none otherwise, and writes exactly when the instruction was a store. A mistake in <code>follow</code> then stops the replay at the first tick where the two part, instead of giving wrong chains later. After each call, the result must be the recorded one, as in lesson 09.</p>
+<h3 id="walk-back-from-a-store">Walk back from a store</h3>
+<p>Replace the <code>sources</code> region:</p>
+<figure class="code-example"><figcaption><strong>sources: visit each producer on the chain once</strong><span class="cex-location">examples/query-checkpoint.mjs · sources</span></figcaption><p class="cex-change">Replace the sources region.</p><pre tabindex="0" aria-label="sources: visit each producer on the chain once; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// seenTick[t] === epoch: tick t was visited during the current question.</span></span>
+<span class="cex-line">  <span class="cex-keyword">const</span> { nAnswers, nArgs, argCall, argPos } = leaves;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> seenTick = <span class="cex-keyword">new</span> Int32Array(end + <span class="cex-number">1</span>);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> seenLeaf = <span class="cex-keyword">new</span> Int32Array(nAnswers + nArgs + memorySize);</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> epoch = <span class="cex-number">0</span>;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> sources = (tick) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (!Number.isInteger(tick) || tick &lt; <span class="cex-number">1</span> || tick &gt; end || !isStore[tick])</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> Error(</span>
+<span class="cex-line">        <span class="cex-string">`sources: tick ${tick} is not the tick of a store instruction`</span>,</span>
+<span class="cex-line">      );</span>
+<span class="cex-line">    epoch++;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> stores = [];</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> answers = [];</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> args = [];</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> initial = [];</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> todo = [];</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = depStart[tick]; i &lt; depStart[tick + <span class="cex-number">1</span>]; i++)</span>
+<span class="cex-line">      todo.push(deps[i]);</span>
+<span class="cex-line">    while (todo.length) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> id = todo.pop();</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (id &gt; <span class="cex-number">0</span>) {</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (seenTick[id] === epoch) continue;</span>
+<span class="cex-line">        seenTick[id] = epoch;</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (isStore[id]) stores.push(id);</span>
+<span class="cex-line">        <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = depStart[id]; i &lt; depStart[id + <span class="cex-number">1</span>]; i++)</span>
+<span class="cex-line">          todo.push(deps[i]);</span>
+<span class="cex-line">        continue;</span>
+<span class="cex-line">      }</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> leaf = -<span class="cex-number">1</span> - id;</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (seenLeaf[leaf] === epoch) continue;</span>
+<span class="cex-line">      seenLeaf[leaf] = epoch;</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (leaf &lt; nAnswers) answers.push(leaf);</span>
+<span class="cex-line">      <span class="cex-keyword">else</span> <span class="cex-keyword">if</span> (leaf &lt; nAnswers + nArgs) args.push(leaf - nAnswers);</span>
+<span class="cex-line">      <span class="cex-keyword">else</span> initial.push(leaf - nAnswers - nArgs);</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> up = (a, b) =&gt; a - b;</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> {</span>
+<span class="cex-line">      stores: stores.sort(up),</span>
+<span class="cex-line">      answers: answers.sort(up),</span>
+<span class="cex-line">      args: args.sort(up).map((x) =&gt; [argCall[x], argPos[x]]),</span>
+<span class="cex-line">      initial: initial.sort(up),</span>
+<span class="cex-line">    };</span>
+<span class="cex-line">  };</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The walk starts from the store&#39;s inputs, its value&#39;s producer, and keeps a list of producers still to visit. A tick is visited once: it is noted if it was a store, and its own inputs join the list. A leaf goes into its list according to its range. <code>seenTick</code> and <code>seenLeaf</code> mark what this question has visited with the number <code>epoch</code>, which goes up by one for every question, so nothing has to be cleared between questions. The store asked about is never in its own list, because the walk starts from its inputs.</p>
+<p>Here is one chain, worked through. In <code>project/run42.json</code> the first shot is fired by call 19, and on the first game frame of its flight, call 20, the shell&#39;s new position is stored at <code>g + 40</code> at tick 89,345. <code>sources(89345)</code> holds 16 stores and 2 answers:</p>
+<ul>
+<li>the position and the horizontal speed that firing stored, at ticks 88,529 and 88,553 in call 19, because this game frame&#39;s position is the last position plus the speed times the game frame&#39;s length, plus the wind&#39;s push</li>
+<li>the speed was the power times a constant times the cosine of the angle, so the chain holds the 11 stores of the power made by the presses of up in calls 2 to 12, and before them the store at tick 69,170 in <code>game_init</code> that set the starting power of 60 (an 8-byte store that wrote the angle and the power together)</li>
+<li>the key at <code>g + 92</code>, stored at tick 69,157, because the game keeps the power XORed with it, as it keeps the flag&#39;s position in lesson 08&#39;s <code>r_target_x</code>, and with mode 4 off the key is 0</li>
+<li>the cannon&#39;s position at <code>g + 20</code>, stored at tick 69,167, from which the shell&#39;s first position was computed</li>
+<li>answer 1, the cosine of the barrel&#39;s angle, and answer 3, this game frame&#39;s wind.</li>
+</ul>
+<p>By rule, the angle isn&#39;t on the chain, because it reached the outside world only as the argument of <code>cos</code>, and an import&#39;s arguments aren&#39;t followed. Nor is the pointer <code>g</code>, because it was only ever an address.</p>
+<p>Question 11b: in lesson 09&#39;s recording, made with the server defences on, the shell&#39;s position is stored at <code>g + 40</code> on every game frame of a flight. How many <code>server_wind</code> answers are on the chain of the position stored on the tenth game frame of the first flight? Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 11b YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Checks <code>11.sources-lob</code> and <code>11.sources-lob2</code> ask generated questions about Lob and Lob II recordings, and <code>11.sources-rules</code> asks about a small program built to use the rules Lob never needs: a global that carries a value, a function that takes arguments and returns a result, a block that leaves a value, a branch that drops values. Every address that small program loads from or stores to is a constant, or computed only from constants, such as a loop counter that starts at a constant. Each check compares your four lists one by one. The lists it expects were worked out by a brute force that carries every value&#39;s full set of sources forward through the whole recording, a different method from the walk above, so the same mistake is unlikely in both.</p>
+<p>All ten regions are filled. Run the unit&#39;s checks, describing what you did:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># After filling the type-in route&#39;s starter from the listings:</span>
+<span class="cex-line">node lab.mjs check project 11 --help-used &quot;filled ten regions from chapter listings&quot;</span>
+<span class="cex-line"># After following the supplied route:</span>
+<span class="cex-line">node lab.mjs check project 11 --help-used &quot;supplied query checkpoint; followed the explanations and tours&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Every unit 11 check should pass. If one fails, its first mismatch names the section to reread. Keep the failing attempt and your explanation before you edit.</p>
+<h2 id="cost">Cost</h2>
+<p><code>buildIndex</code> may replay the recording once or twice, and after that no question may replay it. Check <code>11.no-replay</code> counts the instructions your machine runs while hundreds of questions are answered, and expects none.</p>
+<p>See what your index kept for lesson 09&#39;s recording, and what asking it costs:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node examples/show-index.mjs project project/run42.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>What the index holds, and the instructions run to ask it</strong><span class="cex-location">examples/index-output.txt</span></figcaption><pre tabindex="0" aria-label="What the index holds, and the instructions run to ask it; code scrolls horizontally when needed"><code><span class="cex-line">project/run42.json: 652927 instructions in 759 calls</span>
+<span class="cex-line">building the index ran 652927 instructions on your machine</span>
+<span class="cex-line">per-byte lists: 65859 entries, for 12301 bytes written at least once</span>
+<span class="cex-line">the most written byte is 65508, written 2944 times; a binary search in its list takes at most 12 comparisons</span>
+<span class="cex-line">sources asked about all 36810 stores: the longest chain holds 739 stores</span>
+<span class="cex-line">instructions run while answering those questions: 0</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Building the index ran exactly one replay of the run. The per-byte lists hold the 65,859 entries counted earlier, for 12,301 bytes. The most written byte lies in the C stack just below 65,536, and a binary search finds any write in its list in at most 12 comparisons. The script then asked <code>sources</code> about every store of the run, and your machine ran no instruction while it did: everything a question needs was kept during the replay.</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node debug.mjs project project/run42.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>As in lesson 10, you can also put the commands in a file, one per line, and pass it as the last argument, for a session with no keyboard.</p>
+<p>In <code>debug.mjs</code>, <code>who ADDR</code> asks your index for the last writer, and <code>sources</code> asks for the chain of the store at the current tick. Stand right after a store with <code>who</code> or <code>last-write</code>, then ask <code>sources</code>. It prints how many stores the chain holds and the newest 8 of them, newest first, each with its tick, its function and instruction, and the address it wrote. <code>sources N</code> shows the newest N, and <code>sources all</code> shows every one. Then come the chain&#39;s answers, call arguments and initial bytes.</p>
+<p><code>examples/query-session.txt</code> asks for the worked chain of tick 89,345 twice:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node debug.mjs project project/run42.json examples/query-session.txt</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>The worked chain, asked twice</strong><span class="cex-location">examples/query-session-output.txt</span></figcaption><pre tabindex="0" aria-label="The worked chain, asked twice; code scrolls horizontally when needed"><code><span class="cex-line">project/run42.json: 759 calls, 652927 instructions. Type help for commands.</span>
+<span class="cex-line">&gt; seek 89345</span>
+<span class="cex-line">tick 89345, call 20 (game_tick), next: function 8, instruction 539: local.get 1</span>
+<span class="cex-line">&gt; sources</span>
+<span class="cex-line">stores: 16 on the chain; the newest 8, newest first (sources N shows N, sources all every one):</span>
+<span class="cex-line">  tick 88553: function 7, instruction 181: f32.store 2 48 wrote 4 bytes at 65952</span>
+<span class="cex-line">  tick 88529: function 7, instruction 157: f32.store 2 40 wrote 4 bytes at 65944</span>
+<span class="cex-line">  tick 83439: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908</span>
+<span class="cex-line">  tick 82713: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908</span>
+<span class="cex-line">  tick 81987: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908</span>
+<span class="cex-line">  tick 81261: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908</span>
+<span class="cex-line">  tick 80535: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908</span>
+<span class="cex-line">  tick 79809: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908</span>
+<span class="cex-line">answers: 1 (cos) 3 (server_wind)</span>
+<span class="cex-line">call arguments: none</span>
+<span class="cex-line">initial bytes: none</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">1306199 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span>
+<span class="cex-line">&gt; sources 3</span>
+<span class="cex-line">stores: 16 on the chain; the newest 3, newest first (sources N shows N, sources all every one):</span>
+<span class="cex-line">  tick 88553: function 7, instruction 181: f32.store 2 48 wrote 4 bytes at 65952</span>
+<span class="cex-line">  tick 88529: function 7, instruction 157: f32.store 2 40 wrote 4 bytes at 65944</span>
+<span class="cex-line">  tick 83439: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908</span>
+<span class="cex-line">answers: 1 (cos) 3 (server_wind)</span>
+<span class="cex-line">call arguments: none</span>
+<span class="cex-line">initial bytes: none</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">1306199 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The listed stores are the ones the worked chain named: the speed and the position stored by firing, then the presses of up storing the power at <code>g + 4</code>. The first <code>cost</code> counts the replay your Debugger made when it opened the recording, the short replay <code>seek</code> made from the snapshot at 89,000, and one more replay of the whole run, for the index, which <code>debug.mjs</code> builds the first time you ask <code>who</code> or <code>sources</code>. The second <code>cost</code> is the same number: the second question ran no instruction.</p>
+<p>Question 11c: in <code>project/run42.json</code> the second shot is fired by call 396, and as it fires the game adds 1 to its shot counter and stores it. How many stores are on the chain of the value that store writes? Lesson 08&#39;s loop that clears memory is part of the answer. Commit before you check with <code>who</code> and <code>sources</code>:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 11c YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Now follow a chain from the status line yourself. The getter <code>r_line_ptr</code> returns the status line&#39;s address, which <code>getters</code> prints between calls, and <code>read ADDR text</code> shows the line itself. Each character is one byte, at that address plus its position in the line counted from 0, so <code>who</code> on that byte finds the store that wrote it.</p>
+<p>Most of the line&#39;s chains end without an answer or an argument. The letters are constants. The digits of the angle, the power and the score go back only through earlier stores, the oldest of them made by <code>game_init</code>, because a key press changes the angle or the power through a branch, and the next section explains why a branch is on no chain. The wind arrows (<code>&gt;</code> or <code>&lt;</code>) are different: in <code>project/run42.json</code> an arrow&#39;s chain reaches an import answer. Follow one arrow back with <code>who</code> and <code>sources</code>, and write in <code>project/report.md</code> each store on its chain with its tick, function and address, which answer it ends at and from which import, and why a character that is always one of a few constants has a chain at all. <code>listing FUNC:AT 30</code>, with the function and instruction <code>who</code> printed for the arrow&#39;s store, prints the 30 instructions before it and after it, and shows how the arrow was chosen.</p>
+<h2 id="decisions-are-not-followed">Decisions are not followed</h2>
+<p>Decisions aren&#39;t on a chain. A <code>br_if</code> pops a condition and branches, and the branch decides which instructions run, but no value flows from the condition into what those instructions compute.</p>
+<p>Question 11d: in <code>project/run42.json</code> the first shell lands in call 148, and the game stores 0 in its flying flag at <code>g + 36</code> (tick 192,256). The store runs only because a <code>br_if</code> found the shell below the ground. How many entries does <code>sources(192256)</code> list, in all four lists together? Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 11d YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>A store of a constant has an empty chain even when it ran only because of a long computation before it. When a store&#39;s chain is empty or doesn&#39;t explain a wrong value, the cause may be a decision, so look at the branch that led to the store, with <code>back</code> and <code>listing</code> (<code>listing FUNC:AT N</code> prints the instructions from N before AT to N after it).</p>
+<h2 id="follow-an-address-then-repair-it">Follow an address, then repair it</h2>
+<p>In your project only, make a load depend on its address as well. In the <code>load</code> function of the <code>memory</code> region, add this line right after <code>nScratch = 0;</code>, so that the address&#39;s producer, the top of <code>P</code>, is collected with the bytes&#39;:</p>
+<figure class="code-example"><figcaption><strong>JavaScript</strong></figcaption><pre tabindex="0" aria-label="JavaScript; code scrolls horizontally when needed"><code><span class="cex-line">add(P[sp - <span class="cex-number">1</span>]);</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 11e: with this change, how many of unit 11&#39;s five checks fail? Before you run anything, write in <code>project/report.md</code> which ones you expect to fail and why, and what you expect <code>sources</code> at tick 89,345 to show, then commit the number. Then run the check with <code>--help-used</code> describing this prescribed change, and open <code>debug.mjs</code> and ask <code>sources all</code> at tick 89,345 (<code>seek 89345</code>, then <code>sources all</code>; as in lesson 10, those two commands can also go in a file passed as the last argument):</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 11e YOUR_ANSWER</span>
+<span class="cex-line">node lab.mjs check project 11 --help-used &quot;prescribed change: a load also follows its address&quot;</span>
+<span class="cex-line">node debug.mjs project project/run42.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Compare the checks that failed, and the chain at tick 89,345, with what the lab said after your prediction. Explain in <code>project/report.md</code> which entries the change added to that chain, and why one rule can add the same entries to many chains. Remove the line, rerun the check and keep both attempts. This change is guided practice; the new application below asks for behavior none of these listings implements.</p>
+<h2 id="use-it-on-a-new-case-where-a-value-in-memory-came-from">Use it on a new case: where a value in memory came from</h2>
+<p><code>sources</code> answers for a store at a tick. When you look at memory in the debugger, you see a value at a position instead, with no store in sight. Write <code>valueSources(index, { address, size, position })</code> in <code>project/value-sources.mjs</code>, which both route commands created. If you didn&#39;t use them, copy <code>starter/value-sources.mjs</code> to <code>project/value-sources.mjs</code> first. No finished version is supplied, and none of the listings above does this. Its contract:</p>
+<ul>
+<li>It returns <code>{ stores, answers, args, initial }</code>, in the same form as <code>sources</code>, for the value held by the <code>size</code> bytes at <code>address</code> at position <code>position</code>, the moment after <code>position</code> instructions.</li>
+<li>For each byte, if a store wrote it at or before that position, the last such store and everything on that store&#39;s chain belong to the answer. A byte no store had written by then is an <code>initial</code> byte itself.</li>
+<li>So the stores that last wrote the bytes are in <code>stores</code> themselves, unlike <code>sources</code>, which leaves out the store it was asked about. Bytes written by different stores bring the chains of all of them, as a load of those bytes would.</li>
+<li>Each list is sorted in increasing order without repeats, and <code>args</code> by call, then argument index.</li>
+<li>Refuse with an error: an <code>address</code>, <code>size</code> or <code>position</code> that isn&#39;t a whole number, a <code>size</code> below 1, bytes outside memory, or a position outside 0 to <code>index.end</code>.</li>
+<li>Memory is 131,072 bytes in every recording of Lob and Lob II, two WebAssembly pages of 64 KiB (<code>API.md</code>, &quot;Memory&quot;), so bytes outside memory are any below address 0 or at 131,072 and above. The index doesn&#39;t report memory&#39;s size, and <code>API.md</code> doesn&#39;t say what <code>lastWriter</code> does with an address outside memory, so test the bytes against 131,072 yourself before you ask it anything.</li>
+<li>Use only <code>index.end</code>, <code>index.lastWriter</code>, <code>index.sources</code> and that fixed size of memory, so your function works with any index that meets <code>API.md</code>.</li>
+</ul>
+<p>The budget holds for every question, whatever the bytes or the position, a refused one included: <code>valueSources</code> may run no instruction, because <code>lastWriter</code> and <code>sources</code> answer from the index without replaying. The checker counts your machine&#39;s <code>step</code> calls while each call to <code>valueSources</code> runs. Building the two indexes it asks is not counted, and the whole check must finish within 120 seconds.</p>
+<p>Before you write code, answer two questions in <code>project/report.md</code>. Which <code>beforeTick</code> do you pass to <code>lastWriter</code> for a value at position <code>p</code>, and what goes wrong with the other choice? Two bytes of a 4-byte value were written by one store: how many times does that store appear in your answer, and why? Keep that first reasoning. Then run the checker on the unfinished file, implement, and run it again, describing assistance honestly each time:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node examples/check-value-sources.mjs project --help-used &quot;initial attempt; nothing written&quot;</span>
+<span class="cex-line">node examples/check-value-sources.mjs project --help-used &quot;describe what helped your implementation&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The checker copies <code>machine.mjs</code>, <code>recorder.mjs</code>, <code>query.mjs</code>, <code>value-sources.mjs</code>, <code>PROJECT.json</code> and your <code>report.md</code> into a new folder under <code>project/attempts/</code> before it runs anything, and saves its results beside them in <code>vsources-receipt.json</code>. A failure never replaces an earlier attempt, and <code>node lab.mjs status project</code> lists every attempt under &quot;New-application attempts&quot;. It builds your index of two of unit 11&#39;s check recordings, a Lob run and a Lob II run, and asks six groups of questions: bad questions; the pointer <code>g</code> right after <code>game_init</code>; four bytes written by four one-byte stores; bytes no store has written, alone and beside written ones; a position on a store&#39;s own tick and the one before it; and a Lob II value made from an answer and an argument. It keeps each expected list as its length and a salted hash, so a failure says which list differs without giving the answer away. Your <code>query.mjs</code> must pass unit 11&#39;s checks first, because every answer is built from it.</p>
+<p>As a stretch, add a <code>value ADDR SIZE</code> command to your own copy of <code>debug.mjs</code> that asks <code>valueSources</code> about the bytes at the current position.</p>
+<h2 id="keep-the-working-tool">Keep the working tool</h2>
+<p><code>project/query.mjs</code> now builds an index of a recording in one replay and answers, without replaying, who last wrote any byte before any tick and which stores, answers, arguments and initial bytes a stored value was computed from. <code>debug.mjs</code> uses it for <code>who</code> and <code>sources</code>. Its end-of-unit checkpoint is <code>examples/query-checkpoint.mjs</code>; recover from it with a new project, as in &quot;Start&quot;, never by copying it over your file. Lesson 12 gives the debugger function names, the call stack and line numbers, and lesson 13&#39;s investigations use <code>who</code> and <code>sources</code> to find planted bugs.</p>
+<h2 id="earlier-ideas-new-cases">Earlier ideas, new cases</h2>
+<p>Question 08b3: a loop starts with local 1 at 150, subtracts 5 from it each time round, and ends with <code>br_if 0</code>, which branches back while local 1 isn&#39;t zero. How many times does <code>br_if 0</code> branch back?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 08b3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 09a3: record lesson 09&#39;s game (Lob, seed 5) in mode 0, with no server defences, and with three shots instead of two. How many answers does the recording hold?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 09a3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 10b3: snapshots are every 2,000 instructions, at ticks 0, 2,000, 4,000 and so on. You stand at position 96,568 and call <code>stepBack(600)</code>. How many instructions does the debugger replay?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 10b3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure></main>
+  <footer><a href="#chapter">Back to the beginning</a> · <a href="12.html">Next: Stack and names</a></footer>
+</body>
+</html>

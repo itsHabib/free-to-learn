@@ -1,0 +1,3 @@
+Answer 1 (cos) now says it was asked cos(0.8128514385223389), not cos(0.8028514385223389).
+Wrote project/edited.json. Its hashes are still the original's.
+The replay left its recording at tick 88494, call 19: the program asked cos(0.8028514385223389), the recording holds cos(0.8128514385223389)

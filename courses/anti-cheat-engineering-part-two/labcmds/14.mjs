@@ -5,8 +5,10 @@
 //                                            (held-out only after your first held-out result)
 //   tune PROJECT [--write]                   your score and chooseThreshold on the dev split
 //   freeze PROJECT                           record the sha256 of your detector's three files
-//   heldout PROJECT                          your frozen detector on the held-out split
-//   recordings PROJECT                       your detector on the recorded adapted searchers
+//   restore-frozen PROJECT                   put back the three files as your latest freeze copied them
+//   heldout PROJECT                         your frozen detector on the held-out split
+//   recordings PROJECT                       your detector on the recorded adapted searchers (with no
+//                                            threshold stored, at the one tune would choose on dev)
 //
 // Freezes and held-out results are kept the way lab.mjs keeps check attempts and predictions:
 // one new folder per record in PROJECT/attempts/, named by the time, holding freeze.json or
@@ -14,7 +16,7 @@
 // was written and every later one is added after it.
 import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, copyFileSync, realpathSync } from 'node:fs';
 import { createHash, randomUUID } from 'node:crypto';
-import { dirname, join, resolve } from 'node:path';
+import { dirname, join, resolve, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { makeCorpus, KINDS } from '../public/corpus.mjs';
 import { median, quantile } from '../public/stats.mjs';
@@ -22,6 +24,8 @@ import { makeLoader, NOT_WRITTEN } from '../checks/harness.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const say = (s = '') => console.log(s);
+// A path as you would type it from the folder you run commands in: project/attempts/...
+const shown = (path) => relative(process.cwd(), path) || '.';
 const COURSE = JSON.parse(readFileSync(join(root, 'course.json'), 'utf8')).id;
 const BUDGET = 0.002;
 const FROZEN = ['detect/settings.json', 'detect/features.mjs', 'detect/detector.mjs'];
@@ -38,7 +42,7 @@ const ratio = (k, n) => (n ? k / n : null);
 function project(dir) {
   if (!dir) throw Error('Name your project folder: node lab.mjs COMMAND PROJECT ...');
   const p = resolve(dir);
-  if (!existsSync(join(p, 'PROJECT.json'))) throw Error(`${dir} is not a project folder: run node lab.mjs init ${dir} first`);
+  if (!existsSync(join(p, 'PROJECT.json'))) throw Error(`${dir} is not a project folder: make it with a starting route from lesson 12 (node examples/start-chapter.mjs ${dir} write, or supplied)`);
   return p;
 }
 
@@ -80,7 +84,7 @@ function records(p) {
     for (const file of ['freeze.json', 'heldout.json']) {
       const path = join(folder, name, file);
       if (!existsSync(path)) continue;
-      try { out.push({ ...JSON.parse(readFileSync(path, 'utf8')), folder: name }); } catch (e) { throw Error(`attempts/${name}/${file} is not valid JSON (${e.message}): restore it before you go on`); }
+      try { out.push({ ...JSON.parse(readFileSync(path, 'utf8')), folder: name }); } catch (e) { throw Error(`${shown(path)} is not valid JSON (${e.message}): restore it before you go on`); }
     }
   }
   return out.sort((a, b) => (a.at < b.at ? -1 : a.at > b.at ? 1 : 0));
@@ -105,7 +109,7 @@ function requireFrozen(p, dir, what) {
   const changed = FROZEN.filter((f) => now[f] !== freeze.files?.[f]);
   if (changed.length) {
     const seen = all.some((r) => r.kind === 'heldout');
-    throw Error(`${changed.join(' and ')} changed since you froze at ${freeze.at} (the frozen copies are in ${freeze.folder ? `attempts/${freeze.folder}` : 'your attempts folder'}). Freeze again (node lab.mjs freeze ${dir}) before ${what}.${seen ? ' Your first held-out result stays first; the next one is saved as a later run.' : ''}`);
+    throw Error(`${changed.join(' and ')} changed since you froze at ${freeze.at} (the frozen copies are in ${freeze.folder ? shown(join(p, 'attempts', freeze.folder)) : 'your attempts folder'}). Freeze again (node lab.mjs freeze ${dir}) before ${what}.${seen ? ' Your first held-out result stays first; the next one is saved as a later run.' : ''}`);
   }
   return { freeze, runs: all.filter((r) => r.kind === 'heldout') };
 }
@@ -258,7 +262,7 @@ async function freeze({ plain }) {
   const all = records(p);
   const last = all.filter((r) => r.kind === 'freeze').at(-1);
   if (last && FROZEN.every((f) => last.files?.[f] === now[f])) {
-    say(`Already frozen at ${last.at} with these exact files (attempts/${last.folder}). Nothing new recorded.`);
+    say(`Already frozen at ${last.at} with these exact files (${shown(join(p, 'attempts', last.folder))}). Nothing new recorded.`);
     return;
   }
   // The dev split first: a freeze that fails the budget there would waste your first held-out look.
@@ -282,9 +286,33 @@ async function freeze({ plain }) {
   }, FROZEN);
   say(`Froze your detector at ${at}:`);
   for (const f of FROZEN) say(`  ${pad(f, 22)} sha256 ${now[f]}`);
-  say(`Saved in ${folder} (freeze.json, with a copy of the three files).`);
+  say(`Saved in ${shown(join(p, folder))} (freeze.json, with a copy of the three files).`);
   if (seen.length) say(`You have already seen a held-out result (first at ${seen[0].at}). This freeze comes after it, so every later held-out result is saved as a later run.`);
   say(`Next: node lab.mjs heldout ${dir}. If any of these files changes, heldout refuses until you freeze again.`);
+}
+
+// ------------------------------------------------------------------ restore-frozen
+
+// Puts back the three files as the latest freeze copied them, byte for byte, so that they
+// hash as frozen again. The files it replaces are saved first in a folder of their own.
+async function restoreFrozen({ plain }) {
+  const dir = plain[0];
+  const p = project(dir);
+  const freeze = records(p).filter((r) => r.kind === 'freeze').at(-1);
+  if (!freeze) throw Error(`No freeze yet, so there is nothing to restore: node lab.mjs freeze ${dir} records one.`);
+  const folder = join(p, 'attempts', freeze.folder);
+  const damaged = FROZEN.filter((f) => !existsSync(join(folder, f)) || sha256(join(folder, f)) !== freeze.files?.[f]);
+  if (damaged.length) throw Error(`The copy of ${damaged.join(' and ')} in ${shown(folder)} does not match the hash recorded at ${freeze.at}, so nothing was restored.`);
+  const now = hashes(p);
+  const changed = FROZEN.filter((f) => now[f] !== freeze.files[f]);
+  if (!changed.length) { say(`Your detector files are already the ones you froze at ${freeze.at}. Nothing changed.`); return; }
+  const present = changed.filter((f) => now[f] !== null);
+  const at = new Date().toISOString();
+  const kept = save(p, 'restore', { kind: 'restore', course: COURSE, frozenAt: freeze.at, from: freeze.folder, restored: changed, replaced: present, at }, present);
+  for (const f of changed) { mkdirSync(dirname(join(p, f)), { recursive: true }); copyFileSync(join(folder, f), join(p, f)); }
+  say(`Restored ${changed.join(', ')} from your freeze at ${freeze.at} (${shown(folder)}).`);
+  if (present.length) say(`The files it replaced are kept in ${shown(join(p, kept))}.`);
+  say(`Your detector files are now the ones you froze. The line above the scoreboard's table confirms it: node lab.mjs scoreboard ${dir}`);
 }
 
 // ------------------------------------------------------------------ heldout
@@ -332,10 +360,10 @@ async function heldout({ plain }) {
   say(`  false flags           ${r.fp} of ${legal.toLocaleString('en-US')} legal sessions (false positive rate ${r.falsePositiveRate === null ? '-' : r.falsePositiveRate.toFixed(4)})`);
   say(`  precision at 1 in 100 ${f3(at100)}${at100 === null ? '' : ` (with cheaters at 1 session in 100, ${(100 * at100).toFixed(1)}% of the flagged sessions would be cheats)`}`);
   if (first) {
-    say(`This is your first held-out result. It stays first in your receipt: ${folder}/heldout.json`);
+    say(`This is your first held-out result. It stays first in your receipt: ${shown(join(p, folder, 'heldout.json'))}`);
   } else {
     const one = runs[0];
-    say(`This is held-out run ${runs.length + 1}, saved after your first in ${folder}/heldout.json, marked as a later run.`);
+    say(`This is held-out run ${runs.length + 1}, saved after your first in ${shown(join(p, folder, 'heldout.json'))}, marked as a later run.`);
     say(`Your first result, from ${one.at}, stays first: tp ${one.result.tp}  fn ${one.result.fn}  fp ${one.result.fp}  tn ${one.result.tn}, precision at 1 in 100 ${f3(one.precisionAt1in100)}.`);
   }
 }
@@ -346,17 +374,28 @@ async function recordings({ plain }) {
   const dir = plain[0];
   const p = project(dir);
   const call = caller(p);
-  const d = await detector(p);
+  const d = await detector(p, [['detect/detector.mjs', 'chooseThreshold']]);
   const { settings } = d;
-  if (!finiteThreshold(settings)) throw Error(`detect/settings.json holds threshold ${JSON.stringify(settings.threshold)}, not a finite number. Run node lab.mjs tune ${dir} --write first.`);
-  say(`Your detector (detect/settings.json, threshold ${settings.threshold}) on the recorded adapted searchers in recordings/.`);
+  let threshold = settings.threshold;
+  let source = `detect/settings.json, threshold ${threshold}`;
+  if (!finiteThreshold(settings)) {
+    // No threshold stored yet, as while you design your score: use the one tune would choose
+    // for your current score on the dev split. Nothing is written, and held-out is not read.
+    const budget = settings.budget;
+    if (typeof budget !== 'number' || !(budget >= 0 && budget <= 1)) throw Error(`detect/settings.json holds threshold ${JSON.stringify(settings.threshold)} and budget ${JSON.stringify(budget)}; add "budget": 0.002 so that recordings can choose a threshold on the dev split as tune does.`);
+    const legal = scored(makeCorpus({ split: 'dev' }).filter((c) => c.label === 'legal'), d, settings, call);
+    threshold = call('your chooseThreshold threw on the dev legal scores', () => d.chooseThreshold(legal.map((x) => x.s), budget));
+    if (typeof threshold !== 'number' || Number.isNaN(threshold)) throw Error(`chooseThreshold returned ${JSON.stringify(threshold)} on the dev legal scores, not a number`);
+    source = `no threshold stored yet, so the one tune would choose for your current score on the dev split: ${threshold}; nothing written`;
+  }
+  say(`Your detector (${source}) on the recorded adapted searchers in recordings/.`);
   say('Every recorded session is a cheat, so recall is the share flagged; there are no legal sessions to flag falsely.');
   say(`  ${pad('set', 13)} ${lpad('sessions', 8)} ${lpad('hit rate', 18)} ${lpad('flagged', 8)} ${lpad('missed', 7)} ${lpad('recall', 7)}`);
   for (const name of RECORDINGS) {
     const cases = JSON.parse(readFileSync(join(root, 'recordings', `${name}.json`), 'utf8'));
     let shots = 0, hits = 0;
     for (const c of cases) for (const r of c.rounds) if (r.shot) { shots++; if (r.result === 'hit') hits++; }
-    const r = count(scored(cases, d, settings, call).map((x) => ({ label: x.c.label, flagged: x.s >= settings.threshold })));
+    const r = count(scored(cases, d, settings, call).map((x) => ({ label: x.c.label, flagged: x.s >= threshold })));
     say(`  ${pad(name, 13)} ${lpad(cases.length, 8)} ${lpad(`${pct(hits, shots)} (${hits}/${shots})`, 18)} ${lpad(r.tp, 8)} ${lpad(r.fn, 7)} ${lpad(f3(r.recall), 7)}`);
   }
 }
@@ -365,6 +404,7 @@ export const commands = [
   { name: 'features', args: 'PROJECT [--split dev|heldout]', about: 'your features by kind, with robust scales (held-out only after your first held-out result)', run: features },
   { name: 'tune', args: 'PROJECT [--write]', about: 'your score and chooseThreshold on the dev split; --write stores the threshold', run: tune },
   { name: 'freeze', args: 'PROJECT', about: 'record the sha256 of your detector\'s three files before the held-out split', run: freeze },
+  { name: 'restore-frozen', args: 'PROJECT', about: 'put back your detector\'s three files as your latest freeze copied them (the replaced files are kept)', run: restoreFrozen },
   { name: 'heldout', args: 'PROJECT', about: 'your frozen detector on the held-out split; the first result is kept', run: heldout },
-  { name: 'recordings', args: 'PROJECT', about: 'your detector on the recorded adapted searchers', run: recordings },
+  { name: 'recordings', args: 'PROJECT', about: 'your detector on the recorded adapted searchers (with no threshold stored, at the one tune would choose on dev)', run: recordings },
 ];

@@ -1,0 +1,9 @@
+A ring of 40 slots, written for ticks 0 to 44 with x = 1000 + 50 × tick:
+  positionAt(ring, 44)   {"x":3200,"y":1000}
+  positionAt(ring, 5)    {"x":1250,"y":1000}
+  positionAt(ring, 4)    null: slot 4 now holds tick 44
+  positionAt(ring, 45)   null: never written
+  positionAt(ring, 2.5)  null: not a whole tick
+measureRtt([])                                   0
+measureRtt([210, 190, 205])                      4.2
+measureRtt(25 samples: 400, then 100 24 times)   2

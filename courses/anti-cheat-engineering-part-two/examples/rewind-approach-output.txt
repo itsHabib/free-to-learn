@@ -1,0 +1,5 @@
+Question 15a's approach: the core at x = 2000, 100 ms each way, no jitter.
+  tick 6: x = 1750, the first view in range; it reaches the client at 400 ms, and the client sends stop and interact
+  the input arrives at 500 ms and is admitted for tick 10, where the courier stands at x = 2500; measureRtt says 4 ticks
+  window 0: {"accept":false,"at":10,"reason":"range"}, x = 2500 at tick 10
+  window 2: {"accept":true,"at":8,"reason":"ok"}, x = 2250 at tick 8

@@ -1,0 +1,6 @@
+project/run42.json: 652927 instructions in 759 calls
+building the index ran 652927 instructions on your machine
+per-byte lists: 65859 entries, for 12301 bytes written at least once
+the most written byte is 65508, written 2944 times; a binary search in its list takes at most 12 comparisons
+sources asked about all 36810 stores: the longest chain holds 739 stores
+instructions run while answering those questions: 0

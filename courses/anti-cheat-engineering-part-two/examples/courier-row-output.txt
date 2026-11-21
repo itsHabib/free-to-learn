@@ -1,0 +1,7 @@
+window 0, given on the command line (capstone/defence.json is not read)
+runCourier seed 17, 200 sessions per model, window 0, your rewind functions:
+  honest       20258 presses, 3626 refused although in range at seen
+  naive faker  33458 presses, 0 accepted while not in range now
+  slow-pong    40546 presses, 0 accepted while not in range now
+  MISS  honest presses refused: 17.90%, at most 1.00% allowed
+  PASS  the naive faker's lies accepted: 0.00%, at most 1.00% allowed

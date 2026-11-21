@@ -1,0 +1,9 @@
+project/run42.json: ttd2-recording-1, program lob
+  759 calls, 277 answers, 759 hashes
+  call 0: game_init(5, 1) returned null; memory hash after it 674f60c95fd31eab...
+  answer 0: server_round(1) returned 1
+project/run43.json: ttd2-recording-1, program lob
+  759 calls, 277 answers, 759 hashes
+  call 0: game_init(5, 1) returned null; memory hash after it 405cce2ea030c094...
+  answer 0: server_round(1) returned -2
+First call whose memory hashes differ: call 0, game_init(5, 1)

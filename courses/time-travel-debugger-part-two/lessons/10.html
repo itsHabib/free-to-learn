@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Run backwards · Free to Learn</title>
+  <link rel="stylesheet" href="../public/chapter.css">
+  <link rel="stylesheet" href="../public/code-example.css">
+</head>
+<body>
+  <a class="skip" href="#chapter">Skip to chapter</a>
+  <header class="book-header"><a href="../README.md">Free to Learn · Time-travel debugger, part two</a><span>Unit 10</span></header>
+  <aside class="reading-note">Run terminal commands from the course folder containing <code>lab.mjs</code>. This page works offline; it does not execute or grade your code. <a href="10.md">Read the Markdown source</a>.</aside>
+  <nav aria-label="Chapter contents"><details><summary>In this chapter</summary><ol><li><a href="#start">Start</a></li>
+<li><a href="#positions">Positions</a></li>
+<li><a href="#the-obvious-way-and-its-cost">The obvious way, and its cost</a></li>
+<li><a href="#snapshots-that-share-pages">Snapshots that share pages</a></li>
+<li><a href="#going-back">Going back</a></li>
+<li><a href="#budgets">Budgets</a></li>
+<li><a href="#a-question-to-ask-backward">A question to ask backward</a></li>
+<li><a href="#use-it-on-a-new-case-find-a-value-backward">Use it on a new case: find a value backward</a></li>
+<li><a href="#keep-the-working-tool">Keep the working tool</a></li>
+<li><a href="#earlier-ideas-new-cases">Earlier ideas, new cases</a></li></ol></details></nav>
+  <main id="chapter"><h1 id="10-run-backwards">10 · Run backwards</h1>
+<p>Lesson 08&#39;s wall measured part one&#39;s debugger on Lob. Every step copied the whole state, and one backward question at the end of a run would take hours. By the end of this lesson your <code>debugger.mjs</code> will step back one instruction, run backward to the last time a breakpoint (a stop before a chosen instruction) or a watch (a stop after chosen bytes change) fired, and say who last wrote any byte, each by replaying from a snapshot, so an answer a few thousand instructions back costs a few thousand instructions. Its snapshots will copy only the parts of memory written since the previous one.</p>
+<p>The tool this lesson mirrors is rr&#39;s reverse execution, behind <code>reverse-stepi</code> (one instruction back) and <code>reverse-continue</code> in gdb, the standard debugger for compiled programs. rr answers both the same way, by restoring a saved moment and replaying forward from it.</p>
+<h2 id="start">Start</h2>
+<p>Run these commands from this course&#39;s directory, in the project you used for lessons 08 and 09. Before this lesson your project records and replays a run, and <code>project/debugger.mjs</code> is a stub, so <code>node debug.mjs</code> can&#39;t open a recording. After it, <code>debug.mjs</code> opens <code>project/run42.json</code> with your Debugger and moves backward and forward through it. Lesson 12 adds to the same file, and lesson 13&#39;s investigations run through it.</p>
+<p>Your machine and recorder must pass their checks first: <code>node lab.mjs check project 08</code> and <code>node lab.mjs check project 09</code>. If they don&#39;t, and you want to go on with this lesson, make a new project with <code>node examples/start-chapter.mjs project10 supplied</code> and then <code>node examples/start-recorder.mjs project10 supplied</code>, and use <code>project10</code> wherever this lesson says <code>project</code>. That project has no <code>run42.json</code> yet; make it with <code>node lab.mjs record project10 --world 42 --out project10/run42.json</code>.</p>
+<p><strong>Code scope:</strong> walk through eight marked regions of <code>project/debugger.mjs</code>, 204 lines including blank lines: <code>constructor</code>, <code>first-pass</code>, <code>capture</code>, <code>restore</code>, <code>move</code>, <code>stops</code>, <code>search-back</code> and <code>last-write</code>. The rest of the file is supplied, 121 lines: the imports, the check of each call&#39;s memory hash, <code>read</code>, <code>where</code> with the <code>nextInstruction</code> it uses, <code>state</code>, three small helpers, and stubs of the two methods lesson 12 adds, in two more marked regions, <code>stack</code> and <code>step-out</code>, which this lesson leaves alone. Two of those supplied parts are toured below, because the stops depend on them. The finished file, the end-of-unit checkpoint, is <code>examples/debugger-checkpoint.mjs</code>, 341 lines.</p>
+<p><strong>Time:</strong> allow about 30 to 40 minutes to read and 2 to 4 hours to implement, diagnose and try the new application. These are planning estimates, not measured learner times.</p>
+<p>Choose a route. Each command below writes <code>project/debugger.mjs</code> only if the project has none yet, or if it is still the untouched stub that <code>node lab.mjs start</code> made. If you have edited that file, the command refuses and changes nothing.</p>
+<ul>
+<li><strong>Type in the important parts:</strong> <code>node examples/start-debugger.mjs project write</code>. This copies <code>starter/debugger-build.mjs</code>, which has the supplied parts and eight unfinished regions. Type or paste each located listing below.</li>
+<li><strong>Start with working code:</strong> <code>node examples/start-debugger.mjs project supplied</code>. This copies <code>examples/debugger-checkpoint.mjs</code>. Follow each explanation and run each command instead of transcribing, then do the failure and repair and the new application. This is supplied implementation, not your own work.</li>
+<li><strong>Use AI for the changes:</strong> start with the type-in route (<code>write</code>). Give the assistant <code>API.md</code>, this lesson and your file, one region at a time. Ask it to explain what each region keeps and why; run and inspect what it writes. Record the actual assistance you used.</li>
+</ul>
+<p>Both routes also create <code>project/reverse-find.mjs</code>, the unfinished new application, if it doesn&#39;t exist yet. Prefer to write the whole debugger from <code>API.md</code> with no listings? Don&#39;t run either command, and fill the stub <code>node lab.mjs start</code> gave you.</p>
+<p>Run the first check with the description matching where you started:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># Type-in route (write), including AI users before requesting changes:</span>
+<span class="cex-line">node lab.mjs check project 10 --help-used &quot;chapter write starter; eight regions unfinished&quot;</span>
+<span class="cex-line"># Supplied route:</span>
+<span class="cex-line">node lab.mjs check project 10 --help-used &quot;supplied debugger checkpoint; initial baseline&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The route command records <code>write</code> or <code>supplied</code> in <code>PROJECT.json</code>, and every check receipt keeps it as <code>unit10_start_route</code>. That says where you began, not who wrote your current code; keep using <code>--help-used</code> to say what helped each attempt. The type-in route fails all nine checks with <code>not written yet</code>, and the supplied route passes them. Either result is a baseline, not evidence of understanding.</p>
+<p>Keep the <code>// region: NAME</code> and <code>// endregion: NAME</code> markers. A listing replaces <strong>everything between its matching pair</strong>, including the unfinished methods there. The listings omit the marker lines. To recover later without losing edits, make a new project with the two supplied commands above, run <code>node examples/start-debugger.mjs project-recovery supplied</code> in it, and compare its <code>debugger.mjs</code> with yours. Don&#39;t copy the checkpoint over your attempt.</p>
+<h2 id="positions">Positions</h2>
+<p>The debugger works on one recording. A <strong>position</strong> is a moment between instructions. Position <code>t</code> is the state after <code>t</code> instructions of the run, counted across all its calls, so position 0 is before <code>game_init</code> runs anything and position <code>end</code> is after the last call returns. Between two calls no function is running. The next instruction is the first one of the next call, and <code>where()</code> names it with that call&#39;s index.</p>
+<p>Everything the debugger answers is a position. <code>seek(t)</code> moves to position <code>t</code>. <code>step(n)</code> and <code>stepBack(n)</code> move by <code>n</code> instructions. <code>continue(stops)</code> and <code>continueBack(stops)</code> move to the nearest position after or before this one where a stop fires. At the current position, <code>read(address, size)</code> returns memory and <code>state()</code> a <code>structuredClone</code> of the whole machine state. <code>debug.mjs</code>, the course&#39;s command line for your debugger (you try it later in this lesson), uses <code>state()</code> to call the game&#39;s getters and, in lesson 13, to name your answer. Check <code>10.state</code> compares both with a replay from tick 0.</p>
+<p>Tour the supplied <code>nextInstruction</code> and <code>where</code> in your <code>debugger.mjs</code> now. During a call, the instruction that runs next is the innermost frame&#39;s <code>at</code>. Between calls the machine has no frames, so <code>nextInstruction</code> looks up the function the next call starts in, which the constructor keeps in <code>this.callFunc</code>, and answers its instruction 0. Breakpoints use the same method, which is how a breakpoint on a call&#39;s first instruction fires at the position between calls.</p>
+<p>Every check this lesson names is one of unit 10&#39;s checks, and one command runs them all. Describe what helped each attempt, as in lessons 08 and 09:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs check project 10 --help-used &quot;describe what helped&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Until you write your Debugger, its checks fail with &quot;not written yet&quot;. Run the command again whenever you finish a region.</p>
+<h2 id="the-obvious-way-and-its-cost">The obvious way, and its cost</h2>
+<p>The simplest debugger replays the recording from tick 0 every time it moves. <code>seek(t)</code> then costs <code>t</code> instructions, and so does every <code>stepBack</code>. On lesson 09&#39;s recording, 652,927 instructions long, stepping back once from near the end replays more than 650,000 instructions to move one.</p>
+<p>Part one fixed half of this with checkpoints, replaying from the nearest saved state instead of from 0. The other half was what a checkpoint cost. Part one&#39;s checkpoint was a full copy of the state, and on Lob the state is 131,072 bytes of memory.</p>
+<h2 id="snapshots-that-share-pages">Snapshots that share pages</h2>
+<p>Cut memory into <strong>pages</strong> of equal size, say 4,096 bytes, which makes 32 pages for Lob&#39;s 131,072 bytes. These are your debugger&#39;s pages, not WebAssembly&#39;s 64 KiB pages, and you choose their size. A <strong>snapshot</strong> is the state at one position with its memory kept as a list of pages. Take one every <code>K</code> instructions during a first pass over the recording.</p>
+<p>Between two snapshots most pages aren&#39;t written at all. So when you take a snapshot, copy only the pages written since the previous snapshot, and for every other page put the previous snapshot&#39;s page object itself in the list. Two snapshots then share every page that no instruction wrote between them, and each shared page is the same <code>Uint8Array</code>, held once.</p>
+<p>To know which pages were written, read the events. Each write names its <code>address</code> and <code>size</code>, and its page is <code>Math.floor(address / 4096)</code>. A write can cross into the next page, so mark both.</p>
+<p>The rest of the state is small: the frames with their locals and open blocks, the value stack, the globals, the tick, the call count, and how many recorded answers the run has used so far, so that a replay from this snapshot answers the next import with the right one. Copy all of that with <code>structuredClone</code>.</p>
+<h3 id="one-machine-answered-from-the-recording">One machine, answered from the recording</h3>
+<p>In <code>project/debugger.mjs</code>, replace the <code>constructor</code> region. It holds the constructor and the <code>tick</code> getter:</p>
+<figure class="code-example"><figcaption><strong>Open a recording</strong><span class="cex-location">examples/debugger-checkpoint.mjs · constructor</span></figcaption><p class="cex-change">Replace the constructor region.</p><pre tabindex="0" aria-label="Open a recording; code scrolls horizontally when needed"><code><span class="cex-line">  constructor(</span>
+<span class="cex-line">    program,</span>
+<span class="cex-line">    recording,</span>
+<span class="cex-line">    { every = <span class="cex-number">1000</span>, pageSize = <span class="cex-number">4096</span>, check = <span class="cex-keyword">true</span> } = {},</span>
+<span class="cex-line">  ) {</span>
+<span class="cex-line">    whole(every, <span class="cex-string">&#39;every&#39;</span>, <span class="cex-number">1</span>);</span>
+<span class="cex-line">    whole(pageSize, <span class="cex-string">&#39;pageSize&#39;</span>, <span class="cex-number">1</span>);</span>
+<span class="cex-line">    this.program = program;</span>
+<span class="cex-line">    this.recording = recording;</span>
+<span class="cex-line">    this.every = every;</span>
+<span class="cex-line">    this.pageSize = pageSize;</span>
+<span class="cex-line">    <span class="cex-comment">// The function each call starts in: what runs next between calls.</span></span>
+<span class="cex-line">    this.callFunc = recording.calls.map(</span>
+<span class="cex-line">      (call) =&gt;</span>
+<span class="cex-line">        program.exports.find((e) =&gt; e.kind === <span class="cex-string">&#39;func&#39;</span> &amp;&amp; e.name === call.name)</span>
+<span class="cex-line">          .index,</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    <span class="cex-comment">// One machine for the whole session. Its imports ask this.answers, which</span></span>
+<span class="cex-line">    <span class="cex-comment">// restore() replaces, so a replay answers from the right place.</span></span>
+<span class="cex-line">    <span class="cex-keyword">const</span> imports = {};</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">const</span> { name } <span class="cex-keyword">of</span> program.imports)</span>
+<span class="cex-line">      imports[name] = (...args) =&gt; this.answers.imports[name](...args);</span>
+<span class="cex-line">    this.machine = <span class="cex-keyword">new</span> Machine(program, imports);</span>
+<span class="cex-line">    this.answers = recordedImports(program, recording, () =&gt; this.machine);</span>
+<span class="cex-line">    this.snapshots = [];</span>
+<span class="cex-line">    this.end = this.firstPass(check);</span>
+<span class="cex-line">    this.restore(this.snapshots[<span class="cex-number">0</span>]);</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  get tick() {</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> this.machine.state.tick;</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The Debugger keeps one machine for the whole session. Its imports don&#39;t answer from a fixed place in the recording: each one asks <code>this.answers</code>, which <code>restore</code> replaces whenever the machine jumps to a snapshot. That is lesson 09&#39;s <code>recordedImports</code>, started at the answer position the snapshot saved. The constructor replays the whole recording once, in <code>firstPass</code>, and then puts the machine back at the first snapshot, position 0. Opening a recording therefore costs one replay of the run, inside the checks&#39; limit of about two.</p>
+<p><code>this.callFunc</code> turns each call&#39;s export name into its function index once, for <code>nextInstruction</code>. The options default to a snapshot every 1,000 instructions and pages of 4,096 bytes.</p>
+<h3 id="mark-written-pages-during-the-first-pass">Mark written pages during the first pass</h3>
+<p>Replace the <code>first-pass</code> region:</p>
+<figure class="code-example"><figcaption><strong>Replay once, keeping a snapshot every `every` instructions</strong><span class="cex-location">examples/debugger-checkpoint.mjs · first-pass</span></figcaption><p class="cex-change">Replace the first-pass region.</p><pre tabindex="0" aria-label="Replay once, keeping a snapshot every `every` instructions; code scrolls horizontally when needed"><code><span class="cex-line">  firstPass(check) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> m = this.machine;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> written = <span class="cex-keyword">new</span> Uint8Array(</span>
+<span class="cex-line">      Math.ceil(m.state.memory.length / this.pageSize),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    this.snapshots.push(this.capture());</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> k = <span class="cex-number">0</span>; k &lt; this.recording.calls.length; k++) {</span>
+<span class="cex-line">      do {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> event = this.forward();</span>
+<span class="cex-line">        <span class="cex-keyword">for</span> (<span class="cex-keyword">const</span> w <span class="cex-keyword">of</span> event.writes) {</span>
+<span class="cex-line">          <span class="cex-keyword">const</span> first = Math.floor(w.address / this.pageSize);</span>
+<span class="cex-line">          <span class="cex-keyword">const</span> last = Math.floor((w.address + w.size - <span class="cex-number">1</span>) / this.pageSize);</span>
+<span class="cex-line">          <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> p = first; p &lt;= last; p++) written[p] = <span class="cex-number">1</span>;</span>
+<span class="cex-line">        }</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (m.state.tick % this.every === <span class="cex-number">0</span>) {</span>
+<span class="cex-line">          this.snapshots.push(this.capture(this.snapshots.at(-<span class="cex-number">1</span>), written));</span>
+<span class="cex-line">          written.fill(<span class="cex-number">0</span>);</span>
+<span class="cex-line">        }</span>
+<span class="cex-line">      } while (m.running);</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (check) this.checkCall(k);</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> m.state.tick;</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>written</code> has one entry per page, set to 1 when any instruction writes that page and cleared after each snapshot. A write&#39;s first and last byte can sit on two pages, so the loop marks every page from the first to the last. A snapshot is taken whenever the tick reaches a multiple of <code>every</code>, which puts snapshot <code>i</code> at tick <code>i * every</code>; <code>moveTo</code> and the backward search rely on that. After each call, <code>checkCall</code> compares memory with the recording&#39;s hash, as <code>replay</code> did in lesson 09, so a debugger never answers questions about a run that isn&#39;t the recorded one.</p>
+<p>Question 10a: in Lob, seed 3, mode 0 (no defences), the first game frame after <code>game_init</code> runs 827 instructions. How many of the 32 pages of 4,096 bytes does it write to? Commit before reading on:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 10a YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<h3 id="share-what-wasn-t-written">Share what wasn&#39;t written</h3>
+<p>Replace the <code>capture</code> region:</p>
+<figure class="code-example"><figcaption><strong>Copy only the written pages</strong><span class="cex-location">examples/debugger-checkpoint.mjs · capture</span></figcaption><p class="cex-change">Replace the capture region.</p><pre tabindex="0" aria-label="Copy only the written pages; code scrolls horizontally when needed"><code><span class="cex-line">  capture(previous = <span class="cex-keyword">null</span>, written = <span class="cex-keyword">null</span>) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> { memory, ...rest } = this.machine.state;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> pages = [];</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> p = <span class="cex-number">0</span>; p * this.pageSize &lt; memory.length; p++) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> start = p * this.pageSize;</span>
+<span class="cex-line">      pages.push(</span>
+<span class="cex-line">        previous &amp;&amp; !written[p]</span>
+<span class="cex-line">          ? previous.pages[p]</span>
+<span class="cex-line">          : memory.slice(start, start + this.pageSize),</span>
+<span class="cex-line">      );</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> {</span>
+<span class="cex-line">      tick: rest.tick,</span>
+<span class="cex-line">      pages,</span>
+<span class="cex-line">      state: globalThis.structuredClone(rest),</span>
+<span class="cex-line">      answered: this.answers.position(),</span>
+<span class="cex-line">    };</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Each page is either the previous snapshot&#39;s page object, when nothing wrote it, or a fresh <code>slice</code>, which copies those bytes. The rest of the state goes through <code>structuredClone</code> without its memory, and <code>answered</code> saves the position in the recording&#39;s answers. Called with no previous snapshot, <code>capture</code> copies every page; the first snapshot and <code>lastWrite</code> call it that way.</p>
+<p>Restoring a snapshot means building a <code>Uint8Array</code> of 131,072 bytes from its pages, copying the small state back, and pointing the machine at both. Never let the machine write into a snapshot&#39;s pages. Copy them into a fresh memory first, or the next replay would change the past.</p>
+<h3 id="restore-without-sharing">Restore without sharing</h3>
+<p>Replace the <code>restore</code> region:</p>
+<figure class="code-example"><figcaption><strong>Rebuild memory and answers from a snapshot</strong><span class="cex-location">examples/debugger-checkpoint.mjs · restore</span></figcaption><p class="cex-change">Replace the restore region.</p><pre tabindex="0" aria-label="Rebuild memory and answers from a snapshot; code scrolls horizontally when needed"><code><span class="cex-line">  restore(snapshot) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> bytes = snapshot.pages.reduce((n, page) =&gt; n + page.length, <span class="cex-number">0</span>);</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> memory = <span class="cex-keyword">new</span> Uint8Array(bytes);</span>
+<span class="cex-line">    snapshot.pages.forEach((page, p) =&gt; memory.set(page, p * this.pageSize));</span>
+<span class="cex-line">    this.machine.state = {</span>
+<span class="cex-line">      ...globalThis.structuredClone(snapshot.state),</span>
+<span class="cex-line">      memory,</span>
+<span class="cex-line">    };</span>
+<span class="cex-line">    this.answers = recordedImports(</span>
+<span class="cex-line">      this.program,</span>
+<span class="cex-line">      this.recording,</span>
+<span class="cex-line">      () =&gt; this.machine,</span>
+<span class="cex-line">      snapshot.answered,</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>memory.set</code> copies each page into the new memory, so a later store changes only the machine&#39;s memory. The small state is cloned for the same reason: the machine pushes and pops its frames and stack in place. Replacing <code>this.answers</code> makes the next import answer from where the snapshot&#39;s run had got to. Lesson 08&#39;s rule pays off again: assigning <code>machine.state</code> is all it takes to put the machine at that moment.</p>
+<p>Check <code>10.page-sharing</code> takes your snapshots after a first pass and counts the bytes they hold, counting a page shared by several snapshots once. It also checks that each snapshot&#39;s pages, laid end to end, are exactly the memory at its tick.</p>
+<h2 id="going-back">Going back</h2>
+<p><code>continue(stops)</code> and <code>continueBack(stops)</code> take <code>stops = { breakpoints: [{ func, at }], watches: [{ address, size }] }</code> and return <code>{ reason, tick }</code>. A breakpoint <code>{ func, at }</code> fires at a position whose next instruction is that one, so the debugger stops before it runs. A watch fires right after an instruction that changed one of its bytes, and the debugger stops after the write. Both <code>continue</code> and <code>continueBack</code> move at least one instruction, so from a position where a breakpoint fires, <code>continue</code> finds the next time it fires, not this one.</p>
+<p>With snapshots, every backward move is a restore and a short replay:</p>
+<ul>
+<li><code>stepBack(n)</code> from position <code>t</code>: restore the last snapshot at or before <code>t - n</code>, then replay forward to <code>t - n</code>.</li>
+<li><code>seek(t)</code> the same way, forward or back.</li>
+<li><code>continueBack(stops)</code>: the answer is the latest position before <code>t</code> where a stop fires. Restore the snapshot just before <code>t</code> and replay the stretch up to <code>t</code>, noting every position where a stop fires. If there were any, the last one is the answer. If not, go one snapshot further back and replay that stretch, and so on. Stop at the first stretch, going back, that holds a match.</li>
+<li><code>lastWrite(address)</code>: the same search, where the stop is &quot;this instruction wrote the byte at <code>address</code>&quot;, changed or not.</li>
+</ul>
+<p>Shared pages buy one more saving. If the page holding a watched byte is the very same object in two neighbouring snapshots, no instruction wrote that page between them, so the stretch between them can&#39;t hold a match and doesn&#39;t need to be replayed. For a byte on a page nothing has written for a long time, <code>lastWrite</code> then skips most of the run. How often that happens depends on the page size. A page is skipped only if none of its bytes was written, so smaller pages are skipped more often, and each snapshot then holds more page objects.</p>
+<p>Check <code>10.lob2</code> asks the same kinds of question about a Lob II recording, so nothing may depend on Lob&#39;s own addresses.</p>
+<p>Question 10b: your snapshots are every 1,000 instructions, at ticks 0, 1,000, 2,000 and so on. You stand at position 96,568 and call <code>stepBack(1)</code>. How many instructions does the debugger replay? Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 10b YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<h3 id="move-by-restoring-and-replaying">Move by restoring and replaying</h3>
+<p>Replace the <code>move</code> region:</p>
+<figure class="code-example"><figcaption><strong>seek, step and stepBack</strong><span class="cex-location">examples/debugger-checkpoint.mjs · move</span></figcaption><p class="cex-change">Replace the move region.</p><pre tabindex="0" aria-label="seek, step and stepBack; code scrolls horizontally when needed"><code><span class="cex-line">  forward() {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> m = this.machine;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (!m.running) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> call = this.recording.calls[m.state.calls];</span>
+<span class="cex-line">      m.begin(call.name, call.args);</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> m.step();</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  moveTo(t) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> snapshot = this.snapshots[Math.floor(t / this.every)];</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (this.tick &gt; t || this.tick &lt; snapshot.tick) this.restore(snapshot);</span>
+<span class="cex-line">    while (this.tick &lt; t) this.forward();</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  seek(tick) {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (!Number.isInteger(tick) || tick &lt; <span class="cex-number">0</span> || tick &gt; this.end)</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> RangeError(<span class="cex-string">`seek: ${tick} is not a position from 0 to ${this.end}`</span>);</span>
+<span class="cex-line">    this.moveTo(tick);</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> this.tick;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  step(n = <span class="cex-number">1</span>) {</span>
+<span class="cex-line">    this.moveTo(Math.min(this.end, this.tick + whole(n, <span class="cex-string">&#39;step&#39;</span>)));</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> this.tick;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  stepBack(n = <span class="cex-number">1</span>) {</span>
+<span class="cex-line">    this.moveTo(Math.max(<span class="cex-number">0</span>, this.tick - whole(n, <span class="cex-string">&#39;stepBack&#39;</span>)));</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> this.tick;</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>forward</code> runs the run&#39;s next instruction. Between calls it first begins the next call, which is why a position between calls has no frames: the call starts only when its first instruction runs. <code>moveTo</code> restores a snapshot only when it has to, when the target lies behind the current position or before the snapshot it would use. Moving forward a little from where the machine stands replays only the distance. <code>seek</code>, <code>step</code> and <code>stepBack</code> check their argument and clamp at 0 and <code>end</code>, then all go through <code>moveTo</code>.</p>
+<p>With <code>forward</code> written, the constructor&#39;s first pass can run, so you can now look at the snapshots your debugger keeps for lesson 09&#39;s recording:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node examples/show-snapshots.mjs project project/run42.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>What the snapshots hold</strong><span class="cex-location">examples/snapshots-output.txt</span></figcaption><pre tabindex="0" aria-label="What the snapshots hold; code scrolls horizontally when needed"><code><span class="cex-line">project/run42.json: 652927 instructions, 653 snapshots</span>
+<span class="cex-line">each snapshot: 32 pages of 4096 bytes, 131072 bytes in all</span>
+<span class="cex-line">full copies would hold 85590016 bytes; these hold 7557120 (8.83%)</span>
+<span class="cex-line">pages copied by a snapshot after the first: at most 3, on average 2.78</span>
+<span class="cex-line">the last snapshot, page by page, holds the copy made by snapshot:</span>
+<span class="cex-line">  pages 0-7: 0 0 0 0 0 0 0 0</span>
+<span class="cex-line">  pages 8-15: 0 0 0 0 0 0 0 652</span>
+<span class="cex-line">  pages 16-23: 652 652 68 70 0 0 0 0</span>
+<span class="cex-line">  pages 24-31: 0 0 0 0 0 0 0 0</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The last snapshot still holds most pages as the very objects snapshot 0 copied, because nothing has written them since. The pages that change on almost every game frame are the C stack just below 65,536 and the game&#39;s state above it, which lesson 08 described.</p>
+<h3 id="stop-before-or-after">Stop before or after</h3>
+<p>Replace the <code>stops</code> region:</p>
+<figure class="code-example"><figcaption><strong>Test the position the machine has reached</strong><span class="cex-location">examples/debugger-checkpoint.mjs · stops</span></figcaption><p class="cex-change">Replace the stops region.</p><pre tabindex="0" aria-label="Test the position the machine has reached; code scrolls horizontally when needed"><code><span class="cex-line">  stopHere({ breakpoints = [], watches = [] }, event) {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (event &amp;&amp; event.writes.some((w) =&gt; changesWatched(w, watches)))</span>
+<span class="cex-line">      <span class="cex-keyword">return</span> <span class="cex-string">&#39;watchpoint&#39;</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> next = this.nextInstruction();</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (</span>
+<span class="cex-line">      next &amp;&amp;</span>
+<span class="cex-line">      breakpoints.some((b) =&gt; b.func === next.func &amp;&amp; b.at === next.at)</span>
+<span class="cex-line">    )</span>
+<span class="cex-line">      <span class="cex-keyword">return</span> <span class="cex-string">&#39;breakpoint&#39;</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  continue(stops = {}) {</span>
+<span class="cex-line">    while (this.tick &lt; this.end) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> event = this.forward();</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> reason = this.stopHere(stops, event);</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (reason) <span class="cex-keyword">return</span> { reason, tick: this.tick };</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> { reason: <span class="cex-string">&#39;end&#39;</span>, tick: this.tick };</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>stopHere</code> looks at a position from two sides. A watch looks backward, at the event of the instruction that led here, because it fires after a write. A breakpoint looks forward, at the instruction that runs next. Tour the supplied <code>changesWatched</code> at the bottom of the file: a store that rewrites a byte with the value it already held doesn&#39;t fire a watch. <code>continue</code> steps first and tests after, so it never reports the position it started from. Lesson 12 adds function stops to <code>stopHere</code>.</p>
+<h3 id="search-backward-one-stretch-at-a-time">Search backward one stretch at a time</h3>
+<p>Replace the <code>search-back</code> region:</p>
+<figure class="code-example"><figcaption><strong>continueBack, searchBack and the shared-page test</strong><span class="cex-location">examples/debugger-checkpoint.mjs · search-back</span></figcaption><p class="cex-change">Replace the search-back region.</p><pre tabindex="0" aria-label="continueBack, searchBack and the shared-page test; code scrolls horizontally when needed"><code><span class="cex-line">  continueBack(stops = {}) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> here = this.tick;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (here === <span class="cex-number">0</span>) <span class="cex-keyword">return</span> { reason: <span class="cex-string">&#39;start&#39;</span>, tick: <span class="cex-number">0</span> };</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> pages = (stops.watches ?? []).flatMap((w) =&gt;</span>
+<span class="cex-line">      pagesOf(w.address, w.size ?? <span class="cex-number">1</span>, this.pageSize),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> watchesOnly = !stops.breakpoints?.length;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> found = this.searchBack(</span>
+<span class="cex-line">      here - <span class="cex-number">1</span>,</span>
+<span class="cex-line">      (event) =&gt; {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> reason = this.stopHere(stops, event);</span>
+<span class="cex-line">        <span class="cex-keyword">return</span> reason ? { reason, tick: this.tick } : <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">      },</span>
+<span class="cex-line">      (i) =&gt; !watchesOnly || this.mayHaveWritten(i, pages),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (found) {</span>
+<span class="cex-line">      this.moveTo(found.tick);</span>
+<span class="cex-line">      <span class="cex-keyword">return</span> found;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    this.moveTo(<span class="cex-number">0</span>);</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> { reason: this.stopHere(stops, <span class="cex-keyword">null</span>) ?? <span class="cex-string">&#39;start&#39;</span>, tick: <span class="cex-number">0</span> };</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  searchBack(last, test, mayMatch = () =&gt; <span class="cex-keyword">true</span>) {</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = Math.ceil(last / this.every) - <span class="cex-number">1</span>; i &gt;= <span class="cex-number">0</span>; i--) {</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (!mayMatch(i)) continue;</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> snapshot = this.snapshots[i];</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> stop = Math.min(last, snapshot.tick + this.every);</span>
+<span class="cex-line">      this.restore(snapshot);</span>
+<span class="cex-line">      <span class="cex-keyword">let</span> found = <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">      while (this.tick &lt; stop) {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> finding = test(this.forward());</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (finding) found = finding;</span>
+<span class="cex-line">      }</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (found) <span class="cex-keyword">return</span> found;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  mayHaveWritten(i, pages) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> a = this.snapshots[i];</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> b = this.snapshots[i + <span class="cex-number">1</span>];</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> !b || pages.some((p) =&gt; a.pages[p] !== b.pages[p]);</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>searchBack(last, test, mayMatch)</code> is the procedure the bullet list described, written once for both backward searches. Stretch <code>i</code> is the instructions after snapshot <code>i</code>, up to snapshot <code>i + 1</code> or <code>last</code>. It restores the snapshot, replays the stretch once and keeps the latest finding, because the answer is the latest match, not the first. The first stretch, going back, that holds a finding has the answer, so the cost is about the distance to the match plus up to two stretches.</p>
+<p><code>mayHaveWritten(i, pages)</code> is the shared-page saving: it answers no when snapshot <code>i + 1</code> holds the same page objects as snapshot <code>i</code>. <code>continueBack</code> uses it only when every stop is a watch, because a breakpoint can fire in a stretch that writes nothing. When nothing matches, <code>continueBack</code> goes to 0 and reports <code>&#39;start&#39;</code>, unless a breakpoint fires at position 0 itself.</p>
+<h3 id="ask-who-last-wrote-a-byte">Ask who last wrote a byte</h3>
+<p>Replace the <code>last-write</code> region:</p>
+<figure class="code-example"><figcaption><strong>lastWrite, and put the machine back</strong><span class="cex-location">examples/debugger-checkpoint.mjs · last-write</span></figcaption><p class="cex-change">Replace the last-write region.</p><pre tabindex="0" aria-label="lastWrite, and put the machine back; code scrolls horizontally when needed"><code><span class="cex-line">  lastWrite(address) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> size = this.machine.state.memory.length;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (!Number.isInteger(address) || address &lt; <span class="cex-number">0</span> || address &gt;= size)</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> RangeError(<span class="cex-string">`lastWrite: ${address} is not an address inside memory`</span>);</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> back = this.capture();</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> page = Math.floor(address / this.pageSize);</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> found = this.searchBack(</span>
+<span class="cex-line">      back.tick,</span>
+<span class="cex-line">      (event) =&gt; {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> w = event.writes.findLast(</span>
+<span class="cex-line">          (w) =&gt; address &gt;= w.address &amp;&amp; address &lt; w.address + w.size,</span>
+<span class="cex-line">        );</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (!w) <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> { tick, func, at } = event;</span>
+<span class="cex-line">        <span class="cex-keyword">return</span> { tick, func, at, address: w.address, size: w.size };</span>
+<span class="cex-line">      },</span>
+<span class="cex-line">      (i) =&gt; this.mayHaveWritten(i, [page]),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    this.restore(back);</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> found;</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>lastWrite</code> counts any write to the byte, changed or not, as the contract asks, and <code>findLast</code> picks the last write of an instruction that wrote the byte twice. It starts by capturing the current position, with every page copied, and restores it at the end: the method answers without moving the debugger. Only the page holding the byte matters, so every stretch in which that page stayed shared is skipped.</p>
+<p>Try the moves on lesson 09&#39;s recording with <code>examples/back-session.txt</code>, a script of <code>debug.mjs</code> commands:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node debug.mjs project project/run42.json examples/back-session.txt</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>Moving backward and what it cost</strong><span class="cex-location">examples/back-session-output.txt</span></figcaption><pre tabindex="0" aria-label="Moving backward and what it cost; code scrolls horizontally when needed"><code><span class="cex-line">project/run42.json: 759 calls, 652927 instructions. Type help for commands.</span>
+<span class="cex-line">&gt; seek 300000</span>
+<span class="cex-line">tick 300000, call 295 (game_tick), next: function 6, instruction 768: i32.const 0</span>
+<span class="cex-line">&gt; where</span>
+<span class="cex-line">tick 300000, call 295 (game_tick), next: function 6, instruction 768: i32.const 0</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">652927 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span>
+<span class="cex-line">&gt; back 1</span>
+<span class="cex-line">tick 299999, call 295 (game_tick), next: function 6, instruction 767: i64.store 0 0</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">653926 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span>
+<span class="cex-line">&gt; break 8:0</span>
+<span class="cex-line">stops: {&quot;breakpoints&quot;:[{&quot;func&quot;:8,&quot;at&quot;:0}],&quot;watches&quot;:[],&quot;functions&quot;:[]}</span>
+<span class="cex-line">&gt; rcontinue</span>
+<span class="cex-line">breakpoint at tick 299502, call 295 (game_tick), next: function 8, instruction 0: global.get 0</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">655426 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span>
+<span class="cex-line">&gt; last-write 78112</span>
+<span class="cex-line">tick 69152: function 4, instruction 76: i32.store 2 78112 wrote 4 bytes at 78112</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">656578 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>cost</code> counts every instruction since <code>debug.mjs</code> started, the opening replay included, so take differences. <code>seek 300000</code> cost nothing, because position 300,000 is a snapshot. <code>back 1</code> replayed from the snapshot before it. The last write of <code>g</code>, the 4 bytes at 78,112, was made in <code>game_init</code>, more than 200,000 instructions before the position <code>rcontinue</code> reached, and finding it replayed about a thousand, because page 19 stayed shared for the rest of the run.</p>
+<h2 id="budgets">Budgets</h2>
+<p>The checks count every instruction your machine runs, by counting calls to its <code>step</code>. They ask questions near the end of a long recording and give each kind a budget, a few times what a snapshot every few thousand instructions needs, and far less than a replay from tick 0.</p>
+<p>Each check makes its own debugger, moves it, and compares what it finds with a replay from tick 0 or with a scan of the recording. What each one moves to, and so which snapshots your debugger restores on the way, and what it compares:</p>
+<ul>
+<li><code>10.seek</code> seeks to positions spread over the run, among them the start and the end, and after each seek compares the position, <code>where()</code> and all of memory with a replay from tick 0. Its targets are far apart, so no two of its seeks restore the same snapshot.</li>
+<li><code>10.step-back</code> seeks to a position, then steps back by one instruction or by a few hundred, or forward by a few, and compares where it lands the same way. A step back restores the snapshot at or before the new position, often the one the seek has just restored.</li>
+<li><code>10.continue</code> seeks to a position and calls <code>continue</code>, which only runs forward, so nothing is restored after the seek. It compares each stop with a scan of every instruction.</li>
+<li><code>10.continue-back</code> seeks to a position and calls <code>continueBack</code>, which restores the snapshot of the stretch it stands in, often the one the seek has just restored, and then earlier ones. It compares each stop with a scan of every instruction.</li>
+<li><code>10.last-write</code> seeks to a position and calls <code>lastWrite</code>, which searches back the same way, stretch by stretch from the one it stands in, and then puts the debugger back. It compares the write found with a scan of every write, and checks that the debugger did not move.</li>
+<li><code>10.state</code> seeks to a position inside a call and then to the next position between calls, and at each compares <code>state()</code>&#39;s memory and frames with a replay from tick 0. Then it changes the copy and checks that the debugger&#39;s memory did not change.</li>
+<li><code>10.page-sharing</code> seeks to the end, which restores the snapshot before the end and replays to it, and then reads <code>snapshots</code>. It counts the bytes their pages hold, and compares the pages of a sample of them with a replay. It compares no position.</li>
+<li><code>10.budget</code> opens a debugger, seeks near the end and asks a series of backward questions in a row, which restore some snapshots more than once. It counts the instructions each question replays and fails a debugger that replays from the start for any of them. It compares no position, memory or answer with a replay.</li>
+<li><code>10.lob2</code> does the same kinds of move on a Lob II recording: at a few positions it seeks, steps back one instruction, seeks there again, asks <code>lastWrite</code> and calls <code>continueBack</code>, and compares each result with a replay or a scan.</li>
+</ul>
+<p>All eight regions are filled. Run the unit&#39;s checks, describing what you did:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># After filling the type-in route&#39;s starter from the listings:</span>
+<span class="cex-line">node lab.mjs check project 10 --help-used &quot;filled eight regions from chapter listings&quot;</span>
+<span class="cex-line"># After following the supplied route:</span>
+<span class="cex-line">node lab.mjs check project 10 --help-used &quot;supplied debugger checkpoint; followed the explanations and tours&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>All 9 checks should pass. If one fails, its first mismatch names the section to reread. Keep the failing attempt and your explanation before you edit.</p>
+<p>Try your debugger on lesson 09&#39;s recording by hand too:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node debug.mjs project project/run42.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>With no keyboard, in a container or from another program, put the commands in a file, one per line, and pass that file as the last argument: <code>node debug.mjs project project/run42.json project/session.txt</code>. A script stops at its first error.</p>
+<p><code>help</code> lists the commands and their arguments. <code>seek TICK</code>, <code>back N</code>, <code>break FUNC:AT</code>, <code>watch ADDR SIZE</code>, <code>continue</code>, <code>rcontinue</code> (continue backward) and <code>last-write ADDR</code> call your debugger, and <code>cost</code> shows how many instructions your machine has run since <code>debug.mjs</code> started, including any replay your Debugger made when it opened the recording. For example, <code>break 8:0</code> and then <code>continue</code> stop where the next call to <code>game_tick</code> begins.</p>
+<h3 id="break-a-snapshot-then-repair-it">Break a snapshot, then repair it</h3>
+<p>In your project only, change the line in <code>restore</code> that copies the snapshot&#39;s small state, so that the machine gets the snapshot&#39;s own objects instead of a copy:</p>
+<figure class="code-example"><figcaption><strong>JavaScript</strong></figcaption><pre tabindex="0" aria-label="JavaScript; code scrolls horizontally when needed"><code><span class="cex-line">...snapshot.state,</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 10d: with this change, how many of the nine checks fail? Before you run anything, write in <code>project/report.md</code> which ones you expect to fail and why, then commit the number. Then run the check with <code>--help-used</code> describing this prescribed change:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 10d YOUR_ANSWER</span>
+<span class="cex-line">node lab.mjs check project 10 --help-used &quot;prescribed change: restore uses snapshot.state without a copy&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Compare the checks that failed with what the lab said after your prediction. Read the first failure&#39;s position and the one it expected. Explain what happened to the snapshot the first time a replay ran from it, and what a second restore of the same snapshot then gives. For each check that passed, say why this change doesn&#39;t reach it. Restore the copy, rerun the check and keep both attempts. This change is guided practice; the new application below asks for behavior none of these listings implements.</p>
+<h2 id="a-question-to-ask-backward">A question to ask backward</h2>
+<p>In <code>project/run42.json</code>, the first shot is fired by call 19 and lands a while later. The getter <code>r_px</code> reads the shell&#39;s position from address <code>g + 40</code>, where <code>g</code> is the 4 bytes at address 78,112.</p>
+<p>Question 10c: use your debugger. Go to the start of call 301 (<code>call 301</code> in <code>debug.mjs</code>), read <code>g</code> with <code>read 78112 4 i32</code>, and ask <code>last-write</code> for the address <code>g + 40</code>. In which call was that write made? Commit the call number your debugger reports:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 10c YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Then work out what the backward search cost. Read <code>cost</code> just before <code>last-write</code> and again after it, and take the difference, because <code>cost</code> also counts any replay your Debugger made when it opened the recording, and the seeks <code>call 301</code> made. Compare that with lesson 08&#39;s estimate for part one&#39;s reverse search, and write both numbers in <code>project/report.md</code>.</p>
+<p>What you should have seen: with this lesson&#39;s debugger, <code>last-write</code> costs 113,351 instructions, the search and then the move to the write it found, far more than the few thousand the earlier questions cost. Your debugger isn&#39;t broken; this question is the busy-page case. <code>g + 40</code> is on page 16, one of the pages written on almost every game frame, which the snapshot listing above shows as copied by the last snapshot itself. Each snapshot holds a new object for that page, so <code>mayHaveWritten</code> can&#39;t rule out any stretch, and <code>lastWrite</code> replays every stretch between here and the write, about one instruction for each instruction it goes back. A byte on a page nobody writes, like <code>g</code> itself, is found in about a thousand.</p>
+<h2 id="use-it-on-a-new-case-find-a-value-backward">Use it on a new case: find a value backward</h2>
+<p>Lesson 08&#39;s wall timed part one&#39;s <code>reverseFind</code>, a search for the latest earlier tick at which a byte held a given value, and estimated hours for a question near the end of the run. Write it again on your snapshots: <code>reverseFind(debugger, { address, size, equals })</code> in <code>project/reverse-find.mjs</code>, which both route commands created. If you didn&#39;t use them, copy <code>starter/reverse-find.mjs</code> to <code>project/reverse-find.mjs</code> first. No finished version is supplied, and none of the listings above does this. Its contract:</p>
+<ul>
+<li><code>equals</code> is an array of <code>size</code> byte values. Return the greatest position before the debugger&#39;s current one at which the <code>size</code> bytes at <code>address</code> equal <code>equals</code>, and leave the debugger standing there. Position 0 counts.</li>
+<li>When no earlier position holds that value, return <code>null</code> and leave the debugger where it started.</li>
+<li>Refuse, with an error and before moving: bytes outside memory, a <code>size</code> below 1, or an <code>equals</code> that isn&#39;t <code>size</code> whole numbers from 0 to 255.</li>
+<li>The budgets hold for the bytes the checker asks about, not for any bytes. It asks, near the end of a long run, about a byte whose value changed a few thousand instructions back, and about bytes on a page nothing has written since <code>game_init</code>, such as <code>g</code> at 78,112. For those, a question may replay at most 20,000 instructions, even when the answer lies in <code>game_init</code>. A value the bytes never held may replay at most 80,000. Bytes on a page written on almost every game frame, in Lob page 15 and the two pages after it, are different: that page is a new object in every snapshot, so no stretch can be skipped soundly, and a value they never held costs a replay of the whole run. The checker doesn&#39;t ask that.</li>
+<li>Use only the Debugger&#39;s public methods (<code>tick</code>, <code>seek</code>, <code>step</code>, <code>read</code>) and its <code>snapshots</code>, each with its <code>tick</code> and <code>pages</code>, so your function works with any debugger that meets <code>API.md</code>.</li>
+</ul>
+<p>Before you write code, answer two questions in <code>project/report.md</code>. A page holding your bytes is the same object in snapshots <code>i</code> and <code>i + 1</code>: what do you know about the value at every position between them, and how can you learn it without replaying? Inside a stretch you must replay, why is the first match you see not the answer? Keep that first reasoning. Then run the checker on the unfinished file, implement, and run it again, describing assistance honestly each time:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node examples/check-reverse-find.mjs project --help-used &quot;initial attempt; nothing written&quot;</span>
+<span class="cex-line">node examples/check-reverse-find.mjs project --help-used &quot;describe what helped your implementation&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The checker copies <code>machine.mjs</code>, <code>recorder.mjs</code>, <code>debugger.mjs</code>, <code>reverse-find.mjs</code>, <code>PROJECT.json</code> and your <code>report.md</code> into a new folder under <code>project/attempts/</code> before it runs anything, and saves its results beside them in <code>rfind-receipt.json</code>. A failure never replaces an earlier attempt, and <code>node lab.mjs status project</code> lists every attempt under &quot;New-application attempts&quot;. It asks about bytes chosen from a one-pass history of two recordings, a Lob run and a Lob II run, compares each answer with that history, and counts your instructions.</p>
+<p>As a stretch, make <code>continueBack</code> skip stretches for a breakpoint too: a breakpoint can fire only in a stretch that runs its instruction, and a first pass can note which functions each stretch ran.</p>
+<h2 id="keep-the-working-tool">Keep the working tool</h2>
+<p><code>project/debugger.mjs</code> now moves to any position, steps back, continues back to a breakpoint or watch, and names the last write of a byte, each from a snapshot within its budget. Its end-of-unit checkpoint is <code>examples/debugger-checkpoint.mjs</code>; recover from it with a new project, as in &quot;Start&quot;, never by copying it over your file. Lesson 11 builds an index of the recording in one replay, so that a last write long ago on a busy page costs nothing to find, and lesson 12 adds the call stack and function stops to this file.</p>
+<h2 id="earlier-ideas-new-cases">Earlier ideas, new cases</h2>
+<p>Questions from lessons 08 and 09, on cases you haven&#39;t seen. Commit each before checking.</p>
+<p>Question 08a3: <code>r_power</code>, function 10, runs <code>i32.const 0</code>, <code>i32.load</code> offset 78112, <code>local.tee 0</code>, <code>i32.load</code> offset 92, <code>local.get 0</code>, <code>i32.load</code> offset 4, <code>i32.xor</code>, <code>end</code>. How many values are on the value stack after instruction 2, <code>local.tee 0</code>?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 08a3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 08c3: an <code>i32.store</code> with offset 2 pops the value 287,454,020 (0x11223344) and then the address 5,000. What is the byte at address 5,004 afterwards, as a decimal number?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 08c3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 09b3: a tampered recording first differs inside a call of 8,193 instructions. Bisecting inside it, at most how many tests until the two ends are one instruction apart?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 09b3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure></main>
+  <footer><a href="#chapter">Back to the beginning</a> · <a href="11.html">Next: Question a recording</a></footer>
+</body>
+</html>

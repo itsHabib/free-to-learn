@@ -1,0 +1,13 @@
+Build 1: 241 calls, 265287 instructions. Type help for commands.
+> diverge
+after call 237 (game_tick): r_result is 2 here, 1 in lob.wasm
+> listing r_result:0 4
+function 18 (r_result)
+>     0  i32.const 0
+      1  i32.load 2 72992
+      2  i32.load 2 0
+      3  end
+> call 238
+tick 262788, call 238 (game_tick), next: function 8 (game_tick), instruction 0: global.get 0
+> read 72992 4 i32
+65928

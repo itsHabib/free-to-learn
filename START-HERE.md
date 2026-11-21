@@ -96,6 +96,12 @@ with a named "not written yet" message, not a missing import or tool.
 | Time-travel Debugger, part two | courses/time-travel-debugger-part-two | node lab.mjs start project | node lab.mjs check project 08 |
 | Anti-cheat Engineering, part two | courses/anti-cheat-engineering-part-two | node lab.mjs init project | node lab.mjs check project 12 |
 
+The two part-two setups above make a blank project. Each of their lessons also opens
+with a route command, node examples/start-chapter.mjs project write (type in the
+important parts) or node examples/start-chapter.mjs project supplied (start from
+working code). A route command makes the project folder itself and refuses one that
+exists, so choose a route in the first lesson before you run a setup command.
+
 Sightline's README also has you run node lab.mjs serve and read the lessons in a
 browser. That page was opened once for this release. Its optional live decision model
 needs Ollama, and no check uses it. Your work lives in each course's work/ or

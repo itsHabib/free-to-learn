@@ -1,0 +1,9 @@
+project/run42.json: 652927 instructions, 653 snapshots
+each snapshot: 32 pages of 4096 bytes, 131072 bytes in all
+full copies would hold 85590016 bytes; these hold 7557120 (8.83%)
+pages copied by a snapshot after the first: at most 3, on average 2.78
+the last snapshot, page by page, holds the copy made by snapshot:
+  pages 0-7: 0 0 0 0 0 0 0 0
+  pages 8-15: 0 0 0 0 0 0 0 652
+  pages 16-23: 652 652 68 70 0 0 0 0
+  pages 24-31: 0 0 0 0 0 0 0 0

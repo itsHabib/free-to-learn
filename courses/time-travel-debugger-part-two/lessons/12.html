@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stack and names · Free to Learn</title>
+  <link rel="stylesheet" href="../public/chapter.css">
+  <link rel="stylesheet" href="../public/code-example.css">
+</head>
+<body>
+  <a class="skip" href="#chapter">Skip to chapter</a>
+  <header class="book-header"><a href="../README.md">Free to Learn · Time-travel debugger, part two</a><span>Unit 12</span></header>
+  <aside class="reading-note">Run terminal commands from the course folder containing <code>lab.mjs</code>. This page works offline; it does not execute or grade your code. <a href="12.md">Read the Markdown source</a>.</aside>
+  <nav aria-label="Chapter contents"><details><summary>In this chapter</summary><ol><li><a href="#start">Start</a></li>
+<li><a href="#where-names-live">Where names live</a></li>
+<li><a href="#the-call-stack">The call stack</a></li>
+<li><a href="#stopping-at-a-function">Stopping at a function</a></li>
+<li><a href="#lines">Lines</a></li>
+<li><a href="#read-a-stack">Read a stack</a></li>
+<li><a href="#stop-anywhere-in-a-function-then-repair-it">Stop anywhere in a function, then repair it</a></li>
+<li><a href="#use-it-on-a-new-case-step-by-line">Use it on a new case: step by line</a></li>
+<li><a href="#keep-the-working-tool">Keep the working tool</a></li>
+<li><a href="#earlier-ideas-new-cases">Earlier ideas, new cases</a></li></ol></details></nav>
+  <main id="chapter"><h1 id="12-stack-and-names">12 · Stack and names</h1>
+<p>Your debugger now says things like &quot;function 6, instruction 412&quot;, and a person debugging Lob wants to read &quot;update_hud, called from game_tick&quot;. By the end of this lesson your debugger reads function names from the binary&#39;s name section, shows the call stack at any tick, stops where a named function begins, runs to the end of the current function, and gives the source line of any instruction.</p>
+<h2 id="start">Start</h2>
+<p>Run these commands from this course&#39;s directory, in the project you used for lessons 08 to 11. Before this lesson <code>debug.mjs</code> names every function by its index, <code>stack</code> and <code>finish</code> stop with &quot;not written yet&quot;, and <code>break update_hud</code> says there are no names, because <code>project/names.mjs</code> is a stub and your <code>debugger.mjs</code> has lesson 10&#39;s stubs of <code>stack</code> and <code>stepOut</code>. After it, every instruction <code>debug.mjs</code> prints carries its function&#39;s name and its source line, <code>stack</code> lists the functions in progress, <code>break update_hud</code> stops where a call to it begins, and <code>finish</code> runs to the end of the current function.</p>
+<p>Your machine, recorder and debugger must pass their checks first: <code>node lab.mjs check project 08</code>, <code>node lab.mjs check project 09</code> and <code>node lab.mjs check project 10</code>. Lesson 11&#39;s index isn&#39;t used here. If one of them fails and you want to go on with this lesson, make a new project with <code>node examples/start-chapter.mjs project12 supplied</code>, then <code>node examples/start-recorder.mjs project12 supplied</code> and <code>node examples/start-debugger.mjs project12 supplied</code>, record its run with <code>node lab.mjs record project12 --world 42 --out project12/run42.json</code>, and use <code>project12</code> wherever this lesson says <code>project</code>.</p>
+<p><strong>Code scope:</strong> this lesson changes two files.</p>
+<ul>
+<li><code>project/names.mjs</code>, a new file: walk through four marked regions, 73 lines including blank lines: <code>leb128</code>, <code>sections</code>, <code>subsections</code> and <code>line-at</code>. The rest of the file is supplied, 25 lines: the comments at the top and the start of a small <code>Reader</code> class, its constructor and <code>byte()</code>. The finished file, the end-of-unit checkpoint, is <code>examples/names-checkpoint.mjs</code>, 106 lines.</li>
+<li><code>project/debugger.mjs</code>, your file from lesson 10: four changes, 24 lines new or changed. Two of them fill the stubs lesson 10 left at the end of the class, <code>stack</code> and <code>stepOut</code>, each already between its own region markers, and two change regions you already have, <code>stops</code> and <code>search-back</code>. Those two listings show the whole region again, with the changed lines marked, so you can see each change in place. The finished file is <code>examples/stack-checkpoint.mjs</code>, 357 lines: lesson 10&#39;s checkpoint with these four changes.</li>
+</ul>
+<p>Nothing else is supplied for this lesson. Two supplied parts are toured: lesson 10&#39;s <code>nextInstruction</code>, which function stops reuse, and the <code>describe</code> function in <code>debug.mjs</code>, which puts the names and lines beside every instruction it prints.</p>
+<p><strong>Time:</strong> allow about 30 to 40 minutes to read and 1 to 3 hours to implement, diagnose and try the new application. These are planning estimates, not measured learner times.</p>
+<p>Choose a route. Each command below writes <code>project/names.mjs</code> only if the project has none yet, or if it is still the untouched stub that <code>node lab.mjs start</code> made. If you have edited that file, the command refuses and changes nothing.</p>
+<ul>
+<li><strong>Type in the important parts:</strong> <code>node examples/start-names.mjs project write</code>. This copies <code>starter/names-build.mjs</code>, which has the supplied parts and four unfinished regions. It doesn&#39;t touch <code>debugger.mjs</code>. Type or paste each located listing below, into <code>names.mjs</code> and into your own <code>debugger.mjs</code>.</li>
+<li><strong>Start with working code:</strong> <code>node examples/start-names.mjs project supplied</code>. This copies <code>examples/names-checkpoint.mjs</code>. It also replaces <code>debugger.mjs</code> with <code>examples/stack-checkpoint.mjs</code>, but only if your <code>debugger.mjs</code> is still exactly lesson 10&#39;s supplied checkpoint, byte for byte, so that it holds none of your own work. Otherwise it leaves <code>debugger.mjs</code> as it is and says so, and you make the four changes yourself. Follow each explanation and run each command instead of transcribing, then do the failure and repair and the new application. This is supplied implementation, not your own work.</li>
+<li><strong>Use AI for the changes:</strong> start with the type-in route (<code>write</code>). Give the assistant <code>API.md</code>, this lesson and your files, one region at a time. Ask it to explain what each region reads or changes and why; run and inspect what it writes. Record the actual assistance you used.</li>
+</ul>
+<p>Both routes also create <code>project/next-line.mjs</code>, the unfinished new application, if it doesn&#39;t exist yet. Prefer to write it all from <code>API.md</code> with no listings? Don&#39;t run either command, fill the stub <code>node lab.mjs start</code> gave you, write <code>stack</code>, <code>stepOut</code> and function stops into your <code>debugger.mjs</code>, and copy <code>starter/next-line.mjs</code> to <code>project/next-line.mjs</code> when you reach the new application.</p>
+<p>Run the first check with the description matching where you started:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># Type-in route (write), including AI users before requesting changes:</span>
+<span class="cex-line">node lab.mjs check project 12 --help-used &quot;chapter write starter; four regions unfinished&quot;</span>
+<span class="cex-line"># Supplied route:</span>
+<span class="cex-line">node lab.mjs check project 12 --help-used &quot;supplied names and stack checkpoints; initial baseline&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The route command records <code>write</code> or <code>supplied</code> in <code>PROJECT.json</code>, and every check receipt keeps it as <code>unit12_start_route</code>. That says where you began, not who wrote your current code; keep using <code>--help-used</code> to say what helped each attempt. On the type-in route four of the five checks fail with <code>not written yet</code>, and <code>12.function-stops</code> fails with a real answer, which the section on function stops explains. The supplied route passes them all. Either result is a baseline, not evidence of understanding.</p>
+<p>Keep the <code>// region: NAME</code> and <code>// endregion: NAME</code> markers. A listing replaces <strong>everything between its matching pair</strong>, including the line there that throws &quot;not written yet&quot;. The listings omit the marker lines. To recover later without losing edits, make a new project with the supplied commands above, run <code>node examples/start-names.mjs project-recovery supplied</code> in it, and compare its <code>names.mjs</code> and <code>debugger.mjs</code> with yours. Don&#39;t copy a checkpoint over your attempt.</p>
+<h2 id="where-names-live">Where names live</h2>
+<p><code>targets/lob.wasm</code> was linked with its names stripped, left out of the file, because Sightline asks its learners to work out what each unnamed function does. For this lesson the course built the same C file again, with the same compiler, and kept its names, in <code>targets/lob-names.wasm</code>. Its code is byte for byte the code of <code>lob.wasm</code>, so <code>programs/lob.json</code> describes it too. The extra bytes are a <strong>custom section</strong> at the end of the file.</p>
+<p>A WebAssembly file is 8 fixed bytes followed by <strong>sections</strong>. Each section is an id byte, its size in bytes, then that many bytes. Custom sections have id 0, and their contents start with a name: a length, then that many bytes of text (UTF-8, which for these names is plain ASCII). The section named <code>name</code> holds the names.</p>
+<p>Sizes and lengths are <strong>LEB128</strong> numbers, in which each byte carries 7 bits of the number, lowest first, and its top bit says whether another byte follows. <code>1D</code> is 29. <code>B8 02</code> is two bytes. <code>B8</code> has its top bit set and carries 56, and <code>02</code> carries 2, worth 2 × 128. Together, 312. (Sightline teaches LEB128 and the rest of the file format in depth.)</p>
+<p>Inside the <code>name</code> section are <strong>subsections</strong>, each an id byte, a size and contents. Subsection 1 holds function names: a count, then for each function its index and its name. Skip any other subsection by its size. Here are the first bytes of the <code>name</code> section in <code>lob-names.wasm</code>, after its own name:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">00 0F              subsection 0, 15 bytes: the module&#39;s own name</span>
+<span class="cex-line">0E 6C 6F 62 2D ... a name of 14 bytes: lob-names.wasm</span>
+<span class="cex-line">01 B8 02           subsection 1, 312 bytes: function names</span>
+<span class="cex-line">1D                 29 names follow</span>
+<span class="cex-line">00                 function 0</span>
+<span class="cex-line">0C 73 65 72 76 65 72 5F 72 6F 75 6E 64</span>
+<span class="cex-line">                   a name of 12 bytes: server_round</span>
+<span class="cex-line">01 06 6A 73 5F 63 6F 73</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The 29 names are Lob&#39;s 4 imports and its 25 functions.</p>
+<p>Question 12a: decode the last line. What name does the name section give function 1? Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 12a YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>functionNames(bytes)</code> in <code>names.mjs</code> walks the sections from byte 8, skips every section that isn&#39;t the custom section <code>name</code>, and returns <code>{ index: name }</code> for every entry of subsection 1, or <code>{}</code> when the file has no name section. Check <code>12.names</code> reads both named and stripped files, and a small file of its own that puts other subsections before subsection 1. It and the other checks this lesson names make up unit 12&#39;s checks, which one command runs:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs check project 12 --help-used &quot;describe what helped&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<h3 id="read-numbers-and-names">Read numbers and names</h3>
+<p>The supplied <code>Reader</code> at the top of <code>names.mjs</code> keeps a position in the file, <code>pos</code>, and <code>byte()</code> returns the byte there and moves past it, refusing to read past the end. In <code>project/names.mjs</code>, replace the <code>leb128</code> region, which adds the two reads everything else is made of:</p>
+<figure class="code-example"><figcaption><strong>LEB128 numbers and names</strong><span class="cex-location">examples/names-checkpoint.mjs · leb128</span></figcaption><p class="cex-change">Replace the leb128 region.</p><pre tabindex="0" aria-label="LEB128 numbers and names; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// Unsigned LEB128: 7 bits per byte, lowest first. A byte with its top bit</span></span>
+<span class="cex-line">  <span class="cex-comment">// set says another byte follows.</span></span>
+<span class="cex-line">  u32() {</span>
+<span class="cex-line">    <span class="cex-keyword">let</span> value = <span class="cex-number">0</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">let</span> shift = <span class="cex-number">0</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">let</span> b;</span>
+<span class="cex-line">    do {</span>
+<span class="cex-line">      b = this.byte();</span>
+<span class="cex-line">      value += (b &amp; <span class="cex-number">0x7f</span>) * <span class="cex-number">2</span> ** shift;</span>
+<span class="cex-line">      shift += <span class="cex-number">7</span>;</span>
+<span class="cex-line">    } while (b &amp; <span class="cex-number">0x80</span>);</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> value;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  <span class="cex-comment">// A length, then that many bytes of UTF-8 text.</span></span>
+<span class="cex-line">  name() {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> length = this.u32();</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> end = this.pos + length;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (end &gt; this.bytes.length)</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> Error(<span class="cex-string">&#39;functionNames: a name runs past the end of the file&#39;</span>);</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> text = <span class="cex-keyword">new</span> globalThis.TextDecoder().decode(</span>
+<span class="cex-line">      this.bytes.subarray(this.pos, end),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    this.pos = end;</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> text;</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>u32</code> adds each byte&#39;s low 7 bits at the place <code>shift</code> gives them, 0, then 7, then 14, and goes on while the byte&#39;s top bit, <code>0x80</code>, is set. Take <code>B8 02</code>: <code>B8 &amp; 0x7f</code> is 56, added at shift 0, and the top bit is set; <code>02</code> adds 2 at shift 7, which is 256, and its top bit is clear, so the number is 312. Multiplying by <code>2 ** shift</code> keeps the arithmetic in ordinary numbers. JavaScript&#39;s <code>&lt;&lt;</code> works on 32-bit signed integers, so in a fifth byte, at shift 28, it could turn a large number negative. <code>name()</code> reads a length with <code>u32</code> and decodes that many bytes as text, so every name in the file costs one call.</p>
+<h3 id="walk-the-sections">Walk the sections</h3>
+<p>Replace the <code>sections</code> region:</p>
+<figure class="code-example"><figcaption><strong>functionNames: find the name section</strong><span class="cex-location">examples/names-checkpoint.mjs · sections</span></figcaption><p class="cex-change">Replace the sections region.</p><pre tabindex="0" aria-label="functionNames: find the name section; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-comment">// { [index]: name } for every function the &quot;name&quot; section names; {} without one.</span></span>
+<span class="cex-line"><span class="cex-keyword">export</span> <span class="cex-keyword">function</span> functionNames(bytes) {</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> magic = [<span class="cex-number">0x00</span>, <span class="cex-number">0x61</span>, <span class="cex-number">0x73</span>, <span class="cex-number">0x6d</span>];</span>
+<span class="cex-line">  <span class="cex-keyword">if</span> (!magic.every((b, i) =&gt; bytes[i] === b))</span>
+<span class="cex-line">    <span class="cex-keyword">throw</span> Error(<span class="cex-string">&#39;functionNames: not a WebAssembly file&#39;</span>);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> r = <span class="cex-keyword">new</span> Reader(bytes, <span class="cex-number">8</span>);</span>
+<span class="cex-line">  while (r.pos &lt; bytes.length) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> id = r.byte();</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> size = r.u32();</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> end = r.pos + size;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (id === <span class="cex-number">0</span> &amp;&amp; r.name() === <span class="cex-string">&#39;name&#39;</span>) <span class="cex-keyword">return</span> functionSubsection(r, end);</span>
+<span class="cex-line">    r.pos = end;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> {};</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>After the 8 fixed bytes, each section starts with its id and size, so <code>end</code> is where the next section begins. A section that isn&#39;t custom, or a custom section with another name, is skipped by setting <code>pos</code> to <code>end</code> without reading its contents. Only custom sections have a name to read, which is why the test reads it only when <code>id === 0</code>. A file without a name section runs out of sections and gets <code>{}</code>.</p>
+<h3 id="read-subsection-1">Read subsection 1</h3>
+<p>Replace the <code>subsections</code> region:</p>
+<figure class="code-example"><figcaption><strong>Every function&#39;s index and name</strong><span class="cex-location">examples/names-checkpoint.mjs · subsections</span></figcaption><p class="cex-change">Replace the subsections region.</p><pre tabindex="0" aria-label="Every function&#39;s index and name; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-comment">// Inside the name section: subsections, each an id byte, a size and contents.</span></span>
+<span class="cex-line"><span class="cex-comment">// Subsection 1 is a count, then each function&#39;s index and name; skip the rest.</span></span>
+<span class="cex-line"><span class="cex-keyword">function</span> functionSubsection(r, end) {</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> names = {};</span>
+<span class="cex-line">  while (r.pos &lt; end) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> id = r.byte();</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> size = r.u32();</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> next = r.pos + size;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (id === <span class="cex-number">1</span>) {</span>
+<span class="cex-line">      <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> n = r.u32(); n &gt; <span class="cex-number">0</span>; n--) {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> index = r.u32();</span>
+<span class="cex-line">        names[index] = r.name();</span>
+<span class="cex-line">      }</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    r.pos = next;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> names;</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Each subsection is found the way sections were, by its id and size, and <code>next</code> is where the following one begins. Subsection 1 is read entry by entry: an index, then a name. Every other subsection, the module&#39;s name in subsection 0 among them, is skipped by jumping to <code>next</code>. Setting <code>pos</code> to <code>next</code> after subsection 1 too means the next subsection is read from where it really starts, even if subsection 1 held more than its entries. The order of subsections doesn&#39;t matter, which is what the check&#39;s small file tests.</p>
+<p>Read Lob&#39;s names with your <code>functionNames</code>:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node examples/show-names.mjs project</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>The names your functionNames reads</strong><span class="cex-location">examples/names-output.txt</span></figcaption><pre tabindex="0" aria-label="The names your functionNames reads; code scrolls horizontally when needed"><code><span class="cex-line">targets/lob-names.wasm: 7271 bytes, 29 names</span>
+<span class="cex-line">  0 server_round    1 js_cos          2 js_sin          3 server_wind</span>
+<span class="cex-line">  4 game_init       5 new_round       6 update_hud      7 game_key</span>
+<span class="cex-line">  8 game_tick       9 r_angle         10 r_power        11 r_cannon_x</span>
+<span class="cex-line">  12 r_target_x     13 r_flying       14 r_px           15 r_py</span>
+<span class="cex-line">  16 r_impact_x     17 r_impact_age   18 r_result       19 r_wind_level</span>
+<span class="cex-line">  20 r_cloud        21 r_trail_ptr    22 r_trail_n      23 r_trail_head</span>
+<span class="cex-line">  24 r_line_ptr     25 r_msg_ptr      26 r_help_ptr     27 r_mode</span>
+<span class="cex-line">  28 r_state</span>
+<span class="cex-line">targets/lob.wasm: 6682 bytes, no name section, so {}</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The named build is 589 bytes longer than the stripped one, and those bytes are the name section. The stripped build has no section called <code>name</code>, so the walk reaches the end of the file and returns <code>{}</code>. Most of these names were already in the listing. The game exports <code>game_init</code>, <code>game_key</code>, <code>game_tick</code> and every getter under these names, and it imports <code>server_round</code> and <code>server_wind</code> under theirs. Only the name section holds the names of the two functions the game doesn&#39;t export, <code>new_round</code> and <code>update_hud</code>, and the C names of the two imports the game asks for as <code>cos</code> and <code>sin</code>. In <code>debug.mjs</code>, <code>break update_hud</code> now finds function 6 by its name.</p>
+<h2 id="the-call-stack">The call stack</h2>
+<p>Your machine already keeps the call stack in <code>state.frames</code>, outermost first, each with the function it&#39;s running and the <code>at</code> of its next instruction. <code>stack()</code> returns <code>[{ func, at }]</code> for those frames at the debugger&#39;s current position, or <code>[]</code> between calls. A call to an import pushes no frame, because the import runs outside the machine and returns at once.</p>
+<p>In <code>debug.mjs</code>, <code>stack</code> prints the frames with names, and <code>where</code> names the instruction that runs next.</p>
+<p>Question 12b: you stop where <code>update_hud</code>, function 6, begins during a call to <code>game_tick</code>. How many entries does <code>stack()</code> return? Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 12b YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>A stop where <code>update_hud</code> begins comes after <code>game_tick</code>&#39;s <code>call</code> instruction has pushed <code>update_hud</code>&#39;s frame, so that frame counts. A call that comes from outside the game, from the recording rather than from another function, works differently. It begins between calls, so at a stop where it begins, its instruction 0 runs next but no function is running yet, and <code>stack()</code> is <code>[]</code>.</p>
+<h3 id="list-the-frames">List the frames</h3>
+<p>In <code>project/debugger.mjs</code>, find the <code>stack</code> region near the end of the class. It holds the stub of <code>stack()</code>, which throws &quot;stack: not written yet (lesson 12)&quot;. Replace everything between <code>// region: stack</code> and <code>// endregion: stack</code> with the listing below. If your file has no such markers, because you wrote it without lesson 10&#39;s starter, replace your <code>stack()</code> stub with the listing and add the two marker lines around it:</p>
+<figure class="code-example"><figcaption><strong>stack(): the frames, outermost first</strong><span class="cex-location">examples/stack-checkpoint.mjs · stack</span></figcaption><p class="cex-change">Replace the stack region, which holds the stack() stub.</p><pre tabindex="0" aria-label="stack(): the frames, outermost first; code scrolls horizontally when needed"><code><span class="cex-line">  stack() {</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> this.machine.state.frames.map((f) =&gt; ({ func: f.func, at: f.at }));</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The frames are copied into new objects, so a caller that changes what <code>stack()</code> returned can&#39;t change the machine. Each frame&#39;s <code>at</code> is the instruction that frame runs next: the innermost frame&#39;s is the instruction that runs next in the whole run, and a caller&#39;s is the instruction after its <code>call</code>, where it carries on when the call returns. Between calls the machine has no frames, so the list is empty, which is what <code>API.md</code> asks.</p>
+<p>Check <code>12.stack</code> compares your stacks with a fresh machine at many positions.</p>
+<h2 id="stopping-at-a-function">Stopping at a function</h2>
+<p>A <strong>function stop</strong> fires at a position where a call to that function begins, meaning the next instruction is the function&#39;s instruction 0. Add <code>functions: [index]</code> to the stops <code>continue</code> and <code>continueBack</code> understand, with <code>reason: &#39;function&#39;</code>. In <code>debug.mjs</code>, <code>break update_hud</code> adds a function stop by name, and <code>break 6:120</code> a breakpoint at one instruction.</p>
+<p>Two places in lesson 10&#39;s <code>debugger.mjs</code> need the change. <code>stopHere</code>, in the <code>stops</code> region, tests the stops at each position, so it needs the function test. And <code>continueBack</code>, in the <code>search-back</code> region, decides which stretches it may skip with <code>const watchesOnly = !stops.breakpoints?.length;</code>. A function stop, like a breakpoint, can fire in a stretch that writes nothing, so that line must count function stops too. Left as it is, a <code>continueBack</code> given only <code>functions</code> counts as &quot;watches only&quot; with no watched pages, skips every stretch and reports <code>&#39;start&#39;</code>.</p>
+<p>Your first <code>node lab.mjs check project 12</code> doesn&#39;t say &quot;not written yet&quot; for <code>12.function-stops</code>. Lesson 10&#39;s <code>continue</code> and <code>continueBack</code> already exist and run; they ignore a <code>functions</code> list they don&#39;t know, so the check gets a real answer from them, such as <code>{ reason: &quot;end&quot; }</code> from <code>continue</code>, and prints it beside the stop it expected.</p>
+<h3 id="test-for-a-function-stop">Test for a function stop</h3>
+<p>Tour the supplied <code>nextInstruction</code> again, just above <code>where</code> in your <code>debugger.mjs</code>. During a call it answers the innermost frame&#39;s next instruction, and between calls the first instruction of the next call, <code>{ func: this.callFunc[calls], at: 0 }</code>. So the instruction a call begins with is visible at the position before it runs, whether the call comes from another function or from the recording.</p>
+<p>Replace the <code>stops</code> region. Only the marked lines differ from lesson 10&#39;s:</p>
+<figure class="code-example"><figcaption><strong>stopHere with function stops</strong><span class="cex-location">examples/stack-checkpoint.mjs · stops</span></figcaption><p class="cex-change">Replace the stops region; the marked lines are new.</p><pre tabindex="0" aria-label="stopHere with function stops; code scrolls horizontally when needed"><code><span class="cex-line cex-focus">  stopHere({ breakpoints = [], watches = [], functions = [] }, event) {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (event &amp;&amp; event.writes.some((w) =&gt; changesWatched(w, watches)))</span>
+<span class="cex-line">      <span class="cex-keyword">return</span> <span class="cex-string">&#39;watchpoint&#39;</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> next = this.nextInstruction();</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (</span>
+<span class="cex-line">      next &amp;&amp;</span>
+<span class="cex-line">      breakpoints.some((b) =&gt; b.func === next.func &amp;&amp; b.at === next.at)</span>
+<span class="cex-line">    )</span>
+<span class="cex-line">      <span class="cex-keyword">return</span> <span class="cex-string">&#39;breakpoint&#39;</span>;</span>
+<span class="cex-line cex-focus">    <span class="cex-comment">// A function&#39;s instruction 0 runs next only where a call to it begins.</span></span>
+<span class="cex-line cex-focus">    <span class="cex-keyword">if</span> (next &amp;&amp; next.at === <span class="cex-number">0</span> &amp;&amp; functions.includes(next.func))</span>
+<span class="cex-line cex-focus">      <span class="cex-keyword">return</span> <span class="cex-string">&#39;function&#39;</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  continue(stops = {}) {</span>
+<span class="cex-line">    while (this.tick &lt; this.end) {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> event = this.forward();</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> reason = this.stopHere(stops, event);</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (reason) <span class="cex-keyword">return</span> { reason, tick: this.tick };</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> { reason: <span class="cex-string">&#39;end&#39;</span>, tick: this.tick };</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"><span class="cex-emphasis">Emphasized lines: 1, 10, 11, 12.</span> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>stopHere</code> now takes <code>functions</code>, defaulting to none, so every caller from lesson 10 still works. The function test looks forward, like the breakpoint test, at the instruction that runs next. Both halves of its condition matter: the function must be one of the stopped ones, and its instruction 0 must be next. Instruction 0 of a function runs next only where a call to it begins, because a branch inside a function goes either forward to the end of a block or back to the first instruction inside a <code>loop</code>, after the <code>loop</code> instruction itself, and neither is instruction 0. <code>continue</code> is unchanged: it already asks <code>stopHere</code> after every instruction.</p>
+<p>Then replace the <code>search-back</code> region. Only the marked line differs from lesson 10&#39;s:</p>
+<figure class="code-example"><figcaption><strong>continueBack skips stretches only when every stop is a watch</strong><span class="cex-location">examples/stack-checkpoint.mjs · search-back</span></figcaption><p class="cex-change">Replace the search-back region; the marked line is changed.</p><pre tabindex="0" aria-label="continueBack skips stretches only when every stop is a watch; code scrolls horizontally when needed"><code><span class="cex-line">  continueBack(stops = {}) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> here = this.tick;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (here === <span class="cex-number">0</span>) <span class="cex-keyword">return</span> { reason: <span class="cex-string">&#39;start&#39;</span>, tick: <span class="cex-number">0</span> };</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> pages = (stops.watches ?? []).flatMap((w) =&gt;</span>
+<span class="cex-line">      pagesOf(w.address, w.size ?? <span class="cex-number">1</span>, this.pageSize),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line cex-focus">    <span class="cex-keyword">const</span> watchesOnly = !stops.breakpoints?.length &amp;&amp; !stops.functions?.length;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> found = this.searchBack(</span>
+<span class="cex-line">      here - <span class="cex-number">1</span>,</span>
+<span class="cex-line">      (event) =&gt; {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> reason = this.stopHere(stops, event);</span>
+<span class="cex-line">        <span class="cex-keyword">return</span> reason ? { reason, tick: this.tick } : <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">      },</span>
+<span class="cex-line">      (i) =&gt; !watchesOnly || this.mayHaveWritten(i, pages),</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (found) {</span>
+<span class="cex-line">      this.moveTo(found.tick);</span>
+<span class="cex-line">      <span class="cex-keyword">return</span> found;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    this.moveTo(<span class="cex-number">0</span>);</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> { reason: this.stopHere(stops, <span class="cex-keyword">null</span>) ?? <span class="cex-string">&#39;start&#39;</span>, tick: <span class="cex-number">0</span> };</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  searchBack(last, test, mayMatch = () =&gt; <span class="cex-keyword">true</span>) {</span>
+<span class="cex-line">    <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> i = Math.ceil(last / this.every) - <span class="cex-number">1</span>; i &gt;= <span class="cex-number">0</span>; i--) {</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (!mayMatch(i)) continue;</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> snapshot = this.snapshots[i];</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> stop = Math.min(last, snapshot.tick + this.every);</span>
+<span class="cex-line">      this.restore(snapshot);</span>
+<span class="cex-line">      <span class="cex-keyword">let</span> found = <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">      while (this.tick &lt; stop) {</span>
+<span class="cex-line">        <span class="cex-keyword">const</span> finding = test(this.forward());</span>
+<span class="cex-line">        <span class="cex-keyword">if</span> (finding) found = finding;</span>
+<span class="cex-line">      }</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (found) <span class="cex-keyword">return</span> found;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line"></span>
+<span class="cex-line">  mayHaveWritten(i, pages) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> a = this.snapshots[i];</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> b = this.snapshots[i + <span class="cex-number">1</span>];</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> !b || pages.some((p) =&gt; a.pages[p] !== b.pages[p]);</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"><span class="cex-emphasis">Emphasized lines: 7.</span> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>watchesOnly</code> decides whether <code>continueBack</code> may skip a stretch whose watched pages stayed shared. With a function stop present it is now false, so every stretch going back is replayed until one holds a stop, as with a breakpoint. The cost is about the distance to the stop plus up to two stretches, lesson 10&#39;s cost for a breakpoint.</p>
+<h3 id="run-to-the-end-of-the-function">Run to the end of the function</h3>
+<p><code>stepOut()</code> runs forward until the function running now has returned to its caller, that is, until the call stack is shorter than it is now. In <code>debug.mjs</code> it&#39;s <code>finish</code>. Between calls there is no function running. Define what <code>stepOut()</code> does there and say so in a comment.</p>
+<p>Find the <code>step-out</code> region, which holds the stub of <code>stepOut()</code> that throws &quot;stepOut: not written yet (lesson 12)&quot;. Replace everything between <code>// region: step-out</code> and <code>// endregion: step-out</code> with the listing below, or, in a file without those markers, replace your <code>stepOut()</code> stub and add the two marker lines around it:</p>
+<figure class="code-example"><figcaption><strong>stepOut: forward until there are fewer frames</strong><span class="cex-location">examples/stack-checkpoint.mjs · step-out</span></figcaption><p class="cex-change">Replace the step-out region, which holds the stepOut() stub.</p><pre tabindex="0" aria-label="stepOut: forward until there are fewer frames; code scrolls horizontally when needed"><code><span class="cex-line">  <span class="cex-comment">// Forward to the first position with fewer frames than now. Between calls no</span></span>
+<span class="cex-line">  <span class="cex-comment">// function is running, so stepOut runs the whole next call and stops where it</span></span>
+<span class="cex-line">  <span class="cex-comment">// has returned, at the next position between calls. At the end it stays.</span></span>
+<span class="cex-line">  stepOut() {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> depth = this.machine.state.frames.length;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (depth === <span class="cex-number">0</span>) {</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (this.tick &lt; this.end) {</span>
+<span class="cex-line">        do {</span>
+<span class="cex-line">          this.forward();</span>
+<span class="cex-line">        } while (this.machine.running);</span>
+<span class="cex-line">      }</span>
+<span class="cex-line">    } <span class="cex-keyword">else</span> {</span>
+<span class="cex-line">      while (this.machine.state.frames.length &gt;= depth) this.forward();</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> this.tick;</span>
+<span class="cex-line">  }</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Inside a call, <code>stepOut</code> counts the frames now and runs instructions until there are fewer. A deeper call made on the way pushes a frame and pops it again without stopping it, so the stop comes when the current function&#39;s own <code>return</code> or final <code>end</code> pops its frame. The first position with fewer frames is where the caller carries on, or, for the outermost function of a call, the position between calls after it. Between calls, this checkpoint runs the whole next call, the one <code>where()</code> names, and stops where it has returned. Another choice would do, such as refusing or not moving, as long as the comment says which. <code>forward()</code> is lesson 10&#39;s: between calls it begins the next call first. Moving forward replays only the distance moved, so <code>stepOut</code> costs the instructions it runs.</p>
+<p>Checks <code>12.function-stops</code> and <code>12.step-out</code> compare your stops with a scan of every instruction. <code>12.function-stops</code> seeks to positions spread over a recording and from each asks both <code>continue</code> and <code>continueBack</code> for a function stop. <code>12.step-out</code> seeks to positions inside calls and calls <code>stepOut</code>, which counts frames and passes no stops to the debugger. <code>12.stack</code> seeks and compares <code>stack()</code> with a fresh machine, and <code>12.names</code> and <code>12.lines</code> call only <code>names.mjs</code>.</p>
+<p>All four changes to <code>debugger.mjs</code> are in. <code>examples/stack-session.txt</code> is a script of <code>debug.mjs</code> commands that goes to the first game frame of lesson 09&#39;s recording, stops where <code>update_hud</code> begins, prints the stack, runs to the end of <code>update_hud</code> with <code>finish</code>, and then continues backward to the stop again:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node debug.mjs project project/run42.json examples/stack-session.txt</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>A function stop, the stack and finish</strong><span class="cex-location">examples/stack-session-output.txt</span></figcaption><pre tabindex="0" aria-label="A function stop, the stack and finish; code scrolls horizontally when needed"><code><span class="cex-line">project/run42.json: 759 calls, 652927 instructions. Type help for commands.</span>
+<span class="cex-line">&gt; call 13</span>
+<span class="cex-line">tick 84111, call 13 (game_tick), next: function 8 (game_tick), instruction 0: global.get 0</span>
+<span class="cex-line">&gt; break update_hud</span>
+<span class="cex-line">stops: {&quot;breakpoints&quot;:[],&quot;watches&quot;:[],&quot;functions&quot;:[6]}</span>
+<span class="cex-line">&gt; continue</span>
+<span class="cex-line">function at tick 84157, call 13 (game_tick), next: function 6 (update_hud), instruction 0: global.get 0</span>
+<span class="cex-line">&gt; stack</span>
+<span class="cex-line">0: function 8 (game_tick), instruction 570: local.get 0</span>
+<span class="cex-line">1: function 6 (update_hud), instruction 0: global.get 0</span>
+<span class="cex-line">&gt; finish</span>
+<span class="cex-line">tick 84827, call 13 (game_tick), next: function 8 (game_tick), instruction 570: local.get 0</span>
+<span class="cex-line">&gt; stack</span>
+<span class="cex-line">0: function 8 (game_tick), instruction 570: local.get 0</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">659299 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span>
+<span class="cex-line">&gt; rcontinue</span>
+<span class="cex-line">function at tick 84157, call 13 (game_tick), next: function 6 (update_hud), instruction 0: global.get 0</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">660282 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The function stop fires with <code>update_hud</code>&#39;s instruction 0 next, and the stack shows <code>game_tick</code> waiting at its instruction 570, the one after its <code>call</code>. <code>finish</code> stops where <code>update_hud</code>&#39;s frame has gone and <code>game_tick</code> carries on at instruction 570, 670 instructions after the stop. <code>rcontinue</code> goes back to the same stop. The two <code>cost</code> lines differ by 983: 826 instructions to replay the stretch from the snapshot at 84,000 up to the position before the one <code>rcontinue</code> started from, where it found the stop, and 157 to move back to the stop from that snapshot. The first <code>cost</code> also counts the replay your Debugger made when it opened the recording, and the seeks <code>call 13</code> made.</p>
+<h2 id="lines">Lines</h2>
+<p>The compiler can also write a <strong>line table</strong>, which gives, for each stretch of code, the line of the C source it came from. It lives in <code>.debug_line</code>, one of the sections of DWARF, the standard format for debugging information, which only a build with debugging information carries. No file this course ships carries DWARF, because DWARF also records the layout of every C struct, which is what Sightline asks its learners to work out. The course decoded the line table of a debugging build when it built the targets and saved its rows in <code>lines/lob.json</code>: <code>{ offset, line, column }</code>, sorted by <code>offset</code>. DWARF counts a WebAssembly address from the start of the code section&#39;s contents, after its id byte and size (the code section holds the functions&#39; instructions, and the listing records that start as <code>codeSectionStart</code>). The course added that start, so <code>offset</code> is a file offset like the listing&#39;s <code>offsets</code>, where <code>offsets[k]</code> is the file offset of instruction k.</p>
+<p>An instruction belongs to the last row at or before its offset. <code>lineAt(lines, offset)</code> finds that row with a binary search and returns <code>{ line, column }</code>, or <code>null</code> before the first row.</p>
+<p>Some rows say line 0. That is DWARF&#39;s way of saying the compiler made this code without a line of its own, and 561 of Lob&#39;s 2,806 instructions fall on such rows, among them instructions of loop bodies the compiler unrolled, writing the body out several times in a row. In lesson 08&#39;s clearing loop, the <code>local.get</code> and <code>i32.const</code> that begin each copy after the first fall on line 0. <code>debug.mjs</code> prints &quot;no line&quot; for any instruction on a line-0 row. DWARF also marks the end of each function&#39;s rows with an end-of-sequence row. The course kept those as rows of line 0 at the end of each function&#39;s code, so the last line of one function never covers the start of the next.</p>
+<p>The C source isn&#39;t given, so a line number is a label rather than a place you can read. It still groups instructions into statements. An assignment compiled to eight instructions gives all eight one line, and comparing lines is how a debugger steps by line.</p>
+<p>Here are five rows of <code>lines/lob.json</code>, around the end of the loop of lesson 08 that clears memory in <code>game_init</code>:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">offset  line  column</span>
+<span class="cex-line">   555   259      52</span>
+<span class="cex-line">   561     0      52</span>
+<span class="cex-line">   565   259      26</span>
+<span class="cex-line">   566   259       3</span>
+<span class="cex-line">   571   260       5</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 12c: instruction 47 of <code>game_init</code>, the <code>br_if 0</code> that closes that loop, is at file offset 568. What line does <code>lineAt</code> give it? Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 12c YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<h3 id="find-the-row">Find the row</h3>
+<p>Replace the <code>line-at</code> region of <code>project/names.mjs</code>:</p>
+<figure class="code-example"><figcaption><strong>lineAt: the last row at or before an offset</strong><span class="cex-location">examples/names-checkpoint.mjs · line-at</span></figcaption><p class="cex-change">Replace the line-at region.</p><pre tabindex="0" aria-label="lineAt: the last row at or before an offset; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-comment">// { line, column } of the last row at or before `offset`, or null when every</span></span>
+<span class="cex-line"><span class="cex-comment">// row comes after it. Rows are sorted by offset.</span></span>
+<span class="cex-line"><span class="cex-keyword">export</span> <span class="cex-keyword">function</span> lineAt(lines, offset) {</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> lo = <span class="cex-number">0</span>;</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> hi = lines.length;</span>
+<span class="cex-line">  <span class="cex-comment">// Rows before lo are at or before offset; rows from hi on come after it.</span></span>
+<span class="cex-line">  while (lo &lt; hi) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> mid = (lo + hi) &gt;&gt; <span class="cex-number">1</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (lines[mid].offset &lt;= offset) lo = mid + <span class="cex-number">1</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">else</span> hi = mid;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">if</span> (lo === <span class="cex-number">0</span>) <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> { line: lines[lo - <span class="cex-number">1</span>].line, column: lines[lo - <span class="cex-number">1</span>].column };</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The search keeps one rule true as <code>lo</code> and <code>hi</code> close in: every row before <code>lo</code> is at or before <code>offset</code>, and every row from <code>hi</code> on comes after it. When they meet, <code>lo</code> is the first row past <code>offset</code>, so the row just before it is the answer. When <code>lo</code> is still 0, every row comes after the offset and there is no line. Lob&#39;s table has 1,050 rows, so a question takes at most 11 comparisons. A row of line 0 is returned like any other; deciding what it means is left to the caller, as <code>debug.mjs</code> does.</p>
+<p>Check <code>12.lines</code> asks <code>lineAt</code> about every instruction of Lob and compares with the rows.</p>
+<p><code>debug.mjs</code> calls your <code>lineAt</code> from its supplied <code>describe</code> function, which every command uses to print an instruction. Tour it near the top of <code>debug.mjs</code>: it looks up the instruction&#39;s file offset in the listing, <code>f.offsets[at]</code>, asks <code>lineOf</code>, which calls your <code>lineAt</code>, for the row, and adds <code>[line N]</code> after the instruction, or <code>[no line]</code> for a row of line 0, beside the name your <code>functionNames</code> gave. Run the same script again:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node debug.mjs project project/run42.json examples/stack-session.txt</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>The same session, with lines</strong><span class="cex-location">examples/lines-session-output.txt</span></figcaption><pre tabindex="0" aria-label="The same session, with lines; code scrolls horizontally when needed"><code><span class="cex-line">project/run42.json: 759 calls, 652927 instructions. Type help for commands.</span>
+<span class="cex-line">&gt; call 13</span>
+<span class="cex-line">tick 84111, call 13 (game_tick), next: function 8 (game_tick), instruction 0: global.get 0  [line 306]</span>
+<span class="cex-line">&gt; break update_hud</span>
+<span class="cex-line">stops: {&quot;breakpoints&quot;:[],&quot;watches&quot;:[],&quot;functions&quot;:[6]}</span>
+<span class="cex-line">&gt; continue</span>
+<span class="cex-line">function at tick 84157, call 13 (game_tick), next: function 6 (update_hud), instruction 0: global.get 0  [line 136]</span>
+<span class="cex-line">&gt; stack</span>
+<span class="cex-line">0: function 8 (game_tick), instruction 570: local.get 0  [line 335]</span>
+<span class="cex-line">1: function 6 (update_hud), instruction 0: global.get 0  [line 136]</span>
+<span class="cex-line">&gt; finish</span>
+<span class="cex-line">tick 84827, call 13 (game_tick), next: function 8 (game_tick), instruction 570: local.get 0  [line 335]</span>
+<span class="cex-line">&gt; stack</span>
+<span class="cex-line">0: function 8 (game_tick), instruction 570: local.get 0  [line 335]</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">659299 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span>
+<span class="cex-line">&gt; rcontinue</span>
+<span class="cex-line">function at tick 84157, call 13 (game_tick), next: function 6 (update_hud), instruction 0: global.get 0  [line 136]</span>
+<span class="cex-line">&gt; cost</span>
+<span class="cex-line">660282 instructions run by your machine so far, 652927 of them while your Debugger opened the recording</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Every instruction now carries its line. <code>game_tick</code>&#39;s instruction 570, where it carries on after <code>update_hud</code> returns, is on line 335, a statement after the one that called <code>update_hud</code>. The run, the stops and the costs are the same as before: reading lines runs nothing.</p>
+<p>Every region of both files is filled. Run the unit&#39;s checks, describing what you did:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># After filling the type-in route&#39;s starter and your debugger from the listings:</span>
+<span class="cex-line">node lab.mjs check project 12 --help-used &quot;filled four names regions and four debugger changes from chapter listings&quot;</span>
+<span class="cex-line"># After following the supplied route:</span>
+<span class="cex-line">node lab.mjs check project 12 --help-used &quot;supplied names and stack checkpoints; followed the explanations and tours&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>All 5 checks should pass. If one fails, its first mismatch names the section to reread. Keep the failing attempt and your explanation before you edit.</p>
+<h2 id="read-a-stack">Read a stack</h2>
+<p>Open lesson 09&#39;s recording in <code>debug.mjs</code>, <code>break new_round</code>, and at each stop print the stack with <code>stack</code>. <code>continue</code> takes you to the next round. At one stop, <code>finish</code> and print the stack again. As in lesson 10, you can type these commands, or put them in a file, one per line, and pass it as the last argument, for a session with no keyboard. Write in <code>project/report.md</code> which call started each round, by index, and which function called <code>new_round</code> each time.</p>
+<h2 id="stop-anywhere-in-a-function-then-repair-it">Stop anywhere in a function, then repair it</h2>
+<p>In your project only, take the first half out of the function test in <code>stopHere</code>, so that it reads:</p>
+<figure class="code-example"><figcaption><strong>JavaScript</strong></figcaption><pre tabindex="0" aria-label="JavaScript; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">if</span> (next &amp;&amp; functions.includes(next.func))</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 12d: with this change, how many of unit 12&#39;s five checks fail? Before you run anything, write in <code>project/report.md</code> which ones you expect to fail and why, and where the <code>rcontinue</code> in <code>examples/stack-session.txt</code> will stop now, then commit the number. Then run the check with <code>--help-used</code> describing this prescribed change, and run the session again:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 12d YOUR_ANSWER</span>
+<span class="cex-line">node lab.mjs check project 12 --help-used &quot;prescribed change: a function stop at any instruction of the function&quot;</span>
+<span class="cex-line">node debug.mjs project project/run42.json examples/stack-session.txt</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Compare the checks that failed, and where <code>rcontinue</code> stopped, with what the lab said after your prediction. Read the first failure&#39;s position and the one it expected. Explain in <code>project/report.md</code> why a backward search and a forward search can differ under this change. Put back <code>next.at === 0 &amp;&amp;</code>, rerun the check and keep both attempts. This change is guided practice; the new application below asks for behavior none of these listings implements.</p>
+<h2 id="use-it-on-a-new-case-step-by-line">Use it on a new case: step by line</h2>
+<p><code>step</code> moves one instruction, and <code>finish</code> a whole function. A person reading C wants a step between the two: run to the next line of the function they&#39;re in, stepping over any function it calls, as gdb&#39;s <code>next</code> does. Write <code>nextLine(debugger, program, lines)</code> in <code>project/next-line.mjs</code>, which both route commands created. If you didn&#39;t use them, copy <code>starter/next-line.mjs</code> to <code>project/next-line.mjs</code> first. No finished version is supplied, and none of the listings above does this. Its contract:</p>
+<ul>
+<li><code>program</code> is the listing the debugger replays and <code>lines</code> the rows of <code>lines/lob.json</code>. The line of a position is the line <code>lineAt</code> gives the instruction that runs next there. A row of line 0, or no row at all, counts as no line.</li>
+<li>From the current position, run forward to the first later position where there are fewer frames than at the start, because the current function has returned, or where there are as many frames as at the start and there is a line, different from the start&#39;s line. Leave the debugger standing there and return that position.</li>
+<li>Positions with more frames than at the start are inside functions the current line called, and never end the step, whatever their lines.</li>
+<li>Between calls, the end of the run included, no function is running and there&#39;s no line to step over: throw an error, without moving and without running anything.</li>
+<li>Use only the Debugger&#39;s public surface (<code>tick</code>, <code>end</code>, <code>step</code>, <code>seek</code>, <code>stack</code>, <code>where</code>), the listing&#39;s <code>offsets</code> and your own <code>lineAt</code>, so your function works with any debugger that meets <code>API.md</code>.</li>
+</ul>
+<p>The budget holds for every question the checker asks: a step may run at most the number of instructions it moves forward, plus 2,000. Moving forward one instruction at a time costs exactly the distance, and the 2,000 leave room for one restore from a snapshot and a short replay. A step that replays from position 0, or from far behind, for each instruction doesn&#39;t fit.</p>
+<p>Before you write code, answer two questions in <code>project/report.md</code>. A line calls <code>update_hud</code>, and <code>update_hud</code>&#39;s own instructions carry other lines: what tells you to keep going inside it, and what would go wrong if you compared only lines? A loop whose whole body is on one line jumps back to its start: where does your step stop? Keep that first reasoning. Then run the checker on the unfinished file, implement, and run it again, describing assistance honestly each time:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node examples/check-next-line.mjs project --help-used &quot;initial attempt; nothing written&quot;</span>
+<span class="cex-line">node examples/check-next-line.mjs project --help-used &quot;describe what helped your implementation&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The checker copies <code>machine.mjs</code>, <code>recorder.mjs</code>, <code>debugger.mjs</code>, <code>names.mjs</code>, <code>next-line.mjs</code>, <code>PROJECT.json</code> and your <code>report.md</code> into a new folder under <code>project/attempts/</code> before it runs anything, and saves its results beside them in <code>nline-receipt.json</code>. A failure never replaces an earlier attempt, and <code>node lab.mjs status project</code> lists every attempt under &quot;New-application attempts&quot;. It replays one of unit 10&#39;s check recordings, a run of Lob, once on your machine, keeping the frames and the instruction at every position, and works out each answer from that pass and the line table. It then asks six groups of questions: refusals between calls and at the end; a line followed by another line of the same function; a line that calls a function; the last line of a function; line-0 instructions and a long loop on one line in <code>game_init</code>; and twenty steps in a row through a game frame.</p>
+<p>As a stretch, add a <code>next</code> command to your own copy of <code>debug.mjs</code> that calls <code>nextLine</code>.</p>
+<h2 id="keep-the-working-tool">Keep the working tool</h2>
+<p><code>project/names.mjs</code> now reads function names from a binary&#39;s name section and finds the source line of any instruction, and <code>project/debugger.mjs</code> lists the call stack, stops where a named function begins and runs to the end of the current function. <code>debug.mjs</code> uses them for every instruction it prints and for <code>stack</code>, <code>break NAME</code> and <code>finish</code>. The end-of-unit checkpoints are <code>examples/names-checkpoint.mjs</code> and <code>examples/stack-checkpoint.mjs</code>; recover from them with a new project, as in &quot;Start&quot;, never by copying them over your files. Lesson 13 adds no new code to the debugger: you use it, with your index from lesson 11, to find the planted bug in each of six later builds of the game.</p>
+<h2 id="earlier-ideas-new-cases">Earlier ideas, new cases</h2>
+<p>Question 08d3: <code>f32.convert_i32_u</code> pops the value 16,777,219, which is 2 to the power 24, plus 3. What number does it push?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 08d3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 10a3: in Lob, seed 3, mode 0, the first game frame after <code>game_init</code> writes to 3 of the 32 pages of 4,096 bytes. With pages of 16,384 bytes instead, how many of the 8 pages would it write to?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 10a3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 11c3: in <code>project/run42.json</code>, calls 2 to 12 are presses of the up key, and each adds 1 to the power at <code>g + 4</code>. The game keeps the power XORed with a key at <code>g + 92</code>: <code>game_init</code> stores the key once, 0 in this recording, and stores the starting power, 60, together with the angle in one 8-byte store. How many stores are on the chain of the value stored at <code>g + 4</code> in call 4?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 11c3 YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure></main>
+  <footer><a href="#chapter">Back to the beginning</a> · <a href="13.html">Next: The ladder</a></footer>
+</body>
+</html>

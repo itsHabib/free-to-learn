@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Record and replay · Free to Learn</title>
+  <link rel="stylesheet" href="../public/chapter.css">
+  <link rel="stylesheet" href="../public/code-example.css">
+</head>
+<body>
+  <a class="skip" href="#chapter">Skip to chapter</a>
+  <header class="book-header"><a href="../README.md">Free to Learn · Time-travel debugger, part two</a><span>Unit 09</span></header>
+  <aside class="reading-note">Run terminal commands from the course folder containing <code>lab.mjs</code>. This page works offline; it does not execute or grade your code. <a href="09.md">Read the Markdown source</a>.</aside>
+  <nav aria-label="Chapter contents"><details><summary>In this chapter</summary><ol><li><a href="#start">Start</a></li>
+<li><a href="#what-makes-a-run-repeat">What makes a run repeat</a></li>
+<li><a href="#record">Record</a></li>
+<li><a href="#replay">Replay</a></li>
+<li><a href="#finding-where-a-tampered-replay-first-differs">Finding where a tampered replay first differs</a></li>
+<li><a href="#a-different-tamper">A different tamper</a></li>
+<li><a href="#use-it-on-a-new-case-trim-a-recording">Use it on a new case: trim a recording</a></li>
+<li><a href="#keep-the-working-tool">Keep the working tool</a></li></ol></details></nav>
+  <main id="chapter"><h1 id="09-record-and-replay">09 · Record and replay</h1>
+<p>A debugger that goes backwards replays the run it&#39;s debugging, and Lob can&#39;t be replayed by running it again. With the server defences on, the game asks a server for the wind, and the server&#39;s answers change from run to run. By the end of this lesson your <code>recorder.mjs</code> will record a run, replay it exactly without the server, notice the moment a replay leaves its recording, and find the first instruction at which a tampered recording, a copy with one answer or call changed, parts from the original.</p>
+<p>The tool this lesson mirrors is rr, a debugger for Linux programs that records every input a program receives from outside so the run can be replayed exactly.</p>
+<h2 id="start">Start</h2>
+<p>Run these commands from this course&#39;s directory, in the project you used for lesson 08. Before this lesson your project runs Lob through <code>project/machine.mjs</code>, and <code>project/recorder.mjs</code> is a stub, so <code>node lab.mjs record</code>, <code>replay</code> and <code>diverge</code> stop with &quot;not written yet&quot;. After it, those three commands work on your own code, and lessons 10 and 11 replay the recording you make here.</p>
+<p>Your machine must pass lesson 08&#39;s checks first: <code>node lab.mjs check project 08</code>. If it doesn&#39;t, and you want to go on with this lesson, make a new project from lesson 08&#39;s supplied Machine with <code>node examples/start-chapter.mjs project9 supplied</code> and use <code>project9</code> wherever this lesson says <code>project</code>.</p>
+<p><strong>Code scope:</strong> walk through six marked regions of <code>project/recorder.mjs</code>, 144 lines including blank lines: <code>record</code>, <code>recorded-imports</code>, <code>replay</code>, <code>find-call</code>, <code>run-from</code> and <code>bisect</code>. The file around them is supplied: the module&#39;s two imports, the course&#39;s memory hash and the error class a replay throws when it leaves its recording. The finished file, the end-of-unit checkpoint, is <code>examples/recorder-checkpoint.mjs</code>, 185 lines. Two parts of <code>lab.mjs</code> are toured below, because they decide what the checks and the lab can see of your code. Unit 08&#39;s 647-line Machine checkpoint is supplied for anyone whose machine isn&#39;t finished.</p>
+<p><strong>Time:</strong> allow about 20 to 30 minutes to read and 1.5 to 3 hours to implement, diagnose and try the new application. These are planning estimates, not measured learner times.</p>
+<p>Choose a route. Each command below writes <code>project/recorder.mjs</code> only if the project has none yet, or if it is still the untouched stub that <code>node lab.mjs start</code> made. If you have edited that file, the command refuses and changes nothing.</p>
+<ul>
+<li><strong>Type in the important parts:</strong> <code>node examples/start-recorder.mjs project write</code>. This copies <code>starter/recorder-build.mjs</code>, which has the supplied parts and six unfinished regions. Type or paste each located listing below.</li>
+<li><strong>Start with working code:</strong> <code>node examples/start-recorder.mjs project supplied</code>. This copies <code>examples/recorder-checkpoint.mjs</code>. Follow each explanation and run each command instead of transcribing, then do the failure and repair and the new application. This is supplied implementation, not your own work.</li>
+<li><strong>Use AI for the changes:</strong> start with the type-in route (<code>write</code>). Give the assistant <code>API.md</code>, this lesson and your file, one region at a time. Ask it to explain what each region keeps and why; run and inspect what it writes. Record the actual assistance you used.</li>
+</ul>
+<p>Both routes also create <code>project/trim.mjs</code>, the unfinished new application, if it doesn&#39;t exist yet. Prefer to write the whole recorder from <code>API.md</code> with no listings? Don&#39;t run either command, and fill the stub <code>node lab.mjs start</code> gave you.</p>
+<p>Run the first check with the description matching where you started:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># Type-in route (write), including AI users before requesting changes:</span>
+<span class="cex-line">node lab.mjs check project 09 --help-used &quot;chapter write starter; six regions unfinished&quot;</span>
+<span class="cex-line"># Supplied route:</span>
+<span class="cex-line">node lab.mjs check project 09 --help-used &quot;supplied recorder checkpoint; initial baseline&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The route command records <code>write</code> or <code>supplied</code> in <code>PROJECT.json</code>, and every check receipt keeps it as <code>unit09_start_route</code>. That says where you began, not who wrote your current code; keep using <code>--help-used</code> to say what helped each attempt. The type-in route fails all eight checks with <code>not written yet</code>, and the supplied route passes them. Either result is a baseline, not evidence of understanding.</p>
+<p>Keep the <code>// region: NAME</code> and <code>// endregion: NAME</code> markers. A listing replaces <strong>everything between its matching pair</strong>, including the unfinished function there. The listings omit the marker lines. To recover later without losing edits, make a new project with <code>node examples/start-chapter.mjs project-recovery supplied</code>, then run <code>node examples/start-recorder.mjs project-recovery supplied</code>, and compare its <code>recorder.mjs</code> with yours. Don&#39;t copy the checkpoint over your attempt.</p>
+<h2 id="what-makes-a-run-repeat">What makes a run repeat</h2>
+<p>Make two recordings of the same calls with two different worlds and compare them. The world is the outside the game talks to. <code>makeWorld(seed)</code> answers its imports, and the seed is the server&#39;s own. You&#39;ll make the recordings at the end of the next section, once your <code>record</code> works.</p>
+<p>The two recordings play the same game, seed 5 and mode 1, with the same 759 calls. They differ from the very first call. <code>game_init</code> starts round 1, and round 1 asks the server for its wind level with <code>server_round(1)</code>. World 42 and world 43 answer differently, so memory differs after <code>game_init</code> returns.</p>
+<p>Everything else in a run is fixed: the program, the starting memory and the calls. The only things that can change between two runs of the same calls are the <strong>answers</strong>, the values imports return. So a recording keeps two lists: the calls into the game, in order, and every answer the game received, in order.</p>
+<h2 id="record">Record</h2>
+<p><code>record(program, imports, calls)</code> runs the calls on a new machine. Give the machine imports that call the real ones and push each answer onto a list as it passes: <code>{ name, args, result }</code>. Keep each call&#39;s result, and after each call the memory hash, <code>hashMemory(machine.state.memory)</code> from <code>public/hash.mjs</code>. The whole recording is plain JSON, so it can be saved and read back.</p>
+<h3 id="note-every-answer-as-it-passes">Note every answer as it passes</h3>
+<p>In <code>project/recorder.mjs</code>, replace the <code>record</code> region:</p>
+<figure class="code-example"><figcaption><strong>Record calls, answers, results and hashes</strong><span class="cex-location">examples/recorder-checkpoint.mjs · record</span></figcaption><p class="cex-change">Replace the record region.</p><pre tabindex="0" aria-label="Record calls, answers, results and hashes; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">export</span> <span class="cex-keyword">function</span> record(program, imports, calls) {</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> answers = [];</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> noting = {};</span>
+<span class="cex-line cex-focus">  <span class="cex-keyword">for</span> (<span class="cex-keyword">const</span> { name } <span class="cex-keyword">of</span> program.imports) {</span>
+<span class="cex-line cex-focus">    noting[name] = (...args) =&gt; {</span>
+<span class="cex-line cex-focus">      <span class="cex-keyword">const</span> result = imports[name](...args);</span>
+<span class="cex-line cex-focus">      answers.push({ name, args, result });</span>
+<span class="cex-line cex-focus">      <span class="cex-keyword">return</span> result;</span>
+<span class="cex-line cex-focus">    };</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> machine = <span class="cex-keyword">new</span> Machine(program, noting);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> results = [];</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> hashes = [];</span>
+<span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">const</span> call <span class="cex-keyword">of</span> calls) {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> result = machine.invoke(call.name, call.args);</span>
+<span class="cex-line">    results.push(result === <span class="cex-keyword">undefined</span> ? <span class="cex-keyword">null</span> : result);</span>
+<span class="cex-line">    hashes.push(hashMemory(machine.state.memory));</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> {</span>
+<span class="cex-line">    format: <span class="cex-string">&#39;ttd2-recording-1&#39;</span>,</span>
+<span class="cex-line">    program: program.name,</span>
+<span class="cex-line">    sha256: program.sha256,</span>
+<span class="cex-line">    calls: calls.map((call) =&gt; ({ name: call.name, args: [...call.args] })),</span>
+<span class="cex-line">    results,</span>
+<span class="cex-line">    answers,</span>
+<span class="cex-line">    hashes,</span>
+<span class="cex-line">  };</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"><span class="cex-emphasis">Emphasized lines: 4, 5, 6, 7, 8, 9.</span> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The machine never sees the real imports. It gets <code>noting</code>, one function per import the listing names, and each of those passes the question to the real import, notes the answer and hands it back unchanged. The world is asked exactly once per question, which check <code>09.record</code> counts: asking it a second time to note the answer would move the server on and record an answer the game never got. <code>args</code> is the rest parameter, a fresh plain array, so the recording can keep it.</p>
+<p>The machine is new, so the run starts from the listing&#39;s memory, as every replay will. <code>invoke</code> returns <code>undefined</code> for a function with no result, and JSON has no <code>undefined</code>, so the recording stores <code>null</code>. Each hash is taken after its call returns. The calls are copied, so a caller who later edits its own list doesn&#39;t change the recording.</p>
+<p>Lob&#39;s two-shot recording above holds 759 calls and 277 answers. Question 09a: which of the four imports gave most of those 277 answers? Commit before you make the recording:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 09a YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The memory hash after every call isn&#39;t needed to replay. It costs 64 hex characters per call. In return, a replay can check at every call that its memory still matches the recording, and the last section of this lesson can find a divergence without replaying the original. rr offers a similar check as an option, comparing checksums of a program&#39;s memory as it replays.</p>
+<p>Check <code>09.record</code> compares your recording with an independent run that counts every answer, and <code>09.recording-json</code> round-trips it through <code>JSON.stringify</code>.</p>
+<p>Once <code>record</code> works, make the two recordings of the first section, then look inside them:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs record project --world 42 --out project/run42.json</span>
+<span class="cex-line">node lab.mjs record project --world 43 --out project/run43.json</span>
+<span class="cex-line">node examples/show-recording.mjs project/run42.json project/run43.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>examples/show-recording.mjs</code> prints the size of each recording, its first call and first answer, and the first call after which the two memory hashes differ:</p>
+<figure class="code-example"><figcaption><strong>Two worlds, the same calls</strong><span class="cex-location">examples/recording-output.txt</span></figcaption><pre tabindex="0" aria-label="Two worlds, the same calls; code scrolls horizontally when needed"><code><span class="cex-line">project/run42.json: ttd2-recording-1, program lob</span>
+<span class="cex-line">  759 calls, 277 answers, 759 hashes</span>
+<span class="cex-line">  call 0: game_init(5, 1) returned null; memory hash after it 674f60c95fd31eab...</span>
+<span class="cex-line">  answer 0: server_round(1) returned 1</span>
+<span class="cex-line">project/run43.json: ttd2-recording-1, program lob</span>
+<span class="cex-line">  759 calls, 277 answers, 759 hashes</span>
+<span class="cex-line">  call 0: game_init(5, 1) returned null; memory hash after it 405cce2ea030c094...</span>
+<span class="cex-line">  answer 0: server_round(1) returned -2</span>
+<span class="cex-line">First call whose memory hashes differ: call 0, game_init(5, 1)</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The calls are the same and the first answer is not, so the hashes part after call 0. That is the claim of the first section, read from your own recordings.</p>
+<h2 id="replay">Replay</h2>
+<p><code>replay(program, recording)</code> runs the recording&#39;s calls on a new machine whose imports answer from the recording, in order, without any world. Keep a position in the answers list. When the game calls an import, the next recorded answer must be for the same import with the same arguments. Return its result and move on.</p>
+<p>If it isn&#39;t, the replay has left its recording. The game asked a question the recording can&#39;t answer, and any value you returned would be invented. Throw an error with a <code>divergence</code> field, <code>{ tick, call, reason }</code>. <code>call</code> is the index in <code>recording.calls</code> of the call into the game being replayed, <code>reason</code> says in words what went wrong, and <code>tick</code> is the number of instructions the machine had finished before the call instruction that asked, so that call instruction&#39;s own event would say <code>tick + 1</code>. With <code>check: true</code>, a call whose result or memory hash differs from the recording is a divergence too.</p>
+<h3 id="answer-from-the-recording-or-refuse">Answer from the recording, or refuse</h3>
+<p>Replace the <code>recorded-imports</code> region. It builds the imports a replay gives its machine:</p>
+<figure class="code-example"><figcaption><strong>Imports that answer from a recording</strong><span class="cex-location">examples/recorder-checkpoint.mjs · recorded-imports</span></figcaption><p class="cex-change">Replace the recorded-imports region.</p><pre tabindex="0" aria-label="Imports that answer from a recording; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">export</span> <span class="cex-keyword">function</span> recordedImports(program, recording, machineOf, start = <span class="cex-number">0</span>) {</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> next = start;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> imports = {};</span>
+<span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">const</span> { name } <span class="cex-keyword">of</span> program.imports) {</span>
+<span class="cex-line">    imports[name] = (...args) =&gt; {</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> answer = recording.answers[next];</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> state = machineOf().state;</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> where = { tick: state.tick, call: state.calls - <span class="cex-number">1</span> };</span>
+<span class="cex-line">      <span class="cex-keyword">const</span> asked = <span class="cex-string">`${name}(${args.join(&#39;, &#39;)})`</span>;</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (!answer)</span>
+<span class="cex-line">        <span class="cex-keyword">throw</span> <span class="cex-keyword">new</span> ReplayDivergence({</span>
+<span class="cex-line">          ...where,</span>
+<span class="cex-line">          reason: <span class="cex-string">`the program asked ${asked} after the recording&#39;s last answer`</span>,</span>
+<span class="cex-line">        });</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (</span>
+<span class="cex-line">        answer.name !== name ||</span>
+<span class="cex-line">        answer.args.length !== args.length ||</span>
+<span class="cex-line">        answer.args.some((value, i) =&gt; !Object.<span class="cex-keyword">is</span>(value, args[i]))</span>
+<span class="cex-line">      )</span>
+<span class="cex-line">        <span class="cex-keyword">throw</span> <span class="cex-keyword">new</span> ReplayDivergence({</span>
+<span class="cex-line">          ...where,</span>
+<span class="cex-line">          reason: <span class="cex-string">`the program asked ${asked}, the recording holds ${answer.name}(${answer.args.join(&#39;, &#39;)})`</span>,</span>
+<span class="cex-line">        });</span>
+<span class="cex-line">      next++;</span>
+<span class="cex-line">      <span class="cex-keyword">return</span> answer.result;</span>
+<span class="cex-line">    };</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> { imports, position: () =&gt; next };</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>next</code> is the position in the answers list. It lives in the closure, outside <code>machine.state</code>, which is deliberate: it belongs to this replay, not to the game, and restoring a copy of the game&#39;s state must not move it. <code>position()</code> reports it, and <code>start</code> lets a later search begin answering partway through the recording.</p>
+<p>The imports have to exist before the machine does, because the Machine&#39;s constructor takes them. So they receive <code>machineOf</code>, a function that returns the machine once it has been made, and read the machine&#39;s state only when the game asks. An import runs in the middle of the call instruction&#39;s <code>step</code>. Lesson 08&#39;s Machine adds one to <code>state.tick</code> only after an instruction&#39;s work is done, so at that moment <code>state.tick</code> is the number of instructions finished before the call instruction, the <code>tick</code> the contract asks for. A machine that counts the tick before running the instruction makes every such tick one too high, and check <code>09.replay-questions</code> says so. <code>begin</code> has already counted the call into the game, so its index is <code>state.calls - 1</code>.</p>
+<p><code>Object.is</code> compares each argument exactly, so a <code>sin</code> asked of an angle one part in 2^40 away from the recorded one is still a different question. Check <code>09.replay-questions</code> makes that edit, among others.</p>
+<h3 id="run-the-calls-and-compare">Run the calls and compare</h3>
+<p>Replace the <code>replay</code> region:</p>
+<figure class="code-example"><figcaption><strong>Replay without a world</strong><span class="cex-location">examples/recorder-checkpoint.mjs · replay</span></figcaption><p class="cex-change">Replace the replay region.</p><pre tabindex="0" aria-label="Replay without a world; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">export</span> <span class="cex-keyword">function</span> replay(program, recording, { check = <span class="cex-keyword">true</span> } = {}) {</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> machine;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> answered = recordedImports(program, recording, () =&gt; machine);</span>
+<span class="cex-line">  machine = <span class="cex-keyword">new</span> Machine(program, answered.imports);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> results = [];</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> hashes = [];</span>
+<span class="cex-line">  recording.calls.forEach((call, k) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> value = machine.invoke(call.name, call.args);</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> result = value === <span class="cex-keyword">undefined</span> ? <span class="cex-keyword">null</span> : value;</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> hash = hashMemory(machine.state.memory);</span>
+<span class="cex-line">    results.push(result);</span>
+<span class="cex-line">    hashes.push(hash);</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> where = { tick: machine.state.tick, call: k };</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (check &amp;&amp; !Object.<span class="cex-keyword">is</span>(result, recording.results[k]))</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> <span class="cex-keyword">new</span> ReplayDivergence({</span>
+<span class="cex-line">        ...where,</span>
+<span class="cex-line">        reason: <span class="cex-string">`call ${k} returned ${result}, the recording says ${recording.results[k]}`</span>,</span>
+<span class="cex-line">      });</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (check &amp;&amp; hash !== recording.hashes[k])</span>
+<span class="cex-line">      <span class="cex-keyword">throw</span> <span class="cex-keyword">new</span> ReplayDivergence({</span>
+<span class="cex-line">        ...where,</span>
+<span class="cex-line">        reason: <span class="cex-string">`memory after call ${k} differs from the recording`</span>,</span>
+<span class="cex-line">      });</span>
+<span class="cex-line">  });</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> { machine, results, hashes };</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p><code>machine</code> is declared before the imports are made and assigned after, so the closure passed to <code>recordedImports</code> can return it. A question the recording can&#39;t answer throws from inside <code>invoke</code>, with the tick of the call instruction. A wrong result or hash can only be seen once a call has returned, so that divergence carries the tick at which the call returned. With <code>{ check: false }</code> the replay still refuses an unanswerable question and keeps going past a wrong result or hash. The replay never changes <code>recording</code>, because the debugger in lesson 10 replays one recording many times.</p>
+<p>Tour <code>learnerRecorder</code> in <code>lab.mjs</code> now. Before it imports your <code>recorder.mjs</code>, it wraps <code>Machine.prototype.step</code> from your <code>machine.mjs</code> with a counter, and the checks do the same. That counter is how every instruction count in this lesson is measured, so your recorder must make its machines from the <code>Machine</code> it imports from <code>./machine.mjs</code> and run every instruction through <code>step</code>. <code>invoke</code> does, because it is a loop over <code>step</code>.</p>
+<p>Try it on a recording with one answer&#39;s argument changed. Answers and calls are numbered from 0. In the recording above, the first <code>cos</code> answer is answer 1. Change its argument from 0.8028514385223389 to 0.8128514385223389 and replay the copy:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs tamper project/run42.json --answer 1 --arg 0.01 --out project/edited.json</span>
+<span class="cex-line">node lab.mjs replay project project/edited.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>A replay refuses a question it can&#39;t answer</strong><span class="cex-location">examples/replay-output.txt</span></figcaption><pre tabindex="0" aria-label="A replay refuses a question it can&#39;t answer; code scrolls horizontally when needed"><code><span class="cex-line">Answer 1 (cos) now says it was asked cos(0.8128514385223389), not cos(0.8028514385223389).</span>
+<span class="cex-line">Wrote project/edited.json. Its hashes are still the original&#39;s.</span>
+<span class="cex-line">The replay left its recording at tick 88494, call 19: the program asked cos(0.8028514385223389), the recording holds cos(0.8128514385223389)</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The replay stops at call 19, the key press that fires the first shot, at tick 88,494. The game asks for the cosine of the barrel&#39;s angle, and the recording holds the cosine of another angle. <code>node lab.mjs replay project project/run42.json</code> replays the untouched recording to its end.</p>
+<p>Tour <code>tamperCmd</code> in <code>lab.mjs</code> too. It changes one answer or one call in a copy and writes it out with the original&#39;s hashes untouched, which is why the replay above could compare every call with what the untampered run did.</p>
+<p>Check <code>09.replay</code> replays recordings of Lob and Lob II with no world at all. <code>09.replay-questions</code> edits recordings and expects your error at the right tick and call, and <code>09.replay-check</code> changes a recorded result or hash and expects a divergence only with <code>check: true</code>.</p>
+<h2 id="finding-where-a-tampered-replay-first-differs">Finding where a tampered replay first differs</h2>
+<p><code>tampered</code> is a copy of a recording with one answer changed, and its hashes are still the original&#39;s. After which tick does its replay first have different memory from the original&#39;s?</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs tamper project/run42.json --answer 12 --add 0.25 --out project/tampered.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Answer 12 is the tenth <code>server_wind</code> answer, the wind during one game frame of the first shot&#39;s flight. Changing it changes that game frame&#39;s acceleration, and memory differs from the moment the shell&#39;s new position is stored.</p>
+<p>The only test you have is whole-state equality, where two memories are the same if their hashes are the same. You can only compare hashes at moments you choose, not ask &quot;which instruction made this hash different?&quot; That is the setting for <strong>bisection</strong>. Keep two moments, one where the memories are known equal and one where they are known different, test the moment halfway between, and keep the half where they still change from equal to different.</p>
+<p>Running both replays from tick 0 for every halfway test would cost up to two whole runs per test. The recording&#39;s hashes make it cheaper:</p>
+<ol>
+<li>Replay only the tampered recording, one call at a time, and compare the hash after each call with the original&#39;s recorded hash. The first call whose hash differs is the call where they part. Call it k. Before each call, keep a <code>structuredClone</code> of the state, so that when call k ends different, you hold the state at its start, and that state is the same in both runs, because call k - 1 ended with equal hashes.</li>
+<li>Search inside call k, from the saved state. Two machines started from it, one answering from the original&#39;s answers and one from the tampered ones, run the two versions of the call. Either of these finds the instruction: - <strong>Bisect.</strong> A test at offset t runs each machine t instructions from the saved state and compares their memory hashes. About log2 of the call&#39;s length tests, each replaying up to the whole call twice. - <strong>Step side by side.</strong> Step both machines together and, after each step, compare the bytes either one just wrote. It costs twice the offset of the divergence and finds it exactly, even if the memories later become equal again.</li>
+</ol>
+<p>Inside one call, stepping side by side is the cheaper of the two, and either meets the checks. Bisection wins where only whole states can be compared. Step 1 is that case, because one side of it exists only as recorded hashes, and so is any test you can run only at chosen moments, such as comparing two debugging sessions that are too slow to step together. Bisection also assumes a difference, once made, lasts to the end of the call, and the checks&#39; tampers do.</p>
+<p>For the tampered recording above, step 1 finds call 29, a game frame that runs 796 instructions starting at tick 96,469.</p>
+<p>Question 09b: bisection over the 796 instructions of call 29 starts knowing memory is equal after 0 of them and different after all 796. Each test halves the interval. How many tests does it take, at most, until the two ends are one instruction apart? Commit:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 09b YOUR_ANSWER</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<h3 id="find-the-call-from-the-recorded-hashes">Find the call from the recorded hashes</h3>
+<p>Step 1 goes in the <code>find-call</code> region:</p>
+<figure class="code-example"><figcaption><strong>Replay once, saving each call&#39;s starting state</strong><span class="cex-location">examples/recorder-checkpoint.mjs · find-call</span></figcaption><p class="cex-change">Replace the find-call region.</p><pre tabindex="0" aria-label="Replay once, saving each call&#39;s starting state; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">export</span> <span class="cex-keyword">function</span> firstDivergence(program, original, tampered) {</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> machine;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> answered = recordedImports(program, tampered, () =&gt; machine);</span>
+<span class="cex-line">  machine = <span class="cex-keyword">new</span> Machine(program, answered.imports);</span>
+<span class="cex-line">  <span class="cex-keyword">for</span> (<span class="cex-keyword">let</span> k = <span class="cex-number">0</span>; k &lt; tampered.calls.length; k++) {</span>
+<span class="cex-line cex-focus">    <span class="cex-keyword">const</span> start = globalThis.structuredClone(machine.state);</span>
+<span class="cex-line cex-focus">    <span class="cex-keyword">const</span> answerAt = answered.position();</span>
+<span class="cex-line">    <span class="cex-keyword">let</span> left = <span class="cex-keyword">false</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">try</span> {</span>
+<span class="cex-line">      machine.invoke(tampered.calls[k].name, tampered.calls[k].args);</span>
+<span class="cex-line">    } <span class="cex-keyword">catch</span> (error) {</span>
+<span class="cex-line">      <span class="cex-keyword">if</span> (!(error instanceof ReplayDivergence)) <span class="cex-keyword">throw</span> error;</span>
+<span class="cex-line">      left = <span class="cex-keyword">true</span>;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> same =</span>
+<span class="cex-line">      !left &amp;&amp; hashMemory(machine.state.memory) === original.hashes[k];</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (same) continue;</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> bisectCall(program, original, tampered, k, start, answerAt);</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> <span class="cex-keyword">null</span>;</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"><span class="cex-emphasis">Emphasized lines: 6, 7.</span> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Only the tampered recording is replayed. The original takes part through its hashes alone, which is why this loop costs one replay up to the call where the two part, not two. Copying the state before every call costs memory and time, but it runs no instructions, so the counter doesn&#39;t see it. <code>answerAt</code> is the answer position at the start of the call: the search inside the call has to answer the same questions from the same place in both recordings.</p>
+<p>A tampered replay can also ask a question its recording doesn&#39;t hold, a <code>cos</code> of an angle the tamper changed, for example. That counts as a call that ends different. A key the game ignores leaves the hash equal, so the loop goes on, and a tamper that never changes memory reaches the end and returns <code>null</code>.</p>
+<h3 id="run-one-call-from-a-saved-state">Run one call from a saved state</h3>
+<p>Replace the <code>run-from</code> region:</p>
+<figure class="code-example"><figcaption><strong>Restore, begin and stop after a limit</strong><span class="cex-location">examples/recorder-checkpoint.mjs · run-from</span></figcaption><p class="cex-change">Replace the run-from region.</p><pre tabindex="0" aria-label="Restore, begin and stop after a limit; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">function</span> runFrom(program, recording, k, start, answerAt, limit) {</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> machine;</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> answered = recordedImports(program, recording, () =&gt; machine, answerAt);</span>
+<span class="cex-line">  machine = <span class="cex-keyword">new</span> Machine(program, answered.imports);</span>
+<span class="cex-line cex-focus">  machine.state = globalThis.structuredClone(start);</span>
+<span class="cex-line">  machine.begin(recording.calls[k].name, recording.calls[k].args);</span>
+<span class="cex-line">  <span class="cex-keyword">let</span> ran = <span class="cex-number">0</span>;</span>
+<span class="cex-line">  <span class="cex-keyword">try</span> {</span>
+<span class="cex-line">    while (machine.running &amp;&amp; ran &lt; limit) {</span>
+<span class="cex-line">      machine.step();</span>
+<span class="cex-line">      ran++;</span>
+<span class="cex-line">    }</span>
+<span class="cex-line">  } <span class="cex-keyword">catch</span> (error) {</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (!(error instanceof ReplayDivergence)) <span class="cex-keyword">throw</span> error;</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> { machine, ran, left: <span class="cex-keyword">true</span> };</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> { machine, ran, left: <span class="cex-keyword">false</span> };</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"><span class="cex-emphasis">Emphasized lines: 5.</span> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>This is where lesson 08&#39;s rule pays off: because the machine keeps everything in <code>machine.state</code>, assigning a copy puts a new machine at the exact start of call k. The copy matters again here, because each test runs from the same saved state and must not change it for the next one. <code>begin</code> starts the call and <code>step</code> runs at most <code>limit</code> instructions of it. <code>ran</code> counts instructions that finished, so a question the recording can&#39;t answer stops the run with <code>left</code> set and <code>ran</code> short of the limit.</p>
+<h3 id="bisect-inside-the-call">Bisect inside the call</h3>
+<p>Replace the <code>bisect</code> region:</p>
+<figure class="code-example"><figcaption><strong>Keep one end equal and the other different</strong><span class="cex-location">examples/recorder-checkpoint.mjs · bisect</span></figcaption><p class="cex-change">Replace the bisect region.</p><pre tabindex="0" aria-label="Keep one end equal and the other different; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">function</span> bisectCall(program, original, tampered, k, start, answerAt) {</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> run = (recording, limit) =&gt;</span>
+<span class="cex-line">    runFrom(program, recording, k, start, answerAt, limit);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> a = run(original, Infinity);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> b = run(tampered, Infinity);</span>
+<span class="cex-line">  <span class="cex-keyword">const</span> differs = (t) =&gt; {</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> x = run(original, t);</span>
+<span class="cex-line">    <span class="cex-keyword">const</span> y = run(tampered, t);</span>
+<span class="cex-line">    <span class="cex-keyword">if</span> (y.left &amp;&amp; y.ran &lt; t) <span class="cex-keyword">return</span> <span class="cex-keyword">true</span>;</span>
+<span class="cex-line">    <span class="cex-keyword">return</span> (</span>
+<span class="cex-line">      hashMemory(x.machine.state.memory) !== hashMemory(y.machine.state.memory)</span>
+<span class="cex-line">    );</span>
+<span class="cex-line">  };</span>
+<span class="cex-line cex-focus">  <span class="cex-keyword">let</span> lo = <span class="cex-number">0</span>; <span class="cex-comment">// memory is equal after lo instructions of call k</span></span>
+<span class="cex-line cex-focus">  <span class="cex-keyword">let</span> hi = Math.max(a.ran, b.left ? b.ran + <span class="cex-number">1</span> : b.ran); <span class="cex-comment">// and differs after hi</span></span>
+<span class="cex-line cex-focus">  while (hi - lo &gt; <span class="cex-number">1</span>) {</span>
+<span class="cex-line cex-focus">    <span class="cex-keyword">const</span> mid = (lo + hi) &gt;&gt; <span class="cex-number">1</span>;</span>
+<span class="cex-line cex-focus">    <span class="cex-keyword">if</span> (differs(mid)) hi = mid;</span>
+<span class="cex-line cex-focus">    <span class="cex-keyword">else</span> lo = mid;</span>
+<span class="cex-line">  }</span>
+<span class="cex-line">  <span class="cex-keyword">return</span> start.tick + hi;</span>
+<span class="cex-line">}</span></code></pre><div class="cex-foot"><span class="cex-emphasis">Emphasized lines: 14, 15, 16, 17, 18, 19.</span> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The two first runs measure each version of the call. Memory is equal after 0 instructions, because both start from the same state, and different once both versions have finished, because that is how step 1 chose this call. A tampered run that left its recording counts as different from the instruction that asked, which is why <code>hi</code> is then one more than the instructions it finished. <code>differs(t)</code> runs both versions <code>t</code> instructions from the saved state, and each loop keeps the half whose ends are still equal and different. When the ends are one apart, <code>hi</code> instructions into the call is the first moment memory differs, and the instruction that made it so has the tick <code>start.tick + hi</code>, the tick its own event reports.</p>
+<p>Run the search on the tamper above:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs diverge project project/run42.json project/tampered.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<figure class="code-example"><figcaption><strong>The search and what it ran</strong><span class="cex-location">examples/diverge-output.txt</span></figcaption><pre tabindex="0" aria-label="The search and what it ran; code scrolls horizontally when needed"><code><span class="cex-line">Memory first differs after tick 96568.</span>
+<span class="cex-line">Your firstDivergence ran 101431 instructions.</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The answer for this recording is tick 96,568, where memory first differs 99 instructions into call 29. Your <code>firstDivergence</code> returns 96,568, or <code>null</code> when the two replays never differ, for example when an answer is &quot;changed&quot; to the value it already had.</p>
+<p>The lab prints how many instructions your search ran. The worked solution finds the call from the hashes and then bisects inside it, and runs 101,431 for this case: 97,265 to replay the tampered recording up to the end of call 29, and the rest to run both versions of call 29 and bisect inside it. Stepping side by side inside the call runs fewer, because it costs only twice the distance to the divergence. Bisecting from tick 0 instead, replaying both recordings from the start for every test, takes about 20 tests over the run&#39;s 652,927 instructions, and each test replays both recordings up to the tick it tests.</p>
+<p>Check <code>09.divergence</code> runs tampers whose first differing ticks are known, and compares the tick <code>firstDivergence</code> returns with each. <code>09.divergence-none</code> runs tampers that change no memory, including an answer &quot;changed&quot; to the value it already had, and expects <code>null</code> for each. <code>09.divergence-budget</code> runs late tampers on long runs. For each it first compares the tick <code>firstDivergence</code> returns with the known one, as <code>09.divergence</code> does, and only then counts your instructions, failing a search that replays from the start for every test. <code>09.record</code>, <code>09.recording-json</code>, <code>09.replay</code>, <code>09.replay-questions</code> and <code>09.replay-check</code> call <code>record</code> or <code>replay</code> and never call <code>firstDivergence</code>.</p>
+<p>All six regions are filled. Run the unit&#39;s checks, describing what you did:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line"># After filling the type-in route&#39;s starter from the listings:</span>
+<span class="cex-line">node lab.mjs check project 09 --help-used &quot;filled six regions from chapter listings&quot;</span>
+<span class="cex-line"># After following the supplied route:</span>
+<span class="cex-line">node lab.mjs check project 09 --help-used &quot;supplied recorder checkpoint; followed the explanations and tours&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>All 8 checks should pass. If one fails, its first mismatch names the section to reread. Keep the failing attempt and your explanation before you edit.</p>
+<h3 id="break-the-saved-state-then-repair-it">Break the saved state, then repair it</h3>
+<p>In your project only, change the first line inside the loop of <code>find-call</code> so that it keeps the machine&#39;s own state instead of a copy:</p>
+<figure class="code-example"><figcaption><strong>JavaScript</strong></figcaption><pre tabindex="0" aria-label="JavaScript; code scrolls horizontally when needed"><code><span class="cex-line"><span class="cex-keyword">const</span> start = machine.state;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Question 09d: with this change, how many of the eight checks fail? Before you run anything, write in <code>project/report.md</code> which ones you expect to fail and why, then commit the number. Then run the check with <code>--help-used</code> describing this prescribed change, and run the search again:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 09d YOUR_ANSWER</span>
+<span class="cex-line">node lab.mjs check project 09 --help-used &quot;prescribed change: find-call keeps machine.state without a copy&quot;</span>
+<span class="cex-line">node lab.mjs diverge project project/run42.json project/tampered.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>Compare the checks that failed with what the lab said after your prediction. Compare the tick <code>diverge</code> prints with 96,568 and with the length of call 29. Explain the difference: what does <code>start</code> hold by the time <code>bisectCall</code> reads <code>start.tick</code>, and which state does <code>runFrom</code> restore? Which of the checks only record and replay, and what did they report? Restore the copy, rerun the check and keep both attempts. This change is guided practice; the new application below asks for behavior none of these listings implements.</p>
+<h2 id="a-different-tamper">A different tamper</h2>
+<p>Question 09c: in <code>project/run42.json</code>, call 12 is a key press, the last of eleven presses of up (key 3). Up and down (key 4) change the power, and N (key 6) starts a new round. <code>API.md</code> lists every key under &quot;public/sessions.mjs&quot;. Change call 12 to down with <code>node lab.mjs tamper project/run42.json --call 12 --key 4 --out project/key.json</code>, then predict whether <code>firstDivergence</code> will find a tick inside call 12 or later. Answer <code>inside</code> or <code>later</code>, and commit before you run <code>diverge</code>:</p>
+<figure class="code-example"><figcaption><strong>Observed output</strong></figcaption><pre tabindex="0" aria-label="Observed output; code scrolls horizontally when needed"><code><span class="cex-line">node lab.mjs predict project 09c YOUR_ANSWER</span>
+<span class="cex-line">node lab.mjs diverge project project/run42.json project/key.json</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<h2 id="use-it-on-a-new-case-trim-a-recording">Use it on a new case: trim a recording</h2>
+<p>A short recording that still shows a bug is easier to share and cheaper to replay than the whole run. Write <code>trimRecording(program, recording, n)</code> in <code>project/trim.mjs</code>, which both route commands created. If you didn&#39;t use them, copy <code>starter/trim.mjs</code> to <code>project/trim.mjs</code> first. No finished version is supplied, and none of the listings above does this. Its contract:</p>
+<ul>
+<li><code>n</code> is an integer from 0 to the number of calls in the recording. Refuse any other value with an error before running any instruction.</li>
+<li>Return a new recording of the first <code>n</code> calls: the same <code>format</code>, <code>program</code> and <code>sha256</code>, the first <code>n</code> calls, results and hashes, and exactly the answers the game asked for during those calls, in order. It must equal what <code>record</code> makes when it is given only the first <code>n</code> calls and a fresh copy of the same world.</li>
+<li>Run no more instructions than the first <code>n</code> calls take. Don&#39;t replay the rest of the recording.</li>
+<li>Leave the input unchanged, and share no arrays or objects with it, so editing the trimmed copy can&#39;t change the original.</li>
+<li>You may assume the recording replays without a divergence. Import only from <code>./recorder.mjs</code> and <code>./machine.mjs</code>.</li>
+</ul>
+<p>Before you write code, answer two questions in <code>project/report.md</code>. Why can&#39;t the answers be cut by counting calls, or by looking at the recording alone? If call n - 1 is a game frame with a shell in the air, which side of the cut does its <code>server_wind</code> answer fall on, and how does your code know? Keep that first reasoning. Then run the checker on the unfinished file, implement, and run it again, describing assistance honestly each time:</p>
+<figure class="code-example"><figcaption><strong>Terminal command</strong></figcaption><pre tabindex="0" aria-label="Terminal command; code scrolls horizontally when needed"><code><span class="cex-line">node examples/check-trim.mjs project --help-used &quot;initial attempt; nothing written&quot;</span>
+<span class="cex-line">node examples/check-trim.mjs project --help-used &quot;describe what helped your implementation&quot;</span></code></pre><div class="cex-foot"> Select code to copy. Scroll horizontally if needed.</div></figure>
+<p>The checker copies <code>machine.mjs</code>, <code>recorder.mjs</code>, <code>trim.mjs</code>, <code>PROJECT.json</code> and your <code>report.md</code> into a new folder under <code>project/attempts/</code> before it runs anything, and saves its results beside them in <code>trim-receipt.json</code>. A failure never replaces an earlier attempt, and <code>node lab.mjs status project</code> lists every attempt under &quot;New-application attempts&quot;. It compares your trims with recordings that Node&#39;s own WebAssembly engine makes of the shorter call lists, for Lob cut during a shot&#39;s flight and for Lob II with getter calls, counts your instructions, and replays your trimmed recording with your own <code>replay</code>.</p>
+<p>As a stretch, trim from the other end as well: a recording that starts at call m instead of call 0 needs the machine&#39;s state at the start of call m, not only the calls after it. Lesson 10 keeps those states.</p>
+<h2 id="keep-the-working-tool">Keep the working tool</h2>
+<p><code>project/recorder.mjs</code> now records, replays and finds where two runs part, and the lab&#39;s <code>record</code>, <code>replay</code> and <code>diverge</code> commands run it. Its end-of-unit checkpoint is <code>examples/recorder-checkpoint.mjs</code>; recover from it with a new project, as in &quot;Start&quot;, never by copying it over your file.</p>
+<p>Write the tick your search found and the instructions it ran in <code>project/report.md</code>, beside the numbers from lesson 08&#39;s wall. Lesson 10 keeps snapshots during a replay so that any moment, not only the start of a call, can be reached by replaying a few thousand instructions.</p></main>
+  <footer><a href="#chapter">Back to the beginning</a> · <a href="10.html">Next: Run backwards</a></footer>
+</body>
+</html>

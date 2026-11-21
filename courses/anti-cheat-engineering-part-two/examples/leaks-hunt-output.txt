@@ -1,0 +1,35 @@
+The leak hunt on your view (project/server/view.mjs)
+4 sessions, each client over its own network: an expert player (server seed 13500001), a novice player (server seed 13500002), a player on a slow connection (server seed 13500003), the searching client (server seed 13500004).
+
+Non-interference: 1,231 moments (every 5th tick); at each, every hidden thing changed three ways (setHidden k = 1, 2, 3) on a copy of the game
+  hidden thing      present  changed the message
+  wind                1,231                    0
+  flagSpeed           1,231                    0
+  flagTimer           1,231                    0
+  rng                 1,231                    0
+  flagFraction        1,231                    0
+  shellFraction         376                    0
+  trailFraction         569                    0
+  impactFraction        193                    0
+  cloudFraction       1,231                    0
+  shellVelocity         376                    0
+  present: moments where it exists, so setHidden can change it (a shell must be in the air, an impact
+  mark or a trail on screen); changed the message: moments where one of its three changes gave
+  different bytes.
+
+Encoding search: 6,161 messages, each searched for the hidden values present when it was built (checks/encodings.mjs)
+  value                         searched   found   how it was found (messages)
+  the exact wind                   6,161       0
+  the flag's speed                 6,161       0
+  the random state                 6,161       0
+  the flag's exact x               6,149       0
+  the shell's velocity, vx         1,893       0
+  the shell's velocity, vy         1,893       0
+  searched: messages built while the value existed and could be searched for (a float that is a
+  whole number cannot be told from a drawn number); found: messages holding it in some encoding;
+  how: the encoding and where in the message, with the number of messages.
+
+Bytes per message: 296 on average over 6,161 messages, 699 at most.
+
+No leaks found: no hidden change reached a message, and the search found no hidden value.
+A hunt over these sessions is evidence, not proof; node lab.mjs check project 13 runs the checks.

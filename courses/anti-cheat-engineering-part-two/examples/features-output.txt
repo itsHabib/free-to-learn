@@ -1,0 +1,9 @@
+                   novice     skilled      expert highLatency      jitter  reconnects    searcher
+shots                  12          12          12          12          12          12          12
+hitRate                 0       0.083       0.417       0.167           0           0       0.417
+missMedian        191.230      66.025      17.670      69.865      83.350      80.350      13.400
+fireMedian        115.500          81      73.500      68.500      78.500      76.500          10
+fireSpread             68      42.750      26.250      12.750      34.250      39.500       0.500
+inputsMedian        9.500       8.500       7.500           7           7       9.500           1
+cadenceCV           1.402       1.084       0.876       0.850       1.250       1.111           -
+missLag1           -0.091      -0.431      -0.460      -0.152       0.616      -0.018      -0.563

@@ -1,0 +1,10 @@
+targets/lob-names.wasm: 7271 bytes, 29 names
+  0 server_round    1 js_cos          2 js_sin          3 server_wind
+  4 game_init       5 new_round       6 update_hud      7 game_key
+  8 game_tick       9 r_angle         10 r_power        11 r_cannon_x
+  12 r_target_x     13 r_flying       14 r_px           15 r_py
+  16 r_impact_x     17 r_impact_age   18 r_result       19 r_wind_level
+  20 r_cloud        21 r_trail_ptr    22 r_trail_n      23 r_trail_head
+  24 r_line_ptr     25 r_msg_ptr      26 r_help_ptr     27 r_mode
+  28 r_state
+targets/lob.wasm: 6682 bytes, no name section, so {}

@@ -1,0 +1,20 @@
+The sale as a crash right after write 1 left it: ana [sword lamp] 20, bo [bow] 100; trade:sale-1 pending
+  recover(store) -> ["sale-1"], writing inv:ana, inv:bo, coins:bo, coins:ana, trade:sale-1 done
+  now: ana [lamp] 60, bo [bow sword] 60; trade:sale-1 done
+  recover(store) again -> [], writing nothing
+The sale as a crash right after write 5 left it: ana [lamp] 60, bo [bow sword] 60; trade:sale-1 pending
+  recover(store) -> ["sale-1"], writing inv:ana, inv:bo, coins:bo, coins:ana, trade:sale-1 done
+  now: ana [lamp] 60, bo [bow sword] 60; trade:sale-1 done
+  recover(store) again -> [], writing nothing
+sale-1, Ana sells Bo the sword for 40, with no crash: ok, receipt {"key":"sale-1","seller":"ana","buyer":"bo","item":"sword","price":40}
+  write 1: trade:sale-1 pending
+  write 2: inv:ana ["lamp"]
+  write 3: inv:bo ["bow","sword"]
+  write 4: coins:bo 60
+  write 5: coins:ana 60
+  write 6: trade:sale-1 done
+the same request again: ok, receipt {"key":"sale-1","seller":"ana","buyer":"bo","item":"sword","price":40}, writing nothing
+the same key, price 45: conflict, writing nothing
+A crash right after write 3: ana [lamp] 20, bo [bow sword] 100; trade:sale-1 pending
+  restart, recover(store) -> ["sale-1"]: ana [lamp] 60, bo [bow sword] 60
+  the client's retry: ok, receipt {"key":"sale-1","seller":"ana","buyer":"bo","item":"sword","price":40}

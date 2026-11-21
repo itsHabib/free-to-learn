@@ -1,0 +1,21 @@
+project/run42.json: 759 calls, 652927 instructions. Type help for commands.
+> seek 300000
+tick 300000, call 295 (game_tick), next: function 6, instruction 768: i32.const 0
+> where
+tick 300000, call 295 (game_tick), next: function 6, instruction 768: i32.const 0
+> cost
+652927 instructions run by your machine so far, 652927 of them while your Debugger opened the recording
+> back 1
+tick 299999, call 295 (game_tick), next: function 6, instruction 767: i64.store 0 0
+> cost
+653926 instructions run by your machine so far, 652927 of them while your Debugger opened the recording
+> break 8:0
+stops: {"breakpoints":[{"func":8,"at":0}],"watches":[],"functions":[]}
+> rcontinue
+breakpoint at tick 299502, call 295 (game_tick), next: function 8, instruction 0: global.get 0
+> cost
+655426 instructions run by your machine so far, 652927 of them while your Debugger opened the recording
+> last-write 78112
+tick 69152: function 4, instruction 76: i32.store 2 78112 wrote 4 bytes at 78112
+> cost
+656578 instructions run by your machine so far, 652927 of them while your Debugger opened the recording

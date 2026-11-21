@@ -1,0 +1,11 @@
+a number, not text   refused: text
+201 bytes of spaces  refused: too-long
+not JSON             refused: json
+a JSON list          refused: object
+an extra field       refused: keys
+version 2            parseInput: the field checks are not written yet
+seq 0                parseInput: the field checks are not written yet
+angle 45.5           parseInput: the field checks are not written yet
+power as a string    parseInput: the field checks are not written yet
+fire as a word       parseInput: the field checks are not written yet
+an ordinary aim      parseInput: the field checks are not written yet

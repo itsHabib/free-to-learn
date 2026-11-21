@@ -1,0 +1,44 @@
+Build 1: 241 calls, 265287 instructions. Type help for commands.
+> call 238
+tick 262788, call 238 (game_tick), next: function 8 (game_tick), instruction 0: global.get 0
+> compare
+r_angle        this build 45             lob.wasm 45
+r_power        this build 58             lob.wasm 58
+r_cannon_x     this build 80             lob.wasm 80
+r_target_x     this build 456.575927734375 lob.wasm 456.575927734375
+r_flying       this build 0              lob.wasm 0
+r_px           this build 446.37762451171875 lob.wasm 446.37762451171875
+r_py           this build 0.11890347301959991 lob.wasm 0.11890347301959991
+r_impact_x     this build 446.4408874511719 lob.wasm 446.4408874511719
+r_impact_age   this build 0              lob.wasm 0
+r_result       this build 2              lob.wasm 1   <- differs
+r_wind_level   this build -3             lob.wasm -3
+r_cloud        this build 292.3744812011719 lob.wasm 292.3744812011719
+r_trail_ptr    this build 66024          lob.wasm 65992   <- differs
+r_trail_n      this build 35             lob.wasm 35
+r_trail_head   this build 35             lob.wasm 35
+r_line_ptr     this build 68660          lob.wasm 71976   <- differs
+r_msg_ptr      this build 68224          lob.wasm 72040   <- differs
+r_help_ptr     this build 68260          lob.wasm 72072   <- differs
+r_mode         this build 0              lob.wasm 0
+r_state        this build 65928          lob.wasm 65888   <- differs
+status line    this build "ANGLE 45  POWER 58  WIND -4.5  SCORE 0/2"
+               lob.wasm   "ANGLE 45  POWER 58  WIND -4.5  SCORE 1/2"   <- differs
+message line   this build "SHORT BY 10"
+               lob.wasm   "HIT!"   <- differs
+help text      the same in both builds: "LOB, a tiny artillery range.\nRIGHT raises the barrel and LEFT lowers it (angle 5 to 85).\nUP adds power and DOWN takes it away (power 10 to 100).\nSPACE fires. N starts a new round with a new flag position and new wind.\nLand within 12 paces of the flag to score.\n"
+> seek 261685
+tick 261685, call 237 (game_tick), next: function 8 (game_tick), instruction 305: i32.const 0
+> sources
+stores: 436 on the chain; the newest 8, newest first (sources N shows N, sources all every one):
+  tick 260734: function 8 (game_tick), instruction 539: f32.store 2 52 wrote 4 bytes at 65980
+  tick 260718: function 8 (game_tick), instruction 523: f32.store 2 36 wrote 4 bytes at 65964
+  tick 260709: function 8 (game_tick), instruction 514: f32.store 2 48 wrote 4 bytes at 65976
+  tick 260704: function 8 (game_tick), instruction 509: f32.store 2 608 wrote 4 bytes at 66536
+  tick 259799: function 8 (game_tick), instruction 539: f32.store 2 52 wrote 4 bytes at 65980
+  tick 259783: function 8 (game_tick), instruction 523: f32.store 2 36 wrote 4 bytes at 65964
+  tick 259774: function 8 (game_tick), instruction 514: f32.store 2 48 wrote 4 bytes at 65976
+  tick 259769: function 8 (game_tick), instruction 509: f32.store 2 608 wrote 4 bytes at 66536
+answers: 2 (cos) 3 (sin)
+call arguments: call 0 argument 0
+initial bytes: none

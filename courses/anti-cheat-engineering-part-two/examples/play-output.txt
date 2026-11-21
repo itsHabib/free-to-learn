@@ -1,0 +1,38 @@
+The expert player against your admission and the full view: server seed 1, game seed 2271940361, 30 ms each way + 0..10 ms jitter, stopping after 3 rounds.
+
+ tick  what happened
+    0  round 1 starts: the flag at 846, wind ~
+   15  seq 1      angle 43  power 63         admitted
+   18  seq 2      angle 42  power 66         admitted
+   19  seq 3      angle 41  power 69         admitted
+   23  seq 4      angle 39  power 73         admitted
+   25  seq 5      angle 38  power 75         admitted
+   30  seq 6      angle 35  power 81         admitted
+   34  seq 7      angle 35  power 82         admitted
+   38  seq 8      angle 35  power 79   fire  admitted; the shell is away
+   77  the shell lands at 855: SHORT BY 21
+   97  round 2 starts: the flag at 871, wind <
+  119  seq 9      angle 35  power 80         admitted
+  136  seq 10     angle 35  power 78   fire  admitted; the shell is away
+  174  the shell lands at 788: HIT!
+  194  round 3 starts: the flag at 734, wind >>
+  215  seq 11     angle 35  power 77         admitted
+  221  seq 12     angle 35  power 76         admitted
+  224  seq 13     angle 35  power 75         admitted
+  228  seq 14     angle 35  power 74         admitted
+  232  seq 15     angle 35  power 73         admitted
+  255  seq 16     angle 35  power 60   fire  admitted; the shell is away
+  286  the shell lands at 591: LONG BY 23
+  306  round 4 starts: the flag at 804, wind ~
+  306  stopped: 3 rounds played
+tick: ticks the server had run (50 ms each) when it decided the message, or when the change showed.
+seq, angle, power, fire: the input as your parseInput read it. A message your parseInput refused is shown as sent.
+
+ round  start   shot  angle  power  landing     flag     miss  result  inputs
+     1      0     38     35     79   854.56   875.77   -21.21  short        8
+     2     97    136     35     78   788.33   796.97    -8.65  hit          2
+     3    194    255     35     60   590.84   568.31    22.52  long         6
+start: the tick the round started; shot: the tick its fire was applied, with that angle and power; landing and flag: where
+the shell landed and where the flag was then, in paces; miss: landing minus flag, negative is short; inputs: inputs admitted in the round.
+
+After 306 ticks: round 4, score 1, shots 3, angle 35, power 60.

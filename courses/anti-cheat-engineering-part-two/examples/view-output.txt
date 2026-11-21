@@ -1,0 +1,6 @@
+aiming: 170 bytes (the full view: 484)
+  {"v":1,"tick":11,"ack":1,"round":1,"score":0,"shots":0,"angle":60,"power":35,"wind":">>","flag":634,"shell":null,"trail":[],"impact":null,"message":"ROUND 1","cloud":868}
+in flight: 237 bytes (the full view: 846)
+  {"v":1,"tick":19,"ack":2,"round":1,"score":0,"shots":1,"angle":60,"power":35,"wind":">>","flag":640,"shell":[135,86],"trail":[[96,46],[102,54],[107,61],[113,67],[118,73],[124,78],[129,82],[135,86]],"impact":null,"message":"","cloud":872}
+landed: 428 bytes (the full view: 1614)
+  {"v":1,"tick":42,"ack":2,"round":1,"score":0,"shots":1,"angle":60,"power":35,"wind":">>","flag":658,"shell":null,"trail":[[96,46],[102,54],[107,61],[113,67],[118,73],[124,78],[129,82],[135,86],[141,89],[147,90],[153,92],[159,92],[165,92],[171,91],[177,89],[184,87],[190,83],[197,79],[203,74],[210,69],[216,63],[223,56],[230,48],[237,39],[244,30],[251,20],[258,9]],"impact":{"x":263,"age":9},"message":"SHORT BY 392","cloud":882}

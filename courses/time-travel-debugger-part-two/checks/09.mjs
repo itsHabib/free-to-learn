@@ -355,7 +355,7 @@ export const cases = [
   {
     id: '09.divergence-budget',
     title: 'firstDivergence replays about as much as one replay of the run, not a bisection from the start',
-    requirement: 'On three late tampers, firstDivergence runs at most the budget in instructions (counted as calls to your Machine\'s step). The budget is three times what the worked solution for this course runs: enough to replay the tampered recording once to the call whose hash differs and then search inside that call from a saved state, or to step both recordings side by side once; far too little to bisect the whole run, replaying both recordings from the start for every probe (about 40 replays\' worth).',
+    requirement: 'On three late tampers, firstDivergence returns the tick 09.divergence asks for and runs at most the budget in instructions (counted as calls to your Machine\'s step). The budget is three times what the worked solution for this course runs: enough to replay the tampered recording once to the call whose hash differs and then search inside that call from a saved state, or to step both recordings side by side once; far too little to bisect the whole run, replaying both recordings from the start for every probe (about 40 replays\' worth).',
     timeLimitMs: 60000,
     async run({ fn, cls, workDir }) {
       const Machine = await cls('machine.mjs', 'Machine');

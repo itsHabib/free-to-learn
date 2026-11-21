@@ -115,6 +115,16 @@ function invariantProblems(snap, world) {
   return out;
 }
 
+// The guarantee a list of invariantProblems breaks, for a failure's headline and "required"
+// line: the items, the coins, or both, so the message names what actually went wrong.
+function guaranteeBroken(broken, world) {
+  const coins = broken.filter((p) => p.startsWith('the coins add up') || p.startsWith('coins:')).length;
+  const items = broken.length - coins;
+  if (items && coins) return { checked: 'every item is in exactly one inventory and the coins add up', expected: `every item held once and ${coinTotal(world)} coins in all` };
+  if (items) return { checked: 'every item is in exactly one inventory', expected: 'every item held once' };
+  return { checked: 'no coin is made or lost', expected: `${coinTotal(world)} coins in all, as at the start` };
+}
+
 const sameAnswer = (got, want) => !!got && typeof got === 'object' && (want.ok
   ? got.ok === true && !!got.receipt && typeof got.receipt === 'object' && RECEIPT.every((k) => got.receipt[k] === want.receipt[k])
   : got.ok === false && got.reason === want.reason);
@@ -416,7 +426,7 @@ export const cases = [
           expectAnswer(sell(store, request, story), want, checked, story, store);
         }
         const broken = invariantProblems(store.snapshot(), WORLDS[world]);
-        if (broken.length) fail({ checked: 'every item is in exactly one inventory', input: story(), observed: `${broken.join('; ')}: ${worldText(store.snapshot())}`, expected: 'every item held once' });
+        if (broken.length) fail({ ...guaranteeBroken(broken, WORLDS[world]), input: story(), observed: `${broken.join('; ')}: ${worldText(store.snapshot())}` });
       }
       // A crash after each write of the first sale; after recovery the rival comes first, then the retry.
       const steps = model(SCRIPTS[0]);
@@ -435,7 +445,7 @@ export const cases = [
         expectAnswer(won === RIVAL ? rival : retry, ok(won), `the sale that succeeded returns its receipt`, story, store);
         expectAnswer(lostAnswer, missing, `the other sale (${lost.key}) is refused missing`, story, store);
         const broken = invariantProblems(store.snapshot(), WORLDS.market);
-        if (broken.length) fail({ checked: 'every item is in exactly one inventory', input: story(), observed: `${broken.join('; ')}: ${now}`, expected: 'every item held once' });
+        if (broken.length) fail({ ...guaranteeBroken(broken, WORLDS.market), input: story(), observed: `${broken.join('; ')}: ${now}` });
         const holder = store.snapshot()[`inv:${won.buyer}`] ?? [];
         if (!holder.includes('sword')) fail({ checked: 'the sword went to the buyer of the sale that succeeded', input: story(), observed: now, expected: `${won.buyer} holds the sword` });
         const onward = req('sale-9', won.buyer, won.buyer === 'bo' ? 'cy' : 'bo', 'sword', 0);

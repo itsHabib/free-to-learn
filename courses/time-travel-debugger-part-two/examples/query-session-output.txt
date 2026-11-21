@@ -1,0 +1,28 @@
+project/run42.json: 759 calls, 652927 instructions. Type help for commands.
+> seek 89345
+tick 89345, call 20 (game_tick), next: function 8, instruction 539: local.get 1
+> sources
+stores: 16 on the chain; the newest 8, newest first (sources N shows N, sources all every one):
+  tick 88553: function 7, instruction 181: f32.store 2 48 wrote 4 bytes at 65952
+  tick 88529: function 7, instruction 157: f32.store 2 40 wrote 4 bytes at 65944
+  tick 83439: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908
+  tick 82713: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908
+  tick 81987: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908
+  tick 81261: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908
+  tick 80535: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908
+  tick 79809: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908
+answers: 1 (cos) 3 (server_wind)
+call arguments: none
+initial bytes: none
+> cost
+1306199 instructions run by your machine so far, 652927 of them while your Debugger opened the recording
+> sources 3
+stores: 16 on the chain; the newest 3, newest first (sources N shows N, sources all every one):
+  tick 88553: function 7, instruction 181: f32.store 2 48 wrote 4 bytes at 65952
+  tick 88529: function 7, instruction 157: f32.store 2 40 wrote 4 bytes at 65944
+  tick 83439: function 7, instruction 91: i32.store 2 4 wrote 4 bytes at 65908
+answers: 1 (cos) 3 (server_wind)
+call arguments: none
+initial bytes: none
+> cost
+1306199 instructions run by your machine so far, 652927 of them while your Debugger opened the recording

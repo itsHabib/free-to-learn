@@ -1,0 +1,9 @@
+The sale as a crash right after write 1 left it: ana [sword lamp] 20, bo [bow] 100; trade:sale-1 pending
+  recover(store) -> ["sale-1"], writing inv:ana, inv:bo, coins:bo, coins:ana, trade:sale-1 done
+  now: ana [lamp] 60, bo [bow sword] 60; trade:sale-1 done
+  recover(store) again -> [], writing nothing
+The sale as a crash right after write 5 left it: ana [lamp] 60, bo [bow sword] 60; trade:sale-1 pending
+  recover(store) -> ["sale-1"], writing inv:ana, inv:bo, coins:bo, coins:ana, trade:sale-1 done
+  now: ana [lamp] 60, bo [bow sword] 60; trade:sale-1 done
+  recover(store) again -> [], writing nothing
+trade: not written yet

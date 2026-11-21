@@ -1,0 +1,26 @@
+> diverge
+after call 237 (game_tick): r_result is 2 here, 1 in lob.wasm
+> listing r_result:0 4
+function 18 (r_result)
+>     0  i32.const 0
+      1  i32.load 2 72992
+      2  i32.load 2 0
+      3  end
+> call 238
+tick 262788, call 238 (game_tick), next: function 8 (game_tick), instruction 0: global.get 0
+> read 72992 4 i32
+65928
+> last-write 65928
+tick 261685: function 8 (game_tick), instruction 304: i32.store 2 0 wrote 4 bytes at 65928
+> back 12
+tick 261673, call 237 (game_tick), next: function 8 (game_tick), instruction 293: i32.trunc_sat_f32_s
+> writes 12
+tick 261676: function 8 (game_tick), instruction 295: i32.store 2 612 wrote 4 bytes at 66540: 13 0 0 0 -> 10 0 0 0
+tick 261685: function 8 (game_tick), instruction 304: i32.store 2 0 wrote 4 bytes at 65928: 0 0 0 0 -> 2 0 0 0
+> seek 261676
+tick 261676, call 237 (game_tick), next: function 8 (game_tick), instruction 296: local.get 1
+> answer
+answer: function 8 (game_tick), instruction 295 (i32.store), address 66540, tick 261676
+
+Instructions replayed: 278551 of a budget of 856000.
+Your answer: function 8 (game_tick), instruction 295, address 66540, tick 261676.

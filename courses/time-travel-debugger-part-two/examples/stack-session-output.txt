@@ -1,0 +1,20 @@
+project/run42.json: 759 calls, 652927 instructions. Type help for commands.
+> call 13
+tick 84111, call 13 (game_tick), next: function 8 (game_tick), instruction 0: global.get 0
+> break update_hud
+stops: {"breakpoints":[],"watches":[],"functions":[6]}
+> continue
+function at tick 84157, call 13 (game_tick), next: function 6 (update_hud), instruction 0: global.get 0
+> stack
+0: function 8 (game_tick), instruction 570: local.get 0
+1: function 6 (update_hud), instruction 0: global.get 0
+> finish
+tick 84827, call 13 (game_tick), next: function 8 (game_tick), instruction 570: local.get 0
+> stack
+0: function 8 (game_tick), instruction 570: local.get 0
+> cost
+659299 instructions run by your machine so far, 652927 of them while your Debugger opened the recording
+> rcontinue
+function at tick 84157, call 13 (game_tick), next: function 6 (update_hud), instruction 0: global.get 0
+> cost
+660282 instructions run by your machine so far, 652927 of them while your Debugger opened the recording

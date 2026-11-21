@@ -1,0 +1,2 @@
+Memory first differs after tick 96568.
+Your firstDivergence ran 101431 instructions.

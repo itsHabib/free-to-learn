@@ -1,0 +1,2 @@
+A claim of seen 94 at now 100, window 6, samples 40, 45, 50 ms (rtt 1):
+  {"accept":false,"at":98,"reason":"range"}, x = 1000 at tick 98; at tick 94 it was x = 2000

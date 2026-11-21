@@ -1,0 +1,7 @@
+count(five decisions) {"total":5,"tp":1,"fp":1,"tn":2,"fn":1,"recall":0.5,"falsePositiveRate":0.3333333333333333,"precision":0.5}
+count([])             {"total":0,"tp":0,"fp":0,"tn":0,"fn":0,"recall":null,"falsePositiveRate":null,"precision":null}
+precision of recall 0.9, false positive rate 0.01, when cheats are
+  1 session in 2     0.989
+  1 session in 10    0.909
+  1 session in 100   0.476
+  1 session in 1000  0.083

@@ -953,7 +953,7 @@
     {
       "id": "time-travel-debugger-part-two",
       "archive": ".packages/time-travel-debugger-part-two.zip",
-      "sha256": "1e0add5b76ff43d163fce08f9cc85bc0392c9e297b3ca05aa76bd663e5305f05",
+      "sha256": "467c32f2ac14274f58565441b1ca407014f0fdf1137be3beec014824b6e4745f",
       "archive_prefix": "time-travel-debugger-part-two/",
       "direct_root": "courses/time-travel-debugger-part-two",
       "root": "time-travel-debugger-part-two",
@@ -993,7 +993,7 @@
     {
       "id": "anti-cheat-engineering-part-two",
       "archive": ".packages/anti-cheat-engineering-part-two.zip",
-      "sha256": "fed02c4e07804c9f7f9bbcc0939c0589d34b14ce559d2b6850e199801d266e1e",
+      "sha256": "890ba73dadef444c1d2f92dd35b3888f75453869311004ef91254a90d9712fde",
       "archive_prefix": "anti-cheat-engineering-part-two/",
       "direct_root": "courses/anti-cheat-engineering-part-two",
       "root": "anti-cheat-engineering-part-two",

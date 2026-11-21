@@ -320,6 +320,12 @@ index.sources(tick)                               // { stores, answers, args, in
 - `sources` throws for a tick that is not a store's. `lastWriter` returns the
   whole write, its start and size, even for a byte inside a wider store; the
   debugger's `lastWrite` at position `p` is `lastWriter(address, p + 1)`.
+- The index does not report the size of memory. Every recording in this course
+  is of Lob or Lob II, whose memory is 131,072 bytes (see "Memory" above), so
+  code built on an index can take that size as fixed. What `lastWriter` does
+  for an address outside memory is not part of this contract and no check asks
+  it (the supplied `examples/query-checkpoint.mjs` throws), so code that must
+  refuse such an address tests it against 131,072 itself.
 - `buildIndex` may replay the recording once or twice. Answering a question
   must not replay it again; the checks count instructions.
 

@@ -1,0 +1,11 @@
+a number, not text   refused: text
+201 bytes of spaces  refused: too-long
+not JSON             refused: json
+a JSON list          refused: object
+an extra field       refused: keys
+version 2            refused: version
+seq 0                refused: seq
+angle 45.5           refused: angle
+power as a string    refused: power
+fire as a word       refused: fire
+an ordinary aim      ok {"v":1,"seq":1,"angle":45,"power":60,"fire":false}

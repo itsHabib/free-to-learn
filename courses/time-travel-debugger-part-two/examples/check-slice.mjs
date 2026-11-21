@@ -1,19 +1,16 @@
 // Acceptance cases for the new application; no runSlice implementation is supplied.
 // Every invocation snapshots the submitted files before importing either one.
 import assert from 'node:assert/strict';
-import {
-  copyFileSync,
-  existsSync,
-  mkdirSync,
-  readFileSync,
-  writeFileSync,
-} from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createHash, randomUUID } from 'node:crypto';
 import { spawnSync } from 'node:child_process';
 import { join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL, URL } from 'node:url';
 import { readProgram } from '../public/program.mjs';
 import { makeWorld } from '../public/world.mjs';
+// Plain reads and writes, not fs.copyFileSync: copying file metadata can fail
+// with EPERM where the project folder belongs to another user.
+const copyFileSync = (from, to) => writeFileSync(to, readFileSync(from));
 
 const checkerPath = fileURLToPath(import.meta.url);
 const promptPath = fileURLToPath(new URL('../lessons/08.md', import.meta.url));
@@ -161,16 +158,34 @@ try {
       memory: { min: 1 },
       data: [],
     });
+  // The starter's runSlice throws "not written yet". That throw is not a rejection
+  // or a trap the runner chose to keep, so every case fails and says so.
+  const notWritten = (error) =>
+    String(error?.message).includes('not written yet');
   const check = (name, run) => {
     try {
       run();
       results.push({ name, pass: true });
       console.log(`PASS ${name}`);
     } catch (error) {
-      results.push({ name, pass: false, message: error.message });
-      console.log(`FAIL ${name}: ${error.message}`);
+      const message = notWritten(error)
+        ? 'runSlice is not written yet'
+        : error.message;
+      results.push({ name, pass: false, message });
+      console.log(`FAIL ${name}: ${message}`);
     }
   };
+  // Like assert.throws, except that an unwritten runSlice's error is passed on.
+  const throwsWritten = (run, expected, message) =>
+    assert.throws(
+      run,
+      (error) => {
+        if (notWritten(error)) throw error;
+        if (expected && !expected.test(String(error?.message))) return false;
+        return true;
+      },
+      message,
+    );
   check('invalid budgets do no work', () => {
     const m = small([['end']]);
     for (const budget of [
@@ -185,8 +200,9 @@ try {
       for (const active of [false, true]) {
         if (active) m.begin('main');
         const before = globalThis.structuredClone(m.state);
-        assert.throws(
+        throwsWritten(
           () => runSlice(m, budget),
+          null,
           'Reject non-positive or unsafe integer budget',
         );
         assert.deepEqual(
@@ -224,7 +240,7 @@ try {
       ['i32'],
     );
     m.begin('main');
-    assert.throws(
+    throwsWritten(
       () => runSlice(m, 10),
       /trap:/,
       'Do not turn guest traps into successful pauses',

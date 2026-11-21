@@ -1,0 +1,3 @@
+Build 1: 241 calls, 265287 instructions. Type help for commands.
+> diverge
+after call 237 (game_tick): r_result is 2 here, 1 in lob.wasm

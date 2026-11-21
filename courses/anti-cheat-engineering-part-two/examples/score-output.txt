@@ -1,0 +1,9 @@
+detect/settings.json: features hitRate
+session             hitRate    score
+dev-novice-0          0.000   -0.669
+dev-skilled-0         0.083    0.003
+dev-expert-0          0.417    2.691
+dev-highLatency-0     0.167    0.675
+dev-jitter-0          0.000   -0.669
+dev-reconnects-0      0.000   -0.669
+dev-searcher-0        0.417    2.691

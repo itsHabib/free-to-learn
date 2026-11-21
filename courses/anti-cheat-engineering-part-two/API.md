@@ -312,7 +312,11 @@ JavaScript counts a null as 0.
 Your settings: whatever your `score` needs, plus `"budget": 0.002` (one false flag in
 500 legal sessions) and `"threshold"`, the number `chooseThreshold` gave on the dev
 split's legal sessions. Freeze them with `node lab.mjs freeze project` before you look at
-the held-out split. The legal medians and robust scales that `node lab.mjs features project`
+the held-out split. `node lab.mjs tune project --write` stores the threshold and writes the
+whole file back in the lab's layout (two-space indent, a final newline). `freeze` keeps a
+copy of the three frozen files, and `node lab.mjs restore-frozen project` copies them back
+from your latest freeze, saving the files it replaces under `attempts/`; it refuses when
+there is no freeze. The legal medians and robust scales that `node lab.mjs features project`
 prints are rounded to three decimals, which is precise enough to copy into this file.
 
 ### What the checks require
@@ -450,6 +454,17 @@ After a crash the server restarts and calls `recover(store)` before anything els
 finishes or undoes whatever a crash interrupted and returns the request keys of the trades
 it finished (the request's own `key`, not a store key such as `trade:k1`), sorted. A crash
 can also happen during `recover`, and the server then restarts and calls it again.
+
+"Finished" means finished by this call. A trade that was already complete when `recover`
+starts is not listed, so the worked solution returns `[]` in these cases:
+
+- the crash came right after `trade`'s last write, the one that marks the trade done;
+- an earlier `recover` call wrote the trade's done mark and then crashed, on that write
+  or a later one, and this is the call after the restart.
+
+If the earlier `recover` crashed before the trade's done mark, the next call finishes it
+and lists its key. The checks never require a key for a trade that was complete before
+the call.
 
 ### What the checks require
 

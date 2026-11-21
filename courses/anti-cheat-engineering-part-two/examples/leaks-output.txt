@@ -1,0 +1,6 @@
+aiming, full view:       cloudFraction, flagFraction, flagSpeed, flagTimer, rng, wind
+aiming, drawn view:      nothing
+in flight, full view:    cloudFraction, flagFraction, flagSpeed, flagTimer, rng, shellFraction, shellVelocity, trailFraction, wind
+in flight, drawn view:   nothing
+landed, full view:       cloudFraction, flagFraction, flagSpeed, flagTimer, impactFraction, rng, trailFraction, wind
+landed, drawn view:      nothing

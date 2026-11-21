@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // The lab for part two. Run `node lab.mjs` with no arguments for the commands.
-import { existsSync, mkdirSync, readFileSync, writeFileSync, copyFileSync, readdirSync, rmSync, cpSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, rmSync, cpSync, statSync } from 'node:fs';
 import { createHash, randomUUID } from 'node:crypto';
 import { dirname, join, resolve, basename } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -10,6 +10,9 @@ import { availableParallelism } from 'node:os';
 import { makeWorld } from './public/world.mjs';
 import { hashMemory } from './public/hash.mjs';
 import { session, plan } from './public/sessions.mjs';
+// Plain reads and writes, not fs.copyFileSync: copying file metadata can fail
+// with EPERM where the project folder belongs to another user.
+const copyFileSync = (from, to) => writeFileSync(to, readFileSync(from));
 
 const root = dirname(fileURLToPath(import.meta.url));
 const config = JSON.parse(readFileSync(join(root, 'course.json'), 'utf8'));
@@ -75,8 +78,10 @@ async function check(dir, unit, help) {
   const attempt = join(p, 'attempts', `${new Date().toISOString().replaceAll(':', '-')}-${randomUUID().slice(0, 8)}`);
   mkdirSync(attempt, { recursive: true });
   copyFileSync(join(p, 'PROJECT.json'), join(attempt, 'PROJECT.json'));
-  const route = JSON.parse(readFileSync(join(attempt, 'PROJECT.json'), 'utf8')).unit08_start_route;
-  const initialRoute = ['write', 'supplied'].includes(route) ? { unit08_start_route: route } : {};
+  // The chapter route commands record where units 08 to 12 started; a receipt keeps them.
+  const meta = JSON.parse(readFileSync(join(attempt, 'PROJECT.json'), 'utf8'));
+  const initialRoute = {};
+  for (const key of ['unit08_start_route', 'unit09_start_route', 'unit10_start_route', 'unit11_start_route', 'unit12_start_route']) if (['write', 'supplied'].includes(meta[key])) initialRoute[key] = meta[key];
   for (const f of config.workFiles) if (existsSync(join(p, f))) { mkdirSync(dirname(join(attempt, f)), { recursive: true }); copyFileSync(join(p, f), join(attempt, f)); }
   let allPass = true;
   const saved = [];
@@ -135,16 +140,36 @@ function status(dir) {
     const file = join(folder, name, 'receipt.json');
     if (!existsSync(file)) continue;
     const r = JSON.parse(readFileSync(file, 'utf8'));
-    for (const u of r.units) { say(`  ${name} unit ${u.unit}: ${u.results.filter((x) => x.pass).length} of ${u.results.length} pass (help used: ${r.help_used ?? 'not declared'}${r.unit08_start_route ? '; unit 08 initial route: ' + r.unit08_start_route : ''})`); checks++; }
+    for (const u of r.units) { say(`  ${name} unit ${u.unit}: ${u.results.filter((x) => x.pass).length} of ${u.results.length} pass (help used: ${r.help_used ?? 'not declared'}${r.unit08_start_route ? '; unit 08 initial route: ' + r.unit08_start_route : ''}${r.unit09_start_route ? '; unit 09 initial route: ' + r.unit09_start_route : ''}${r.unit10_start_route ? '; unit 10 initial route: ' + r.unit10_start_route : ''}${r.unit11_start_route ? '; unit 11 initial route: ' + r.unit11_start_route : ''}${r.unit12_start_route ? '; unit 12 initial route: ' + r.unit12_start_route : ''})`); checks++; }
   }
   if (!checks) say('  none yet');
+  // The new applications' checkers (examples/check-*.mjs) keep their own receipts:
+  // slice-receipt.json, trim-receipt.json, rfind-receipt.json, vsources-receipt.json,
+  // nline-receipt.json, changes-receipt.json.
+  say('New-application attempts:');
+  let applications = 0;
+  for (const name of names) {
+    const dir = join(folder, name);
+    if (!statSync(dir).isDirectory()) continue;
+    for (const file of readdirSync(dir).filter((f) => f.endsWith('-receipt.json'))) {
+      let r;
+      try { r = JSON.parse(readFileSync(join(dir, file), 'utf8')); } catch { continue; }
+      const results = Array.isArray(r.results) ? r.results : [];
+      say(`  ${name} ${r.application ?? file.replace('-receipt.json', '')}: ${results.filter((x) => x.pass).length} of ${results.length} cases pass (help used: ${r.help_used ?? 'not declared'})`);
+      applications++;
+    }
+  }
+  if (!applications) say('  none yet');
   const committed = predictions(p);
   const items = practice();
   // A question can be replaced by a new version; an answer to an earlier version stays in the
   // record, marked as such, and doesn't count as an answer to the current one.
   const current = (x) => (x.version ?? 1) === (items[x.id]?.version ?? 1);
   say('Predictions committed:');
-  for (const x of committed) say(`  ${x.id}: ${current(x) ? '' : '(an earlier version of this question) '}${x.correct ? 'right' : 'wrong'}, answer ${x.answer} (help used: ${x.help_used ?? 'not declared'})`);
+  // A prediction lists its help only when it was declared with --help-used. Older records
+  // saved the words "not declared" for an undeclared one, so those are left out too.
+  const declared = (x) => x.help_used !== undefined && x.help_used !== 'not declared';
+  for (const x of committed) say(`  ${x.id}: ${current(x) ? '' : '(an earlier version of this question) '}${x.correct ? 'right' : 'wrong'}, answer ${x.answer}${declared(x) ? ` (help used: ${x.help_used})` : ''}`);
   if (!committed.length) say('  none yet');
   const done = new Set(committed.filter(current).map((x) => x.id));
   const waiting = askedInOrder().filter((id) => !done.has(id));
@@ -170,12 +195,12 @@ function predict(dir, id, answer, help) {
   const accepted = [q.expected, ...(q.accept ?? [])].map(normal);
   const correct = accepted.includes(normal(answer));
   const earlier = predictions(p).filter((x) => x.id === id && (x.version ?? 1) === (q.version ?? 1));
-  const record = { kind: 'prediction', id, version: q.version, question: q.question, answer, help_used: help, correct, expected: q.expected, at: new Date().toISOString() };
+  const record = { kind: 'prediction', id, version: q.version, question: q.question, answer, ...(help === undefined ? {} : { help_used: help }), correct, expected: q.expected, at: new Date().toISOString() };
   const folder = join(p, 'attempts', `${new Date().toISOString().replaceAll(':', '-')}-${id}`);
   mkdirSync(folder, { recursive: true });
   writeFileSync(join(folder, 'prediction.json'), JSON.stringify(record, null, 2) + '\n');
   say(`Your answer: ${answer}`);
-  say(`Help used (--help-used): ${help}`);
+  if (help !== undefined) say(`Help used (--help-used): ${help}`);
   if (earlier.length) say(`You committed ${id} before, answering ${earlier.map((x) => `${x.answer} (${x.correct ? 'right' : 'wrong'})`).join(' and ')}. This answer is saved as well.`);
   say(correct ? 'Correct.' : `Not this time. The answer is ${q.expected}.`);
   const wrong = (q.wrong ?? []).find((w) => normal(w.answer) === normal(answer));
@@ -459,7 +484,7 @@ try {
   else if (verb === 'check') await check(plain[0], plain[1], o['help-used'] ?? 'not declared');
   else if (verb === 'status') status(plain[0]);
   else if (verb === 'question') { const q = item(plain[0]); say(q.question); say(`Answer format: ${q.format}`); say(`Commit with: node lab.mjs predict PROJECT ${plain[0]} ANSWER`); }
-  else if (verb === 'predict') predict(plain[0], plain[1], plain.slice(2).join(' '), o['help-used'] ?? 'not declared');
+  else if (verb === 'predict') predict(plain[0], plain[1], plain.slice(2).join(' '), o['help-used']);
   else if (verb === 'agree') await agree(plain[0], o);
   else if (verb === 'wall') await wall(plain[0], o);
   else if (verb === 'decoder') await decoder(plain[0]);

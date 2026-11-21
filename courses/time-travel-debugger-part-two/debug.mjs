@@ -35,8 +35,12 @@ export const HELP = `Commands (FUNC is a function index or name; ADDR a byte add
                         what runs next, with N 8)
   last-write ADDR       go to the last write of ADDR at or before here (your Debugger.lastWrite)
   who ADDR              the same question asked of your index (your query.mjs; builds it once)
-  sources               where the value stored by the instruction at this tick came from
-  writes [N]            step N instructions (default 20), listing every byte each one changed
+  sources [N|all]       where the value stored by the instruction at this tick came from:
+                        how many stores its chain holds, the newest N of them (default 8)
+                        with tick, function and address, then its answers, call arguments
+                        and initial bytes
+  writes [N]            step N instructions forward (default 20), listing every byte each one
+                        changed; the debugger then stands N instructions later
   getters               every getter's value at this point (between calls)
   diverge               the first call after which this build's getters differ from the good build's
   compare               this build's getters beside the good build's after the same calls (and,
@@ -79,7 +83,7 @@ export function resolveTarget(target) {
   const plain = join(root, 'targets', `${recording.program}.wasm`);
   // A fixture's small program (the mixer) has no .wasm beside it: then there are no names to read.
   const wasm = existsSync(named) ? named : existsSync(plain) ? plain : null;
-  return { program, recording, wasm, lines: existsSync(lines) ? readJson(lines) : null, good: null, label: file };
+  return { program, recording, wasm, lines: existsSync(lines) ? readJson(lines) : null, good: null, label: String(target) };
 }
 
 function goodBuild(program) {
@@ -177,10 +181,37 @@ async function nodeGetters(wasm, calls, upTo, answers) {
   return Object.assign(snaps, { texts });
 }
 
+// The stores of a chain for `sources`: how many there are, then the newest few, newest first,
+// each with its function and address. `sources` gives only ticks, so each shown store is found
+// in the index by a byte it wrote: one walk back through every byte's writes between the oldest
+// and the newest tick shown. It asks only lastWriter, so it replays nothing and costs nothing.
+const SOURCES_SHOWN = 8;
+function chainStores(S, ticks, limit) {
+  if (!ticks.length) return ['stores: none'];
+  const n = limit === undefined ? SOURCES_SHOWN : limit === 'all' ? ticks.length : num(limit);
+  if (n < 1) throw Error('sources takes a number of stores to show, 1 or more, or all');
+  const shown = ticks.slice(-n).reverse();
+  const want = new Set(shown), found = new Map();
+  const lo = shown.at(-1), hi = shown[0];
+  const size = (S.t.program.memory?.min ?? 2) * 65536;
+  for (let address = 0; address < size && found.size < want.size; address++) {
+    for (let w = S.index.lastWriter(address, hi + 1); w && w.tick >= lo; w = S.index.lastWriter(address, w.tick)) {
+      if (want.has(w.tick) && !found.has(w.tick)) found.set(w.tick, w);
+    }
+  }
+  const head = shown.length === ticks.length
+    ? `stores: ${ticks.length} on the chain, newest first:`
+    : `stores: ${ticks.length} on the chain; the newest ${shown.length}, newest first (sources N shows N, sources all every one):`;
+  return [head, ...shown.map((t) => {
+    const w = found.get(t);
+    return w ? `  tick ${t}: ${describe(S, w.func, w.at)} wrote ${w.size} byte${w.size > 1 ? 's' : ''} at ${w.address}` : `  tick ${t}`;
+  })];
+}
+
 export async function command(S, text) {
   const [verb, ...a] = text.trim().split(/\s+/);
   const d = S.d;
-  const here = () => { const w = d.where(); return `tick ${w.tick}, call ${w.call}${S.t.recording.calls[w.call] ? ` (${S.t.recording.calls[w.call].name} ${S.t.recording.calls[w.call].args.join(' ')})` : ''}, next: ${describe(S, w.func, w.at)}`; };
+  const here = () => { const w = d.where(); return `tick ${w.tick}, call ${w.call}${S.t.recording.calls[w.call] ? ` (${[S.t.recording.calls[w.call].name, ...S.t.recording.calls[w.call].args].join(' ')})` : ''}, next: ${describe(S, w.func, w.at)}`; };
   switch (verb) {
     case undefined: case '': return null;
     case 'help': return HELP;
@@ -249,7 +280,7 @@ export async function command(S, text) {
       if (!S.query) return 'no query.mjs in this project';
       S.index ??= S.query.buildIndex(S.t.program, S.t.recording);
       const s = S.index.sources(d.tick);
-      return [`stores: ${s.stores.join(' ') || 'none'}`, `answers: ${s.answers.map((k) => `${k} (${S.t.recording.answers[k].name})`).join(' ') || 'none'}`, `call arguments: ${s.args.map(([c, p]) => `call ${c} argument ${p}`).join(', ') || 'none'}`, `initial bytes: ${s.initial.join(' ') || 'none'}`].join('\n');
+      return [...chainStores(S, s.stores, a[0]), `answers: ${s.answers.map((k) => `${k} (${S.t.recording.answers[k].name})`).join(' ') || 'none'}`, `call arguments: ${s.args.map(([c, p]) => `call ${c} argument ${p}`).join(', ') || 'none'}`, `initial bytes: ${s.initial.join(' ') || 'none'}`].join('\n');
     }
     case 'writes': {
       const n = num(a[0]) ?? 20;
@@ -296,7 +327,7 @@ export async function command(S, text) {
       const skip = new Set(['r_state', 'r_trail_ptr', 'r_line_ptr', 'r_msg_ptr', 'r_help_ptr', 'g6', 'g7']);
       for (let k = 0; k < upTo; k++) {
         const diff = Object.keys(good[k]).filter((g) => !skip.has(g) && !Object.is(ours[k][g], good[k][g]));
-        if (diff.length) return `after call ${k} (${calls[k].name} ${calls[k].args.join(' ')}): ${diff.map((g) => `${g} is ${ours[k][g]} here, ${good[k][g]} in ${S.t.good.name}`).join('; ')}`;
+        if (diff.length) return `after call ${k} (${[calls[k].name, ...calls[k].args].join(' ')}): ${diff.map((g) => `${g} is ${ours[k][g]} here, ${good[k][g]} in ${S.t.good.name}`).join('; ')}`;
       }
       return `the getters agree with ${S.t.good.name} after every call (addresses are left out: they differ by design)`;
     }

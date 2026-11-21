@@ -20,7 +20,7 @@ const pct = (hits, shots) => (shots ? `${((100 * hits) / shots).toFixed(1)}%` : 
 function project(dir, verb) {
   if (!dir) throw Error(`Name your project folder: node lab.mjs ${verb} PROJECT`);
   const p = resolve(dir);
-  if (!existsSync(join(p, 'PROJECT.json'))) throw Error(`${dir} is not a project folder: run node lab.mjs init ${dir} first`);
+  if (!existsSync(join(p, 'PROJECT.json'))) throw Error(`${dir} is not a project folder: make it with a starting route from lesson 12 (node examples/start-chapter.mjs ${dir} write, or supplied)`);
   return p;
 }
 

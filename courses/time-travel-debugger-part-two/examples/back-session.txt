@@ -1,0 +1,10 @@
+seek 300000
+where
+cost
+back 1
+cost
+break 8:0
+rcontinue
+cost
+last-write 78112
+cost

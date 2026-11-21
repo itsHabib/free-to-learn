@@ -1,0 +1,28 @@
+# Investigation of ladder build 1. One debugger command per line;
+# lines starting with # are notes. End with: answer
+# region: symptom
+# The second shell lands 10 paces short; lob.wasm says HIT! on the same calls.
+diverge
+# endregion: symptom
+# region: address
+# r_result reads the pointer at 72992, then 4 bytes at offset 0 from it.
+listing r_result:0 4
+call 238
+read 72992 4 i32
+# endregion: address
+# region: writer
+# The pointer holds 65928, so the result lives there. Who wrote it?
+last-write 65928
+# endregion: writer
+# region: before
+# The result store's inputs are right. Did the same decision store anything
+# wrong just before it?
+back 12
+writes 12
+# endregion: before
+# region: answer
+# The miss distance, stored at tick 261676, nine instructions before the
+# result: the first wrong store.
+seek 261676
+answer
+# endregion: answer

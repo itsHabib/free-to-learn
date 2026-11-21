@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 31280,
-      "sha256": "52dcdee4f042af1081f374f1a4b8256f346fc476a13e723c0b245e6209bd2f0e"
+      "sha256": "641d7e8529048ac662a1a423037e27935a3cc240f9fe723ea04a07ee61b47d68"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -79,13 +79,13 @@
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip",
-      "bytes": 399700,
-      "sha256": "fed02c4e07804c9f7f9bbcc0939c0589d34b14ce559d2b6850e199801d266e1e"
+      "bytes": 524363,
+      "sha256": "890ba73dadef444c1d2f92dd35b3888f75453869311004ef91254a90d9712fde"
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip.sha256",
       "bytes": 102,
-      "sha256": "bb9114c609d2eae3e5f7ab0b5f10398fa94fa0147f3aefad38080183173b7edb"
+      "sha256": "0b2225a2119c39f3206fa776161376b1f6ea2660aa02dee79bb8925cc292a26f"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -189,13 +189,13 @@
     },
     {
       "path": ".packages/time-travel-debugger-part-two.zip",
-      "bytes": 756237,
-      "sha256": "1e0add5b76ff43d163fce08f9cc85bc0392c9e297b3ca05aa76bd663e5305f05"
+      "bytes": 950375,
+      "sha256": "467c32f2ac14274f58565441b1ca407014f0fdf1137be3beec014824b6e4745f"
     },
     {
       "path": ".packages/time-travel-debugger-part-two.zip.sha256",
       "bytes": 100,
-      "sha256": "73fc40f39b429271d24092346f33047effa060f10dc2a858159bede7736904ef"
+      "sha256": "5016370674cbf531070915c931c7757b74d55bbf0e22e6be5ea5821600e6f430"
     },
     {
       "path": ".packages/time-travel-debugger.zip",
@@ -229,8 +229,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 375246,
-      "sha256": "94aefb0d065312ff3aafc9ed465944f25c884e6a8e04cfd5a73c8e743c082929"
+      "bytes": 406862,
+      "sha256": "442a4156ef3dbae6d6365d39b47b4fe9cde308c5e8bb854759a48140c5a2e84c"
     },
     {
       "path": "LICENSE.md",
@@ -259,8 +259,8 @@
     },
     {
       "path": "START-HERE.md",
-      "bytes": 6648,
-      "sha256": "ca0e55c2b1fc8c0007fd7fe842ab4f4140e5466d81ab4a7402aa4ab2c84427bc"
+      "bytes": 7058,
+      "sha256": "a598f59701b9c72c35da275b8187828e6b3e6be254074d1820d3e9ea14cb07c1"
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -979,8 +979,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/API.md",
-      "bytes": 26719,
-      "sha256": "5bf405f36a3d131519bc0573f90f33c03181cfbca161919d298431d3310050e1"
+      "bytes": 27665,
+      "sha256": "9fafb02a9d76749628206e1c4fc1212a6951cfe4a78de1ba011ff9570bb1898a"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/LICENSE.md",
@@ -999,8 +999,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/README.md",
-      "bytes": 7814,
-      "sha256": "4c4d15d9690be0c91ee1c1de67c32e3b573a40b9dd1aaf80748b1fb34e431670"
+      "bytes": 9947,
+      "sha256": "de36019c58e97231f88900262968668bf018f10f7fb8d62f181ef71b34f9204f"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/RESULTS.md",
@@ -1029,8 +1029,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/checks/16.mjs",
-      "bytes": 30894,
-      "sha256": "c098444aa420378ca565ff85d20d5b4f48fd562049e5f3d2eec4cfa3cd717f53"
+      "bytes": 31576,
+      "sha256": "ed581bc9d88e9aecd556add78811a5ce78366fb8cf3361ea9f2afd62500742ae"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/checks/17.mjs",
@@ -1083,64 +1083,329 @@
       "sha256": "d8861b537e30c57fc60fd0e5bfc830b0ffa3bd19cc0dc2a31fa43de1e0f54dd3"
     },
     {
+      "path": "courses/anti-cheat-engineering-part-two/examples/admission-checkpoint.mjs",
+      "bytes": 2263,
+      "sha256": "a2a724206be70797f73bc3691179bfa3ce35b92e7096a438550cdd2afd5c533d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/admit-output.txt",
+      "bytes": 581,
+      "sha256": "e703e96acfee6544a9fd0a94d999bc15a3e702707e7e1285ed099a1260a980e0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/check-gain.mjs",
+      "bytes": 7403,
+      "sha256": "199de03cb707c560c22e8e648028c29c5467b477f11e925a55cece6302a24f1d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/check-kind-budget.mjs",
+      "bytes": 10785,
+      "sha256": "1b2b2fdb3ebee3b2fb280e94744313f4a09807ac151e251c80a05654f14c88a0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/check-moved.mjs",
+      "bytes": 9460,
+      "sha256": "d42f8b40aa8c7d2d5bae934c0819d8b11029fb461f442dc4ee75b35353d4f26b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/check-resume.mjs",
+      "bytes": 7138,
+      "sha256": "561ec4dc3350eed619c0af3d83b5ff62511ab8a7cdf0cd0a9aaa9a3226b1b026"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/check-spectator.mjs",
+      "bytes": 8041,
+      "sha256": "7b5d930741a3f6c49333a14fa261b0098f31677771c7399beda307ab6c3b9421"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/check-swap.mjs",
+      "bytes": 10402,
+      "sha256": "a0e23df7409d5b1feb58b559f44bdc3a60e2953e39da46d01bab7a1f890d1df2"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/count-output.txt",
+      "bytes": 423,
+      "sha256": "e1ee181280cf554ee6b7c648b2c36b1f6e89689443e346176b4ad82b83b9b9ac"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/courier-row-output.txt",
+      "bytes": 478,
+      "sha256": "c8d37afa054fbb238920e22a8b31c7a966a33524ee070aa41f0938bc07372a44"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/courier-row.mjs",
+      "bytes": 3129,
+      "sha256": "d85898c0568d10cb29a7871d8e4039395d27a6c966d9039daaf047aba04e2e65"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/crash-output.txt",
+      "bytes": 1487,
+      "sha256": "aac1894d51de0d238ae502bf2be8d7f321a5da713842b7324788ef5b02c23525"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/detector-checkpoint.mjs",
+      "bytes": 2250,
+      "sha256": "f7aa34bb7eab3945447ad9b51fb752411e6ca8a33f7a78ea875d5a8f54cd262f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/features-checkpoint.mjs",
+      "bytes": 1948,
+      "sha256": "2a65f7e9ee57a2b91d8a93450ab179bcec60a1e23a3c128b51d8e57459f7aec7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/features-output.txt",
+      "bytes": 882,
+      "sha256": "40236767b797dcca4e0a36ed7681b42dc5f806d2aaa4b865c9a600813f7aedaf"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/features-partial-output.txt",
+      "bytes": 27,
+      "sha256": "6ba488c9771aef2fbea57eb9f176b38cbe37e47dcaf43c6a7d51d38a36907dcd"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/first-sessions.mjs",
+      "bytes": 466,
+      "sha256": "2120e90846e7570e66dbe59126a17239edc4e8bdd0501fb6a4c9ff9ff3ee2252"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/leaks-checkpoint.mjs",
+      "bytes": 638,
+      "sha256": "1f3918fd1a8d48facd60a525bffd2fb9b5bf4680f21ac603b87790dbd5722410"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/leaks-hunt-output.txt",
+      "bytes": 2196,
+      "sha256": "8cb70781f0e722dd2d092cfd7c041e14a4685c046525069bc752120ff528e244"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/leaks-output.txt",
+      "bytes": 433,
+      "sha256": "2302b9f2d536dbdb531a5f2498e3d446d7b9c6de65c4bc608a932b4f1eac6d4a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/moments.mjs",
+      "bytes": 964,
+      "sha256": "2a1ac88d7426b33142bc6f9b5e068c72c9a3e0461021ba4eca56493a98bc67d2"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/parse-output.txt",
+      "bytes": 435,
+      "sha256": "5baa3ec58efb1ea5bc1e535e73ead175e31b57c95c8a108f6c2fdd38f687a69b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/parse-shape-output.txt",
+      "bytes": 601,
+      "sha256": "4b9849affc72e5099c556f647f8055eaf199573bcdf1ced81bf6c1df7f4c7733"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/play-output.txt",
+      "bytes": 2296,
+      "sha256": "4dce75b1d18ca2b975ff0943719cb53e2b43365f96c2bb122d6cf04c2b75eeaf"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/recorder-checkpoint.mjs",
+      "bytes": 4213,
+      "sha256": "ce94b781cf05d9fc940e82f3a808ecb5da95a9cbcd54a95ddcfd4eb9a7854648"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/rewind-approach-output.txt",
+      "bytes": 457,
+      "sha256": "c4db08d3efa567eff0a47e823604435d593ce6bcc7a0fbe6574cc1ecb12682d9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/rewind-checkpoint.mjs",
+      "bytes": 2707,
+      "sha256": "57f53f697c0fa5957505a73d9f57e150f7e6a7b020ebcbe7756c9591454c1d79"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/rewind-claim-output.txt",
+      "bytes": 165,
+      "sha256": "b32bcabd76c2c800b0f7d35aba5cfd76905d679c4a4a81166890ce74cec8d1ea"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/rewind-ring-output.txt",
+      "bytes": 468,
+      "sha256": "40923d4e9270fcc2738422ee93cbcd651f8e7487aefbca6a820c508a1991dac9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/score-output.txt",
+      "bytes": 335,
+      "sha256": "cad7bf6ec974cd153eee2b82a40dad6a2b35d630fb59e11e7e059f6999d25e26"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/start-chapter.mjs",
+      "bytes": 3365,
+      "sha256": "3ae6940923259e719b797853f876fb886548853cbafb518e656b488b0405a5a0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/start-unit13.mjs",
+      "bytes": 4445,
+      "sha256": "9ef9f04308e7f2aa10d329fecb59346d908f3b79e53f2070feb4f83f16e53c76"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/start-unit14.mjs",
+      "bytes": 4996,
+      "sha256": "ef5fe2f4b057880fb43d39ef3a6b295df8f385cff2b9809248d2844e5f78dfdc"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/start-unit15.mjs",
+      "bytes": 4444,
+      "sha256": "e9001b1c1145f7906293868d0345ab54d3088363653d745009b1bffb74a4afd3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/start-unit16.mjs",
+      "bytes": 4301,
+      "sha256": "6592e53da4e42894d7bfef816ba5ff4af4ec98dfbb9775e1f5bb3a868babfa25"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/start-unit17.mjs",
+      "bytes": 2989,
+      "sha256": "9fa2b4a18b5915e59319ae9aeaf540bcf77a6a10af8f674aaaa6a43387d986b4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/sweep-output.txt",
+      "bytes": 1700,
+      "sha256": "b7b496407788efb6f3de829d4a7e498d1d2a5e73bc64366977f474955af8a99c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/trade-checkpoint.mjs",
+      "bytes": 3087,
+      "sha256": "d4925f947b6127fdad9ae672e9b441255983cf45a6c2bbb03c3952afe466f921"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/trade-output.txt",
+      "bytes": 1356,
+      "sha256": "13e2e16b90eb39ee0747c959297e5666a98a0b14fe60ffac8c8608db8b6bddf7"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/trade-partial-output.txt",
+      "bytes": 634,
+      "sha256": "3e1f3cdf52f4c0c311d77c7e877542997c265c39c376b06636615dae695c05cc"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-admit.mjs",
+      "bytes": 1704,
+      "sha256": "a62feb3ae59052854d771bbc157147293061f321efbc9d63224eecd3e7d85f52"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-count.mjs",
+      "bytes": 1518,
+      "sha256": "dc092854add38aa695b50cf3cc31e38a2f51ee5d2d638528207547be707a8578"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-features.mjs",
+      "bytes": 2385,
+      "sha256": "8a368ce00ed792af9d17753c3cd681c421da81b2062682433daa2ac09c20fc0f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-leaks.mjs",
+      "bytes": 1323,
+      "sha256": "28fba71c494e0e6f9e95b8b39c1bb929c7255c845cdfe078e21558fd6619726b"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-parse.mjs",
+      "bytes": 1602,
+      "sha256": "06cb19529e14603e5eb278e27efe8018921d1176aafba72740a185de0e93601a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-rewind.mjs",
+      "bytes": 7095,
+      "sha256": "a5fa6847a53a88d55d2977527c3d2c7b6a18e54d454b0587c42ddb58be7a5cd2"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-score.mjs",
+      "bytes": 1417,
+      "sha256": "a7368b6d5a5f7c5e23bb5682c7bbd075ee59f092383b2125c1cec250d3f1627d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-trade.mjs",
+      "bytes": 4450,
+      "sha256": "9414d19680d7130f235cc544644f70bf11f2dedf7d8a169595fbc53f2cae415f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/try-view.mjs",
+      "bytes": 1122,
+      "sha256": "90861b9127397d2d3cf34cb830d857c635cd87909e635274f507536a19956d56"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/tune-output.txt",
+      "bytes": 848,
+      "sha256": "21905107bc8f291f473beb34854c72800eec25ad23cee9bde512666a9bfc77be"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/view-checkpoint.mjs",
+      "bytes": 1014,
+      "sha256": "aa3e98c23bbb256fb63c372072773a7275423b99121ae5576225e54da7eb0354"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/view-output.txt",
+      "bytes": 965,
+      "sha256": "fdce3790cbc7d8590f338f1cc52a32528f5cafa7348de0a25438ee4aa8c1bcf9"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/examples/view-partial-output.txt",
+      "bytes": 99,
+      "sha256": "97f17a0f4e2db30164cf445fe75b97402237c5ea0a8eb1e762532183803689b4"
+    },
+    {
       "path": "courses/anti-cheat-engineering-part-two/game/lob.wasm",
       "bytes": 6682,
       "sha256": "91b6c2f7fc15f18214628f2b2ddc068ca6347cd8d14115dfcdf9d0e75e03541a"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lab.mjs",
-      "bytes": 30152,
-      "sha256": "545daf234b9e3f27bc1fabe24a6b961bfeb4538d07c2352d08cd1319627a347a"
+      "bytes": 32095,
+      "sha256": "df5664020d878769cc4951bb84434bec8c753f507a99880bbd0e868c37173d73"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/12.mjs",
-      "bytes": 29517,
-      "sha256": "f9b77f9a7a9dd77fbcf9a0c96c3db57b1bc62f9bea4e6ffc52e443b88d149b3a"
+      "bytes": 29587,
+      "sha256": "75c15d4e11cbe726ff845e240e59b0fde71ad72ef2b3136adb14e3eb3e787612"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/13.mjs",
-      "bytes": 10674,
-      "sha256": "35ee452e3aba26258503eebc268a053af2fe5967f0a83032cc6537c6b9d35c83"
+      "bytes": 10744,
+      "sha256": "ea1673b8813eabfd00ece5a4f15378386eedf11d231bd236dcbd2e9b5e3934ba"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/14.mjs",
-      "bytes": 24013,
-      "sha256": "ef81984796e6b83d9c4b1c0f55749cb66d6dd0795a994e515546bddb0586ecbd"
+      "bytes": 27618,
+      "sha256": "b6d5cd7f19b0fa0e009f3585d174b98352039072061663fd5a92b986bf1fdc29"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/17.mjs",
-      "bytes": 18103,
-      "sha256": "9a8f38da13dbb1f999943b70c9fbad402addd537e0d5e92393b89caa36e812d4"
+      "bytes": 18173,
+      "sha256": "d0f9c4e0c60eeab30d5b95cfe0cf21ffcef9c4f758e15123343ece887434ff8f"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/12.md",
-      "bytes": 10576,
-      "sha256": "536fd170ec8305c3c277bbb36bf3402bffc4e7b8eaf135e2389f8a7ef0cd5cdd"
+      "bytes": 41714,
+      "sha256": "4686e95d5818fd5904097a2b5208c87b12c97718264c86239276da35fd272de0"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/13.md",
-      "bytes": 9671,
-      "sha256": "f6879ccea05939592a4d3251964bd369448c88a6b85fca805adf588bf6551e14"
+      "bytes": 27856,
+      "sha256": "b70fd5e21e13db15e209c29b540df8b58cd84b72632d9aa5d933b44e0ffbb815"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/14.md",
-      "bytes": 13415,
-      "sha256": "9ca46ebc718968df0258042af99d855a762e26813970bbd94ed62cb26e884ce8"
+      "bytes": 43936,
+      "sha256": "74e9ba4461e2b03720f315bd85c16bff88a90e230d16499f6d956b1dc437dbff"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/15.md",
-      "bytes": 12646,
-      "sha256": "377496e956ed9ac68f3ef0e9a6625a1f661f6839983ae7fdba731ac841b65834"
+      "bytes": 34734,
+      "sha256": "64795dba5bbb4b124594aeae078acbc76e620da51d28dea211fac68c1f23b90c"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/16.md",
-      "bytes": 8626,
-      "sha256": "aab85339f5a352d8f0ba57fc82308aa9c08295b3b85cccf565e9329be05bea7d"
+      "bytes": 28377,
+      "sha256": "3274f6fc0c254b065ddfaf9a0cfad4639c10680eeb11da40b9917b45490944b4"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/17.md",
-      "bytes": 8251,
-      "sha256": "26d930e60d3db39ccfb05c1b3300e0a46b141e7a446dac29d72e71aebf0daebd"
+      "bytes": 22567,
+      "sha256": "dc61dccb3d758fd83cba544ff2fa4400edc8130d99a492382c1163d97ad5a299"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/sections.json",
@@ -1149,8 +1414,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/practice.json",
-      "bytes": 47412,
-      "sha256": "fe0956e68080b231ddc8bf71fa50e75fc3948c983dab6cebd1f08c8e60e5696d"
+      "bytes": 66937,
+      "sha256": "331e6219d523cfd218f1b10b3f7425188c89fc73b5bbe21d53d41ae6917c55fb"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/public/adversaries.mjs",
@@ -1223,6 +1488,16 @@
       "sha256": "78cce73c202e6fac34b92bc928c4818a46c7f8e513b594fcd9e1069f457f033d"
     },
     {
+      "path": "courses/anti-cheat-engineering-part-two/reader/code-example.css",
+      "bytes": 1995,
+      "sha256": "4bfc888966174a24f3bafa82db1878563fdab631ccd99c6aff7d715c8bdff36c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/reader/code-example.mjs",
+      "bytes": 3203,
+      "sha256": "5728768f4af74f4219addf8ab60a7e7daaf82142e97676667055e05a60eb29ad"
+    },
+    {
       "path": "courses/anti-cheat-engineering-part-two/recordings/delay-misses.json",
       "bytes": 482647,
       "sha256": "a1c2d5fb52dd051a769b5f2d4a1e49b363e272b1e5359cba8ff3ecc56903b62c"
@@ -1281,6 +1556,76 @@
       "path": "courses/anti-cheat-engineering-part-two/starter/trade/trade.mjs",
       "bytes": 1115,
       "sha256": "f2d78f759ee6d96b4b587915c703c295ddca66141278ff52720777e7a8649a80"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/capstone/gain.mjs",
+      "bytes": 920,
+      "sha256": "f26110728804cb8663fadc98e449ae3e48d6b3517cd75ee90972b1359edd1c0d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/courier/moved.mjs",
+      "bytes": 857,
+      "sha256": "8d252f5d0508475b4d548380f18d1cce67c6940fa6b5caea6b945347e9b27656"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/courier/rewind.mjs",
+      "bytes": 1238,
+      "sha256": "3a6704b95ebc5ce409f9a90f6559776ee3acb1e1eeaae42902241a74c24683b3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/detect/detector.mjs",
+      "bytes": 1450,
+      "sha256": "e90f3391b276d5a98b2482ac3a8af374bbf148079b018c05bdfb78f31c06074a"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/detect/features.mjs",
+      "bytes": 867,
+      "sha256": "bc7d2b8f9ce6a9967821c3d9606779bfea31160cf016c1833556c7bb14dbc1a4"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/detect/kind-budget.mjs",
+      "bytes": 674,
+      "sha256": "32bb3eb653aabb61a44b82fa590be18858e48f747a9b5c12722ce9fbf8462e98"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/server/admission.mjs",
+      "bytes": 1230,
+      "sha256": "a30e831de8da9370fb4e06d5fb8c7979d706e69caad61f44370824de8a14a961"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/server/leaks.mjs",
+      "bytes": 469,
+      "sha256": "e1c20785fef757f0b6cc8fce7ac4b525a83fe5d6753417e2007ac1e0639ee1f5"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/server/recorder.mjs",
+      "bytes": 2783,
+      "sha256": "b3c49d3f136c567e143503ca6399da6cefc5afba1918c02d5e96a144e14419a3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/server/resume.mjs",
+      "bytes": 786,
+      "sha256": "038c66c0d05cd3812aec214c9807eacfd8c94ccd65acd39196dff470234cb5f3"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/server/spectator.mjs",
+      "bytes": 656,
+      "sha256": "50b021a912dfe2e7d0e10563e4ecdb889d626b6dc8b5a8737ca6e2b05fb4790d"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/server/view.mjs",
+      "bytes": 627,
+      "sha256": "e4062363eea99a117e33821c51afde9f6c78be61c04c5ace800fb878da621037"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/trade/swap.mjs",
+      "bytes": 1282,
+      "sha256": "0a2d419d88644601c0f6468ac934838f46a56240bc18d840a8b581909398ca71"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/walkthrough/trade/trade.mjs",
+      "bytes": 1509,
+      "sha256": "d4f599ec1ae59a17fe7d10edff55ea82af0019a701abfa2e002a237037d5f971"
     },
     {
       "path": "courses/anti-cheat-engineering/NOTICE.md",
@@ -6234,8 +6579,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/API.md",
-      "bytes": 22461,
-      "sha256": "2a89d197ac8c669d43ea7963d9f506ffea3a02869fadbf4cbb4328d3f444726c"
+      "bytes": 22910,
+      "sha256": "b0d4ad03391b5d24607cb0eb7596149e8f72a3d677cdaf51ee2a458af666a1e8"
     },
     {
       "path": "courses/time-travel-debugger-part-two/LICENSE.md",
@@ -6254,8 +6599,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/README.md",
-      "bytes": 7560,
-      "sha256": "b75633355c52e0add315ad474fe8a6e25d719b213421dcab94fd312f13d90645"
+      "bytes": 8231,
+      "sha256": "ed5be253a90a001629828219f57af7c1aee7eca6ad455b8ea9b24e8ef0a1f004"
     },
     {
       "path": "courses/time-travel-debugger-part-two/checks/08.mjs",
@@ -6264,8 +6609,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/checks/09.mjs",
-      "bytes": 33454,
-      "sha256": "9ade0f8c8a0da8fed50652c4f1c794a5d04c08886e04a0ef4b159b94f48692e7"
+      "bytes": 33498,
+      "sha256": "5af0d4cf3c5bde57c724f4eff645724376d6adf112c8d32380758f2b3a17d756"
     },
     {
       "path": "courses/time-travel-debugger-part-two/checks/10.mjs",
@@ -6384,13 +6729,58 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/debug.mjs",
-      "bytes": 21698,
-      "sha256": "8b01ca3ebdaaec6b756747210d044bc367d92a686dcce681fe1c86bca12e08fb"
+      "bytes": 23604,
+      "sha256": "7efbdd992d3590e707b7c41f016240a890928d8600fb5a9023eeaec38444ed79"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/back-session-output.txt",
+      "bytes": 1089,
+      "sha256": "4e3eb3f535d6446d283aedb4fa596da1067b46a3590c3998f037e846c743c25d"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/back-session.txt",
+      "bytes": 82,
+      "sha256": "512bb9e4a00d8c9c97ffcc25f27b31795ca63538d23c6bfd90eeb90929acf358"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/check-changes.mjs",
+      "bytes": 13310,
+      "sha256": "4edbcfbf4baee0e95649392bb162a97791506da1437ef633eb793f5f0be53159"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/check-next-line.mjs",
+      "bytes": 12167,
+      "sha256": "f70c0d8731b545b2d67ef341c1f0a715736fae4d30af422db1b54ab69c742e48"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/check-reverse-find.mjs",
+      "bytes": 13805,
+      "sha256": "80509163d6f62fe3b9bc2a08554c42a4e6bdd98d96084b822154969ea54bae28"
     },
     {
       "path": "courses/time-travel-debugger-part-two/examples/check-slice.mjs",
-      "bytes": 9210,
-      "sha256": "f9294c5848ed14d09e07901645636b73ae26ad2b76605d62ea8c9d4d9f883ff9"
+      "bytes": 10104,
+      "sha256": "7bdfbc3bc72048a8cdd6be350c5b7e44bf2439e0b2c925dcd199c45722887b48"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/check-trim.mjs",
+      "bytes": 10379,
+      "sha256": "48736b5b2e73ee1ffbb3d2ce409bdec35afd6a96f5fa7f059119a55f88891a2c"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/check-value-sources.mjs",
+      "bytes": 11363,
+      "sha256": "eb6a655924d510545a79d728ad2307c5bb2867038b82d08ed020905c29a036fb"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/debugger-checkpoint.mjs",
+      "bytes": 10486,
+      "sha256": "2fc26d618629208be9d5512cf64666d026009240e2a2fdffce57837404f563f4"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/diverge-output.txt",
+      "bytes": 85,
+      "sha256": "c7841e2eb46e4dd7f9d5330560f8df0b335bbd91d6cbc340044115097aceaecb"
     },
     {
       "path": "courses/time-travel-debugger-part-two/examples/getter-output.txt",
@@ -6398,14 +6788,174 @@
       "sha256": "ee3905779444b391e87c6750ceb83445752f433339218e5ca3085e1a68702fe1"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/examples/index-output.txt",
+      "bytes": 415,
+      "sha256": "29529ff30b837043b8a66e59df26507e67912ecce21d71e35dda126dfdeb4a77"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/investigate-1-output.txt",
+      "bytes": 1130,
+      "sha256": "fc5bdbaa13b6b25a734e44d03f1d85c03ad458f811ad39f152ef4635d00c9c64"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/investigation-1.txt",
+      "bytes": 842,
+      "sha256": "51177f43df0386a7e3eef1b405d3677da33030f029ccbedcd2ac227c2548f6ca"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/investigation-step1-output.txt",
+      "bytes": 137,
+      "sha256": "c5ab5b0d3abf68f051e05a6b2e801c522db3afdddf31fad072933a39b2eba7d9"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/investigation-step2-output.txt",
+      "bytes": 394,
+      "sha256": "05b9d472046c34217ef2c20cf0d5f8fb03515520186075e06c6d655600efe43a"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/investigation-step3-output.txt",
+      "bytes": 504,
+      "sha256": "56fbc7a4add899b2aaa10363b142f7666637471e0b9650bb9f061ee366955793"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/investigation-step5-output.txt",
+      "bytes": 854,
+      "sha256": "1571f3f88b7b7ad05ea0adf576e01120385334bda9b39cab7de754efbfb3ddee"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/ladder-tour-output.txt",
+      "bytes": 3016,
+      "sha256": "ea5e1dbfe0a23aaafd60a0957c4516fcf96dc29356253aa7b4a57ac33bd4e25a"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/ladder-tour.txt",
+      "bytes": 37,
+      "sha256": "e874b69302545aa7131927ee3445da26403df95d3a202fe56afd1e89c28b5335"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/lines-session-output.txt",
+      "bytes": 1073,
+      "sha256": "7a56bf07f45c3bbdfde74182b7591e8717feeb0117ed544937535e674e172774"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/examples/machine-checkpoint.mjs",
       "bytes": 17777,
       "sha256": "2382de0a6eae880727076c966ffb05121936094901ad79baa4c5b6a821f7cec6"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/examples/names-checkpoint.mjs",
+      "bytes": 3194,
+      "sha256": "d6ab8a2efe648b9b7848ee640c732ab673ec9b4da37078504e8888f09aae11a2"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/names-output.txt",
+      "bytes": 592,
+      "sha256": "b951646c442b483155d517c28daab87b8f3245381f1c2f093a5f6450795abc18"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/query-checkpoint.mjs",
+      "bytes": 16036,
+      "sha256": "fa617d71acdbcab3590d5fe408d6948fdc4942c75b0d177774154ead803d93af"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/query-session-output.txt",
+      "bytes": 1632,
+      "sha256": "957813d26f055d71b192ae92e4a2bc8d8c01eb553909607c67960c2c7d32e858"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/query-session.txt",
+      "bytes": 39,
+      "sha256": "0b57c2644f44d4a9969de140d306c8677673e5baec03bb55161d095e2003def5"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/recorder-checkpoint.mjs",
+      "bytes": 6237,
+      "sha256": "4c20da251f3b843e1b395e4bb381de903355167bd12841b3061e75d0d43ea7db"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/recording-output.txt",
+      "bytes": 480,
+      "sha256": "272e0a81d7dc5548983208a3e3ad0ba7be1141b36fa6bc8b67b10fdd0cbb701c"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/replay-output.txt",
+      "bytes": 296,
+      "sha256": "9df1895924de84d129177cfd64cc67fa6ec10c51391af3e90271a2b8027db00d"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/route.mjs",
+      "bytes": 4007,
+      "sha256": "eca136a566a7606eb885022729f664d90e3da120e1cb977240437678524d1699"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/show-index.mjs",
+      "bytes": 2576,
+      "sha256": "7487b2bc6243434ec0db76f04562007e8bff424436f93d596a48c2ce91ebdcd0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/show-names.mjs",
+      "bytes": 1283,
+      "sha256": "a28b52c5145250ed8a03f9f14bbc637153c4159dd7ee65d7df615c406a4f98a6"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/show-recording.mjs",
+      "bytes": 1293,
+      "sha256": "d004786622b701d3b942db98f7f481cf00cc414213b0597da3c986266d0234a9"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/show-snapshots.mjs",
+      "bytes": 1956,
+      "sha256": "564acc7cca8f25f7d69fec9adf6f6c5b78fb90856ee63306fb61d4446f8a3d1c"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/snapshots-output.txt",
+      "bytes": 446,
+      "sha256": "1ea703e5fbe39f43a386d9bd6587936fc364d3340a3bca7d4df8ba50e1d07491"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/stack-checkpoint.mjs",
+      "bytes": 11208,
+      "sha256": "9ba8e4d7e5359c48357f03af3d1fbdc657408c83dd740e35ea5aa950f3e2d33b"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/stack-session-output.txt",
+      "bytes": 989,
+      "sha256": "69d4a8793fed33a3bf0dad722cbb99afbf648f16e1defde39c6b2392b1ebc0cc"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/stack-session.txt",
+      "bytes": 73,
+      "sha256": "ea83a6657f7843967276239d29817dbb28d3f89c96875ab727c3873eee05da86"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/start-changes.mjs",
+      "bytes": 894,
+      "sha256": "c2ae417ce988227bf7033cf639996fbb86546222b04c0b1badc31f1486c957e2"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/examples/start-chapter.mjs",
-      "bytes": 2246,
-      "sha256": "5aced376c925b8abe8d05a39b2a0fcce6a2b7f5ab0c26810347935d0e8632bf5"
+      "bytes": 2124,
+      "sha256": "ae330241bd2b774897c0898be493ec1b1eb6c571d8d5e1bdcb12c71cb613d475"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/start-debugger.mjs",
+      "bytes": 1155,
+      "sha256": "17d3a35d0220f7c8dfcf038d7393098927921ff8d97539fb1a2fd9f9825b977f"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/start-names.mjs",
+      "bytes": 2461,
+      "sha256": "a286d355a7a28a6da57088031cb8c5900a2b9bc55d7479b02fc7fa23d1c77ee2"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/start-query.mjs",
+      "bytes": 1132,
+      "sha256": "07146275b638e10ad39a238e3225de6c9c7bdee352039f205ef94534e4897bcf"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/examples/start-recorder.mjs",
+      "bytes": 1110,
+      "sha256": "1a58a4b4066faada4ca2232f00235630d19fb3879f593ceffa1775af4e377b93"
     },
     {
       "path": "courses/time-travel-debugger-part-two/examples/step-getter.mjs",
@@ -6419,8 +6969,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/lab.mjs",
-      "bytes": 27863,
-      "sha256": "6f65fbdd7cb06599736dd66aa0628faf71ead69258e7488241693d72ee2aeccc"
+      "bytes": 29824,
+      "sha256": "4565075cd77f1ce9195e07431a9640757a1d87df37f5ad73181b768a9082a702"
     },
     {
       "path": "courses/time-travel-debugger-part-two/ladder.json",
@@ -6429,38 +6979,63 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/08.html",
-      "bytes": 59043,
-      "sha256": "67749fec160dfb68044a26afa8bdfe84cd2614b09ba229165efcbcdcfcb17006"
+      "bytes": 62353,
+      "sha256": "0ac534a8e3efe42c44bf17f53efd3b71dd8553ef9013fea80f55733c2c101d7a"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/08.md",
-      "bytes": 38481,
-      "sha256": "399bcd387f56f00f0a01c226c1113dfee2c94d9a743330dcb94fb0787c67ec67"
+      "bytes": 41014,
+      "sha256": "dd4f43941e6886b62bacfe6fd144927a79eff2b7c75aad34ce5f77d0992a3ca5"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/09.html",
+      "bytes": 54196,
+      "sha256": "118d7b4f60ad9be2095b4321e1d884935fc3904051a010afe0a6ab423bf31949"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/09.md",
-      "bytes": 10198,
-      "sha256": "2898d4674b30b4c1313d5feb0520563a4a5e2a03f3f0e6faac587b6fd64b8fac"
+      "bytes": 34635,
+      "sha256": "4c2d42656396495f96bf80271a8f4b3ecbd691d5e2c6812443cf5f06673bcde2"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/10.html",
+      "bytes": 65381,
+      "sha256": "0bc256bf3a5e71c96f81394aaf12c45c8a516dbf334dcff9657a74941837aa29"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/10.md",
-      "bytes": 9787,
-      "sha256": "4d2392b211601d65a4187b2475742e6cc8e79e96f6725e8ea91a6d27c318b283"
+      "bytes": 41161,
+      "sha256": "c65429e136d3e3802b44d8cd11e3ae267d1fa9872f1925b540d1ec0e783c34a5"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/11.html",
+      "bytes": 85812,
+      "sha256": "1de34437d549bf072268c57ff5817f02211d8b7d6f4e9a1de110f1119f18d115"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/11.md",
-      "bytes": 10395,
-      "sha256": "75139efaff0dd1c6311167b941511a229335f9240ecae192fa45708a9e629014"
+      "bytes": 50536,
+      "sha256": "72b90f689cf6e46c7fe408349e929b7bc7d3eba16e772cf3165e6cc688a8ec56"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/12.html",
+      "bytes": 68300,
+      "sha256": "bbcc270221f60671d96c9418ce2bdce70947605cc3ad29dadbec1eda4d803d54"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/12.md",
-      "bytes": 8284,
-      "sha256": "04770daf180732b9cad4039994dc17ca1292ee8b767fcc8041ff6a56d1a47068"
+      "bytes": 42716,
+      "sha256": "3ba88a357684bf3ad8a2ec6416e754f530de7757f91ace30f6be213df98f8954"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/13.html",
+      "bytes": 50075,
+      "sha256": "392fef403d7ac6c811f020d27e56e1b7b607f39d67d65ccf935d1b988f29e010"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/13.md",
-      "bytes": 11673,
-      "sha256": "17c5beeea25f4ac2f03dc9f69aa92ac07b10e7ba264b2fb81253775ca972e088"
+      "bytes": 33497,
+      "sha256": "e85b93a0f17258514ca752eeb7d66d7433b02f7719d8fa4abf4b103a79345828"
     },
     {
       "path": "courses/time-travel-debugger-part-two/lessons/sections.json",
@@ -6474,8 +7049,8 @@
     },
     {
       "path": "courses/time-travel-debugger-part-two/practice.json",
-      "bytes": 41377,
-      "sha256": "4754a77cdf6622ce28edf004d88c0bdb59999e77d4c26d17f767b0305a1802ba"
+      "bytes": 73683,
+      "sha256": "b172d53710df067c79303f32b9e08ad73c0c0381074d9d11da6e3497bca4f08f"
     },
     {
       "path": "courses/time-travel-debugger-part-two/programs/ladder/1.json",
@@ -6588,6 +7163,16 @@
       "sha256": "90b72608b0ead63af2751b0a25cffabfdd319886cceb232f838ffa83002d5c1e"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/starter/changes.mjs",
+      "bytes": 327,
+      "sha256": "eaa1bbbab4fb47e4976f09835c2d41344777e835c366572f1a9a82361b583904"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/starter/debugger-build.mjs",
+      "bytes": 5218,
+      "sha256": "383fc660d1f5970e8a8859dfaf075d9a85f081d0f1472316842287b76bfdd727"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/starter/debugger.mjs",
       "bytes": 1228,
       "sha256": "7dfdc54126de40e2d33d0490b4dad0ce6ed512d3c3d5f59bba47bf5032831eaf"
@@ -6633,9 +7218,24 @@
       "sha256": "9a0575f69e58298f71b1ae91d9c8f471abb9ab7bdf8ebdcab09ecb58dc77bc5f"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/starter/names-build.mjs",
+      "bytes": 1378,
+      "sha256": "8745176a4bfaab34f5bf2fa74791605819bc468d5182341755af560047ec9556"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/starter/names.mjs",
       "bytes": 305,
       "sha256": "11cc878993b0214c0fd3cd91c129cb72880ce9b4ff2fe7251d10bfd195295a8c"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/starter/next-line.mjs",
+      "bytes": 346,
+      "sha256": "20e3507f1746e6fe645ccc687f47d4670782d7e091feccfd456f06e9273bfcaa"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/starter/query-build.mjs",
+      "bytes": 5286,
+      "sha256": "4ad36e00ff172578082bbff5d6c66eba995c0e822bfba5f420ac1ef5bd924ec4"
     },
     {
       "path": "courses/time-travel-debugger-part-two/starter/query.mjs",
@@ -6643,14 +7243,34 @@
       "sha256": "1bd0d66ba6ae9d7716f519b511764a6805a883fe0a03e54fb204e15f9bf9ffa3"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/starter/recorder-build.mjs",
+      "bytes": 1806,
+      "sha256": "70bed3c4f8cdb13eeee2bc75c0508c8a69a464b62bd568d8b3c71cca43154fe2"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/starter/recorder.mjs",
       "bytes": 721,
       "sha256": "4a6c7613150c00b358eff8edd1e1d4806d837b2d18701205796f33fe802bca16"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/starter/reverse-find.mjs",
+      "bytes": 372,
+      "sha256": "f6af7ec11e80896486ac4f59c2a0f37a8ff4a59942a4ed67265aa1897504492c"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/starter/run-slice.mjs",
       "bytes": 289,
       "sha256": "b94d6362e6f4ebf02e943e7da2bc0b0975194efa5a89084bd38675c3ed310f5d"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/starter/trim.mjs",
+      "bytes": 368,
+      "sha256": "14c59711184fd6ff22dedbf4f13dc051507f757f834ebe44c2f86e600e2bfc6f"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/starter/value-sources.mjs",
+      "bytes": 439,
+      "sha256": "f87c1af630873aca462fd790122b853dbdd7855eaa8fbab9abd026855ec35772"
     },
     {
       "path": "courses/time-travel-debugger-part-two/targets/MANIFEST.json",

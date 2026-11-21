@@ -16,7 +16,7 @@ const unitTitle = (u) => config.units.find((x) => x.id === u)?.title ?? '';
 function project(dir) {
   if (!dir) throw Error('Name your project folder: node lab.mjs COMMAND PROJECT ...');
   const p = resolve(dir);
-  if (!existsSync(join(p, 'PROJECT.json'))) throw Error(`${dir} is not a project folder: run node lab.mjs init ${dir} first`);
+  if (!existsSync(join(p, 'PROJECT.json'))) throw Error(`${dir} is not a project folder: make it with a starting route from lesson 12 (node examples/start-chapter.mjs ${dir} write, or supplied)`);
   return p;
 }
 
@@ -106,7 +106,8 @@ async function check(dir, unit, { only = null, jobs = null, help = 'not declared
   }
   writeFileSync(join(attempt, 'receipt.json'), JSON.stringify({ course: config.id, help_used: help, units: saved, at: new Date().toISOString() }, null, 2) + '\n');
   if (saved.length > 1) say(allPass ? `All ${saved.length} units pass.` : 'Some checks fail.');
-  say(`Saved this attempt in ${attempt}. A pass covers these cases only.`);
+  // Paths are printed from the folder you run commands in, the course's folder: project/attempts/...
+  say(`Saved this attempt in ${relative(process.cwd(), attempt) || '.'}. A pass covers these cases only.`);
   process.exitCode = allPass ? 0 : 1;
 }
 
@@ -131,7 +132,19 @@ async function listChecks(units) {
 
 // Every attempt is its own folder under attempts/, so the first is kept and later ones are added.
 // A folder's name starts with its time, so sorted names are in order: check runs, predictions,
-// and lesson 14's freezes and held-out runs (labcmds/14.mjs writes those two).
+// the new-application runs of lessons 12 to 17 (examples/check-resume.mjs,
+// examples/check-spectator.mjs, examples/check-kind-budget.mjs, examples/check-moved.mjs,
+// examples/check-swap.mjs and examples/check-gain.mjs write those), and lesson 14's
+// freezes and held-out runs (labcmds/14.mjs writes those two).
+// The new applications' checkers save their own receipts in attempt folders.
+const NEW_APPLICATIONS = [
+  { file: 'resume-receipt.json', label: 'lesson 12 new application (resumeState)' },
+  { file: 'spectator-receipt.json', label: 'lesson 13 new application (spectatorView)' },
+  { file: 'kind-budget-receipt.json', label: 'lesson 14 new application (chooseThresholdByKind)' },
+  { file: 'moved-receipt.json', label: 'lesson 15 new application (judgeUnmoved)' },
+  { file: 'swap-receipt.json', label: 'lesson 16 new application (swap)' },
+  { file: 'gain-receipt.json', label: 'lesson 17 new application (gainBudget)' },
+];
 function status(dir) {
   const p = project(dir);
   const folder = join(p, 'attempts');
@@ -140,7 +153,8 @@ function status(dir) {
   const record = (path) => { try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return null; } };
   for (const name of existsSync(folder) ? readdirSync(folder).sort() : []) {
     const receipt = join(folder, name, 'receipt.json'), prediction = join(folder, name, 'prediction.json');
-    const freeze = join(folder, name, 'freeze.json'), heldout = join(folder, name, 'heldout.json');
+    const freeze = join(folder, name, 'freeze.json'), heldout = join(folder, name, 'heldout.json'), restore = join(folder, name, 'restore.json');
+    const applied = NEW_APPLICATIONS.find((a) => existsSync(join(folder, name, a.file)));
     if (existsSync(receipt)) {
       for (const u of JSON.parse(readFileSync(receipt, 'utf8')).units) {
         const n = u.results.length, passed = u.results.filter((x) => x.pass).length;
@@ -155,6 +169,15 @@ function status(dir) {
     } else if (existsSync(freeze)) {
       const r = record(freeze);
       say(`${name} freeze: ${r ? `${Object.keys(r.files ?? {}).join(', ')} hashed, threshold ${r.dev?.threshold}${r.afterHeldout ? ', after a held-out result' : ''}` : 'freeze.json is not valid JSON'}`);
+      shown++;
+    } else if (existsSync(restore)) {
+      const r = record(restore);
+      say(`${name} restore-frozen: ${r ? `${(r.restored ?? []).join(', ')} put back from the freeze at ${r.frozenAt}; the files it replaced are kept in this folder` : 'restore.json is not valid JSON'}`);
+      shown++;
+    } else if (applied) {
+      const r = record(join(folder, name, applied.file)), rs = Array.isArray(r?.results) ? r.results : null;
+      const failedLoad = r?.load_error ? `0 cases pass; ${r.load_error.file} could not be loaded: ${r.load_error.reason}` : null;
+      say(`${name} ${applied.label}: ${failedLoad ?? (rs ? `${rs.filter((x) => x.pass).length} of ${rs.length} cases pass` : `${applied.file} is not valid`)}`);
       shown++;
     } else if (existsSync(heldout)) {
       const r = record(heldout), c = r?.result;
@@ -257,7 +280,7 @@ const CORE = [
   { name: 'init', args: 'PROJECT', about: 'make your project folder with the starter files', run: ({ plain }) => init(plain[0]) },
   { name: 'check', args: `PROJECT UNIT|all [--case ID|list] [--jobs N] [--help-used TEXT]`, about: `run the checks of unit UNIT (${UNITS[0]} to ${UNITS.at(-1)}) on your files; --case list names them`,
     run: ({ plain, o }) => check(plain[0], plain[1], { only: caseOption(o), jobs: jobsOption(o), help: helpUsed(o) }) },
-  { name: 'status', args: 'PROJECT', about: 'list your saved check attempts, predictions, freezes and held-out runs, in order', run: ({ plain }) => status(plain[0]) },
+  { name: 'status', args: 'PROJECT', about: 'list your saved check attempts, predictions, freezes, restores and held-out runs, in order', run: ({ plain }) => status(plain[0]) },
   { name: 'question', args: 'ID', about: 'show a prediction question (IDs are in the lessons)', run: ({ plain }) => question(plain[0]) },
   { name: 'predict', args: 'PROJECT ID ANSWER [--help-used TEXT]', about: 'commit an answer before reading on, then see the reason',
     run: ({ plain, o }) => predict(plain[0], plain[1], plain.slice(2).join(' '), helpUsed(o)) },

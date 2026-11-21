@@ -178,7 +178,7 @@
  "13a": {
   "version": 1,
   "lesson": "13",
-  "section": "A client is bounded by what it is sent",
+  "section": "What hiding costs",
   "retry": "13a2",
   "question": "With only what the screen draws (the arrows instead of the wind, the flag to the nearest pace, nothing about its speed or timer), what share of its shots does the searching client hit at 50 ms each way? (a) about 95%, (b) about 65%, (c) about 25%, (d) about 5%",
   "format": "one letter",
@@ -187,40 +187,40 @@
   "wrong": [
    {
     "answer": "a",
-    "feedback": "That's the full view's rate. With only what the screen draws, the searcher has to estimate where the flag will be, and a change of speed during a flight usually means a miss."
+    "feedback": "Your answer, about 95%, is close to the full view's rate. With only what the screen draws, the searcher has to estimate where the flag will be, and a change of speed during a flight usually means a miss."
    },
    {
     "answer": "c",
-    "feedback": "That is roughly an expert player. The searcher still aims exactly for its best estimate, and the arrows plus the flag's recent positions are a good estimate most of the time."
+    "feedback": "Your answer, about 25%, is roughly an expert player's rate. The searcher still aims exactly for its best estimate, and the arrows plus the flag's recent positions are a good estimate most of the time."
    },
    {
     "answer": "d",
-    "feedback": "That is a novice's rate. The searcher aims exactly for its best estimate; it misses only when its estimate of the wind or of the flag's motion is wrong, which is about one shot in three."
+    "feedback": "Your answer, about 5%, would mean it almost never hits. The searcher aims exactly for its best estimate; it misses only when its estimate of the wind or of the flag's motion is wrong, which is about one shot in three."
    }
   ]
  },
  "13a2": {
-  "version": 1,
+  "version": 3,
   "lesson": "13",
-  "section": "A client is bounded by what it is sent",
+  "section": "What hiding costs",
   "retryOnly": true,
   "variantOf": "13a",
-  "question": "With the full view, at 400 ms each way, what share of its shots does the searching client hit? (a) 100%, (b) about 65%, (c) about 54%, (d) about 25%",
+  "question": "With only what the screen draws, at 400 ms of latency each way, what share of its shots does the searching client hit? (a) about 85%, (b) about 65%, (c) about 54%, (d) about 15%",
   "format": "one letter",
-  "expected": "a",
-  "reason": "With the full view it simulates the future exactly, including the flag's next speed, and it knows its own delay, so latency costs it nothing: 100.0% at every latency in the cost table. 54% is its rate with the drawn view at 400 ms.",
+  "expected": "c",
+  "reason": "It hits about 54%: 54.0% at 400 ms each way in the course's own measurement, the bottom cell of the column your cost run fills in. From the drawn screen it has to run the flag forward from positions it saw, and the longer the delay, the more often the flag picks a new speed during that time, which nothing it was sent can predict.",
   "wrong": [
    {
-    "answer": "c",
-    "feedback": "54% is the drawn view at 400 ms. With the full view the searcher knows the flag's timer and random state, so it can run the flag forward past any delay."
+    "answer": "a",
+    "feedback": "Your answer, about 85%, is more than it hits at 50 ms. A longer delay can only make its estimate of the flag worse, never better."
    },
    {
     "answer": "b",
-    "feedback": "About 65% is the drawn view at short latencies. The full view adds the exact wind and everything that decides the flag's next speed."
+    "feedback": "Your answer, about 65%, is its rate at 50 ms, as if latency cost it nothing. With the drawn view it must run the flag forward from old positions, and over a longer delay the flag more often picks a new speed it could not foresee."
    },
    {
     "answer": "d",
-    "feedback": "About 25% is an expert player. The searcher with the full view knows everything the server knows."
+    "feedback": "Your answer, about 15%, is near what an expert hits at 400 ms with the drawn view, 14.6%. The searcher still aims exactly for its best estimate, so it keeps far more of its hits than a player who aims by eye."
    }
   ]
  },
@@ -408,11 +408,11 @@
   "wrong": [
    {
     "answer": "39",
-    "feedback": "65% is the plain searcher's rate. The delay-misses sessions miss on purpose and hit 31.1%."
+    "feedback": "Your answer is near what the plain searcher gains over an expert, not what these sessions gain. 65% is the plain searcher's rate. The delay-misses sessions miss on purpose and hit 31.1%."
    },
    {
     "answer": "31",
-    "feedback": "Compare with what an honest expert gets for nothing: 27.5%."
+    "feedback": "Your answer is these sessions' own hit rate, not what they gain over an expert. Compare with what an honest expert gets for nothing: 27.5%."
    }
   ]
  },
@@ -429,7 +429,7 @@
   "wrong": [
    {
     "answer": "68",
-    "feedback": "Compare with what an honest expert hits: 27.5%."
+    "feedback": "Your answer is the delay sessions' own hit rate, not what they gain over an expert. Compare with what an honest expert hits: 27.5%."
    }
   ]
  },
@@ -485,7 +485,7 @@
   "wrong": [
    {
     "answer": "1750",
-    "feedback": "That is where the screen showed it. The screen was 100 ms late, and the press takes another 100 ms: four ticks, three of them still walking."
+    "feedback": "Your answer is where the screen showed the courier. The screen was 100 ms late, and the press takes another 100 ms: four ticks, three of them still walking."
    },
    {
     "answer": "2000",
@@ -532,7 +532,7 @@
    },
    {
     "answer": "2500",
-    "feedback": "That is now. The judge rewinds as far as allowed: two ticks."
+    "feedback": "Your answer is where the courier is now. The judge rewinds as far as allowed: two ticks."
    }
   ]
  },
@@ -552,7 +552,7 @@
   "wrong": [
    {
     "answer": "2250",
-    "feedback": "That is T + 2, three ticks before now. The window allows two."
+    "feedback": "Your answer is the courier at T + 2, three ticks before now. The window allows two."
    }
   ]
  },
@@ -646,11 +646,11 @@
   "wrong": [
    {
     "answer": "a",
-    "feedback": "That is what a correct trade would leave. The retry runs all four writes on top of the first attempt's one, so Bo receives the sword twice."
+    "feedback": "Your answer, (a), is what a correct trade would leave. The retry runs all four writes on top of the first attempt's one, so Bo receives the sword twice."
    },
    {
     "answer": "b",
-    "feedback": "That is the state right after the crash. The retry then runs: it gives Bo the sword again and takes Ana's, so both swords end up with Bo."
+    "feedback": "Your answer, (b), is the state right after the crash. The retry then runs: it gives Bo the sword again and takes Ana's, so both swords end up with Bo."
    },
    {
     "answer": "d",
@@ -708,7 +708,7 @@
   "wrong": [
    {
     "answer": "60",
-    "feedback": "That is what an absolute write gives. A relative write repeated takes the 40 twice."
+    "feedback": "Your answer is what an absolute write gives. A relative write repeated takes the 40 twice."
    }
   ]
  },
@@ -1052,5 +1052,217 @@
    }
   ],
   "variantOf": "16c"
+ },
+ "12e": {
+  "version": 1,
+  "lesson": "12",
+  "section": "Parse strictly",
+  "retry": "12e2",
+  "question": "In inRange, Number.isSafeInteger(value) becomes typeof value === 'number', so any number inside the limits passes. How many of the five checks that test parsing and admission, `12.parse-accepts`, `12.parse-refuses`, `12.admit-order`, `12.admit-rounds` and `12.clients`, fail?",
+  "format": "a whole number from 0 to 5",
+  "expected": "2",
+  "reason": "Two: `12.parse-refuses` and `12.clients` fail, and `12.parse-accepts`, `12.admit-order` and `12.admit-rounds` pass. `12.parse-refuses` reports a seq that is not a whole number accepted, where it must be refused with reason seq: a fraction is a number inside the limits, so the weakened test lets it through. `12.clients` fails on the message outOfRange sends once a session with a power that is not whole, which your parseInput now admits. In the clients table only the outOfRange row changes: it admits one more input in each of its sessions, and its power refusals fall by as many. `12.parse-accepts` sends only messages that must be accepted, and a looser test still accepts them; the two admit checks give admit inputs that are already whole. On the supplied route the recorder and replay checks pass too. A refusal rule is tested only by the messages that break it, so a check suite needs one for every rule.",
+  "wrong": [
+   {
+    "answer": "0",
+    "feedback": "Zero would mean no check sends a fraction inside the limits. `12.parse-refuses` sends a seq that is not whole and must be refused, and outOfRange in `12.clients` sends a power that is not whole once a session. Your check run shows two failures, `12.parse-refuses` and `12.clients`."
+   },
+   {
+    "answer": "1",
+    "feedback": "One would leave `12.parse-refuses` or `12.clients` passing, but each sends a number with a fraction inside the limits: a seq in the first, outOfRange's power in the second. Your check run shows two failures, `12.parse-refuses` and `12.clients`."
+   },
+   {
+    "answer": "5",
+    "feedback": "Five would mean the change breaks every message, but it only lets more through. `12.parse-accepts` sends messages that must be accepted, and the admit checks give admit inputs that are already whole. Your check run shows two failures, `12.parse-refuses` and `12.clients`."
+   }
+  ]
+ },
+ "12e2": {
+  "version": 1,
+  "variantOf": "12e",
+  "retryOnly": true,
+  "question": "inRange keeps Number.isSafeInteger, but in parse-values the line that refuses a fire that is not true or false is deleted, so fire may be any JSON value. How many of the same five checks, `12.parse-accepts`, `12.parse-refuses`, `12.admit-order`, `12.admit-rounds` and `12.clients`, fail?",
+  "format": "a whole number from 0 to 5",
+  "expected": "1",
+  "reason": "One, `12.parse-refuses`, on a message whose fire is a number: yours returns ok, where the reason must be fire. None of the protocol cheats sends a fire that is not true or false, so `12.clients` passes. A client that never sends a fault can't show that the check for it is missing.",
+  "wrong": [],
+  "lesson": "12",
+  "section": "Parse strictly"
+ },
+ "13e": {
+  "version": 1,
+  "lesson": "13",
+  "section": "Precision is information",
+  "retry": "13e2",
+  "question": "In drawnView, flag: Math.round(game.targetX()) becomes flag: game.targetX(), so the flag is sent unrounded. How many of unit 13's four checks fail?",
+  "format": "a whole number from 0 to 4",
+  "expected": "3",
+  "reason": "Three: `13.view-fields`, `13.view-noninterference` and `13.view-encodings` fail, and `13.leaks-finds` passes. `13.view-fields` finds the flag field holding the game's exact position where the screen draws a whole pace. `13.view-noninterference` changes flagFraction, the flag's position inside the same pace, and your message changes with it. `13.view-encodings` finds the flag's exact x in your messages. `13.leaks-finds` tests your findLeaks on views it builds itself, never your drawnView, so the change can't reach it. The leak hunt's last lines name flagFraction in its non-interference table and the flag's exact x in its encoding search. Its totals of moments and messages differ from the listing, because the players and the searching client estimate the flag from the messages they receive, and with the fraction some of them aim differently.",
+  "wrong": [
+   {
+    "answer": "0",
+    "feedback": "Zero would mean a fraction of a pace is harmless to send. Changing flagFraction alone now changes your message, and the exact x is in it. Your check run shows three failures: `13.view-fields`, `13.view-noninterference` and `13.view-encodings`."
+   },
+   {
+    "answer": "1",
+    "feedback": "One would mean only the field check notices. Changing flagFraction alone now changes your message, which `13.view-noninterference` tests, and the flag's exact x is in the message, which `13.view-encodings` searches for. Your check run shows three failures: `13.view-fields`, `13.view-noninterference` and `13.view-encodings`."
+   },
+   {
+    "answer": "4",
+    "feedback": "Four would include `13.leaks-finds`, which runs your findLeaks on views it builds itself, never on your drawnView. Your check run shows three failures: `13.view-fields`, `13.view-noninterference` and `13.view-encodings`."
+   }
+  ]
+ },
+ "13e2": {
+  "version": 1,
+  "variantOf": "13e",
+  "retryOnly": true,
+  "question": "drawnView keeps its rounded flag, but cloud: Math.round(game.cloud()) becomes cloud: game.cloud(), so the cloud is sent unrounded. How many of unit 13's four checks fail?",
+  "format": "a whole number from 0 to 4",
+  "expected": "2",
+  "reason": "Two, `13.view-fields` and `13.view-noninterference`: the cloud field is not rounded, and changing cloudFraction alone changes your message. `13.view-encodings` passes, because the values it searches for are the exact wind, the flag's speed, the random state, the flag's exact x and the shell's velocity, not the cloud's exact position. A search finds only what it is told to look for; the non-interference test needs no list.",
+  "wrong": [],
+  "lesson": "13",
+  "section": "Precision is information"
+ },
+ "14f": {
+  "version": 1,
+  "lesson": "14",
+  "section": "A score and a budget",
+  "retry": "14f2",
+  "question": "In chooseThreshold, the line if (i > 0 && sorted[i] === sorted[i - 1]) continue; is deleted. How many of the three checks `14.features`, `14.threshold` and `14.counting` fail?",
+  "format": "a whole number from 0 to 3",
+  "expected": "1",
+  "reason": "One: `14.threshold` fails, and `14.features` and `14.counting` pass, because they never call chooseThreshold. The lists of `14.threshold` put a tie at the cut, and without the line the function can return a later copy of a tied score, counting the share as if the earlier copies weren't flagged. That threshold flags every copy, more sessions than the budget allows. With the one-feature score, tune prints the same output as the listing, every total included: the cut falls between two different scores, so the line had nothing to skip there. A broken function can give the right answer on the data you happen to try, which is why `14.threshold` builds lists with ties at the cut. If your own score tied at the cut, tune --write would store a threshold that flags too many dev legal sessions, and freeze and check `14.frozen` would both refuse it.",
+  "wrong": [
+   {
+    "answer": "0",
+    "feedback": "Zero would mean no check puts a tie at the cut. `14.threshold` does, and without the line chooseThreshold returns a later copy of the tied score. Your check run shows one failure, `14.threshold`."
+   },
+   {
+    "answer": "2",
+    "feedback": "Two would need a second check that calls chooseThreshold, but `14.features` reads only the features and `14.counting` only count and precisionAt. Your check run shows one failure, `14.threshold`."
+   },
+   {
+    "answer": "3",
+    "feedback": "Three would mean features and counting break too, but neither of their checks calls chooseThreshold. Your check run shows one failure, `14.threshold`."
+   }
+  ]
+ },
+ "14f2": {
+  "version": 1,
+  "variantOf": "14f",
+  "retryOnly": true,
+  "question": "The tie line stays, but the budget test (n - i) / n <= budget becomes (n - i) / n < budget. How many of the three checks `14.features`, `14.threshold` and `14.counting` fail?",
+  "format": "a whole number from 0 to 3",
+  "expected": "1",
+  "reason": "One, `14.threshold` again: where the share at or above a score equals the budget exactly, the rule allows that score, and the strict test passes it by. With the one-feature score this happens on the dev split itself. The two highest legal scores are tied, and their share is exactly the budget, so the strict test skips them, no score is left, and tune prints threshold Infinity and flags nothing. `14.features` and `14.counting` never call chooseThreshold.",
+  "wrong": [],
+  "lesson": "14",
+  "section": "A score and a budget"
+ },
+ "15f": {
+  "version": 1,
+  "lesson": "15",
+  "section": "The judge",
+  "retry": "15f2",
+  "question": "In judgeInteract, const allowed = Math.min(window, Math.ceil(rtt) + 1); becomes const allowed = window;, so the client's round trip no longer bounds the rewind. How many of unit 15's six checks fail?",
+  "format": "a whole number from 0 to 6",
+  "expected": "2",
+  "reason": "Two checks fail and four pass. `15.judge` fails on its case of a claim older than the round trip allows: your judge now looks further back than `min(window, ceil(rtt) + 1)`. `15.sweep` fails on the first interaction of its own sessions that your judge decides at another tick than the rule does. `15.position-at`, `15.measure-rtt`, `15.tally` and `15.pick` never call judgeInteract. The sweep changes in one column above all. The honest columns read exactly as before, because no honest claim in these sessions was older than its own round trip plus a tick, so the bound never cut one short. The naive faker's column, 0 at every window in the listing, now counts accepted lies from window 3 on, 5,458 of its 16,176 presses at window 7: its claims reach up to 12 ticks back, and only the window stops them now. The slow-pong column moves a little too, from presses it makes before any of its held pongs has arrived, when the bound had held them to one tick. And the last two lines still name windows 7 and 6, because pickWindow reads only the honest rate and the slow-pong column: the table it picks from can hide a broken judge. Lesson 17's courier budget limits the naive faker's accepted lies, and would catch this.",
+  "wrong": [
+   {
+    "answer": "0",
+    "feedback": "Zero would mean nothing tests the bound. `15.judge` has a claim older than the client's round trip allows, and `15.sweep` compares every decision of its sessions with the rule. Your check run shows two failures, `15.judge` and `15.sweep`."
+   },
+   {
+    "answer": "1",
+    "feedback": "One would leave `15.judge` or `15.sweep` passing, but the naive faker in the sweep's sessions claims ticks its round trip doesn't allow, and `15.judge` has such a claim among its cases. Your check run shows two failures, `15.judge` and `15.sweep`."
+   },
+   {
+    "answer": "6",
+    "feedback": "Six would mean the ring, the round trips, the tally and pickWindow break too, but their checks never call judgeInteract. Your check run shows two failures, `15.judge` and `15.sweep`."
+   }
+  ]
+ },
+ "15f2": {
+  "version": 1,
+  "variantOf": "15f",
+  "retryOnly": true,
+  "question": "The bound stays, but without its extra tick: const allowed = Math.min(window, Math.ceil(rtt));. How many of unit 15's six checks fail?",
+  "format": "a whole number from 0 to 6",
+  "expected": "2",
+  "reason": "Two, `15.judge` and `15.sweep` again. The case of `15.judge` with a claim older than the round trip allows expects the judge to look `ceil(rtt) + 1` ticks back, and yours stops a tick short. `15.sweep` finds an interaction of its sessions that your judge decides at another tick than the rule does. The other four checks never call judgeInteract. The extra tick covers a press that lands between two ticks, so the tick taken away is one an honest press may need.",
+  "wrong": [],
+  "lesson": "15",
+  "section": "The judge"
+ },
+ "16e": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Write what you will do first",
+  "retry": "16e2",
+  "question": "In finish, store.put(`coins:${buyer}`, buyerCoins - price); becomes store.put(`coins:${buyer}`, store.get(`coins:${buyer}`) - price);, so the buyer's coins are written relative to what the store holds now. How many of unit 16's four checks fail?",
+  "format": "a whole number from 0 to 4",
+  "expected": "3",
+  "reason": "Three checks fail and one passes. `16.trade` passes, because without a crash each write happens once, and taking the price from Bo's coins once gives the same number as writing his coins from before. That also needs Bo's coins to be in the store: in the worlds `16.trade` plays, every buyer in a sale that goes through has a `coins` key, so store.get never returns undefined for the buyer. On a missing key the relative write would store something that isn't a number, which `16.trade` would catch; lesson 16, \"Write what you will do first\", explains how a missing key reads. `16.crash-trade`, `16.crash-recover` and `16.double-sell` crash a trade part way, and each fails where recovery runs finish again after Bo's coins were already written. The crash table differs from the listing above at writes 4 and 5. A crash right after Bo's coin write, or right after Ana's, leaves the entry pending, and recovery takes the price from Bo a second time: after recovery the coins add up to 140, not 180, and the table ends `violations: 6 at 2 of 6 crash points`. At writes 1 to 3 the coin write hadn't happened yet, so recovery's is the only one, and at write 6 the entry is done and recovery skips it, so those rows read as in the listing.",
+  "wrong": [
+   {
+    "answer": "0",
+    "feedback": "Zero would mean writing the coins twice is harmless. Recovery runs finish again after a crash, and a relative write takes the price from Bo a second time. Your check run shows three failures: `16.crash-trade`, `16.crash-recover` and `16.double-sell`."
+   },
+   {
+    "answer": "1",
+    "feedback": "One would leave two of the crash checks passing, but `16.crash-trade`, `16.crash-recover` and `16.double-sell` all crash a sale after Bo's coin write and recover. Your check run shows three failures: `16.crash-trade`, `16.crash-recover` and `16.double-sell`."
+   },
+   {
+    "answer": "4",
+    "feedback": "Four would include `16.trade`, which never crashes: each write happens once, and once the relative write gives the same number as the absolute one. A relative write also goes wrong on a missing key, but every buyer in a sale that `16.trade` lets through has a `coins` key. Your check run shows three failures: `16.crash-trade`, `16.crash-recover` and `16.double-sell`."
+   }
+  ]
+ },
+ "16e2": {
+  "version": 1,
+  "variantOf": "16e",
+  "retryOnly": true,
+  "question": "The buyer's write stays absolute, but the seller's becomes relative: store.put(`coins:${seller}`, store.get(`coins:${seller}`) + price);. How many of unit 16's four checks fail?",
+  "format": "a whole number from 0 to 4",
+  "expected": "4",
+  "reason": "Four. A crash right after Ana's coin write leaves the entry pending, and recovery pays Ana a second time, so the coins add up to more than they did, and `16.crash-trade`, `16.crash-recover` and `16.double-sell` fail. `16.trade` fails too, with no crash at all: in one of its worlds the seller has no coins key, so store.get returns undefined, and undefined plus the price is not a number. A relative write depends on what the store holds, and a missing key is one more thing it can hold. The buyer's relative write in the question before this one met no missing key, because every buyer in a sale that goes through has a `coins` key; here it is the seller who may have none. Lesson 16, \"Write what you will do first\", says how a missing key reads and why the journal reads missing coins as zero.",
+  "wrong": [],
+  "lesson": "16",
+  "section": "Write what you will do first"
+ },
+ "17f": {
+  "version": 1,
+  "lesson": "17",
+  "section": "The budgets",
+  "retry": "17f2",
+  "question": "Your detect/settings.json keeps everything but its threshold, which becomes 1000000, far above any score your detector gives. How many of the two checks `17.legal` and `17.searcher` fail?",
+  "format": "a whole number from 0 to 2",
+  "expected": "1",
+  "reason": "One: `17.searcher` fails and `17.legal` passes. With a threshold no score reaches, your detector flags nothing: the searching client's flag floor needs at least 90% of its sessions flagged and gets none, while the legal ceiling allows a few flags and none is fine. The legal row's other parts, refusals and the expert hit rate, come from your admission and view, which you didn't touch. On the scoreboard every number in the `flagged` column is 0, the recordings included. One budget misses, `the searching client: at least 90% of its sessions flagged`, with 0 of its 200 sessions, and the line under the budgets says 8 of 9 budgets met. The hit rates, refusals, courier and trades read as before, because none of them reads the threshold. The line above the table now says that detect/settings.json changed since your freeze: the scoreboard uses your files as they are, and the freeze in your receipt records what you committed to before the held-out run. A threshold moved to fit the scoreboard's sessions is the mistake lesson 14's freeze exists to show.",
+  "wrong": [
+   {
+    "answer": "0",
+    "feedback": "Zero would mean a detector that flags nothing meets both budgets. The legal ceiling is met by no flags, but the searching client's floor needs most of its sessions flagged. Your check run shows one failure, `17.searcher`."
+   },
+   {
+    "answer": "2",
+    "feedback": "Two would need `17.legal` to fail too, but it allows a few flags, and its refusals and expert hit rate come from your admission and view, which the threshold doesn't touch. Your check run shows one failure, `17.searcher`."
+   }
+  ]
+ },
+ "17f2": {
+  "version": 1,
+  "variantOf": "17f",
+  "retryOnly": true,
+  "question": "The threshold becomes -1000000 instead, far below any score your detector gives, so every session reaches it. How many of the two checks `17.legal` and `17.searcher` fail?",
+  "format": "a whole number from 0 to 2",
+  "expected": "1",
+  "reason": "One, `17.legal` this time: every legal session is flagged, far over its ceiling. `17.searcher` passes, because every searcher session is flagged and its hit rate comes from your view. The two flag budgets pull against each other, and a threshold at either end meets one and misses the other.",
+  "wrong": [],
+  "lesson": "17",
+  "section": "The budgets"
  }
 }

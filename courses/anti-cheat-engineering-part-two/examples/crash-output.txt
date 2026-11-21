@@ -1,0 +1,16 @@
+Crash test: your trade and recover.
+  start: ana [sword lamp] 20, bo [bow] 100, cy [cap] 60 (coins 180)
+  script: 1. sale-1: ana sells bo the sword for 40; 2. sale-2: ana sells cy the sword for 30
+  without a crash: sale-1 ok, sale-2 missing; 6 writes in all, so 6 crash points.
+  At each crash point the server restarts, runs your recover, and the client sends the interrupted request again.
+
+write request  recover     after recovery              retry    after the retry             rival    problems
+1     sale-1   ["sale-1"]  sword: bo; coins 180        ok       sword: bo; coins 180        missing  0
+2     sale-1   ["sale-1"]  sword: bo; coins 180        ok       sword: bo; coins 180        missing  0
+3     sale-1   ["sale-1"]  sword: bo; coins 180        ok       sword: bo; coins 180        missing  0
+4     sale-1   ["sale-1"]  sword: bo; coins 180        ok       sword: bo; coins 180        missing  0
+5     sale-1   ["sale-1"]  sword: bo; coins 180        ok       sword: bo; coins 180        missing  0
+6     sale-1   []          sword: bo; coins 180        ok       sword: bo; coins 180        missing  0
+write: the crash came right after this write; request: the one it interrupted; recover: what your recover returned; after recovery, after the retry: who holds the sword, and all coins together (180 at the start); retry: the answer when the client sends the request again; rival: the answer to sale-2, ana selling cy the same sword.
+
+violations: 0 at 6 crash points

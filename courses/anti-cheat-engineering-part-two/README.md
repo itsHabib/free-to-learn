@@ -71,23 +71,37 @@ You need Node 22 or later. Nothing to install. You should be comfortable with me
 quartiles. The lessons define the rest (recall, false positive rate, precision, the
 standard error of a rate, the median absolute deviation).
 
+Open `lessons/12.md` first, before you run anything. Its section "Choose your starting
+point" gives the command that makes your project folder, `project/`. That command creates
+the folder and refuses one that already exists, so don't make `project/` yourself before
+you reach it. Every lesson with code to walk through offers two routes into it: type in
+the important parts from listings the lesson prints in full, or start from working code.
+Lesson 12's command makes the project for the route you choose, and each later lesson's
+command sets up its unit inside that same project. The code you design yourself is the
+same on every route: each lesson's new application, your detector's score in lesson 14
+and your rewind window in lesson 15.
+
+Lesson 12 also names a blank start, `node lab.mjs init project`, which copies `starter/`
+into `project/` with every function throwing "not written yet" until you write it. Use it
+instead of a route's command, not before one.
+
+`lab.mjs` runs everything in this course, and a check is an automated test of one
+contract, named like `12.parse-accepts`. Once lesson 12 has made your project, `check`
+runs all of a unit's checks:
+
 ```
-node lab.mjs init project
 node lab.mjs check project 12
 ```
 
-`init` copies `starter/` into `project/`. Every function there throws "not written yet"
-until you write it. `lab.mjs` runs everything in this course, and a check is an automated
-test of one contract, named like `12.parse-accepts`. `check` runs all of a unit's checks.
-To run one, name it with `--case`, and `--case list` prints a unit's checks with their
-titles:
+To run one check, name it with `--case`, and `--case list` prints a unit's checks with
+their titles:
 
 ```
 node lab.mjs check project 14 --case 14.features
 node lab.mjs check project 14 --case list
 ```
 
-Read `lessons/12.md` first. Lessons ask you to predict before you run something:
+Lessons ask you to predict before you run something:
 
 ```
 node lab.mjs predict project 12a YOUR_ANSWER
@@ -96,10 +110,15 @@ node lab.mjs predict project 12a YOUR_ANSWER
 Your first answer is kept, and later answers are added after it. After a wrong answer the lab points to the section that teaches the idea and gives you a fresh case to try. When no fresh case is left, `status` lists the question as due for another try later.
 
 lab.mjs keeps your receipt in `project/attempts/`. It adds a new folder there for every
-check run, prediction, freeze and held-out run, and it never overwrites one. In lesson 14,
-`freeze` records the sha256 hashes of your detector's files there, and `heldout` records
-each result it gives, the first one marked as first. That first held-out result is the
-number you report. `node lab.mjs status project` lists the receipt in order.
+check run, prediction, freeze and held-out run, and for every run of the new-application
+checkers of lesson 12, lesson 13, lesson 14, lesson 15, lesson 16 and lesson 17
+(`examples/check-resume.mjs`, `examples/check-spectator.mjs`, `examples/check-kind-budget.mjs`,
+`examples/check-moved.mjs`, `examples/check-swap.mjs` and `examples/check-gain.mjs`), and it
+never overwrites one. In lesson 14, `freeze` records the sha256 hashes of your detector's
+files there with a copy of each, which `node lab.mjs restore-frozen project` puts back,
+and `heldout` records each result it gives, the first one marked as first. That
+first held-out result is the number you report. `node lab.mjs status project` lists the
+receipt in order.
 
 ## What is where
 
@@ -114,6 +133,16 @@ number you report. `node lab.mjs status project` lists the receipt in order.
   official client, the legal player models, the cheating clients, the courier arena and
   the trade store, which holds the players' items and coins and can crash between writes.
 - `checks/`: the checks. Read them when a failure is unclear.
+- `examples/` and `walkthrough/`: the walkthroughs of every lesson. `walkthrough/server/`,
+  `walkthrough/detect/`, `walkthrough/courier/` and `walkthrough/trade/` hold the starting
+  files of the route that types in the important parts (the `write` route), and `walkthrough/capstone/` lesson 17's new application;
+  `examples/` holds the end-of-unit checkpoints, the probes the lessons run and the outputs
+  they show. `examples/start-chapter.mjs` makes a new project for lesson 12, and
+  `examples/start-unit13.mjs` to `examples/start-unit17.mjs` set up each later lesson inside
+  the project you already have. Lesson 17 has no new code: its walkthrough,
+  `examples/courier-row.mjs`, reads one row of the scoreboard with the scoreboard's own code.
+- `reader/`: the script and stylesheet of the code display some courses use. This course's
+  lessons are plain Markdown and read the same without them.
 - `recordings/`: the recorded sessions of the searching client's variants (above), for
   lesson 14.
 

@@ -1,0 +1,10 @@
+Your score on the dev split (makeCorpus({ split: 'dev' })): 1000 legal sessions, 100 searcher sessions.
+Your chooseThreshold on the 1000 legal scores at budget 0.002 (at most 2 of them at or above it):
+  threshold 5.379032258064517 (5.379)
+At that threshold, on dev (counted by the lab from your scores):
+  legal sessions flagged     2 of 1000: dev-expert-85 5.379, dev-expert-101 5.379
+  searcher sessions flagged  29 of 100 (recall 0.290)
+  tp 29  fn 71  fp 2  tn 998
+  highest legal scores:   dev-expert-85 5.379, dev-expert-101 5.379, dev-expert-9 4.035, dev-expert-45 4.035, dev-expert-52 4.035
+  lowest searcher scores: dev-searcher-60 2.019, dev-searcher-0 2.691, dev-searcher-19 2.691, dev-searcher-32 2.691, dev-searcher-33 2.691
+detect/settings.json holds threshold null. Run node lab.mjs tune project --write to store 5.379032258064517.
