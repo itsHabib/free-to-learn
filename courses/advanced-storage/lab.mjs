@@ -6,6 +6,7 @@ import { execFileSync } from 'node:child_process';
 import { BaseEngine } from './runtime/base.mjs';
 import { executeScenario } from './runtime/scenario.mjs';
 import { executionIdentity } from './runtime/identity.mjs';
+import { probeSnapshots } from './snapshot-probe.mjs';
 import { minimizeRun, replayWitness, showWitness } from './witness.mjs';
 import { initWorkshop, runWorkshop, showWorkshop } from './workshop.mjs';
 
@@ -38,7 +39,7 @@ function attempt(dir, kind, details = {}) {
   return out;
 }
 function usage() {
-  console.log(`Advanced Storage local lab\n\nnode lab.mjs doctor\nnode lab.mjs start NEW_PROJECT\nnode lab.mjs check PROJECT 01 --help-used none\nnode lab.mjs question 01a\nnode lab.mjs answer PROJECT 01a 'ANSWER_JSON' --help-used none\nnode lab.mjs run PROJECT SCENARIO_JSON NEW_RUN --help-used none --prediction "expected outcome"\nnode lab.mjs assess PROJECT INVESTIGATION_JSON --help-used none\nnode lab.mjs transfer PROJECT TRANSFER_JSON --help-used none\nnode lab.mjs workshop-init PROJECT retention|predicate NEW_DIRECTORY\nnode lab.mjs workshop-run PROJECT WORKBOOK_JSON NEW_EXPERIMENT --help-used none\nnode lab.mjs workshop-show EXPERIMENT [TRIAL [ACTION_ID]]\nnode lab.mjs minimize RECORDED_RUN NEW_WITNESS --help-used none\nnode lab.mjs show-witness WITNESS\nnode lab.mjs replay-witness WITNESS --help-used none\nnode lab.mjs export PROJECT NEW_EXPORT\n\nUse Node 26.5.1. Your JavaScript runs with your local permissions, not in a security sandbox.`);
+  console.log(`Advanced Storage local lab\n\nnode lab.mjs doctor\nnode lab.mjs start NEW_PROJECT\nnode lab.mjs check PROJECT 01 --help-used none\nnode lab.mjs question 01a\nnode lab.mjs probe PROJECT --help-used none --prediction "your six predictions"\nnode lab.mjs answer PROJECT 01a 'ANSWER_JSON' --help-used none\nnode lab.mjs run PROJECT SCENARIO_JSON NEW_RUN --help-used none --prediction "expected outcome"\nnode lab.mjs assess PROJECT INVESTIGATION_JSON --help-used none\nnode lab.mjs transfer PROJECT TRANSFER_JSON --help-used none\nnode lab.mjs workshop-init PROJECT retention|predicate NEW_DIRECTORY\nnode lab.mjs workshop-run PROJECT WORKBOOK_JSON NEW_EXPERIMENT --help-used none\nnode lab.mjs workshop-show EXPERIMENT [TRIAL [ACTION_ID]]\nnode lab.mjs minimize RECORDED_RUN NEW_WITNESS --help-used none\nnode lab.mjs show-witness WITNESS\nnode lab.mjs replay-witness WITNESS --help-used none\nnode lab.mjs export PROJECT NEW_EXPORT\n\nUse Node 26.5.1. Your JavaScript runs with your local permissions, not in a security sandbox.`);
 }
 try {
   if (command === 'doctor') {
@@ -70,6 +71,18 @@ try {
     const accepted = [q.answer, ...(q.acceptedAnswers ?? [])];
     const passed = accepted.some(value => JSON.stringify(response) === JSON.stringify(value)), feedback = { passed, expected: q.answer, explanation: q.feedback, assistance: requireHelp() };
     save(join(out, 'feedback.json'), feedback); console.log(JSON.stringify(feedback, null, 2)); console.log(`Committed response: ${out}`); process.exitCode = passed ? 0 : 1;
+  } else if (command === 'probe') {
+    const dir = project(args[1]), prediction = requirePrediction(); requireHelp();
+    const out = attempt(dir, 'probe', { prediction, probeSha256: hash(readFileSync(join(root, 'snapshot-probe.mjs'))) });
+    // Preserve the supplied probe alongside the exact learner source for replay.
+    cpSync(join(root, 'snapshot-probe.mjs'), join(out, 'snapshot-probe.mjs'));
+    let report;
+    try {
+      const { buildEngine } = await import(pathToFileURL(join(out, 'engine.mjs')).href);
+      report = { observations: probeSnapshots(buildEngine), scope: 'Pure visibility policy; simulated publication; not a course pass.' };
+    } catch (error) { report = { runtimeError: error.message }; process.exitCode = 3; }
+    save(join(out, 'report.json'), report);
+    console.log(JSON.stringify(report, null, 2)); console.log(`Exact probe attempt: ${out}`);
   } else if (command === 'run') {
     const dir = project(args[1]), sourceScenario = resolve(args[2] ?? ''), out = resolve(args[3] ?? ''), prediction = requirePrediction(); requireHelp();
     if (!args[3] || existsSync(out)) throw Error('Choose a new run directory.');
@@ -118,7 +131,7 @@ try {
     const dir = project(args[1]), out = resolve(args[2] ?? ''); if (!args[2] || existsSync(out)) throw Error('Choose a new export directory.');
     if (inside(realpathSync(dir), out) || inside(realpathSync(root), out)) throw Error('Export outside the source course and project to prevent recursive copies.');
     mkdirSync(out, { recursive: true });
-    for (const name of ['LICENSE.md', 'LICENSES', 'README.md', 'CONTRACTS.md', 'PROJECTS.md', 'WITNESSES.md', 'WORKSHOP.md', 'SOURCES.md', 'index.html', 'browser-policy-checks.mjs', 'lab.mjs', 'check-runner.mjs', 'assessment-runner.mjs', 'checks.mjs', 'investigation.mjs', 'witness.mjs', 'witness-worker.mjs', 'workshop.mjs', 'workshop-worker.mjs', 'workshop-templates.mjs', 'practice.json', 'runtime', 'starter', 'lessons']) cpSync(join(root, name), join(out, name), { recursive: true, dereference: false, errorOnExist: true });
+    for (const name of ['LICENSE.md', 'LICENSES', 'README.md', 'CONTRACTS.md', 'PROJECTS.md', 'WITNESSES.md', 'WORKSHOP.md', 'SOURCES.md', 'index.html', 'browser-policy-checks.mjs', 'snapshot-probe.mjs', 'verify-opening.mjs', 'lab.mjs', 'check-runner.mjs', 'assessment-runner.mjs', 'checks.mjs', 'investigation.mjs', 'witness.mjs', 'witness-worker.mjs', 'workshop.mjs', 'workshop-worker.mjs', 'workshop-templates.mjs', 'practice.json', 'runtime', 'starter', 'lessons']) cpSync(join(root, name), join(out, name), { recursive: true, dereference: false, errorOnExist: true });
     cpSync(dir, join(out, 'work'), { recursive: true, dereference: false, errorOnExist: true });
     save(join(out, 'EXPORT.json'), { format: 'advanced-storage-export-v1', at: new Date().toISOString(), sourceSha256: hash(readFileSync(join(dir, 'engine.mjs'))), executionIdentity: executionIdentity(), replay: 'node lab.mjs check work 07 --help-used "export replay"', note: 'Historical reports remain historical. Rechecking creates a new attempt.' });
     console.log(`Exported ${out}. Instructor solutions are outside the delivery allowlist.`);

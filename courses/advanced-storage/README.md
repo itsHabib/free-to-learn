@@ -2,11 +2,22 @@
 
 Build eight database policies on a supplied durable store: version visibility, atomic commit ordering, write conflicts, predicate conflicts, historical index membership, safe version retention, snapshot statistics and costed plan selection.
 
-**This is a local nine-unit course prototype.** Seven cumulative code milestones lead to an adversarial investigation and an unfamiliar archive-export transfer. The reference and controls have source-aware engineering evidence. Local terminal and reader journeys have bounded checks; a blind learner trial, human learning and comprehensive accessibility remain unverified. No live Free to Learn course is claimed.
+**This public source course contains nine units.** Seven cumulative code milestones lead to an adversarial investigation and an unfamiliar archive-export transfer. The reference and controls have source-aware engineering evidence. Local terminal and reader journeys have bounded checks; a blind learner trial, human learning and comprehensive accessibility remain unverified. The source is available in the public Free to Learn repository; this does not claim a hosted course service or independent learning validation.
 
 ## Start
 
-Use Node **26.5.1**. That is the tested runtime; other versions/platforms are unqualified. No npm install, account, network call or paid service is needed.
+Clone the public source once, record the revision, and enter this course directory:
+
+```sh
+git clone https://github.com/itsHabib/free-to-learn.git
+cd free-to-learn
+git rev-parse HEAD
+cd courses/advanced-storage
+```
+
+Keep the printed revision with your notes so another learner can reproduce your source. For an assigned revision, run `git checkout --detach FULL_COMMIT_SHA` from the repository root before entering the course directory, replacing `FULL_COMMIT_SHA` with that revision. If you already have a local checkout, enter its `courses/advanced-storage` directory directly. All commands below run there. A ZIP download and access to a private Ivy repository are not required.
+
+Use Node **26.5.1**. That is the tested runtime; other versions/platforms are unqualified. After obtaining the public source, the course runs offline: no npm install, account or paid service is needed.
 
 ```sh
 node lab.mjs doctor
@@ -17,7 +28,9 @@ node lab.mjs check work 01 --help-used none
 
 The last command should report unfinished visibility code in the untouched starter. To commit a question response, run `node lab.mjs answer work 01a RESPONSE_JSON --help-used none`, replacing `RESPONSE_JSON` with your JSON answer; quote strings and arrays for your shell. Read [the contract](CONTRACTS.md) and [unit 01](lessons/01.md), edit `work/engine.mjs`, then check again. Continue through [02](lessons/02.md), [03](lessons/03.md), [04](lessons/04.md), [05](lessons/05.md), [06](lessons/06.md), [07](lessons/07.md), [08](lessons/08.md) and [09](lessons/09.md). Checks are cumulative. You can read every lesson without passing a check.
 
-Each check saves your exact source, assistance declaration and result in a new attempt directory. Each answer is committed before its feedback is printed. Prior attempts remain intact. Public questions/checks are readable; these local records are neither secret tests nor authenticated authorship certificates. If you use hints, a model, another person or supplied code, describe that in `--help-used`.
+Unit 01 includes a [bounded visibility scaffold and snapshot experiment](lessons/01.md#014-run-a-snapshot-experiment). Run `node verify-opening.mjs` to verify its displayed code and the supplied probe independently of your solution. This is a teaching-material check, not a learner pass.
+
+Each check and snapshot probe saves your exact source, assistance declaration and result in a new attempt directory. Each answer is committed before its feedback is printed. Prior attempts remain intact. Public questions/checks are readable; these local records are neither secret tests nor authenticated authorship certificates. If you use hints, a model, another person or supplied code, describe that in `--help-used`.
 
 You need JavaScript ES modules, arrays/Map, exceptions, basic concurrency traces and the previous recoverable-storage course or equivalent. The supplied foundation owns framing, WAL, short writes, recovery and compaction. You do not rebuild those. The shell also supplies schema checking, disk transport, private-write storage, query handles and trace recording; your eight policy methods make the database decisions.
 
