@@ -1,0 +1,4 @@
+!/work/
+/work/*
+!/work/*.mjs
+/.check-*/

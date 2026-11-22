@@ -1029,6 +1029,108 @@
         "The three AI learner runs, the cold read and the bare-clone run recorded in QUALIFICATION.md are separate from this contract and are not replayed here.",
         "The legal players are course models and the network is simulated. No real client, server or person is involved."
       ]
+    },
+    {
+      "id": "jit-compiler",
+      "archive": ".packages/jit-compiler.zip",
+      "sha256": "84f31e0372f0d380e314513835acc3fc3a89f32965b30c15b27db2aa557986f2",
+      "archive_prefix": "jit-compiler/",
+      "direct_root": "courses/jit-compiler",
+      "root": "jit-compiler",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "init"
+          ],
+          "exit": 0,
+          "match": "Created work/ from the starter"
+        },
+        {
+          "stage": "generate_local_reader",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "reader"
+          ],
+          "exit": 0,
+          "match": "file://.*reader\\.html"
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "01",
+            "--predict",
+            "The starter needs an implementation.",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "implement evaluate"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "This contract generates the reader and checks the named starter diagnostic.",
+        "It does not exercise the browser, complete learner work or run the shared capstone."
+      ]
+    },
+    {
+      "id": "live-query-engine",
+      "archive": ".packages/live-query-engine.zip",
+      "sha256": "7aeb62291aa0cdd67ae5b201d0e435d1187dc1b02e84e4785267b0434b034ada",
+      "archive_prefix": "live-query-engine/",
+      "direct_root": "courses/live-query-engine",
+      "root": "live-query-engine",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "init"
+          ],
+          "exit": 0,
+          "match": "Created work/ from the starter"
+        },
+        {
+          "stage": "generate_local_reader",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "reader"
+          ],
+          "exit": 0,
+          "match": "file://.*reader\\.html"
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "01",
+            "--predict",
+            "The starter needs an implementation.",
+            "--help-used",
+            "none"
+          ],
+          "exit": 1,
+          "match": "implement openView"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "This contract generates the reader and checks the named starter diagnostic.",
+        "It does not exercise the browser, complete learner work or run the shared capstone."
+      ]
     }
   ]
 }
