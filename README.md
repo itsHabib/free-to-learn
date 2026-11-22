@@ -40,3 +40,8 @@ PUBLIC-SOURCE-MANIFEST.json pins the learner files. Production availability is
 separate from this source snapshot; Free to Learn is https://freetolearn.world/.
 
 [Changed-course CI coverage and limits](CI.md). Public setup/interface checks are distinct from full learner implementation or blind-trial evidence.
+
+The connected [JIT compiler](courses/jit-compiler) and
+[live query engine](courses/live-query-engine) labs run offline with Node 22
+or newer. Each has its own starter and reader. Clone for the shared capstone,
+or extract their two ZIPs side by side.

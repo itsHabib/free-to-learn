@@ -107,3 +107,20 @@ browser. That page was opened once for this release. Its optional live decision 
 needs Ollama, and no check uses it. Your work lives in each course's work/ or
 project/ folder. None of the three has an export command, so keep your own copy
 of that folder.
+
+## JIT compiler and live query engine
+
+Install Node.js 22 or newer. In a clone or fork, enter one of these folders and
+run the commands there. Each starter needs your implementation before the first
+check can pass.
+
+| Course | Git directory | First commands |
+| --- | --- | --- |
+| JIT compiler | [courses/jit-compiler](courses/jit-compiler) | `node lab.mjs init`, `node lab.mjs demo --worked`, `node lab.mjs reader` |
+| Live query engine | [courses/live-query-engine](courses/live-query-engine) | `node lab.mjs init`, `node lab.mjs reader` |
+
+Open the printed local link and start with lesson 01. The course READMEs explain
+how to push your implementation and keep attempts private. To run the complete
+worked capstone, start in the live query course and run `node lab.mjs compare
+--worked`. Download both ZIPs into the same parent directory if you want the
+capstone without Git.

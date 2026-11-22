@@ -78,3 +78,10 @@ check, which must fail with a named "not written yet" message. None of the three
 documents an export command, so no export stage is configured. Sightline's serve
 command and its optional live model aren't run. These remain public interface
 regressions, not complete learner solutions.
+
+## JIT compiler and live query engine
+
+Each public contract checks exact packaging, JavaScript syntax, setup, local
+reader generation, and the untouched starter's named first diagnostic. The
+pair's worked capstone, browser behavior and learner-owned implementation are
+outside these CI checks.
