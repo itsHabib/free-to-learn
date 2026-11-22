@@ -14,7 +14,7 @@
 // one new folder per record in PROJECT/attempts/, named by the time, holding freeze.json or
 // heldout.json. A folder is never overwritten, so your first held-out result stays where it
 // was written and every later one is added after it.
-import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, copyFileSync, realpathSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, realpathSync } from 'node:fs';
 import { createHash, randomUUID } from 'node:crypto';
 import { dirname, join, resolve, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -90,14 +90,25 @@ function records(p) {
   return out.sort((a, b) => (a.at < b.at ? -1 : a.at > b.at ? 1 : 0));
 }
 
+// A file's bytes written over another's. Not copyFileSync: that also copies the file's mode,
+// which only the destination's owner may change, so it fails on a file another tool rewrote.
+function copyBytes(from, to) {
+  mkdirSync(dirname(to), { recursive: true });
+  writeFileSync(to, readFileSync(from));
+}
+
 // A new folder in attempts/ named by the record's own time; never an existing one.
-function save(p, kind, record, copies = []) {
-  const name = `${record.at.replaceAll(':', '-')}-${kind}-${randomUUID().slice(0, 8)}`;
-  const folder = join(p, 'attempts', name);
-  mkdirSync(folder, { recursive: true });
-  for (const f of copies) { mkdirSync(dirname(join(folder, f)), { recursive: true }); copyFileSync(join(p, f), join(folder, f)); }
-  writeFileSync(join(folder, `${kind}.json`), JSON.stringify(record, null, 2) + '\n', { flag: 'wx' });
+function newFolder(p, kind, at) {
+  const name = `${at.replaceAll(':', '-')}-${kind}-${randomUUID().slice(0, 8)}`;
+  mkdirSync(join(p, 'attempts', name), { recursive: true });
   return `attempts/${name}`;
+}
+const writeRecord = (p, folder, kind, record) => writeFileSync(join(p, folder, `${kind}.json`), JSON.stringify(record, null, 2) + '\n', { flag: 'wx' });
+function save(p, kind, record, copies = []) {
+  const folder = newFolder(p, kind, record.at);
+  for (const f of copies) copyBytes(join(p, f), join(p, folder, f));
+  writeRecord(p, folder, kind, record);
+  return folder;
 }
 
 // The latest freeze, provided your three files still hash to it; otherwise a refusal.
@@ -293,8 +304,25 @@ async function freeze({ plain }) {
 
 // ------------------------------------------------------------------ restore-frozen
 
+// Why a file could not be read or written (verb), in words, and what to do about it.
+const denied = (error) => error.code === 'EACCES' || error.code === 'EPERM';
+function reason(error, verb) {
+  if (denied(error)) return `this user may not ${verb} it`;
+  if (error.code === 'EISDIR') return 'it is a folder, not a file';
+  if (error.code === 'ENOTDIR') return 'a file stands where one of its folders should be';
+  if (error.code === 'ENOSPC') return 'the disk is full';
+  return error.code ?? String(error.message).split('\n')[0];
+}
+function remedy(error, verb) {
+  if (denied(error)) return verb === 'read' ? 'make it readable (check who owns it)' : 'delete it or make it writable (check who owns it)';
+  if (error.code === 'EISDIR') return 'move that folder out of the way';
+  if (error.code === 'ENOSPC') return 'free some space';
+  return 'fix that';
+}
+
 // Puts back the three files as the latest freeze copied them, byte for byte, so that they
-// hash as frozen again. The files it replaces are saved first in a folder of their own.
+// hash as frozen again. The files it replaces are kept first, in a folder of their own; the
+// record that says they were put back is written only once every file is in place.
 async function restoreFrozen({ plain }) {
   const dir = plain[0];
   const p = project(dir);
@@ -303,13 +331,35 @@ async function restoreFrozen({ plain }) {
   const folder = join(p, 'attempts', freeze.folder);
   const damaged = FROZEN.filter((f) => !existsSync(join(folder, f)) || sha256(join(folder, f)) !== freeze.files?.[f]);
   if (damaged.length) throw Error(`The copy of ${damaged.join(' and ')} in ${shown(folder)} does not match the hash recorded at ${freeze.at}, so nothing was restored.`);
-  const now = hashes(p);
+  const again = `then run node lab.mjs restore-frozen ${dir} again`;
+  const now = {};
+  for (const f of FROZEN) {
+    try { now[f] = existsSync(join(p, f)) ? sha256(join(p, f)) : null; } catch (e) { throw Error(`Nothing was restored, because ${f} could not be read (${reason(e, 'read')}): ${remedy(e, 'read')}, ${again}.`); }
+  }
   const changed = FROZEN.filter((f) => now[f] !== freeze.files[f]);
   if (!changed.length) { say(`Your detector files are already the ones you froze at ${freeze.at}. Nothing changed.`); return; }
   const present = changed.filter((f) => now[f] !== null);
   const at = new Date().toISOString();
-  const kept = save(p, 'restore', { kind: 'restore', course: COURSE, frozenAt: freeze.at, from: freeze.folder, restored: changed, replaced: present, at }, present);
-  for (const f of changed) { mkdirSync(dirname(join(p, f)), { recursive: true }); copyFileSync(join(folder, f), join(p, f)); }
+  let kept;
+  try {
+    kept = newFolder(p, 'restore', at);
+    for (const f of present) copyBytes(join(p, f), join(p, kept, f));
+  } catch (e) {
+    const where = shown(join(p, kept ?? 'attempts'));
+    throw Error(`Nothing was restored, because the files it would replace could not be kept in ${where} (${denied(e) ? `this user may not write there` : reason(e, 'write')}): ${denied(e) ? `check who owns ${shown(join(p, 'attempts'))}` : remedy(e, 'write')}, ${again}.`);
+  }
+  const done = [];
+  for (const f of changed) {
+    try { copyBytes(join(folder, f), join(p, f)); } catch (e) {
+      throw Error(`${f} was not restored, because ${reason(e, 'write')}: ${remedy(e, 'write')}, ${again}${done.length ? ` (${done.join(' and ')} ${done.length > 1 ? 'are' : 'is'} already put back)` : ''}; ${present.length ? `the files it would replace are kept in ${shown(join(p, kept))}` : 'no file of yours was replaced'}.`);
+    }
+    done.push(f);
+  }
+  try {
+    writeRecord(p, kept, 'restore', { kind: 'restore', course: COURSE, frozenAt: freeze.at, from: freeze.folder, restored: changed, replaced: present, at });
+  } catch (e) {
+    throw Error(`${changed.join(', ')} ${changed.length > 1 ? 'are' : 'is'} put back from your freeze at ${freeze.at}, but the record of it could not be saved in ${shown(join(p, kept))} (${denied(e) ? 'this user may not write there' : reason(e, 'write')}), so status will not list this restore.`);
+  }
   say(`Restored ${changed.join(', ')} from your freeze at ${freeze.at} (${shown(folder)}).`);
   if (present.length) say(`The files it replaced are kept in ${shown(join(p, kept))}.`);
   say(`Your detector files are now the ones you froze. The line above the scoreboard's table confirms it: node lab.mjs scoreboard ${dir}`);

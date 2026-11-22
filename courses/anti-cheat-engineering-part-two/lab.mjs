@@ -58,6 +58,21 @@ function line(r) {
   return `FAIL ${r.id}: ${r.message}${r.where ? ` (${r.where})` : ''}`;
 }
 
+// A copy of PROJECT.json in the attempt folder, byte for byte, and what it says (null when it
+// is not valid JSON).
+function projectSnapshot(p, attempt) {
+  const bytes = readFileSync(join(p, 'PROJECT.json'));
+  writeFileSync(join(attempt, 'PROJECT.json'), bytes);
+  try { return JSON.parse(bytes.toString('utf8')); } catch { return null; }
+}
+// The route a unit started from: the one its route command recorded (write, supplied, or
+// capstone for unit 17), or blank when none did, as in a project made with init.
+function startRoute(meta, u) {
+  if (!meta || typeof meta !== 'object') return 'unknown (PROJECT.json was not valid JSON)';
+  const route = meta[`unit${u}_start_route`];
+  return route === undefined ? 'blank' : typeof route === 'string' ? route : JSON.stringify(route);
+}
+
 async function check(dir, unit, { only = null, jobs = null, help = 'not declared' } = {}) {
   const p = project(dir);
   if (!unit) throw Error(`Choose a unit: node lab.mjs check ${dir} ${UNITS.join('|')}|all`);
@@ -73,6 +88,10 @@ async function check(dir, unit, { only = null, jobs = null, help = 'not declared
   const lanes = jobs ?? Math.min(4, availableParallelism());
   const attempt = join(p, 'attempts', `${stamp()}-${randomUUID().slice(0, 8)}`);
   mkdirSync(attempt, { recursive: true });
+  // The starting route of each unit, as PROJECT.json says now: the attempt keeps a copy of
+  // that file and its receipt names each route, so a later route change or edit leaves this
+  // attempt's record as it was.
+  const meta = projectSnapshot(p, attempt);
   for (const f of config.workFiles) if (existsSync(join(p, f))) { mkdirSync(dirname(join(attempt, f)), { recursive: true }); copyFileSync(join(p, f), join(attempt, f)); }
   let allPass = true;
   const saved = [];
@@ -83,7 +102,7 @@ async function check(dir, unit, { only = null, jobs = null, help = 'not declared
     if (listed.missing || listed.loadError) {
       say(listed.missing ? `Its checks are not written yet (checks/${u}.mjs is missing), so nothing ran.\n` : `Its checks could not be loaded: ${listed.loadError}\n`);
       allPass = false;
-      saved.push({ unit: u, ...(listed.missing ? { missing: true } : { loadError: listed.loadError }), results: [] });
+      saved.push({ unit: u, start_route: startRoute(meta, u), ...(listed.missing ? { missing: true } : { loadError: listed.loadError }), results: [] });
       continue;
     }
     const report = await runUnit(p, u, { only, jobs: lanes });
@@ -102,10 +121,11 @@ async function check(dir, unit, { only = null, jobs = null, help = 'not declared
     const passed = report.results.filter((r) => r.pass).length;
     say(`${passed} of ${report.results.length} checks pass in unit ${u}.\n`);
     allPass &&= report.pass;
-    saved.push({ unit: u, ...(only ? { only: report.results.map((r) => r.id) } : {}), results: report.results.map(({ id, pass, kind, fields, message, ms, requirement }) => ({ id, pass, kind, requirement, fields, message, ms })) });
+    saved.push({ unit: u, start_route: startRoute(meta, u), ...(only ? { only: report.results.map((r) => r.id) } : {}), results: report.results.map(({ id, pass, kind, fields, message, ms, requirement }) => ({ id, pass, kind, requirement, fields, message, ms })) });
   }
   writeFileSync(join(attempt, 'receipt.json'), JSON.stringify({ course: config.id, help_used: help, units: saved, at: new Date().toISOString() }, null, 2) + '\n');
   if (saved.length > 1) say(allPass ? `All ${saved.length} units pass.` : 'Some checks fail.');
+  if (saved.length) say(`Recorded with it: starting route ${saved.map((s) => `unit ${s.unit} ${s.start_route}`).join(', ')}; help used: ${help}.`);
   // Paths are printed from the folder you run commands in, the course's folder: project/attempts/...
   say(`Saved this attempt in ${relative(process.cwd(), attempt) || '.'}. A pass covers these cases only.`);
   process.exitCode = allPass ? 0 : 1;
@@ -156,9 +176,12 @@ function status(dir) {
     const freeze = join(folder, name, 'freeze.json'), heldout = join(folder, name, 'heldout.json'), restore = join(folder, name, 'restore.json');
     const applied = NEW_APPLICATIONS.find((a) => existsSync(join(folder, name, a.file)));
     if (existsSync(receipt)) {
-      for (const u of JSON.parse(readFileSync(receipt, 'utf8')).units) {
+      const r = JSON.parse(readFileSync(receipt, 'utf8'));
+      for (const u of r.units) {
         const n = u.results.length, passed = u.results.filter((x) => x.pass).length;
-        say(`${name} unit ${u.unit}: ${u.missing ? 'its checks were not written yet' : u.loadError ? 'its checks did not load' : `${passed} of ${n} pass${u.only ? ` (only ${u.only.join(', ')})` : ''}`}`);
+        // Receipts from before routes were recorded have no start_route.
+        const how = `${u.start_route === undefined ? 'starting route not recorded' : `starting route: ${u.start_route}`}; help used: ${r.help_used ?? 'not declared'}`;
+        say(`${name} unit ${u.unit}: ${u.missing ? 'its checks were not written yet' : u.loadError ? 'its checks did not load' : `${passed} of ${n} pass${u.only ? ` (only ${u.only.join(', ')})` : ''}`}; ${how}`);
         shown++;
       }
     } else if (existsSync(prediction)) {

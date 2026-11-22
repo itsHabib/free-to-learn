@@ -117,8 +117,12 @@ checkers of lesson 12, lesson 13, lesson 14, lesson 15, lesson 16 and lesson 17
 never overwrites one. In lesson 14, `freeze` records the sha256 hashes of your detector's
 files there with a copy of each, which `node lab.mjs restore-frozen project` puts back,
 and `heldout` records each result it gives, the first one marked as first. That
-first held-out result is the number you report. `node lab.mjs status project` lists the
-receipt in order.
+first held-out result is the number you report. Each check run's receipt also names the
+starting route of every unit it checked (`write`, `supplied`, `capstone` for lesson 17, or
+`blank` for a unit begun from the starter), and the folder keeps a copy of
+`project/PROJECT.json` as it was then, so a later route command or edit changes no earlier
+receipt. `node lab.mjs status project` lists the receipt in order, with each check run's
+starting route and declared help.
 
 ## What is where
 

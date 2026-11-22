@@ -398,7 +398,7 @@ export const cases = [
   },
   {
     id: '16.double-sell', title: 'one item sold to two buyers', timeLimitMs: 20000,
-    requirement: 'Two sales of one item to two buyers never both succeed, with or without a crash in the first: the other is refused missing, and the item\'s new owner can sell it on.',
+    requirement: 'Two sales of one item to two buyers never both succeed, with or without a crash in the first: the other is refused missing, the item\'s new owner can sell it on, every item stays in exactly one inventory, and no coin is made or lost.',
     async run(env) {
       const f = await load(env);
       const sell = (store, request, story) => call(env, 'trade', f.trade, [store, copyOf(request)], story);

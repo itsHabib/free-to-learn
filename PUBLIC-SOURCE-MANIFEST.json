@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 31280,
-      "sha256": "641d7e8529048ac662a1a423037e27935a3cc240f9fe723ea04a07ee61b47d68"
+      "sha256": "ad0a728fb56dade337d54069f2820711655402d9c8b2c12caf0afcbf0bfdeaaa"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -79,13 +79,13 @@
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip",
-      "bytes": 524363,
-      "sha256": "890ba73dadef444c1d2f92dd35b3888f75453869311004ef91254a90d9712fde"
+      "bytes": 526061,
+      "sha256": "87fe62b4f794963ab5c55c6886326eb0a5629ca0f4ee7385779bd500f06b1986"
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip.sha256",
       "bytes": 102,
-      "sha256": "0b2225a2119c39f3206fa776161376b1f6ea2660aa02dee79bb8925cc292a26f"
+      "sha256": "e637cf1e1e7427c2fe51cf543dacc3b20d3a7143eac4efcbabffc8cbb3ced621"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -979,8 +979,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/API.md",
-      "bytes": 27665,
-      "sha256": "9fafb02a9d76749628206e1c4fc1212a6951cfe4a78de1ba011ff9570bb1898a"
+      "bytes": 27839,
+      "sha256": "d19a748d42f58c6834dc1f7b841d5ae77b9dd30f41dcf226e680585d8e15458d"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/LICENSE.md",
@@ -999,8 +999,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/README.md",
-      "bytes": 9947,
-      "sha256": "de36019c58e97231f88900262968668bf018f10f7fb8d62f181ef71b34f9204f"
+      "bytes": 10309,
+      "sha256": "8186521b6863e1a6b46ac04daceb5c9d6768e5efa3d3607bf0fc5bd92505c425"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/RESULTS.md",
@@ -1029,8 +1029,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/checks/16.mjs",
-      "bytes": 31576,
-      "sha256": "ed581bc9d88e9aecd556add78811a5ce78366fb8cf3361ea9f2afd62500742ae"
+      "bytes": 31644,
+      "sha256": "a562d21eb7d9c7d47db5bb4b44e4d7b68fba235a64c8d9a0d9ec9a0f519ec527"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/checks/17.mjs",
@@ -1354,8 +1354,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lab.mjs",
-      "bytes": 32095,
-      "sha256": "df5664020d878769cc4951bb84434bec8c753f507a99880bbd0e868c37173d73"
+      "bytes": 33632,
+      "sha256": "178e66006f58f1174cd69228a4b219205b54805692c813574a65fdfe6a683935"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/12.mjs",
@@ -1369,8 +1369,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/14.mjs",
-      "bytes": 27618,
-      "sha256": "b6d5cd7f19b0fa0e009f3585d174b98352039072061663fd5a92b986bf1fdc29"
+      "bytes": 30400,
+      "sha256": "5c01a51b829a714ae225087bec5c44b1bc591e2fbf307f200feb70cf774fe18d"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/labcmds/17.mjs",
@@ -1389,8 +1389,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/14.md",
-      "bytes": 43936,
-      "sha256": "74e9ba4461e2b03720f315bd85c16bff88a90e230d16499f6d956b1dc437dbff"
+      "bytes": 44004,
+      "sha256": "fb3a11f173d975b6c9508f30e4203565f70639a114f38b3d4caa663243d41e2e"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/15.md",
@@ -1399,13 +1399,13 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/16.md",
-      "bytes": 28377,
-      "sha256": "3274f6fc0c254b065ddfaf9a0cfad4639c10680eeb11da40b9917b45490944b4"
+      "bytes": 28506,
+      "sha256": "b453577c4e13174889a9cda9eb7b6d08a1e0688a41988ddbe0db6893f414cb23"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/17.md",
-      "bytes": 22567,
-      "sha256": "dc61dccb3d758fd83cba544ff2fa4400edc8130d99a492382c1163d97ad5a299"
+      "bytes": 22870,
+      "sha256": "2cb56779f3649b98db70980793cfb3ae28592eff152b5c403a16384e96b5169d"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/sections.json",

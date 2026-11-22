@@ -481,12 +481,20 @@ followed by recovery and the client's retry:
 
 ### `capstone/defence.json`
 
+The starter's file:
+
 ```json
-{ "rewindWindow": null, "why": null }
+{
+  "note": "not written yet (lesson 17)",
+  "rewindWindow": null,
+  "why": null
+}
 ```
 
-Replace the first `null` with the courier window you chose in unit 15, a whole number of
-ticks, and the second with a sentence on why. The checks read only `rewindWindow`.
+Replace the `null` after `rewindWindow` with the courier window you chose in unit 15, a
+whole number of ticks, and the one after `why` with a sentence on why, and delete the
+`"note"` line: a file that still holds "not written yet" is refused. The checks read only
+`rewindWindow`.
 
 ### `node lab.mjs scoreboard project`
 
