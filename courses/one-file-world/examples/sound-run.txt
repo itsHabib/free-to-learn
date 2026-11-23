@@ -1,0 +1,18 @@
+// region: call
+The call of rng(8), by your gullCall and callEnvelope:
+  0.00 s, for 0.32 s: 2,012 falling to 1,288 Hz
+  0.50 s, for 0.32 s: 2,012 falling to 1,288 Hz
+  1.05 s, for 0.11 s: 1,770 falling to 1,481 Hz
+  1.22 s, for 0.11 s: 1,770 falling to 1,481 Hz
+  1.39 s, for 0.11 s: 1,770 falling to 1,481 Hz
+  1.56 s, for 0.11 s: 1,770 falling to 1,481 Hz
+  1.73 s, for 0.11 s: 1,770 falling to 1,481 Hz
+7 notes; the last ends at 1.84 s. Loudest sample 0.14. Where a note starts or stops, the loudness changes by at most 0.06 of that in 2 ms.
+// endregion: call
+// region: mix
+How loud each voice is, by your soundMix:          surf   wind  crickets  gulls
+  2 m above the beach, by day                     0.96   0.13     0.00   0.76
+  2 m above the beach, at night                   0.96   0.13     0.28   0.76
+  on the summit, 273 m, 2 m up                    0.24   0.13     0.00   0.76
+  200 m above the sea, flying fast                0.18   1.00     0.00   0.29
+// endregion: mix

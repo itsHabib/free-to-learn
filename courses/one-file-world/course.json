@@ -1,0 +1,813 @@
+{
+  "id": "one-file-world",
+  "title": "Build a world in one file",
+  "status": "early edition: lessons 1 to 9; human learner and physical-phone trials pending",
+  "runtime": "Node 22 or newer for the lab and its checks; a browser with WebGL2 to fly through the world. No packages, account or network.",
+  "workFiles": [
+    "world.html",
+    "map.js",
+    "world-02.html",
+    "atoll.js",
+    "world-03.html",
+    "moon.js",
+    "world-04.html",
+    "lagoon.js",
+    "world-05.html",
+    "scree.js",
+    "world-06.html",
+    "kiosk.js",
+    "world-07.html",
+    "fish.js",
+    "world-08.html",
+    "bell.js",
+    "world-09.html",
+    "second.html",
+    "briefs/"
+  ],
+  "lessons": [
+    {
+      "id": "1",
+      "title": "Camera over a plane",
+      "lesson": "lessons/01.md",
+      "stage": "stages/world-01.html",
+      "writes": [
+        "aim",
+        "boxHidden"
+      ],
+      "script": {
+        "file": "map.js",
+        "functions": [
+          "mapCamera"
+        ],
+        "starter": "// The map camera: lesson 1, \"Use it on a new case\".\n// A plain script with one function and no import or export lines. It runs with the pure functions of your\n// world.html in scope, so it may call perspective, viewMatrix, mul4 and the rest.\nfunction mapCamera(m, cx, cz, half, aspect) {\n  throw new Error('mapCamera: not written yet');\n}\n"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "aim",
+            "pattern": "\\baim\\b",
+            "example": "aim(eye, target)"
+          },
+          {
+            "name": "boxHidden",
+            "pattern": "\\bboxHidden\\b",
+            "example": "boxHidden(pl, x0, y0, z0, x1, y1, z1)"
+          },
+          {
+            "name": "yaw and pitch, what aim returns",
+            "pattern": "\\byaw\\b[\\s\\S]*\\bpitch\\b|\\bpitch\\b[\\s\\S]*\\byaw\\b",
+            "example": "aim returns [yaw, pitch]"
+          },
+          {
+            "name": "the units: radians and metres",
+            "pattern": "\\brad(ian)?s?\\b[\\s\\S]*(\\bmet(re|er)s?\\b|\\bm\\b)|(\\bmet(re|er)s?\\b|\\bm\\b)[\\s\\S]*\\brad(ian)?s?\\b",
+            "example": "angles in radians, positions in metres"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no images or other assets",
+            "pattern": "\\b(no|not|without|never|zero)\\b[^.]{0,80}\\b(assets?|images?|pictures?|models|textures? files?|media files?|sound files?)\\b",
+            "example": "no images or other assets"
+          },
+          {
+            "name": "the determinism rule",
+            "pattern": "determinis|Math\\.random|\\bsame (seed|numbers?|input)\\b[^.]{0,80}\\bsame\\b|\\bexact(ly)? (operations|the same)\\b",
+            "example": "the determinism rule: no Math.random, and the same seed gives the same island"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 1\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "file": "world.html"
+    },
+    {
+      "id": "2",
+      "title": "Land from a seed",
+      "lesson": "lessons/02.md",
+      "stage": "stages/world-02.html",
+      "file": "world-02.html",
+      "writes": [
+        "ridged"
+      ],
+      "script": {
+        "file": "atoll.js",
+        "functions": [
+          "atollHeight"
+        ],
+        "starter": "// The atoll: lesson 2, \"Use it on a new case\".\n// A plain script with one function and no import or export lines. It runs with the pure functions of your\n// world-02.html in scope, so it may call ridged, noiseD, smooth, islandParams and the rest.\nfunction atollHeight(x, z, P, D) {\n  throw new Error('atollHeight: not written yet');\n}\n",
+        "page": {
+          "key": "shape",
+          "value": "atoll",
+          "ship": {
+            "from": "P.shape = Q.get('shape');",
+            "to": "P.shape = 'atoll';"
+          }
+        },
+        "shipName": "atoll"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "ridged",
+            "pattern": "\\bridged\\b",
+            "example": "ridged(x, y, s, D)"
+          },
+          {
+            "name": "its arguments x, y, s and D",
+            "pattern": "ridged\\s*\\(\\s*x\\s*,\\s*y\\s*,\\s*s\\s*,\\s*D\\s*\\)",
+            "example": "ridged(x, y, s, D)"
+          },
+          {
+            "name": "what it returns: a number from 0 to 1",
+            "pattern": "\\b(0|zero)\\b[^.]{0,30}\\b(1|one)\\b",
+            "example": "it returns a number from 0 to 1"
+          },
+          {
+            "name": "the octaves",
+            "pattern": "\\boctaves?\\b|\\blayers of noise\\b",
+            "example": "six octaves"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no Math.random",
+            "pattern": "Math\\.random|\\bno random",
+            "example": "no Math.random"
+          },
+          {
+            "name": "the operations allowed: + - * /, Math.sqrt, Math.floor, Math.ceil, Math.imul, Math.abs, Math.min, Math.max",
+            "pattern": "(?=[\\s\\S]*\\bsqrt)(?=[\\s\\S]*\\bfloor)(?=[\\s\\S]*\\bceil)(?=[\\s\\S]*\\bimul)(?=[\\s\\S]*\\babs)(?=[\\s\\S]*\\bmin\\b)(?=[\\s\\S]*\\bmax\\b)",
+            "example": "allowed: + - * /, Math.sqrt, Math.floor, Math.ceil, Math.imul, Math.abs, Math.min and Math.max"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 2\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "title": "Light and distance",
+      "lesson": "lessons/03.md",
+      "stage": "stages/world-03.html",
+      "file": "world-03.html",
+      "writes": [
+        "dayAngle",
+        "skyKeys"
+      ],
+      "script": {
+        "file": "moon.js",
+        "functions": [
+          "moonKeys"
+        ],
+        "page": {
+          "key": "sky",
+          "value": "moon",
+          "replaces": "skyKeys"
+        },
+        "starter": "// The moonlit sky: lesson 3, \"Use it on a new case\".\n// A plain script with no import or export lines. It runs with the pure functions of your\n// world-03.html in scope.\nfunction moonKeys(S, height) {\n  throw new Error('moonKeys: not written yet');\n}\n",
+        "shipName": "moon"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "dayAngle",
+            "pattern": "\\bdayAngle\\s*\\(\\s*u\\s*\\)",
+            "example": "dayAngle(u)"
+          },
+          {
+            "name": "skyKeys",
+            "pattern": "\\bskyKeys\\s*\\(\\s*S\\s*,\\s*height\\s*\\)",
+            "example": "skyKeys(S, height)"
+          },
+          {
+            "name": "the units: radians for the angle, degrees for the height",
+            "pattern": "(?=[\\s\\S]*\\brad)(?=[\\s\\S]*(degree|°))",
+            "example": "the angle in radians, the height in degrees"
+          },
+          {
+            "name": "that colours are linear, before the display curve",
+            "pattern": "\\blinear\\b|before[^.]{0,40}(display|gamma)|not[^.]{0,20}(gamma|display)",
+            "example": "the colours are linear, before the display curve"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no images or other assets",
+            "pattern": "\\b(no|not|without|never|zero)\\b[^.]{0,80}\\b(assets?|images?|pictures?|models|textures? files?|media files?|sound files?)\\b",
+            "example": "no images or other assets"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 3\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "critique": {
+        "faults": 3,
+        "tie": "day=\\d?\\.?\\d+",
+        "tied": "a fixed picture named in every fault, by its day=..."
+      }
+    },
+    {
+      "id": "4",
+      "title": "Water",
+      "lesson": "lessons/04.md",
+      "stage": "stages/world-04.html",
+      "file": "world-04.html",
+      "writes": [
+        "waveTile"
+      ],
+      "script": {
+        "file": "lagoon.js",
+        "functions": [
+          "lagoonTile"
+        ],
+        "page": {
+          "key": "water",
+          "value": "lagoon",
+          "replaces": "waveTile"
+        },
+        "starter": "// The lagoon tile: lesson 4, \"Use it on a new case\".\n// A plain script with no import or export lines. It runs with the pure functions of your\n// world-04.html in scope.\nfunction lagoonTile(n, seed) {\n  throw new Error('lagoonTile: not written yet');\n}\n",
+        "shipName": "lagoon"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "waveTile",
+            "pattern": "\\bwaveTile\\s*\\(\\s*n\\s*,\\s*seed\\s*\\)",
+            "example": "waveTile(n, seed)"
+          },
+          {
+            "name": "what the four channels hold: slope, height and foam",
+            "pattern": "(?=[\\s\\S]*(slope|gradient|tilt))(?=[\\s\\S]*height)(?=[\\s\\S]*foam)",
+            "example": "R and G the slope, B the height, A the foam"
+          },
+          {
+            "name": "that it returns a Float32Array",
+            "pattern": "Float32Array",
+            "example": "it returns a Float32Array"
+          },
+          {
+            "name": "that the tile wraps without a seam",
+            "pattern": "\\bseam|\\bwraps?\\b|\\btiles\\b|\\bperiodic|\\brepeats?\\b|edges? (meet|match|join)|(meet|match|join)\\w* (at )?(its|the) (opposite )?edges?",
+            "example": "the tile wraps without a seam"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "the determinism rule",
+            "pattern": "determinis|Math\\.random|\\bsame (seed|numbers?|input)\\b[^.]{0,80}\\bsame\\b|\\bexact(ly)? (operations|the same)\\b",
+            "example": "the determinism rule: no Math.random, and the same seed gives the same island"
+          },
+          {
+            "name": "the texture format: RGBA16F",
+            "pattern": "RGBA16F",
+            "example": "RGBA16F"
+          },
+          {
+            "name": "that float textures of 32 bits need OES_texture_float_linear to be smoothed, so it is not used",
+            "pattern": "OES_texture_float_linear|RGBA32F|32[- ]bit float",
+            "example": "not RGBA32F, which needs OES_texture_float_linear to be smoothed"
+          },
+          {
+            "name": "that the smaller copies (mipmaps) are built in code",
+            "pattern": "(mip|smaller cop|reduced|half[- ]size)[\\s\\S]{0,160}(code|halve|by hand|built|computed|JavaScript)|(code|halve|by hand|built|computed|JavaScript)[\\s\\S]{0,160}(mip|smaller cop|half[- ]size)",
+            "example": "the mipmaps are built in code, by halve"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 4\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "title": "Erosion and ground",
+      "lesson": "lessons/05.md",
+      "stage": "stages/world-05.html",
+      "file": "world-05.html",
+      "writes": [
+        "depositOrCut"
+      ],
+      "script": {
+        "file": "scree.js",
+        "functions": [
+          "screeAt"
+        ],
+        "page": {
+          "key": "cover",
+          "value": "scree",
+          "install": "stages/apps/scree.js",
+          "ship": {
+            "from": "const SCREE = Q.get('cover') === 'scree';",
+            "to": "const SCREE = true;"
+          }
+        },
+        "starter": "// The scree rule: lesson 5, \"Use it on a new case\".\n// A plain script with no import or export lines. It runs with the pure functions of your\n// world-05.html in scope.\nfunction screeAt(h, steep) {\n  throw new Error('screeAt: not written yet');\n}\n",
+        "shipName": "scree"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "depositOrCut",
+            "pattern": "\\bdepositOrCut\\s*\\(\\s*H\\s*,\\s*E\\s*,\\s*i\\s*,\\s*u\\s*,\\s*v\\s*,\\s*fall\\s*,\\s*speed\\s*,\\s*water\\s*,\\s*soil\\s*\\)",
+            "example": "depositOrCut(H, E, i, u, v, fall, speed, water, soil)"
+          },
+          {
+            "name": "what it returns: the soil the drop carries after",
+            "pattern": "(returns?|result|gives? back)[^.]{0,80}(soil|carr)",
+            "example": "it returns the soil the drop carries after"
+          },
+          {
+            "name": "that the ground and the drop conserve soil within a call",
+            "pattern": "conserv|nothing (is|gets|may be) (made|lost|created|destroyed)|(same|constant|fixed|equal) (total|sum|amount)|(keeps?|kept|stays?|remains?|keeping|is)[^.]{0,20}\\b(the )?(same )?(total|sum)\\b|\\b(total|sum)\\b[^.]{0,50}(same|constant|unchanged|fixed|kept|equal|stays?)|\\b(loses?|lost|gives? up|gave up|taken|takes?)\\b[^.]{0,60}\\b(gains?|gets?|carries|picks? up|receives?|adds?)\\b|add(s|ed)? up to the same|(makes?|creates?)[^.]{0,20}(no|nothing)[^.]{0,30}(loses|destroys?)",
+            "example": "in one call the ground and the drop keep the total: what the ground loses, the drop gains"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no images or other assets",
+            "pattern": "\\b(no|not|without|never|zero)\\b[^.]{0,80}\\b(assets?|images?|pictures?|models|textures? files?|media files?|sound files?)\\b",
+            "example": "no images or other assets"
+          },
+          {
+            "name": "the determinism rule",
+            "pattern": "determinis|Math\\.random|\\bsame (seed|numbers?|input)\\b[^.]{0,80}\\bsame\\b|\\bexact(ly)? (operations|the same)\\b",
+            "example": "the determinism rule: no Math.random, and the same seed gives the same island"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 5\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "title": "Ten thousand things",
+      "lesson": "lessons/06.md",
+      "stage": "stages/world-06.html",
+      "file": "world-06.html",
+      "writes": [
+        "whichTree",
+        "bucket"
+      ],
+      "script": {
+        "file": "kiosk.js",
+        "functions": [
+          "kioskAt"
+        ],
+        "page": {
+          "key": "beach",
+          "value": "kiosks",
+          "install": "stages/apps/kiosk.js"
+        },
+        "starter": "// The kiosk rule: lesson 6, \"Use it on a new case\".\n// A plain script with no import or export lines. It runs with the pure functions of your\n// world-06.html in scope.\nfunction kioskAt(h, sand, steep, chance) {\n  throw new Error('kioskAt: not written yet');\n}\n",
+        "shipName": "kiosk"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "whichTree",
+            "pattern": "\\bwhichTree\\s*\\(\\s*h\\s*,\\s*grass\\s*,\\s*moist\\s*,\\s*sand\\s*,\\s*steep\\s*,\\s*grove\\s*,\\s*tall\\s*,\\s*chance\\s*,\\s*pick\\s*\\)",
+            "example": "whichTree(h, grass, moist, sand, steep, grove, tall, chance, pick)"
+          },
+          {
+            "name": "bucket",
+            "pattern": "\\bbucket\\s*\\(\\s*list\\s*\\)",
+            "example": "bucket(list)"
+          },
+          {
+            "name": "the kinds of tree: 0 broadleaf, 1 pine, 2 cypress, 4 palm, -1 none",
+            "pattern": "palm[\\s\\S]*(-1|−1|\\bnone\\b|no tree)|(-1|−1|\\bnone\\b|no tree)[\\s\\S]*palm",
+            "example": "0 broadleaf, 1 pine, 2 cypress, 4 palm, -1 none"
+          },
+          {
+            "name": "that a prefix of a plot is an even thinning",
+            "pattern": "prefix|thin|shuffl|first (half|part|few|N)\\b|\\beven(ly)?\\b",
+            "example": "a prefix of a plot is an even thinning of it"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no images or other assets",
+            "pattern": "\\b(no|not|without|never|zero)\\b[^.]{0,80}\\b(assets?|images?|pictures?|models|textures? files?|media files?|sound files?)\\b",
+            "example": "no images or other assets"
+          },
+          {
+            "name": "the determinism rule",
+            "pattern": "determinis|Math\\.random|\\bsame (seed|numbers?|input)\\b[^.]{0,80}\\bsame\\b|\\bexact(ly)? (operations|the same)\\b",
+            "example": "the determinism rule: no Math.random, and the same seed gives the same island"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 6\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "critique": {
+        "faults": 3,
+        "tie": "seed=\\d+",
+        "tied": "a fixed picture named in every fault, by its seed=...",
+        "both": [
+          "seed=7",
+          "seed=8"
+        ]
+      }
+    },
+    {
+      "id": "7",
+      "title": "Things that move",
+      "lesson": "lessons/07.md",
+      "stage": "stages/world-07.html",
+      "file": "world-07.html",
+      "writes": [
+        "steerBird"
+      ],
+      "script": {
+        "file": "fish.js",
+        "functions": [
+          "schoolStep"
+        ],
+        "page": {
+          "key": "fish",
+          "value": "1",
+          "install": "stages/apps/fish.js"
+        },
+        "starter": "// A school of fish: lesson 7, \"Use it on a new case\".\n// A plain script with no import or export lines. It runs with the pure functions of your\n// world-07.html in scope.\nfunction schoolStep(B, n, dt, t, quay, H) {\n  throw new Error('schoolStep: not written yet');\n}\n"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "steerBird",
+            "pattern": "\\bsteerBird\\s*\\(\\s*B\\s*,\\s*a\\s*,\\s*near\\s*,\\s*goal\\s*,\\s*H\\s*\\)",
+            "example": "steerBird(B, a, near, goal, H)"
+          },
+          {
+            "name": "the fields of near: count, centre, heading, push",
+            "pattern": "(?=[\\s\\S]*count)(?=[\\s\\S]*cent(re|er))(?=[\\s\\S]*heading)(?=[\\s\\S]*push)",
+            "example": "near has count, centre, heading and push"
+          },
+          {
+            "name": "what it returns: an acceleration of three numbers",
+            "pattern": "accelerat\\w*[^.]{0,80}(three|3 numbers|\\bx, ?y|vector|\\[)|(three|3 numbers|\\bx, ?y|vector|\\[)[^.]{0,80}accelerat",
+            "example": "it returns an acceleration, three numbers"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no images or other assets",
+            "pattern": "\\b(no|not|without|never|zero)\\b[^.]{0,80}\\b(assets?|images?|pictures?|models|textures? files?|media files?|sound files?)\\b",
+            "example": "no images or other assets"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 7\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "title": "Sound from code",
+      "lesson": "lessons/08.md",
+      "stage": "stages/world-08.html",
+      "file": "world-08.html",
+      "writes": [
+        "gullCall",
+        "soundMix",
+        "callEnvelope"
+      ],
+      "script": {
+        "file": "bell.js",
+        "functions": [
+          "bellStrikes"
+        ],
+        "page": {
+          "key": "sound",
+          "value": "bell",
+          "install": "stages/apps/bell.js"
+        },
+        "starter": "// The tower bell: lesson 8, \"Use it on a new case\".\n// A plain script with no import or export lines. It runs with the pure functions of your\n// world-08.html in scope.\nfunction bellStrikes(hour) {\n  throw new Error('bellStrikes: not written yet');\n}\n",
+        "shipName": "bell"
+      },
+      "brief": {
+        "interface": [
+          {
+            "name": "gullCall",
+            "pattern": "\\bgullCall\\s*\\(\\s*r\\s*\\)",
+            "example": "gullCall(r)"
+          },
+          {
+            "name": "soundMix",
+            "pattern": "\\bsoundMix\\s*\\(\\s*ground\\s*,\\s*alt\\s*,\\s*speed\\s*,\\s*night\\s*,\\s*flockDist\\s*\\)",
+            "example": "soundMix(ground, alt, speed, night, flockDist)"
+          },
+          {
+            "name": "callEnvelope",
+            "pattern": "\\bcallEnvelope\\s*\\(\\s*len\\s*\\)",
+            "example": "callEnvelope(len)"
+          },
+          {
+            "name": "what a note is: start, length, pitch at start, pitch at end",
+            "pattern": "(?=[\\s\\S]*\\bstarts?\\b)(?=[\\s\\S]*(length|duration|how long))(?=[\\s\\S]*(pitch|hertz|frequenc))",
+            "example": "a note is its start, its length, and its pitch at start and at end"
+          },
+          {
+            "name": "that the sound is judged by a person's ears and only measured by the check",
+            "pattern": "\\bears?\\b|\\bhear|\\blisten",
+            "example": "the sound is judged by a person's ears and only measured by the check"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no images or other assets",
+            "pattern": "\\b(no|not|without|never|zero)\\b[^.]{0,80}\\b(assets?|images?|pictures?|models|textures? files?|media files?|sound files?)\\b",
+            "example": "no images or other assets"
+          },
+          {
+            "name": "sound starts only after a touch, click or key",
+            "pattern": "\\btouch|\\btaps?\\b|\\bclick|\\bgesture|\\bkey ?press|\\bpress",
+            "example": "sound starts only after a touch, click or key"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check \\S+ 8\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      }
+    },
+    {
+      "id": "9",
+      "title": "Ship it",
+      "lesson": "lessons/09.md",
+      "stage": "stages/world-09.html",
+      "file": "world-09.html",
+      "writes": [
+        "nextScale"
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "the place: what the second world is of",
+            "pattern": "^#+\\s*(goal|place)",
+            "example": "## Goal\nA harbour in snow at first light."
+          },
+          {
+            "name": "the functions that must keep their contracts, by name: ridged, waveTile, depositOrCut, whichTree, steerBird and gullCall",
+            "pattern": "(?=[\\s\\S]*ridged)(?=[\\s\\S]*waveTile)(?=[\\s\\S]*depositOrCut)(?=[\\s\\S]*whichTree)(?=[\\s\\S]*steerBird)(?=[\\s\\S]*gullCall)",
+            "example": "keep the contracts of ridged, waveTile, depositOrCut, whichTree, steerBird and gullCall"
+          },
+          {
+            "name": "the file: second.html",
+            "pattern": "second\\.html",
+            "example": "second.html"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "one file",
+            "pattern": "\\b(one|single|1)\\b[^.]{0,40}\\bfile\\b|self-contained|\\bfile\\b[^.]{0,30}\\b(by itself|alone|on its own)\\b",
+            "example": "one HTML file"
+          },
+          {
+            "name": "no libraries",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|frameworks?)\\b|\\bvanilla\\b|\\bplain JavaScript\\b",
+            "example": "no libraries"
+          },
+          {
+            "name": "no images or other assets",
+            "pattern": "\\b(no|not|without|never|zero)\\b[^.]{0,80}\\b(assets?|images?|pictures?|models|textures? files?|media files?|sound files?)\\b",
+            "example": "no images or other assets"
+          },
+          {
+            "name": "the determinism rule",
+            "pattern": "determinis|Math\\.random|\\bsame (seed|numbers?|input)\\b[^.]{0,80}\\bsame\\b|\\bexact(ly)? (operations|the same)\\b",
+            "example": "the determinism rule: no Math.random, and the same seed gives the same island"
+          }
+        ],
+        "check": {
+          "name": "the check command, node lab.mjs second",
+          "pattern": "node lab\\.mjs second \\S+"
+        },
+        "notes": [
+          {
+            "name": "the goal, as something on screen",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by their properties",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "critique": {
+        "faults": 3,
+        "tie": "seed=\\d+",
+        "tied": "a fixed picture named in every fault, by its seed=..."
+      }
+    }
+  ]
+}

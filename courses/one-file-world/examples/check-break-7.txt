@@ -1,0 +1,2 @@
+  FAIL 7.steer-separation: with a neighbour close on its left pushing it 0.4 to the right, the bird accelerates 0 along x: separation must turn the bird the way near.push points, and strongly enough to keep it clear.
+  FAIL 7.flock: after 3,600 steps the birds are 0.02194 m from their nearest neighbour, on average: the flock has collapsed onto itself. Separation must turn a bird away from any that crowd it.

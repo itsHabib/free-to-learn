@@ -1,0 +1,82 @@
+// Made by tools/listings.mjs from stages/world-05.html, region 5-erosion (pure). Do not edit.
+
+// region: depositOrCut
+// What a drop does to the ground where it stands, and the soil it carries on.
+// The drop sits in the cell that starts at H[i], u and v of the way across
+// it; it is about to fall by "fall" (negative when the way leads uphill) with
+// this speed and water, carrying "soil". Returns the soil it carries after.
+function depositOrCut(H, E, i, u, v, fall, speed, water, soil) {
+  // How much soil this water can carry: more when fast, full and steep.
+  const room = Math.max(fall, 0.02) * speed * water * CARRY;
+  if (fall < 0 || soil > room) {
+    // Too much soil, or the way leads uphill: lay some down, shared among the
+    // four corners of the cell by how near the drop is to each.
+    const lay = fall < 0 ? Math.min(-fall, soil) : (soil - room) * SETTLE;
+    soil -= lay;
+    E[i * 3 + 1] += lay;
+    H[i] += lay * (1 - u) * (1 - v);
+    H[i + 1] += lay * u * (1 - v);
+    H[i + N] += lay * (1 - u) * v;
+    H[i + N + 1] += lay * u * v;
+  } else {
+    // Room to carry more: cut into the ground, spread over the brush.
+    const take = Math.min((room - soil) * CUT, fall);
+    soil += take;
+    E[i * 3] += take;
+    for (let k = 0; k < BRUSH.length; k += 2)
+      H[i + BRUSH[k]] -= (take * BRUSH[k + 1]) / BRUSH.sum;
+  }
+  return soil;
+}
+// endregion: depositOrCut
+
+// region: dropStep
+// One step of one drop. d holds the drop: [x, y, direction x, direction y,
+// speed, water, soil carried], in grid cells. Returns false when the drop is
+// finished: it reached the sea, the edge, or a hollow with nowhere to go.
+function dropStep(H, E, d) {
+  const x = d[0];
+  const y = d[1];
+  const speed = d[4];
+  const water = d[5];
+  // The four cells round the drop, and how far it sits between them.
+  const ix = x | 0;
+  const iy = y | 0;
+  const u = x - ix;
+  const v = y - iy;
+  const i = iy * N + ix;
+  const a = H[i];
+  const b = H[i + 1];
+  const c = H[i + N];
+  const e = H[i + N + 1];
+  const h = mix(mix(a, b, u), mix(c, e, u), v);
+  // It has reached the sea.
+  if (h < -0.5) return false;
+  // Keep some of the old direction, turn the rest downhill.
+  const slopeX = (b - a) * (1 - v) + (e - c) * v;
+  const slopeY = (c - a) * (1 - u) + (e - b) * u;
+  let dx = d[2] * INERTIA - slopeX * (1 - INERTIA);
+  let dy = d[3] * INERTIA - slopeY * (1 - INERTIA);
+  const len = Math.sqrt(dx * dx + dy * dy);
+  // A hollow with nowhere to go.
+  if (len < 1e-5) return false;
+  dx /= len;
+  dy /= len;
+  const nx = x + dx;
+  const ny = y + dy;
+  // The edge of the map.
+  if (nx < 3 || ny < 3 || nx > N - 4 || ny > N - 4) return false;
+  const fall = h - gridHeight(H, nx, ny);
+  // Record the water that passed, then lay soil down or cut it.
+  E[i * 3 + 2] += water;
+  const soil = depositOrCut(H, E, i, u, v, fall, speed, water, d[6]);
+  d[0] = nx;
+  d[1] = ny;
+  d[2] = dx;
+  d[3] = dy;
+  d[4] = Math.sqrt(Math.max(speed * speed + fall * 0.9, 0.01));
+  d[5] = water * 0.985;
+  d[6] = soil;
+  return true;
+}
+// endregion: dropStep

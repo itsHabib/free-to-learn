@@ -1,0 +1,2 @@
+  FAIL 5.drop-place: depositOrCut with u 0.3, v 0.6, fall 2.5, speed 3, water 1, soil 0 digs at 1 cell. Cutting only where the drop stands makes a narrow pit; the brush spreads it over the cells within 2.4, at least 9 of them.
+  FAIL 5.rain: after 70,000 drops on seed 7 there are 2,504 pits (a cell lower than all eight round it); stage 5 leaves 236, and at most 450 is allowed. Pits instead of gullies come from digging in one place, or from laying too much where a drop turns uphill.

@@ -1,0 +1,6 @@
+Your nextScale, one check each 0.7 s (calm counts checks under 17.6 ms and starts again when the scale changes; the page gives it an average frame time, and here it is given).
+From 1, ten checks with frames of 50 ms:      0.82 0.67 0.55 0.45 0.45 0.45 0.45 0.45 0.45 0.45
+Then ten with frames of 12 ms:                0.45 0.45 0.45 0.49 0.49 0.49 0.49 0.52 0.52 0.52
+A model device, 30 ms a frame at full size (a frame takes its pixels' time, and never under 16.7 ms): 1 pixel in scale squared.
+Its first 20 checks:                          0.93 0.86 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80
+Checks 61 to 80:                              0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80 0.80

@@ -85,3 +85,7 @@ Each public contract checks exact packaging, JavaScript syntax, setup, local
 reader generation, and the untouched starter's named first diagnostic. The
 pair's worked capstone, browser behavior and learner-owned implementation are
 outside these CI checks.
+
+## Build a world in one file
+
+The public contract starts both a type-in project and a supplied project, checks the unfinished type-in diagnostics and runs the supplied camera experiment.

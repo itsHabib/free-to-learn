@@ -1,0 +1,1826 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>One-file world</title>
+<style>
+html, body { margin: 0; height: 100%; overflow: hidden; background: #f3efe6; touch-action: none; -webkit-user-select: none; user-select: none; font: 13px system-ui, sans-serif; color: #4a4a48; }
+canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+#fade { position: fixed; inset: 0; background: #f3efe6; display: flex; align-items: center; justify-content: center; pointer-events: none; transition: opacity .9s; letter-spacing: .08em; }
+#ui { position: fixed; right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); display: flex; gap: 8px; opacity: .92; transition: opacity 1.2s; }
+#ui.idle { opacity: .38; }
+button { width: 40px; height: 40px; padding: 0; border: 1px solid #0000000f; border-radius: 50%; background: #ffffffd9; color: #55554f; display: grid; place-items: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 1px 6px #0000001f; cursor: pointer; }
+button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#bFly { position: fixed; left: max(14px, env(safe-area-inset-left)); bottom: max(14px, env(safe-area-inset-bottom)); width: 58px; height: 58px; display: none; opacity: .7; }
+#hint { position: fixed; left: 0; right: 0; bottom: max(64px, env(safe-area-inset-bottom)); text-align: center; pointer-events: none; transition: opacity 1.5s; }
+#hint span { background: #ffffffc9; padding: 5px 11px; border-radius: 12px; }
+#cut { position: fixed; inset: 0; background: #0b1016; opacity: 0; pointer-events: none; }
+#stats { position: fixed; left: 8px; top: 8px; padding: 6px 8px; background: #fffc; border-radius: 6px; white-space: pre; font: 11px ui-monospace, monospace; display: none; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hint"><span></span></div>
+<button id="bFly" title="Hold to fly forward" aria-label="Hold to fly forward"><svg viewBox="0 0 20 20"><path d="M10 4l5 11-5-2.5L5 15z"/></svg></button>
+<div id="fade">growing an island</div>
+<script>
+'use strict';
+// One-file world: an island coast at low sun, grown from the seed in the link.
+// Every "(pure)" region below uses only numbers and typed arrays, so Node can
+// run it without a browser. The world generators use only + - * / and
+// Math.sqrt, Math.floor, Math.ceil, Math.imul, Math.abs, Math.min and Math.max:
+// those give the same bits on every machine. Math.sin and friends may differ in
+// the last bit between browsers, so they stay out of generation.
+
+// region: core (pure)
+const clamp = (x, a, b) => (x < a ? a : x > b ? b : x);
+const mix = (a, b, t) => a + (b - a) * t;
+const smooth = (a, b, x) => {
+  const t = clamp((x - a) / (b - a), 0, 1);
+  return t * t * (3 - 2 * t);
+};
+
+// Integer hash of a grid point: the root of all randomness here.
+function hash2(x, y, s) {
+  let h =
+    Math.imul(x, 0x27d4eb2d) ^
+    Math.imul(y, 0x165667b1) ^
+    Math.imul(s, 0x9e3779b1);
+  h = Math.imul(h ^ (h >>> 15), 0x85ebca6b);
+  h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35);
+  return (h ^ (h >>> 16)) >>> 0;
+}
+// A stream of numbers in [0,1) from one integer (the "mulberry32" generator).
+function rng(seed) {
+  let a = seed | 0;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+// Gradient noise, about -1..1, smooth everywhere. Also writes its slope into
+// D[0], D[1].
+function noiseD(x, y, s, D) {
+  const ix = Math.floor(x);
+  const iy = Math.floor(y);
+  const fx = x - ix;
+  const fy = y - iy;
+  const u = fx * fx * fx * (fx * (fx * 6 - 15) + 10);
+  const v = fy * fy * fy * (fy * (fy * 6 - 15) + 10);
+  const du = 30 * fx * fx * (fx * (fx - 2) + 1);
+  const dv = 30 * fy * fy * (fy * (fy - 2) + 1);
+  const h0 = hash2(ix, iy, s);
+  const h1 = hash2(ix + 1, iy, s);
+  const h2 = hash2(ix, iy + 1, s);
+  const h3 = hash2(ix + 1, iy + 1, s);
+  const ax = (h0 & 65535) / 32768 - 1;
+  const ay = (h0 >>> 16) / 32768 - 1;
+  const bx = (h1 & 65535) / 32768 - 1;
+  const by = (h1 >>> 16) / 32768 - 1;
+  const cx = (h2 & 65535) / 32768 - 1;
+  const cy = (h2 >>> 16) / 32768 - 1;
+  const dx = (h3 & 65535) / 32768 - 1;
+  const dy = (h3 >>> 16) / 32768 - 1;
+  const a = ax * fx + ay * fy;
+  const b = bx * (fx - 1) + by * fy;
+  const c = cx * fx + cy * (fy - 1);
+  const d = dx * (fx - 1) + dy * (fy - 1);
+  const k = a - b - c + d;
+  D[0] =
+    ax +
+    u * (bx - ax) +
+    v * (cx - ax) +
+    u * v * (ax - bx - cx + dx) +
+    du * (b - a + v * k);
+  D[1] =
+    ay +
+    u * (by - ay) +
+    v * (cy - ay) +
+    u * v * (ay - by - cy + dy) +
+    dv * (c - a + u * k);
+  return a + u * (b - a) + v * (c - a) + u * v * k;
+}
+const _D = [0, 0];
+const noise = (x, y, s) => noiseD(x, y, s, _D);
+// A unit vector from a random stream, without trigonometry.
+function unitVec(r) {
+  let x;
+  let y;
+  let d;
+  do {
+    x = r() * 2 - 1;
+    y = r() * 2 - 1;
+    d = x * x + y * y;
+  } while (d > 1 || d < 0.05);
+  d = 1 / Math.sqrt(d);
+  return [x * d, y * d];
+}
+// A tiling RGBA noise image for the shaders: R and G are cloudy, B is fine
+// grain, A is static.
+function noiseTile(n, seed) {
+  const out = new Uint8Array(n * n * 4);
+  // Smooth value noise that wraps every `cells` cells.
+  const layer = (x, y, cells, s) => {
+    const gx = (x * cells) / n;
+    const gy = (y * cells) / n;
+    const ix = Math.floor(gx);
+    const iy = Math.floor(gy);
+    const fx = gx - ix;
+    const fy = gy - iy;
+    const u = fx * fx * (3 - 2 * fx);
+    const v = fy * fy * (3 - 2 * fy);
+    const w = (i, j) =>
+      hash2((ix + i) % cells, (iy + j) % cells, s) / 4294967296;
+    return mix(mix(w(0, 0), w(1, 0), u), mix(w(0, 1), w(1, 1), u), v);
+  };
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i += 4) {
+      let r = 0;
+      let g = 0;
+      let amp = 0.5;
+      for (let o = 0, c = 4; o < 6; o++, c *= 2, amp *= 0.5) {
+        r += amp * layer(x, y, c, seed + o);
+        g += amp * layer(x, y, c, seed + 50 + o);
+      }
+      out[i] = clamp(r * 1.25 - 0.12, 0, 1) * 255;
+      out[i + 1] = clamp(g * 1.25 - 0.12, 0, 1) * 255;
+      out[i + 2] =
+        (layer(x, y, 32, seed + 90) * 0.6 + layer(x, y, 64, seed + 91) * 0.4) *
+        255;
+      out[i + 3] = hash2(x, y, seed + 99) >>> 24;
+    }
+  return out;
+}
+// endregion: core (pure)
+
+// region: 1-camera (pure)
+// The projection matrix: how the view narrows to a point at the eye.
+// tanHalfY is the tangent of half the angle seen from top to bottom, aspect
+// is width over height, and only what lies between near and far is kept.
+function perspective(m, tanHalfY, aspect, near, far) {
+  m.fill(0);
+  // Scale x and y so that the edges of the view land on -1 and 1.
+  m[0] = 1 / (tanHalfY * aspect);
+  m[5] = 1 / tanHalfY;
+  // Depth: near lands on -1 and far on 1, once divided by w.
+  m[10] = (far + near) / (near - far);
+  m[14] = (2 * far * near) / (near - far);
+  // w becomes the distance ahead of the eye. Dividing by it makes far things
+  // small.
+  m[11] = -1;
+  return m;
+}
+// The view matrix: it moves the world so that the camera sits at the origin
+// and looks along -z. Yaw turns around the up axis, pitch tilts up and down.
+// It also fills R, U and Fw with the camera's right, up and forward axes.
+function viewMatrix(m, eye, yaw, pitch, R, U, Fw) {
+  // Forward (fx, fy, fz): the way the camera faces.
+  const level = Math.cos(pitch);
+  const fx = Math.sin(yaw) * level;
+  const fy = Math.sin(pitch);
+  const fz = Math.cos(yaw) * level;
+  // Right (rx, 0, rz): level, and square to forward.
+  const toUnit = 1 / Math.sqrt(fx * fx + fz * fz);
+  const rx = -fz * toUnit;
+  const rz = fx * toUnit;
+  // Up (ux, uy, uz): square to both.
+  const ux = -rz * fy;
+  const uy = rz * fx - rx * fz;
+  const uz = rx * fy;
+  // The matrix is stored column by column. Each row measures a point along
+  // one axis: right, up, then backward, because the camera looks along -z.
+  // Column 1: what each axis takes from the world's x.
+  m[0] = rx;
+  m[1] = ux;
+  m[2] = -fx;
+  m[3] = 0;
+  // Column 2: what each axis takes from the world's y. Right is level.
+  m[4] = 0;
+  m[5] = uy;
+  m[6] = -fy;
+  m[7] = 0;
+  // Column 3: what each axis takes from the world's z.
+  m[8] = rz;
+  m[9] = uz;
+  m[10] = -fz;
+  m[11] = 0;
+  // Column 4 brings the eye to the origin: minus the eye, measured along
+  // each axis.
+  m[12] = -(rx * eye[0] + rz * eye[2]);
+  m[13] = -(ux * eye[0] + uy * eye[1] + uz * eye[2]);
+  m[14] = fx * eye[0] + fy * eye[1] + fz * eye[2];
+  m[15] = 1;
+  R[0] = rx;
+  R[1] = 0;
+  R[2] = rz;
+  U[0] = ux;
+  U[1] = uy;
+  U[2] = uz;
+  Fw[0] = fx;
+  Fw[1] = fy;
+  Fw[2] = fz;
+  return m;
+}
+// o = a times b: applying o to a point is applying b, then a. c counts
+// columns and r rows.
+function mul4(o, a, b) {
+  for (let c = 0; c < 4; c++)
+    for (let r = 0; r < 4; r++)
+      o[c * 4 + r] =
+        a[r] * b[c * 4] +
+        a[4 + r] * b[c * 4 + 1] +
+        a[8 + r] * b[c * 4 + 2] +
+        a[12 + r] * b[c * 4 + 3];
+  return o;
+}
+// Yaw and pitch that look from eye to target.
+function aim(eye, target) {
+  const dx = target[0] - eye[0];
+  const dy = target[1] - eye[1];
+  const dz = target[2] - eye[2];
+  // How far away the target is over the ground, leaving height out.
+  const level = Math.sqrt(dx * dx + dz * dz);
+  return [Math.atan2(dx, dz), Math.atan2(dy, level)];
+}
+// The six planes of the view volume, from the combined matrix: left, right,
+// bottom, top, near, far. Each is four numbers a, b, c, d, and a point is on
+// the inner side when a*x + b*y + c*z + d is 0 or more.
+function frustumPlanes(out, m) {
+  for (let i = 0; i < 6; i++) {
+    // Planes come in pairs, one pair for each of x, y and z.
+    const axis = i >> 1;
+    const sign = i & 1 ? -1 : 1;
+    // Row 4 of the matrix, plus or minus the row of that axis.
+    for (let k = 0; k < 4; k++)
+      out[i * 4 + k] = m[k * 4 + 3] + sign * m[k * 4 + axis];
+  }
+  return out;
+}
+// True when a box lies wholly outside one of the planes, so nothing in it can
+// be seen. The box runs from (x0, y0, z0) to (x1, y1, z1).
+function boxHidden(pl, x0, y0, z0, x1, y1, z1) {
+  for (let i = 0; i < 24; i += 4) {
+    // The corner of the box that reaches furthest to this plane's inner side.
+    const x = pl[i] > 0 ? x1 : x0;
+    const y = pl[i + 1] > 0 ? y1 : y0;
+    const z = pl[i + 2] > 0 ? z1 : z0;
+    // If even that corner is outside, the whole box is.
+    if (pl[i] * x + pl[i + 1] * y + pl[i + 2] * z + pl[i + 3] < 0) return true;
+  }
+  return false;
+}
+// Free flight: thrust along the view, sideways and up, with drag, kept clear
+// of the ground and the sea. fly = { v: [x, y, z] velocity } and
+// push = [forward, right, up], each from -1 to 1.
+function flyStep(eye, fly, F, R, push, boost, dt, H) {
+  const speed = 26 * boost;
+  const drag = Math.exp(-2.2 * dt);
+  for (let c = 0; c < 3; c++) {
+    const thrust = F[c] * push[0] + R[c] * push[1] + (c === 1 ? push[2] : 0);
+    fly.v[c] = fly.v[c] * drag + thrust * speed * (1 - drag);
+    eye[c] += fly.v[c] * dt;
+  }
+  // Stay within sight of the island.
+  eye[0] = clamp(eye[0], -2250, 2250);
+  eye[2] = clamp(eye[2], -2250, 2250);
+  const ground = Math.max(heightAt(H, eye[0], eye[2]), 0);
+  eye[1] = clamp(eye[1], ground + 2.2, 900);
+}
+// endregion: 1-camera (pure)
+
+// region: 2-land (pure)
+// Height grid: 512 x 512 cells of 4 m.
+const N = 512;
+const CELL = 4;
+const WORLD = N * CELL;
+const HALF = WORLD / 2;
+// Drawn as 8 x 8 chunks.
+const CHUNK = 64;
+const CHUNKS = N / CHUNK;
+
+// Everything about one island's layout comes from the seed here.
+function islandParams(seed) {
+  const r = rng(hash2(seed, 17, 3));
+  const P = { seed: seed | 0 };
+  // Where the sun sets.
+  P.west = unitVec(r);
+  P.axis = unitVec(r);
+  P.R = 500 + 80 * r();
+  P.long = 1.1 + 0.3 * r();
+  const side = (r() - 0.5) * 1.2;
+  const bx = P.west[0] - P.west[1] * side;
+  const bz = P.west[1] + P.west[0] * side;
+  const bl = 1 / Math.sqrt(bx * bx + bz * bz);
+  const along = (bx * P.axis[0] + bz * P.axis[1]) * bl;
+  const across = (-bx * P.axis[1] + bz * P.axis[0]) * bl;
+  const reach =
+    P.R / Math.sqrt((along * along) / (P.long * P.long) + across * across);
+  P.bayR = P.R * (0.4 + 0.16 * r());
+  P.bay = [bx * bl * reach * 0.98, bz * bl * reach * 0.98];
+  P.high = 230 + 70 * r();
+  P.peaks = [];
+  for (let i = 0, n = 2 + ((r() * 2) | 0); i < n; i++) {
+    const d = unitVec(r);
+    const k = r() * 0.32 * P.R;
+    const back = (0.08 + 0.25 * r()) * P.R;
+    P.peaks.push([
+      d[0] * k - bx * bl * back,
+      d[1] * k - bz * bl * back,
+      190 + 130 * r(),
+      i ? 0.55 + 0.4 * r() : 1,
+    ]);
+  }
+  P.islets = [];
+  for (let i = 0, n = 3 + ((r() * 3) | 0); i < n; i++) {
+    const d = unitVec(r);
+    const k = Math.min(P.R * P.long * (1.02 + 0.3 * r()), HALF - 290);
+    P.islets.push([d[0] * k, d[1] * k, 22 + 40 * r()]);
+  }
+  return P;
+}
+// Ridged noise: sharp crests, with fine detail damped on slopes that are
+// already steep.
+function ridged(x, y, s, D) {
+  let sum = 0;
+  let amp = 0.5;
+  let norm = 0;
+  let dx = 0;
+  let dy = 0;
+  for (let o = 0; o < 6; o++) {
+    const n = noiseD(x, y, s + o, D);
+    const r = 1 - Math.min(1, Math.abs(n) * 2.1);
+    dx += D[0] * amp;
+    dy += D[1] * amp;
+    sum += (amp * r * r) / (1 + 1.6 * (dx * dx + dy * dy));
+    norm += amp;
+    amp *= 0.5;
+    // Turn and double the frequency.
+    const t = x * 1.6 - y * 1.2;
+    y = x * 1.2 + y * 1.6;
+    x = t;
+  }
+  return sum / norm;
+}
+const smin = (a, b, k) => {
+  const h = clamp(0.5 + (0.5 * (b - a)) / k, 0, 1);
+  return mix(b, a, h) - k * h * (1 - h);
+};
+// Height in metres at a point (x, z) in metres. Sea level is 0.
+function landHeight(x, z, P, D) {
+  const s = P.seed;
+  // Bend the map a little so no coastline is a clean curve.
+  const wx = x + 90 * noiseD(x / 480, z / 480, s + 1, D);
+  const wz = z + 90 * noiseD(x / 480 + 7.3, z / 480 - 2.1, s + 2, D);
+  // "coast" is about 1 at the island's heart, 0 on the shoreline and negative
+  // out at sea.
+  const al = wx * P.axis[0] + wz * P.axis[1];
+  const ac = wz * P.axis[0] - wx * P.axis[1];
+  let coast = 1 - Math.sqrt((al * al) / (P.long * P.long) + ac * ac) / P.R;
+  coast +=
+    0.17 * noiseD(wx / 300, wz / 300, s + 3, D) +
+    0.05 * noiseD(wx / 85, wz / 85, s + 4, D);
+  const bxd = wx - P.bay[0];
+  const bzd = wz - P.bay[1];
+  // The bay bites into the west side.
+  coast = smin(
+    coast,
+    (Math.sqrt(bxd * bxd + bzd * bzd) / P.bayR - 1) * 0.3,
+    0.12,
+  );
+  // Sea stacks: small steep rocks off the coast.
+  let stack = -9;
+  for (const it of P.islets) {
+    const ix = wx - it[0];
+    const iz = wz - it[1];
+    stack = Math.max(stack, 1 - Math.sqrt(ix * ix + iz * iz) / it[2]);
+  }
+  // Steep sides: a wide shallow shelf would show as a pale slab.
+  coast = Math.max(coast, (stack - 0.45) * 1.1);
+  // Bed ripples fade out at the shore, or they would surface as sandbars.
+  if (coast < 0)
+    return Math.max(
+      -45,
+      coast * 120 +
+        3 * smooth(0, 0.08, -coast) * noiseD(x / 60, z / 60, s + 5, D),
+    );
+  // Land: a beach, rolling lowland, then mountains where the peaks are.
+  let peak = 0;
+  for (const p of P.peaks) {
+    const px = (wx - p[0]) / p[2];
+    const pz = (wz - p[1]) / p[2];
+    const q = 1 / (1 + px * px + pz * pz);
+    peak += p[3] * q * q;
+  }
+  const ridge = ridged(wx / 400, wz / 400, s + 10, D);
+  const cliff = smooth(0.0, 0.3, noiseD(wx / 240, wz / 240, s + 6, D));
+  let h =
+    2.5 * smooth(0, 0.05, coast) +
+    22 * smooth(0.02, 0.4, coast) * (0.6 + 0.8 * ridge);
+  h += cliff * 30 * smooth(0.012, 0.045, coast);
+  h +=
+    P.high *
+    Math.min(peak, 1.2) *
+    (0.25 + 0.75 * ridge) *
+    smooth(0.03, 0.42, coast);
+  // High ground breaks into knuckles and notches.
+  h += smooth(70, 190, h) * 11 * (ridged(wx / 46, wz / 46, s + 30, D) - 0.45);
+  // Craggy, not a cone.
+  return (
+    h +
+    smooth(0.5, 0.9, stack) *
+      (14 + 46 * ridge) *
+      (1 + 0.35 * noiseD(x / 11, z / 11, s + 7, D))
+  );
+}
+// The height grid of the whole map. A layout with the shape "atoll" uses
+// atollHeight in place of landHeight, when a script beside this file defines
+// one (nothing in this file does).
+function fillLand(H, P) {
+  const D = [0, 0];
+  const atoll = P.shape === 'atoll' && typeof atollHeight === 'function';
+  const height = atoll ? atollHeight : landHeight;
+  for (let j = 0, i = 0; j < N; j++)
+    for (let k = 0; k < N; k++, i++) {
+      // A wavering drop-off, not a ruled square.
+      const x = (k + 0.5) * CELL - HALF;
+      const z = (j + 0.5) * CELL - HALF;
+      const rim = smooth(
+        HALF - 240,
+        HALF - 30,
+        Math.max(Math.abs(x), Math.abs(z)) +
+          70 * noiseD(x / 170, z / 170, P.seed + 8, D),
+      );
+      // The map ends in deep water on every side.
+      H[i] = mix(height(x, z, P, D), -45, rim);
+    }
+  return H;
+}
+// Height between grid points, by blending the four around (x, z).
+function heightAt(H, x, z) {
+  const fx = clamp(x / CELL + N / 2 - 0.5, 0, N - 1.001);
+  const fz = clamp(z / CELL + N / 2 - 0.5, 0, N - 1.001);
+  const ix = fx | 0;
+  const iz = fz | 0;
+  const tx = fx - ix;
+  const tz = fz - iz;
+  const i = iz * N + ix;
+  return mix(mix(H[i], H[i + 1], tx), mix(H[i + N], H[i + N + 1], tx), tz);
+}
+// What the shaders need per grid point: height, slope east, slope south, and
+// how much sky it can see. Given an earlier result and a box of cells [x0, y0,
+// x1, y1], it redoes only that box.
+function bakeLand(H, L, box) {
+  L = L || new Float32Array(N * N * 4);
+  const b = box || [0, 0, N - 1, N - 1];
+  const at = (x, y) => H[clamp(y, 0, N - 1) * N + clamp(x, 0, N - 1)];
+  const DIR = [1, 0, 0, 1, -1, 0, 0, -1, 1, 1, -1, 1, 1, -1, -1, -1];
+  for (let y = b[1]; y <= b[3]; y++)
+    for (let x = b[0]; x <= b[2]; x++) {
+      const i = (y * N + x) * 4;
+      const h = H[y * N + x];
+      let occ = 0;
+      // Look out in 8 directions for the highest thing on the horizon.
+      for (let d = 0; d < 16; d += 2) {
+        let top = 0;
+        const len = d < 8 ? CELL : CELL * 1.41421356;
+        for (let st = 1; st <= 16; st *= 2) {
+          const t = (at(x + DIR[d] * st, y + DIR[d + 1] * st) - h) / (st * len);
+          if (t > top) top = t;
+        }
+        occ += top / Math.sqrt(1 + top * top);
+      }
+      L[i] = h;
+      L[i + 1] = (at(x - 1, y) - at(x + 1, y)) / (2 * CELL);
+      L[i + 2] = (at(x, y - 1) - at(x, y + 1)) / (2 * CELL);
+      L[i + 3] = 1 - occ / 8;
+    }
+  return L;
+}
+// Highest ground in each 64 m plot (see "bucket"): how far above the things on
+// a plot the camera is.
+function plotTops(H) {
+  const T = new Float32Array(1024);
+  const per = N / 32;
+  for (let c = 0; c < 1024; c++) {
+    let hi = -1e9;
+    for (let y = 0; y < per; y++)
+      for (let x = 0; x < per; x++)
+        hi = Math.max(hi, H[((c >> 5) * per + y) * N + (c & 31) * per + x]);
+    T[c] = hi;
+  }
+  return T;
+}
+// Lowest and highest point of each chunk, for culling and level of detail.
+function chunkBounds(H) {
+  const B = new Float32Array(CHUNKS * CHUNKS * 2);
+  for (let c = 0; c < CHUNKS * CHUNKS; c++) {
+    let lo = 1e9;
+    let hi = -1e9;
+    const x0 = (c % CHUNKS) * CHUNK;
+    const y0 = ((c / CHUNKS) | 0) * CHUNK;
+    for (let y = y0; y <= Math.min(y0 + CHUNK, N - 1); y++)
+      for (let x = x0; x <= Math.min(x0 + CHUNK, N - 1); x++) {
+        const h = H[y * N + x];
+        if (h < lo) lo = h;
+        if (h > hi) hi = h;
+      }
+    B[c * 2] = lo;
+    B[c * 2 + 1] = hi;
+  }
+  return B;
+}
+// One flat grid of (n+1) x (n+1) points, reused by every chunk, with index
+// lists at 4 levels of detail. A ring of extra "skirt" points hangs below the
+// edge to hide gaps between chunks of different detail.
+function gridMesh(n) {
+  const m = n + 1;
+  const verts = new Float32Array((m * m + 4 * m) * 3);
+  const lods = [];
+  let v = 0;
+  for (let j = 0; j < m; j++)
+    for (let i = 0; i < m; i++) {
+      verts[v++] = i;
+      verts[v++] = j;
+      verts[v++] = 0;
+    }
+  const edge = (side, k) =>
+    side === 0 ? k : side === 1 ? k * m + n : side === 2 ? n * m + k : k * m;
+  for (let side = 0; side < 4; side++)
+    for (let k = 0; k < m; k++) {
+      const e = edge(side, k) * 3;
+      verts[v++] = verts[e];
+      verts[v++] = verts[e + 1];
+      verts[v++] = 1;
+    }
+  for (let step = 1; step <= 8; step *= 2) {
+    const idx = [];
+    for (let j = 0; j < n; j += step)
+      for (let i = 0; i < n; i += step) {
+        const a = j * m + i;
+        const b = a + step;
+        const c = a + step * m;
+        const d = c + step;
+        idx.push(a, c, b, b, c, d);
+      }
+    for (let side = 0; side < 4; side++)
+      for (let k = 0; k < n; k += step) {
+        const a = edge(side, k);
+        const b = edge(side, k + step);
+        const c = m * m + side * m + k;
+        const d = c + step;
+        idx.push(a, c, b, b, c, d);
+      }
+    lods.push(new Uint16Array(idx));
+  }
+  return { verts, lods };
+}
+// endregion: 2-land (pure)
+
+// region: 3-light (pure)
+const DAY_KEYS = [
+  // The golden hour, where the day starts.
+  0, 3.01,
+  // Sunset.
+  0.25, 3.13,
+  // Dusk is over.
+  0.36, 3.74,
+  // Midnight.
+  0.46, 4.71,
+  // First light.
+  0.55, 5.9,
+  // Sunrise.
+  0.62, 6.27,
+  // Morning.
+  0.78, 6.56,
+  // Noon.
+  0.9, 7.85,
+  // The golden hour again, one turn later.
+  1, 9.293,
+];
+// The day runs 0..1 and starts in the golden hour. It lingers at sunset and
+// dawn and hurries through noon and night.
+function dayAngle(u) {
+  u -= Math.floor(u);
+  let k = 0;
+  while (u > DAY_KEYS[k + 2]) k += 2;
+  // How far u has come from this key toward the next, 0 to 1.
+  const part = (u - DAY_KEYS[k]) / (DAY_KEYS[k + 2] - DAY_KEYS[k]);
+  return mix(DAY_KEYS[k + 1], DAY_KEYS[k + 3], part);
+}
+// Sky colours at five sun heights (degrees): zenith rgb, horizon rgb.
+const SKY_KEYS = [
+  // Night.
+  -14, 0.008, 0.014, 0.042, 0.022, 0.034, 0.075,
+  // Dusk.
+  -5, 0.022, 0.05, 0.15, 0.21, 0.14, 0.17,
+  // The sun on the horizon.
+  1, 0.034, 0.11, 0.29, 0.46, 0.28, 0.19,
+  // A low sun.
+  8, 0.04, 0.15, 0.36, 0.46, 0.35, 0.27,
+  // Full day.
+  30, 0.05, 0.18, 0.52, 0.38, 0.54, 0.74,
+];
+// The sky overhead (S[8..10]) and at the horizon (S[12..14]) for a sun height
+// in degrees: find the two rows of SKY_KEYS the height lies between, and how
+// far between, then blend them. The blend is of linear colour, before the
+// display curve.
+function skyKeys(S, height) {
+  let k = 0;
+  while (k < 21 && height > SKY_KEYS[k + 7]) k += 7;
+  const t = smooth(SKY_KEYS[k], SKY_KEYS[k + 7], height);
+  // Three numbers overhead, three at the horizon.
+  for (let c = 0; c < 3; c++) {
+    S[8 + c] = mix(SKY_KEYS[k + 1 + c], SKY_KEYS[k + 8 + c], t);
+    S[12 + c] = mix(SKY_KEYS[k + 4 + c], SKY_KEYS[k + 11 + c], t);
+  }
+  return S;
+}
+// Fills S (20 numbers) for a time of day u (0..1). "west" is the compass
+// direction of sunset. S[0..2] is the direction to the light, S[3] how far
+// into night it is (0..1), S[4..6] the light's colour, S[8..10] the sky
+// overhead, S[12..14] the sky at the horizon and S[16] the exposure.
+function skyState(S, u, west) {
+  const angle = dayAngle(u);
+  const sine = Math.sin(angle);
+  // The sun's height in degrees: up to 44 by day, down to -16 at night.
+  const height = sine * (sine > 0 ? 44 : 16);
+  const rise = (height * Math.PI) / 180;
+  // Its compass direction, hx along the sunset line and hz across it, scaled
+  // so that the whole direction has length 1.
+  const hx = -Math.cos(angle);
+  const hz = 0.55 * Math.abs(sine) + 0.1;
+  const scale = Math.cos(rise) / Math.sqrt(hx * hx + hz * hz);
+  let dx = (west[0] * hx - west[1] * hz) * scale;
+  let dy = Math.sin(rise);
+  let dz = (west[1] * hx + west[0] * hz) * scale;
+  // Sunlight reddens as it crosses more air: blue is scattered away first.
+  const air = 1 / (Math.max(dy, 0) + 0.06);
+  const up = smooth(-2.5, 2, height) * 3.2;
+  let r = Math.exp(-0.03 * air) * up;
+  let g = Math.exp(-0.1 * air) * up;
+  let b = Math.exp(-0.25 * air) * up;
+  const night = 1 - smooth(-9, -3, height);
+  // After dusk the moon is the light.
+  if (height < -3) {
+    const moon = 1 / Math.sqrt(0.25 + 0.3 + 0.36);
+    dx = (-west[0] * 0.5 - west[1] * 0.55) * moon;
+    dy = 0.6 * moon;
+    dz = (-west[1] * 0.5 + west[0] * 0.55) * moon;
+    r = 0.1 * night;
+    g = 0.15 * night;
+    b = 0.26 * night;
+  }
+  S[0] = dx;
+  S[1] = dy;
+  S[2] = dz;
+  S[3] = night;
+  S[4] = r;
+  S[5] = g;
+  S[6] = b;
+  skyKeys(S, height);
+  // Exposure: open up at night.
+  S[16] = mix(1.0, 2.4, night);
+  return S;
+}
+// endregion: 3-light (pure)
+
+// region: 4-water (pure)
+// A tiling image of small waves for the sea shader: R and G hold the surface
+// slope, B the height, A foam breakup. It is stored as floats: with only 256
+// levels the mirror-like water would show the steps.
+function waveTile(n, seed) {
+  const h = new Float32Array(n * n);
+  const out = new Float32Array(n * n * 4);
+  const layer = (x, y, cells, s) => {
+    const gx = (x * cells) / n;
+    const gy = (y * cells) / n;
+    const ix = Math.floor(gx);
+    const iy = Math.floor(gy);
+    const fx = gx - ix;
+    const fy = gy - iy;
+    const u = fx * fx * (3 - 2 * fx);
+    const v = fy * fy * (3 - 2 * fy);
+    const w = (i, j) =>
+      hash2((ix + i) % cells, (iy + j) % cells, s) / 4294967296;
+    return mix(mix(w(0, 0), w(1, 0), u), mix(w(0, 1), w(1, 1), u), v);
+  };
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i++) {
+      let sum = 0;
+      let amp = 0.5;
+      // How many cells of noise cross the tile. A whole number, so that the
+      // right edge meets the left with no seam.
+      let cells = 5;
+      for (let o = 0; o < 4; o++) {
+        // Broad, rounded crests and narrow troughs.
+        const d = 2 * layer(x, y, cells, seed + o) - 1;
+        sum += amp * (1 - d * d);
+        cells *= 2;
+        amp *= 0.55;
+      }
+      h[i] = sum;
+    }
+  const at = (x, y) => h[((y + n) % n) * n + ((x + n) % n)];
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i += 4) {
+      out[i] = (at(x + 1, y) - at(x - 1, y)) * 4;
+      out[i + 1] = (at(x, y + 1) - at(x, y - 1)) * 4;
+      out[i + 2] = at(x, y);
+      out[i + 3] =
+        layer(x, y, 24, seed + 9) * 0.6 + layer(x, y, 64, seed + 10) * 0.4;
+    }
+  return out;
+}
+// The same image at half the size, each pixel the mean of four. Smaller copies
+// are what the GPU reads far away, where they calm the water into a smooth
+// mirror. (Built here because phones cannot build them for float images.)
+function halve(src, n) {
+  const m = n / 2;
+  const out = new Float32Array(m * m * 4);
+  for (let y = 0; y < m; y++)
+    for (let x = 0; x < m; x++)
+      for (let c = 0; c < 4; c++) {
+        const i = (y * 2 * n + x * 2) * 4 + c;
+        out[(y * m + x) * 4 + c] =
+          (src[i] + src[i + 4] + src[i + n * 4] + src[i + n * 4 + 4]) / 4;
+      }
+  return out;
+}
+// endregion: 4-water (pure)
+
+// region: frame
+// What every layer shares: the canvas and the WebGL helpers, the numbers sent
+// to every shader each frame, the camera's state, and three lists that layers
+// add themselves to. No lesson edits this region. A layer joins in from its own
+// "(page)" region by calling onGrow (build once), onTick (every frame, before
+// drawing) and onDraw (every frame, in the order of the number given).
+const Q = new URLSearchParams(location.search);
+const canvas = document.getElementById('c');
+// When anything fails, say so on the page and not only in the console. A
+// function that is not written yet throws "its name: not written yet", and that
+// line is what shows, in place of "growing an island".
+function showFailure(e) {
+  const note = document.getElementById('fade');
+  note.textContent = String((e && e.message) || e)
+    .split('\n')[0]
+    .slice(0, 160);
+  note.style.opacity = 1;
+}
+addEventListener('error', (e) => showFailure(e.error || e.message));
+addEventListener('unhandledrejection', (e) => showFailure(e.reason));
+const gl = canvas.getContext('webgl2', {
+  antialias: true,
+  alpha: false,
+  powerPreference: 'high-performance',
+});
+const stat = { calls: 0, tris: 0, bytes: 0, ms: 0, scale: 1 };
+
+function program(vs, fs) {
+  const p = gl.createProgram();
+  for (const [type, src] of [
+    [gl.VERTEX_SHADER, vs],
+    [gl.FRAGMENT_SHADER, fs],
+  ]) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS))
+      throw new Error(
+        gl.getShaderInfoLog(s) +
+          '\n' +
+          src
+            .split('\n')
+            .map((l, i) => i + 1 + ' ' + l)
+            .join('\n'),
+      );
+    gl.attachShader(p, s);
+  }
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS))
+    throw new Error(gl.getProgramInfoLog(p));
+  gl.useProgram(p);
+  const block = gl.getUniformBlockIndex(p, 'F');
+  if (block !== gl.INVALID_INDEX) gl.uniformBlockBinding(p, block, 0);
+  ['tH', 'tM', 'tS', 'tN', 'tW', 'tV'].forEach((name, unit) =>
+    gl.uniform1i(gl.getUniformLocation(p, name), unit),
+  );
+  return p;
+}
+function texture(unit, internal, format, type, size, data, wrap, filter) {
+  const t = gl.createTexture();
+  gl.activeTexture(gl.TEXTURE0 + unit);
+  gl.bindTexture(gl.TEXTURE_2D, t);
+  gl.texImage2D(gl.TEXTURE_2D, 0, internal, size, size, 0, format, type, data);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrap);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, wrap);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  if (filter === gl.LINEAR_MIPMAP_LINEAR) gl.generateMipmap(gl.TEXTURE_2D);
+  return t;
+}
+function buffer(target, data) {
+  const b = gl.createBuffer();
+  gl.bindBuffer(target, b);
+  gl.bufferData(target, data, gl.STATIC_DRAW);
+  stat.bytes += data.byteLength;
+  return b;
+}
+function draw(mode, count, type, offset, instances) {
+  stat.calls++;
+  stat.tris += ((count / 3) | 0) * (instances || 1);
+  if (type === 0) gl.drawArrays(mode, 0, count);
+  else if (instances)
+    gl.drawElementsInstanced(mode, count, type, offset, instances);
+  else gl.drawElements(mode, count, type, offset);
+}
+// A mesh with plain float attributes: sizes lists how many numbers each
+// attribute takes.
+function mesh(verts, idx, sizes) {
+  const vao = gl.createVertexArray();
+  const stride = sizes.reduce((a, b) => a + b, 0) * 4;
+  gl.bindVertexArray(vao);
+  buffer(gl.ARRAY_BUFFER, verts);
+  sizes.forEach((size, loc) => {
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(
+      loc,
+      size,
+      gl.FLOAT,
+      false,
+      stride,
+      sizes.slice(0, loc).reduce((a, b) => a + b, 0) * 4,
+    );
+  });
+  buffer(gl.ELEMENT_ARRAY_BUFFER, idx);
+  return { vao, count: idx.length };
+}
+// Attributes that change once per copy of a mesh, not once per point: 8 numbers
+// a copy, as two groups of four.
+function perCopy(buf, locs) {
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  locs.forEach((loc, k) => {
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 4, gl.FLOAT, false, 32, k * 16);
+    gl.vertexAttribDivisor(loc, 1);
+  });
+}
+
+const seed = Q.has('seed')
+  ? parseInt(Q.get('seed')) >>> 0
+  : (Math.random() * 1e6) | 0;
+// The link names the island (some browsers refuse this for local files).
+if (!Q.has('seed'))
+  try {
+    history.replaceState(null, '', '?seed=' + seed);
+  } catch (e) {}
+const SHOT = Q.has('shot');
+const PHONE = matchMedia('(pointer: coarse)').matches;
+const $ = (id) => document.getElementById(id);
+// The grown world: layout, height grid, GPU objects; "detail" scales every
+// detail distance.
+const W = { detail: 1 };
+const FB = new Float32Array(52);
+const frameUbo = gl.createBuffer();
+const proj = new Float32Array(16);
+const view = new Float32Array(16);
+const planes = new Float32Array(24);
+const cam = {
+  eye: [0, 60, -420],
+  look: [0, 0, 0],
+  yaw: 0,
+  pitch: -0.1,
+  R: [0, 0, 0],
+  U: [0, 0, 0],
+  F: [0, 0, 0],
+};
+let time = +(Q.get('t') || 0);
+let frames = 0;
+let lastNow = 0;
+const tick = () => new Promise((r) => setTimeout(r));
+const GROW = [];
+const TICK = [];
+const DRAW = [];
+const onGrow = (f) => GROW.push(f);
+const onTick = (f) => TICK.push(f);
+const onDraw = (order, f) => DRAW.push([order, f]);
+
+// The start of every shader: the numbers shared by all of them, and the six
+// images they may read.
+const GLSL_HEAD = `#version 300 es
+precision highp float;
+precision highp sampler2D;
+layout(std140) uniform F {
+  mat4 uVP;
+  // Eye, time in seconds.
+  vec4 uCam;
+  // Camera right axis scaled to the screen edge, width in pixels.
+  vec4 uRight;
+  // Camera up axis scaled to the screen edge, height in pixels.
+  vec4 uUp;
+  // Camera forward, quality 0..1.
+  vec4 uFwd;
+  // Direction to the light, night 0..1.
+  vec4 uSun;
+  // Light colour, cloud cover.
+  vec4 uSunCol;
+  // Zenith sky, haze per metre.
+  vec4 uZen;
+  // Horizon sky, wind.
+  vec4 uHor;
+  // Exposure, tide, day 0..1.
+  vec4 uMisc;
+};
+// Land (height, slopes, sky view), cover, shadows, noise, waves, paving.
+uniform sampler2D tH, tM, tS, tN, tW, tV;
+const float WORLD = 2048.0;
+`;
+
+// Grows the world: every layer's onGrow step in turn, with a pause between so
+// the page stays alive.
+async function start() {
+  // Every image slot holds something from the start, so a shader written before
+  // its layer exists still runs: black everywhere, except the shadow image,
+  // which is white (nothing is in shadow).
+  for (let unit = 0; unit < 6; unit++)
+    texture(
+      unit,
+      gl.RGBA8,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      1,
+      new Uint8Array(4).fill(unit === 2 ? 255 : 0),
+      gl.CLAMP_TO_EDGE,
+      gl.LINEAR,
+    );
+  texture(
+    3,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    256,
+    noiseTile(256, 5),
+    gl.REPEAT,
+    gl.LINEAR_MIPMAP_LINEAR,
+  );
+  gl.bindBufferBase(gl.UNIFORM_BUFFER, 0, frameUbo);
+  gl.bufferData(gl.UNIFORM_BUFFER, FB.byteLength, gl.DYNAMIC_DRAW);
+  for (const step of GROW) {
+    await step();
+    await tick();
+  }
+  DRAW.sort((a, b) => a[0] - b[0]);
+  requestAnimationFrame(frame);
+}
+function resize() {
+  const dpr = Math.min(devicePixelRatio || 1, 2) * stat.scale;
+  const w = Math.max(2, Math.round(canvas.clientWidth * dpr));
+  const h = Math.max(2, Math.round(canvas.clientHeight * dpr));
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+  }
+}
+// One frame: let every layer update, work out the camera, send the shared
+// numbers, then let every layer draw.
+function frame(now) {
+  const real = Math.min((now - lastNow) / 1000, 0.1);
+  const dt = SHOT ? 0 : real;
+  lastNow = now;
+  time += dt;
+  stat.t0 = performance.now();
+  for (const f of TICK) f(dt, real);
+  resize();
+  stat.calls = stat.tris = 0;
+  // A little longer lens when upright.
+  const aspect = canvas.width / canvas.height;
+  const tanY = (0.52 / Math.sqrt(aspect)) * (aspect < 1 ? 0.88 : 1);
+  perspective(proj, tanY, aspect, 0.6, 20000);
+  viewMatrix(view, cam.eye, cam.yaw, cam.pitch, cam.R, cam.U, cam.F);
+  mul4(FB, proj, view);
+  frustumPlanes(planes, FB);
+  FB.set(cam.eye, 16);
+  FB[19] = time;
+  for (let i = 0; i < 3; i++) {
+    FB[20 + i] = cam.R[i] * tanY * aspect;
+    FB[24 + i] = cam.U[i] * tanY;
+    FB[28 + i] = cam.F[i];
+  }
+  FB[23] = canvas.width;
+  FB[27] = canvas.height;
+  FB[31] = PHONE ? 0 : 1;
+  gl.bindBuffer(gl.UNIFORM_BUFFER, frameUbo);
+  gl.bufferSubData(gl.UNIFORM_BUFFER, 0, FB);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.enable(gl.DEPTH_TEST);
+  gl.depthFunc(gl.LEQUAL);
+  gl.depthMask(true);
+  gl.disable(gl.BLEND);
+  // A plain sky, until the light layer draws a real one over it.
+  gl.clearColor(0.6, 0.72, 0.86, 1);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  for (const pass of DRAW) pass[1](dt, real);
+  // Test switch: wait for the GPU to finish, so frames cannot overlap.
+  if (Q.has('bench') && frames > 20 && frames < 20 + 40) {
+    gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array(4));
+    stat.bench = (stat.bench || 0) + (performance.now() - stat.t0) / 39;
+    if (frames < 20 + 39) {
+      frames++;
+      return frame(now);
+    }
+  }
+  if (++frames === 3) {
+    $('fade').style.opacity = 0;
+    window.__ready = true;
+  }
+  requestAnimationFrame(frame);
+}
+// endregion: frame
+
+// stub: bare ground (replaced by 5-erosion)
+// No rain has fallen and nothing grows: the land keeps its first smooth shape
+// and is one grey all over.
+function erode(H, E, drops, seed) {
+  return H;
+}
+function coverMasks(H, L, E) {
+  return new Uint8Array(N * N * 4);
+}
+const GLSL_GROUND = `
+vec3 ground(vec3 vP, vec4 L, vec4 M, out vec3 n, out float wet) {
+  n = normalize(vec3(L.g, 1.0, L.b));
+  wet = 0.0;
+  return vec3(0.42, 0.41, 0.39);
+}
+`;
+// endstub: bare ground
+
+// stub: still air (replaced by 7-motion)
+// Nothing moves: every point of every thing stays where it was built.
+const GLSL_WIND = `
+vec3 windMove(vec3 p, vec4 ext, vec4 at, vec4 own) {
+  return p;
+}
+`;
+// endstub: still air
+
+// The shaders follow, as text, ordered so that each can use the pieces before
+// it: light, water, ground, land, motion, things.
+// region: 3-light (glsl)
+const GLSL_SKY = `
+// Sky without clouds: a gradient from horizon to zenith, warm air around the
+// sun, a pink belt opposite it.
+vec3 skyBase(vec3 d) {
+  float y = max(d.y, 0.0);
+  float sd = max(dot(d, uSun.xyz), 0.0);
+  float low = 1.0 - smoothstep(0.0, 0.45, uSun.y);
+  vec3 c = mix(uHor.rgb, uZen.rgb, pow(y, 0.38));
+  float toward = 0.5 + 0.5 * dot(normalize(d.xz + 1e-5), normalize(uSun.xz));
+  // Light that has crossed twice the air: redder still.
+  vec3 gold = uSunCol.rgb * uSunCol.rgb / (uSunCol.r + 0.05);
+  c += gold
+      * low
+      * (0.30 * pow(toward, 3.0) * pow(1.0 - y, 5.0) + 0.14 * pow(sd, 4.0));
+  c += uSunCol.rgb * (0.04 * pow(sd, 3.0) + 0.45 * pow(sd, 90.0));
+  c += vec3(0.17, 0.06, 0.10)
+      * low
+      * (1.0 - uSun.w)
+      * pow(1.0 - y, 8.0)
+      * (1.0 - toward);
+  return c;
+}
+const float CLOUD_Y = 1200.0;
+// The noise image, read so that values ease from one pixel to the next. Plain
+// blending between pixels leaves straight facets, and the cloud edge (a steep
+// threshold on this value) showed them as blocks and stair-steps.
+vec4 soft(vec2 uv) {
+  uv = uv * 256.0 + 0.5;
+  vec2 i = floor(uv), f = fract(uv);
+  return textureLod(tN, (i + f * f * (3.0 - 2.0 * f) - 0.5) / 256.0, 0.0);
+}
+// Cloud thickness 0..1 at a point on the cloud deck (metres): big shapes, then
+// smaller billows eating the edges.
+float cloudAt(vec2 q) {
+  q = q * 0.00007 + uCam.w * vec2(0.0007, 0.00025);
+  float n = soft(q).r * 0.6
+      + soft(q * 2.9 + uCam.w * 0.0004).g * 0.27
+      + textureLod(tN, q * 9.3, 1.0).b * 0.13;
+  return smoothstep(0.0, 0.14, n - 1.0 + uSunCol.w);
+}
+// Sky with clouds, as seen from the camera along d. "fine" adds the second
+// look-up that shades the clouds.
+vec3 skyFull(vec3 d, bool fine) {
+  vec3 c = skyBase(d);
+  if (d.y < 0.01) return c;
+  float sd = max(dot(d, uSun.xyz), 0.0);
+  // High thin cloud: long streaks far above the first layer, lit before and
+  // after it.
+  if (fine) {
+    vec2 q2 = uCam.xz + d.xz * (CLOUD_Y * 3.4 - uCam.y) / d.y;
+    float wisp = soft(q2 * vec2(0.000019, 0.00006) + uCam.w * 0.0002).g
+        + soft(q2 * 0.00021).r * 0.35;
+    wisp = smoothstep(0.62, 0.95, wisp) * smoothstep(0.02, 0.22, d.y) * 0.6;
+    c = mix(
+        c,
+        uSunCol.rgb
+            * uSunCol.rgb
+            / (uSunCol.r + 0.05)
+            * (0.2 + 0.5 * pow(sd, 3.0))
+            + uHor.rgb * 0.4,
+        wisp
+    );
+  }
+  vec2 q = uCam.xz + d.xz * (CLOUD_Y - uCam.y) / d.y;
+  float den = cloudAt(q);
+  if (den < 0.003) return c;
+  // A cloud is bright on the side where less cloud lies between it and the sun,
+  // and its thick middle is dim from below.
+  float lit = fine
+      ? clamp(
+          0.5 + 2.6 * (den - cloudAt(q + normalize(uSun.xz) * 420.0)),
+          0.0,
+          1.0
+      )
+      : 0.5;
+  lit *= 1.0 - 0.5 * den;
+  vec3 gold = uSunCol.rgb
+      * mix(vec3(1.0), uSunCol.rgb / (uSunCol.r + 0.05), 0.6);
+  vec3 col = mix(
+      uZen.rgb * 0.62 + uHor.rgb * 0.26,
+      gold * 0.42 + uHor.rgb * 0.2,
+      lit
+  );
+  // Thin edges glow near the sun.
+  col += uSunCol.rgb * 1.5 * pow(sd, 8.0) * (1.0 - den) * (1.0 - den);
+  return mix(c, col, den * smoothstep(0.01, 0.16, d.y) * (fine ? 1.0 : 0.6));
+}
+// Shade from clouds on the ground: follow the light up to the cloud deck.
+float cloudShade(vec3 p) {
+  vec2 q = p.xz + uSun.xz * (CLOUD_Y - p.y) / max(uSun.y, 0.12);
+  return 1.0 - 0.6 * cloudAt(q);
+}
+// Haze: air thickens with distance and gathers near the sea. Far things fade
+// into the sky colour behind them.
+vec3 haze(vec3 col, vec3 p) {
+  vec3 v = p - uCam.xyz;
+  // For the sea bed, only the part of the path above water is air.
+  if (p.y < 0.0) v *= uCam.y / (uCam.y - p.y);
+  float d = length(v);
+  v /= d;
+  float k = v.y * 0.012;
+  float low = exp(-max(uCam.y, 0.0) * 0.012)
+      * (abs(k) < 1e-5 ? d : (1.0 - exp(-d * k)) / k);
+  float a = 1.0 - exp(-uZen.w * (d * 0.35 + low * 0.65));
+  return mix(
+      col,
+      skyBase(normalize(vec3(v.x, abs(v.y) * 0.3 + 0.03, v.z))) * 0.9,
+      a
+  );
+}
+`;
+const GLSL_LIGHT = `
+// Light on a surface: the sun (or moon) where not shadowed, plus sky light from
+// above and warm bounce from below.
+vec3 lightOn(vec3 n, float sky, float sun) {
+  vec3 amb = mix(
+      uHor.rgb * 0.4
+          + uSunCol.rgb
+              * vec3(1.0, 0.85, 0.6)
+              * (0.07 + 0.13 * max(uSun.y, 0.0)),
+      uZen.rgb * 0.95 + uHor.rgb * 0.4,
+      0.5 + 0.5 * n.y
+  );
+  // Rough ground catches a low sun.
+  return uSunCol.rgb * max(dot(n, uSun.xyz) * 0.8 + 0.2, 0.0) * sun + amb * sky;
+}
+`;
+const GLSL_FILM = `
+float grain(vec2 p) {
+  return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+}
+// Last step for every pixel: exposure, a film-like curve that keeps bright
+// colours from clipping, gamma, vignette.
+vec3 curve(vec3 c) {
+  return c * (2.51 * c + 0.03) / (c * (2.43 * c + 0.59) + 0.14);
+}
+vec3 finish(vec3 c) {
+  c *= uMisc.x;
+  float top = max(c.r, max(c.g, c.b)) + 1e-4;
+  // Part of the curve acts on brightness only, to keep colour.
+  c = mix(curve(c), c * (curve(vec3(top)).r / top), 0.45);
+  c = pow(clamp(c, 0.0, 1.0), vec3(1.0 / 2.2));
+  c = mix(vec3(dot(c, vec3(0.3, 0.59, 0.11))), c, 1.12);
+  vec2 q = gl_FragCoord.xy / vec2(uRight.w, uUp.w) - 0.5;
+  return c * (1.0 - 0.35 * dot(q, q)) + (grain(gl_FragCoord.xy) - 0.5) / 255.0;
+}
+`;
+const SKY_VS =
+  GLSL_HEAD +
+  `
+out vec3 vDir;
+void main() {
+  vec2 p = vec2(gl_VertexID == 1 ? 3.0 : -1.0, gl_VertexID == 2 ? 3.0 : -1.0);
+  vDir = uFwd.xyz + p.x * uRight.xyz + p.y * uUp.xyz;
+  gl_Position = vec4(p, 1.0, 1.0);
+}`;
+const SKY_FS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_LIGHT +
+  GLSL_FILM +
+  `
+in vec3 vDir;
+out vec4 o;
+void main() {
+  vec3 d = normalize(vDir), c = skyFull(d, true);
+  float sd = dot(d, uSun.xyz);
+  c += uSunCol.rgb
+      * (
+          60.0 * smoothstep(0.99988, 0.99996, sd)
+              + 1.5 * pow(max(sd, 0.0), 1500.0)
+      )
+      * (1.0 - cloudAt(uCam.xz + d.xz * (CLOUD_Y - uCam.y) / max(d.y, 0.02)));
+  // Stars: a few cells of a grid over the sky dome hold a soft dot.
+  vec3 g = floor(d * 420.0), in_ = fract(d * 420.0) - 0.5;
+  c += uSun.w
+      * step(0.997, grain(g.xy + g.z * 7.3))
+      * smoothstep(0.35, 0.0, length(in_))
+      * smoothstep(0.0, 0.3, d.y)
+      * (0.3 + grain(g.yz));
+  o = vec4(finish(c), 1.0);
+}`;
+// Soft shadows for the whole island, drawn into a texture whenever the sun has
+// moved a little. From each ground point, march toward the sun and keep the
+// closest miss: R counts trees as blockers, G only land.
+const SHADOW_VS = `#version 300 es
+out vec2 vUv;
+void main() {
+  vec2 p = vec2(gl_VertexID == 1 ? 3.0 : -1.0, gl_VertexID == 2 ? 3.0 : -1.0);
+  vUv = p * 0.5 + 0.5;
+  gl_Position = vec4(p, 0.0, 1.0);
+}`;
+const SHADOW_FS =
+  GLSL_HEAD +
+  `
+in vec2 vUv;
+out vec4 o;
+void main() {
+  float h0 = max(texture(tH, vUv).r, 0.0);
+  float flat_ = max(length(uSun.xz), 1e-3);
+  float rise = uSun.y / flat_;
+  float a = 1.0;
+  float b = 1.0;
+  float t = 3.0;
+  vec2 dir = uSun.xz / flat_ / WORLD;
+  for (int i = 0; i < 44; i++) {
+    vec2 q = vUv + dir * t;
+    float land = texture(tH, q).r, ray = h0 + t * rise;
+    a = min(a, (ray + 0.6 - land - texture(tM, q).a * 24.0) * 9.0 / t + 0.3);
+    b = min(b, (ray + 7.0 - land) * 9.0 / t + 0.3);
+    t *= 1.15;
+  }
+  o = vec4(clamp(a, 0.0, 1.0), clamp(b, 0.0, 1.0), 0.0, 1.0);
+}`;
+// endregion: 3-light (glsl)
+
+// region: 4-water (glsl)
+const GLSL_SEA = `
+// Colour of open deep water: what the sea scatters back from the light that
+// enters it.
+vec3 seaDeep() {
+  return vec3(0.010, 0.085, 0.15)
+      * (
+          uSunCol.rgb * (0.12 + 0.5 * max(uSun.y, 0.0))
+              + uZen.rgb * 1.5
+              + uHor.rgb * 0.3
+      );
+}
+// What the sea bed looks like through "depth" metres of water. Red light is
+// absorbed first, which is why shallows are turquoise.
+vec3 throughWater(vec3 bed, float depth, float lookDown) {
+  vec3 keep = exp(
+      -depth * (1.0 + 1.0 / max(lookDown, 0.25)) * vec3(0.30, 0.070, 0.055)
+  );
+  return bed * keep + seaDeep() * (1.0 - keep);
+}
+// Bright wandering lines on a shallow sea bed, where two sets of ripples focus
+// the sun.
+float caustics(vec2 p) {
+  float a = texture(tW, p / 9.0 + uCam.w * vec2(0.03, 0.017)).b;
+  float b = texture(tW, p.yx / 7.0 - uCam.w * vec2(0.021, 0.026)).b;
+  return smoothstep(0.12, 0.0, abs(a - b));
+}
+`;
+const SEA_VS =
+  GLSL_HEAD +
+  `
+out vec3 vP;
+void main() {
+  vec2 p = vec2(gl_VertexID & 1, gl_VertexID >> 1) * 2.0 - 1.0;
+  vP = vec3(uCam.x + p.x * 16000.0, 0.0, uCam.z + p.y * 16000.0);
+  gl_Position = uVP * vec4(vP, 1.0);
+}`;
+const SEA_FS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_LIGHT +
+  GLSL_FILM +
+  GLSL_SEA +
+  `
+in vec3 vP;
+out vec4 o;
+void main() {
+  vec3 v = vP - uCam.xyz;
+  float dist = length(v), t = uCam.w;
+  v /= dist;
+  vec2 p = vP.xz, uv = p / WORLD + 0.5;
+  float depth0 = -texture(tH, uv).r;
+  // Ripples: three sheets of the wave image sliding across each other.
+  // Sheltered shallows are calmer.
+  vec4 a = texture(tW, p / 127.0 + t * vec2(0.010, 0.004));
+  vec4 b = texture(tW, p.yx / 41.0 + t * vec2(-0.012, 0.019));
+  vec4 c = texture(tW, p / 9.3 + t * vec2(0.045, -0.03));
+  float calm = mix(0.5, 1.0, smoothstep(0.0, 2.5, depth0))
+      * (0.6 + 0.4 * uHor.w);
+  vec2 swell = (a.rg * 0.55 + b.gr * 0.4) * calm;
+  vec2 slope = swell + c.rg * 0.3 * calm;
+  vec3 n = normalize(vec3(-slope.x, 1.0, -slope.y));
+  float depth = -texture(tH, uv + slope * 0.004).r;
+  // Reflection grows as the view gets shallower (Fresnel).
+  float fres = 0.02 + 0.98 * pow(1.0 - max(dot(-v, n), 0.0), 5.0);
+  // The mirror image uses only the broad swell: the finest ripples would
+  // shatter it into noise.
+  vec3 r = reflect(
+      v,
+      normalize(vec3(-swell.x - slope.x * 0.25, 1.0, -swell.y - slope.y * 0.25))
+  );
+  r.y = abs(r.y) + 0.015;
+  r = normalize(r);
+  vec3 refl = skyFull(r, false);
+  // Land mirrored in the sea: walk the mirrored ray over the height map until
+  // it dips under the ground. Steps start short and lengthen, up to a limit, so
+  // near shores are sharp and far hills are still reached.
+  bool fine = uFwd.w > 0.5;
+  // Each pixel starts its walk at a slightly different point, which turns the
+  // steps' banding into fine grain.
+  float step_ = 5.0, gone = 0.0, shift = grain(gl_FragCoord.xy + 3.7) * 0.4;
+  for (int i = 0; i < (fine ? 26 : 13); i++) {
+    gone += step_;
+    vec3 q = vP + r * (gone - step_ * shift);
+    if (q.y > 340.0) break;
+    vec2 quv = q.xz / WORLD + 0.5;
+    vec4 L = texture(tH, quv), M = texture(tM, quv);
+    // Fine ripples smear the image into streaks.
+    float under = L.r
+        + M.a * 17.0
+        - q.y
+        + (c.b - 0.45) * min(step_, 24.0) * 0.3;
+    if (under > 0.0) {
+      vec3 alb = mix(vec3(0.40, 0.34, 0.27), vec3(0.12, 0.17, 0.05), M.r)
+          * (1.0 - 0.5 * step(0.02, M.a));
+      vec3 land = haze(
+          alb
+              * lightOn(
+                  normalize(vec3(L.g, 1.0, L.b)),
+                  L.a,
+                  texture(tS, quv).r
+              ),
+          q
+      );
+      refl = mix(refl, land, 0.8 * smoothstep(0.0, 1.5 + step_ * 0.4, under));
+      break;
+    }
+    step_ = min(step_ * (fine ? 1.3 : 1.6), fine ? 44.0 : 80.0);
+  }
+  // The sun's glitter: a tight highlight close by that widens into a path
+  // toward the horizon.
+  float far = smoothstep(40.0, 1800.0, dist), sr = max(dot(r, uSun.xyz), 0.0);
+  float lit = max(
+      texture(tS, uv).g,
+      step(0.49, max(abs(uv.x - 0.5), abs(uv.y - 0.5)))
+  );
+  vec3 rs = reflect(v, n);
+  rs.y = abs(rs.y);
+  float sun = max(dot(rs, uSun.xyz), 0.0);
+  float glint = pow(sun, mix(500.0, 90.0, far));
+  // Every ripple that happens to face the sun flashes, so the path of light is
+  // made of sparks, not a smooth shape.
+  float spark = smoothstep(
+      0.35,
+      0.75,
+      texture(tW, p / 3.1 + t * vec2(0.09, 0.06)).a * 0.6 + c.a * 0.6
+  );
+  refl += uSunCol.rgb
+      * lit
+      * (
+          glint * mix(6.0, 1.6, far)
+              + pow(sun, 18.0) * 0.5 * spark
+              + pow(sr, 60.0) * 0.12
+      );
+  // Foam: a wash at the waterline and lines that travel in to shore, broken up
+  // by noise.
+  float lap = sin(depth * 2.2 + t * 1.2 + a.b * 5.0) * 0.5 + 0.5;
+  float foam = (1.0 - smoothstep(0.0, 3.2, depth))
+      * smoothstep(0.62, 0.92, lap + (c.a - 0.5) * 0.7)
+      * smoothstep(0.25, 0.6, b.a + c.a * 0.5);
+  foam = max(
+      foam,
+      smoothstep(0.3 + 0.2 * sin(t * 1.2), 0.0, depth) * (0.6 + 0.4 * c.a)
+  );
+  // Shallow water lets the bed (already drawn) show through; deep water covers
+  // it with its own colour. Mirror, body and foam each go through finish()
+  // before they are mixed, because the bed underneath was finished when it was
+  // drawn: mixing in the same space keeps shallow and deep water seamless.
+  float cover = smoothstep(10.0, 22.0, depth);
+  float alpha = fres + (1.0 - fres) * cover;
+  vec3 col = finish(haze(refl, vP)) * fres
+      + finish(haze(seaDeep(), vP)) * (1.0 - fres) * cover;
+  vec3 white = finish(
+      haze(
+          (uSunCol.rgb * (0.25 + 0.5 * lit) + uZen.rgb + uHor.rgb * 0.5) * 0.8,
+          vP
+      )
+  );
+  o = vec4(mix(col, white, foam), mix(alpha, 1.0, foam));
+}`;
+// endregion: 4-water (glsl)
+
+// region: 2-land (glsl)
+const LAND_VS =
+  GLSL_HEAD +
+  `
+// Grid column, grid row, 1 on the skirt.
+layout(location = 0) in vec3 aP;
+// First column, first row, skirt drop in metres.
+uniform vec3 uChunk;
+out vec3 vP;
+void main() {
+  vec2 cell = uChunk.xy + aP.xy + 0.5;
+  vP = vec3(
+      cell.x * ${CELL}.0 - ${HALF}.0,
+      textureLod(tH, cell / ${N}.0, 0.0).r - aP.z * uChunk.z,
+      cell.y * ${CELL}.0 - ${HALF}.0
+  );
+  gl_Position = uVP * vec4(vP, 1.0);
+}`;
+const LAND_FS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_LIGHT +
+  GLSL_FILM +
+  GLSL_SEA +
+  GLSL_GROUND +
+  `
+in vec3 vP;
+out vec4 o;
+void main() {
+  vec2 uv = vP.xz / WORLD + 0.5;
+  vec4 L = texture(tH, uv), M = texture(tM, uv), S = texture(tS, uv);
+  // Far-off land is drawn with fewer triangles, and a coarse triangle can
+  // bridge from the beach across shallow water. Where the true ground is under
+  // the sea but this surface is above it, leave the pixel to the sea.
+  if (L.r < -0.25 && vP.y > 0.02) discard;
+  // The grid's own height, so coarse and fine chunks agree.
+  float h = L.r, wet;
+  // Layer 5: rock, grass, sand, paving.
+  vec3 n, alb = ground(vP, L, M, n, wet);
+  float sky = L.a
+      * L.a
+      * (0.55 + 0.45 * S.r)
+      * (1.0 - 0.4 * smoothstep(0.0, 0.25, M.a));
+  float sun = S.r * cloudShade(vP);
+  if (h < 0.0) sun *= 0.7 + 1.6 * caustics(vP.xz) * exp(h * 0.25);
+  vec3 c = alb * lightOn(n, sky, sun), v = normalize(vP - uCam.xyz);
+  // Wet sand mirrors the sky.
+  if (h >= 0.0) c += skyBase(reflect(v, vec3(0.0, 1.0, 0.0)))
+      * wet
+      * 0.3
+      * pow(1.0 + min(v.y, 0.0), 4.0);
+  if (h < 0.0) c = throughWater(c, -h, -v.y);
+  o = vec4(finish(haze(c, vP)), 1.0);
+}`;
+// endregion: 2-land (glsl)
+
+// region: 1-camera (page)
+// Free flight: drag to look; W A S D, the arrow keys, two fingers or the
+// on-screen button to move. The camera itself (where it is, which way it looks)
+// is "cam" in the frame region.
+const ctl = {
+  mode: 'fly',
+  keys: {},
+  touches: new Map(),
+  fly: { v: [0, 0, 0] },
+  push: [0, 0, 0],
+  hold: false,
+};
+onTick((dt) => {
+  if (ctl.mode !== 'fly') return;
+  const K = ctl.keys;
+  const two = ctl.touches.size >= 2 || ctl.hold ? 1 : 0;
+  ctl.push[0] =
+    (K.KeyW || K.ArrowUp ? 1 : 0) - (K.KeyS || K.ArrowDown ? 1 : 0) + two;
+  ctl.push[1] =
+    (K.KeyD || K.ArrowRight ? 1 : 0) - (K.KeyA || K.ArrowLeft ? 1 : 0);
+  ctl.push[2] = (K.KeyE || K.Space ? 1 : 0) - (K.KeyQ || K.KeyC ? 1 : 0);
+  flyStep(
+    cam.eye,
+    ctl.fly,
+    cam.F,
+    cam.R,
+    ctl.push,
+    K.ShiftLeft || K.ShiftRight ? 4 : 1,
+    dt,
+    W.H,
+  );
+});
+canvas.addEventListener('pointerdown', (e) => {
+  canvas.setPointerCapture(e.pointerId);
+  ctl.touches.set(e.pointerId, [e.clientX, e.clientY]);
+  $('hint').style.opacity = 0;
+});
+canvas.addEventListener('pointermove', (e) => {
+  const p = ctl.touches.get(e.pointerId);
+  if (!p) return;
+  // Drag the view: the scene follows the finger.
+  const k = 0.0042 / ctl.touches.size;
+  cam.yaw -= (e.clientX - p[0]) * k;
+  cam.pitch = clamp(cam.pitch + (e.clientY - p[1]) * k, -1.4, 1.4);
+  p[0] = e.clientX;
+  p[1] = e.clientY;
+});
+for (const type of ['pointerup', 'pointercancel'])
+  canvas.addEventListener(type, (e) => ctl.touches.delete(e.pointerId));
+addEventListener('keydown', (e) => {
+  // With Ctrl, Cmd or Alt a key is the browser's.
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  // Space on a focused button presses the button.
+  if (e.code === 'Space' && e.target.tagName === 'BUTTON') return;
+  ctl.keys[e.code] = true;
+  if (/^(Key[WASDQEC]|Arrow|Space)/.test(e.code)) {
+    $('hint').style.opacity = 0;
+    e.preventDefault();
+  }
+});
+addEventListener('keyup', (e) => {
+  ctl.keys[e.code] = false;
+});
+addEventListener('blur', () => {
+  ctl.keys = {};
+});
+for (const [type, on] of [
+  ['pointerdown', true],
+  ['pointerup', false],
+  ['pointercancel', false],
+  ['pointerleave', false],
+])
+  $('bFly').addEventListener(type, (e) => {
+    ctl.hold = on;
+    e.preventDefault();
+  });
+// On that button, Enter and Space do what a finger does.
+$('bFly').addEventListener('keydown', (e) => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (!/^(Space|Enter|NumpadEnter)$/.test(e.code)) return;
+  ctl.hold = true;
+  e.preventDefault();
+});
+$('bFly').addEventListener('keyup', (e) => {
+  if (/^(Space|Enter|NumpadEnter)$/.test(e.code)) ctl.hold = false;
+});
+$('bFly').addEventListener('blur', () => {
+  ctl.hold = false;
+});
+if (PHONE) $('bFly').style.display = 'grid';
+$('hint').firstElementChild.textContent = PHONE
+  ? 'drag to look · two fingers to fly'
+  : 'drag to look · W A S D to fly';
+setTimeout(() => {
+  $('hint').style.opacity = 0;
+}, 9000);
+if (SHOT) $('hint').style.display = $('bFly').style.display = 'none';
+// Where the camera starts: at cam.eye (set in the frame region), turned to look
+// at a point on the ground 588 m ahead. aim() works out the yaw and pitch that
+// do that. A later layer may choose its own start the same way.
+[cam.yaw, cam.pitch] = aim(cam.eye, [0, 1, 168]);
+// endregion: 1-camera (page)
+
+// region: 2-land (page)
+onGrow(() => {
+  const P = (W.P = islandParams(seed));
+  // "?shape=atoll" asks fillLand for the other height function.
+  P.shape = Q.get('shape');
+  const H = (W.H = fillLand(new Float32Array(N * N), P));
+  W.E = new Float32Array(N * N * 3);
+  // Rain (layer 5).
+  erode(H, W.E, 70000, hash2(seed, 5, 9));
+  // Ground cover (layer 5).
+  W.L = bakeLand(H);
+  W.M = coverMasks(H, W.L, W.E);
+  landChanged();
+  // One grid mesh, four index lists.
+  const grid = gridMesh(CHUNK);
+  const all = new Uint16Array(grid.lods.reduce((n, l) => n + l.length, 0));
+  W.lods = [];
+  let at = 0;
+  for (const l of grid.lods) {
+    all.set(l, at);
+    W.lods.push([at * 2, l.length]);
+    at += l.length;
+  }
+  W.land = mesh(grid.verts, all, [3]);
+  gl.bindVertexArray(null);
+  W.pLand = program(LAND_VS, LAND_FS);
+  W.uChunk = gl.getUniformLocation(W.pLand, 'uChunk');
+  // Where the camera starts: out over the bay, looking in.
+  // "?cam=a,b,y,ta,tb,ty" fixes it instead, for test shots: a, b in island
+  // radii along and across the sunset line, heights in metres.
+  const place = (a, b, y) => [
+    (a * P.west[0] - b * P.west[1]) * P.R,
+    y,
+    (a * P.west[1] + b * P.west[0]) * P.R,
+  ];
+  const c = (Q.get('cam') || '').split(',').map(Number);
+  cam.eye = Q.has('cam')
+    ? place(c[0], c[1], c[2])
+    : [P.bay[0] * 2.1, 70, P.bay[1] * 2.1];
+  [cam.yaw, cam.pitch] = aim(
+    cam.eye,
+    Q.has('cam') ? place(c[3], c[4], c[5]) : [0, 45, 0],
+  );
+  if (Q.has('cam')) ctl.mode = 'hold';
+});
+// Sends the land's numbers to the GPU. A later layer that reshapes the ground
+// or changes its cover calls it again.
+function landChanged() {
+  W.bounds = chunkBounds(W.H);
+  gl.deleteTexture(W.tH);
+  gl.deleteTexture(W.tM);
+  W.tH = texture(
+    0,
+    gl.RGBA16F,
+    gl.RGBA,
+    gl.FLOAT,
+    N,
+    W.L,
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+  W.tM = texture(
+    1,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    N,
+    W.M,
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+}
+// Each chunk picks a level of detail by distance; chunks out of view are
+// skipped.
+onDraw(20, () => {
+  gl.useProgram(W.pLand);
+  gl.bindVertexArray(W.land.vao);
+  for (let c = 0; c < CHUNKS * CHUNKS; c++) {
+    const cx = c % CHUNKS;
+    const cz = (c / CHUNKS) | 0;
+    const x0 = cx * CHUNK * CELL - HALF;
+    const z0 = cz * CHUNK * CELL - HALF;
+    const size = CHUNK * CELL;
+    const lo = W.bounds[c * 2];
+    const hi = W.bounds[c * 2 + 1];
+    // Even the deepest sea bed is drawn (coarsely). Seen at a shallow angle
+    // through clear water near the shore, the line of sight reaches the bed far
+    // out; a chunk left undrawn there showed the sky as a pale straight-edged
+    // patch.
+    if (boxHidden(planes, x0, lo - 30, z0, x0 + size, hi, z0 + size)) continue;
+    const dx = Math.max(x0 - cam.eye[0], 0, cam.eye[0] - x0 - size);
+    const dz = Math.max(z0 - cam.eye[2], 0, cam.eye[2] - z0 - size);
+    const dy = Math.max(cam.eye[1] - hi, 0);
+    // Coarse levels only far off: they blunt sea stacks.
+    const d =
+      (Math.sqrt(dx * dx + dy * dy + dz * dz) * (PHONE ? 2 : 1)) / W.detail;
+    const lod = hi < -40 ? 3 : d < 700 ? 0 : d < 1400 ? 1 : d < 2600 ? 2 : 3;
+    gl.uniform3f(W.uChunk, cx * CHUNK, cz * CHUNK, 6 << lod);
+    draw(gl.TRIANGLES, W.lods[lod][1], gl.UNSIGNED_SHORT, W.lods[lod][0]);
+  }
+  stat.land = stat.tris;
+});
+// endregion: 2-land (page)
+
+// region: 3-light (page)
+let day = +(Q.get('day') || 0);
+let lastSun = [9, 9, 9];
+const SKY = new Float32Array(20);
+onGrow(() => {
+  // The shadow image, drawn into below.
+  W.tS = texture(
+    2,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    N,
+    null,
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+  W.shadowFbo = gl.createFramebuffer();
+  gl.bindFramebuffer(gl.FRAMEBUFFER, W.shadowFbo);
+  gl.framebufferTexture2D(
+    gl.FRAMEBUFFER,
+    gl.COLOR_ATTACHMENT0,
+    gl.TEXTURE_2D,
+    W.tS,
+    0,
+  );
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  W.pSky = program(SKY_VS, SKY_FS);
+  W.pShadow = program(SHADOW_VS, SHADOW_FS);
+});
+// The day moves on; the light's direction and the sky's colours go into the
+// numbers every shader sees.
+onTick((dt) => {
+  day += dt / 420;
+  const S = skyState(SKY, day, W.P.west);
+  FB.set(S.subarray(0, 16), 32);
+  // Cloud cover, haze, wind, exposure.
+  FB[39] = 0.5;
+  FB[43] = 0.0005;
+  FB[47] = 1;
+  FB[48] = S[16];
+  FB[49] = 0;
+  FB[50] = day;
+});
+// Shadows are redrawn only when the light has moved.
+onDraw(10, () => {
+  if (
+    Math.abs(SKY[0] - lastSun[0]) +
+      Math.abs(SKY[1] - lastSun[1]) +
+      Math.abs(SKY[2] - lastSun[2]) <=
+    0.004
+  )
+    return;
+  lastSun = [SKY[0], SKY[1], SKY[2]];
+  gl.bindFramebuffer(gl.FRAMEBUFFER, W.shadowFbo);
+  gl.viewport(0, 0, N, N);
+  gl.disable(gl.DEPTH_TEST);
+  gl.activeTexture(gl.TEXTURE2);
+  gl.bindTexture(gl.TEXTURE_2D, null);
+  gl.useProgram(W.pShadow);
+  draw(gl.TRIANGLES, 3, 0);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.bindTexture(gl.TEXTURE_2D, W.tS);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.enable(gl.DEPTH_TEST);
+});
+// The sky goes behind everything already drawn.
+onDraw(60, () => {
+  gl.bindVertexArray(null);
+  gl.useProgram(W.pSky);
+  draw(gl.TRIANGLES, 3, 0);
+});
+// endregion: 3-light (page)
+
+// region: 4-water (page)
+onGrow(() => {
+  let wave = waveTile(256, 11);
+  texture(4, gl.RGBA16F, gl.RGBA, gl.FLOAT, 256, wave, gl.REPEAT, gl.LINEAR);
+  for (let n = 256, level = 1; n > 1; n /= 2, level++) {
+    wave = halve(wave, n);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      level,
+      gl.RGBA16F,
+      n / 2,
+      n / 2,
+      0,
+      gl.RGBA,
+      gl.FLOAT,
+      wave,
+    );
+  }
+  gl.texParameteri(
+    gl.TEXTURE_2D,
+    gl.TEXTURE_MIN_FILTER,
+    gl.LINEAR_MIPMAP_LINEAR,
+  );
+  W.pSea = program(SEA_VS, SEA_FS);
+});
+// The sea is drawn last and blended over what is there, so the bed shows
+// through the shallows.
+onDraw(70, () => {
+  gl.bindVertexArray(null);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+  gl.depthMask(false);
+  gl.useProgram(W.pSea);
+  draw(gl.TRIANGLE_STRIP, 4, 0);
+});
+// endregion: 4-water (page)
+
+start();
+</script>
+</body>
+</html>

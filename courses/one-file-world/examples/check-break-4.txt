@@ -1,0 +1,1 @@
+  FAIL 4.tile-seam: waveTile(64, 11) has a seam at its right edge: B, the height, jumps by 0.4223 from the right edge to the opposite one, and no two neighbours inside differ by more than 0.2236. The tile repeats across the sea, so that jump is a line every tile. A whole number of noise cells must cross the tile in every octave.

@@ -1,0 +1,6 @@
+// region: pale
+  FAIL 3.sky-blend: skyKeys(S, -9.5), halfway between the rows at -14 and -5 degrees: red overhead is 0.14391, not halfway between 0.008 and 0.022, 0.015. That is the blend of the display values, left unconverted: the colours must be blended as linear light, and the shader applies the display curve afterwards, once.
+// endregion: pale
+// region: dull
+  FAIL 3.sky-blend: skyKeys(S, -9.5), halfway between the rows at -14 and -5 degrees: red overhead is 0.014054, not halfway between 0.008 and 0.022, 0.015. That is the blend of the display values, converted back: too dark between keys, which shows as a dull band at dusk. Blend the linear numbers themselves.
+// endregion: dull

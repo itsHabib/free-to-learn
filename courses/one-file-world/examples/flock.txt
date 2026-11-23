@@ -1,0 +1,2 @@
+The flock of seed 7 after 600 steps of 1/30 second (20 s), with your steerBird.
+Farthest bird from the bay's centre: 329 m. Heights: 56 to 70 m. Mean distance to the nearest neighbour: 9.7 m.

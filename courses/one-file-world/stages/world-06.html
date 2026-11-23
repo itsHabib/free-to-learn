@@ -1,0 +1,4778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>One-file world</title>
+<style>
+html, body { margin: 0; height: 100%; overflow: hidden; background: #f3efe6; touch-action: none; -webkit-user-select: none; user-select: none; font: 13px system-ui, sans-serif; color: #4a4a48; }
+canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+#fade { position: fixed; inset: 0; background: #f3efe6; display: flex; align-items: center; justify-content: center; pointer-events: none; transition: opacity .9s; letter-spacing: .08em; }
+#ui { position: fixed; right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); display: flex; gap: 8px; opacity: .92; transition: opacity 1.2s; }
+#ui.idle { opacity: .38; }
+button { width: 40px; height: 40px; padding: 0; border: 1px solid #0000000f; border-radius: 50%; background: #ffffffd9; color: #55554f; display: grid; place-items: center; -webkit-tap-highlight-color: transparent; box-shadow: 0 1px 6px #0000001f; cursor: pointer; }
+button svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+#bFly { position: fixed; left: max(14px, env(safe-area-inset-left)); bottom: max(14px, env(safe-area-inset-bottom)); width: 58px; height: 58px; display: none; opacity: .7; }
+#hint { position: fixed; left: 0; right: 0; bottom: max(64px, env(safe-area-inset-bottom)); text-align: center; pointer-events: none; transition: opacity 1.5s; }
+#hint span { background: #ffffffc9; padding: 5px 11px; border-radius: 12px; }
+#cut { position: fixed; inset: 0; background: #0b1016; opacity: 0; pointer-events: none; }
+#stats { position: fixed; left: 8px; top: 8px; padding: 6px 8px; background: #fffc; border-radius: 6px; white-space: pre; font: 11px ui-monospace, monospace; display: none; }
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hint"><span></span></div>
+<button id="bFly" title="Hold to fly forward" aria-label="Hold to fly forward"><svg viewBox="0 0 20 20"><path d="M10 4l5 11-5-2.5L5 15z"/></svg></button>
+<div id="fade">growing an island</div>
+<script>
+'use strict';
+// One-file world: an island coast at low sun, grown from the seed in the link.
+// Every "(pure)" region below uses only numbers and typed arrays, so Node can
+// run it without a browser. The world generators use only + - * / and
+// Math.sqrt, Math.floor, Math.ceil, Math.imul, Math.abs, Math.min and Math.max:
+// those give the same bits on every machine. Math.sin and friends may differ in
+// the last bit between browsers, so they stay out of generation.
+
+// region: core (pure)
+const clamp = (x, a, b) => (x < a ? a : x > b ? b : x);
+const mix = (a, b, t) => a + (b - a) * t;
+const smooth = (a, b, x) => {
+  const t = clamp((x - a) / (b - a), 0, 1);
+  return t * t * (3 - 2 * t);
+};
+
+// Integer hash of a grid point: the root of all randomness here.
+function hash2(x, y, s) {
+  let h =
+    Math.imul(x, 0x27d4eb2d) ^
+    Math.imul(y, 0x165667b1) ^
+    Math.imul(s, 0x9e3779b1);
+  h = Math.imul(h ^ (h >>> 15), 0x85ebca6b);
+  h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35);
+  return (h ^ (h >>> 16)) >>> 0;
+}
+// A stream of numbers in [0,1) from one integer (the "mulberry32" generator).
+function rng(seed) {
+  let a = seed | 0;
+  return () => {
+    a = (a + 0x6d2b79f5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+// Gradient noise, about -1..1, smooth everywhere. Also writes its slope into
+// D[0], D[1].
+function noiseD(x, y, s, D) {
+  const ix = Math.floor(x);
+  const iy = Math.floor(y);
+  const fx = x - ix;
+  const fy = y - iy;
+  const u = fx * fx * fx * (fx * (fx * 6 - 15) + 10);
+  const v = fy * fy * fy * (fy * (fy * 6 - 15) + 10);
+  const du = 30 * fx * fx * (fx * (fx - 2) + 1);
+  const dv = 30 * fy * fy * (fy * (fy - 2) + 1);
+  const h0 = hash2(ix, iy, s);
+  const h1 = hash2(ix + 1, iy, s);
+  const h2 = hash2(ix, iy + 1, s);
+  const h3 = hash2(ix + 1, iy + 1, s);
+  const ax = (h0 & 65535) / 32768 - 1;
+  const ay = (h0 >>> 16) / 32768 - 1;
+  const bx = (h1 & 65535) / 32768 - 1;
+  const by = (h1 >>> 16) / 32768 - 1;
+  const cx = (h2 & 65535) / 32768 - 1;
+  const cy = (h2 >>> 16) / 32768 - 1;
+  const dx = (h3 & 65535) / 32768 - 1;
+  const dy = (h3 >>> 16) / 32768 - 1;
+  const a = ax * fx + ay * fy;
+  const b = bx * (fx - 1) + by * fy;
+  const c = cx * fx + cy * (fy - 1);
+  const d = dx * (fx - 1) + dy * (fy - 1);
+  const k = a - b - c + d;
+  D[0] =
+    ax +
+    u * (bx - ax) +
+    v * (cx - ax) +
+    u * v * (ax - bx - cx + dx) +
+    du * (b - a + v * k);
+  D[1] =
+    ay +
+    u * (by - ay) +
+    v * (cy - ay) +
+    u * v * (ay - by - cy + dy) +
+    dv * (c - a + u * k);
+  return a + u * (b - a) + v * (c - a) + u * v * k;
+}
+const _D = [0, 0];
+const noise = (x, y, s) => noiseD(x, y, s, _D);
+// A unit vector from a random stream, without trigonometry.
+function unitVec(r) {
+  let x;
+  let y;
+  let d;
+  do {
+    x = r() * 2 - 1;
+    y = r() * 2 - 1;
+    d = x * x + y * y;
+  } while (d > 1 || d < 0.05);
+  d = 1 / Math.sqrt(d);
+  return [x * d, y * d];
+}
+// A tiling RGBA noise image for the shaders: R and G are cloudy, B is fine
+// grain, A is static.
+function noiseTile(n, seed) {
+  const out = new Uint8Array(n * n * 4);
+  // Smooth value noise that wraps every `cells` cells.
+  const layer = (x, y, cells, s) => {
+    const gx = (x * cells) / n;
+    const gy = (y * cells) / n;
+    const ix = Math.floor(gx);
+    const iy = Math.floor(gy);
+    const fx = gx - ix;
+    const fy = gy - iy;
+    const u = fx * fx * (3 - 2 * fx);
+    const v = fy * fy * (3 - 2 * fy);
+    const w = (i, j) =>
+      hash2((ix + i) % cells, (iy + j) % cells, s) / 4294967296;
+    return mix(mix(w(0, 0), w(1, 0), u), mix(w(0, 1), w(1, 1), u), v);
+  };
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i += 4) {
+      let r = 0;
+      let g = 0;
+      let amp = 0.5;
+      for (let o = 0, c = 4; o < 6; o++, c *= 2, amp *= 0.5) {
+        r += amp * layer(x, y, c, seed + o);
+        g += amp * layer(x, y, c, seed + 50 + o);
+      }
+      out[i] = clamp(r * 1.25 - 0.12, 0, 1) * 255;
+      out[i + 1] = clamp(g * 1.25 - 0.12, 0, 1) * 255;
+      out[i + 2] =
+        (layer(x, y, 32, seed + 90) * 0.6 + layer(x, y, 64, seed + 91) * 0.4) *
+        255;
+      out[i + 3] = hash2(x, y, seed + 99) >>> 24;
+    }
+  return out;
+}
+// endregion: core (pure)
+
+// region: 1-camera (pure)
+// The projection matrix: how the view narrows to a point at the eye.
+// tanHalfY is the tangent of half the angle seen from top to bottom, aspect
+// is width over height, and only what lies between near and far is kept.
+function perspective(m, tanHalfY, aspect, near, far) {
+  m.fill(0);
+  // Scale x and y so that the edges of the view land on -1 and 1.
+  m[0] = 1 / (tanHalfY * aspect);
+  m[5] = 1 / tanHalfY;
+  // Depth: near lands on -1 and far on 1, once divided by w.
+  m[10] = (far + near) / (near - far);
+  m[14] = (2 * far * near) / (near - far);
+  // w becomes the distance ahead of the eye. Dividing by it makes far things
+  // small.
+  m[11] = -1;
+  return m;
+}
+// The view matrix: it moves the world so that the camera sits at the origin
+// and looks along -z. Yaw turns around the up axis, pitch tilts up and down.
+// It also fills R, U and Fw with the camera's right, up and forward axes.
+function viewMatrix(m, eye, yaw, pitch, R, U, Fw) {
+  // Forward (fx, fy, fz): the way the camera faces.
+  const level = Math.cos(pitch);
+  const fx = Math.sin(yaw) * level;
+  const fy = Math.sin(pitch);
+  const fz = Math.cos(yaw) * level;
+  // Right (rx, 0, rz): level, and square to forward.
+  const toUnit = 1 / Math.sqrt(fx * fx + fz * fz);
+  const rx = -fz * toUnit;
+  const rz = fx * toUnit;
+  // Up (ux, uy, uz): square to both.
+  const ux = -rz * fy;
+  const uy = rz * fx - rx * fz;
+  const uz = rx * fy;
+  // The matrix is stored column by column. Each row measures a point along
+  // one axis: right, up, then backward, because the camera looks along -z.
+  // Column 1: what each axis takes from the world's x.
+  m[0] = rx;
+  m[1] = ux;
+  m[2] = -fx;
+  m[3] = 0;
+  // Column 2: what each axis takes from the world's y. Right is level.
+  m[4] = 0;
+  m[5] = uy;
+  m[6] = -fy;
+  m[7] = 0;
+  // Column 3: what each axis takes from the world's z.
+  m[8] = rz;
+  m[9] = uz;
+  m[10] = -fz;
+  m[11] = 0;
+  // Column 4 brings the eye to the origin: minus the eye, measured along
+  // each axis.
+  m[12] = -(rx * eye[0] + rz * eye[2]);
+  m[13] = -(ux * eye[0] + uy * eye[1] + uz * eye[2]);
+  m[14] = fx * eye[0] + fy * eye[1] + fz * eye[2];
+  m[15] = 1;
+  R[0] = rx;
+  R[1] = 0;
+  R[2] = rz;
+  U[0] = ux;
+  U[1] = uy;
+  U[2] = uz;
+  Fw[0] = fx;
+  Fw[1] = fy;
+  Fw[2] = fz;
+  return m;
+}
+// o = a times b: applying o to a point is applying b, then a. c counts
+// columns and r rows.
+function mul4(o, a, b) {
+  for (let c = 0; c < 4; c++)
+    for (let r = 0; r < 4; r++)
+      o[c * 4 + r] =
+        a[r] * b[c * 4] +
+        a[4 + r] * b[c * 4 + 1] +
+        a[8 + r] * b[c * 4 + 2] +
+        a[12 + r] * b[c * 4 + 3];
+  return o;
+}
+// Yaw and pitch that look from eye to target.
+function aim(eye, target) {
+  const dx = target[0] - eye[0];
+  const dy = target[1] - eye[1];
+  const dz = target[2] - eye[2];
+  // How far away the target is over the ground, leaving height out.
+  const level = Math.sqrt(dx * dx + dz * dz);
+  return [Math.atan2(dx, dz), Math.atan2(dy, level)];
+}
+// The six planes of the view volume, from the combined matrix: left, right,
+// bottom, top, near, far. Each is four numbers a, b, c, d, and a point is on
+// the inner side when a*x + b*y + c*z + d is 0 or more.
+function frustumPlanes(out, m) {
+  for (let i = 0; i < 6; i++) {
+    // Planes come in pairs, one pair for each of x, y and z.
+    const axis = i >> 1;
+    const sign = i & 1 ? -1 : 1;
+    // Row 4 of the matrix, plus or minus the row of that axis.
+    for (let k = 0; k < 4; k++)
+      out[i * 4 + k] = m[k * 4 + 3] + sign * m[k * 4 + axis];
+  }
+  return out;
+}
+// True when a box lies wholly outside one of the planes, so nothing in it can
+// be seen. The box runs from (x0, y0, z0) to (x1, y1, z1).
+function boxHidden(pl, x0, y0, z0, x1, y1, z1) {
+  for (let i = 0; i < 24; i += 4) {
+    // The corner of the box that reaches furthest to this plane's inner side.
+    const x = pl[i] > 0 ? x1 : x0;
+    const y = pl[i + 1] > 0 ? y1 : y0;
+    const z = pl[i + 2] > 0 ? z1 : z0;
+    // If even that corner is outside, the whole box is.
+    if (pl[i] * x + pl[i + 1] * y + pl[i + 2] * z + pl[i + 3] < 0) return true;
+  }
+  return false;
+}
+// Free flight: thrust along the view, sideways and up, with drag, kept clear
+// of the ground and the sea. fly = { v: [x, y, z] velocity } and
+// push = [forward, right, up], each from -1 to 1.
+function flyStep(eye, fly, F, R, push, boost, dt, H) {
+  const speed = 26 * boost;
+  const drag = Math.exp(-2.2 * dt);
+  for (let c = 0; c < 3; c++) {
+    const thrust = F[c] * push[0] + R[c] * push[1] + (c === 1 ? push[2] : 0);
+    fly.v[c] = fly.v[c] * drag + thrust * speed * (1 - drag);
+    eye[c] += fly.v[c] * dt;
+  }
+  // Stay within sight of the island.
+  eye[0] = clamp(eye[0], -2250, 2250);
+  eye[2] = clamp(eye[2], -2250, 2250);
+  const ground = Math.max(heightAt(H, eye[0], eye[2]), 0);
+  eye[1] = clamp(eye[1], ground + 2.2, 900);
+}
+// endregion: 1-camera (pure)
+
+// region: 2-land (pure)
+// Height grid: 512 x 512 cells of 4 m.
+const N = 512;
+const CELL = 4;
+const WORLD = N * CELL;
+const HALF = WORLD / 2;
+// Drawn as 8 x 8 chunks.
+const CHUNK = 64;
+const CHUNKS = N / CHUNK;
+
+// Everything about one island's layout comes from the seed here.
+function islandParams(seed) {
+  const r = rng(hash2(seed, 17, 3));
+  const P = { seed: seed | 0 };
+  // Where the sun sets.
+  P.west = unitVec(r);
+  P.axis = unitVec(r);
+  P.R = 500 + 80 * r();
+  P.long = 1.1 + 0.3 * r();
+  const side = (r() - 0.5) * 1.2;
+  const bx = P.west[0] - P.west[1] * side;
+  const bz = P.west[1] + P.west[0] * side;
+  const bl = 1 / Math.sqrt(bx * bx + bz * bz);
+  const along = (bx * P.axis[0] + bz * P.axis[1]) * bl;
+  const across = (-bx * P.axis[1] + bz * P.axis[0]) * bl;
+  const reach =
+    P.R / Math.sqrt((along * along) / (P.long * P.long) + across * across);
+  P.bayR = P.R * (0.4 + 0.16 * r());
+  P.bay = [bx * bl * reach * 0.98, bz * bl * reach * 0.98];
+  P.high = 230 + 70 * r();
+  P.peaks = [];
+  for (let i = 0, n = 2 + ((r() * 2) | 0); i < n; i++) {
+    const d = unitVec(r);
+    const k = r() * 0.32 * P.R;
+    const back = (0.08 + 0.25 * r()) * P.R;
+    P.peaks.push([
+      d[0] * k - bx * bl * back,
+      d[1] * k - bz * bl * back,
+      190 + 130 * r(),
+      i ? 0.55 + 0.4 * r() : 1,
+    ]);
+  }
+  P.islets = [];
+  for (let i = 0, n = 3 + ((r() * 3) | 0); i < n; i++) {
+    const d = unitVec(r);
+    const k = Math.min(P.R * P.long * (1.02 + 0.3 * r()), HALF - 290);
+    P.islets.push([d[0] * k, d[1] * k, 22 + 40 * r()]);
+  }
+  return P;
+}
+// Ridged noise: sharp crests, with fine detail damped on slopes that are
+// already steep.
+function ridged(x, y, s, D) {
+  let sum = 0;
+  let amp = 0.5;
+  let norm = 0;
+  let dx = 0;
+  let dy = 0;
+  for (let o = 0; o < 6; o++) {
+    const n = noiseD(x, y, s + o, D);
+    const r = 1 - Math.min(1, Math.abs(n) * 2.1);
+    dx += D[0] * amp;
+    dy += D[1] * amp;
+    sum += (amp * r * r) / (1 + 1.6 * (dx * dx + dy * dy));
+    norm += amp;
+    amp *= 0.5;
+    // Turn and double the frequency.
+    const t = x * 1.6 - y * 1.2;
+    y = x * 1.2 + y * 1.6;
+    x = t;
+  }
+  return sum / norm;
+}
+const smin = (a, b, k) => {
+  const h = clamp(0.5 + (0.5 * (b - a)) / k, 0, 1);
+  return mix(b, a, h) - k * h * (1 - h);
+};
+// Height in metres at a point (x, z) in metres. Sea level is 0.
+function landHeight(x, z, P, D) {
+  const s = P.seed;
+  // Bend the map a little so no coastline is a clean curve.
+  const wx = x + 90 * noiseD(x / 480, z / 480, s + 1, D);
+  const wz = z + 90 * noiseD(x / 480 + 7.3, z / 480 - 2.1, s + 2, D);
+  // "coast" is about 1 at the island's heart, 0 on the shoreline and negative
+  // out at sea.
+  const al = wx * P.axis[0] + wz * P.axis[1];
+  const ac = wz * P.axis[0] - wx * P.axis[1];
+  let coast = 1 - Math.sqrt((al * al) / (P.long * P.long) + ac * ac) / P.R;
+  coast +=
+    0.17 * noiseD(wx / 300, wz / 300, s + 3, D) +
+    0.05 * noiseD(wx / 85, wz / 85, s + 4, D);
+  const bxd = wx - P.bay[0];
+  const bzd = wz - P.bay[1];
+  // The bay bites into the west side.
+  coast = smin(
+    coast,
+    (Math.sqrt(bxd * bxd + bzd * bzd) / P.bayR - 1) * 0.3,
+    0.12,
+  );
+  // Sea stacks: small steep rocks off the coast.
+  let stack = -9;
+  for (const it of P.islets) {
+    const ix = wx - it[0];
+    const iz = wz - it[1];
+    stack = Math.max(stack, 1 - Math.sqrt(ix * ix + iz * iz) / it[2]);
+  }
+  // Steep sides: a wide shallow shelf would show as a pale slab.
+  coast = Math.max(coast, (stack - 0.45) * 1.1);
+  // Bed ripples fade out at the shore, or they would surface as sandbars.
+  if (coast < 0)
+    return Math.max(
+      -45,
+      coast * 120 +
+        3 * smooth(0, 0.08, -coast) * noiseD(x / 60, z / 60, s + 5, D),
+    );
+  // Land: a beach, rolling lowland, then mountains where the peaks are.
+  let peak = 0;
+  for (const p of P.peaks) {
+    const px = (wx - p[0]) / p[2];
+    const pz = (wz - p[1]) / p[2];
+    const q = 1 / (1 + px * px + pz * pz);
+    peak += p[3] * q * q;
+  }
+  const ridge = ridged(wx / 400, wz / 400, s + 10, D);
+  const cliff = smooth(0.0, 0.3, noiseD(wx / 240, wz / 240, s + 6, D));
+  let h =
+    2.5 * smooth(0, 0.05, coast) +
+    22 * smooth(0.02, 0.4, coast) * (0.6 + 0.8 * ridge);
+  h += cliff * 30 * smooth(0.012, 0.045, coast);
+  h +=
+    P.high *
+    Math.min(peak, 1.2) *
+    (0.25 + 0.75 * ridge) *
+    smooth(0.03, 0.42, coast);
+  // High ground breaks into knuckles and notches.
+  h += smooth(70, 190, h) * 11 * (ridged(wx / 46, wz / 46, s + 30, D) - 0.45);
+  // Craggy, not a cone.
+  return (
+    h +
+    smooth(0.5, 0.9, stack) *
+      (14 + 46 * ridge) *
+      (1 + 0.35 * noiseD(x / 11, z / 11, s + 7, D))
+  );
+}
+// The height grid of the whole map. A layout with the shape "atoll" uses
+// atollHeight in place of landHeight, when a script beside this file defines
+// one (nothing in this file does).
+function fillLand(H, P) {
+  const D = [0, 0];
+  const atoll = P.shape === 'atoll' && typeof atollHeight === 'function';
+  const height = atoll ? atollHeight : landHeight;
+  for (let j = 0, i = 0; j < N; j++)
+    for (let k = 0; k < N; k++, i++) {
+      // A wavering drop-off, not a ruled square.
+      const x = (k + 0.5) * CELL - HALF;
+      const z = (j + 0.5) * CELL - HALF;
+      const rim = smooth(
+        HALF - 240,
+        HALF - 30,
+        Math.max(Math.abs(x), Math.abs(z)) +
+          70 * noiseD(x / 170, z / 170, P.seed + 8, D),
+      );
+      // The map ends in deep water on every side.
+      H[i] = mix(height(x, z, P, D), -45, rim);
+    }
+  return H;
+}
+// Height between grid points, by blending the four around (x, z).
+function heightAt(H, x, z) {
+  const fx = clamp(x / CELL + N / 2 - 0.5, 0, N - 1.001);
+  const fz = clamp(z / CELL + N / 2 - 0.5, 0, N - 1.001);
+  const ix = fx | 0;
+  const iz = fz | 0;
+  const tx = fx - ix;
+  const tz = fz - iz;
+  const i = iz * N + ix;
+  return mix(mix(H[i], H[i + 1], tx), mix(H[i + N], H[i + N + 1], tx), tz);
+}
+// What the shaders need per grid point: height, slope east, slope south, and
+// how much sky it can see. Given an earlier result and a box of cells [x0, y0,
+// x1, y1], it redoes only that box.
+function bakeLand(H, L, box) {
+  L = L || new Float32Array(N * N * 4);
+  const b = box || [0, 0, N - 1, N - 1];
+  const at = (x, y) => H[clamp(y, 0, N - 1) * N + clamp(x, 0, N - 1)];
+  const DIR = [1, 0, 0, 1, -1, 0, 0, -1, 1, 1, -1, 1, 1, -1, -1, -1];
+  for (let y = b[1]; y <= b[3]; y++)
+    for (let x = b[0]; x <= b[2]; x++) {
+      const i = (y * N + x) * 4;
+      const h = H[y * N + x];
+      let occ = 0;
+      // Look out in 8 directions for the highest thing on the horizon.
+      for (let d = 0; d < 16; d += 2) {
+        let top = 0;
+        const len = d < 8 ? CELL : CELL * 1.41421356;
+        for (let st = 1; st <= 16; st *= 2) {
+          const t = (at(x + DIR[d] * st, y + DIR[d + 1] * st) - h) / (st * len);
+          if (t > top) top = t;
+        }
+        occ += top / Math.sqrt(1 + top * top);
+      }
+      L[i] = h;
+      L[i + 1] = (at(x - 1, y) - at(x + 1, y)) / (2 * CELL);
+      L[i + 2] = (at(x, y - 1) - at(x, y + 1)) / (2 * CELL);
+      L[i + 3] = 1 - occ / 8;
+    }
+  return L;
+}
+// Highest ground in each 64 m plot (see "bucket"): how far above the things on
+// a plot the camera is.
+function plotTops(H) {
+  const T = new Float32Array(1024);
+  const per = N / 32;
+  for (let c = 0; c < 1024; c++) {
+    let hi = -1e9;
+    for (let y = 0; y < per; y++)
+      for (let x = 0; x < per; x++)
+        hi = Math.max(hi, H[((c >> 5) * per + y) * N + (c & 31) * per + x]);
+    T[c] = hi;
+  }
+  return T;
+}
+// Lowest and highest point of each chunk, for culling and level of detail.
+function chunkBounds(H) {
+  const B = new Float32Array(CHUNKS * CHUNKS * 2);
+  for (let c = 0; c < CHUNKS * CHUNKS; c++) {
+    let lo = 1e9;
+    let hi = -1e9;
+    const x0 = (c % CHUNKS) * CHUNK;
+    const y0 = ((c / CHUNKS) | 0) * CHUNK;
+    for (let y = y0; y <= Math.min(y0 + CHUNK, N - 1); y++)
+      for (let x = x0; x <= Math.min(x0 + CHUNK, N - 1); x++) {
+        const h = H[y * N + x];
+        if (h < lo) lo = h;
+        if (h > hi) hi = h;
+      }
+    B[c * 2] = lo;
+    B[c * 2 + 1] = hi;
+  }
+  return B;
+}
+// One flat grid of (n+1) x (n+1) points, reused by every chunk, with index
+// lists at 4 levels of detail. A ring of extra "skirt" points hangs below the
+// edge to hide gaps between chunks of different detail.
+function gridMesh(n) {
+  const m = n + 1;
+  const verts = new Float32Array((m * m + 4 * m) * 3);
+  const lods = [];
+  let v = 0;
+  for (let j = 0; j < m; j++)
+    for (let i = 0; i < m; i++) {
+      verts[v++] = i;
+      verts[v++] = j;
+      verts[v++] = 0;
+    }
+  const edge = (side, k) =>
+    side === 0 ? k : side === 1 ? k * m + n : side === 2 ? n * m + k : k * m;
+  for (let side = 0; side < 4; side++)
+    for (let k = 0; k < m; k++) {
+      const e = edge(side, k) * 3;
+      verts[v++] = verts[e];
+      verts[v++] = verts[e + 1];
+      verts[v++] = 1;
+    }
+  for (let step = 1; step <= 8; step *= 2) {
+    const idx = [];
+    for (let j = 0; j < n; j += step)
+      for (let i = 0; i < n; i += step) {
+        const a = j * m + i;
+        const b = a + step;
+        const c = a + step * m;
+        const d = c + step;
+        idx.push(a, c, b, b, c, d);
+      }
+    for (let side = 0; side < 4; side++)
+      for (let k = 0; k < n; k += step) {
+        const a = edge(side, k);
+        const b = edge(side, k + step);
+        const c = m * m + side * m + k;
+        const d = c + step;
+        idx.push(a, c, b, b, c, d);
+      }
+    lods.push(new Uint16Array(idx));
+  }
+  return { verts, lods };
+}
+// endregion: 2-land (pure)
+
+// region: 3-light (pure)
+const DAY_KEYS = [
+  // The golden hour, where the day starts.
+  0, 3.01,
+  // Sunset.
+  0.25, 3.13,
+  // Dusk is over.
+  0.36, 3.74,
+  // Midnight.
+  0.46, 4.71,
+  // First light.
+  0.55, 5.9,
+  // Sunrise.
+  0.62, 6.27,
+  // Morning.
+  0.78, 6.56,
+  // Noon.
+  0.9, 7.85,
+  // The golden hour again, one turn later.
+  1, 9.293,
+];
+// The day runs 0..1 and starts in the golden hour. It lingers at sunset and
+// dawn and hurries through noon and night.
+function dayAngle(u) {
+  u -= Math.floor(u);
+  let k = 0;
+  while (u > DAY_KEYS[k + 2]) k += 2;
+  // How far u has come from this key toward the next, 0 to 1.
+  const part = (u - DAY_KEYS[k]) / (DAY_KEYS[k + 2] - DAY_KEYS[k]);
+  return mix(DAY_KEYS[k + 1], DAY_KEYS[k + 3], part);
+}
+// Sky colours at five sun heights (degrees): zenith rgb, horizon rgb.
+const SKY_KEYS = [
+  // Night.
+  -14, 0.008, 0.014, 0.042, 0.022, 0.034, 0.075,
+  // Dusk.
+  -5, 0.022, 0.05, 0.15, 0.21, 0.14, 0.17,
+  // The sun on the horizon.
+  1, 0.034, 0.11, 0.29, 0.46, 0.28, 0.19,
+  // A low sun.
+  8, 0.04, 0.15, 0.36, 0.46, 0.35, 0.27,
+  // Full day.
+  30, 0.05, 0.18, 0.52, 0.38, 0.54, 0.74,
+];
+// The sky overhead (S[8..10]) and at the horizon (S[12..14]) for a sun height
+// in degrees: find the two rows of SKY_KEYS the height lies between, and how
+// far between, then blend them. The blend is of linear colour, before the
+// display curve.
+function skyKeys(S, height) {
+  let k = 0;
+  while (k < 21 && height > SKY_KEYS[k + 7]) k += 7;
+  const t = smooth(SKY_KEYS[k], SKY_KEYS[k + 7], height);
+  // Three numbers overhead, three at the horizon.
+  for (let c = 0; c < 3; c++) {
+    S[8 + c] = mix(SKY_KEYS[k + 1 + c], SKY_KEYS[k + 8 + c], t);
+    S[12 + c] = mix(SKY_KEYS[k + 4 + c], SKY_KEYS[k + 11 + c], t);
+  }
+  return S;
+}
+// Fills S (20 numbers) for a time of day u (0..1). "west" is the compass
+// direction of sunset. S[0..2] is the direction to the light, S[3] how far
+// into night it is (0..1), S[4..6] the light's colour, S[8..10] the sky
+// overhead, S[12..14] the sky at the horizon and S[16] the exposure.
+function skyState(S, u, west) {
+  const angle = dayAngle(u);
+  const sine = Math.sin(angle);
+  // The sun's height in degrees: up to 44 by day, down to -16 at night.
+  const height = sine * (sine > 0 ? 44 : 16);
+  const rise = (height * Math.PI) / 180;
+  // Its compass direction, hx along the sunset line and hz across it, scaled
+  // so that the whole direction has length 1.
+  const hx = -Math.cos(angle);
+  const hz = 0.55 * Math.abs(sine) + 0.1;
+  const scale = Math.cos(rise) / Math.sqrt(hx * hx + hz * hz);
+  let dx = (west[0] * hx - west[1] * hz) * scale;
+  let dy = Math.sin(rise);
+  let dz = (west[1] * hx + west[0] * hz) * scale;
+  // Sunlight reddens as it crosses more air: blue is scattered away first.
+  const air = 1 / (Math.max(dy, 0) + 0.06);
+  const up = smooth(-2.5, 2, height) * 3.2;
+  let r = Math.exp(-0.03 * air) * up;
+  let g = Math.exp(-0.1 * air) * up;
+  let b = Math.exp(-0.25 * air) * up;
+  const night = 1 - smooth(-9, -3, height);
+  // After dusk the moon is the light.
+  if (height < -3) {
+    const moon = 1 / Math.sqrt(0.25 + 0.3 + 0.36);
+    dx = (-west[0] * 0.5 - west[1] * 0.55) * moon;
+    dy = 0.6 * moon;
+    dz = (-west[1] * 0.5 + west[0] * 0.55) * moon;
+    r = 0.1 * night;
+    g = 0.15 * night;
+    b = 0.26 * night;
+  }
+  S[0] = dx;
+  S[1] = dy;
+  S[2] = dz;
+  S[3] = night;
+  S[4] = r;
+  S[5] = g;
+  S[6] = b;
+  skyKeys(S, height);
+  // Exposure: open up at night.
+  S[16] = mix(1.0, 2.4, night);
+  return S;
+}
+// endregion: 3-light (pure)
+
+// region: 4-water (pure)
+// A tiling image of small waves for the sea shader: R and G hold the surface
+// slope, B the height, A foam breakup. It is stored as floats: with only 256
+// levels the mirror-like water would show the steps.
+function waveTile(n, seed) {
+  const h = new Float32Array(n * n);
+  const out = new Float32Array(n * n * 4);
+  const layer = (x, y, cells, s) => {
+    const gx = (x * cells) / n;
+    const gy = (y * cells) / n;
+    const ix = Math.floor(gx);
+    const iy = Math.floor(gy);
+    const fx = gx - ix;
+    const fy = gy - iy;
+    const u = fx * fx * (3 - 2 * fx);
+    const v = fy * fy * (3 - 2 * fy);
+    const w = (i, j) =>
+      hash2((ix + i) % cells, (iy + j) % cells, s) / 4294967296;
+    return mix(mix(w(0, 0), w(1, 0), u), mix(w(0, 1), w(1, 1), u), v);
+  };
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i++) {
+      let sum = 0;
+      let amp = 0.5;
+      // How many cells of noise cross the tile. A whole number, so that the
+      // right edge meets the left with no seam.
+      let cells = 5;
+      for (let o = 0; o < 4; o++) {
+        // Broad, rounded crests and narrow troughs.
+        const d = 2 * layer(x, y, cells, seed + o) - 1;
+        sum += amp * (1 - d * d);
+        cells *= 2;
+        amp *= 0.55;
+      }
+      h[i] = sum;
+    }
+  const at = (x, y) => h[((y + n) % n) * n + ((x + n) % n)];
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i += 4) {
+      out[i] = (at(x + 1, y) - at(x - 1, y)) * 4;
+      out[i + 1] = (at(x, y + 1) - at(x, y - 1)) * 4;
+      out[i + 2] = at(x, y);
+      out[i + 3] =
+        layer(x, y, 24, seed + 9) * 0.6 + layer(x, y, 64, seed + 10) * 0.4;
+    }
+  return out;
+}
+// The same image at half the size, each pixel the mean of four. Smaller copies
+// are what the GPU reads far away, where they calm the water into a smooth
+// mirror. (Built here because phones cannot build them for float images.)
+function halve(src, n) {
+  const m = n / 2;
+  const out = new Float32Array(m * m * 4);
+  for (let y = 0; y < m; y++)
+    for (let x = 0; x < m; x++)
+      for (let c = 0; c < 4; c++) {
+        const i = (y * 2 * n + x * 2) * 4 + c;
+        out[(y * m + x) * 4 + c] =
+          (src[i] + src[i + 4] + src[i + n * 4] + src[i + n * 4 + 4]) / 4;
+      }
+  return out;
+}
+// endregion: 4-water (pure)
+
+// region: 5-erosion (pure)
+// Rain shapes the land. Each drop runs downhill; where it is fast and the
+// ground is steep it picks soil up, and where it slows it lays the soil down.
+// Thousands of drops cut gullies and fill valley floors. E records what
+// happened at each cell: soil worn away, soil laid down, and how much water
+// passed. Where a drop digs: the cells within 2.4 of it, nearer ones more.
+const BRUSH = [];
+for (let y = -2, sum = 0; y <= 2; y++)
+  for (let x = -2; x <= 2; x++) {
+    const w = 2.4 - Math.sqrt(x * x + y * y);
+    if (w > 0) {
+      BRUSH.push(y * N + x, w);
+      sum += w;
+      BRUSH.sum = sum;
+    }
+  }
+// How a drop behaves. INERTIA is how much of its old direction it keeps,
+// CARRY how much soil fast, full water can hold, CUT how quickly it picks
+// soil up and SETTLE how quickly it lays soil down.
+const INERTIA = 0.12;
+const CARRY = 2.6;
+const CUT = 0.3;
+const SETTLE = 0.25;
+// Height of the ground at a point between grid cells (x and y in cells): a
+// blend of the four cells round it.
+function gridHeight(H, x, y) {
+  const ix = x | 0;
+  const iy = y | 0;
+  const u = x - ix;
+  const v = y - iy;
+  const i = iy * N + ix;
+  return mix(mix(H[i], H[i + 1], u), mix(H[i + N], H[i + N + 1], u), v);
+}
+// What a drop does to the ground where it stands, and the soil it carries on.
+// The drop sits in the cell that starts at H[i], u and v of the way across
+// it; it is about to fall by "fall" (negative when the way leads uphill) with
+// this speed and water, carrying "soil". Returns the soil it carries after.
+function depositOrCut(H, E, i, u, v, fall, speed, water, soil) {
+  // How much soil this water can carry: more when fast, full and steep.
+  const room = Math.max(fall, 0.02) * speed * water * CARRY;
+  if (fall < 0 || soil > room) {
+    // Too much soil, or the way leads uphill: lay some down, shared among the
+    // four corners of the cell by how near the drop is to each.
+    const lay = fall < 0 ? Math.min(-fall, soil) : (soil - room) * SETTLE;
+    soil -= lay;
+    E[i * 3 + 1] += lay;
+    H[i] += lay * (1 - u) * (1 - v);
+    H[i + 1] += lay * u * (1 - v);
+    H[i + N] += lay * (1 - u) * v;
+    H[i + N + 1] += lay * u * v;
+  } else {
+    // Room to carry more: cut into the ground, spread over the brush.
+    const take = Math.min((room - soil) * CUT, fall);
+    soil += take;
+    E[i * 3] += take;
+    for (let k = 0; k < BRUSH.length; k += 2)
+      H[i + BRUSH[k]] -= (take * BRUSH[k + 1]) / BRUSH.sum;
+  }
+  return soil;
+}
+// One step of one drop. d holds the drop: [x, y, direction x, direction y,
+// speed, water, soil carried], in grid cells. Returns false when the drop is
+// finished: it reached the sea, the edge, or a hollow with nowhere to go.
+function dropStep(H, E, d) {
+  const x = d[0];
+  const y = d[1];
+  const speed = d[4];
+  const water = d[5];
+  // The four cells round the drop, and how far it sits between them.
+  const ix = x | 0;
+  const iy = y | 0;
+  const u = x - ix;
+  const v = y - iy;
+  const i = iy * N + ix;
+  const a = H[i];
+  const b = H[i + 1];
+  const c = H[i + N];
+  const e = H[i + N + 1];
+  const h = mix(mix(a, b, u), mix(c, e, u), v);
+  // It has reached the sea.
+  if (h < -0.5) return false;
+  // Keep some of the old direction, turn the rest downhill.
+  const slopeX = (b - a) * (1 - v) + (e - c) * v;
+  const slopeY = (c - a) * (1 - u) + (e - b) * u;
+  let dx = d[2] * INERTIA - slopeX * (1 - INERTIA);
+  let dy = d[3] * INERTIA - slopeY * (1 - INERTIA);
+  const len = Math.sqrt(dx * dx + dy * dy);
+  // A hollow with nowhere to go.
+  if (len < 1e-5) return false;
+  dx /= len;
+  dy /= len;
+  const nx = x + dx;
+  const ny = y + dy;
+  // The edge of the map.
+  if (nx < 3 || ny < 3 || nx > N - 4 || ny > N - 4) return false;
+  const fall = h - gridHeight(H, nx, ny);
+  // Record the water that passed, then lay soil down or cut it.
+  E[i * 3 + 2] += water;
+  const soil = depositOrCut(H, E, i, u, v, fall, speed, water, d[6]);
+  d[0] = nx;
+  d[1] = ny;
+  d[2] = dx;
+  d[3] = dy;
+  d[4] = Math.sqrt(Math.max(speed * speed + fall * 0.9, 0.01));
+  d[5] = water * 0.985;
+  d[6] = soil;
+  return true;
+}
+function erode(H, E, drops, seed) {
+  const r = rng(seed);
+  const d = new Float64Array(7);
+  for (let k = 0; k < drops; k++) {
+    d[0] = 3 + r() * (N - 7);
+    d[1] = 3 + r() * (N - 7);
+    d[2] = d[3] = d[6] = 0;
+    d[4] = d[5] = 1;
+    // A drop lives for at most 70 steps.
+    let life = 0;
+    while (life < 70 && dropStep(H, E, d)) life++;
+  }
+  return H;
+}
+// Ground cover by rule, one byte each: R grass, G moisture, B sand, A tree
+// canopy height (filled in later). Steep ground is bare rock; flat ground near
+// the sea is sand; water and laid-down soil make it lush.
+function coverMasks(H, L, E) {
+  const M = new Uint8Array(N * N * 4);
+  for (let i = 0, p = 0; i < N * N; i++, p += 4) {
+    const h = H[i];
+    const gx = L[p + 1];
+    const gz = L[p + 2];
+    const steep = 1 - 1 / Math.sqrt(1 + gx * gx + gz * gz);
+    const sky = L[p + 3];
+    const worn = E[i * 3];
+    const laid = E[i * 3 + 1];
+    const wet = E[i * 3 + 2];
+    const sand = (1 - smooth(1.5, 4.5, h)) * (1 - smooth(0.1, 0.3, steep));
+    let grass =
+      (1 - smooth(0.18, 0.42, steep)) *
+      smooth(1.2, 4, h) *
+      (1 - 0.4 * smooth(170, 290, h));
+    grass = clamp(
+      grass +
+        smooth(0.3, 2.5, laid) * 0.5 -
+        smooth(1.5, 6, worn) * smooth(0.08, 0.2, steep) * 0.7,
+      0,
+      1,
+    );
+    const moist = clamp(
+      (1 - sky) * 1.6 +
+        0.3 -
+        h / 260 +
+        smooth(2, 30, wet) * 0.55 +
+        smooth(0.3, 3, laid) * 0.25,
+      0,
+      1,
+    );
+    M[p] = grass * 255;
+    M[p + 1] = moist * 255;
+    M[p + 2] = sand * 255;
+  }
+  return M;
+}
+// endregion: 5-erosion (pure)
+
+// region: 6-things (pure)
+// Ten thousand things are a few shapes drawn many times. This region builds the
+// shapes and decides where they go. A shape is a list of points and a list of
+// triangles. Each point carries 15 numbers: position, normal, colour, then
+// shade (0 hidden .. 1 open to the sky), sway in the wind, leaf type, glow, and
+// two pattern coordinates that the palm fronds use.
+const VERT = 15;
+function newMesh() {
+  return { v: [], i: [], n: 0 };
+}
+function addPoint(m, x, y, z, nx, ny, nz, c, shade, sway, leaf, glow, pu, pv) {
+  m.v.push(
+    x,
+    y,
+    z,
+    nx,
+    ny,
+    nz,
+    c[0],
+    c[1],
+    c[2],
+    shade,
+    sway,
+    leaf,
+    glow || 0,
+    pu || 0,
+    pv || 0,
+  );
+  return m.n++;
+}
+function bakeMesh(m) {
+  return { verts: new Float32Array(m.v), idx: new Uint16Array(m.i) };
+}
+
+// A ball made of triangles: start from the 20-sided solid and split every
+// triangle in four, "level" times.
+function icosphere(level) {
+  const t = (1 + Math.sqrt(5)) / 2;
+  const p = [
+    -1,
+    t,
+    0,
+    1,
+    t,
+    0,
+    -1,
+    -t,
+    0,
+    1,
+    -t,
+    0,
+    0,
+    -1,
+    t,
+    0,
+    1,
+    t,
+    0,
+    -1,
+    -t,
+    0,
+    1,
+    -t,
+    t,
+    0,
+    -1,
+    t,
+    0,
+    1,
+    -t,
+    0,
+    -1,
+    -t,
+    0,
+    1,
+  ];
+  let f = [
+    0, 11, 5, 0, 5, 1, 0, 1, 7, 0, 7, 10, 0, 10, 11, 1, 5, 9, 5, 11, 4, 11, 10,
+    2, 10, 7, 6, 7, 1, 8, 3, 9, 4, 3, 4, 2, 3, 2, 6, 3, 6, 8, 3, 8, 9, 4, 9, 5,
+    2, 4, 11, 6, 2, 10, 8, 6, 7, 9, 8, 1,
+  ];
+  const unit = (i) => {
+    const l =
+      1 / Math.sqrt(p[i] * p[i] + p[i + 1] * p[i + 1] + p[i + 2] * p[i + 2]);
+    p[i] *= l;
+    p[i + 1] *= l;
+    p[i + 2] *= l;
+  };
+  for (let i = 0; i < p.length; i += 3) unit(i);
+  for (let l = 0; l < level; l++) {
+    const seen = new Map();
+    const g = [];
+    const half = (a, b) => {
+      const key = a < b ? a * 65536 + b : b * 65536 + a;
+      let k = seen.get(key);
+      if (k === undefined) {
+        k = p.length / 3;
+        p.push(
+          (p[a * 3] + p[b * 3]) / 2,
+          (p[a * 3 + 1] + p[b * 3 + 1]) / 2,
+          (p[a * 3 + 2] + p[b * 3 + 2]) / 2,
+        );
+        unit(k * 3);
+        seen.set(key, k);
+      }
+      return k;
+    };
+    for (let i = 0; i < f.length; i += 3) {
+      const a = f[i];
+      const b = f[i + 1];
+      const c = f[i + 2];
+      const ab = half(a, b);
+      const bc = half(b, c);
+      const ca = half(c, a);
+      g.push(a, ab, ca, b, bc, ab, c, ca, bc, ab, bc, ca);
+    }
+    f = g;
+  }
+  return { p, f };
+}
+const ICO = [icosphere(0), icosphere(1), icosphere(2)];
+const mix3 = (a, b, t) => [
+  mix(a[0], b[0], t),
+  mix(a[1], b[1], t),
+  mix(a[2], b[2], t),
+];
+
+// A lumpy ball of leaves or stone at (cx, cy, cz). Options in o:
+//   lump how far noise pushes the surface in and out seed which lumps
+//   low, high colour at the bottom and at the top flat squash the underside (1
+//   = round)
+//   taper narrow toward the top (cypress) facet flat faces with hard edges
+//   (rock)
+//   crown [x, y, z, radius] of the whole tree top: normals lean away from it,
+//   so many balls shade as one mass.
+function blobPoints(ico, cx, cy, cz, rx, ry, rz, o) {
+  const P = [];
+  const q = o.seed;
+  for (let k = 0; k < ico.p.length; k += 3) {
+    const dx = ico.p[k];
+    const dy = ico.p[k + 1];
+    const dz = ico.p[k + 2];
+    const s =
+      1 +
+      o.lump *
+        (noise(dx * 1.9 + q, dy * 1.9 + dz * 1.3 - q, 71) * 1.4 +
+          noise(dx * 4.3 - q, dz * 4.3 + dy * 2.9 + q, 72) * 0.7);
+    const thin = 1 - (o.taper || 0) * smooth(-0.6, 1, dy);
+    P.push(
+      cx + dx * rx * s * thin,
+      cy + (dy < 0 ? dy * (o.flat || 1) : dy) * ry * s,
+      cz + dz * rz * s * thin,
+    );
+  }
+  return P;
+}
+// How open to the sky a point of a crown is: dark underneath and deep inside,
+// bright on top and outside.
+function crownShade(cr, x, y, z) {
+  const ex = x - cr[0];
+  const ey = y - cr[1];
+  const ez = z - cr[2];
+  const out = Math.sqrt(ex * ex + ey * ey + ez * ez) / cr[3];
+  return clamp(
+    (0.3 + 0.7 * smooth(-0.9, 0.5, ey / cr[3])) *
+      (0.55 + 0.45 * smooth(0.3, 1, out)),
+    0,
+    1,
+  );
+}
+// Leaves: one small square card on every face of a lumpy ball, each tilted its
+// own way. The shader cuts a rosette of leaves out of each card. All four
+// corners share a normal that points out of the crown, so the crown still
+// shades as one round mass while its outline and surface are broken into
+// leaves.
+function addLeaves(m, ico, cx, cy, cz, rx, ry, rz, o) {
+  const P = blobPoints(ico, cx, cy, cz, rx, ry, rz, o);
+  const cr = o.crown;
+  const salt = Math.floor(o.seed * 977);
+  for (let i = 0; i < ico.f.length; i += 3) {
+    const a = ico.f[i] * 3;
+    const b = ico.f[i + 1] * 3;
+    const c = ico.f[i + 2] * 3;
+    const h = hash2(i, salt, 5);
+    const h2 = hash2(i, salt, 6);
+    const w1 = 0.2 + (0.6 * (h & 255)) / 255;
+    const w2 = ((1 - w1) * ((h >>> 8) & 255)) / 255;
+    const w3 = 1 - w1 - w2;
+    const x = P[a] * w1 + P[b] * w2 + P[c] * w3;
+    const y = P[a + 1] * w1 + P[b + 1] * w2 + P[c + 1] * w3;
+    const z = P[a + 2] * w1 + P[b + 2] * w2 + P[c + 2] * w3;
+    let nx = x - cr[0] + (((h >>> 16) & 255) / 255 - 0.5) * cr[3] * 0.6;
+    let ny = y - cr[1] + cr[3] * 0.35 + ((h >>> 24) / 255 - 0.5) * cr[3] * 0.6;
+    let nz = z - cr[2] + ((h2 & 255) / 255 - 0.5) * cr[3] * 0.6;
+    let l = 1 / Math.sqrt(nx * nx + ny * ny + nz * nz + 1e-9);
+    nx *= l;
+    ny *= l;
+    nz *= l;
+    let tx = -nz;
+    let tz = nx;
+    l = Math.sqrt(tx * tx + tz * tz);
+    if (l < 0.05) {
+      tx = 1;
+      tz = 0;
+      l = 1;
+    }
+    tx /= l;
+    tz /= l;
+    // Second edge direction: normal x first edge.
+    const bx = ny * tz;
+    const by = nz * tx - nx * tz;
+    const bz = -ny * tx;
+    const ca = ((h2 >>> 8) & 255) / 128 - 1;
+    const sa = ((h2 >>> 16) & 255) / 128 - 1;
+    const cl =
+      ((o.card || 0.7) * (0.75 + (0.5 * (h2 >>> 24)) / 255)) /
+      Math.sqrt(ca * ca + sa * sa + 1e-6);
+    const ux = (tx * ca + bx * sa) * cl;
+    const uy = by * sa * cl;
+    const uz = (tz * ca + bz * sa) * cl;
+    const vx = (bx * ca - tx * sa) * cl;
+    const vy = by * ca * cl;
+    const vz = (bz * ca - tz * sa) * cl;
+    const t = mix3(o.low, o.high, smooth(-0.4, 0.9, (y - cr[1]) / cr[3]));
+    const j = 0.8 + (0.4 * (h & 1023)) / 1023;
+    const col = [t[0] * j, t[1] * j, t[2] * j];
+    const shade = crownShade(cr, x, y, z);
+    const sway = (o.sway || 0) * (0.6 + (0.4 * (h2 & 255)) / 255);
+    const i0 = m.n;
+    for (let e = 0; e < 4; e++) {
+      const pu = [-1, 1, 1, -1][e];
+      const pv = [-1, -1, 1, 1][e];
+      addPoint(
+        m,
+        x + ux * pu + vx * pv,
+        y + uy * pu + vy * pv,
+        z + uz * pu + vz * pv,
+        nx,
+        ny,
+        nz,
+        col,
+        shade,
+        sway,
+        1,
+        0,
+        pu,
+        pv,
+      );
+    }
+    m.i.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
+  }
+}
+function addBlob(m, ico, cx, cy, cz, rx, ry, rz, o) {
+  const P = blobPoints(ico, cx, cy, cz, rx, ry, rz, o);
+  const base = m.n;
+  const cr = o.crown || [cx, cy, cz, ry];
+  const shadeAt = (x, y, z) => crownShade(cr, x, y, z) * (o.dim || 1);
+  const tone = (k, y) => {
+    const c = mix3(o.low, o.high, smooth(-0.5, 1, ico.p[k + 1]));
+    const j = 0.88 + 0.24 * (hash2(k, base, 7) / 4294967296);
+    return [c[0] * j, c[1] * j, c[2] * j];
+  };
+  if (o.facet) {
+    for (let i = 0; i < ico.f.length; i += 3) {
+      const a = ico.f[i] * 3;
+      const b = ico.f[i + 1] * 3;
+      const c = ico.f[i + 2] * 3;
+      const ux = P[b] - P[a];
+      const uy = P[b + 1] - P[a + 1];
+      const uz = P[b + 2] - P[a + 2];
+      const vx = P[c] - P[a];
+      const vy = P[c + 1] - P[a + 1];
+      const vz = P[c + 2] - P[a + 2];
+      let nx = uy * vz - uz * vy;
+      let ny = uz * vx - ux * vz;
+      let nz = ux * vy - uy * vx;
+      const l = 1 / Math.sqrt(nx * nx + ny * ny + nz * nz + 1e-12);
+      nx *= l;
+      ny *= l;
+      nz *= l;
+      const col = tone(a, 0);
+      for (const k of [a, b, c])
+        m.i.push(
+          addPoint(
+            m,
+            P[k],
+            P[k + 1],
+            P[k + 2],
+            nx,
+            ny,
+            nz,
+            col,
+            0.45 + 0.55 * smooth(-0.6, 0.5, ico.p[k + 1]),
+            0,
+            0,
+          ),
+        );
+    }
+    return;
+  }
+  const soft = o.soft === undefined ? 0.55 : o.soft;
+  for (let k = 0; k < P.length; k += 3) {
+    let nx = P[k] - cr[0];
+    let ny = P[k + 1] - cr[1];
+    let nz = P[k + 2] - cr[2];
+    const l = 1 / Math.sqrt(nx * nx + ny * ny + nz * nz + 1e-9);
+    nx = mix(ico.p[k], nx * l, soft);
+    ny = mix(ico.p[k + 1], ny * l, soft);
+    nz = mix(ico.p[k + 2], nz * l, soft);
+    const l2 = 1 / Math.sqrt(nx * nx + ny * ny + nz * nz + 1e-9);
+    addPoint(
+      m,
+      P[k],
+      P[k + 1],
+      P[k + 2],
+      nx * l2,
+      ny * l2,
+      nz * l2,
+      tone(k),
+      shadeAt(P[k], P[k + 1], P[k + 2]),
+      (o.sway || 0) * (0.5 + 0.5 * smooth(-1, 1, ico.p[k + 1])),
+      o.leaf === undefined ? 3 : o.leaf,
+    );
+  }
+  for (const i of ico.f) m.i.push(base + i);
+}
+const HEX = [
+  1, 0, 0.5, 0.8660254, -0.5, 0.8660254, -1, 0, -0.5, -0.8660254, 0.5,
+  -0.8660254,
+];
+// A trunk or tower: rings of 6 (or 3) points along a path. pts is x,y,z,radius
+// per ring; cols gives a colour per ring.
+function addTube(m, pts, cols, sides, sway, glow) {
+  const step = sides === 3 ? 4 : 2;
+  const rings = pts.length / 4;
+  const base = m.n;
+  for (let k = 0; k < rings; k++)
+    for (let j = 0; j < sides; j++) {
+      const hx = HEX[j * step];
+      const hz = HEX[j * step + 1];
+      const r = pts[k * 4 + 3];
+      addPoint(
+        m,
+        pts[k * 4] + hx * r,
+        pts[k * 4 + 1],
+        pts[k * 4 + 2] + hz * r,
+        hx,
+        0.15,
+        hz,
+        cols[Math.min(k, cols.length - 1)],
+        0.55 + 0.45 * (k / (rings - 1)),
+        ((sway || 0) * k) / (rings - 1),
+        0,
+        glow,
+      );
+    }
+  for (let k = 0; k < rings - 1; k++)
+    for (let j = 0; j < sides; j++) {
+      const a = base + k * sides + j;
+      const b = base + k * sides + ((j + 1) % sides);
+      const c = a + sides;
+      const d = b + sides;
+      m.i.push(a, c, b, b, c, d);
+    }
+}
+// A flat four-cornered face with one normal. Corners go around the face. The
+// pattern coordinates are metres along the first edge and along the last, which
+// the roof-tile shader uses.
+function addQuad(m, a, b, c, d, col, glow, leaf) {
+  const ux = b[0] - a[0];
+  const uy = b[1] - a[1];
+  const uz = b[2] - a[2];
+  const vx = d[0] - a[0];
+  const vy = d[1] - a[1];
+  const vz = d[2] - a[2];
+  let nx = uy * vz - uz * vy;
+  let ny = uz * vx - ux * vz;
+  let nz = ux * vy - uy * vx;
+  const l = 1 / Math.sqrt(nx * nx + ny * ny + nz * nz + 1e-12);
+  const i = m.n;
+  const pu = Math.sqrt(ux * ux + uy * uy + uz * uz);
+  const pv = Math.sqrt(vx * vx + vy * vy + vz * vz);
+  [a, b, c, d].forEach((q, k) =>
+    addPoint(
+      m,
+      q[0],
+      q[1],
+      q[2],
+      nx * l,
+      ny * l,
+      nz * l,
+      col,
+      q[1] < 0.6 ? 0.6 : 1,
+      0,
+      leaf || 0,
+      glow,
+      k === 1 || k === 2 ? pu : 0,
+      k > 1 ? pv : 0,
+    ),
+  );
+  m.i.push(i, i + 1, i + 2, i, i + 2, i + 3);
+}
+// A triangle with one normal, turned to face upward (roof ends, sails).
+function addTri(m, a, b, c, col, leaf) {
+  const ux = b[0] - a[0];
+  const uy = b[1] - a[1];
+  const uz = b[2] - a[2];
+  const vx = c[0] - a[0];
+  const vy = c[1] - a[1];
+  const vz = c[2] - a[2];
+  let nx = uy * vz - uz * vy;
+  let ny = uz * vx - ux * vz;
+  let nz = ux * vy - uy * vx;
+  const l = (ny < 0 ? -1 : 1) / Math.sqrt(nx * nx + ny * ny + nz * nz + 1e-12);
+  const i = m.n;
+  [a, b, c].forEach((q, k) =>
+    addPoint(
+      m,
+      q[0],
+      q[1],
+      q[2],
+      nx * l,
+      ny * l,
+      nz * l,
+      col,
+      1,
+      0,
+      leaf || 0,
+      0,
+      k === 1 ? 3 : k ? 1.5 : 0,
+      k === 2 ? 3 : 0,
+    ),
+  );
+  m.i.push(i, i + 1, i + 2);
+}
+// Four walls between two heights, around a rectangle.
+function addWalls(m, x0, x1, z0, z1, y0, y1, col, glow, leaf) {
+  addQuad(
+    m,
+    [x0, y0, z1],
+    [x1, y0, z1],
+    [x1, y1, z1],
+    [x0, y1, z1],
+    col,
+    glow,
+    leaf,
+  );
+  addQuad(
+    m,
+    [x1, y0, z0],
+    [x0, y0, z0],
+    [x0, y1, z0],
+    [x1, y1, z0],
+    col,
+    glow,
+    leaf,
+  );
+  addQuad(
+    m,
+    [x1, y0, z1],
+    [x1, y0, z0],
+    [x1, y1, z0],
+    [x1, y1, z1],
+    col,
+    glow,
+    leaf,
+  );
+  addQuad(
+    m,
+    [x0, y0, z0],
+    [x0, y0, z1],
+    [x0, y1, z1],
+    [x0, y1, z0],
+    col,
+    glow,
+    leaf,
+  );
+}
+// A box: four walls and a lid.
+function addBox(m, x0, x1, y0, y1, z0, z1, col, glow, leaf) {
+  addWalls(m, x0, x1, z0, z1, y0, y1, col, glow, leaf === 6 ? 6 : 0);
+  addQuad(
+    m,
+    [x0, y1, z0],
+    [x0, y1, z1],
+    [x1, y1, z1],
+    [x1, y1, z0],
+    col,
+    glow,
+    leaf,
+  );
+}
+// Arching fronds around a point: palms and ferns. Each is a strip three points
+// wide that bends down along its length; the shader cuts leaflets out of it.
+function addFronds(m, top, count, segs, len, rise, droop, wide, low, high, r) {
+  let cx = 1;
+  let cz = 0;
+  for (let f = 0; f < count; f++) {
+    // Turn by the golden angle.
+    const t = cx * -0.7373689 - cz * 0.6754903;
+    cz = cx * 0.6754903 + cz * -0.7373689;
+    cx = t;
+    const L = len * (0.8 + 0.4 * r());
+    const up = rise * (1 - (1.2 * f) / count);
+    const dr = droop * (0.8 + 0.5 * r());
+    const i0 = m.n;
+    for (let j = 0; j <= segs; j++) {
+      const u = j / segs;
+      const out = L * u;
+      const y = top[1] + up * u - dr * u * u;
+      const w = wide * (0.25 + 3 * u * (1 - u)) * (1 - 0.6 * u * u);
+      const col = mix3(low, high, u);
+      const px = top[0] + cx * out;
+      const pz = top[2] + cz * out;
+      for (let e = -1; e <= 1; e++)
+        addPoint(
+          m,
+          px - cz * w * e,
+          y - Math.abs(e) * w * 0.45,
+          pz + cx * w * e,
+          cx * 0.3 - cz * e * 0.4,
+          0.85,
+          cz * 0.3 + cx * e * 0.4,
+          col,
+          0.55 + 0.45 * u,
+          0.3 + 0.9 * u,
+          2,
+          0,
+          u,
+          e,
+        );
+      if (j)
+        for (let e = 0; e < 2; e++) {
+          const a = i0 + (j - 1) * 3 + e;
+          const b = a + 1;
+          const c = a + 3;
+          const d = c + 1;
+          m.i.push(a, c, b, b, c, d);
+        }
+    }
+  }
+}
+// A house that faces +x: plastered walls, a tiled gable roof with eaves, a
+// lower wing with a lean-to roof, a chimney, a door and windows set into the
+// wall under stone lintels, shutters and sills, a vine-covered pergola over the
+// terrace, pots by the door and a bench. "tall" adds a second storey, a balcony
+// and a washing line. Far away (lod 2) only the walls and roofs remain.
+function addHouse(m, lod, tall, r) {
+  const wall = [0.74, 0.69, 0.58];
+  const tile = [0.42, 0.17, 0.09];
+  const blue = [0.07, 0.17, 0.3];
+  const glass = [0.16, 0.14, 0.12];
+  const wood = [0.2, 0.13, 0.08];
+  const stone = [0.46, 0.42, 0.36];
+  const clay = [0.45, 0.2, 0.11];
+  const top = tall ? 6.1 : 3.3;
+  const ridge = top + 1.9;
+  addWalls(m, -3, 3, -4, 4, -3, top, wall, 0, 7);
+  addQuad(
+    m,
+    [-3.6, top - 0.25, 4.5],
+    [0, ridge, 4.5],
+    [0, ridge, -4.5],
+    [-3.6, top - 0.25, -4.5],
+    tile,
+    0,
+    4,
+  );
+  addQuad(
+    m,
+    [3.6, top - 0.25, -4.5],
+    [0, ridge, -4.5],
+    [0, ridge, 4.5],
+    [3.6, top - 0.25, 4.5],
+    tile,
+    0,
+    4,
+  );
+  for (const z of [-4, 4]) {
+    const i = m.n;
+    for (const q of [
+      [-3, top],
+      [3, top],
+      [0, ridge - 0.1],
+    ])
+      addPoint(m, q[0], q[1], z, 0, 0, z / 4, wall, 1, 0, 7, 0, q[0], q[1] + 3);
+    m.i.push(i, i + 1, i + 2);
+  }
+  // The wing.
+  addWalls(m, -2.4, 2.6, 4, 7.2, -3, 2.6, wall, 0, 7);
+  addQuad(
+    m,
+    [2.9, 2.45, 7.6],
+    [2.9, 3.25, 4],
+    [-2.7, 3.25, 4],
+    [-2.7, 2.45, 7.6],
+    tile,
+    0,
+    4,
+  );
+  if (lod === 2) return;
+  // Chimney and its cap.
+  addBox(m, -1.7, -0.9, top + 0.6, ridge + 0.8, 1.4, 2.2, wall);
+  addBox(m, -1.8, -0.8, ridge + 0.8, ridge + 0.95, 1.3, 2.3, tile);
+  // An opening in the front wall: a dark reveal a little larger than the door
+  // or window (the shadow of the recess), the leaf or glass inside it, and a
+  // stone lintel above.
+  const opening = (z, y0, y1, half, col, glow) => {
+    addQuad(
+      m,
+      [3.012, y0, z + half + 0.1],
+      [3.012, y0, z - half - 0.1],
+      [3.012, y1 + 0.13, z - half - 0.1],
+      [3.012, y1 + 0.13, z + half + 0.1],
+      [0.04, 0.035, 0.03],
+    );
+    addQuad(
+      m,
+      [3.03, y0, z + half],
+      [3.03, y0, z - half],
+      [3.03, y1 - 0.02, z - half],
+      [3.03, y1 - 0.02, z + half],
+      col,
+      glow,
+    );
+    if (!lod)
+      addBox(
+        m,
+        3,
+        3.13,
+        y1 + 0.13,
+        y1 + 0.32,
+        z - half - 0.22,
+        z + half + 0.22,
+        stone,
+      );
+  };
+  opening(0, 0, 2.15, 0.55, blue);
+  // Doorstep.
+  addBox(m, 3, 3.5, -0.2, 0.05, -0.9, 0.9, stone);
+  for (let floor = 0; floor < (tall ? 2 : 1); floor++)
+    for (const z of [-2.6, 2.3]) {
+      const y = 1.15 + floor * 2.9;
+      opening(z, y, y + 1.15, 0.42, glass, 1);
+      if (lod) continue;
+      // Sill.
+      addBox(m, 3, 3.16, y - 0.12, y, z - 0.55, z + 0.55, stone);
+      // Shutters, folded back.
+      for (const e of [-1, 1])
+        addBox(
+          m,
+          3,
+          3.07,
+          y,
+          y + 1.15,
+          z + e * 0.46 + (e < 0 ? -0.36 : 0),
+          z + e * 0.46 + (e < 0 ? 0 : 0.36),
+          blue,
+        );
+    }
+  addQuad(
+    m,
+    [0.3, 1.15, 7.23],
+    [1.2, 1.15, 7.23],
+    [1.2, 2.1, 7.23],
+    [0.3, 2.1, 7.23],
+    glass,
+    1,
+  );
+  addQuad(
+    m,
+    [0.4, 1.15, -4.03],
+    [-0.5, 1.15, -4.03],
+    [-0.5, 2.3, -4.03],
+    [0.4, 2.3, -4.03],
+    glass,
+    1,
+  );
+  // Terrace wall of laid stone on the downhill side.
+  addWalls(m, 3, 7, -4.6, 4.6, -3, 0.7, stone, 0, 6);
+  // Balcony.
+  if (tall) {
+    addBox(m, 3, 4.1, 2.75, 2.9, -3.2, -1.9, stone);
+    addWalls(m, 3, 4.1, -3.2, -1.9, 2.9, 3.7, wood);
+  }
+  if (lod) return;
+  // Pergola posts.
+  for (const x of [3.3, 6.2])
+    for (const z of [1.2, 4.2])
+      addBox(m, x - 0.08, x + 0.08, 0, 2.5, z - 0.08, z + 0.08, wood);
+  const vine = {
+    lump: 0.25,
+    seed: r() * 50,
+    low: [0.05, 0.11, 0.03],
+    high: [0.13, 0.21, 0.055],
+    crown: [4.8, 2.0, 2.7, 1.9],
+    flat: 1,
+    sway: 0.5,
+    card: 0.34,
+  };
+  addLeaves(m, ICO[1], 4.8, 2.6, 2.7, 1.9, 0.35, 1.9, vine);
+  // And climbing the corner.
+  addLeaves(
+    m,
+    ICO[0],
+    3.2,
+    1.6,
+    4.4,
+    0.6,
+    1.3,
+    0.6,
+    Object.assign({}, vine, { crown: [3.6, 1.4, 4.4, 1.4] }),
+  );
+  // Clay pots with something growing in them.
+  for (const p of [
+    [3.6, 0.95],
+    [3.6, -0.95],
+    [6.6, -4.2],
+  ]) {
+    addTube(m, [p[0], 0, p[1], 0.17, p[0], 0.42, p[1], 0.25], [clay], 6, 0);
+    addBlob(m, ICO[0], p[0], 0.72, p[1], 0.33, 0.36, 0.33, {
+      lump: 0.3,
+      seed: p[1],
+      low: [0.07, 0.15, 0.04],
+      high: [0.2, 0.3, 0.08],
+      sway: 0.3,
+    });
+  }
+  // A bench under the window.
+  addBox(m, 3.15, 3.6, 0.42, 0.5, -3.3, -1.9, wood);
+  for (const z of [-3.2, -2.0])
+    addBox(m, 3.2, 3.55, 0, 0.42, z - 0.05, z + 0.05, wood);
+  // Washing on a line behind the house.
+  if (tall) {
+    for (const z of [-3.6, 3.6])
+      addBox(m, -5.05, -4.95, 0, 2.5, z - 0.05, z + 0.05, wood);
+    addBox(m, -5.01, -4.99, 2.38, 2.4, -3.6, 3.6, [0.6, 0.6, 0.55]);
+    [
+      [-2.8, 0.9, [0.82, 0.8, 0.74]],
+      [-1.6, 0.7, [0.2, 0.33, 0.5]],
+      [-0.5, 1.1, [0.8, 0.78, 0.7]],
+      [1.0, 0.6, [0.6, 0.2, 0.16]],
+      [2.0, 0.9, [0.78, 0.7, 0.5]],
+    ].forEach((c) => {
+      addQuad(
+        m,
+        [-5, 2.38, c[0]],
+        [-5, 2.38, c[0] + c[1]],
+        [-5, 2.38 - c[1] * 1.1, c[0] + c[1]],
+        [-5, 2.38 - c[1] * 1.1, c[0]],
+        c[2],
+      );
+      // The hanging edge swings in the wind.
+      m.v[(m.n - 2) * VERT + 10] = m.v[(m.n - 1) * VERT + 10] = 0.9;
+    });
+  }
+}
+// The long house on the square, our own design: an open arcade of stone piers
+// along the front, a plastered upper floor carried over it with a row of
+// shuttered windows, and a tiled roof with its ridge along the length.
+function addLonghouse(m, lod) {
+  const wall = [0.76, 0.66, 0.52];
+  const tile = [0.42, 0.17, 0.09];
+  const stone = [0.5, 0.46, 0.4];
+  const blue = [0.07, 0.17, 0.3];
+  const glass = [0.16, 0.14, 0.12];
+  const dark = [0.04, 0.035, 0.03];
+  // The ground floor, set back behind the arcade.
+  addWalls(m, -3.5, 2.2, -9, 9, -3, 3.2, wall, 0, 7);
+  // The upper floor, carried forward.
+  addWalls(m, -3.5, 4.3, -9, 9, 3.2, 6.1, wall, 0, 7);
+  // The arcade's ceiling.
+  addQuad(
+    m,
+    [2.2, 3.2, -9],
+    [4.3, 3.2, -9],
+    [4.3, 3.2, 9],
+    [2.2, 3.2, 9],
+    [0.3, 0.26, 0.2],
+  );
+  // Piers.
+  for (let k = 0; k < 6; k++)
+    addWalls(m, 3.6, 4.3, -9 + k * 3.46, -8.3 + k * 3.46, -3, 3.2, stone, 0, 6);
+  addQuad(
+    m,
+    [-4.2, 5.85, 9.5],
+    [0.4, 8.1, 9.5],
+    [0.4, 8.1, -9.5],
+    [-4.2, 5.85, -9.5],
+    tile,
+    0,
+    4,
+  );
+  addQuad(
+    m,
+    [5, 5.85, -9.5],
+    [0.4, 8.1, -9.5],
+    [0.4, 8.1, 9.5],
+    [5, 5.85, 9.5],
+    tile,
+    0,
+    4,
+  );
+  for (const z of [-9, 9]) {
+    const i = m.n;
+    for (const q of [
+      [-3.5, 6.1],
+      [4.3, 6.1],
+      [0.4, 8.0],
+    ])
+      addPoint(m, q[0], q[1], z, 0, 0, z / 9, wall, 1, 0, 7, 0, q[0], q[1] + 3);
+    m.i.push(i, i + 1, i + 2);
+  }
+  if (lod === 2) return;
+  for (let k = 0; k < 5; k++) {
+    const z = -6.92 + k * 3.46;
+    addQuad(
+      m,
+      [4.312, 3.9, z + 0.55],
+      [4.312, 3.9, z - 0.55],
+      [4.312, 5.4, z - 0.55],
+      [4.312, 5.4, z + 0.55],
+      dark,
+    );
+    addQuad(
+      m,
+      [4.33, 3.95, z + 0.45],
+      [4.33, 3.95, z - 0.45],
+      [4.33, 5.3, z - 0.45],
+      [4.33, 5.3, z + 0.45],
+      glass,
+      1,
+    );
+    // Doors under the arcade.
+    addQuad(
+      m,
+      [2.22, 0, z + 0.6],
+      [2.22, 0, z - 0.6],
+      [2.22, 2.3, z - 0.6],
+      [2.22, 2.3, z + 0.6],
+      k % 2 ? blue : dark,
+    );
+    if (lod) continue;
+    addBox(m, 4.3, 4.46, 3.78, 3.9, z - 0.65, z + 0.65, stone);
+    for (const e of [-1, 1])
+      addBox(
+        m,
+        4.3,
+        4.37,
+        3.95,
+        5.3,
+        z + e * 0.5 + (e < 0 ? -0.38 : 0),
+        z + e * 0.5 + (e < 0 ? 0 : 0.38),
+        blue,
+      );
+  }
+  // The beam over the piers.
+  addBox(m, 3.4, 4.5, 3.05, 3.2, -9.1, 9.1, stone);
+  // Chimney.
+  addBox(m, -1.2, -0.3, 6.6, 9.2, 5, 5.9, wall);
+  addBox(m, -1.3, -0.2, 9.2, 9.35, 4.9, 6, tile);
+}
+// The boathouse by the jetty, facing +x and the sea: weathered plank walls on
+// three sides, an open front, a shingled roof, a slip running down to the
+// water, nets drying on poles and a stack of crates.
+function addBoathouse(m, lod) {
+  const plank = [0.33, 0.27, 0.2];
+  const shingle = [0.27, 0.24, 0.21];
+  const post = [0.2, 0.15, 0.1];
+  const net = [0.36, 0.33, 0.25];
+  addWalls(m, -4.5, -4.2, -3.5, 3.5, -2, 3, plank);
+  addWalls(m, -4.5, 4.5, -3.5, -3.2, -2, 3, plank);
+  addWalls(m, -4.5, 4.5, 3.2, 3.5, -2, 3, plank);
+  addQuad(
+    m,
+    [-4.9, 2.8, -4.1],
+    [-4.9, 4.7, 0],
+    [5.1, 4.7, 0],
+    [5.1, 2.8, -4.1],
+    shingle,
+    0,
+    4,
+  );
+  addQuad(
+    m,
+    [5.1, 2.8, 4.1],
+    [5.1, 4.7, 0],
+    [-4.9, 4.7, 0],
+    [-4.9, 2.8, 4.1],
+    shingle,
+    0,
+    4,
+  );
+  {
+    const i = m.n;
+    for (const q of [
+      [-3.5, 3],
+      [3.5, 3],
+      [0, 4.6],
+    ])
+      addPoint(m, -4.5, q[1], q[0], -1, 0, 0, plank, 1, 0, 0);
+    m.i.push(i, i + 1, i + 2);
+  }
+  // The dark floor inside.
+  addQuad(
+    m,
+    [-4.2, 0.02, -3.2],
+    [-4.2, 0.02, 3.2],
+    [4.5, 0.02, 3.2],
+    [4.5, 0.02, -3.2],
+    [0.1, 0.08, 0.07],
+  );
+  // The slip.
+  addQuad(
+    m,
+    [4.5, 0.25, -1.6],
+    [4.5, 0.25, 1.6],
+    [15, -1.2, 1.6],
+    [15, -1.2, -1.6],
+    plank,
+  );
+  if (lod === 2) return;
+  for (const z of [5.2, 8.4, 11.6])
+    addBox(m, -0.08, 0.08, -1, 2.7, z - 0.08, z + 0.08, post);
+  // Nets drying.
+  for (const z of [5.2, 8.4])
+    addQuad(
+      m,
+      [0, 2.6, z],
+      [0, 2.6, z + 3.2],
+      [0.5, 0.5, z + 3.2],
+      [0.5, 0.5, z],
+      net,
+      0,
+      8,
+    );
+  if (lod) return;
+  addBox(m, 2.2, 3.3, 0, 0.8, -6, -4.9, [0.5, 0.36, 0.2]);
+  addBox(m, 2.4, 3.4, 0, 0.7, -7.3, -6.3, [0.44, 0.33, 0.2]);
+  addBox(m, 2.4, 3.2, 0.8, 1.45, -5.9, -5.1, [0.52, 0.4, 0.24]);
+  // Racks inside.
+  for (const x of [-3, -1, 1])
+    addBox(m, x, x + 0.1, 0.02, 2.2, -3.1, 3.1, post);
+}
+// A market stall: four posts, a striped awning, a table set out with crates.
+function addStall(m, lod) {
+  const post = [0.22, 0.15, 0.09];
+  const cloth = [0.55, 0.14, 0.1];
+  const table = [0.36, 0.26, 0.16];
+  for (const x of [-1.5, 1.5])
+    for (const z of [-1, 1])
+      addBox(
+        m,
+        x - 0.05,
+        x + 0.05,
+        0,
+        x < 0 ? 2.5 : 2.1,
+        z - 0.05,
+        z + 0.05,
+        post,
+      );
+  addQuad(
+    m,
+    [2, 2.0, -1.3],
+    [-1.8, 2.6, -1.3],
+    [-1.8, 2.6, 1.3],
+    [2, 2.0, 1.3],
+    cloth,
+    0,
+    9,
+  );
+  // The front edge flaps.
+  m.v[(m.n - 4) * VERT + 10] = m.v[(m.n - 1) * VERT + 10] = 0.5;
+  if (lod === 2) return;
+  addBox(m, -1.2, 1.3, 0.75, 0.85, -0.9, 0.9, table);
+  for (const x of [-1.1, 1.2])
+    for (const z of [-0.8, 0.8])
+      addBox(m, x - 0.04, x + 0.04, 0, 0.75, z - 0.04, z + 0.04, post);
+  if (lod) return;
+  [
+    [-0.9, -0.5, [0.75, 0.42, 0.08]],
+    [-0.1, -0.5, [0.55, 0.12, 0.08]],
+    [0.7, -0.5, [0.3, 0.42, 0.12]],
+    [-0.5, 0.35, [0.7, 0.62, 0.2]],
+    [0.4, 0.35, [0.5, 0.3, 0.42]],
+  ].forEach((c) =>
+    addBox(m, c[0], c[0] + 0.55, 0.85, 1.08, c[1], c[1] + 0.6, c[2]),
+  );
+}
+
+const BARK = [0.15, 0.1, 0.065];
+const KINDS = [
+  'broadleaf',
+  'pine',
+  'cypress',
+  'bush',
+  'palm',
+  'rock',
+  'house',
+  'lighthouse',
+  'fern',
+  'reeds',
+  'outcrop',
+  'hall',
+  'tower',
+  'jetty',
+  'boat',
+  'longhouse',
+  'boathouse',
+  'stall',
+  'wall',
+];
+// Crown height and radius in metres for each kind at size 1: used for shadows
+// and for keeping things apart.
+const CROWN = [
+  [6.8, 3.6],
+  [9.6, 3.8],
+  [10.5, 1.3],
+  [0, 0],
+  [7.5, 2.2],
+  [0, 0],
+  [5, 4.6],
+  [19, 2.6],
+  [0, 0],
+  [0, 0],
+  [0.8, 1],
+  [8, 4.8],
+  [22, 2.6],
+  [0, 0],
+  [0, 0],
+  [7.5, 8],
+  [4.5, 5],
+  [0, 0],
+  [0, 0],
+];
+// Builds one kind of thing at one level of detail: 0 for close up, 1 for the
+// middle distance, 2 for far away, and for trees 3 for the far horizon. "lite"
+// asks for a cheaper middle level (phones).
+function thingMesh(kind, lod, lite) {
+  const m = newMesh();
+  const r = rng(900 + kind * 31);
+  const sides = lod ? 3 : 6;
+  // A mass of foliage. Near and middle levels: leaf cards over a dark inner
+  // ball. Far level: one mottled ball.
+  const leaf = (x, y, z, rx, ry, crown, low, high, o) => {
+    o = Object.assign(
+      {
+        lump: 0.3,
+        seed: r() * 50,
+        low,
+        high,
+        crown,
+        flat: 0.7,
+        sway: 1,
+        card: 0.62,
+      },
+      o,
+    );
+    if (lod === 3 || o.ball) return addBlob(m, ICO[0], x, y, z, rx, ry, rx, o);
+    addBlob(
+      m,
+      ICO[0],
+      x,
+      y,
+      z,
+      rx * 0.8,
+      ry * 0.8,
+      rx * 0.8,
+      Object.assign({}, o, {
+        low: [low[0] * 0.4, low[1] * 0.4, low[2] * 0.4],
+        high: [low[0] * 0.75, low[1] * 0.75, low[2] * 0.75],
+        dim: 0.55,
+      }),
+    );
+    addLeaves(m, o.ico || ICO[1], x, y, z, rx, ry, rx, o);
+  };
+  // A crown made of many clusters, each on its own limb, each a slightly
+  // different green.
+  const crownOf = (
+    base,
+    n,
+    spread,
+    yLo,
+    yHi,
+    size,
+    squash,
+    crown,
+    low,
+    high,
+    bark,
+    o,
+  ) => {
+    let cx = 1;
+    let cz = 0;
+    for (let k = 0; k < n; k++) {
+      const t = cx * -0.7373689 - cz * 0.6754903;
+      cz = cx * 0.6754903 + cz * -0.7373689;
+      cx = t;
+      const d = k ? spread * (0.45 + 0.6 * r()) : 0;
+      const x = base[0] + cx * d;
+      const y = k ? yLo + (yHi - yLo) * r() : yHi + 0.4;
+      const z = base[2] + cz * d;
+      const warm = 0.8 + 0.5 * r();
+      const lit = 0.8 + 0.45 * r();
+      const lo = [low[0] * warm * lit, low[1] * lit, low[2] * lit];
+      const hi = [high[0] * warm * lit, high[1] * lit, high[2] * lit];
+      if (!lod)
+        addTube(
+          m,
+          [
+            base[0],
+            base[1],
+            base[2],
+            0.12,
+            (base[0] + x) / 2,
+            (base[1] + y) / 2 + 0.25,
+            (base[2] + z) / 2,
+            0.08,
+            x,
+            y,
+            z,
+            0.04,
+          ],
+          [bark],
+          3,
+          0.4,
+        );
+      const rx = size * (0.8 + 0.5 * r());
+      leaf(x, y, z, rx, rx * squash, crown, lo, hi, o);
+    }
+  };
+  // Broadleaf: short trunk, limbs, a broad dome of leaf clusters.
+  if (kind === 0) {
+    const low = [0.05, 0.105, 0.032];
+    const high = [0.125, 0.195, 0.055];
+    const crown = [0, 4.4, 0, 3.6];
+    if (lod < 3)
+      addTube(
+        m,
+        [0, -0.6, 0, 0.38, 0.1, 1.3, 0.05, 0.27, 0.05, 2.7, -0.05, 0.2],
+        [BARK],
+        sides,
+        0.1,
+      );
+    if (lod >= 2)
+      return (
+        leaf(0, 4.3, 0, 3.3, 2.6, crown, low, high, {
+          lump: 0.34,
+          ico: ICO[0],
+          card: 1.75,
+        }),
+        m
+      );
+    if (lod) {
+      crownOf(
+        [0.05, 2.6, -0.05],
+        lite ? 2 : 5,
+        2.2,
+        3.3,
+        5.0,
+        1.8,
+        0.8,
+        crown,
+        low,
+        high,
+        BARK,
+        { ball: true },
+      );
+      addLeaves(m, ICO[1], 0, 4.3, 0, 3.5, 2.7, 3.5, {
+        lump: 0.3,
+        seed: 5,
+        low,
+        high,
+        crown,
+        flat: 0.7,
+        sway: 1,
+        card: 0.85,
+      });
+    } else
+      crownOf(
+        [0.05, 2.6, -0.05],
+        lite ? 6 : 10,
+        2.9,
+        3.0,
+        5.4,
+        1.2,
+        0.8,
+        crown,
+        low,
+        high,
+        BARK,
+        { card: 0.36 },
+      );
+  }
+  // Umbrella pine: tall bare trunk, wide flat crown.
+  if (kind === 1) {
+    const low = [0.045, 0.11, 0.05];
+    const high = [0.11, 0.2, 0.07];
+    const crown = [0.5, 8.3, 0.2, 3.9];
+    const bark = [0.2, 0.11, 0.07];
+    addTube(
+      m,
+      [
+        0, -0.6, 0, 0.34, 0.2, 2.5, 0.1, 0.26, 0.35, 5.2, 0.15, 0.2, 0.5, 7.4,
+        0.2, 0.15,
+      ],
+      [bark],
+      lod < 3 ? sides : 3,
+      0.15,
+    );
+    if (lod >= 2)
+      return (
+        leaf(0.5, 8.5, 0.2, 3.8, 1.5, crown, low, high, {
+          flat: 0.4,
+          ico: ICO[0],
+          card: 1.75,
+        }),
+        m
+      );
+    if (lod) {
+      crownOf(
+        [0.5, 7.3, 0.2],
+        lite ? 2 : 4,
+        2.5,
+        8.1,
+        8.7,
+        1.9,
+        0.5,
+        crown,
+        low,
+        high,
+        bark,
+        { ball: true, flat: 0.4 },
+      );
+      addLeaves(m, ICO[1], 0.5, 8.5, 0.2, 4.0, 1.5, 4.0, {
+        lump: 0.3,
+        seed: 6,
+        low,
+        high,
+        crown,
+        flat: 0.4,
+        sway: 1,
+        card: 0.85,
+      });
+    } else
+      crownOf(
+        [0.5, 7.3, 0.2],
+        lite ? 6 : 9,
+        3.0,
+        8.0,
+        8.8,
+        1.25,
+        0.55,
+        crown,
+        low,
+        high,
+        bark,
+        { card: 0.34, flat: 0.4 },
+      );
+  }
+  // Cypress: a tall dark flame of small leaf sprays over a darker core.
+  if (kind === 2) {
+    const low = [0.028, 0.075, 0.038];
+    const high = [0.085, 0.15, 0.06];
+    const crown = [0, 5.4, 0, 5.2];
+    const o = {
+      lump: 0.22,
+      seed: 3,
+      low,
+      high,
+      crown,
+      soft: 0.2,
+      taper: 0.72,
+      sway: 0.5,
+    };
+    addTube(m, [0, -0.5, 0, 0.2, 0, 1.2, 0, 0.15], [BARK], 3, 0);
+    if (lod === 3) addBlob(m, ICO[0], 0, 5.4, 0, 1.25, 5.2, 1.25, o);
+    else if (lod === 2) {
+      addBlob(
+        m,
+        ICO[0],
+        0,
+        5.3,
+        0,
+        1.0,
+        5.0,
+        1.0,
+        Object.assign({}, o, { dim: 0.55 }),
+      );
+      addLeaves(
+        m,
+        ICO[0],
+        0,
+        5.4,
+        0,
+        1.3,
+        5.3,
+        1.3,
+        Object.assign({}, o, { card: 0.9 }),
+      );
+    } else {
+      addBlob(
+        m,
+        ICO[1],
+        0,
+        5.3,
+        0,
+        1.0,
+        5.0,
+        1.0,
+        Object.assign({}, o, {
+          low: [0.02, 0.05, 0.027],
+          high: [0.045, 0.095, 0.045],
+          dim: 0.7,
+        }),
+      );
+      addLeaves(
+        m,
+        ICO[lod ? 1 : 2],
+        0,
+        5.4,
+        0,
+        1.3,
+        5.3,
+        1.3,
+        Object.assign({}, o, { lump: 0.3, card: lod ? 0.68 : 0.34 }),
+      );
+    }
+  }
+  // Bush: low scrub.
+  if (kind === 3) {
+    const low = [0.09, 0.14, 0.055];
+    const high = [0.19, 0.23, 0.085];
+    const crown = [0, 0.5, 0, 1.3];
+    if (lod)
+      return (
+        addBlob(m, ICO[2 - lod], 0, 0.55, 0, 1.3, 0.85, 1.3, {
+          lump: 0.3,
+          sway: 0.4,
+          seed: 4,
+          low: [0.06, 0.1, 0.04],
+          high: [0.13, 0.17, 0.06],
+          crown,
+          flat: 0.7,
+        }),
+        m
+      );
+    const b1 = { sway: 0.4, ico: ICO[0], card: 0.36 };
+    leaf(0, 0.7, 0, 0.9, 0.8, crown, low, high, b1);
+    leaf(0.75, 0.45, 0.3, 0.75, 0.6, crown, low, high, b1);
+    leaf(-0.6, 0.5, -0.45, 0.8, 0.62, crown, low, high, b1);
+  }
+  // Palm: curved trunk, a fountain of fronds.
+  if (kind === 4) {
+    const trunk = [];
+    const tc = [0.24, 0.19, 0.13];
+    const rings = lod ? 3 : 7;
+    for (let k = 0; k <= rings; k++) {
+      const t = k / rings;
+      trunk.push(
+        1.5 * t * t,
+        -0.5 + 7.6 * t,
+        0.3 * t,
+        0.27 - 0.12 * t + (k === 0 ? 0.1 : 0),
+      );
+    }
+    addTube(m, trunk, [tc], sides, 0.5);
+    addFronds(
+      m,
+      [1.5, 7.1, 0.3],
+      [15, 8, 5][lod],
+      [5, 2, 1][lod],
+      3.4,
+      2.0,
+      2.5,
+      0.62,
+      [0.05, 0.11, 0.03],
+      [0.12, 0.19, 0.05],
+      r,
+    );
+  }
+  if (kind === 5)
+    addBlob(m, ICO[lod ? 0 : 1], 0, 0.3, 0, 1.15, 0.7, 0.95, {
+      lump: 0.36,
+      seed: 9,
+      low: [0.25, 0.21, 0.18],
+      high: [0.43, 0.37, 0.3],
+      facet: true,
+    });
+  if (kind === 6 || kind === 11) addHouse(m, lod, kind === 11, r);
+  if (kind === 15) addLonghouse(m, lod);
+  if (kind === 16) addBoathouse(m, lod);
+  if (kind === 17) addStall(m, lod);
+  // A low wall of laid stone with a cap.
+  if (kind === 18) {
+    addWalls(m, -3.2, 3.2, -0.28, 0.28, -4.5, 0.75, [0.5, 0.46, 0.4], 0, 6);
+    addBox(m, -3.25, 3.25, 0.75, 0.86, -0.33, 0.33, [0.58, 0.54, 0.47]);
+  }
+  // Lighthouse: white tower, red bands, a lit lantern.
+  if (kind === 7) {
+    const w = [0.85, 0.83, 0.78];
+    const red = [0.55, 0.09, 0.06];
+    const dark = [0.08, 0.08, 0.09];
+    addTube(
+      m,
+      [
+        0, -4, 0, 2.9, 0, 4, 0, 2.5, 0, 4.01, 0, 2.5, 0, 7, 0, 2.3, 0, 7.01, 0,
+        2.3, 0, 11, 0, 2.05, 0, 11.01, 0, 2.05, 0, 14, 0, 1.9, 0, 14.01, 0, 1.9,
+        0, 16, 0, 1.8,
+      ],
+      [w, w, red, red, w, w, red, red, w, w],
+      6,
+    );
+    addTube(m, [0, 16, 0, 2.6, 0, 16.5, 0, 2.6], [dark], 6);
+    addTube(m, [0, 16.5, 0, 1.25, 0, 18.4, 0, 1.25], [[1, 0.85, 0.5]], 6, 0, 1);
+    addTube(m, [0, 18.4, 0, 1.6, 0, 19.8, 0, 0.1], [red], 6);
+    // A walled yard around its foot.
+    addWalls(m, -4.5, 4.5, -4.5, 4.5, -4, 0.8, [0.5, 0.47, 0.42], 0, 6);
+  }
+  // Fern.
+  if (kind === 8 && lod < 2)
+    addFronds(
+      m,
+      [0, 0.1, 0],
+      lod ? 5 : 10,
+      lod ? 2 : 4,
+      1.2,
+      1.0,
+      0.8,
+      0.2,
+      [0.045, 0.12, 0.035],
+      [0.13, 0.24, 0.06],
+      r,
+    );
+  // Reeds and dune grass: a clump of tall thin blades, some in seed.
+  if (kind === 9 && lod < 2) {
+    for (let b = 0, n = lod ? 6 : 16; b < n; b++) {
+      const ox = (r() - 0.5) * 0.9;
+      const oz = (r() - 0.5) * 0.9;
+      const tall = 1.0 + 0.9 * r();
+      const lx = (r() - 0.5) * 0.6;
+      const lz = (r() - 0.5) * 0.6;
+      const w = 0.03 + 0.02 * r();
+      const i0 = m.n;
+      for (let k = 0; k < 3; k++) {
+        const t = k / 2;
+        const x = ox + lx * t * t * tall;
+        const z = oz + lz * t * t * tall;
+        const ww = w * (1 - 0.8 * t);
+        const col = mix3([0.15, 0.18, 0.07], [0.4, 0.35, 0.16], t);
+        addPoint(
+          m,
+          x - ww,
+          tall * t,
+          z,
+          0,
+          0.8,
+          0.6,
+          col,
+          0.6 + 0.4 * t,
+          t * t,
+          0,
+        );
+        addPoint(
+          m,
+          x + ww,
+          tall * t,
+          z,
+          0,
+          0.8,
+          0.6,
+          col,
+          0.6 + 0.4 * t,
+          t * t,
+          0,
+        );
+        if (k)
+          m.i.push(
+            i0 + k * 2 - 2,
+            i0 + k * 2 - 1,
+            i0 + k * 2,
+            i0 + k * 2 - 1,
+            i0 + k * 2 + 1,
+            i0 + k * 2,
+          );
+      }
+      if (!lod && b % 2) {
+        const x = ox + lx * tall;
+        const z = oz + lz * tall;
+        const s = 0.035;
+        addQuad(
+          m,
+          [x - s, tall - 0.02, z],
+          [x, tall + 0.22, z - s],
+          [x + s, tall + 0.3, z],
+          [x, tall + 0.22, z + s],
+          [0.33, 0.24, 0.12],
+        );
+      }
+    }
+  }
+  // Outcrop: a crag standing out of a slope.
+  if (kind === 10)
+    addBlob(m, ICO[2 - lod], 0, 0.25, 0, 1.25, 0.8, 1.0, {
+      lump: 0.5,
+      seed: 21,
+      low: [0.13, 0.11, 0.095],
+      high: [0.29, 0.24, 0.18],
+      facet: true,
+    });
+  // Bell tower on the square: stone shaft, open belfry with a lamp, tiled
+  // spire.
+  if (kind === 12) {
+    const stone = [0.6, 0.54, 0.44];
+    const pale = [0.72, 0.67, 0.57];
+    const tile = [0.42, 0.17, 0.09];
+    const dark = [0.1, 0.09, 0.08];
+    addWalls(m, -2, 2, -2, 2, -3, 16.6, stone, 0, 6);
+    // String courses.
+    for (const y of [4, 8.2, 12.4])
+      addBox(m, -2.15, 2.15, y, y + 0.3, -2.15, 2.15, pale);
+    // The well.
+    addBox(m, 5.2, 7.2, -3, 0.9, 2.2, 4.2, pale, 0, 6);
+    for (const z of [2.3, 4.1])
+      addBox(m, 6.1, 6.3, 0.9, 2.6, z - 0.1, z + 0.1, [0.2, 0.13, 0.08]);
+    addBox(m, 5.4, 7, 2.6, 2.75, 2, 4.4, tile, 0, 4);
+    addBox(m, -2.4, 2.4, 16.6, 17, -2.4, 2.4, pale);
+    for (const x of [-1.9, 1.3])
+      for (const z of [-1.9, 1.3])
+        addWalls(m, x, x + 0.6, z, z + 0.6, 17, 20, pale);
+    // The lamp by the bell.
+    addBox(m, -0.4, 0.4, 17.6, 18.5, -0.4, 0.4, [1, 0.8, 0.45], 1);
+    addBox(m, -2.4, 2.4, 20, 20.4, -2.4, 2.4, pale);
+    const tip = [0, 24.2, 0];
+    const c = [
+      [-2.6, 20.4, -2.6],
+      [2.6, 20.4, -2.6],
+      [2.6, 20.4, 2.6],
+      [-2.6, 20.4, 2.6],
+    ];
+    for (let k = 0; k < 4; k++) addTri(m, c[k], c[(k + 1) % 4], tip, tile, 4);
+    if (lod < 2) {
+      addQuad(
+        m,
+        [2.03, 0, -0.6],
+        [2.03, 0, 0.6],
+        [2.03, 2.4, 0.6],
+        [2.03, 2.4, -0.6],
+        dark,
+      );
+      for (const y of [5, 9, 13]) {
+        addQuad(
+          m,
+          [2.03, y, -0.25],
+          [2.03, y, 0.25],
+          [2.03, y + 1.3, 0.25],
+          [2.03, y + 1.3, -0.25],
+          dark,
+        );
+        addQuad(
+          m,
+          [-0.25, y, 2.03],
+          [0.25, y, 2.03],
+          [0.25, y + 1.3, 2.03],
+          [-0.25, y + 1.3, 2.03],
+          dark,
+        );
+      }
+    }
+  }
+  // Jetty: a plank deck on posts, running out along +x.
+  if (kind === 13) {
+    const wood = [0.33, 0.25, 0.17];
+    const post = [0.2, 0.15, 0.1];
+    addBox(m, -6, 36, 0.9, 1.12, -1.5, 1.5, wood);
+    for (let x = 0; x <= 36; x += lod ? 12 : 6)
+      for (const z of [-1.5, 1.5])
+        addBox(m, x - 0.16, x + 0.16, -2.6, 1.7, z - 0.16, z + 0.16, post);
+    // Crates at the far end.
+    if (!lod) addBox(m, 30, 32.2, 1.12, 1.9, -1.2, 0.2, [0.5, 0.36, 0.2]);
+  }
+  // Fishing boat: a hull lofted through five sections, a mast, a furled sail.
+  if (kind === 14) {
+    const X = [-2.6, -1.6, 0, 1.5, 2.7];
+    const Wd = [0.55, 0.95, 1.05, 0.8, 0.05];
+    const hull = [0.78, 0.76, 0.7];
+    const band = [0.12, 0.3, 0.42];
+    const deck = [0.3, 0.22, 0.15];
+    const i0 = m.n;
+    for (let k = 0; k < 5; k++)
+      for (let e = -1; e <= 1; e += 2) {
+        addPoint(m, X[k], -0.35, 0, 0, -1, 0, hull, 0.6, 0, 5);
+        addPoint(
+          m,
+          X[k],
+          0.1 + 0.12 * k * (k - 2) * 0.2,
+          e * Wd[k] * 0.8,
+          0,
+          -0.3,
+          e,
+          hull,
+          0.85,
+          0,
+          5,
+        );
+        addPoint(
+          m,
+          X[k],
+          0.42 + 0.05 * (k - 2) * (k - 2),
+          e * Wd[k],
+          0,
+          0.1,
+          e,
+          band,
+          1,
+          0,
+          5,
+        );
+        addPoint(
+          m,
+          X[k],
+          0.56 + 0.05 * (k - 2) * (k - 2),
+          e * Wd[k],
+          0,
+          0.2,
+          e,
+          band,
+          1,
+          0,
+          5,
+        );
+      }
+    for (let k = 0; k < 4; k++)
+      for (let e = 0; e < 2; e++)
+        for (let q = 0; q < 3; q++) {
+          const a = i0 + k * 8 + e * 4 + q;
+          const b = a + 1;
+          const c = a + 8;
+          const d = c + 1;
+          m.i.push(a, c, b, b, c, d);
+        }
+    if (lod < 2) {
+      for (let k = 0; k < 4; k++)
+        addQuad(
+          m,
+          [X[k], 0.3, -Wd[k] * 0.9],
+          [X[k], 0.3, Wd[k] * 0.9],
+          [X[k + 1], 0.3, Wd[k + 1] * 0.9],
+          [X[k + 1], 0.3, -Wd[k + 1] * 0.9],
+          deck,
+          0,
+          5,
+        );
+      addTube(m, [0.4, 0.3, 0, 0.06, 0.4, 3.6, 0, 0.04], [deck], 3, 0, 0);
+      // The sail, furled on its yard.
+      addTube(
+        m,
+        [-1.9, 1.5, 0, 0.1, 0.4, 2.3, 0, 0.13, 2.2, 3.3, 0, 0.07],
+        [[0.8, 0.77, 0.68]],
+        3,
+        0,
+        0,
+      );
+    }
+    // Everything on a boat floats.
+    for (let k = 0; k < m.n; k++) m.v[k * VERT + 11] = 5;
+  }
+  return m;
+}
+
+// Places worth knowing on an island: the summit, a level site by the bay for
+// the village, a rise for the lighthouse, and the point where the village's
+// beach meets the sea, with the direction out into the bay.
+function scout(H, L, M, P) {
+  const S = {
+    peak: [0, 0, 0],
+    village: [P.bay[0] * 0.5, P.bay[1] * 0.5],
+    light: [0, 0],
+  };
+  let best = -1e9;
+  let bestL = -1e9;
+  let top = -1;
+  for (let y = 8; y < N - 8; y += 2)
+    for (let x = 8; x < N - 8; x += 2) {
+      const i = y * N + x;
+      const h = H[i];
+      const wx = (x + 0.5) * CELL - HALF;
+      const wz = (y + 0.5) * CELL - HALF;
+      if (h > top) {
+        top = h;
+        S.peak = [wx, h, wz];
+      }
+      if (h < 6 || M[i * 4] < 128) continue;
+      const gx = L[i * 4 + 1];
+      const gz = L[i * 4 + 2];
+      const tilt = gx * gx + gz * gz;
+      const bx = wx - P.bay[0];
+      const bz = wz - P.bay[1];
+      const toBay = Math.sqrt(bx * bx + bz * bz);
+      // Near the bay, about 16 m up, level.
+      const sv = -toBay - 6 * Math.abs(h - 16) - 4000 * tilt;
+      if (sv > best) {
+        best = sv;
+        S.village = [wx, wz];
+      }
+      // Far to the west, on a rise.
+      const sl =
+        wx * P.west[0] +
+        wz * P.west[1] -
+        0.5 * toBay -
+        3 * Math.abs(h - 30) -
+        1500 * tilt;
+      if (sl > bestL && toBay > P.bayR * 1.25) {
+        bestL = sl;
+        S.light = [wx, wz];
+      }
+    }
+  let bx = P.bay[0];
+  let bz = P.bay[1];
+  const dx = (S.village[0] - bx) / 100;
+  const dz = (S.village[1] - bz) / 100;
+  const dl = Math.sqrt(dx * dx + dz * dz) + 1e-9;
+  for (let k = 0; k < 100 && heightAt(H, bx, bz) < 0.3; k++) {
+    bx += dx;
+    bz += dz;
+  }
+  S.beach = [bx, bz];
+  S.sea = [-dx / dl, -dz / dl];
+  return S;
+}
+// The settlement: a level, paved square with a bell tower, a well, a long
+// arcaded house and market stalls; houses on the slopes around it; paved lanes
+// from each door; a jetty with boats and a boathouse; the lighthouse and its
+// keeper's house. It works in three steps: decide where everything goes, level
+// the ground under the square and across each lane, then read every height from
+// the levelled ground so that things sit on it. Returns one list per kind (as
+// placeThings does), "keep": x, z, radius to keep clear, "pave": one byte per
+// grid cell saying where the ground is paved, and "dirty": the box of cells
+// whose height changed.
+function layVillage(H, L, M, P, S, seed) {
+  const lists = KINDS.map(() => []);
+  const keep = [];
+  const V = S.village;
+  const q = S.sea;
+  const pave = new Uint8Array(N * N);
+  const onGround = [];
+  const dirty = [N, N, 0, 0];
+  const cell = (x, z) =>
+    clamp(Math.floor(z / CELL + N / 2), 0, N - 1) * N +
+    clamp(Math.floor(x / CELL + N / 2), 0, N - 1);
+  const touch = (i) => {
+    const x = i % N;
+    const y = (i / N) | 0;
+    dirty[0] = Math.min(dirty[0], x - 2);
+    dirty[1] = Math.min(dirty[1], y - 2);
+    dirty[2] = Math.max(dirty[2], x + 2);
+    dirty[3] = Math.max(dirty[3], y + 2);
+  };
+  const slab = (x, z, v) => {
+    const i = cell(x, z);
+    if (H[i] > 0.6) {
+      pave[i] = Math.max(pave[i], v);
+      M[i * 4] = Math.min(M[i * 4], 255 - v);
+    }
+    return i;
+  };
+  // A lane bends a little on its way: it is drawn through a point pushed off
+  // the straight line. The cells either side of it are pulled most of the way
+  // to its height, so the lane is level across its width.
+  const lane = (x0, z0, x1, z1, bend) => {
+    const mx = (x0 + x1) / 2 - (z1 - z0) * bend;
+    const mz = (z0 + z1) / 2 + (x1 - x0) * bend;
+    const n = Math.ceil(
+      Math.sqrt((x1 - x0) * (x1 - x0) + (z1 - z0) * (z1 - z0)) / 2,
+    );
+    for (let k = 0; k <= n; k++) {
+      const t = k / n;
+      const x = mix(mix(x0, mx, t), mix(mx, x1, t), t);
+      const z = mix(mix(z0, mz, t), mix(mz, z1, t), t);
+      const i = slab(x, z, 255);
+      for (const j of [
+        slab(x + CELL, z, 130),
+        slab(x - CELL, z, 130),
+        slab(x, z + CELL, 130),
+        slab(x, z - CELL, 130),
+      ])
+        if (H[j] > 0.6 && H[i] > 0.6) {
+          H[j] = mix(H[j], H[i], 0.6);
+          touch(j);
+        }
+    }
+  };
+  // "sink" metres into the ground; the height is filled in at the end, once the
+  // ground has its final shape.
+  const add = (kind, x, z, sink, size, c, s, tint, chance, clear) => {
+    onGround.push(kind, lists[kind].length);
+    lists[kind].push(x, sink, z, size, c, s, tint, chance);
+    if (clear) keep.push(x, z, clear);
+  };
+  const afloat = (kind, x, z, size, c, s, tint, chance, clear) => {
+    lists[kind].push(x, 0, z, size, c, s, tint, chance);
+    if (clear) keep.push(x, z, clear);
+  };
+  const set = (kind, a, b, c, s, tint, clear, sink) =>
+    add(
+      kind,
+      V[0] + q[0] * a - q[1] * b,
+      V[1] + q[1] * a + q[0] * b,
+      sink || 0.1,
+      1,
+      c,
+      s,
+      tint,
+      0.5,
+      clear,
+    );
+  // 1. The square: a terrace cut level into the slope, a little uphill of the
+  // village's centre point.
+  const C = [V[0] - q[0] * 6, V[1] - q[1] * 6];
+  const level = heightAt(H, V[0], V[1]);
+  const rim = [];
+  let ux = 1;
+  let uz = 0;
+  // Note the natural ground just outside, all the way round.
+  for (let k = 0; k < 24; k++) {
+    rim.push(ux, uz, heightAt(H, C[0] + ux * 20, C[1] + uz * 20));
+    // Turn 15 degrees.
+    const t = ux * 0.9659258 - uz * 0.258819;
+    uz = ux * 0.258819 + uz * 0.9659258;
+    ux = t;
+  }
+  for (let a = -20; a <= 20; a += 2)
+    for (let b = -20; b <= 20; b += 2) {
+      const d = Math.sqrt(a * a + b * b);
+      const i = cell(C[0] + a, C[1] + b);
+      if (d > 19.5 || H[i] < 0.6) continue;
+      H[i] = mix(level, H[i], smooth(14.5, 19, d));
+      touch(i);
+      if (d < 15) slab(C[0] + a, C[1] + b, 255);
+    }
+  // Where the ground outside stands well above or below the square, a retaining
+  // wall of laid stone holds the step.
+  for (let k = 0; k < 72; k += 3)
+    if (Math.abs(rim[k + 2] - level) > 0.9) {
+      onGround.push(18, lists[18].length);
+      lists[18].push(
+        C[0] + rim[k] * 15.8,
+        0,
+        C[1] + rim[k + 1] * 15.8,
+        1,
+        -rim[k + 1],
+        rim[k],
+        0.5,
+        0.5,
+      );
+      lists[18][lists[18].length - 7] = -clamp(
+        rim[k + 2] - level - 0.7,
+        0,
+        3.4,
+      );
+    }
+  // Bell tower and well.
+  set(12, -3, -8, q[0], q[1], 0.5, 6);
+  // The long house, its arcade facing the square and the sea.
+  set(15, -9, 4, q[0], q[1], 0.5, 11, 0.3);
+  // Market stalls.
+  set(17, 4, 8, -q[1], q[0], 0.1, 3);
+  set(17, 6, -4, q[0], q[1], 0.6, 3);
+  set(17, 1, 12, q[0], q[1], 0.9, 3);
+  // 2. Houses on a spiral outward from the square, each looking downhill, each
+  // with a lane to the square.
+  let cx = 1;
+  let cz = 0;
+  let homes = 0;
+  for (let k = 6; k < 100 && homes < 44; k++) {
+    const t = cx * -0.7373689 - cz * 0.6754903;
+    cz = cx * 0.6754903 + cz * -0.7373689;
+    cx = t;
+    const d = 9.5 * Math.sqrt(k + 0.6);
+    const x = C[0] + cx * d;
+    const z = C[1] + cz * d;
+    const i = cell(x, z) * 4;
+    const gx = L[i + 1];
+    const gz = L[i + 2];
+    const tilt = Math.sqrt(gx * gx + gz * gz);
+    if (L[i] < 3 || tilt > 0.42 || M[i] < 100) continue;
+    const f = tilt > 0.02 ? [gx / tilt, gz / tilt] : [q[0], q[1]];
+    const hsh = hash2(k, 5, seed);
+    const kind = hsh % 4 === 0 ? 11 : 6;
+    add(
+      kind,
+      x,
+      z,
+      0.2,
+      0.8 + (0.3 * ((hsh >>> 4) & 255)) / 255,
+      f[0],
+      f[1],
+      ((hsh >>> 12) & 255) / 256,
+      ((hsh >>> 20) & 255) / 256,
+      9.5,
+    );
+    lane(
+      x + f[0] * 6,
+      z + f[1] * 6,
+      C[0] + cx * 13,
+      C[1] + cz * 13,
+      (((hsh >>> 8) & 15) - 7.5) / 40,
+    );
+    // A wall below the terrace.
+    if (hsh % 3 === 0)
+      add(
+        18,
+        x + f[0] * 9 - f[1] * 3,
+        z + f[1] * 9 + f[0] * 3,
+        0.2,
+        1,
+        -f[1],
+        f[0],
+        0.5,
+        0.5,
+        0,
+      );
+    homes++;
+  }
+  lane(C[0] + q[0] * 13, C[1] + q[1] * 13, S.beach[0], S.beach[1], 0.12);
+  // 3. The shore: lighthouse and keeper's house, jetty, boathouse, boats.
+  add(7, S.light[0], S.light[1], 0, 1, 1, 0, 0, 0.5, 8);
+  // On the lee side.
+  add(
+    6,
+    S.light[0] - P.west[0] * 13,
+    S.light[1] - P.west[1] * 13,
+    0.2,
+    0.85,
+    P.west[0],
+    P.west[1],
+    0.3,
+    0.4,
+    9.5,
+  );
+  // The jetty runs out to sea.
+  afloat(13, S.beach[0], S.beach[1], 1, q[0], q[1], 0.5, 0.5, 6);
+  // The boathouse, back from the water.
+  add(
+    16,
+    S.beach[0] - q[0] * 12 - q[1] * 17,
+    S.beach[1] - q[1] * 12 + q[0] * 17,
+    0,
+    1,
+    q[0],
+    q[1],
+    0.5,
+    0.5,
+    9,
+  );
+  // Boats: some at the jetty, some at anchor.
+  for (let k = 0; k < 11; k++) {
+    // Two lie where the tour arrives.
+    const h = hash2(k, 77, seed);
+    const out =
+      k < 4 ? 14 + k * 6 : k < 6 ? 50 + (k - 4) * 13 : 34 + (h & 255) / 3;
+    const side =
+      k < 4
+        ? k % 2
+          ? 3.4
+          : -3.4
+        : k < 6
+          ? -15 + (k - 4) * 13
+          : (((h >>> 8) & 255) - 128) * 0.6;
+    const x = S.beach[0] + q[0] * out - q[1] * side;
+    const z = S.beach[1] + q[1] * out + q[0] * side;
+    const a = ((h >>> 16) & 255) / 128 - 1;
+    const b = (h >>> 24) / 128 - 1;
+    const l = 1 / Math.sqrt(a * a + b * b + 0.01);
+    if (heightAt(H, x, z) < -0.7)
+      afloat(
+        14,
+        x,
+        z,
+        0.9 + (0.4 * (h & 15)) / 15,
+        k < 4 ? q[0] : a * l,
+        k < 4 ? q[1] : b * l,
+        ((h >>> 4) & 255) / 256,
+        ((h >>> 12) & 255) / 256,
+        0,
+      );
+  }
+  for (let k = 0; k < onGround.length; k += 2) {
+    const t = lists[onGround[k]];
+    const o = onGround[k + 1];
+    t[o + 1] = Math.max(heightAt(H, t[o], t[o + 2]), 0.6) - t[o + 1];
+  }
+  for (let c = 0; c < 4; c++) dirty[c] = clamp(dirty[c], 0, N - 1);
+  return { lists, keep, pave, dirty };
+}
+// The rule for one candidate spot in the forest's grid: which tree grows here,
+// if any. Returns a kind number (0 broadleaf, 1 pine, 2 cypress, 4 palm) or -1
+// for none. h is height in metres; grass, moist, sand and steep are the cover
+// masks, 0..1; grove is 0 in a clearing and 1 deep in a wood; tall is a second
+// noise that gathers cypresses; chance and pick are this spot's two dice, 0..1.
+function whichTree(h, grass, moist, sand, steep, grove, tall, chance, pick) {
+  // Palms along the back of the beach.
+  if (h > 1.6 && h < 7 && sand > 0.12 && sand < 0.8)
+    return chance < 0.2 ? 4 : -1;
+  // No soil, or too close to the sea.
+  if (grass < 0.5 || h < 2.5) return -1;
+  // Thick in wet groves, thin toward the heights.
+  const want = grove * (0.2 + 0.8 * moist) * (1 - smooth(110, 210, h));
+  if (chance > want * 0.8) return -1;
+  if (tall > 0.25 && h < 110 && pick < 0.55) return 2;
+  // Pines take the dry, steep ground.
+  return 1 - moist + h / 260 + steep > 0.95 + 0.3 * pick ? 1 : 0;
+}
+// Where everything else stands. Returns one list per kind, 8 numbers each: x,
+// y, z, size, turn (cos, sin), tint, chance. Rules read the cover masks: trees
+// want grass and moisture, pines take dry slopes, palms line the beach, ferns
+// grow in the shade of groves, reeds at the back of the beach, crags on steep
+// bare ground, rocks in the shallows. A noise field opens clearings so the
+// forest is not even. Gardens and flowering shrubs gather round the houses.
+function placeThings(H, L, M, P, S, village, seed) {
+  const lists = village.lists;
+  const keep = village.keep;
+  const put = (kind, x, z, size, h, sink, tint) => {
+    const a = (h & 1023) / 512 - 1;
+    const b = ((h >>> 10) & 1023) / 512 - 1;
+    const l = 1 / Math.sqrt(a * a + b * b + 1e-6);
+    lists[kind].push(
+      x,
+      heightAt(H, x, z) - sink,
+      z,
+      size,
+      a * l,
+      b * l,
+      tint === undefined ? ((h >>> 20) & 255) / 256 : tint,
+      ((h >>> 24) / 256) * 0.999 + (h & 15) / 4096,
+    );
+  };
+  const clear = (x, z, pad) => {
+    for (let k = 0; k < keep.length; k += 3) {
+      const ax = x - keep[k];
+      const az = z - keep[k + 1];
+      const d = keep[k + 2] + pad;
+      if (ax * ax + az * az < d * d) return false;
+    }
+    return true;
+  };
+  // Round each house: a flowering shrub by the wall, a cypress or a tree in
+  // blossom, and for some a garden in rows.
+  for (const kind of [6, 11])
+    for (let k = 0, hs = lists[kind]; k < hs.length; k += 8) {
+      const x = hs[k];
+      const z = hs[k + 2];
+      const fx = hs[k + 4];
+      const fz = hs[k + 5];
+      const h = hash2(k, kind, seed + 3);
+      const at = (a, b) => [x + fx * a - fz * b, z + fz * a + fx * b];
+      let p = at(1.5, -5.6);
+      put(3, p[0], p[1], 1.1, h, 0.1, 0.95);
+      p = at(-5.5, 5.5 - (h & 7));
+      put(
+        h & 8 ? 2 : 0,
+        p[0],
+        p[1],
+        h & 8 ? 0.8 : 0.6,
+        h >>> 4,
+        0.3,
+        h & 8 ? 0.4 : 0.96,
+      );
+      if (h % 3 === 0)
+        for (let row = 0; row < 3; row++)
+          for (let c = 0; c < 5; c++) {
+            p = at(-7 - row * 2.4, -4.4 + c * 2.2);
+            put(3, p[0], p[1], 0.5, hash2(row, c, h), 0.1, 0.2);
+          }
+    }
+  // One candidate spot in each grid cell, nudged off the lattice.
+  const scatter = (grid, salt, rule) => {
+    const n = Math.floor(WORLD / grid);
+    for (let gz = 2; gz < n - 2; gz++)
+      for (let gx = 2; gx < n - 2; gx++) {
+        const h = hash2(gx, gz, seed + salt);
+        const x = (gx + (h & 255) / 256) * grid - HALF;
+        const z = (gz + ((h >>> 8) & 255) / 256) * grid - HALF;
+        const i =
+          (Math.floor(z / CELL + N / 2) * N + Math.floor(x / CELL + N / 2)) * 4;
+        const gxs = L[i + 1];
+        const gzs = L[i + 2];
+        rule(
+          x,
+          z,
+          L[i],
+          M[i] / 255,
+          M[i + 1] / 255,
+          M[i + 2] / 255,
+          1 - 1 / Math.sqrt(1 + gxs * gxs + gzs * gzs),
+          (h >>> 16) / 65536,
+          hash2(gx, gz, seed + salt + 1),
+        );
+      }
+  };
+  const grove = (x, z) => smooth(-0.3, 0.2, noise(x / 150, z / 150, seed + 20));
+  // Trees.
+  scatter(5.2, 10, (x, z, h, grass, moist, sand, steep, chance, h2) => {
+    const size = 0.72 + (0.6 * (h2 & 255)) / 255;
+    const pick = ((h2 >>> 8) & 255) / 255;
+    const kind = whichTree(
+      h,
+      grass,
+      moist,
+      sand,
+      steep,
+      grove(x, z),
+      noise(x / 80, z / 80, seed + 21),
+      chance,
+      pick,
+    );
+    if (kind >= 0 && clear(x, z, 0))
+      put(
+        kind,
+        x,
+        z,
+        kind === 2 ? size * (0.8 + 0.5 * pick) : size,
+        h2,
+        kind === 4 ? 0.2 : 0.3,
+      );
+  });
+  // Bushes, thick at the forest's edge and on rough ground.
+  scatter(3.7, 30, (x, z, h, grass, moist, sand, steep, chance, h2) => {
+    // Scrub holding on to rock.
+    if (h > 25 && grass < 0.22 && steep < 0.5 && chance < 0.12)
+      return put(3, x, z, 0.6 + (0.7 * (h2 & 255)) / 255, h2, 0.2, 0.3);
+    if (grass < 0.22 || h < 2.2 || !clear(x, z, -2)) return;
+    const g = grove(x, z);
+    const edge = 1 - Math.abs(g - 0.5) * 2;
+    if (
+      chance <
+      0.07 +
+        0.22 * edge +
+        0.2 * (1 - g) * smooth(0.1, 0.5, steep + moist * 0.3) +
+        0.12 * smooth(100, 200, h)
+    )
+      put(3, x, z, 0.7 + (0.9 * (h2 & 255)) / 255, h2, 0.15);
+  });
+  // Ferns in the shade of groves.
+  scatter(2.5, 60, (x, z, h, grass, moist, sand, steep, chance, h2) => {
+    if (
+      grass > 0.4 &&
+      h > 2.5 &&
+      chance < 0.42 * grove(x, z) * (0.3 + moist) &&
+      clear(x, z, -3)
+    )
+      put(8, x, z, 0.7 + (0.8 * (h2 & 255)) / 255, h2, 0.05);
+  });
+  // Reeds and dune grass behind the beach.
+  scatter(2.1, 70, (x, z, h, grass, moist, sand, steep, chance, h2) => {
+    if (
+      h > 1.1 &&
+      h < 6 &&
+      sand > 0.08 &&
+      sand < 0.93 &&
+      chance < 0.34 * (1 - Math.abs(sand - 0.45) * 1.6) &&
+      clear(x, z, -3)
+    )
+      put(9, x, z, 0.7 + (0.7 * (h2 & 255)) / 255, h2, 0.05);
+  });
+  // Crags on steep bare ground.
+  scatter(6.3, 80, (x, z, h, grass, moist, sand, steep, chance, h2) => {
+    const u = (h2 & 255) / 255;
+    const size = 1.3 + 3.2 * u * u;
+    // Half buried.
+    if (
+      h > 1.5 &&
+      steep > 0.3 &&
+      grass < 0.45 &&
+      chance < 0.2 * smooth(0.3, 0.5, steep)
+    )
+      put(10, x, z, size, h2, size * (0.4 + 0.25 * u));
+  });
+  // Loose rocks.
+  scatter(4.6, 50, (x, z, h, grass, moist, sand, steep, chance, h2) => {
+    const size = 0.5 + 2.6 * ((h2 & 255) / 255) * (((h2 >>> 8) & 255) / 255);
+    // Rocks gather in fields.
+    const strewn = smooth(0.05, 0.4, noise(x / 60, z / 60, seed + 51));
+    if (
+      h > -2.2 && h < 1.2
+        ? chance < 0.05 + 0.5 * steep
+        : h > 1.2 &&
+          chance <
+            0.34 *
+              strewn *
+              smooth(0.12, 0.3, steep) *
+              (1 - smooth(0.45, 0.7, steep)) *
+              (1.2 - grass)
+    )
+      if (clear(x, z, -2)) put(5, x, z, size, h2, 0.3 * size);
+  });
+  return lists;
+}
+// Sorts one kind's list into a 32 x 32 grid of plots, 64 m each. Drawing skips
+// hidden plots and picks a level of detail per plot. Within a plot the order is
+// shuffled, so drawing only the first part thins it evenly. start[c] is the
+// first item of plot c.
+const PLOTS = 32;
+const PLOT = WORLD / PLOTS;
+function bucket(list) {
+  const n = list.length / 8;
+  const order = new Uint32Array(n);
+  const key = new Float64Array(n);
+  const start = new Uint32Array(PLOTS * PLOTS + 1);
+  for (let i = 0; i < n; i++) {
+    // The plot this thing stands in, from its x and its z.
+    const across = Math.floor((list[i * 8] + HALF) / PLOT);
+    const down = Math.floor((list[i * 8 + 2] + HALF) / PLOT);
+    const c = clamp(down, 0, PLOTS - 1) * PLOTS + clamp(across, 0, PLOTS - 1);
+    order[i] = i;
+    // Sort by plot, and within a plot by the thing's chance number, which is
+    // what shuffles it.
+    key[i] = c + list[i * 8 + 7];
+    start[c + 1]++;
+  }
+  // Turn the counts into where each plot starts.
+  for (let c = 0; c < PLOTS * PLOTS; c++) start[c + 1] += start[c];
+  order.sort((a, b) => key[a] - key[b] || a - b);
+  // Copy the things out in their new order.
+  const data = new Float32Array(n * 8);
+  for (let i = 0; i < n; i++)
+    data.set(list.slice(order[i] * 8, order[i] * 8 + 8), i * 8);
+  return { data, start };
+}
+// The first part of every plot of a list that bucket has sorted: share is 0..1
+// of each plot's things, rounded up. Small lists (houses, towers) stay whole.
+// "?share=0.5" in the address asks for it, to see what drawing a prefix shows.
+function firstShare(t, share) {
+  if (share >= 1 || t.data.length < 1600) return t;
+  const plots = t.start.length - 1;
+  const start = new Uint32Array(plots + 1);
+  const data = [];
+  for (let c = 0; c < plots; c++) {
+    const n = Math.ceil((t.start[c + 1] - t.start[c]) * share);
+    for (let i = t.start[c] * 8; i < (t.start[c] + n) * 8; i++)
+      data.push(t.data[i]);
+    start[c + 1] = data.length / 8;
+  }
+  return { data: Float32Array.from(data), start };
+}
+// Writes the height of what stands on each cell into the cover mask, so that
+// trees and houses cast shadows.
+function stampCanopy(M, things) {
+  things.forEach((t, kind) => {
+    const hgt = CROWN[kind][0];
+    const rad = CROWN[kind][1];
+    if (!hgt) return;
+    for (let i = 0; i < t.data.length; i += 8) {
+      const s = t.data[i + 3];
+      const r = Math.max(rad * s, 2.2) / CELL;
+      const cx = t.data[i] / CELL + N / 2 - 0.5;
+      const cz = t.data[i + 2] / CELL + N / 2 - 0.5;
+      for (let y = Math.ceil(cz - r); y <= cz + r; y++)
+        for (let x = Math.ceil(cx - r); x <= cx + r; x++) {
+          const d = Math.sqrt((x - cx) * (x - cx) + (y - cz) * (y - cz)) / r;
+          const top = ((hgt * s * (1 - 0.5 * d * d)) / 24) * 255;
+          const j = (clamp(y, 0, N - 1) * N + clamp(x, 0, N - 1)) * 4 + 3;
+          if (d <= 1 && top > M[j]) M[j] = Math.min(255, top);
+        }
+    }
+  });
+}
+// endregion: 6-things (pure)
+
+// region: frame
+// What every layer shares: the canvas and the WebGL helpers, the numbers sent
+// to every shader each frame, the camera's state, and three lists that layers
+// add themselves to. No lesson edits this region. A layer joins in from its own
+// "(page)" region by calling onGrow (build once), onTick (every frame, before
+// drawing) and onDraw (every frame, in the order of the number given).
+const Q = new URLSearchParams(location.search);
+const canvas = document.getElementById('c');
+// When anything fails, say so on the page and not only in the console. A
+// function that is not written yet throws "its name: not written yet", and that
+// line is what shows, in place of "growing an island".
+function showFailure(e) {
+  const note = document.getElementById('fade');
+  note.textContent = String((e && e.message) || e)
+    .split('\n')[0]
+    .slice(0, 160);
+  note.style.opacity = 1;
+}
+addEventListener('error', (e) => showFailure(e.error || e.message));
+addEventListener('unhandledrejection', (e) => showFailure(e.reason));
+const gl = canvas.getContext('webgl2', {
+  antialias: true,
+  alpha: false,
+  powerPreference: 'high-performance',
+});
+const stat = { calls: 0, tris: 0, bytes: 0, ms: 0, scale: 1 };
+
+function program(vs, fs) {
+  const p = gl.createProgram();
+  for (const [type, src] of [
+    [gl.VERTEX_SHADER, vs],
+    [gl.FRAGMENT_SHADER, fs],
+  ]) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS))
+      throw new Error(
+        gl.getShaderInfoLog(s) +
+          '\n' +
+          src
+            .split('\n')
+            .map((l, i) => i + 1 + ' ' + l)
+            .join('\n'),
+      );
+    gl.attachShader(p, s);
+  }
+  gl.linkProgram(p);
+  if (!gl.getProgramParameter(p, gl.LINK_STATUS))
+    throw new Error(gl.getProgramInfoLog(p));
+  gl.useProgram(p);
+  const block = gl.getUniformBlockIndex(p, 'F');
+  if (block !== gl.INVALID_INDEX) gl.uniformBlockBinding(p, block, 0);
+  ['tH', 'tM', 'tS', 'tN', 'tW', 'tV'].forEach((name, unit) =>
+    gl.uniform1i(gl.getUniformLocation(p, name), unit),
+  );
+  return p;
+}
+function texture(unit, internal, format, type, size, data, wrap, filter) {
+  const t = gl.createTexture();
+  gl.activeTexture(gl.TEXTURE0 + unit);
+  gl.bindTexture(gl.TEXTURE_2D, t);
+  gl.texImage2D(gl.TEXTURE_2D, 0, internal, size, size, 0, format, type, data);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrap);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, wrap);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filter);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  if (filter === gl.LINEAR_MIPMAP_LINEAR) gl.generateMipmap(gl.TEXTURE_2D);
+  return t;
+}
+function buffer(target, data) {
+  const b = gl.createBuffer();
+  gl.bindBuffer(target, b);
+  gl.bufferData(target, data, gl.STATIC_DRAW);
+  stat.bytes += data.byteLength;
+  return b;
+}
+function draw(mode, count, type, offset, instances) {
+  stat.calls++;
+  stat.tris += ((count / 3) | 0) * (instances || 1);
+  if (type === 0) gl.drawArrays(mode, 0, count);
+  else if (instances)
+    gl.drawElementsInstanced(mode, count, type, offset, instances);
+  else gl.drawElements(mode, count, type, offset);
+}
+// A mesh with plain float attributes: sizes lists how many numbers each
+// attribute takes.
+function mesh(verts, idx, sizes) {
+  const vao = gl.createVertexArray();
+  const stride = sizes.reduce((a, b) => a + b, 0) * 4;
+  gl.bindVertexArray(vao);
+  buffer(gl.ARRAY_BUFFER, verts);
+  sizes.forEach((size, loc) => {
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(
+      loc,
+      size,
+      gl.FLOAT,
+      false,
+      stride,
+      sizes.slice(0, loc).reduce((a, b) => a + b, 0) * 4,
+    );
+  });
+  buffer(gl.ELEMENT_ARRAY_BUFFER, idx);
+  return { vao, count: idx.length };
+}
+// Attributes that change once per copy of a mesh, not once per point: 8 numbers
+// a copy, as two groups of four.
+function perCopy(buf, locs) {
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  locs.forEach((loc, k) => {
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 4, gl.FLOAT, false, 32, k * 16);
+    gl.vertexAttribDivisor(loc, 1);
+  });
+}
+
+const seed = Q.has('seed')
+  ? parseInt(Q.get('seed')) >>> 0
+  : (Math.random() * 1e6) | 0;
+// The link names the island (some browsers refuse this for local files).
+if (!Q.has('seed'))
+  try {
+    history.replaceState(null, '', '?seed=' + seed);
+  } catch (e) {}
+const SHOT = Q.has('shot');
+const PHONE = matchMedia('(pointer: coarse)').matches;
+const $ = (id) => document.getElementById(id);
+// The grown world: layout, height grid, GPU objects; "detail" scales every
+// detail distance.
+const W = { detail: 1 };
+const FB = new Float32Array(52);
+const frameUbo = gl.createBuffer();
+const proj = new Float32Array(16);
+const view = new Float32Array(16);
+const planes = new Float32Array(24);
+const cam = {
+  eye: [0, 60, -420],
+  look: [0, 0, 0],
+  yaw: 0,
+  pitch: -0.1,
+  R: [0, 0, 0],
+  U: [0, 0, 0],
+  F: [0, 0, 0],
+};
+let time = +(Q.get('t') || 0);
+let frames = 0;
+let lastNow = 0;
+const tick = () => new Promise((r) => setTimeout(r));
+const GROW = [];
+const TICK = [];
+const DRAW = [];
+const onGrow = (f) => GROW.push(f);
+const onTick = (f) => TICK.push(f);
+const onDraw = (order, f) => DRAW.push([order, f]);
+
+// The start of every shader: the numbers shared by all of them, and the six
+// images they may read.
+const GLSL_HEAD = `#version 300 es
+precision highp float;
+precision highp sampler2D;
+layout(std140) uniform F {
+  mat4 uVP;
+  // Eye, time in seconds.
+  vec4 uCam;
+  // Camera right axis scaled to the screen edge, width in pixels.
+  vec4 uRight;
+  // Camera up axis scaled to the screen edge, height in pixels.
+  vec4 uUp;
+  // Camera forward, quality 0..1.
+  vec4 uFwd;
+  // Direction to the light, night 0..1.
+  vec4 uSun;
+  // Light colour, cloud cover.
+  vec4 uSunCol;
+  // Zenith sky, haze per metre.
+  vec4 uZen;
+  // Horizon sky, wind.
+  vec4 uHor;
+  // Exposure, tide, day 0..1.
+  vec4 uMisc;
+};
+// Land (height, slopes, sky view), cover, shadows, noise, waves, paving.
+uniform sampler2D tH, tM, tS, tN, tW, tV;
+const float WORLD = 2048.0;
+`;
+
+// Grows the world: every layer's onGrow step in turn, with a pause between so
+// the page stays alive.
+async function start() {
+  // Every image slot holds something from the start, so a shader written before
+  // its layer exists still runs: black everywhere, except the shadow image,
+  // which is white (nothing is in shadow).
+  for (let unit = 0; unit < 6; unit++)
+    texture(
+      unit,
+      gl.RGBA8,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      1,
+      new Uint8Array(4).fill(unit === 2 ? 255 : 0),
+      gl.CLAMP_TO_EDGE,
+      gl.LINEAR,
+    );
+  texture(
+    3,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    256,
+    noiseTile(256, 5),
+    gl.REPEAT,
+    gl.LINEAR_MIPMAP_LINEAR,
+  );
+  gl.bindBufferBase(gl.UNIFORM_BUFFER, 0, frameUbo);
+  gl.bufferData(gl.UNIFORM_BUFFER, FB.byteLength, gl.DYNAMIC_DRAW);
+  for (const step of GROW) {
+    await step();
+    await tick();
+  }
+  DRAW.sort((a, b) => a[0] - b[0]);
+  requestAnimationFrame(frame);
+}
+function resize() {
+  const dpr = Math.min(devicePixelRatio || 1, 2) * stat.scale;
+  const w = Math.max(2, Math.round(canvas.clientWidth * dpr));
+  const h = Math.max(2, Math.round(canvas.clientHeight * dpr));
+  if (canvas.width !== w || canvas.height !== h) {
+    canvas.width = w;
+    canvas.height = h;
+  }
+}
+// One frame: let every layer update, work out the camera, send the shared
+// numbers, then let every layer draw.
+function frame(now) {
+  const real = Math.min((now - lastNow) / 1000, 0.1);
+  const dt = SHOT ? 0 : real;
+  lastNow = now;
+  time += dt;
+  stat.t0 = performance.now();
+  for (const f of TICK) f(dt, real);
+  resize();
+  stat.calls = stat.tris = 0;
+  // A little longer lens when upright.
+  const aspect = canvas.width / canvas.height;
+  const tanY = (0.52 / Math.sqrt(aspect)) * (aspect < 1 ? 0.88 : 1);
+  perspective(proj, tanY, aspect, 0.6, 20000);
+  viewMatrix(view, cam.eye, cam.yaw, cam.pitch, cam.R, cam.U, cam.F);
+  mul4(FB, proj, view);
+  frustumPlanes(planes, FB);
+  FB.set(cam.eye, 16);
+  FB[19] = time;
+  for (let i = 0; i < 3; i++) {
+    FB[20 + i] = cam.R[i] * tanY * aspect;
+    FB[24 + i] = cam.U[i] * tanY;
+    FB[28 + i] = cam.F[i];
+  }
+  FB[23] = canvas.width;
+  FB[27] = canvas.height;
+  FB[31] = PHONE ? 0 : 1;
+  gl.bindBuffer(gl.UNIFORM_BUFFER, frameUbo);
+  gl.bufferSubData(gl.UNIFORM_BUFFER, 0, FB);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.enable(gl.DEPTH_TEST);
+  gl.depthFunc(gl.LEQUAL);
+  gl.depthMask(true);
+  gl.disable(gl.BLEND);
+  // A plain sky, until the light layer draws a real one over it.
+  gl.clearColor(0.6, 0.72, 0.86, 1);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  for (const pass of DRAW) pass[1](dt, real);
+  // Test switch: wait for the GPU to finish, so frames cannot overlap.
+  if (Q.has('bench') && frames > 20 && frames < 20 + 40) {
+    gl.readPixels(0, 0, 1, 1, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array(4));
+    stat.bench = (stat.bench || 0) + (performance.now() - stat.t0) / 39;
+    if (frames < 20 + 39) {
+      frames++;
+      return frame(now);
+    }
+  }
+  if (++frames === 3) {
+    $('fade').style.opacity = 0;
+    window.__ready = true;
+  }
+  requestAnimationFrame(frame);
+}
+// endregion: frame
+
+// stub: still air (replaced by 7-motion)
+// Nothing moves: every point of every thing stays where it was built.
+const GLSL_WIND = `
+vec3 windMove(vec3 p, vec4 ext, vec4 at, vec4 own) {
+  return p;
+}
+`;
+// endstub: still air
+
+// The shaders follow, as text, ordered so that each can use the pieces before
+// it: light, water, ground, land, motion, things.
+// region: 3-light (glsl)
+const GLSL_SKY = `
+// Sky without clouds: a gradient from horizon to zenith, warm air around the
+// sun, a pink belt opposite it.
+vec3 skyBase(vec3 d) {
+  float y = max(d.y, 0.0);
+  float sd = max(dot(d, uSun.xyz), 0.0);
+  float low = 1.0 - smoothstep(0.0, 0.45, uSun.y);
+  vec3 c = mix(uHor.rgb, uZen.rgb, pow(y, 0.38));
+  float toward = 0.5 + 0.5 * dot(normalize(d.xz + 1e-5), normalize(uSun.xz));
+  // Light that has crossed twice the air: redder still.
+  vec3 gold = uSunCol.rgb * uSunCol.rgb / (uSunCol.r + 0.05);
+  c += gold
+      * low
+      * (0.30 * pow(toward, 3.0) * pow(1.0 - y, 5.0) + 0.14 * pow(sd, 4.0));
+  c += uSunCol.rgb * (0.04 * pow(sd, 3.0) + 0.45 * pow(sd, 90.0));
+  c += vec3(0.17, 0.06, 0.10)
+      * low
+      * (1.0 - uSun.w)
+      * pow(1.0 - y, 8.0)
+      * (1.0 - toward);
+  return c;
+}
+const float CLOUD_Y = 1200.0;
+// The noise image, read so that values ease from one pixel to the next. Plain
+// blending between pixels leaves straight facets, and the cloud edge (a steep
+// threshold on this value) showed them as blocks and stair-steps.
+vec4 soft(vec2 uv) {
+  uv = uv * 256.0 + 0.5;
+  vec2 i = floor(uv), f = fract(uv);
+  return textureLod(tN, (i + f * f * (3.0 - 2.0 * f) - 0.5) / 256.0, 0.0);
+}
+// Cloud thickness 0..1 at a point on the cloud deck (metres): big shapes, then
+// smaller billows eating the edges.
+float cloudAt(vec2 q) {
+  q = q * 0.00007 + uCam.w * vec2(0.0007, 0.00025);
+  float n = soft(q).r * 0.6
+      + soft(q * 2.9 + uCam.w * 0.0004).g * 0.27
+      + textureLod(tN, q * 9.3, 1.0).b * 0.13;
+  return smoothstep(0.0, 0.14, n - 1.0 + uSunCol.w);
+}
+// Sky with clouds, as seen from the camera along d. "fine" adds the second
+// look-up that shades the clouds.
+vec3 skyFull(vec3 d, bool fine) {
+  vec3 c = skyBase(d);
+  if (d.y < 0.01) return c;
+  float sd = max(dot(d, uSun.xyz), 0.0);
+  // High thin cloud: long streaks far above the first layer, lit before and
+  // after it.
+  if (fine) {
+    vec2 q2 = uCam.xz + d.xz * (CLOUD_Y * 3.4 - uCam.y) / d.y;
+    float wisp = soft(q2 * vec2(0.000019, 0.00006) + uCam.w * 0.0002).g
+        + soft(q2 * 0.00021).r * 0.35;
+    wisp = smoothstep(0.62, 0.95, wisp) * smoothstep(0.02, 0.22, d.y) * 0.6;
+    c = mix(
+        c,
+        uSunCol.rgb
+            * uSunCol.rgb
+            / (uSunCol.r + 0.05)
+            * (0.2 + 0.5 * pow(sd, 3.0))
+            + uHor.rgb * 0.4,
+        wisp
+    );
+  }
+  vec2 q = uCam.xz + d.xz * (CLOUD_Y - uCam.y) / d.y;
+  float den = cloudAt(q);
+  if (den < 0.003) return c;
+  // A cloud is bright on the side where less cloud lies between it and the sun,
+  // and its thick middle is dim from below.
+  float lit = fine
+      ? clamp(
+          0.5 + 2.6 * (den - cloudAt(q + normalize(uSun.xz) * 420.0)),
+          0.0,
+          1.0
+      )
+      : 0.5;
+  lit *= 1.0 - 0.5 * den;
+  vec3 gold = uSunCol.rgb
+      * mix(vec3(1.0), uSunCol.rgb / (uSunCol.r + 0.05), 0.6);
+  vec3 col = mix(
+      uZen.rgb * 0.62 + uHor.rgb * 0.26,
+      gold * 0.42 + uHor.rgb * 0.2,
+      lit
+  );
+  // Thin edges glow near the sun.
+  col += uSunCol.rgb * 1.5 * pow(sd, 8.0) * (1.0 - den) * (1.0 - den);
+  return mix(c, col, den * smoothstep(0.01, 0.16, d.y) * (fine ? 1.0 : 0.6));
+}
+// Shade from clouds on the ground: follow the light up to the cloud deck.
+float cloudShade(vec3 p) {
+  vec2 q = p.xz + uSun.xz * (CLOUD_Y - p.y) / max(uSun.y, 0.12);
+  return 1.0 - 0.6 * cloudAt(q);
+}
+// Haze: air thickens with distance and gathers near the sea. Far things fade
+// into the sky colour behind them.
+vec3 haze(vec3 col, vec3 p) {
+  vec3 v = p - uCam.xyz;
+  // For the sea bed, only the part of the path above water is air.
+  if (p.y < 0.0) v *= uCam.y / (uCam.y - p.y);
+  float d = length(v);
+  v /= d;
+  float k = v.y * 0.012;
+  float low = exp(-max(uCam.y, 0.0) * 0.012)
+      * (abs(k) < 1e-5 ? d : (1.0 - exp(-d * k)) / k);
+  float a = 1.0 - exp(-uZen.w * (d * 0.35 + low * 0.65));
+  return mix(
+      col,
+      skyBase(normalize(vec3(v.x, abs(v.y) * 0.3 + 0.03, v.z))) * 0.9,
+      a
+  );
+}
+`;
+const GLSL_LIGHT = `
+// Light on a surface: the sun (or moon) where not shadowed, plus sky light from
+// above and warm bounce from below.
+vec3 lightOn(vec3 n, float sky, float sun) {
+  vec3 amb = mix(
+      uHor.rgb * 0.4
+          + uSunCol.rgb
+              * vec3(1.0, 0.85, 0.6)
+              * (0.07 + 0.13 * max(uSun.y, 0.0)),
+      uZen.rgb * 0.95 + uHor.rgb * 0.4,
+      0.5 + 0.5 * n.y
+  );
+  // Rough ground catches a low sun.
+  return uSunCol.rgb * max(dot(n, uSun.xyz) * 0.8 + 0.2, 0.0) * sun + amb * sky;
+}
+`;
+const GLSL_FILM = `
+float grain(vec2 p) {
+  return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
+}
+// Last step for every pixel: exposure, a film-like curve that keeps bright
+// colours from clipping, gamma, vignette.
+vec3 curve(vec3 c) {
+  return c * (2.51 * c + 0.03) / (c * (2.43 * c + 0.59) + 0.14);
+}
+vec3 finish(vec3 c) {
+  c *= uMisc.x;
+  float top = max(c.r, max(c.g, c.b)) + 1e-4;
+  // Part of the curve acts on brightness only, to keep colour.
+  c = mix(curve(c), c * (curve(vec3(top)).r / top), 0.45);
+  c = pow(clamp(c, 0.0, 1.0), vec3(1.0 / 2.2));
+  c = mix(vec3(dot(c, vec3(0.3, 0.59, 0.11))), c, 1.12);
+  vec2 q = gl_FragCoord.xy / vec2(uRight.w, uUp.w) - 0.5;
+  return c * (1.0 - 0.35 * dot(q, q)) + (grain(gl_FragCoord.xy) - 0.5) / 255.0;
+}
+`;
+const SKY_VS =
+  GLSL_HEAD +
+  `
+out vec3 vDir;
+void main() {
+  vec2 p = vec2(gl_VertexID == 1 ? 3.0 : -1.0, gl_VertexID == 2 ? 3.0 : -1.0);
+  vDir = uFwd.xyz + p.x * uRight.xyz + p.y * uUp.xyz;
+  gl_Position = vec4(p, 1.0, 1.0);
+}`;
+const SKY_FS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_LIGHT +
+  GLSL_FILM +
+  `
+in vec3 vDir;
+out vec4 o;
+void main() {
+  vec3 d = normalize(vDir), c = skyFull(d, true);
+  float sd = dot(d, uSun.xyz);
+  c += uSunCol.rgb
+      * (
+          60.0 * smoothstep(0.99988, 0.99996, sd)
+              + 1.5 * pow(max(sd, 0.0), 1500.0)
+      )
+      * (1.0 - cloudAt(uCam.xz + d.xz * (CLOUD_Y - uCam.y) / max(d.y, 0.02)));
+  // Stars: a few cells of a grid over the sky dome hold a soft dot.
+  vec3 g = floor(d * 420.0), in_ = fract(d * 420.0) - 0.5;
+  c += uSun.w
+      * step(0.997, grain(g.xy + g.z * 7.3))
+      * smoothstep(0.35, 0.0, length(in_))
+      * smoothstep(0.0, 0.3, d.y)
+      * (0.3 + grain(g.yz));
+  o = vec4(finish(c), 1.0);
+}`;
+// Soft shadows for the whole island, drawn into a texture whenever the sun has
+// moved a little. From each ground point, march toward the sun and keep the
+// closest miss: R counts trees as blockers, G only land.
+const SHADOW_VS = `#version 300 es
+out vec2 vUv;
+void main() {
+  vec2 p = vec2(gl_VertexID == 1 ? 3.0 : -1.0, gl_VertexID == 2 ? 3.0 : -1.0);
+  vUv = p * 0.5 + 0.5;
+  gl_Position = vec4(p, 0.0, 1.0);
+}`;
+const SHADOW_FS =
+  GLSL_HEAD +
+  `
+in vec2 vUv;
+out vec4 o;
+void main() {
+  float h0 = max(texture(tH, vUv).r, 0.0);
+  float flat_ = max(length(uSun.xz), 1e-3);
+  float rise = uSun.y / flat_;
+  float a = 1.0;
+  float b = 1.0;
+  float t = 3.0;
+  vec2 dir = uSun.xz / flat_ / WORLD;
+  for (int i = 0; i < 44; i++) {
+    vec2 q = vUv + dir * t;
+    float land = texture(tH, q).r, ray = h0 + t * rise;
+    a = min(a, (ray + 0.6 - land - texture(tM, q).a * 24.0) * 9.0 / t + 0.3);
+    b = min(b, (ray + 7.0 - land) * 9.0 / t + 0.3);
+    t *= 1.15;
+  }
+  o = vec4(clamp(a, 0.0, 1.0), clamp(b, 0.0, 1.0), 0.0, 1.0);
+}`;
+// endregion: 3-light (glsl)
+
+// region: 4-water (glsl)
+const GLSL_SEA = `
+// Colour of open deep water: what the sea scatters back from the light that
+// enters it.
+vec3 seaDeep() {
+  return vec3(0.010, 0.085, 0.15)
+      * (
+          uSunCol.rgb * (0.12 + 0.5 * max(uSun.y, 0.0))
+              + uZen.rgb * 1.5
+              + uHor.rgb * 0.3
+      );
+}
+// What the sea bed looks like through "depth" metres of water. Red light is
+// absorbed first, which is why shallows are turquoise.
+vec3 throughWater(vec3 bed, float depth, float lookDown) {
+  vec3 keep = exp(
+      -depth * (1.0 + 1.0 / max(lookDown, 0.25)) * vec3(0.30, 0.070, 0.055)
+  );
+  return bed * keep + seaDeep() * (1.0 - keep);
+}
+// Bright wandering lines on a shallow sea bed, where two sets of ripples focus
+// the sun.
+float caustics(vec2 p) {
+  float a = texture(tW, p / 9.0 + uCam.w * vec2(0.03, 0.017)).b;
+  float b = texture(tW, p.yx / 7.0 - uCam.w * vec2(0.021, 0.026)).b;
+  return smoothstep(0.12, 0.0, abs(a - b));
+}
+`;
+const SEA_VS =
+  GLSL_HEAD +
+  `
+out vec3 vP;
+void main() {
+  vec2 p = vec2(gl_VertexID & 1, gl_VertexID >> 1) * 2.0 - 1.0;
+  vP = vec3(uCam.x + p.x * 16000.0, 0.0, uCam.z + p.y * 16000.0);
+  gl_Position = uVP * vec4(vP, 1.0);
+}`;
+const SEA_FS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_LIGHT +
+  GLSL_FILM +
+  GLSL_SEA +
+  `
+in vec3 vP;
+out vec4 o;
+void main() {
+  vec3 v = vP - uCam.xyz;
+  float dist = length(v), t = uCam.w;
+  v /= dist;
+  vec2 p = vP.xz, uv = p / WORLD + 0.5;
+  float depth0 = -texture(tH, uv).r;
+  // Ripples: three sheets of the wave image sliding across each other.
+  // Sheltered shallows are calmer.
+  vec4 a = texture(tW, p / 127.0 + t * vec2(0.010, 0.004));
+  vec4 b = texture(tW, p.yx / 41.0 + t * vec2(-0.012, 0.019));
+  vec4 c = texture(tW, p / 9.3 + t * vec2(0.045, -0.03));
+  float calm = mix(0.5, 1.0, smoothstep(0.0, 2.5, depth0))
+      * (0.6 + 0.4 * uHor.w);
+  vec2 swell = (a.rg * 0.55 + b.gr * 0.4) * calm;
+  vec2 slope = swell + c.rg * 0.3 * calm;
+  vec3 n = normalize(vec3(-slope.x, 1.0, -slope.y));
+  float depth = -texture(tH, uv + slope * 0.004).r;
+  // Reflection grows as the view gets shallower (Fresnel).
+  float fres = 0.02 + 0.98 * pow(1.0 - max(dot(-v, n), 0.0), 5.0);
+  // The mirror image uses only the broad swell: the finest ripples would
+  // shatter it into noise.
+  vec3 r = reflect(
+      v,
+      normalize(vec3(-swell.x - slope.x * 0.25, 1.0, -swell.y - slope.y * 0.25))
+  );
+  r.y = abs(r.y) + 0.015;
+  r = normalize(r);
+  vec3 refl = skyFull(r, false);
+  // Land mirrored in the sea: walk the mirrored ray over the height map until
+  // it dips under the ground. Steps start short and lengthen, up to a limit, so
+  // near shores are sharp and far hills are still reached.
+  bool fine = uFwd.w > 0.5;
+  // Each pixel starts its walk at a slightly different point, which turns the
+  // steps' banding into fine grain.
+  float step_ = 5.0, gone = 0.0, shift = grain(gl_FragCoord.xy + 3.7) * 0.4;
+  for (int i = 0; i < (fine ? 26 : 13); i++) {
+    gone += step_;
+    vec3 q = vP + r * (gone - step_ * shift);
+    if (q.y > 340.0) break;
+    vec2 quv = q.xz / WORLD + 0.5;
+    vec4 L = texture(tH, quv), M = texture(tM, quv);
+    // Fine ripples smear the image into streaks.
+    float under = L.r
+        + M.a * 17.0
+        - q.y
+        + (c.b - 0.45) * min(step_, 24.0) * 0.3;
+    if (under > 0.0) {
+      vec3 alb = mix(vec3(0.40, 0.34, 0.27), vec3(0.12, 0.17, 0.05), M.r)
+          * (1.0 - 0.5 * step(0.02, M.a));
+      vec3 land = haze(
+          alb
+              * lightOn(
+                  normalize(vec3(L.g, 1.0, L.b)),
+                  L.a,
+                  texture(tS, quv).r
+              ),
+          q
+      );
+      refl = mix(refl, land, 0.8 * smoothstep(0.0, 1.5 + step_ * 0.4, under));
+      break;
+    }
+    step_ = min(step_ * (fine ? 1.3 : 1.6), fine ? 44.0 : 80.0);
+  }
+  // The sun's glitter: a tight highlight close by that widens into a path
+  // toward the horizon.
+  float far = smoothstep(40.0, 1800.0, dist), sr = max(dot(r, uSun.xyz), 0.0);
+  float lit = max(
+      texture(tS, uv).g,
+      step(0.49, max(abs(uv.x - 0.5), abs(uv.y - 0.5)))
+  );
+  vec3 rs = reflect(v, n);
+  rs.y = abs(rs.y);
+  float sun = max(dot(rs, uSun.xyz), 0.0);
+  float glint = pow(sun, mix(500.0, 90.0, far));
+  // Every ripple that happens to face the sun flashes, so the path of light is
+  // made of sparks, not a smooth shape.
+  float spark = smoothstep(
+      0.35,
+      0.75,
+      texture(tW, p / 3.1 + t * vec2(0.09, 0.06)).a * 0.6 + c.a * 0.6
+  );
+  refl += uSunCol.rgb
+      * lit
+      * (
+          glint * mix(6.0, 1.6, far)
+              + pow(sun, 18.0) * 0.5 * spark
+              + pow(sr, 60.0) * 0.12
+      );
+  // Foam: a wash at the waterline and lines that travel in to shore, broken up
+  // by noise.
+  float lap = sin(depth * 2.2 + t * 1.2 + a.b * 5.0) * 0.5 + 0.5;
+  float foam = (1.0 - smoothstep(0.0, 3.2, depth))
+      * smoothstep(0.62, 0.92, lap + (c.a - 0.5) * 0.7)
+      * smoothstep(0.25, 0.6, b.a + c.a * 0.5);
+  foam = max(
+      foam,
+      smoothstep(0.3 + 0.2 * sin(t * 1.2), 0.0, depth) * (0.6 + 0.4 * c.a)
+  );
+  // Shallow water lets the bed (already drawn) show through; deep water covers
+  // it with its own colour. Mirror, body and foam each go through finish()
+  // before they are mixed, because the bed underneath was finished when it was
+  // drawn: mixing in the same space keeps shallow and deep water seamless.
+  float cover = smoothstep(10.0, 22.0, depth);
+  float alpha = fres + (1.0 - fres) * cover;
+  vec3 col = finish(haze(refl, vP)) * fres
+      + finish(haze(seaDeep(), vP)) * (1.0 - fres) * cover;
+  vec3 white = finish(
+      haze(
+          (uSunCol.rgb * (0.25 + 0.5 * lit) + uZen.rgb + uHor.rgb * 0.5) * 0.8,
+          vP
+      )
+  );
+  o = vec4(mix(col, white, foam), mix(alpha, 1.0, foam));
+}`;
+// endregion: 4-water (glsl)
+
+// region: 5-erosion (glsl)
+const GLSL_TURF = `
+// Grass colour at a place: gold where dry, deep green where wet. The land and
+// the grass blades both use it.
+vec3 turfColour(vec2 xz, float moist) {
+  return mix(
+      vec3(0.34, 0.29, 0.10),
+      vec3(0.075, 0.17, 0.035),
+      clamp(moist * 1.2 + (texture(tN, xz / 330.0).r - 0.5) * 0.9, 0.0, 1.0)
+  );
+}`;
+const SCREE = Q.get('cover') === 'scree';
+const GLSL_GROUND =
+  GLSL_TURF +
+  `
+// "?cover=scree" in the address paints the cover mask's sand as loose stone
+// above the beaches, where a scree rule has put it (no other address does).
+const float SCREE = ${SCREE ? '1.0' : '0.0'};
+// What the ground is made of at a point, as a colour, with the fine relief (n)
+// the height grid cannot hold and how wet it is (wet, 0..1, at the waterline).
+// L is the land image there (height, slopes, sky view), M the cover masks.
+vec3 ground(vec3 vP, vec4 L, vec4 M, out vec3 n, out float wet) {
+  vec2 uv = vP.xz / WORLD + 0.5;
+  float dist = distance(vP, uCam.xyz);
+  float near = exp(-dist / 300.0);
+  float close = exp(-dist / 60.0);
+  // The grid's own height, so coarse and fine chunks agree.
+  float h = L.r;
+  vec4 nA = texture(tN, vP.xz / 330.0);
+  vec4 nB = texture(tN, vP.xz / 37.0);
+  vec4 nC = texture(tN, vP.xz / 4.7);
+  vec4 nD = texture(tN, vP.xz / 11.0);
+  // Grit, only seen close.
+  vec4 nE = texture(tN, vP.xz / 1.3);
+  float steep = 1.0 - 1.0 / sqrt(1.0 + L.g * L.g + L.b * L.b);
+  float wall = smoothstep(0.16, 0.45, steep);
+  // On a cliff, a pattern laid flat from above smears into streaks. Read the
+  // noise from the side as well, and use that reading where the ground is
+  // steep.
+  vec2 face = vec2(vP.x + vP.z, vP.y * 1.4);
+  nB = mix(nB, texture(tN, face / 23.0), wall);
+  nC = mix(nC, texture(tN, face / 5.1), wall);
+  // Cover: grass, sand or bare rock. Noise cuts each border so it is ragged
+  // instead of blurred.
+  float rag = (nB.b - 0.5) * 0.45
+      + (nD.r - 0.5) * 0.3
+      + (nC.b - 0.5) * 0.35 * near;
+  float grass = smoothstep(0.4, 0.56, M.r + rag);
+  float sand = smoothstep(0.4, 0.6, M.b + rag * 0.7);
+  float rocky = (1.0 - grass) * (1.0 - sand);
+  // Strata: beds of harder and softer rock a few metres thick, gently tilted.
+  // The foot of each bed is undercut and dark; its face catches the light. Bed
+  // thickness wanders, so the lines never look ruled.
+  float bed = (vP.y + dot(vP.xz, vec2(0.06, 0.035)) + nA.r * 22.0 + nB.r * 5.0)
+      / (4.0 + 6.0 * nA.g);
+  float lay = fract(bed), hard = grain(vec2(floor(bed), 3.0));
+  // Softer beds show less.
+  float ledge = mix(
+      1.0,
+      smoothstep(0.0, 0.16, lay) * (1.0 - 0.4 * smoothstep(0.85, 1.0, lay)),
+      wall * (0.4 + 0.6 * hard)
+  );
+  // Small relief the height grid cannot hold: two noise channels stand in for a
+  // slope, stronger on rock.
+  n = normalize(
+      vec3(L.g, 1.0, L.b)
+          + vec3(nB.r - 0.5, 0.0, nB.g - 0.5) * (0.3 + 1.5 * rocky)
+          + vec3(nD.r - 0.5, 0.0, nD.g - 0.5) * (0.2 + 1.0 * rocky)
+          + vec3(nC.r - 0.5, 0.0, nC.g - 0.5) * (0.7 + 1.3 * rocky) * near
+          + vec3(nE.r - 0.5, 0.0, nE.g - 0.5) * 1.3 * close
+          + vec3(0.0, (ledge - 0.75) * 1.0, 0.0) * wall * rocky
+  );
+  // Broad colour bands follow height.
+  float band = texture(tN, vec2(h / 85.0 + nA.r * 0.45, nA.g * 0.5)).r;
+  // Stains run down the faces.
+  float streak = texture(tN, vec2(dot(vP.xz, vec2(0.033, 0.021)), h * 0.007)).g;
+  vec3 rock = mix(
+      vec3(0.19, 0.155, 0.14),
+      vec3(0.56, 0.46, 0.33),
+      smoothstep(
+          0.2,
+          0.8,
+          band * 0.5 + streak * 0.35 + hard * 0.14 * wall + 0.1
+      )
+  )
+      * (0.5 + 1.0 * nB.g);
+  // The mountain is not one stone: rust and ochre low down, pale grey limestone
+  // in bands higher up, and the gullies, where water runs and little sky shows,
+  // stay damp and dark.
+  float zone = smoothstep(50.0, 190.0, h + nA.r * 70.0 - 35.0);
+  rock *= mix(vec3(1.08, 0.86, 0.66), vec3(0.98, 1.0, 1.04), zone)
+      * (
+          1.0
+              + 0.26
+                  * zone
+                  * smoothstep(0.4, 0.8, hard + (nB.r - 0.5) * 0.6)
+                  * wall
+      );
+  rock = mix(
+      rock,
+      rock * vec3(0.42, 0.47, 0.52),
+      smoothstep(0.8, 0.5, L.a) * 0.75
+  );
+  rock = mix(rock, vec3(0.46, 0.27, 0.14), smoothstep(0.5, 0.85, nA.b) * 0.5)
+      * (0.5 + 0.5 * L.a)
+      * (0.7 + 0.6 * nC.g)
+      * (0.68 + 0.32 * ledge)
+      * (0.85 + 0.3 * nE.b * close);
+  // Moss where little sky shows.
+  rock = mix(
+      rock,
+      vec3(0.10, 0.13, 0.055),
+      smoothstep(0.45, 0.2, L.a) * 0.55 * smoothstep(0.3, 0.6, M.g + nD.b * 0.3)
+  );
+  // Scrub clinging to ledges.
+  rock = mix(
+      rock,
+      vec3(0.105, 0.14, 0.055),
+      smoothstep(
+          0.6,
+          0.78,
+          nD.b + M.g * 0.25 - steep * 0.5 + (1.0 - ledge) * 0.25
+      )
+          * 0.75
+  );
+  // Broad patches of scrub.
+  rock = mix(
+      rock,
+      vec3(0.085, 0.125, 0.05) * (0.6 + 0.8 * nC.g),
+      smoothstep(0.5, 0.64, nA.g * 0.5 + nB.b * 0.35 + M.g * 0.4 - wall * 0.3)
+          * 0.85
+  );
+  // Scree: where rock gives way to grass, a litter of pale stones on dark soil.
+  float stones = step(0.52, nC.r + (nE.g - 0.5) * close);
+  rock = mix(
+      rock,
+      mix(vec3(0.24, 0.18, 0.12), vec3(0.50, 0.44, 0.36), stones)
+          * (0.8 + 0.4 * nD.g),
+      smoothstep(0.12, 0.38, M.r) * 0.75
+  );
+  vec3 turf = turfColour(vP.xz, M.g)
+      * (0.6 + 0.8 * nD.g)
+      * (0.8 + 0.4 * nC.g)
+      * (0.85 + 0.3 * nE.g * close);
+  // Worn, dry patches.
+  turf = mix(
+      turf,
+      vec3(0.30, 0.25, 0.13),
+      smoothstep(0.62, 0.8, nB.r + nD.b * 0.4) * 0.5
+  );
+  // Meadow flowers, close by.
+  float petal = step(0.80, nC.b + nD.r * 0.25)
+      * step(0.5, texture(tN, vP.xz / 140.0).g)
+      * near;
+  turf = mix(
+      turf,
+      nC.r > 0.5 ? vec3(0.7, 0.62, 0.15) : vec3(0.72, 0.7, 0.66),
+      petal * 0.6
+  );
+  // Sand by the sea; higher up the same mask marks the village lanes and
+  // square, which are trodden earth.
+  vec3 beach = vec3(0.80, 0.68, 0.47)
+      * (0.88 + 0.24 * nC.b)
+      * (0.9 + 0.2 * nE.r * close);
+  float pebble = step(0.80, nE.b + (nC.r - 0.5) * 0.5)
+      * close
+      * smoothstep(3.5, 0.2, h);
+  // Pebbles toward the waterline.
+  beach = mix(beach, vec3(0.25, 0.23, 0.21) + 0.25 * nE.r, pebble * 0.85);
+  // Scree: broken stone in fans down the slope, cool grey, with dark gaps at
+  // the size of boulders and patches at the size of a hillside.
+  float fan = texture(tN, vec2(dot(vP.xz, vec2(0.021, 0.016)), h * 0.012)).g;
+  vec3 stone = mix(
+      vec3(0.13, 0.135, 0.15),
+      vec3(0.44, 0.45, 0.47),
+      clamp(nB.g * 0.75 + nC.g * 0.5 - 0.1, 0.0, 1.0)
+  );
+  stone *= 0.55 + 0.9 * fan;
+  stone = mix(
+      stone,
+      vec3(0.08, 0.085, 0.095),
+      smoothstep(0.5, 0.85, nD.b) * 0.6 + smoothstep(0.55, 0.8, nC.r) * 0.35
+  );
+  beach = mix(beach, stone, SCREE * smoothstep(12.0, 26.0, h));
+  vec3 alb = mix(mix(rock, turf, grass), beach, sand);
+  // Paving: the square and the lanes are laid with stone setts, each its own
+  // grey, with a pale kerb along the edge. Where a lane climbs, every third of
+  // a metre of rise shows as the dark front of a step.
+  float pv = texture(tV, uv).r + (nC.b - 0.5) * 0.1;
+  float paved = smoothstep(0.4, 0.46, pv);
+  float kerb = paved * (1.0 - smoothstep(0.46, 0.56, pv));
+  vec2 st = vP.xz / 0.55;
+  st.x += 0.5 * mod(floor(st.y), 2.0);
+  vec2 in_ = abs(fract(st) - 0.5);
+  vec3 sett = vec3(0.44, 0.40, 0.34)
+      * mix(
+          1.0,
+          (0.78 + 0.44 * grain(floor(st)))
+              * (1.0 - 0.45 * smoothstep(0.38, 0.5, max(in_.x, in_.y))),
+          close
+      );
+  sett *= 1.0
+      - 0.5
+          * smoothstep(0.36, 0.5, abs(fract(vP.y / 0.34) - 0.5))
+          * smoothstep(0.05, 0.14, steep)
+          * close;
+  alb = mix(alb, mix(sett, vec3(0.62, 0.58, 0.5), kerb * 0.85), paved);
+  wet = 1.0 - smoothstep(0.25, 0.7 + 0.5 * nB.b, h);
+  // Wet near the waterline.
+  alb *= 1.0 - 0.5 * wet;
+  return alb;
+}
+`;
+// endregion: 5-erosion (glsl)
+
+// region: 2-land (glsl)
+const LAND_VS =
+  GLSL_HEAD +
+  `
+// Grid column, grid row, 1 on the skirt.
+layout(location = 0) in vec3 aP;
+// First column, first row, skirt drop in metres.
+uniform vec3 uChunk;
+out vec3 vP;
+void main() {
+  vec2 cell = uChunk.xy + aP.xy + 0.5;
+  vP = vec3(
+      cell.x * ${CELL}.0 - ${HALF}.0,
+      textureLod(tH, cell / ${N}.0, 0.0).r - aP.z * uChunk.z,
+      cell.y * ${CELL}.0 - ${HALF}.0
+  );
+  gl_Position = uVP * vec4(vP, 1.0);
+}`;
+const LAND_FS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_LIGHT +
+  GLSL_FILM +
+  GLSL_SEA +
+  GLSL_GROUND +
+  `
+in vec3 vP;
+out vec4 o;
+void main() {
+  vec2 uv = vP.xz / WORLD + 0.5;
+  vec4 L = texture(tH, uv), M = texture(tM, uv), S = texture(tS, uv);
+  // Far-off land is drawn with fewer triangles, and a coarse triangle can
+  // bridge from the beach across shallow water. Where the true ground is under
+  // the sea but this surface is above it, leave the pixel to the sea.
+  if (L.r < -0.25 && vP.y > 0.02) discard;
+  // The grid's own height, so coarse and fine chunks agree.
+  float h = L.r, wet;
+  // Layer 5: rock, grass, sand, paving.
+  vec3 n, alb = ground(vP, L, M, n, wet);
+  float sky = L.a
+      * L.a
+      * (0.55 + 0.45 * S.r)
+      * (1.0 - 0.4 * smoothstep(0.0, 0.25, M.a));
+  float sun = S.r * cloudShade(vP);
+  if (h < 0.0) sun *= 0.7 + 1.6 * caustics(vP.xz) * exp(h * 0.25);
+  vec3 c = alb * lightOn(n, sky, sun), v = normalize(vP - uCam.xyz);
+  // Wet sand mirrors the sky.
+  if (h >= 0.0) c += skyBase(reflect(v, vec3(0.0, 1.0, 0.0)))
+      * wet
+      * 0.3
+      * pow(1.0 + min(v.y, 0.0), 4.0);
+  if (h < 0.0) c = throughWater(c, -h, -v.y);
+  o = vec4(finish(haze(c, vP)), 1.0);
+}`;
+// endregion: 2-land (glsl)
+
+// region: 6-things (glsl)
+const THING_VS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_WIND +
+  `
+layout(location = 0) in vec3 aPos;
+layout(location = 1) in vec3 aNrm;
+layout(location = 2) in vec3 aCol;
+// Shade, sway, leaf type, glow.
+layout(location = 3) in vec4 aExt;
+// Pattern coordinates (palm fronds).
+layout(location = 4) in vec2 aPat;
+// This copy: where it stands, its size.
+layout(location = 5) in vec4 aI0;
+// This copy: turn (cos, sin), tint, chance.
+layout(location = 6) in vec4 aI1;
+out vec3 vP, vN, vCol, vObj, vLit;
+out vec4 vExt;
+out vec2 vPat;
+out float vUp;
+void main() {
+  vec3 p = aPos * aI0.w, n = aNrm;
+  p.y *= 0.88 + 0.26 * aI1.w;
+  vObj = p + aI1.w * 37.0;
+  vUp = p.y;
+  mat2 turn = mat2(aI1.x, aI1.y, -aI1.y, aI1.x);
+  p.xz = turn * p.xz;
+  n.xz = turn * n.xz;
+  // Layer 7: wind in the leaves, boats on the swell.
+  p = windMove(p, aExt, aI0, aI1);
+  vP = aI0.xyz + p;
+  vN = n;
+  vCol = aCol;
+  vExt = aExt;
+  vPat = aPat;
+  vLit = vec3(
+      textureLod(tS, aI0.xz / WORLD + 0.5, 0.0).g * cloudShade(aI0.xyz),
+      aI1.z,
+      aI1.w
+  );
+  gl_Position = uVP * vec4(vP, 1.0);
+}`;
+const THING_FS =
+  GLSL_HEAD +
+  GLSL_SKY +
+  GLSL_LIGHT +
+  GLSL_FILM +
+  GLSL_SEA +
+  `
+in vec3 vP, vN, vCol, vObj, vLit;
+in vec4 vExt;
+in vec2 vPat;
+in float vUp;
+out vec4 o;
+void main() {
+  vec3 n = normalize(vN), v = normalize(vP - uCam.xyz), col = vCol;
+  float shade = vExt.x, leaf = vExt.z, through = 0.0, gloss = 0.0;
+  bool card = leaf > 0.5 && leaf < 1.5;
+  bool frond = leaf > 1.5 && leaf < 2.5;
+  bool ball = leaf > 2.5 && leaf < 3.5;
+  bool tiles = leaf > 3.5 && leaf < 4.5;
+  // Palm or fern frond: cut leaflets out of the smooth blade.
+  if (frond) {
+    float side = abs(vPat.y);
+    if (side > 0.16 && fract(vPat.x * 15.0 - side * 1.6) < 0.34) discard;
+    col *= 0.85 + 0.3 * vLit.z;
+    through = 0.7;
+  }
+  // Far-off or inner leaf ball: mottle it with clumps of light and dark.
+  if (ball) {
+    float m = texture(tN, vObj.xz * 0.21 + vObj.y * vec2(0.13, -0.09)).r
+        * texture(tN, vObj.zy * 0.17 + vObj.x * vec2(-0.11, 0.07)).g
+        * 3.2;
+    shade *= 0.4 + 0.8 * m;
+    col *= 0.55 + 0.4 * m;
+    through = 0.3;
+  }
+  // Leaf card: cut a rosette of six leaves out of the square.
+  if (card) {
+    vec2 q = vPat;
+    vec2 r1 = vec2(q.x * 0.5 + q.y * 0.866, q.y * 0.5 - q.x * 0.866);
+    vec2 r2 = vec2(q.x * 0.5 - q.y * 0.866, q.y * 0.5 + q.x * 0.866);
+    // Far away the leaves merge into a disc.
+    float wide = 0.42 + distance(vP, uCam.xyz) / 260.0;
+    float f = min(
+        abs(q.y) / (wide * (1.0 - q.x * q.x)),
+        min(
+            abs(r1.y) / (wide * (1.0 - r1.x * r1.x)),
+            abs(r2.y) / (wide * (1.0 - r2.x * r2.x))
+        )
+    );
+    if (f > 1.0 || dot(q, q) > 1.0) discard;
+    // Lighter along each leaf's midrib.
+    col *= 1.12 - 0.3 * f;
+    through = 0.7;
+  }
+  if (card || ball) {
+    col *= mix(
+        vec3(0.8, 0.93, 0.9),
+        vec3(1.12, 1.0, 0.74),
+        fract(vLit.y * 3.0)
+    );
+    // In blossom: most cards are petals.
+    if (
+        vLit.y > 0.9 && card && fract(vCol.g * 931.7) > 0.4
+    ) col = (
+        vLit.z > 0.66
+            ? vec3(0.80, 0.30, 0.44)
+            : vLit.z > 0.33
+            ? vec3(0.88, 0.82, 0.68)
+            : vec3(0.62, 0.20, 0.50)
+    )
+        * (1.1 - 0.35 * dot(vPat, vPat));
+  }
+  // Roof tiles: rows of half-round clay tiles, each a slightly different red.
+  if (tiles) {
+    vec2 t = vec2(vPat.x / 0.42, vPat.y / 0.3);
+    float round_ = sin(fract(t.y) * 3.1416), row = fract(t.x);
+    col *= (0.62 + 0.5 * round_)
+        * (0.78 + 0.3 * row)
+        * (0.8 + 0.4 * grain(floor(t) + floor(vObj.xz)));
+    gloss = 0.3 * round_;
+  }
+  // Laid stone (and one house in six is bare stone): courses of blocks with
+  // staggered joints, no two alike.
+  if (leaf > 5.5 && (leaf < 6.5 || vLit.y > 0.82)) {
+    vec2 t = vec2(vPat.x / 0.9, vPat.y / 0.42);
+    t.x += 0.5 * mod(floor(t.y), 2.0);
+    vec2 in_ = abs(fract(t) - 0.5);
+    col *= (0.75 + 0.45 * grain(floor(t) + floor(vObj.xz)))
+        * (1.0 - 0.45 * smoothstep(0.42, 0.5, max(in_.x, in_.y)));
+  }
+  // Plaster: its tone drifts across a wall, each house has its own wash, and
+  // the foot is stained.
+  if (leaf > 6.5 && leaf < 7.5 && vLit.y <= 0.82) {
+    float drift = texture(tN, vObj.zy * 0.09 + vObj.x * 0.06).r;
+    float fleck = texture(tN, vObj.zy * 0.8 + vObj.x * 0.55).b;
+    col *= (
+        vLit.y > 0.66
+            ? vec3(1.0, 0.8, 0.72)
+            : vLit.y > 0.42
+            ? vec3(1.0, 0.85, 0.58)
+            : vec3(1.02, 1.0, 0.96)
+    )
+        * (0.8 + 0.34 * drift + 0.1 * (fleck - 0.5));
+    col = mix(
+        col,
+        col * vec3(0.5, 0.55, 0.45),
+        smoothstep(1.3, 0.0, vUp) * (0.35 + 0.65 * drift)
+    );
+  }
+  // A net: only its cords are there.
+  if (
+      leaf > 7.5
+          && leaf < 8.5
+          && fract(vPat.x * 6.0) > 0.2
+          && fract(vPat.y * 6.0) > 0.2
+  ) discard;
+  // A striped awning.
+  if (leaf > 8.5) col = mix(
+      col * (0.6 + 1.2 * vLit.y),
+      vec3(0.8, 0.76, 0.66),
+      step(0.5, fract(vPat.y / 0.44))
+  );
+  // Each house, rock or boat its own cast.
+  if (
+      leaf < 0.5 || leaf > 3.5
+  ) col *= mix(vec3(0.8, 0.82, 0.86), vec3(1.12, 1.0, 0.86), vLit.z);
+  vec3 c = col * lightOn(n, shade, vLit.x * smoothstep(0.05, 0.6, shade));
+  // Sunlight shining through leaves: seen against the sun, a crown glows at its
+  // thin edges.
+  c += col
+      * vec3(1.3, 1.25, 0.4)
+      * uSunCol.rgb
+      * vLit.x
+      * through
+      * shade
+      * pow(max(dot(v, uSun.xyz), 0.0), 3.0);
+  // Low sun glancing off the tiles.
+  c += uSunCol.rgb
+      * vLit.x
+      * gloss
+      * pow(max(dot(reflect(v, n), uSun.xyz), 0.0), 8.0);
+  // Lit windows and the lantern.
+  c += vExt.w * vec3(1.0, 0.62, 0.25) * (0.15 + 4.0 * uSun.w);
+  // What stands in the sea fades into it with depth.
+  if (vP.y < 0.0) c = throughWater(c, -vP.y * 2.5, max(-v.y, 0.0));
+  o = vec4(finish(haze(c, vP)), 1.0);
+}`;
+// endregion: 6-things (glsl)
+
+// region: 1-camera (page)
+// Free flight: drag to look; W A S D, the arrow keys, two fingers or the
+// on-screen button to move. The camera itself (where it is, which way it looks)
+// is "cam" in the frame region.
+const ctl = {
+  mode: 'fly',
+  keys: {},
+  touches: new Map(),
+  fly: { v: [0, 0, 0] },
+  push: [0, 0, 0],
+  hold: false,
+};
+onTick((dt) => {
+  if (ctl.mode !== 'fly') return;
+  const K = ctl.keys;
+  const two = ctl.touches.size >= 2 || ctl.hold ? 1 : 0;
+  ctl.push[0] =
+    (K.KeyW || K.ArrowUp ? 1 : 0) - (K.KeyS || K.ArrowDown ? 1 : 0) + two;
+  ctl.push[1] =
+    (K.KeyD || K.ArrowRight ? 1 : 0) - (K.KeyA || K.ArrowLeft ? 1 : 0);
+  ctl.push[2] = (K.KeyE || K.Space ? 1 : 0) - (K.KeyQ || K.KeyC ? 1 : 0);
+  flyStep(
+    cam.eye,
+    ctl.fly,
+    cam.F,
+    cam.R,
+    ctl.push,
+    K.ShiftLeft || K.ShiftRight ? 4 : 1,
+    dt,
+    W.H,
+  );
+});
+canvas.addEventListener('pointerdown', (e) => {
+  canvas.setPointerCapture(e.pointerId);
+  ctl.touches.set(e.pointerId, [e.clientX, e.clientY]);
+  $('hint').style.opacity = 0;
+});
+canvas.addEventListener('pointermove', (e) => {
+  const p = ctl.touches.get(e.pointerId);
+  if (!p) return;
+  // Drag the view: the scene follows the finger.
+  const k = 0.0042 / ctl.touches.size;
+  cam.yaw -= (e.clientX - p[0]) * k;
+  cam.pitch = clamp(cam.pitch + (e.clientY - p[1]) * k, -1.4, 1.4);
+  p[0] = e.clientX;
+  p[1] = e.clientY;
+});
+for (const type of ['pointerup', 'pointercancel'])
+  canvas.addEventListener(type, (e) => ctl.touches.delete(e.pointerId));
+addEventListener('keydown', (e) => {
+  // With Ctrl, Cmd or Alt a key is the browser's.
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  // Space on a focused button presses the button.
+  if (e.code === 'Space' && e.target.tagName === 'BUTTON') return;
+  ctl.keys[e.code] = true;
+  if (/^(Key[WASDQEC]|Arrow|Space)/.test(e.code)) {
+    $('hint').style.opacity = 0;
+    e.preventDefault();
+  }
+});
+addEventListener('keyup', (e) => {
+  ctl.keys[e.code] = false;
+});
+addEventListener('blur', () => {
+  ctl.keys = {};
+});
+for (const [type, on] of [
+  ['pointerdown', true],
+  ['pointerup', false],
+  ['pointercancel', false],
+  ['pointerleave', false],
+])
+  $('bFly').addEventListener(type, (e) => {
+    ctl.hold = on;
+    e.preventDefault();
+  });
+// On that button, Enter and Space do what a finger does.
+$('bFly').addEventListener('keydown', (e) => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (!/^(Space|Enter|NumpadEnter)$/.test(e.code)) return;
+  ctl.hold = true;
+  e.preventDefault();
+});
+$('bFly').addEventListener('keyup', (e) => {
+  if (/^(Space|Enter|NumpadEnter)$/.test(e.code)) ctl.hold = false;
+});
+$('bFly').addEventListener('blur', () => {
+  ctl.hold = false;
+});
+if (PHONE) $('bFly').style.display = 'grid';
+$('hint').firstElementChild.textContent = PHONE
+  ? 'drag to look · two fingers to fly'
+  : 'drag to look · W A S D to fly';
+setTimeout(() => {
+  $('hint').style.opacity = 0;
+}, 9000);
+if (SHOT) $('hint').style.display = $('bFly').style.display = 'none';
+// Where the camera starts: at cam.eye (set in the frame region), turned to look
+// at a point on the ground 588 m ahead. aim() works out the yaw and pitch that
+// do that. A later layer may choose its own start the same way.
+[cam.yaw, cam.pitch] = aim(cam.eye, [0, 1, 168]);
+// endregion: 1-camera (page)
+
+// region: 2-land (page)
+onGrow(() => {
+  const P = (W.P = islandParams(seed));
+  // "?shape=atoll" asks fillLand for the other height function.
+  P.shape = Q.get('shape');
+  const H = (W.H = fillLand(new Float32Array(N * N), P));
+  W.E = new Float32Array(N * N * 3);
+  // Rain (layer 5).
+  erode(H, W.E, 70000, hash2(seed, 5, 9));
+  // Ground cover (layer 5).
+  W.L = bakeLand(H);
+  W.M = coverMasks(H, W.L, W.E);
+  landChanged();
+  // One grid mesh, four index lists.
+  const grid = gridMesh(CHUNK);
+  const all = new Uint16Array(grid.lods.reduce((n, l) => n + l.length, 0));
+  W.lods = [];
+  let at = 0;
+  for (const l of grid.lods) {
+    all.set(l, at);
+    W.lods.push([at * 2, l.length]);
+    at += l.length;
+  }
+  W.land = mesh(grid.verts, all, [3]);
+  gl.bindVertexArray(null);
+  W.pLand = program(LAND_VS, LAND_FS);
+  W.uChunk = gl.getUniformLocation(W.pLand, 'uChunk');
+  // Where the camera starts: out over the bay, looking in.
+  // "?cam=a,b,y,ta,tb,ty" fixes it instead, for test shots: a, b in island
+  // radii along and across the sunset line, heights in metres.
+  const place = (a, b, y) => [
+    (a * P.west[0] - b * P.west[1]) * P.R,
+    y,
+    (a * P.west[1] + b * P.west[0]) * P.R,
+  ];
+  const c = (Q.get('cam') || '').split(',').map(Number);
+  cam.eye = Q.has('cam')
+    ? place(c[0], c[1], c[2])
+    : [P.bay[0] * 2.1, 70, P.bay[1] * 2.1];
+  [cam.yaw, cam.pitch] = aim(
+    cam.eye,
+    Q.has('cam') ? place(c[3], c[4], c[5]) : [0, 45, 0],
+  );
+  if (Q.has('cam')) ctl.mode = 'hold';
+});
+// Sends the land's numbers to the GPU. A later layer that reshapes the ground
+// or changes its cover calls it again.
+function landChanged() {
+  W.bounds = chunkBounds(W.H);
+  gl.deleteTexture(W.tH);
+  gl.deleteTexture(W.tM);
+  W.tH = texture(
+    0,
+    gl.RGBA16F,
+    gl.RGBA,
+    gl.FLOAT,
+    N,
+    W.L,
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+  W.tM = texture(
+    1,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    N,
+    W.M,
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+}
+// Each chunk picks a level of detail by distance; chunks out of view are
+// skipped.
+onDraw(20, () => {
+  gl.useProgram(W.pLand);
+  gl.bindVertexArray(W.land.vao);
+  for (let c = 0; c < CHUNKS * CHUNKS; c++) {
+    const cx = c % CHUNKS;
+    const cz = (c / CHUNKS) | 0;
+    const x0 = cx * CHUNK * CELL - HALF;
+    const z0 = cz * CHUNK * CELL - HALF;
+    const size = CHUNK * CELL;
+    const lo = W.bounds[c * 2];
+    const hi = W.bounds[c * 2 + 1];
+    // Even the deepest sea bed is drawn (coarsely). Seen at a shallow angle
+    // through clear water near the shore, the line of sight reaches the bed far
+    // out; a chunk left undrawn there showed the sky as a pale straight-edged
+    // patch.
+    if (boxHidden(planes, x0, lo - 30, z0, x0 + size, hi, z0 + size)) continue;
+    const dx = Math.max(x0 - cam.eye[0], 0, cam.eye[0] - x0 - size);
+    const dz = Math.max(z0 - cam.eye[2], 0, cam.eye[2] - z0 - size);
+    const dy = Math.max(cam.eye[1] - hi, 0);
+    // Coarse levels only far off: they blunt sea stacks.
+    const d =
+      (Math.sqrt(dx * dx + dy * dy + dz * dz) * (PHONE ? 2 : 1)) / W.detail;
+    const lod = hi < -40 ? 3 : d < 700 ? 0 : d < 1400 ? 1 : d < 2600 ? 2 : 3;
+    gl.uniform3f(W.uChunk, cx * CHUNK, cz * CHUNK, 6 << lod);
+    draw(gl.TRIANGLES, W.lods[lod][1], gl.UNSIGNED_SHORT, W.lods[lod][0]);
+  }
+  stat.land = stat.tris;
+});
+// endregion: 2-land (page)
+
+// region: 3-light (page)
+let day = +(Q.get('day') || 0);
+let lastSun = [9, 9, 9];
+const SKY = new Float32Array(20);
+onGrow(() => {
+  // The shadow image, drawn into below.
+  W.tS = texture(
+    2,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    N,
+    null,
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+  W.shadowFbo = gl.createFramebuffer();
+  gl.bindFramebuffer(gl.FRAMEBUFFER, W.shadowFbo);
+  gl.framebufferTexture2D(
+    gl.FRAMEBUFFER,
+    gl.COLOR_ATTACHMENT0,
+    gl.TEXTURE_2D,
+    W.tS,
+    0,
+  );
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  W.pSky = program(SKY_VS, SKY_FS);
+  W.pShadow = program(SHADOW_VS, SHADOW_FS);
+});
+// The day moves on; the light's direction and the sky's colours go into the
+// numbers every shader sees.
+onTick((dt) => {
+  day += dt / 420;
+  const S = skyState(SKY, day, W.P.west);
+  FB.set(S.subarray(0, 16), 32);
+  // Cloud cover, haze, wind, exposure.
+  FB[39] = 0.5;
+  FB[43] = 0.0005;
+  FB[47] = 1;
+  FB[48] = S[16];
+  FB[49] = 0;
+  FB[50] = day;
+});
+// Shadows are redrawn only when the light has moved.
+onDraw(10, () => {
+  if (
+    Math.abs(SKY[0] - lastSun[0]) +
+      Math.abs(SKY[1] - lastSun[1]) +
+      Math.abs(SKY[2] - lastSun[2]) <=
+    0.004
+  )
+    return;
+  lastSun = [SKY[0], SKY[1], SKY[2]];
+  gl.bindFramebuffer(gl.FRAMEBUFFER, W.shadowFbo);
+  gl.viewport(0, 0, N, N);
+  gl.disable(gl.DEPTH_TEST);
+  gl.activeTexture(gl.TEXTURE2);
+  gl.bindTexture(gl.TEXTURE_2D, null);
+  gl.useProgram(W.pShadow);
+  draw(gl.TRIANGLES, 3, 0);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.bindTexture(gl.TEXTURE_2D, W.tS);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.enable(gl.DEPTH_TEST);
+});
+// The sky goes behind everything already drawn.
+onDraw(60, () => {
+  gl.bindVertexArray(null);
+  gl.useProgram(W.pSky);
+  draw(gl.TRIANGLES, 3, 0);
+});
+// endregion: 3-light (page)
+
+// region: 4-water (page)
+onGrow(() => {
+  let wave = waveTile(256, 11);
+  texture(4, gl.RGBA16F, gl.RGBA, gl.FLOAT, 256, wave, gl.REPEAT, gl.LINEAR);
+  for (let n = 256, level = 1; n > 1; n /= 2, level++) {
+    wave = halve(wave, n);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      level,
+      gl.RGBA16F,
+      n / 2,
+      n / 2,
+      0,
+      gl.RGBA,
+      gl.FLOAT,
+      wave,
+    );
+  }
+  gl.texParameteri(
+    gl.TEXTURE_2D,
+    gl.TEXTURE_MIN_FILTER,
+    gl.LINEAR_MIPMAP_LINEAR,
+  );
+  W.pSea = program(SEA_VS, SEA_FS);
+});
+// The sea is drawn last and blended over what is there, so the bed shows
+// through the shallows.
+onDraw(70, () => {
+  gl.bindVertexArray(null);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+  gl.depthMask(false);
+  gl.useProgram(W.pSea);
+  draw(gl.TRIANGLE_STRIP, 4, 0);
+});
+// endregion: 4-water (page)
+
+// region: 6-things (page)
+onGrow(() => {
+  const H = W.H;
+  const L = W.L;
+  const M = W.M;
+  const P = W.P;
+  const S = (W.S = scout(H, L, M, P));
+  W.village = layVillage(H, L, M, P, S, hash2(seed, 6, 2));
+  // The village levelled some ground.
+  bakeLand(H, L, W.village.dirty);
+  const things = (W.things = placeThings(
+    H,
+    L,
+    M,
+    P,
+    S,
+    W.village,
+    hash2(seed, 6, 1),
+  )
+    .map(bucket)
+    .map((t) => firstShare(t, +(Q.get('share') || 1))));
+  stampCanopy(M, things);
+  W.tops = plotTops(H);
+  landChanged();
+  gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+  texture(
+    5,
+    gl.R8,
+    gl.RED,
+    gl.UNSIGNED_BYTE,
+    N,
+    W.village.pave,
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+  // For each kind, a mesh per level of detail (near, middle, far; trees have a
+  // fourth) and one buffer holding every copy's place.
+  things.forEach((t, kind) => {
+    t.buf = buffer(gl.ARRAY_BUFFER, t.data);
+    t.lods = (kind < 3 ? [0, 1, 2, 3] : [0, 1, 2]).map((lod) => {
+      const m = bakeMesh(thingMesh(kind, lod, PHONE));
+      const g = mesh(m.verts, m.idx, [3, 3, 3, 4, 2]);
+      perCopy(t.buf, [5, 6]);
+      return g;
+    });
+  });
+  gl.bindVertexArray(null);
+  W.pThing = program(THING_VS, THING_FS);
+});
+// Every plot gets a level of detail by distance (-1 when out of view); each
+// kind then draws runs of neighbouring plots that share a level in one call.
+onDraw(30, () => {
+  const detail = W.detail;
+  const plotLod = W.plotLod || (W.plotLod = new Int8Array(PLOTS * PLOTS));
+  const plotNear = W.plotNear || (W.plotNear = new Int8Array(PLOTS * PLOTS));
+  const l0 = (PHONE ? 22 : 46) * detail;
+  const l1 = (PHONE ? 110 : 380) * detail;
+  for (let c = 0; c < PLOTS * PLOTS; c++) {
+    const x0 = (c % PLOTS) * PLOT - HALF;
+    const z0 = ((c / PLOTS) | 0) * PLOT - HALF;
+    const b =
+      (((z0 + HALF) / (CHUNK * CELL)) | 0) * CHUNKS +
+      (((x0 + HALF) / (CHUNK * CELL)) | 0);
+    const lo = W.bounds[b * 2];
+    const hi = W.bounds[b * 2 + 1];
+    plotLod[c] = -1;
+    if (
+      hi < -3 ||
+      boxHidden(
+        planes,
+        x0 - 6,
+        lo - 2,
+        z0 - 6,
+        x0 + PLOT + 6,
+        hi + 26,
+        z0 + PLOT + 6,
+      )
+    )
+      continue;
+    const dx = Math.max(x0 - cam.eye[0], 0, cam.eye[0] - x0 - PLOT);
+    const dz = Math.max(z0 - cam.eye[2], 0, cam.eye[2] - z0 - PLOT);
+    const dy = Math.max(cam.eye[1] - W.tops[c] - 9, 0);
+    const d = Math.sqrt(dx * dx + dy * dy + dz * dz);
+    plotLod[c] =
+      d < l0 ? 0 : d < l1 ? 1 : d < (PHONE ? 340 : 1300) * detail ? 2 : 3;
+    plotNear[c] = d < (PHONE ? 60 : 150) * detail ? 1 : 0;
+  }
+  gl.useProgram(W.pThing);
+  stat.kinds = [];
+  W.things.forEach((t, kind) => {
+    const before = stat.tris;
+    // Ferns and reeds are ground cover, drawn only nearby; small things stop at
+    // the middle distance.
+    const cover = kind === 8 || kind === 9;
+    const small = cover || kind === 3 || kind === 5;
+    const part = small && PHONE ? 0.5 * detail : 1;
+    // Trees have a fourth, cheapest shape for the horizon; other large things
+    // reuse their third; small things stop.
+    const last = t.lods.length - 1;
+    const far = small ? -9 : last;
+    const want = (c, lod) =>
+      (plotLod[c] === lod && lod < 3 && !(cover && !plotNear[c])) ||
+      (plotLod[c] === 3 && lod === far);
+    for (let lod = 0; lod <= last; lod++) {
+      if (!t.lods[lod].count) continue;
+      gl.bindVertexArray(t.lods[lod].vao);
+      gl.bindBuffer(gl.ARRAY_BUFFER, t.buf);
+      for (let c = 0; c < PLOTS * PLOTS; c++) {
+        if (!want(c, lod)) continue;
+        let end = c;
+        // Extend the run along the row.
+        while (part === 1 && (end + 1) % PLOTS && want(end + 1, lod)) end++;
+        const first = t.start[c];
+        const n = Math.ceil((t.start[end + 1] - first) * part);
+        c = end;
+        if (!n) continue;
+        gl.vertexAttribPointer(5, 4, gl.FLOAT, false, 32, first * 32);
+        gl.vertexAttribPointer(6, 4, gl.FLOAT, false, 32, first * 32 + 16);
+        draw(gl.TRIANGLES, t.lods[lod].count, gl.UNSIGNED_SHORT, 0, n);
+      }
+    }
+    if (stat.tris > before)
+      stat.kinds.push(
+        KINDS[kind] + ' ' + Math.round((stat.tris - before) / 1000) + 'k',
+      );
+  });
+});
+// endregion: 6-things (page)
+
+start();
+</script>
+</body>
+</html>

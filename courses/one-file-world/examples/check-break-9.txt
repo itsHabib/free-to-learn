@@ -1,0 +1,4 @@
+  FAIL 9.missing: at scale 0.5 with frames of 28 ms, nextScale gives 0.54: at 0.7 or less the picture is already soft, and 30 frames a second is enough, so it stays.
+  FAIL 9.dead-band: at scale 0.45 with frames of 17.7 ms, nextScale gives 0.486 (calm 0): between 17.6 and 21 ms it must leave the scale alone, whatever calm is. This is the dead band: without it the picture pulses.
+  FAIL 9.fast: at scale 0.45 with frames of 12 ms and calm 0, nextScale gives 0.486: a frame that is fast once says little, so wait until calm is 4.
+  FAIL 9.settles: on a device whose frames take 22 ms at full size, the scale still changes after 60 checks (42 seconds): 0.93, 1, 0.93, 1, 0.93, 1. The picture pulses between sizes. Leave a band of frame times where nothing changes, wide enough that one step up or down cannot jump over it.

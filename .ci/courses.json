@@ -1131,6 +1131,70 @@
         "This contract generates the reader and checks the named starter diagnostic.",
         "It does not exercise the browser, complete learner work or run the shared capstone."
       ]
+    },
+    {
+      "id": "one-file-world",
+      "archive": ".packages/one-file-world.zip",
+      "sha256": "03281b920ca8250e03030939e4a290336da3c42598b9f6c1279cfe81ee05134c",
+      "archive_prefix": "one-file-world/",
+      "direct_root": "courses/one-file-world",
+      "root": "one-file-world",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "start_type_in_route",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "project",
+            "write"
+          ],
+          "exit": 0,
+          "match": "world.html"
+        },
+        {
+          "stage": "unfinished_functions_are_reported",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "project",
+            "1"
+          ],
+          "exit": 1,
+          "match": "aim: not written yet"
+        },
+        {
+          "stage": "start_working_route",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "guided",
+            "supplied"
+          ],
+          "exit": 0,
+          "match": "world.html"
+        },
+        {
+          "stage": "open_camera_experiment",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "view",
+            "guided",
+            "--screen",
+            "desktop"
+          ],
+          "exit": 0,
+          "match": "[0-9]"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Public CI checks the starting projects and a camera experiment. Human learning and physical-phone performance are unmeasured."
+      ]
     }
   ]
 }
