@@ -4720,6 +4720,8 @@ const SEA_FS =
   `
 uniform sampler2D tPortMirror;
 uniform float uPortReflection;
+// Centre of the passenger ferry and its velocity in metres per second.
+uniform vec4 uFerry;
 in vec3 vP;
 out vec4 o;
 void main() {
@@ -4847,6 +4849,21 @@ void main() {
       );
     }
   }
+  // The two crests trail the moving stern and spread as they travel. When
+  // the double-ended ferry changes direction, the wake subsides and reverses.
+  float wash = 0.0;
+  vec2 offset = p-uFerry.xy;
+  float speed2 = dot(uFerry.zw,uFerry.zw);
+  if (speed2 > 0.01 && dot(offset,offset) < 225.0) {
+    vec2 forward = uFerry.zw*inversesqrt(speed2);
+    float aft = -dot(offset,forward);
+    float side = abs(dot(offset,vec2(-forward.y,forward.x)));
+    float arm = side-(0.82+0.23*aft);
+    float crest = 1.0-smoothstep(0.06,0.27,abs(arm+0.13*(c.a-0.5)));
+    wash = 0.76*crest*smoothstep(-1.0,2.0,aft) *(
+        1.0-smoothstep(3.0,14.0,aft)
+    )*smoothstep(0.1,4.0,speed2) *(0.28+0.72*smoothstep(0.18,0.66,c.a));
+  }
   // Foam: a wash at the waterline and lines that travel in to shore, broken up
   // by noise.
   float lap = sin(depth * 2.2 + t * 1.2 + a.b * 5.0) * 0.5 + 0.5;
@@ -4861,6 +4878,7 @@ void main() {
   // it with its own colour. Mirror, body and foam each go through finish()
   // before they are mixed, because the bed underneath was finished when it was
   // drawn: mixing in the same space keeps shallow and deep water seamless.
+  foam = max(foam,wash);
   float cover = smoothstep(10.0, 22.0, depth);
   float alpha = fres + (1.0 - fres) * cover;
   vec3 mirrorColour = finish(haze(refl, vP));
@@ -6302,6 +6320,7 @@ onDraw(59, () => {
     gl.vertexAttribPointer(6, 4, gl.FLOAT, false, 32, 16);
     draw(gl.TRIANGLES, mesh.count, gl.UNSIGNED_SHORT, 0, count);
   }
+  if (W.drawCrossing) W.drawCrossing();
   gl.uniform1i(W.mirrorPort, 0);
   gl.bindVertexArray(null);
   gl.bindFramebuffer(gl.FRAMEBUFFER, null);

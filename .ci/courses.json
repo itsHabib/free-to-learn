@@ -1135,7 +1135,7 @@
     {
       "id": "one-file-world",
       "archive": ".packages/one-file-world.zip",
-      "sha256": "a27fb67914f72ad2abafeaa101c20b4b03dbc9ef6a74f1bd8103dd9bfd62aea7",
+      "sha256": "12323c80eade7d8badc7086d1d38067acc5e758d61020a86ae4c156155414da9",
       "archive_prefix": "one-file-world/",
       "direct_root": "courses/one-file-world",
       "root": "one-file-world",
