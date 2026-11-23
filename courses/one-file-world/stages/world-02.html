@@ -710,7 +710,7 @@ const $ = (id) => document.getElementById(id);
 // The grown world: layout, height grid, GPU objects; "detail" scales every
 // detail distance.
 const W = { detail: 1 };
-const FB = new Float32Array(52);
+const FB = new Float32Array(100);
 const frameUbo = gl.createBuffer();
 const proj = new Float32Array(16);
 const view = new Float32Array(16);
@@ -760,10 +760,27 @@ layout(std140) uniform F {
   vec4 uHor;
   // Exposure, tide, day 0..1.
   vec4 uMisc;
+  // Jetty origin (world x,z) followed by local forward (x,z); zero before the
+  // settlement exists.
+  vec4 uHarbour;
+  vec4 uMoorings[11];
 };
 // Land (height, slopes, sky view), cover, shadows, noise, waves, paving.
 uniform sampler2D tH, tM, tS, tN, tW, tV;
 const float WORLD = 2048.0;
+vec3 harbourLamp(int i) {
+  vec3 fixture = i == 0
+      ? vec3(3.5,4.12,-0.96)
+      : i == 1
+      ? vec3(15.5,4.12,-0.96)
+      : i == 2
+      ? vec3(34.2,4.12,-0.96)
+      : vec3(29.6,9.86,5.42);
+  vec2 p = uHarbour.xy
+      + fixture.x * uHarbour.zw
+      + fixture.z * vec2(-uHarbour.w,uHarbour.z);
+  return vec3(p.x,fixture.y,p.y);
+}
 `;
 
 // Grows the world: every layer's onGrow step in turn, with a pause between so
