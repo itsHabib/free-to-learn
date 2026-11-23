@@ -6,7 +6,9 @@ You build one HTML file, with no images, models, sound files, fonts or libraries
 from the seed in its link and lets you fly through it on a phone. Each lesson adds one layer to your
 `project/world.html`, and you can open the world after every lesson.
 
-Start at the harbour in the [playable island](https://freetolearn.world/courses/one-file-world/island.html?seed=7). For the same view offline, open `stages/world-09.html` in your browser. [Lesson 6](lessons/06.md#look-closely-at-the-quay) shows how the ropes hang and the lamps light the wet boards. [Lesson 9](lessons/09.md#frame-the-harbour-at-eye-level) shows how to frame the shot.
+Watch the last ferry cross the reflection of the tide station. For the same opening offline, open `stages/world-09.html` in your browser and add `?seed=7` to the address. [Fly through the harbour](https://freetolearn.world/courses/one-file-world/island.html?seed=7)
+
+Follow a lamp down to the wet boards in [lesson 6](lessons/06.md#look-closely-at-the-quay). In [lesson 9](lessons/09.md#frame-the-last-ferry), move the camera along the shore and find the moment when the ferry cuts across the light.
 
 ## What you need
 

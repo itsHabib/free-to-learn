@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 35775,
-      "sha256": "93fc3e515f048990d55b24a5f495e87b656e53947827deff853a0ab55d16916a"
+      "sha256": "4bf9637d3507fe68b775d07b55e46090feff5205ae2299b7a1fbb64e188582b1"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -159,13 +159,13 @@
     },
     {
       "path": ".packages/one-file-world.zip",
-      "bytes": 9428786,
-      "sha256": "a27fb67914f72ad2abafeaa101c20b4b03dbc9ef6a74f1bd8103dd9bfd62aea7"
+      "bytes": 9470172,
+      "sha256": "12323c80eade7d8badc7086d1d38067acc5e758d61020a86ae4c156155414da9"
     },
     {
       "path": ".packages/one-file-world.zip.sha256",
       "bytes": 85,
-      "sha256": "5f34eb2f0ad45293798578f69038e8a11fb8d1ed4781e205a4c2228dd6233c6f"
+      "sha256": "3bb12a9f4e29acc618c54e8db23fbed9ea64d53a3f049fa8acd12ff8cf8a1875"
     },
     {
       "path": ".packages/onion-routing.zip",
@@ -259,8 +259,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 444435,
-      "sha256": "c02e8bac8319a0488621e9a94664879ca60014dc7600edf61d36416639cfef58"
+      "bytes": 444598,
+      "sha256": "1e384f875334e4c4a99514903bb84ba7bed11bcb74d9978478c5140e86e40ba4"
     },
     {
       "path": "LICENSE.md",
@@ -5749,8 +5749,8 @@
     },
     {
       "path": "courses/one-file-world/README.md",
-      "bytes": 2305,
-      "sha256": "d38dfac40e80f65b16e96c125793cfa76b3bcdc121420cc4a9516c967a003bab"
+      "bytes": 2419,
+      "sha256": "97ce8321b39379e9c5718061bc10ddce418b128aa4dc8f56a6f0c9639ce41dae"
     },
     {
       "path": "courses/one-file-world/checks/1.mjs",
@@ -6049,8 +6049,13 @@
     },
     {
       "path": "courses/one-file-world/lessons/09.md",
-      "bytes": 16364,
-      "sha256": "a2b2d370647b23f8ab2c66de000389c406fc5310d4e0e3715388587ee183a095"
+      "bytes": 18071,
+      "sha256": "8a6a0c013ca894ab4186555f6b2a7b51692fb6e1228dcad673389bd365a440c0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/ferry-crossing.jpg",
+      "bytes": 78149,
+      "sha256": "718f2a1165c65ccbd46c83e2feaad8d5258bd0131285e2798b6d3fa671aa9d43"
     },
     {
       "path": "courses/one-file-world/lessons/figures/frustum-plan.svg",
@@ -6214,8 +6219,8 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-09.png",
-      "bytes": 382834,
-      "sha256": "9248489964b2be5cb6f611d0b3225df4e9e4e8ca39fada6fd60d1fbef58be353"
+      "bytes": 342408,
+      "sha256": "0a46f38f680a7ebb9a884944b5d8f8fa58d06f11db05f8f1b27829b16027f9e6"
     },
     {
       "path": "courses/one-file-world/lessons/figures/tile-fraction.png",
@@ -6279,33 +6284,33 @@
     },
     {
       "path": "courses/one-file-world/stages/world-04.html",
-      "bytes": 66260,
-      "sha256": "60263ee75798531a309e2f35deca060d10652f26ca58e32f3cd5c4d7597903fe"
+      "bytes": 67098,
+      "sha256": "4d7512b132d7530679283b64d3cfecdd5249e64b43ae6fb4af5bb6683a407596"
     },
     {
       "path": "courses/one-file-world/stages/world-05.html",
-      "bytes": 80445,
-      "sha256": "01ca437c8e31a8f7b0c50ce845da457d2c102b5fefb77653e4151279a664ea9d"
+      "bytes": 81283,
+      "sha256": "56b927ec2330d4f4082c764d8e124238adea1621d8d7446c0657e45d4d4be026"
     },
     {
       "path": "courses/one-file-world/stages/world-06.html",
-      "bytes": 188050,
-      "sha256": "7cccabc87c51cfcdec69af817c21d9f32c23998fb9574a11c13506ceec951c33"
+      "bytes": 188928,
+      "sha256": "44b9fde8ef25cff35451e932396ebe3e754d231bb013f5c60471e39e2fe2d457"
     },
     {
       "path": "courses/one-file-world/stages/world-07.html",
-      "bytes": 202407,
-      "sha256": "4d1b7fa4683f532514955106af553eb1aeb5611f4a8ea7c142cb91d6dee29d08"
+      "bytes": 203285,
+      "sha256": "315d54a05d95334df425295a7f13ea93af5c81f4994ad82430456ff10026590c"
     },
     {
       "path": "courses/one-file-world/stages/world-08.html",
-      "bytes": 209432,
-      "sha256": "6be710e4b7b4204ff4f0c4216c0e9cb71339f53da02e25fe3050b6b387b77785"
+      "bytes": 210310,
+      "sha256": "47b94c25db0a111953a14dc1d54eaf819d65dd2d76f93c64cde49977b53e6df4"
     },
     {
       "path": "courses/one-file-world/stages/world-09.html",
-      "bytes": 221486,
-      "sha256": "8bfd270ceb2c8f6e0e1913fb9b9e5ea0b39a410ecddf880aecab9d74856331af"
+      "bytes": 230240,
+      "sha256": "c2afe000ddf37f49da14060a3e61f7f1c2e4c657de53615179aa73f5e6b23e95"
     },
     {
       "path": "courses/onion-network-course/LICENSE.md",

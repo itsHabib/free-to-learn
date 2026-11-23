@@ -4233,7 +4233,7 @@ function growWorld(seed) {
 // [seconds, eye at start, look-at at start, eye at end, look-at at end]. They
 // are built from the scouted places, so every island gets the same film with
 // its own geography. A shot with no poses follows the birds.
-function makeTour(H, P, S, homes) {
+function makeTour(H, P, S, homes, dockView = false) {
   const w = P.west;
   const n = [-w[1], w[0]];
   const V = S.village;
@@ -4263,16 +4263,21 @@ function makeTour(H, P, S, homes) {
   const vy = Math.max(heightAt(H, V[0], V[1]), 0);
   const ty = Math.max(heightAt(H, T[0], T[1]), 0);
   const town = [(V[0] * 2 + K[0]) / 3, K[1] * 0.26, (V[1] * 2 + K[2]) / 3];
+  const ferryEye = by(B, 49, -24, 2.85);
+  const stationTarget = by(B, 26, 3, 4.9);
   const side = (V[0] - P.bay[0]) * n[0] + (V[1] - P.bay[1]) * n[1] > 0 ? -1 : 1;
   return [
-    // Arriving by sea, low, past the boats at anchor and the jetty.
-    [
-      16,
-      by(B, 54.4, -11.65, 2.17),
-      by(B, 23.0, 2.25, 4.7),
-      by(B, 46.3, -7.35, 2.3),
-      by(B, 23.5, 2.05, 4.4),
-    ],
+    // Hold across the water as the ferry crosses the station's reflection.
+    // The dock view keeps the earlier lighting exercise at its original angle.
+    dockView
+      ? [
+          16,
+          by(B, 54.4, -11.65, 2.17),
+          by(B, 23.0, 2.25, 4.7),
+          by(B, 46.3, -7.35, 2.3),
+          by(B, 23.5, 2.05, 4.4),
+        ]
+      : [16, ferryEye, stationTarget, ferryEye, stationTarget],
     // Across the roofs, side-lit.
     [
       14,
@@ -4333,6 +4338,192 @@ function portraitPose(eye, aspect, ground) {
   const k = Math.min(1 / aspect - 1, 1.2);
   eye[1] += k * (1.5 + 0.3 * (eye[1] - ground));
   return 0.12 * k;
+}
+// Simple connected shapes keep a head, a coat and a gap between the feet
+// readable when a passenger is only a few pixels tall.
+function addPassenger(m, x, y, z, h, coat) {
+  const leg = [0.036, 0.043, 0.049];
+  for (const dx of [-0.105, 0.105]) {
+    addBox(
+      m,
+      x + (dx - 0.054) * h,
+      x + (dx + 0.054) * h,
+      y,
+      y + 0.75 * h,
+      z - 0.085 * h,
+      z + 0.085 * h,
+      leg,
+    );
+  }
+  // The sleeves hang clear of the coat hem. Vary the elbow with the height
+  // so the waiting child and the taller passengers have distinct outlines.
+  for (const side of [-1, 1]) {
+    const elbow = side > 0 && h < 0.9 ? 0.32 : 0.25;
+    addTube(
+      m,
+      [
+        x + side * 0.22 * h,
+        y + 0.72 * h,
+        z + 0.035 * h,
+        0.055 * h,
+        x + side * elbow * h,
+        y + 0.96 * h,
+        z,
+        0.066 * h,
+        x + side * 0.18 * h,
+        y + 1.24 * h,
+        z,
+        0.088 * h,
+      ],
+      [coat],
+      6,
+    );
+  }
+  const rings = (shape, color) =>
+    addTube(
+      m,
+      shape.flatMap(([up, radius]) => [x, y + up * h, z, radius * h]),
+      [color],
+      6,
+    );
+  rings(
+    [
+      [0.55, 0.21],
+      [1.13, 0.25],
+      [1.34, 0.16],
+    ],
+    coat,
+  );
+  rings(
+    [
+      [1.33, 0.075],
+      [1.38, 0.14],
+      [1.55, 0.15],
+      [1.63, 0.065],
+    ],
+    [0.28, 0.18, 0.13],
+  );
+}
+
+// The two bows let the ferry reverse at each end without turning. Amber glass
+// sits behind the silhouettes; the canopy lip overhangs the front windows.
+function ferryMesh() {
+  const m = newMesh();
+  const navy = [0.025, 0.077, 0.093];
+  const scarlet = [0.48, 0.071, 0.038];
+  const cream = [0.75, 0.67, 0.47];
+  const green = [0.09, 0.18, 0.16];
+  const deck = [0.25, 0.17, 0.1];
+  const glass = [0.68, 0.5, 0.3];
+  const hull = [
+    [-4.05, 0.15],
+    [-3.46, 0.78],
+    [-2.52, 1.16],
+    [-1.35, 1.3],
+    [1.35, 1.3],
+    [2.52, 1.16],
+    [3.46, 0.78],
+    [4.05, 0.15],
+  ];
+  for (let i = 1; i < hull.length; i++) {
+    const [a, wa] = hull[i - 1];
+    const [b, wb] = hull[i];
+    for (const side of [-1, 1]) {
+      const face = (low, high, base, brim, color) => {
+        const pts = [
+          [a, low, wa * base * side],
+          [b, low, wb * base * side],
+          [b, high, wb * brim * side],
+          [a, high, wa * brim * side],
+        ];
+        if (side < 0) pts.reverse();
+        addQuad(m, ...pts, color);
+      };
+      face(-0.55, 0.38, 0.72, 1, navy);
+      face(0.38, 0.51, 1, 1.01, scarlet);
+      face(0.51, 0.61, 1.01, 1.03, cream);
+    }
+    addQuad(
+      m,
+      [a, 0.61, -wa * 1.03],
+      [a, 0.61, wa * 1.03],
+      [b, 0.61, wb * 1.03],
+      [b, 0.61, -wb * 1.03],
+      deck,
+    );
+  }
+  const box = (x0, x1, y0, y1, z0, z1, color, glow = 0) =>
+    addBox(m, x0, x1, y0, y1, z0, z1, color, glow);
+  box(-2.58, 2.26, 0.61, 1.12, -0.88, 0.88, green);
+  box(-2.48, 2.16, 1.12, 2.13, -0.76, 0.76, glass, 0.67);
+  // Sloped pilothouse end glazing makes the cabin readable from both bows.
+  for (const end of [-1, 1]) {
+    const x = end < 0 ? -2.5 : 2.18;
+    for (const side of [-1, 1]) {
+      const a = side * 0.08;
+      const b = side * 0.73;
+      const pts = [
+        [x + end * 0.16, 1.3, a],
+        [x + end * 0.16, 1.3, b],
+        [x + end * 0.03, 2.03, b],
+        [x + end * 0.03, 2.03, a],
+      ];
+      if (end * side > 0) pts.reverse();
+      addQuad(m, ...pts, [0.16, 0.32, 0.34], 0.11);
+      // A wiper rests diagonally on each pane. Keep its ends on the raked
+      // windscreen rather than on the flat bulkhead behind it.
+      const wiper = (y, z) => [
+        x + end * (0.18 - (0.13 * (y - 1.3)) / 0.73),
+        y,
+        side * z,
+      ];
+      addQuad(
+        m,
+        wiper(1.34, 0.17),
+        wiper(1.35, 0.2),
+        wiper(1.87, 0.5),
+        wiper(1.87, 0.47),
+        navy,
+      );
+    }
+  }
+  for (const x of [-2.53, -1.55, -0.49, 0.61, 1.6, 2.21]) {
+    for (const side of [-1, 1]) {
+      const z = side * 0.855;
+      box(x - 0.046, x + 0.046, 1.09, 2.2, z - 0.035, z + 0.035, cream);
+    }
+  }
+  for (const side of [-1, 1]) {
+    for (const [x, foot, height, coat] of [
+      [-1.11, 0.5, 0.96, navy],
+      [0.1, 0.68, 0.72, scarlet],
+      [1.1, 0.48, 1.0, green],
+    ]) {
+      addPassenger(m, x, foot, side * 0.81, height, coat);
+    }
+    const jamb = side * 0.89;
+    box(-2.52, 2.2, 1.18, 1.25, jamb - 0.022, jamb + 0.022, cream);
+    box(-2.68, 2.36, 2.1, 2.19, side * 0.9 - 0.04, side * 0.9 + 0.04, cream);
+    const z = side * 0.97;
+    box(2.53, 3.23, 1.12, 1.18, z - 0.024, z + 0.024, cream);
+    for (const x of [2.56, 3.19])
+      box(x - 0.035, x + 0.035, 0.61, 1.16, z - 0.035, z + 0.035, navy);
+  }
+  box(-2.8, 2.48, 2.17, 2.25, -1.05, 1.05, cream);
+  box(-2.66, 2.34, 2.25, 2.34, -1.0, 1.0, scarlet);
+  addTube(
+    m,
+    [
+      -1.36, 2.33, 0, 0.19, -1.47, 2.76, 0, 0.17, -1.49, 2.84, 0, 0.19, -1.51,
+      2.95, 0, 0.19,
+    ],
+    [navy, scarlet, navy],
+    6,
+  );
+  box(-0.73, 0.51, 2.33, 2.45, -0.3, 0.3, green);
+  addTube(m, [1.65, 2.34, 0, 0.042, 1.65, 2.82, 0, 0.034], [cream], 6);
+  addTube(m, [1.65, 2.82, 0, 0.091, 1.65, 2.93, 0, 0.065], [cream], 6, 0, 1.4);
+  return m;
 }
 // Camera pose at time t of the tour: fills eye and look, returns [shot number,
 // how close to a cut 0..1].
@@ -4955,6 +5146,8 @@ const SEA_FS =
   `
 uniform sampler2D tPortMirror;
 uniform float uPortReflection;
+// Centre of the passenger ferry and its velocity in metres per second.
+uniform vec4 uFerry;
 in vec3 vP;
 out vec4 o;
 void main() {
@@ -5082,6 +5275,21 @@ void main() {
       );
     }
   }
+  // The two crests trail the moving stern and spread as they travel. When
+  // the double-ended ferry changes direction, the wake subsides and reverses.
+  float wash = 0.0;
+  vec2 offset = p-uFerry.xy;
+  float speed2 = dot(uFerry.zw,uFerry.zw);
+  if (speed2 > 0.01 && dot(offset,offset) < 225.0) {
+    vec2 forward = uFerry.zw*inversesqrt(speed2);
+    float aft = -dot(offset,forward);
+    float side = abs(dot(offset,vec2(-forward.y,forward.x)));
+    float arm = side-(0.82+0.23*aft);
+    float crest = 1.0-smoothstep(0.06,0.27,abs(arm+0.13*(c.a-0.5)));
+    wash = 0.76*crest*smoothstep(-1.0,2.0,aft) *(
+        1.0-smoothstep(3.0,14.0,aft)
+    )*smoothstep(0.1,4.0,speed2) *(0.28+0.72*smoothstep(0.18,0.66,c.a));
+  }
   // Foam: a wash at the waterline and lines that travel in to shore, broken up
   // by noise.
   float lap = sin(depth * 2.2 + t * 1.2 + a.b * 5.0) * 0.5 + 0.5;
@@ -5096,6 +5304,7 @@ void main() {
   // it with its own colour. Mirror, body and foam each go through finish()
   // before they are mixed, because the bed underneath was finished when it was
   // drawn: mixing in the same space keeps shallow and deep water seamless.
+  foam = max(foam,wash);
   float cover = smoothstep(10.0, 22.0, depth);
   float alpha = fres + (1.0 - fres) * cover;
   vec3 mirrorColour = finish(haze(refl, vP));
@@ -6537,6 +6746,7 @@ onDraw(59, () => {
     gl.vertexAttribPointer(6, 4, gl.FLOAT, false, 32, 16);
     draw(gl.TRIANGLES, mesh.count, gl.UNSIGNED_SHORT, 0, count);
   }
+  if (W.drawCrossing) W.drawCrossing();
   gl.uniform1i(W.mirrorPort, 0);
   gl.bindVertexArray(null);
   gl.bindFramebuffer(gl.FRAMEBUFFER, null);
@@ -6897,11 +7107,81 @@ onGrow(() => {
     W.P,
     W.S,
     Float32Array.from([...W.things[6].data, ...W.things[11].data]),
+    Q.get('view') === 'dock',
   );
   if (!Q.has('cam') && ctl.mode === 'hold') {
     tourPose(W.tour, 0, cam.eye, cam.look);
     [cam.yaw, cam.pitch] = aim(cam.eye, cam.look);
   }
+});
+
+// A double-ended passenger ferry shuttles beside the quay. Distances use the
+// jetty's local axes: offshore first, then along the beach. The same pose is
+// used by the view above water and the mirrored view below it.
+function ferryPose(t) {
+  const phase = (t - 4) * 0.235;
+  return [
+    37.6 + 10.5 * Math.sin(phase),
+    -11.5,
+    0.042 * Math.sin(t * 1.48),
+    10.5 * 0.235 * Math.cos(phase),
+  ];
+}
+
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let crossingTime = !SHOT && reducedMotion ? 4 : time;
+onTick((dt) => {
+  if (ctl.mode === 'tour' || (ctl.mode === 'fly' && !reducedMotion)) {
+    crossingTime += dt;
+  }
+});
+
+// The crossing belongs to the finished world. Earlier lessons can keep using
+// their standalone lighting study. Draw the passengers on the dock with the
+// jetty transform; only the ferry changes position.
+onGrow(() => {
+  if (Q.get('view') === 'dock') return;
+  const waiting = newMesh();
+  addPassenger(waiting, 28.6, 1.17, -1.36, 1.0, [0.28, 0.15, 0.1]);
+  addPassenger(waiting, 29.4, 1.17, -1.23, 0.78, [0.35, 0.32, 0.15]);
+  addPassenger(waiting, 32.6, 1.17, -1.51, 1.07, [0.055, 0.12, 0.15]);
+  const make = (model) => {
+    const data = bakeMesh(model);
+    return mesh(data.verts, data.idx, [3, 3, 3, 4, 2]);
+  };
+  const crowd = make(waiting);
+  const boat = make(ferryMesh());
+  gl.bindVertexArray(null);
+  const beach = W.S.beach;
+  const q = W.S.sea;
+  const wake = gl.getUniformLocation(W.pSea, 'uFerry');
+  const pose = new Float32Array(4);
+  onDraw(29, () => {
+    const [along, across, height, speed] = ferryPose(
+      SHOT ? time : crossingTime,
+    );
+    pose[0] = beach[0] + q[0] * along - q[1] * across;
+    pose[1] = height;
+    pose[2] = beach[1] + q[1] * along + q[0] * across;
+    pose[3] = speed;
+    gl.useProgram(W.pSea);
+    gl.uniform4f(wake, pose[0], pose[2], q[0] * pose[3], q[1] * pose[3]);
+  });
+  W.drawCrossing = () => {
+    if (Math.hypot(cam.eye[0] - beach[0], cam.eye[2] - beach[1]) > 420) return;
+    const drawAt = (shape, x, y, z) => {
+      gl.bindVertexArray(shape.vao);
+      gl.vertexAttrib4f(5, x, y, z, 1);
+      gl.vertexAttrib4f(6, q[0], q[1], 0.5, 0.5);
+      draw(gl.TRIANGLES, shape.count, gl.UNSIGNED_SHORT, 0);
+    };
+    gl.useProgram(W.pThing);
+    drawAt(crowd, beach[0], 0, beach[1]);
+    drawAt(boat, pose[0], pose[1], pose[2]);
+  };
+});
+onDraw(31, () => {
+  if (W.drawCrossing) W.drawCrossing();
 });
 
 // The tour moves the camera whenever nobody else is.
@@ -7049,11 +7329,7 @@ if (SHOT) $('ui').style.display = 'none';
 // Phones start a little soft and sharpen if there is room.
 stat.scale = Q.has('scale') ? +Q.get('scale') : PHONE && !SHOT ? 0.8 : 1;
 // No camera travel unless asked for, where motion is to be reduced.
-setMode(
-  matchMedia('(prefers-reduced-motion: reduce)').matches && !SHOT
-    ? 'hold'
-    : 'tour',
-);
+setMode(reducedMotion && !SHOT ? 'hold' : 'tour');
 // endregion: 9-shipping (page)
 start();
 </script>
