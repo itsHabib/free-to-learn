@@ -221,7 +221,7 @@ function mapFlat({ map }) {
         return { message: `${mapText(q)}: the ground at (${g.fmt(x)}, ${g.fmt(z)}) lands at screen (${g.fmt(low[0])}, ${g.fmt(low[1])}), and the point 300 m above it at (${g.fmt(high[0])}, ${g.fmt(high[1])}). A map has no perspective: a point's height must not move it on the screen, so the fourth row of the projection is 0 0 0 1 and w stays 1.` };
       for (const y of MAP_HEIGHTS) {
         const depth = ndc(m, [x, y, z])[2];
-        if (!(depth >= -1 && depth <= 1)) return { message: `${mapText(q)}: a point at height ${y} m has clip z/w ${g.fmt(depth)}, outside -1..1, so the near or far plane cuts it away. Everything from ${MAP_HEIGHTS[0]} m to ${MAP_HEIGHTS[1]} m must lie between them.` };
+        if (!(depth >= -1 && depth <= 1)) return { message: `${mapText(q)}: a point at height ${y} m has clip z/w ${depth}, outside -1..1, so the near or far plane cuts it away. Everything from ${MAP_HEIGHTS[0]} m to ${MAP_HEIGHTS[1]} m must lie between them.` };
       }
       if (!(high[2] < low[2])) return { message: `${mapText(q)}: the point 300 m up has depth (clip z/w) ${g.fmt(high[2])} and the ground below it ${g.fmt(low[2])}. The camera looks down, so a higher point is nearer and needs the smaller depth, or the ground is drawn over the things that stand on it.` };
     }

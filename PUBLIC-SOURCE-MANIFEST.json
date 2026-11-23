@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 35775,
-      "sha256": "0373fe0f475bbf5d9ec8e14c8e6b663975bb8a3c873cc57d286535532c2e1049"
+      "sha256": "dbc76e4aa0e382440f2b2d218fabc39c3b08f04a5a84a1d60252f6a04f79a34a"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -159,13 +159,13 @@
     },
     {
       "path": ".packages/one-file-world.zip",
-      "bytes": 9737109,
-      "sha256": "03281b920ca8250e03030939e4a290336da3c42598b9f6c1279cfe81ee05134c"
+      "bytes": 9744793,
+      "sha256": "f1937000c3b2602d7ebd7bd8d464836b3d283409abec318b3008fa540e592f79"
     },
     {
       "path": ".packages/one-file-world.zip.sha256",
       "bytes": 85,
-      "sha256": "3113ddcec4ce867f32a72904646576732f8f9cd68d850a3e42a2ee0f966c074c"
+      "sha256": "a27276bd9293a8d866ac11b79296c9158d6db1a59d3cf8ef1a6f159d6ea09297"
     },
     {
       "path": ".packages/onion-routing.zip",
@@ -259,8 +259,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 443280,
-      "sha256": "57ea58c3840f6378b09a942ebd879b7a63bf95e5b4743ce79b1537daedac0a15"
+      "bytes": 443935,
+      "sha256": "09fb2f8438b764754521e69817c067f43bb4797d7a7004c0c405f06a6753ed61"
     },
     {
       "path": "LICENSE.md",
@@ -5733,14 +5733,29 @@
       "sha256": "945502c1add2d78786b246430d2ec0e939a609ff79830bfb78d3cd685ea74ed8"
     },
     {
+      "path": "courses/one-file-world/LICENSE.md",
+      "bytes": 1207,
+      "sha256": "4c8b7e631bdfe725940dceb7d8be249d642b94487aeb34dc011d67b480b00305"
+    },
+    {
+      "path": "courses/one-file-world/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/one-file-world/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
       "path": "courses/one-file-world/README.md",
       "bytes": 1918,
       "sha256": "2140f2e507c9609eea3f1efcd40b8708b42351c7b12a83f1235fc69630818765"
     },
     {
       "path": "courses/one-file-world/checks/1.mjs",
-      "bytes": 18939,
-      "sha256": "966a81c7124630738db0681792e4074c7ce1726d05fd9b5dc97efb087e159c97"
+      "bytes": 18932,
+      "sha256": "8ade6bb82adf42c1eecb00d1cdf10f47c7bdbdc4901c179cc56480f1590993f9"
     },
     {
       "path": "courses/one-file-world/checks/2.mjs",
@@ -5994,8 +6009,8 @@
     },
     {
       "path": "courses/one-file-world/lessons/01.md",
-      "bytes": 20314,
-      "sha256": "63d7938db96c232d25a7aa2905f6189635cdfe64dd01ae3e0c5f5a2ff274811d"
+      "bytes": 20438,
+      "sha256": "1d89e63dfe5c06978a66377416ccbf11816bbd0f6bd2fcdbbd89b7307b2810e6"
     },
     {
       "path": "courses/one-file-world/lessons/02.md",
