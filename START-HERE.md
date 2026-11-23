@@ -124,3 +124,7 @@ how to push your implementation and keep attempts private. To run the complete
 worked capstone, start in the live query course and run `node lab.mjs compare
 --worked`. Download both ZIPs into the same parent directory if you want the
 capstone without Git.
+
+## Build a world in one file
+
+Open [lesson 1](courses/one-file-world/lessons/01.md). From `courses/one-file-world`, run `node lab.mjs start project write` to implement the camera functions. The supplied route starts with working code. Each later lesson adds one layer to your island and keeps your earlier project files.

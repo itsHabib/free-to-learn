@@ -1,0 +1,142 @@
+// Made by tools/listings.mjs from stages/world-03.html. Do not edit.
+
+// region: DAY_KEYS
+const DAY_KEYS = [
+  // The golden hour, where the day starts.
+  0, 3.01,
+  // Sunset.
+  0.25, 3.13,
+  // Dusk is over.
+  0.36, 3.74,
+  // Midnight.
+  0.46, 4.71,
+  // First light.
+  0.55, 5.9,
+  // Sunrise.
+  0.62, 6.27,
+  // Morning.
+  0.78, 6.56,
+  // Noon.
+  0.9, 7.85,
+  // The golden hour again, one turn later.
+  1, 9.293,
+];
+// endregion: DAY_KEYS
+
+// region: dayAngle
+// The day runs 0..1 and starts in the golden hour. It lingers at sunset and
+// dawn and hurries through noon and night.
+function dayAngle(u) {
+  u -= Math.floor(u);
+  let k = 0;
+  while (u > DAY_KEYS[k + 2]) k += 2;
+  // How far u has come from this key toward the next, 0 to 1.
+  const part = (u - DAY_KEYS[k]) / (DAY_KEYS[k + 2] - DAY_KEYS[k]);
+  return mix(DAY_KEYS[k + 1], DAY_KEYS[k + 3], part);
+}
+// endregion: dayAngle
+
+// region: SKY_KEYS
+// Sky colours at five sun heights (degrees): zenith rgb, horizon rgb.
+const SKY_KEYS = [
+  // Night.
+  -14, 0.008, 0.014, 0.042, 0.022, 0.034, 0.075,
+  // Dusk.
+  -5, 0.022, 0.05, 0.15, 0.21, 0.14, 0.17,
+  // The sun on the horizon.
+  1, 0.034, 0.11, 0.29, 0.46, 0.28, 0.19,
+  // A low sun.
+  8, 0.04, 0.15, 0.36, 0.46, 0.35, 0.27,
+  // Full day.
+  30, 0.05, 0.18, 0.52, 0.38, 0.54, 0.74,
+];
+// endregion: SKY_KEYS
+
+// region: skyKeys
+// The sky overhead (S[8..10]) and at the horizon (S[12..14]) for a sun height
+// in degrees: find the two rows of SKY_KEYS the height lies between, and how
+// far between, then blend them. The blend is of linear colour, before the
+// display curve.
+function skyKeys(S, height) {
+  let k = 0;
+  while (k < 21 && height > SKY_KEYS[k + 7]) k += 7;
+  const t = smooth(SKY_KEYS[k], SKY_KEYS[k + 7], height);
+  // Three numbers overhead, three at the horizon.
+  for (let c = 0; c < 3; c++) {
+    S[8 + c] = mix(SKY_KEYS[k + 1 + c], SKY_KEYS[k + 8 + c], t);
+    S[12 + c] = mix(SKY_KEYS[k + 4 + c], SKY_KEYS[k + 11 + c], t);
+  }
+  return S;
+}
+// endregion: skyKeys
+
+// region: skyState
+// Fills S (20 numbers) for a time of day u (0..1). "west" is the compass
+// direction of sunset. S[0..2] is the direction to the light, S[3] how far
+// into night it is (0..1), S[4..6] the light's colour, S[8..10] the sky
+// overhead, S[12..14] the sky at the horizon and S[16] the exposure.
+function skyState(S, u, west) {
+  const angle = dayAngle(u);
+  const sine = Math.sin(angle);
+  // The sun's height in degrees: up to 44 by day, down to -16 at night.
+  const height = sine * (sine > 0 ? 44 : 16);
+  const rise = (height * Math.PI) / 180;
+  // Its compass direction, hx along the sunset line and hz across it, scaled
+  // so that the whole direction has length 1.
+  const hx = -Math.cos(angle);
+  const hz = 0.55 * Math.abs(sine) + 0.1;
+  const scale = Math.cos(rise) / Math.sqrt(hx * hx + hz * hz);
+  let dx = (west[0] * hx - west[1] * hz) * scale;
+  let dy = Math.sin(rise);
+  let dz = (west[1] * hx + west[0] * hz) * scale;
+  // Sunlight reddens as it crosses more air: blue is scattered away first.
+  const air = 1 / (Math.max(dy, 0) + 0.06);
+  const up = smooth(-2.5, 2, height) * 3.2;
+  let r = Math.exp(-0.03 * air) * up;
+  let g = Math.exp(-0.1 * air) * up;
+  let b = Math.exp(-0.25 * air) * up;
+  const night = 1 - smooth(-9, -3, height);
+  // After dusk the moon is the light.
+  if (height < -3) {
+    const moon = 1 / Math.sqrt(0.25 + 0.3 + 0.36);
+    dx = (-west[0] * 0.5 - west[1] * 0.55) * moon;
+    dy = 0.6 * moon;
+    dz = (-west[1] * 0.5 + west[0] * 0.55) * moon;
+    r = 0.1 * night;
+    g = 0.15 * night;
+    b = 0.26 * night;
+  }
+  S[0] = dx;
+  S[1] = dy;
+  S[2] = dz;
+  S[3] = night;
+  S[4] = r;
+  S[5] = g;
+  S[6] = b;
+  skyKeys(S, height);
+  // Exposure: open up at night.
+  S[16] = mix(1.0, 2.4, night);
+  return S;
+}
+// endregion: skyState
+
+// region: haze
+// Haze: air thickens with distance and gathers near the sea. Far things fade
+// into the sky colour behind them.
+vec3 haze(vec3 col, vec3 p) {
+  vec3 v = p - uCam.xyz;
+  // For the sea bed, only the part of the path above water is air.
+  if (p.y < 0.0) v *= uCam.y / (uCam.y - p.y);
+  float d = length(v);
+  v /= d;
+  float k = v.y * 0.012;
+  float low = exp(-max(uCam.y, 0.0) * 0.012)
+      * (abs(k) < 1e-5 ? d : (1.0 - exp(-d * k)) / k);
+  float a = 1.0 - exp(-uZen.w * (d * 0.35 + low * 0.65));
+  return mix(
+      col,
+      skyBase(normalize(vec3(v.x, abs(v.y) * 0.3 + 0.03, v.z))) * 0.9,
+      a
+  );
+}
+// endregion: haze

@@ -1,0 +1,50 @@
+// Made by tools/listings.mjs from stages/world-06.html, region 6-things (pure). Do not edit.
+
+// region: whichTree
+// The rule for one candidate spot in the forest's grid: which tree grows here,
+// if any. Returns a kind number (0 broadleaf, 1 pine, 2 cypress, 4 palm) or -1
+// for none. h is height in metres; grass, moist, sand and steep are the cover
+// masks, 0..1; grove is 0 in a clearing and 1 deep in a wood; tall is a second
+// noise that gathers cypresses; chance and pick are this spot's two dice, 0..1.
+function whichTree(h, grass, moist, sand, steep, grove, tall, chance, pick) {
+  // Palms along the back of the beach.
+  if (h > 1.6 && h < 7 && sand > 0.12 && sand < 0.8)
+    return chance < 0.2 ? 4 : -1;
+  // No soil, or too close to the sea.
+  if (grass < 0.5 || h < 2.5) return -1;
+  // Thick in wet groves, thin toward the heights.
+  const want = grove * (0.2 + 0.8 * moist) * (1 - smooth(110, 210, h));
+  if (chance > want * 0.8) return -1;
+  if (tall > 0.25 && h < 110 && pick < 0.55) return 2;
+  // Pines take the dry, steep ground.
+  return 1 - moist + h / 260 + steep > 0.95 + 0.3 * pick ? 1 : 0;
+}
+// endregion: whichTree
+
+// region: bucket
+function bucket(list) {
+  const n = list.length / 8;
+  const order = new Uint32Array(n);
+  const key = new Float64Array(n);
+  const start = new Uint32Array(PLOTS * PLOTS + 1);
+  for (let i = 0; i < n; i++) {
+    // The plot this thing stands in, from its x and its z.
+    const across = Math.floor((list[i * 8] + HALF) / PLOT);
+    const down = Math.floor((list[i * 8 + 2] + HALF) / PLOT);
+    const c = clamp(down, 0, PLOTS - 1) * PLOTS + clamp(across, 0, PLOTS - 1);
+    order[i] = i;
+    // Sort by plot, and within a plot by the thing's chance number, which is
+    // what shuffles it.
+    key[i] = c + list[i * 8 + 7];
+    start[c + 1]++;
+  }
+  // Turn the counts into where each plot starts.
+  for (let c = 0; c < PLOTS * PLOTS; c++) start[c + 1] += start[c];
+  order.sort((a, b) => key[a] - key[b] || a - b);
+  // Copy the things out in their new order.
+  const data = new Float32Array(n * 8);
+  for (let i = 0; i < n; i++)
+    data.set(list.slice(order[i] * 8, order[i] * 8 + 8), i * 8);
+  return { data, start };
+}
+// endregion: bucket

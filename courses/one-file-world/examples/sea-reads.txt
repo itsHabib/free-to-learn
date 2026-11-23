@@ -1,0 +1,4 @@
+  vec4 a = texture(tW, p / 127.0 + t * vec2(0.010, 0.004));
+  vec4 b = texture(tW, p.yx / 41.0 + t * vec2(-0.012, 0.019));
+  vec4 c = texture(tW, p / 9.3 + t * vec2(0.045, -0.03));
+  vec2 swell = (a.rg * 0.55 + b.gr * 0.4) * calm;

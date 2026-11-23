@@ -1,0 +1,1 @@
+  FAIL 6.bucket-order: drawing the first half of every plot keeps things that stand 0.1826 of a plot to one side (north to south), not spread over it. The list was made row by row, so a plot left in that order is bare on one side when thinned: shuffle each plot, by its things' chance numbers, before drawing a prefix.

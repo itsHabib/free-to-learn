@@ -1,0 +1,2 @@
+  FAIL 8.envelope: callEnvelope(0.11) starts at level 0.5 and ends at 0.5: both must be 0, or the note starts or stops with a step in the sound, a click.
+  FAIL 8.click: where a note starts or stops, the loudness changes by 0.7057 of the call's loudest in 2 ms: a click. The envelope must bring every note up from silence and back to it; at most 0.2 is allowed. (Measured from the samples; only a person can hear it.)

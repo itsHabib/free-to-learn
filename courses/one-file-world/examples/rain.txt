@@ -1,0 +1,5 @@
+Rain on seed 7 with your depositOrCut: 1,000 drops of at most 70 steps.
+Worn away 5788, laid down 4600, so 1187 is gone: 20.5 of every 100 worn away. (Each cell is 16 square metres.)
+Where a finished drop stopped, with the soil it still held:
+  sea            928 drops, 919 soil
+  on land, when its 70 steps ran out    72 drops, 269 soil

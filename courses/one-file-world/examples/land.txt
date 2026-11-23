@@ -1,0 +1,97 @@
+// Made by tools/listings.mjs from stages/world-02.html, region 2-land (pure). Do not edit.
+
+// region: ridged
+// Ridged noise: sharp crests, with fine detail damped on slopes that are
+// already steep.
+function ridged(x, y, s, D) {
+  let sum = 0;
+  let amp = 0.5;
+  let norm = 0;
+  let dx = 0;
+  let dy = 0;
+  for (let o = 0; o < 6; o++) {
+    const n = noiseD(x, y, s + o, D);
+    const r = 1 - Math.min(1, Math.abs(n) * 2.1);
+    dx += D[0] * amp;
+    dy += D[1] * amp;
+    sum += (amp * r * r) / (1 + 1.6 * (dx * dx + dy * dy));
+    norm += amp;
+    amp *= 0.5;
+    // Turn and double the frequency.
+    const t = x * 1.6 - y * 1.2;
+    y = x * 1.2 + y * 1.6;
+    x = t;
+  }
+  return sum / norm;
+}
+// endregion: ridged
+
+// region: landHeight
+// Height in metres at a point (x, z) in metres. Sea level is 0.
+function landHeight(x, z, P, D) {
+  const s = P.seed;
+  // Bend the map a little so no coastline is a clean curve.
+  const wx = x + 90 * noiseD(x / 480, z / 480, s + 1, D);
+  const wz = z + 90 * noiseD(x / 480 + 7.3, z / 480 - 2.1, s + 2, D);
+  // "coast" is about 1 at the island's heart, 0 on the shoreline and negative
+  // out at sea.
+  const al = wx * P.axis[0] + wz * P.axis[1];
+  const ac = wz * P.axis[0] - wx * P.axis[1];
+  let coast = 1 - Math.sqrt((al * al) / (P.long * P.long) + ac * ac) / P.R;
+  coast +=
+    0.17 * noiseD(wx / 300, wz / 300, s + 3, D) +
+    0.05 * noiseD(wx / 85, wz / 85, s + 4, D);
+  const bxd = wx - P.bay[0];
+  const bzd = wz - P.bay[1];
+  // The bay bites into the west side.
+  coast = smin(
+    coast,
+    (Math.sqrt(bxd * bxd + bzd * bzd) / P.bayR - 1) * 0.3,
+    0.12,
+  );
+  // Sea stacks: small steep rocks off the coast.
+  let stack = -9;
+  for (const it of P.islets) {
+    const ix = wx - it[0];
+    const iz = wz - it[1];
+    stack = Math.max(stack, 1 - Math.sqrt(ix * ix + iz * iz) / it[2]);
+  }
+  // Steep sides: a wide shallow shelf would show as a pale slab.
+  coast = Math.max(coast, (stack - 0.45) * 1.1);
+  // Bed ripples fade out at the shore, or they would surface as sandbars.
+  if (coast < 0)
+    return Math.max(
+      -45,
+      coast * 120 +
+        3 * smooth(0, 0.08, -coast) * noiseD(x / 60, z / 60, s + 5, D),
+    );
+  // Land: a beach, rolling lowland, then mountains where the peaks are.
+  let peak = 0;
+  for (const p of P.peaks) {
+    const px = (wx - p[0]) / p[2];
+    const pz = (wz - p[1]) / p[2];
+    const q = 1 / (1 + px * px + pz * pz);
+    peak += p[3] * q * q;
+  }
+  const ridge = ridged(wx / 400, wz / 400, s + 10, D);
+  const cliff = smooth(0.0, 0.3, noiseD(wx / 240, wz / 240, s + 6, D));
+  let h =
+    2.5 * smooth(0, 0.05, coast) +
+    22 * smooth(0.02, 0.4, coast) * (0.6 + 0.8 * ridge);
+  h += cliff * 30 * smooth(0.012, 0.045, coast);
+  h +=
+    P.high *
+    Math.min(peak, 1.2) *
+    (0.25 + 0.75 * ridge) *
+    smooth(0.03, 0.42, coast);
+  // High ground breaks into knuckles and notches.
+  h += smooth(70, 190, h) * 11 * (ridged(wx / 46, wz / 46, s + 30, D) - 0.45);
+  // Craggy, not a cone.
+  return (
+    h +
+    smooth(0.5, 0.9, stack) *
+      (14 + 46 * ridge) *
+      (1 + 0.35 * noiseD(x / 11, z / 11, s + 7, D))
+  );
+}
+// endregion: landHeight

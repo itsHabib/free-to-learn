@@ -182,6 +182,17 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": ".packages/one-file-world.zip",
+      "kind": "archive-of-the-corresponding-course-files",
+      "terms": "Same per-file original/third-party terms as matching courses directory; no private history or learner implementation."
+    },
+    {
+      "path": ".packages/one-file-world.zip.sha256",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": ".packages/onion-routing.zip",
       "kind": "archive-of-the-corresponding-course-files",
       "terms": "Same per-file original/third-party terms as matching courses directory; no private history or learner implementation."
@@ -7325,6 +7336,644 @@
     },
     {
       "path": "courses/live-query-engine/terminal.test.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/LICENSE.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/LICENSES/CC-BY-4.0.txt",
+      "kind": "standard-license-text",
+      "terms": "Official CC BY4.0 legal code; text itself has CC0 dedication; grants apply only where LICENSE.md says"
+    },
+    {
+      "path": "courses/one-file-world/LICENSES/MIT.txt",
+      "kind": "standard-license-text",
+      "terms": "Complete MIT grant for identified original software; no assertion of ownership of standard wording"
+    },
+    {
+      "path": "courses/one-file-world/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/checks/1.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/2.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/3.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/4.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/5.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/6.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/7.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/8.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/9.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/engines.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/geometry.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/grow.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/pure.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/rule.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/run.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/sound.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/checks/worker.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/course.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/camera.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-2.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-3.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-4.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-5.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-6.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-7.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-8.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break-9.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/check-break.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/erosion.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/flock.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/forest.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/island-7.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/land.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/light.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/motion.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/profile.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/profile.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/rain.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/scale.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/sea-reads.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/ship.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/sky.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/sound-run.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/sound.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/things.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/trace-point.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/trace-point.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/view-break.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/view-start.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/examples/water.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lab.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/01.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/02.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/03.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/04.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/05.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/06.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/07.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/08.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/09.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/frustum-plan.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-01-broken-turned.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-01-broken.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-01.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-02-atoll.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-02-break-1.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-02-break-2.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-02.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-03-break.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-03-moon.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-03-noon.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-03-sunset.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-03.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-04-break.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-04-lagoon.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-04-low.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-04.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-05-break.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-05-mountain.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-05-scree.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-05.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-06-break.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-06-even.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-06-kiosk.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-06.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-07-break.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-07-fish.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-07.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-09-break.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-09.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/tile-fraction.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/tile-whole.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/practice.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/public/code-example.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/public/code-example.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/apps/bell.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/apps/fish.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/apps/kiosk.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/apps/scree.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-01.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-02.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-03.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-04.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-05.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-06.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-07.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-08.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/stages/world-09.html",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"

@@ -1,0 +1,767 @@
+{
+  "1a": {
+    "version": 1,
+    "lesson": "1",
+    "section": "Which boxes can be seen",
+    "retry": "1a2",
+    "question": "The camera is at the start pose: (0, 60, -420), yaw 0, pitch -0.1, on a phone held upright. Which of these four boxes does boxHidden report as hidden? All four are flat squares or strips of ground at height 1.\n(a) x -10..10, z -10..10: the 20 m square at the centre of the plane\n(b) x -10..10, z -430..-410: the square straight below the camera\n(c) x -1000..200, z -10..10: a strip 1,200 m long across the centre of the plane\n(d) x 590..610, z -10..10: a square 600 m to the camera's left",
+    "format": "the letters of the hidden boxes, such as a,c, or none",
+    "expected": "b,d",
+    "reason": "The square below the camera (b) lies under the bottom plane: with the lens tilted down by 0.1, the bottom edge of an upright phone screen meets the ground about 71 m ahead, so the ground beneath the camera is out of view. The square 600 m to the left (d) is outside the left plane: at that distance the view is about 130 m to either side of the centre line. The strip (c) is kept although its centre, at x -400, is out of view, because its end reaches the centre of the screen; boxHidden tests each plane's best corner, not the centre. Box (a) is in the middle of the view.",
+    "wrong": [
+      {
+        "answer": "b,c,d",
+        "feedback": "The strip (c) has its centre out of view, at x -400, but its right end reaches x 200, through the middle of the view. boxHidden tests the corner furthest inside each plane, so a box is hidden only when it is wholly outside one plane."
+      },
+      {
+        "answer": "d",
+        "feedback": "The square straight below the camera (b) is out of view: the camera is 59 m above the ground and looks almost level, so the bottom of the screen meets the ground about 71 m ahead. Below the camera is below the bottom plane."
+      },
+      {
+        "answer": "b",
+        "feedback": "At 420 m from the camera the view reaches about 130 m to either side of the centre line on an upright phone, so a square 600 m to the left (d) is outside the left plane."
+      },
+      {
+        "answer": "none",
+        "feedback": "Two of the boxes lie wholly outside one plane: the square below the camera is under the bottom plane, and the square 600 m to the left is outside the left plane."
+      }
+    ],
+    "scene": {
+      "eye": [
+        0,
+        60,
+        -420
+      ],
+      "yaw": 0,
+      "pitch": -0.1,
+      "screen": "phone",
+      "boxes": {
+        "a": [
+          -10,
+          1,
+          -10,
+          10,
+          1,
+          10
+        ],
+        "b": [
+          -10,
+          1,
+          -430,
+          10,
+          1,
+          -410
+        ],
+        "c": [
+          -1000,
+          1,
+          -10,
+          200,
+          1,
+          10
+        ],
+        "d": [
+          590,
+          1,
+          -10,
+          610,
+          1,
+          10
+        ]
+      }
+    }
+  },
+  "1a2": {
+    "version": 1,
+    "lesson": "1",
+    "variantOf": "1a",
+    "question": "A fresh case. The camera is at (200, 40, 0), yaw π/2 (facing +x), pitch -0.2, on a desktop screen. Which of these four boxes does boxHidden report as hidden?\n(a) x 590..610, z -10..10, height 1: a square of ground 400 m straight ahead\n(b) x 100..150, z -20..20, heights 0..80: a block behind the camera\n(c) x 390..410, z 390..410, height 1: a square 200 m ahead and 400 m to one side\n(d) x 250..260, z -500..500, heights 0..300: a wall 50 m ahead, 1 km long and 300 m high",
+    "format": "the letters of the hidden boxes, such as a,c, or none",
+    "expected": "b,c",
+    "reason": "The block behind the camera (b) is outside the near plane. The square 400 m to one side (c) is outside a side plane: 200 m ahead, a desktop view reaches about 130 m to either side. The wall (d) crosses the view, so some corner of it lies inside every plane and it is kept, although its foot is below the bottom of the screen. The square ahead (a) is in view.",
+    "wrong": [
+      {
+        "answer": "b,c,d",
+        "feedback": "The wall (d) runs 1 km across the view and rises 300 m, so its upper part is in front of the camera and inside every plane. A box is hidden only when it lies wholly outside one plane."
+      },
+      {
+        "answer": "b",
+        "feedback": "200 m ahead, a desktop view reaches about 130 m to either side, and the square (c) is 400 m to the side: it lies wholly outside a side plane."
+      },
+      {
+        "answer": "c",
+        "feedback": "The block (b) is behind the camera, so every corner of it is on the outer side of the near plane."
+      }
+    ],
+    "scene": {
+      "eye": [
+        200,
+        40,
+        0
+      ],
+      "yaw": 1.5707963267948966,
+      "pitch": -0.2,
+      "screen": "desktop",
+      "boxes": {
+        "a": [
+          590,
+          1,
+          -10,
+          610,
+          1,
+          10
+        ],
+        "b": [
+          100,
+          0,
+          -20,
+          150,
+          80,
+          20
+        ],
+        "c": [
+          390,
+          1,
+          390,
+          410,
+          1,
+          410
+        ],
+        "d": [
+          250,
+          0,
+          -500,
+          260,
+          300,
+          500
+        ]
+      }
+    }
+  },
+  "2a": {
+    "version": 1,
+    "lesson": "2",
+    "section": "The island's shape",
+    "retry": "2a2",
+    "question": "For seed 7, islandParams puts the bay's centre, P.bay, at about (330, 399). Which band does landHeight(330, 399, P, D) fall in?\n(a) below -40 m\n(b) from -40 m to 0 m\n(c) from 0 m to 25 m\n(d) above 25 m",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "At the bay's centre the bay term is (0 / bayR - 1) × 0.3 = -0.3, and smin takes coast to about -0.3, so landHeight returns early, at sea: coast × 120 plus a ripple of at most 3 m, which is about -36 m, held above -45. For seed 7 at (330, 399) it is -35.4 m.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The sea floor stops at -45 m only far out. At the bay's centre coast is about -0.3, and coast × 120 is about -36 m: in the bay, but not at the floor."
+      },
+      {
+        "answer": "c",
+        "feedback": "The bay bites into the island: at its centre the bay term is -0.3, so coast is below 0 and landHeight returns a depth, not a beach."
+      },
+      {
+        "answer": "d",
+        "feedback": "The bay is water. At its centre coast is about -0.3, so landHeight never reaches the peaks or ridged; it returns coast × 120 plus a small ripple."
+      }
+    ]
+  },
+  "2a2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2a",
+    "question": "A fresh case. For seed 7, which band does landHeight(900, -900, P, D) fall in? The island's radius P.R is about 508 m, stretched 1.23 times along its axis.\n(a) below -40 m\n(b) from -40 m to 0 m\n(c) from 0 m to 25 m\n(d) above 25 m",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "The point is about 1,270 m from the centre, more than twice the island's reach, so coast is far below 0 and coast × 120 is far below -45. landHeight returns Math.max(-45, ...): exactly -45 m, the open sea floor.",
+    "wrong": [
+      {
+        "answer": "b",
+        "feedback": "Far from the island coast is below -1, so coast × 120 is below -120 m; landHeight holds it at -45 m."
+      }
+    ]
+  },
+  "2b": {
+    "version": 1,
+    "lesson": "2",
+    "section": "Break it, see it, repair it",
+    "retry": "2b2",
+    "question": "The break: ridged picks each octave's noise with Math.floor(Math.random() * 1000) added to its seed. Grow seed 7 twice with fillLand. Which of the 262,144 heights differ between the two runs?\n(a) none\n(b) some of the heights on land, and none at sea\n(c) every height",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "landHeight returns early at sea, before it calls ridged, so the sea floor is the same in both runs. On land ridged shapes the hills, so those heights differ; the lowest strip of beach does not use it either (its share is multiplied by smooth(0.02, 0.4, coast), which is 0 there). Two runs of seed 7 differ on about 56,000 heights, of 59,266 on land.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Math.random gives new numbers on every run, and ridged now uses them on every call, so every height that ridged shapes changes."
+      },
+      {
+        "answer": "c",
+        "feedback": "landHeight returns early at sea, before it ever calls ridged, so the sea floor, most of the map, is the same in both runs."
+      }
+    ]
+  },
+  "2b2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2b",
+    "question": "A fresh case. Instead of Math.random, ridged damps steep slopes with Math.exp. Run the lesson 2 check's two Node runs of seed 7. How many of the 262,144 heights differ between them?",
+    "format": "a whole number",
+    "expected": "0",
+    "reason": "Math.exp gives the same result every time in the same engine, so Node agrees with itself and the runs check passes. It can differ from another engine in the last bit: on a Mac, JavaScriptCore disagrees with Node on some points of the ridged grid. The rule check names Math.exp on any computer.",
+    "wrong": []
+  },
+  "3a": {
+    "version": 1,
+    "lesson": "3",
+    "section": "The day as an angle",
+    "retry": "3a2",
+    "question": "The day's key at 0.25 has angle 3.13 radians. skyState takes the sine of the angle and multiplies it by 44 to get the sun's height in degrees. How high is the sun at day 0.25?\n(a) about 0.5 degrees\n(b) about 11 degrees\n(c) about 22 degrees\n(d) about 44 degrees",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "The sine of 3.13 is about 0.012, because 3.13 is just short of π, 3.14, where the sine is 0. Times 44 that is 0.5 degrees: the sun is on the horizon.",
+    "wrong": [
+      {
+        "answer": "d",
+        "feedback": "44 degrees is the height when the sine is 1, at noon. 3.13 is just short of π, where the sine is almost 0."
+      },
+      {
+        "answer": "b",
+        "feedback": "A quarter of the way through the day is not a quarter of the height: the key at 0.25 says 3.13, and its sine is almost 0."
+      }
+    ]
+  },
+  "3a2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3a",
+    "question": "A fresh case. The day's key at 0.9 has angle 7.85 radians. How high is the sun at day 0.9?\n(a) about 0.5 degrees\n(b) about 11 degrees\n(c) about 22 degrees\n(d) about 44 degrees",
+    "format": "one letter",
+    "expected": "d",
+    "reason": "7.85 is a whole turn, 6.28, and a quarter turn, 1.57, more. The sine there is 1, so the height is 44 degrees: noon.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The sine is almost 0 near 3.14 and 6.28. 7.85 is a quarter turn past 6.28, where the sine is 1."
+      }
+    ]
+  },
+  "3b": {
+    "version": 1,
+    "lesson": "3",
+    "section": "The sky between its keys",
+    "retry": "3b2",
+    "question": "At day 0.25 the sun is about 0.5 degrees up, between the rows of SKY_KEYS at -5 and 1 degrees and close to the second. Which of the three colours is the largest at the horizon?\n(a) red\n(b) green\n(c) blue",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "The row at 1 degree has 0.46, 0.28, 0.19 at the horizon: red is the largest, and the row at -5 has red largest too, so every blend of the two does.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "Blue is the largest overhead. The horizon's three numbers come after the three overhead in each row: 0.46, 0.28, 0.19."
+      }
+    ]
+  },
+  "3b2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3b",
+    "question": "A fresh case. At day 0.9 the sun is 44 degrees up, above the last row of SKY_KEYS, at 30 degrees. Which of the three colours is the largest at the horizon?\n(a) red\n(b) green\n(c) blue",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Above the last row the last row holds. Its horizon is 0.38, 0.54, 0.74: blue is the largest.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Red is the largest near sunset. The last row, full day, has 0.38, 0.54, 0.74 at the horizon."
+      }
+    ]
+  },
+  "4a": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Waves that meet themselves",
+    "retry": "4a2",
+    "question": "Four versions of waveTile start with different counts of cells across the tile, and every octave doubles the count. Which show a seam?\n(a) 5\n(b) 5.5\n(c) 7\n(d) 6.25",
+    "format": "the letters of the tiles with a seam, such as a,c",
+    "expected": "b,d",
+    "reason": "A tile meets itself when a whole number of cells crosses it in every octave. 5 and 7 double to whole numbers; 5.5 and 6.25 are fractions, so the first octave breaks off part way through a cell at the edge.",
+    "wrong": [
+      {
+        "answer": "b",
+        "feedback": "6.25 is not whole either: its first octave has a quarter of a cell left over at the edge."
+      },
+      {
+        "answer": "a,c",
+        "feedback": "Odd counts are fine: 5 cells fit the tile exactly. A count has to be whole, not even."
+      }
+    ]
+  },
+  "4a2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4a",
+    "question": "A fresh case. Which of these starting counts show a seam?\n(a) 3.5\n(b) 8\n(c) 4.75\n(d) 12",
+    "format": "the letters of the tiles with a seam, such as a,c",
+    "expected": "a,c",
+    "reason": "8 and 12 are whole, and doubling keeps them whole. 3.5 and 4.75 are not.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "4.75 is not whole: three quarters of a cell are left over at the edge."
+      }
+    ]
+  },
+  "4b": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Break it, see it, repair it",
+    "retry": "4b2",
+    "question": "The count starts at 5.5 and doubles three times: 5.5, 11, 22, 44. Which octaves break at the tile's edge?\n(a) the first only\n(b) the first two\n(c) all four\n(d) none",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "5.5 is the only fraction: 11, 22 and 44 are whole, so those octaves wrap. One broken octave is enough for a line, because the first is the tallest.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "Doubling 5.5 gives 11, a whole number, and whole numbers stay whole when doubled."
+      },
+      {
+        "answer": "d",
+        "feedback": "5.5 cells leave half a cell over at the edge of the first octave."
+      }
+    ]
+  },
+  "4b2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4b",
+    "question": "A fresh case. The count starts at 5.25 and doubles three times. Which octaves break at the tile's edge?\n(a) the first only\n(b) the first two\n(c) all four\n(d) none",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The counts are 5.25, 10.5, 21 and 42: the first two are fractions and the last two are whole.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Doubling 5.25 gives 10.5, still not whole."
+      }
+    ]
+  },
+  "5a": {
+    "version": 1,
+    "lesson": "5",
+    "section": "Where the rock goes",
+    "retry": "5a2",
+    "question": "1,000 drops of rain fall on seed 7, each a run of at most 70 steps. Of every 100 units of rock that the drops wear away, how much is gone from the island?\n(a) none: what they cut, they lay down\n(b) about 20\n(c) about 50\n(d) nearly all",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The drops wear away 5,788 and lay down 4,600 of it, so 1,187 is gone, 20.5 of every 100. Nothing is lost inside one call: a finished drop's load is discarded, so whatever it still carried when it stopped is not on the island any more.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Within one call nothing is lost, but every drop whose run is over still holds some soil, and that soil is not put back."
+      },
+      {
+        "answer": "c",
+        "feedback": "That is about the share a drop still carries after 30 steps. After that it goes on laying soil down: at 40 steps it carries 8.5 of 21.9, and at 70 less."
+      },
+      {
+        "answer": "d",
+        "feedback": "That is the first few steps, when a drop has cut 7.7 and still carries 7.6. Where the ground eases it lays most of it down again."
+      }
+    ]
+  },
+  "5a2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5a",
+    "question": "A fresh case. The same 1,000 drops on seed 7 stop after at most 10 steps. Of every 100 units of rock worn away, how much is gone?\n(a) none\n(b) about 20\n(c) about 50\n(d) nearly all",
+    "format": "one letter",
+    "expected": "d",
+    "reason": "With 10 steps a drop stops on the slope, still full, before it reaches the gentle ground where it would lay its soil down. Its load is discarded, so 94 of every 100 are gone.",
+    "wrong": [
+      {
+        "answer": "b",
+        "feedback": "That is what is left after 70 steps, when most drops have crossed gentle ground. Ten steps lie between 5, where a drop carries 7.6 of 7.7, and 20, where it carries 13.3 of 17.8."
+      },
+      {
+        "answer": "c",
+        "feedback": "A drop still carries three quarters of what it has cut at 20 steps, and at 10 even more."
+      },
+      {
+        "answer": "a",
+        "feedback": "Every drop that stops with soil in it takes that soil with it."
+      }
+    ]
+  },
+  "5b": {
+    "version": 1,
+    "lesson": "5",
+    "section": "Where the rock goes",
+    "retry": "5b2",
+    "question": "1,000 drops, seed 7, 70 steps at most. Of the rock that is gone, where was it when it went?\n(a) in the sea, in drops that reached it\n(b) inland, in drops whose steps ran out\n(c) at the edge of the map\n(d) spread over every cell of the island",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "928 drops ended in the sea, or began there, with 919 units of soil; 72 ran out of steps on land, with 269. So 77 of every 100 lost went into the sea, and the rest was left hanging inland in drops that had run out of life.",
+    "wrong": [
+      {
+        "answer": "b",
+        "feedback": "That is where 269 of the 1,187 went, not most of it. Only 72 of the 241 drops that begin on land use all their steps; the others reach the sea, and lose their soil there."
+      },
+      {
+        "answer": "c",
+        "feedback": "No drop in this run reached the edge of the map: every drop that stopped was in the sea or out of steps."
+      }
+    ]
+  },
+  "5b2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5b",
+    "question": "A fresh case. 1,000 drops, seed 7, 10 steps at most. Of the rock that is gone, where was it when it went?\n(a) in the sea\n(b) inland, in drops whose steps ran out\n(c) at the edge of the map\n(d) spread over every cell",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "With only 10 steps 216 drops run out on land with 2,747 units, and 784 end in the sea, or began there, with 138. Nearly all of the lost rock was in drops that stopped on the slopes.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That was the answer with 70 steps. Ten steps is too few to reach the sea from the slopes where the cutting is."
+      }
+    ]
+  },
+  "6a": {
+    "version": 1,
+    "lesson": "6",
+    "section": "One rule, ten thousand trees",
+    "retry": "6a2",
+    "question": "Seed 7 has 7,664 trees. The page draws the first half of the things in every 64 m square, and rounds the count of each square up. How many trees is that?\n(a) exactly half, 3,832\n(b) a little more than half\n(c) a little less than half\n(d) about a quarter",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "It is 3,938, or 51.4 of every 100. Rounding up adds part of a tree in every square that holds an odd number, and there are many squares with only a few.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Half of every square is half of them all, if nothing is rounded. The count in each square is rounded up."
+      },
+      {
+        "answer": "c",
+        "feedback": "Rounding up can only add."
+      }
+    ]
+  },
+  "6a2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6a",
+    "question": "A fresh case. The page draws the first quarter of every square, rounding up. Of the 7,664 trees, about how many is that?\n(a) exactly 1,916\n(b) about 2,080\n(c) about 1,200\n(d) about 3,800",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "It is 2,078, or 27.1 of every 100. A smaller share means more squares are rounded up by a larger part, so the excess over a quarter grows.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Rounding up makes it more than a quarter of the total."
+      }
+    ]
+  },
+  "6b": {
+    "version": 1,
+    "lesson": "6",
+    "section": "Break it, see it, repair it",
+    "retry": "6b2",
+    "question": "A list of things is made row by row across the island, from low z to high z. The page draws the first half of every 64 m square. If bucket sorts by square only and does not shuffle, what does the half-density picture show?\n(a) an even thinning, half as many things everywhere\n(b) a bare band along one side of every square\n(c) one side of the island bare, the other full\n(d) no change at all",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "Inside each square the things are still in the order they were made, low z first, so the first half is the low-z half of the square and the other half is bare, square after square. The things that are left stand 0.18 of a square further toward low z than before.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "Each square is thinned by itself, so the bare bands repeat in every square, not once for the whole island."
+      },
+      {
+        "answer": "a",
+        "feedback": "It is even only when the order inside a square is a shuffle."
+      }
+    ]
+  },
+  "6b2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6b",
+    "question": "A fresh case. Again no shuffle, and the page draws the first half of every square. Which half of a square is kept?\n(a) the half with low z\n(b) the half with high z\n(c) the half with low x\n(d) a mixture",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "The list is made row by row from low z to high z, so the first half of a square holds its low-z things.",
+    "wrong": [
+      {
+        "answer": "b",
+        "feedback": "The list starts at low z, so the first things in a square are its low-z ones."
+      },
+      {
+        "answer": "d",
+        "feedback": "A mixture would need a shuffle."
+      }
+    ]
+  },
+  "7a": {
+    "version": 1,
+    "lesson": "7",
+    "section": "What a flock does",
+    "retry": "7a2",
+    "question": "60 gulls start within about 110 m of the bay's centre and fly for 600 steps of 1/30 second, 20 seconds, with steerBird. How far from the bay's centre is the farthest bird?\n(a) under 100 m\n(b) between 100 m and 400 m\n(c) between 400 m and 1,000 m\n(d) over 1,000 m",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The farthest is 329 m. The goal they follow wanders over the bay, up to about 350 m from its centre, and cohesion and the goal keep every bird near it.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The goal wanders across the whole bay, so the flock goes with it and spreads a little."
+      },
+      {
+        "answer": "d",
+        "feedback": "The goal is always within about 350 m of the bay's centre, and it pulls every bird."
+      }
+    ]
+  },
+  "7a2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7a",
+    "question": "A fresh case. The same flock after 3,600 steps, two minutes. How far from the bay's centre is the farthest bird?\n(a) under 100 m\n(b) between 100 m and 400 m\n(c) between 400 m and 1,000 m\n(d) over 1,000 m",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The farthest is 225 m. Time alone does not take the flock away: nothing in the rules pushes it out, and the goal pulls it back.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "The goal pulls the flock the same way after two minutes as after one."
+      }
+    ]
+  },
+  "7b": {
+    "version": 1,
+    "lesson": "7",
+    "section": "Break it, see it, repair it",
+    "retry": "7b2",
+    "question": "Take the separation rule out of steerBird, and let the flock fly for two minutes, 3,600 steps. What is the average distance from a bird to its nearest neighbour?\n(a) about 6 m, the same as with the rule\n(b) about 1 m\n(c) close to 0, as if they all stand on one spot\n(d) over 20 m",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "It is 0.0 m: the birds fly as one point. Cohesion draws them together, alignment makes them fly alike, and nothing pushes back, so by two minutes each is on top of its neighbours.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "With the rule it is 6.0 m. Separation is the rule that keeps that distance: cohesion by itself has no reason to stop."
+      },
+      {
+        "answer": "b",
+        "feedback": "Cohesion keeps pulling below 1 m too, and there is nothing left to push the birds apart."
+      }
+    ]
+  },
+  "7b2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7b",
+    "question": "A fresh case. Separation is reversed: a bird turns toward any that crowd it. After 3,600 steps, what is the average distance to the nearest neighbour?\n(a) about 6 m\n(b) about 1 m\n(c) close to 0\n(d) over 20 m",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "It is 0.0 m again: a rule that pulls instead of pushing only makes the birds close up faster.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Reversed, the rule works against the distance it should keep."
+      }
+    ]
+  },
+  "8a": {
+    "version": 1,
+    "lesson": "8",
+    "section": "A call is a list of notes",
+    "retry": "8a2",
+    "question": "gullCall makes 1 to 3 long notes, 0.45 s to 0.6 s apart and 0.32 s each, then 3 to 7 short notes, 0.17 s apart and 0.11 s each. From the first note's start to the last one's end, how long is a call?\n(a) always under 0.5 s\n(b) between about 0.9 s and 2.9 s\n(c) between 3 s and 6 s\n(d) it depends on the pitch",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The shortest is one long note and three short ones: 0.45 + 2 × 0.17 + 0.11 = 0.90 s. The longest is three long and seven short: at most 1.8 + 6 × 0.17 + 0.11 = 2.93 s. Pitch plays no part.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "Three long notes are at most 0.6 s apart and seven short ones 0.17 s apart: add those gaps up."
+      },
+      {
+        "answer": "d",
+        "feedback": "The notes' starts and lengths do not use the pitch."
+      }
+    ]
+  },
+  "8a2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8a",
+    "question": "A fresh case. The stream r always returns 0, so base is 1,500 Hz, there is one long note and three short ones. When does the last note end?\n(a) at 0.43 s\n(b) at 0.90 s\n(c) at 1.43 s\n(d) at 2.93 s",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The long note starts at 0 and the short ones at 0.45, 0.62 and 0.79 s, and the last is 0.11 s long: 0.90 s.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The first short note starts 0.45 s after the long one starts, not after it ends."
+      },
+      {
+        "answer": "d",
+        "feedback": "That is the longest call, with three long notes and seven short ones."
+      }
+    ]
+  },
+  "8b": {
+    "version": 1,
+    "lesson": "8",
+    "section": "From silence and back",
+    "retry": "8b2",
+    "question": "A note's envelope rises from 0 to 0.5 and falls to 0. The note is a sawtooth, which swings between -1 and 1, sent through a narrow band-pass filter first. What is the loudest sample of the whole call in the lab's renderer?\n(a) about 0.5, the envelope's top\n(b) about 0.14\n(c) above 1\n(d) exactly 1",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The renderer gives 0.14. The filter keeps a slice of the sawtooth and throws most of it away, so what is left swings less than 1 before the envelope's 0.5 scales it.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That would be so if the filter passed the whole sawtooth. Its centre is at 1.6 times the note's pitch, between two of the tones a sawtooth is made of."
+      },
+      {
+        "answer": "c",
+        "feedback": "The envelope never goes above 0.5, and nothing adds to it."
+      }
+    ]
+  },
+  "8b2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8b",
+    "question": "A fresh case. The envelope's top is 1 instead of 0.5, and nothing else changes. What is the loudest sample in the lab's renderer?\n(a) about 0.14, as before\n(b) about 0.28\n(c) about 0.56\n(d) about 1",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "Twice the level, twice the sample: 0.28. The envelope multiplies every sample after the filter, so a top of 1 doubles them all.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The envelope scales every sample, so its top matters."
+      },
+      {
+        "answer": "d",
+        "feedback": "The filter leaves about 0.28 of the sawtooth's range, and the envelope cannot add to it."
+      }
+    ]
+  },
+  "8c": {
+    "version": 1,
+    "lesson": "8",
+    "section": "Who is loud where",
+    "retry": "8c2",
+    "question": "You stand on the summit: the land is 273 m above the sea and your camera 2 m above it, the gulls 50 m away, by day. Beside the sea, 2 m up, soundMix gives surf 0.96. How loud is the surf on the summit?\n(a) about 0.96, the same\n(b) about 0.24\n(c) about 0.04\n(d) exactly 0",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "0.24. Surf is 0.25 + 0.75 × sea, and sea is 0 inland above 90 m, so a quarter of the level is left; it is then divided by 1 + alt / 45, and 2 m of height takes a little.",
+    "wrong": [
+      {
+        "answer": "d",
+        "feedback": "The line has a floor of 0.25 that does not depend on how far the sea is: the sea can always be heard a little."
+      },
+      {
+        "answer": "c",
+        "feedback": "Height divides by 1 + alt / 45, and here alt is only 2 m above the ground."
+      }
+    ]
+  },
+  "8c2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8c",
+    "question": "A fresh case. The camera is 30 m above the sea, over water (ground 0). How loud is the surf?\n(a) about 0.96\n(b) about 0.6\n(c) about 0.25\n(d) about 0.1",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "0.60. Over water sea is 1, so the level is 1 / (1 + 30 / 45) = 0.60.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "At 30 m up the divisor is 1 + 30 / 45."
+      },
+      {
+        "answer": "c",
+        "feedback": "That is the part that does not depend on sea. Over water sea is 1."
+      }
+    ]
+  },
+  "9a": {
+    "version": 1,
+    "lesson": "9",
+    "section": "Sharpness for smoothness",
+    "retry": "9a2",
+    "question": "nextScale starts from scale 1. Ten checks in a row have frames of 50 ms. What is the scale then?\n(a) about 0.82\n(b) about 0.14\n(c) 0.45\n(d) 0.7",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Each check multiplies by 0.82, so four of them bring it from 1 to 0.45, and there it stays: 0.45 is the floor.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That is after one check. The other nine also cut."
+      },
+      {
+        "answer": "b",
+        "feedback": "That is 0.82 ten times over, but the scale never goes below 0.45."
+      }
+    ]
+  },
+  "9a2": {
+    "version": 1,
+    "lesson": "9",
+    "variantOf": "9a",
+    "question": "A fresh case. From scale 1, ten checks in a row have frames of 25 ms. What is the scale then?\n(a) about 0.48\n(b) about 0.70\n(c) 0.45\n(d) 1",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "25 ms is between 21 and 36, so each check gives up a little: 0.93 at a time until the scale is 0.7 or less, at 0.696, and there it stays.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That is 0.93 ten times over, but at 0.7 or less the scale is left alone."
+      },
+      {
+        "answer": "c",
+        "feedback": "The floor of 0.45 is for frames over 36 ms."
+      }
+    ]
+  },
+  "9b": {
+    "version": 1,
+    "lesson": "9",
+    "section": "Sharpness for smoothness",
+    "retry": "9b2",
+    "question": "After those ten, the scale is 0.45. Now ten checks in a row have frames of 12 ms. What is the scale then?\n(a) 1\n(b) about 0.97\n(c) about 0.52\n(d) still 0.45",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "The rise waits for four calm checks, and each change starts the count again: rises at the fourth and eighth check, from 0.45 to 0.49 to 0.52.",
+    "wrong": [
+      {
+        "answer": "b",
+        "feedback": "That is ten rises of 1.08. Each rise needs four calm checks of its own."
+      },
+      {
+        "answer": "a",
+        "feedback": "It climbs back in time, but ten checks are only 7 seconds."
+      }
+    ]
+  },
+  "9b2": {
+    "version": 1,
+    "lesson": "9",
+    "variantOf": "9b",
+    "question": "A fresh case. The scale is 0.9, and twelve checks in a row have frames of 12 ms. What is the scale then?\n(a) 0.9\n(b) about 0.97\n(c) 1\n(d) about 1.13",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Rises at the fourth and the eighth check: 0.9 times 1.08 is 0.97, and the next rise would pass 1, where it stops.",
+    "wrong": [
+      {
+        "answer": "d",
+        "feedback": "That is three rises of 1.08, but the scale never goes above 1."
+      },
+      {
+        "answer": "b",
+        "feedback": "That is after one rise, at the fourth check."
+      }
+    ]
+  }
+}

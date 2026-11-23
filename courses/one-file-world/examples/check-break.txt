@@ -1,0 +1,3 @@
+  FAIL 1.box-keeps-visible: boxHidden hid 111 of 617 boxes that are partly in view. First, from the camera the start pose on a phone: the box x -325.192..169.777, y 1..1, z -63.131..-45.506; it crosses the left and right planes with its centre in view, and its point [-77.707, 1, -63.131] is inside all six planes. For each plane, test the corner furthest along its normal: x1 where the plane's x factor is positive, x0 where it is negative, and the same for y and z. A test of the nearest corner hides boxes that cross a plane.
+  PASS 1.box-hides-outside
+  PASS 1.box-steady

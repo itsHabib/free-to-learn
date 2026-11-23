@@ -1,0 +1,68 @@
+// Made by tools/listings.mjs from stages/world-04.html. Do not edit.
+
+// region: waveTile
+// A tiling image of small waves for the sea shader: R and G hold the surface
+// slope, B the height, A foam breakup. It is stored as floats: with only 256
+// levels the mirror-like water would show the steps.
+function waveTile(n, seed) {
+  const h = new Float32Array(n * n);
+  const out = new Float32Array(n * n * 4);
+  const layer = (x, y, cells, s) => {
+    const gx = (x * cells) / n;
+    const gy = (y * cells) / n;
+    const ix = Math.floor(gx);
+    const iy = Math.floor(gy);
+    const fx = gx - ix;
+    const fy = gy - iy;
+    const u = fx * fx * (3 - 2 * fx);
+    const v = fy * fy * (3 - 2 * fy);
+    const w = (i, j) =>
+      hash2((ix + i) % cells, (iy + j) % cells, s) / 4294967296;
+    return mix(mix(w(0, 0), w(1, 0), u), mix(w(0, 1), w(1, 1), u), v);
+  };
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i++) {
+      let sum = 0;
+      let amp = 0.5;
+      // How many cells of noise cross the tile. A whole number, so that the
+      // right edge meets the left with no seam.
+      let cells = 5;
+      for (let o = 0; o < 4; o++) {
+        // Broad, rounded crests and narrow troughs.
+        const d = 2 * layer(x, y, cells, seed + o) - 1;
+        sum += amp * (1 - d * d);
+        cells *= 2;
+        amp *= 0.55;
+      }
+      h[i] = sum;
+    }
+  const at = (x, y) => h[((y + n) % n) * n + ((x + n) % n)];
+  for (let y = 0, i = 0; y < n; y++)
+    for (let x = 0; x < n; x++, i += 4) {
+      out[i] = (at(x + 1, y) - at(x - 1, y)) * 4;
+      out[i + 1] = (at(x, y + 1) - at(x, y - 1)) * 4;
+      out[i + 2] = at(x, y);
+      out[i + 3] =
+        layer(x, y, 24, seed + 9) * 0.6 + layer(x, y, 64, seed + 10) * 0.4;
+    }
+  return out;
+}
+// endregion: waveTile
+
+// region: halve
+// The same image at half the size, each pixel the mean of four. Smaller copies
+// are what the GPU reads far away, where they calm the water into a smooth
+// mirror. (Built here because phones cannot build them for float images.)
+function halve(src, n) {
+  const m = n / 2;
+  const out = new Float32Array(m * m * 4);
+  for (let y = 0; y < m; y++)
+    for (let x = 0; x < m; x++)
+      for (let c = 0; c < 4; c++) {
+        const i = (y * 2 * n + x * 2) * 4 + c;
+        out[(y * m + x) * 4 + c] =
+          (src[i] + src[i + 4] + src[i + n * 4] + src[i + n * 4 + 4]) / 4;
+      }
+  return out;
+}
+// endregion: halve

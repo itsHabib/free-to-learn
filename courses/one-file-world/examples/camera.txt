@@ -1,0 +1,134 @@
+// Made by tools/listings.mjs from stages/world-01.html, region 1-camera (pure). Do not edit.
+
+// region: perspective
+// The projection matrix: how the view narrows to a point at the eye.
+// tanHalfY is the tangent of half the angle seen from top to bottom, aspect
+// is width over height, and only what lies between near and far is kept.
+function perspective(m, tanHalfY, aspect, near, far) {
+  m.fill(0);
+  // Scale x and y so that the edges of the view land on -1 and 1.
+  m[0] = 1 / (tanHalfY * aspect);
+  m[5] = 1 / tanHalfY;
+  // Depth: near lands on -1 and far on 1, once divided by w.
+  m[10] = (far + near) / (near - far);
+  m[14] = (2 * far * near) / (near - far);
+  // w becomes the distance ahead of the eye. Dividing by it makes far things
+  // small.
+  m[11] = -1;
+  return m;
+}
+// endregion: perspective
+
+// region: viewMatrix
+// The view matrix: it moves the world so that the camera sits at the origin
+// and looks along -z. Yaw turns around the up axis, pitch tilts up and down.
+// It also fills R, U and Fw with the camera's right, up and forward axes.
+function viewMatrix(m, eye, yaw, pitch, R, U, Fw) {
+  // Forward (fx, fy, fz): the way the camera faces.
+  const level = Math.cos(pitch);
+  const fx = Math.sin(yaw) * level;
+  const fy = Math.sin(pitch);
+  const fz = Math.cos(yaw) * level;
+  // Right (rx, 0, rz): level, and square to forward.
+  const toUnit = 1 / Math.sqrt(fx * fx + fz * fz);
+  const rx = -fz * toUnit;
+  const rz = fx * toUnit;
+  // Up (ux, uy, uz): square to both.
+  const ux = -rz * fy;
+  const uy = rz * fx - rx * fz;
+  const uz = rx * fy;
+  // The matrix is stored column by column. Each row measures a point along
+  // one axis: right, up, then backward, because the camera looks along -z.
+  // Column 1: what each axis takes from the world's x.
+  m[0] = rx;
+  m[1] = ux;
+  m[2] = -fx;
+  m[3] = 0;
+  // Column 2: what each axis takes from the world's y. Right is level.
+  m[4] = 0;
+  m[5] = uy;
+  m[6] = -fy;
+  m[7] = 0;
+  // Column 3: what each axis takes from the world's z.
+  m[8] = rz;
+  m[9] = uz;
+  m[10] = -fz;
+  m[11] = 0;
+  // Column 4 brings the eye to the origin: minus the eye, measured along
+  // each axis.
+  m[12] = -(rx * eye[0] + rz * eye[2]);
+  m[13] = -(ux * eye[0] + uy * eye[1] + uz * eye[2]);
+  m[14] = fx * eye[0] + fy * eye[1] + fz * eye[2];
+  m[15] = 1;
+  R[0] = rx;
+  R[1] = 0;
+  R[2] = rz;
+  U[0] = ux;
+  U[1] = uy;
+  U[2] = uz;
+  Fw[0] = fx;
+  Fw[1] = fy;
+  Fw[2] = fz;
+  return m;
+}
+// endregion: viewMatrix
+
+// region: mul4
+// o = a times b: applying o to a point is applying b, then a. c counts
+// columns and r rows.
+function mul4(o, a, b) {
+  for (let c = 0; c < 4; c++)
+    for (let r = 0; r < 4; r++)
+      o[c * 4 + r] =
+        a[r] * b[c * 4] +
+        a[4 + r] * b[c * 4 + 1] +
+        a[8 + r] * b[c * 4 + 2] +
+        a[12 + r] * b[c * 4 + 3];
+  return o;
+}
+// endregion: mul4
+
+// region: aim
+// Yaw and pitch that look from eye to target.
+function aim(eye, target) {
+  const dx = target[0] - eye[0];
+  const dy = target[1] - eye[1];
+  const dz = target[2] - eye[2];
+  // How far away the target is over the ground, leaving height out.
+  const level = Math.sqrt(dx * dx + dz * dz);
+  return [Math.atan2(dx, dz), Math.atan2(dy, level)];
+}
+// endregion: aim
+
+// region: frustumPlanes
+// The six planes of the view volume, from the combined matrix: left, right,
+// bottom, top, near, far. Each is four numbers a, b, c, d, and a point is on
+// the inner side when a*x + b*y + c*z + d is 0 or more.
+function frustumPlanes(out, m) {
+  for (let i = 0; i < 6; i++) {
+    // Planes come in pairs, one pair for each of x, y and z.
+    const axis = i >> 1;
+    const sign = i & 1 ? -1 : 1;
+    // Row 4 of the matrix, plus or minus the row of that axis.
+    for (let k = 0; k < 4; k++)
+      out[i * 4 + k] = m[k * 4 + 3] + sign * m[k * 4 + axis];
+  }
+  return out;
+}
+// endregion: frustumPlanes
+
+// region: boxHidden
+// True when a box lies wholly outside one of the planes, so nothing in it can
+// be seen. The box runs from (x0, y0, z0) to (x1, y1, z1).
+function boxHidden(pl, x0, y0, z0, x1, y1, z1) {
+  for (let i = 0; i < 24; i += 4) {
+    // The corner of the box that reaches furthest to this plane's inner side.
+    const x = pl[i] > 0 ? x1 : x0;
+    const y = pl[i + 1] > 0 ? y1 : y0;
+    const z = pl[i + 2] > 0 ? z1 : z0;
+    // If even that corner is outside, the whole box is.
+    if (pl[i] * x + pl[i + 1] * y + pl[i + 2] * z + pl[i + 3] < 0) return true;
+  }
+  return false;
+}
+// endregion: boxHidden

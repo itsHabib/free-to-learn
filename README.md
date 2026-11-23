@@ -45,3 +45,5 @@ The connected [JIT compiler](courses/jit-compiler) and
 [live query engine](courses/live-query-engine) labs run offline with Node 22
 or newer. Each has its own starter and reader. Clone for the shared capstone,
 or extract their two ZIPs side by side.
+
+[Build a world in one file](courses/one-file-world) teaches procedural terrain, lighting, erosion, instancing, flocking, synthesized sound and a frame budget. Start with [the camera lesson](courses/one-file-world/lessons/01.md).

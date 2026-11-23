@@ -1,0 +1,1 @@
+  FAIL 2.ridged-rule: ridged (region 2-land) uses Math.random. Math.random gives different numbers on every run, so the same seed would not give the same island. Anything that shapes the island may use only + - * /, Math.sqrt, Math.floor, Math.ceil, Math.imul, Math.abs, Math.min and Math.max.

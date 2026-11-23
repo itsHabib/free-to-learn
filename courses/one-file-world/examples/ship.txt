@@ -1,0 +1,73 @@
+// Made by tools/listings.mjs from stages/world-09.html, region 9-shipping. Do not edit.
+
+// region: nextScale
+// Render resolution follows the frame time: drop it fast when frames run long,
+// raise it slowly when there is room. ms is the recent average frame time; calm
+// counts checks in a row that had room to spare.
+function nextScale(scale, ms, calm) {
+  // Under 30 frames a second: act now.
+  if (ms > 36) return Math.max(0.45, scale * 0.82);
+  // Missing 60: give up a little sharpness.
+  if (ms > 21 && scale > 0.7) return scale * 0.93;
+  if (ms < 17.6 && calm >= 4) return Math.min(1, scale * 1.08);
+  return scale;
+}
+// endregion: nextScale
+
+// region: tourPose
+// Camera pose at time t of the tour: fills eye and look, returns [shot number,
+// how close to a cut 0..1].
+function tourPose(shots, t, eye, look) {
+  let total = 0;
+  let k = 0;
+  for (const s of shots) total += s[0];
+  t -= Math.floor(t / total) * total;
+  while (t >= shots[k][0]) t -= shots[k++][0];
+  // Ease in and out, never quite stopping.
+  const s = shots[k];
+  const u = t / s[0];
+  const e = u * u * (3 - 2 * u) * 0.7 + u * 0.3;
+  if (s.length > 1)
+    for (let c = 0; c < 3; c++) {
+      eye[c] = mix(s[1][c], s[3][c], e);
+      look[c] = mix(s[2][c], s[4][c], e);
+    }
+  return [k, Math.max(1 - t / 0.9, 1 - (s[0] - t) / 0.9, 0)];
+}
+// endregion: tourPose
+// region: checks
+// Resolution follows the frame time. "?slow=MS&slowfor=SECONDS" pretends frames
+// run longer for a while, to test it.
+onTick((dt, real) => {
+  if (SHOT || frames <= 30) return;
+  let ms = real * 1000;
+  if (Q.has('slow') && time < +(Q.get('slowfor') || 1e9)) ms += +Q.get('slow');
+  ship.avg = ship.avg * 0.9 + ms * 0.1;
+  ship.since += ms;
+  ship.idle += ms;
+  if (ship.idle > 4500) $('ui').classList.add('idle');
+  if (ship.since < 700 || Q.has('scale')) return;
+  ship.since = 0;
+  ship.calm = ship.avg < 17.6 ? ship.calm + 1 : 0;
+  const next = nextScale(stat.scale, ship.avg, ship.calm);
+  if (next !== stat.scale) {
+    stat.scale = next;
+    ship.calm = 0;
+    ship.avg = 17;
+    (stat.log = stat.log || []).push(time.toFixed(1) + 's ' + next.toFixed(2));
+  }
+});
+// endregion: checks
+
+// region: budget
+// The triangle budget: when the last frame drew too many, every detail distance
+// shrinks a little; with room to spare it grows back.
+onDraw(90, () => {
+  if (stat.tris > BUDGET * 0.94 || stat.tris < BUDGET * 0.8)
+    W.detail = clamp(
+      W.detail * clamp(Math.sqrt((BUDGET * 0.87) / stat.tris), 0.93, 1.03),
+      0.4,
+      1,
+    );
+});
+// endregion: budget
