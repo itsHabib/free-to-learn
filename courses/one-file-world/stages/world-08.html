@@ -1087,7 +1087,7 @@ function crownShade(cr, x, y, z) {
   );
 }
 // Leaves: one small square card on every face of a lumpy ball, each tilted its
-// own way. The shader cuts a rosette of leaves out of each card. All four
+// own way. The shader cuts a twig and small leaves out of each card. All four
 // corners share a normal that points out of the crown, so the crown still
 // shades as one round mass while its outline and surface are broken into
 // leaves.
@@ -1396,7 +1396,18 @@ function addWalls(m, x0, x1, z0, z1, y0, y1, col, glow, leaf) {
 }
 // A box: four walls and a lid.
 function addBox(m, x0, x1, y0, y1, z0, z1, col, glow, leaf) {
-  addWalls(m, x0, x1, z0, z1, y0, y1, col, glow, leaf === 6 ? 6 : 0);
+  addWalls(
+    m,
+    x0,
+    x1,
+    z0,
+    z1,
+    y0,
+    y1,
+    col,
+    glow,
+    leaf === 6 || leaf >= 10 ? leaf : 0,
+  );
   addQuad(
     m,
     [x0, y1, z0],
@@ -1473,7 +1484,9 @@ function addHouse(m, lod, tall, r) {
   const clay = [0.45, 0.2, 0.11];
   const top = tall ? 6.1 : 3.3;
   const ridge = top + 1.9;
-  addWalls(m, -3, 3, -4, 4, -3, top, wall, 0, 7);
+  // A stone footing is exposed on the downhill side of each lot.
+  addWalls(m, -3.04, 3.04, -4.04, 4.04, -9, 0.42, stone, 0, 6);
+  addWalls(m, -3, 3, -4, 4, 0.39, top, wall, 0, 7);
   addQuad(
     m,
     [-3.6, top - 0.25, 4.5],
@@ -1505,7 +1518,8 @@ function addHouse(m, lod, tall, r) {
     m.i.push(i, i + 1, i + 2);
   }
   // The wing.
-  addWalls(m, -2.4, 2.6, 4, 7.2, -3, 2.6, wall, 0, 7);
+  addWalls(m, -2.44, 2.64, 4, 7.24, -9, 0.42, stone, 0, 6);
+  addWalls(m, -2.4, 2.6, 4, 7.2, 0.39, 2.6, wall, 0, 7);
   addQuad(
     m,
     [2.9, 2.45, 7.6],
@@ -1539,7 +1553,8 @@ function addHouse(m, lod, tall, r) {
       [3.03, y1 - 0.02, z - half],
       [3.03, y1 - 0.02, z + half],
       col,
-      glow,
+      glow ? 0.25 + 0.23 * (z > 0) + 0.37 * (y0 > 3) : 0,
+      glow ? 14 : 0,
     );
     if (!lod)
       addBox(
@@ -2050,7 +2065,7 @@ function thingMesh(kind, lod, lite) {
   // Broadleaf: short trunk, limbs, a broad dome of leaf clusters.
   if (kind === 0) {
     const low = [0.05, 0.105, 0.032];
-    const high = [0.125, 0.195, 0.055];
+    const high = [0.094, 0.164, 0.064];
     const crown = [0, 4.4, 0, 3.6];
     if (lod < 3)
       addTube(
@@ -2113,7 +2128,7 @@ function thingMesh(kind, lod, lite) {
   // Umbrella pine: tall bare trunk, wide flat crown.
   if (kind === 1) {
     const low = [0.045, 0.11, 0.05];
-    const high = [0.11, 0.2, 0.07];
+    const high = [0.077, 0.149, 0.075];
     const crown = [0.5, 8.3, 0.2, 3.9];
     const bark = [0.2, 0.11, 0.07];
     addTube(
@@ -2486,101 +2501,135 @@ function thingMesh(kind, lod, lite) {
       }
     }
   }
-  // Jetty: a plank deck on posts, running out along +x.
-  if (kind === 13) {
-    const wood = [0.33, 0.25, 0.17];
-    const post = [0.2, 0.15, 0.1];
-    addBox(m, -6, 36, 0.9, 1.12, -1.5, 1.5, wood);
-    for (let x = 0; x <= 36; x += lod ? 12 : 6)
-      for (const z of [-1.5, 1.5])
-        addBox(m, x - 0.16, x + 0.16, -2.6, 1.7, z - 0.16, z + 0.16, post);
-    // Crates at the far end.
-    if (!lod) addBox(m, 30, 32.2, 1.12, 1.9, -1.2, 0.2, [0.5, 0.36, 0.2]);
-  }
-  // Fishing boat: a hull lofted through five sections, a mast, a furled sail.
+  if (kind === 13) addHarbour(m, lod);
+  // A timber work launch with a continuous rounded hull, painted sheer stripe,
+  // recessed well and a wheelhouse.
   if (kind === 14) {
-    const X = [-2.6, -1.6, 0, 1.5, 2.7];
-    const Wd = [0.55, 0.95, 1.05, 0.8, 0.05];
-    const hull = [0.78, 0.76, 0.7];
-    const band = [0.12, 0.3, 0.42];
-    const deck = [0.3, 0.22, 0.15];
-    const i0 = m.n;
-    for (let k = 0; k < 5; k++)
-      for (let e = -1; e <= 1; e += 2) {
-        addPoint(m, X[k], -0.35, 0, 0, -1, 0, hull, 0.6, 0, 5);
-        addPoint(
-          m,
-          X[k],
-          0.1 + 0.12 * k * (k - 2) * 0.2,
-          e * Wd[k] * 0.8,
-          0,
-          -0.3,
-          e,
-          hull,
-          0.85,
-          0,
-          5,
-        );
-        addPoint(
-          m,
-          X[k],
-          0.42 + 0.05 * (k - 2) * (k - 2),
-          e * Wd[k],
-          0,
-          0.1,
-          e,
-          band,
-          1,
-          0,
-          5,
-        );
-        addPoint(
-          m,
-          X[k],
-          0.56 + 0.05 * (k - 2) * (k - 2),
-          e * Wd[k],
-          0,
-          0.2,
-          e,
-          band,
-          1,
-          0,
-          5,
-        );
-      }
-    for (let k = 0; k < 4; k++)
-      for (let e = 0; e < 2; e++)
-        for (let q = 0; q < 3; q++) {
-          const a = i0 + k * 8 + e * 4 + q;
-          const b = a + 1;
-          const c = a + 8;
-          const d = c + 1;
-          m.i.push(a, c, b, b, c, d);
+    const chine = [0.47, 0.76, 0.94, 1.0, 0.97, 0.87, 0.68, 0.42, 0.025];
+    const stations = [-3.35, -2.7, -1.8, -0.9, 0, 0.95, 1.85, 2.6, 3.38];
+    const pitch = [0.2, 0.08, 0.015, 0, 0.008, 0.027, 0.07, 0.16, 0.28];
+    const hull = [0.055, 0.1, 0.102];
+    const blue = [0.07, 0.23, 0.255];
+    const ochre = [0.5, 0.3, 0.105];
+    const tar = [0.028, 0.043, 0.038];
+    const oak = [0.155, 0.095, 0.055];
+    const ivory = [0.54, 0.51, 0.38];
+    const yz = [
+      [-0.68, 0, tar],
+      [-0.28, 0.68, tar],
+      [-0.07, 0.87, hull],
+      [0.09, 0.94, hull],
+      [0.18, 0.97, ochre],
+      [0.23, 0.985, blue],
+      [0.59, 1, blue],
+      [0.65, 1.02, ivory],
+    ];
+    for (let i = 0; i < stations.length - 1; i++)
+      for (const side of [-1, 1]) {
+        const pt = (k, j) => [
+          stations[k],
+          yz[j][0] + (yz[j][0] + 0.68) * pitch[k],
+          side * chine[k] * yz[j][1],
+        ];
+        for (let j = 0; j < yz.length - 1; j++) {
+          const q = [pt(i, j), pt(i + 1, j), pt(i + 1, j + 1), pt(i, j + 1)];
+          if (side < 0) q.reverse();
+          addQuad(m, ...q, yz[j][2], 0, 5);
         }
-    if (lod < 2) {
-      for (let k = 0; k < 4; k++)
-        addQuad(
-          m,
-          [X[k], 0.3, -Wd[k] * 0.9],
-          [X[k], 0.3, Wd[k] * 0.9],
-          [X[k + 1], 0.3, Wd[k + 1] * 0.9],
-          [X[k + 1], 0.3, -Wd[k + 1] * 0.9],
-          deck,
-          0,
-          5,
-        );
-      addTube(m, [0.4, 0.3, 0, 0.06, 0.4, 3.6, 0, 0.04], [deck], 3, 0, 0);
-      // The sail, furled on its yard.
-      addTube(
+        const a = pt(i, 7);
+        const b = pt(i + 1, 7);
+        const c = b.slice();
+        const d = a.slice();
+        c[2] *= 0.83;
+        d[2] *= 0.83;
+        c[1] -= 0.032;
+        d[1] -= 0.032;
+        addQuad(m, a, b, c, d, oak, 0, 5);
+      }
+    const box = (x0, x1, y0, y1, z0, z1, c, glow = 0) =>
+      addBox(m, x0, x1, y0, y1, z0, z1, c, glow, 5);
+    box(-2.75, 1.72, 0.03, 0.21, -0.61, 0.61, oak);
+    for (const x of [-2.25, -1.58, 1.48])
+      box(x - 0.1, x + 0.12, 0.29, 0.38, -0.78, 0.78, oak);
+    box(-0.56, 0.83, 0.2, 1.33, -0.59, 0.59, [0.26, 0.255, 0.175]);
+    box(-0.65, 0.9, 1.26, 1.36, -0.66, 0.66, ivory);
+    // The upper cabin leans inwards. Bronze mullions divide each glazing strip.
+    const pane = [0.06, 0.099, 0.105];
+    for (const z of [-1, 1]) {
+      addQuad(
         m,
-        [-1.9, 1.5, 0, 0.1, 0.4, 2.3, 0, 0.13, 2.2, 3.3, 0, 0.07],
-        [[0.8, 0.77, 0.68]],
-        3,
-        0,
-        0,
+        [-0.47, 1.36, z * 0.54],
+        [0.83, 1.36, z * 0.54],
+        [0.68, 1.91, z * 0.48],
+        [-0.39, 1.91, z * 0.48],
+        pane,
+        -1,
+        5,
       );
     }
-    // Everything on a boat floats.
+    addQuad(
+      m,
+      [0.83, 1.36, -0.54],
+      [0.83, 1.36, 0.54],
+      [0.68, 1.91, 0.48],
+      [0.68, 1.91, -0.48],
+      pane,
+      -1,
+      5,
+    );
+    addQuad(
+      m,
+      [-0.47, 1.36, 0.54],
+      [-0.47, 1.36, -0.54],
+      [-0.39, 1.91, -0.48],
+      [-0.39, 1.91, 0.48],
+      pane,
+      -1,
+      5,
+    );
+    box(-0.56, 0.85, 1.91, 2.0, -0.62, 0.62, ivory);
+    for (const x of [-0.48, 0.09, 0.67])
+      for (const z of [-0.55, 0.55])
+        box(x, x + 0.047, 1.34, 1.93, z - 0.026, z + 0.026, oak);
+    box(-0.4, -0.26, 1.95, 2.52, 0.31, 0.43, [0.079, 0.086, 0.084]);
+    // The steep windshield has a brow; distinct window bays and a rounded
+    // wheelhouse roof break up the cuboid.
+    for (const x of [-0.47, 0.08, 0.66]) {
+      box(x, x + 0.042, 1.36, 1.9, -0.54, -0.515, ivory);
+      box(x, x + 0.042, 1.36, 1.9, 0.515, 0.54, ivory);
+    }
+    for (const z of [-0.48, -0.02, 0.45])
+      box(0.735, 0.778, 1.35, 1.89, z, z + 0.035, ivory);
+    box(0.74, 0.77, 1.7, 1.73, -0.52, 0.52, ivory);
+    box(-0.4, 0.7, 1.15, 1.26, -0.605, -0.59, [0.047, 0.111, 0.122]);
+    addTube(m, [-0.3, 2.0, -0.35, 0.055, -0.3, 3.38, -0.32, 0.025], [oak], 6);
+    addTube(m, [-0.3, 3.1, -0.33, 0.033, -0.3, 3.1, 0.22, 0.033], [ivory], 6);
+    box(-0.58, 0.9, 1.97, 2.04, -0.65, 0.65, [0.13, 0.23, 0.227]);
+    // Bow hatch and worn coaming, an aft shelter frame and low fenders.
+    box(1.17, 1.96, 0.26, 0.42, -0.4, 0.4, oak);
+    for (const side of [-1, 1]) {
+      for (const x of [-2.35, -1.15, 1.15]) {
+        const z = side * (0.95 - Math.abs(x) * 0.055);
+        addTube(
+          m,
+          [x, 0.16, z, 0.127, x, 0.51, z, 0.126, x, 0.56, z, 0.085],
+          [[0.034, 0.046, 0.047]],
+          6,
+        );
+      }
+      addTube(
+        m,
+        [-2.47, 0.59, side * 0.65, 0.028, -2.49, 1.35, side * 0.62, 0.024],
+        [ivory],
+        6,
+      );
+    }
+    addTube(
+      m,
+      [-2.49, 1.35, -0.62, 0.036, -2.49, 1.35, 0.62, 0.036],
+      [ivory],
+      6,
+    );
     for (let k = 0; k < m.n; k++) m.v[k * VERT + 11] = 5;
   }
   return m;
@@ -2646,6 +2695,678 @@ function scout(H, L, M, P) {
   S.sea = [-dx / dl, -dz / dl];
   return S;
 }
+// A tidal survey house at the end of a working pier. All dimensions are metres
+// in the jetty's own axes.
+function addHarbour(m, lod) {
+  // Specify the angular samples from ordinary arithmetic. Native trig may vary
+  // between engines.
+  const pi = 3.141592653589793;
+  function sine(angle) {
+    // Fold a turn onto [-pi/2, pi/2], where the sine series converges quickly.
+    let x = angle - 2 * pi * Math.floor((angle + pi) / (2 * pi));
+    if (x > pi / 2) x = pi - x;
+    if (x < -pi / 2) x = -pi - x;
+    const square = x * x;
+    let term = x;
+    let sum = x;
+    for (let k = 1; k <= 9; k++) {
+      term *= -square / (2 * k * (2 * k + 1));
+      sum += term;
+    }
+    return sum;
+  }
+  function cosine(angle) {
+    return sine(angle + pi / 2);
+  }
+
+  const oak = [0.145, 0.106, 0.078];
+  const beam = [0.095, 0.078, 0.065];
+  const salt = [0.29, 0.295, 0.25];
+  const teal = [0.085, 0.215, 0.211];
+  const oxide = [0.41, 0.085, 0.043];
+  const iron = [0.065, 0.089, 0.089];
+  const trim = [0.54, 0.52, 0.41];
+  const brass = [0.49, 0.32, 0.16];
+  const glass = [0.105, 0.16, 0.17];
+  const box = (x0, x1, y0, y1, z0, z1, col, mat = 10, glow = 0) =>
+    addBox(m, x0, x1, y0, y1, z0, z1, col, glow, mat);
+  const tube = (a, b, r, col, material = 12, sides = 6) => {
+    // A cylinder along any direction. Choose a perpendicular basis once for
+    // both ends.
+    const delta = b.map((v, i) => v - a[i]);
+    const len = Math.sqrt(
+      delta[0] * delta[0] + delta[1] * delta[1] + delta[2] * delta[2],
+    );
+    if (len < 0.0001) return;
+    const d = delta.map((v) => v / len);
+    const l = Math.sqrt(d[0] * d[0] + d[2] * d[2]);
+    const u = l > 0.02 ? [-d[2] / l, 0, d[0] / l] : [1, 0, 0];
+    const v = [
+      d[1] * u[2] - d[2] * u[1],
+      d[2] * u[0] - d[0] * u[2],
+      d[0] * u[1] - d[1] * u[0],
+    ];
+    const ring = Array.from({ length: sides }, (_, k) => {
+      const t = (k * 2 * pi) / sides;
+      return u.map((c, i) => r * (c * cosine(t) + v[i] * sine(t)));
+    });
+    const corner = (p, k) => p.map((c, i) => c + ring[k % sides][i]);
+    for (let k = 0; k < sides; k++)
+      addQuad(
+        m,
+        corner(a, k),
+        corner(a, k + 1),
+        corner(b, k + 1),
+        corner(b, k),
+        col,
+        0,
+        material,
+      );
+  };
+  const rope = (a, b, sag, r = 0.033) => {
+    const n = lod ? 3 : 8;
+    let p = a;
+    for (let i = 1; i <= n; i++) {
+      const t = i / n;
+      const q = a.map((x, k) => x + (b[k] - x) * t);
+      q[1] -= 4 * sag * t * (1 - t);
+      tube(p, q, r, [0.38, 0.25, 0.13], 10, 4);
+      p = q;
+    }
+  };
+  // Quay piles, tide-darkened feet, diagonal braces and believable thickness
+  // under each overhang.
+  box(-7, 38, 0.62, 0.98, -2, 2, beam);
+  box(19, 35, 0.59, 0.96, 2, 6.7, beam);
+  const plank = (a, b, z0, z1) => {
+    if (lod === 2) {
+      box(a, b, 0.95, 1.17, z0, z1, oak);
+      return;
+    }
+    for (let i = 0, x = a; x < b; i++, x += 0.32) {
+      const shade = 0.72 + (0.44 * ((i * 53) % 97)) / 97;
+      box(
+        x,
+        Math.min(x + 0.312, b),
+        0.95,
+        1.17,
+        z0,
+        z1,
+        oak.map((c) => c * shade),
+      );
+    }
+  };
+  plank(-7, 38, -2, 2);
+  plank(19, 35, 2, 6.7);
+  for (let x = -5; x < 39; x += 5.25) {
+    for (const z of [-2.05, 2.05]) {
+      if (z > 0 && x > 18 && x < 35) continue;
+      tube([x, -3, z], [x, 1.72, z], 0.155, beam, 10);
+      tube([x, 0.62, z], [x, 1.17, z], 0.174, [0.13, 0.18, 0.15], 12);
+      if (!lod) tube([x, 1.48, z], [x, 1.57, z], 0.166, iron);
+    }
+    if (!lod) tube([x, 0.74, -1.9], [x + 2.8, -1.3, -1.9], 0.084, oak, 10, 5);
+  }
+  // The ferry landing angles out from the square quay. Its outer handrail leads
+  // the eye toward the station.
+  const landingLength = 18.2;
+  const along = [0.87, -0.493];
+  const across = [0.493, 0.87];
+  const inner = [36.55, -0.8];
+  const half = 1.4;
+  const at = (s, t, h) => [
+    inner[0] + s * along[0] + t * across[0],
+    h,
+    inner[1] + s * along[1] + t * across[1],
+  ];
+  const deckH = (s) => 1.1 - 0.018 * s;
+  const face = (a, b, c, d, col, mat = 10) =>
+    addQuad(m, a, b, c, d, col, 0, mat);
+  for (let s = 0; s < landingLength; s += 0.31) {
+    const end = Math.min(landingLength, s + 0.302);
+    const h = deckH(s);
+    const base = 0.088 + (Math.floor(s * 213) % 29) / 290;
+    face(at(s, -half, h), at(s, half, h), at(end, half, h), at(end, -half, h), [
+      base,
+      base * 0.78,
+      base * 0.61,
+    ]);
+  }
+  for (const t of [-half, half]) {
+    face(
+      at(0, t, deckH(0)),
+      at(landingLength, t, deckH(landingLength)),
+      at(landingLength, t, 0.26),
+      at(0, t, 0.46),
+      beam,
+    );
+    for (let i = 0; i <= 5; i++) {
+      const s = i * 3.55;
+      const h = deckH(s);
+      tube(at(s, t, -1.73), at(s, t, h + 0.84), 0.105, beam, 10);
+      tube(at(s, t, -0.52), at(s, t, 0.18), 0.119, [0.035, 0.072, 0.039], 0);
+      tube(at(s, t, h + 0.49), at(s, t, h + 0.56), 0.119, iron);
+      if (i < 5) {
+        tube(at(s, t, 0.44), at(s + 3.55, t, -0.63), 0.079, beam, 10, 5);
+        rope(
+          at(s, t, h + 0.73),
+          at(s + 3.55, t, deckH(s + 3.55) + 0.73),
+          0.25,
+          0.035,
+        );
+      }
+    }
+  }
+  // Hand winch on the outboard pontoon. A cable leads from the drum through a
+  // fairlead.
+  const winch = (s, t) => {
+    const b = at(s, t, 0);
+    const x = b[0];
+    const z = b[2];
+    const h = deckH(s);
+    box(x - 0.55, x + 0.55, h, h + 0.15, z - 0.47, z + 0.47, iron, 12);
+    for (const end of [-0.44, 0.44]) {
+      box(
+        x + end - 0.045,
+        x + end + 0.045,
+        h + 0.12,
+        h + 0.79,
+        z - 0.32,
+        z + 0.31,
+        [0.062, 0.094, 0.088],
+        12,
+      );
+      tube(
+        [x + end - 0.045, h + 0.59, z],
+        [x + end + 0.045, h + 0.59, z],
+        0.34,
+        [0.16, 0.17, 0.13],
+        12,
+        12,
+      );
+    }
+    tube(
+      [x - 0.44, h + 0.59, z],
+      [x + 0.44, h + 0.59, z],
+      0.235,
+      [0.113, 0.085, 0.056],
+      10,
+      10,
+    );
+    for (let i = 0; i < 12; i++) {
+      const xx = x - 0.39 + i * 0.068;
+      tube([xx, h + 0.59, z], [xx + 0.034, h + 0.59, z], 0.246, beam, 10, 10);
+    }
+    tube([x + 0.51, h + 0.6, z], [x + 0.51, h + 0.77, z + 0.3], 0.039, iron);
+    tube(
+      [x + 0.51, h + 0.77, z + 0.3],
+      [x + 0.82, h + 0.77, z + 0.3],
+      0.054,
+      beam,
+      10,
+    );
+    rope(
+      [x - 0.1, h + 0.52, z + 0.21],
+      at(s - 4.3, t - 0.32, deckH(s - 4.3) + 0.058),
+      0.1,
+      0.031,
+    );
+  };
+  winch(13.6, 1.05);
+
+  // A riveted loading davit and its hoist serve the little ferry's outside
+  // berth. Keep the walkway clear: the post stands on its own cantilevered
+  // timber landing.
+  const hx = 46.8;
+  const hz = -11.65;
+  for (let j = 0; j < 11; j++) {
+    const z = hz - 0.78 + j * 0.31;
+    box(hx - 1.18, hx + 1.18, 0.7, 0.9, z, z + 0.3, oak);
+  }
+  for (const dx of [-0.92, 0.92]) {
+    box(hx + dx - 0.13, hx + dx + 0.13, -2, 0.74, hz - 0.53, hz - 0.25, beam);
+    tube([hx + dx, 0.44, hz - 0.6], [hx + dx, -0.3, hz + 2.6], 0.095, beam, 10);
+  }
+  const charcoal = [0.052, 0.069, 0.068];
+  const rim = [0.095, 0.119, 0.107];
+  const ferric = [0.239, 0.111, 0.054];
+  const wire = [0.069, 0.065, 0.057];
+  box(hx - 0.51, hx + 0.51, 0.88, 1.02, hz - 0.5, hz + 0.5, charcoal, 12);
+  box(hx - 0.25, hx + 0.25, 1.02, 4.6, hz - 0.14, hz + 0.14, charcoal, 12);
+  for (const dz of [-0.19, 0.19])
+    box(
+      hx - 0.34,
+      hx + 0.34,
+      1.02,
+      4.63,
+      hz + dz - 0.033,
+      hz + dz + 0.033,
+      rim,
+      12,
+    );
+  const heel = [hx, 4.12, hz];
+  const pivot = [hx, 3.06, hz];
+  const tip = [43.9, 5.83, -5.8];
+  const rib = (a, b) => tube(a, b, 0.102, charcoal, 12, 4);
+  const p = (t, y, side) => [
+    heel[0] + (tip[0] - heel[0]) * t + side,
+    heel[1] + (tip[1] - heel[1]) * t + y,
+    heel[2] + (tip[2] - heel[2]) * t,
+  ];
+  for (const side of [-0.15, 0.15]) {
+    rib(p(0, -0.2, side), p(1, 0, side));
+    rib(p(0, 0.48, side), p(1, 0, side));
+    for (let j = 0; j < 6; j++) {
+      const a = j / 6;
+      const b = (j + 1) / 6;
+      tube(
+        p(a, (1 - a) * -0.2, side),
+        p(b, (1 - b) * 0.48, side),
+        0.05,
+        rim,
+        12,
+        4,
+      );
+    }
+    tube(
+      [pivot[0] + side, pivot[1], pivot[2]],
+      p(0.48, 0.09, side),
+      0.106,
+      charcoal,
+      12,
+      6,
+    );
+  }
+  tube([hx - 0.4, 3.97, hz], [hx + 0.4, 3.97, hz], 0.18, ferric, 12, 12);
+  for (let k = 0; k < 6; k++)
+    for (const sign of [-1, 1]) {
+      box(
+        hx + sign * 0.23 - 0.026,
+        hx + sign * 0.23 + 0.026,
+        1.14 + k * 0.54,
+        1.21 + k * 0.54,
+        hz - 0.25,
+        hz - 0.18,
+        [0.21, 0.211, 0.17],
+        12,
+      );
+    }
+  // Sheaves, two falls, a travelling block and a curved open hook.
+  tube(p(0.97, 0, -0.22), p(0.97, 0, 0.22), 0.184, rim, 12, 12);
+  for (const s of [-0.09, 0.09])
+    tube(p(0.97, -0.06, s), p(0.97, -1.27, s), 0.018, wire, 0, 4);
+  tube(
+    p(0.97, -1.32, -0.16),
+    p(0.97, -1.32, 0.16),
+    0.158,
+    [0.24, 0.163, 0.067],
+    12,
+    12,
+  );
+  let hk = p(0.97, -1.37, 0);
+  for (const [dz, dy] of [
+    [0, -0.19],
+    [0.08, -0.28],
+    [0.19, -0.3],
+    [0.26, -0.23],
+    [0.28, -0.14],
+  ]) {
+    const next = p(0.97, -1.39 + dy, 0);
+    next[2] += dz;
+    tube(hk, next, 0.037, rim, 12, 6);
+    hk = next;
+  }
+
+  // A guard rope directs the eye down the quay. The right side stays open for
+  // loading.
+  for (let k = 0; k < 7; k++) {
+    const x = -5 + k * 5.25;
+    rope([x, 1.58, -2.05], [x + 5.25, 1.58, -2.05], 0.28);
+  }
+  // A prefabricated tide station: stone skirt, painted vertical boards, a white
+  // cornice then a hipped roof.
+  box(24, 31, -2, 1.61, 2.25, 6.2, salt, 11);
+  box(24.15, 30.85, 1.61, 5.1, 2.4, 6.05, teal, 12);
+  box(23.9, 31.1, 4.95, 5.16, 2.2, 6.22, trim, 10);
+  const roof = [0.1, 0.135, 0.135];
+  const ridgeX = [25.1, 29.9];
+  const rz = 4.18;
+  addQuad(
+    m,
+    [23.5, 5.13, 2],
+    [31.5, 5.13, 2],
+    [29.9, 6.38, rz],
+    [25.1, 6.38, rz],
+    roof,
+    0,
+    12,
+  );
+  addQuad(
+    m,
+    [31.5, 5.13, 6.44],
+    [23.5, 5.13, 6.44],
+    [25.1, 6.38, rz],
+    [29.9, 6.38, rz],
+    roof,
+    0,
+    12,
+  );
+  addTri(
+    m,
+    [23.5, 5.13, 6.44],
+    [23.5, 5.13, 2],
+    [ridgeX[0], 6.38, rz],
+    roof,
+    12,
+  );
+  addTri(
+    m,
+    [31.5, 5.13, 2],
+    [31.5, 5.13, 6.44],
+    [ridgeX[1], 6.38, rz],
+    roof,
+    12,
+  );
+  // Clerestory and shutters: alternating dark framing and luminous interior
+  // panes.
+  const sash = (z, h) => {
+    box(24.04, 24.15, 2.35, 4.44, z, z + h, trim, 10);
+    box(24.015, 24.045, 2.48, 4.31, z + 0.09, z + h - 0.09, iron, 12);
+    for (let row = 0; row < 2; row++)
+      for (let col = 0; col < 2; col++) {
+        const pz = z + 0.14 + (col * (h - 0.22)) / 2;
+        const py = 2.54 + 0.86 * row;
+        box(
+          23.995,
+          24.016,
+          py,
+          py + 0.75,
+          pz,
+          pz + (h - 0.22) / 2 - 0.06,
+          glass,
+          13,
+          0.5,
+        );
+      }
+  };
+  sash(2.62, 1.4);
+  sash(4.44, 1.32);
+  for (let x = 25.5; x < 30.8; x += 2.05) {
+    box(x, x + 1.35, 2.55, 4.35, 2.3, 2.4, trim);
+    box(x + 0.1, x + 1.25, 2.66, 4.23, 2.278, 2.31, glass, 13, 0.4);
+    box(x + 0.62, x + 0.7, 2.61, 4.28, 2.25, 2.3, iron, 12);
+    box(x + 0.09, x + 1.27, 3.38, 3.48, 2.25, 2.3, iron, 12);
+  }
+  // Back entrance, rainwater pipes and lap siding also give the harbour a face
+  // on the approach from sea.
+  const rear = 30.86;
+  box(rear, rear + 0.08, 1.61, 4.25, 4.65, 5.82, iron, 12);
+  box(rear + 0.08, rear + 0.1, 1.73, 4.15, 4.74, 5.74, [0.06, 0.112, 0.12], 12);
+  box(rear + 0.1, rear + 0.13, 3.16, 3.9, 4.88, 5.6, glass, 13, 0.22);
+  box(rear + 0.13, rear + 0.18, 2.5, 2.55, 4.9, 5.16, brass, 12);
+  box(rear + 0.1, rear + 0.58, 1.18, 1.44, 4.52, 5.94, salt, 11);
+  box(rear + 0.1, rear + 0.36, 1.43, 1.61, 4.57, 5.89, salt, 11);
+  box(rear + 0.02, rear + 0.11, 2.48, 4.28, 2.69, 4.12, trim);
+  for (let col = 0; col < 2; col++)
+    for (let row = 0; row < 2; row++) {
+      box(
+        rear + 0.11,
+        rear + 0.13,
+        2.58 + row * 0.82,
+        3.3 + row * 0.82,
+        2.79 + col * 0.65,
+        3.38 + col * 0.65,
+        glass,
+        13,
+        0.26,
+      );
+    }
+  if (!lod)
+    for (let i = 0; i < 13; i++) {
+      const y = 1.7 + i * 0.25;
+      box(24.16, 30.82, y, y + 0.016, 2.36, 2.4, [0.045, 0.097, 0.097], 12);
+      box(30.855, 30.871, y, y + 0.016, 2.41, 6.04, [0.053, 0.105, 0.105], 12);
+    }
+  for (const x of [24.1, 30.91]) {
+    box(x - 0.1, x + 0.1, 1.6, 4.93, 2.32, 2.48, trim);
+    box(x - 0.1, x + 0.1, 1.6, 4.93, 5.98, 6.14, trim);
+  }
+  tube([30.95, 4.8, 6.09], [30.95, 1.36, 6.09], 0.066, iron);
+  tube([30.95, 1.36, 6.09], [31.35, 1.23, 6.3], 0.068, iron);
+  if (!lod)
+    for (let x = 24.15; x <= 30.81; x += 0.43) {
+      const t = Math.max(0.05, Math.min(1, (x - 23.5) / 1.6, (31.5 - x) / 1.6));
+      tube(
+        [x, 5.15, 2.02],
+        [x, 5.15 + t * 1.23, 2.02 + t * 2.15],
+        0.017,
+        iron,
+        12,
+        4,
+      );
+    }
+  // Cast iron block letters on the long-side station board, low enough to read
+  // from the deck.
+  const font = {
+    T: ['111', '010', '010', '010', '010'],
+    I: ['111', '010', '010', '010', '111'],
+    D: ['110', '101', '101', '101', '110'],
+    E: ['111', '100', '110', '100', '111'],
+    7: ['111', '001', '010', '010', '010'],
+  };
+  const lettering = (text, x, y, z, unit, colour) => {
+    for (let k = 0; k < text.length; k++) {
+      const glyph = font[text[k]];
+      if (!glyph) continue;
+      for (let row = 0; row < 5; row++)
+        for (let c = 0; c < 3; c++)
+          if (glyph[row][c] === '1') {
+            const px = x - (k * 4 + c) * unit;
+            const py = y - row * unit;
+            box(
+              px - unit * 0.89,
+              px,
+              py - unit * 0.89,
+              py,
+              z - 0.006,
+              z + 0.006,
+              colour,
+              13,
+              0.08,
+            );
+          }
+    }
+  };
+  box(24.65, 30.32, 4.33, 4.91, 2.24, 2.34, [0.035, 0.089, 0.097], 12);
+  lettering('TIDE 7', 28.78, 4.82, 2.22, 0.087, [0.77, 0.72, 0.57]);
+  // The lifering and its hand line hang off the deck rail rather than floating
+  // in space.
+  const ring = (cx, cy, cz, r, th, face = 'x') => {
+    const steps = lod ? 12 : 24;
+    for (let j = 0; j < steps; j++) {
+      const t = (j * pi * 2) / steps;
+      const t1 = ((j + 1) * pi * 2) / steps;
+      const P = (a) =>
+        face === 'x'
+          ? [cx, cy + cosine(a) * r, cz + sine(a) * r]
+          : [cx + sine(a) * r, cy + cosine(a) * r, cz];
+      tube(
+        P(t),
+        P(t1),
+        th,
+        Math.floor((j * 8) / steps) % 2 === 0
+          ? [0.52, 0.065, 0.017]
+          : [0.64, 0.56, 0.39],
+        12,
+        6,
+      );
+    }
+  };
+  box(33.5, 33.7, 1.15, 2.57, 5.0, 5.2, beam);
+  box(33.69, 33.8, 2.16, 2.42, 4.67, 5.51, [0.54, 0.49, 0.36]);
+  ring(33.83, 1.91, 5.08, 0.39, 0.085);
+  rope([33.85, 2.14, 4.7], [33.85, 2.14, 5.43], 0.77, 0.019);
+  // Two open ladders descend past the green tidal stain. Black tyre fenders
+  // hang from hawser loops.
+  for (const x of [9, 32]) {
+    for (const dx of [-0.36, 0.36]) {
+      tube([x + dx, -1.0, -2.39], [x + dx, 1.72, -2.39], 0.052, iron);
+      tube([x + dx, 1.72, -2.39], [x + dx, 1.72, -1.84], 0.052, iron);
+      tube([x + dx, 1.72, -1.84], [x + dx, 1.15, -1.84], 0.052, iron);
+    }
+    for (let k = 0; k < 8; k++)
+      tube(
+        [x - 0.36, -0.9 + k * 0.33, -2.4],
+        [x + 0.36, -0.9 + k * 0.33, -2.4],
+        0.048,
+        [0.22, 0.23, 0.2],
+        12,
+      );
+  }
+  for (const x of [1.0, 6.9, 18.4, 25.7, 35.8]) {
+    const radius = 0.44;
+    for (let j = 0; j < (lod ? 10 : 18); j++) {
+      const a = (j * 2 * pi) / (lod ? 10 : 18);
+      const b = ((j + 1) * 2 * pi) / (lod ? 10 : 18);
+      tube(
+        [x + radius * sine(a), 0.4 + radius * cosine(a), -2.24],
+        [x + radius * sine(b), 0.4 + radius * cosine(b), -2.24],
+        0.15,
+        [0.026, 0.031, 0.031],
+        0,
+        5,
+      );
+    }
+    rope([x - 0.24, 1.17, -1.87], [x, 0.69, -2.26], 0.1, 0.026);
+    rope([x + 0.24, 1.17, -1.87], [x, 0.69, -2.26], 0.1, 0.026);
+  }
+  // Dock hose: a loose coil made from one continuous line, with the tail
+  // reaching a standpipe.
+  if (!lod) {
+    let last;
+    for (let k = 0; k <= 100; k++) {
+      const t = k * 0.156;
+      const r = 0.38 + k * 0.0026;
+      const p = [
+        20.5 + r * cosine(t),
+        1.21 + k * 0.0008,
+        1.15 + r * 0.75 * sine(t),
+      ];
+      if (last) tube(last, p, 0.041, [0.048, 0.068, 0.056], 0, 5);
+      last = p;
+    }
+    tube(last, [19.25, 1.22, 1.55], 0.042, iron);
+  }
+
+  // A tall, octagonal harbour signal rises above the station; rail and lantern
+  // give it a readable silhouette.
+  const tx = 29.6;
+  const tz = 5.42;
+  for (const [y0, y1, r0, r1, col] of [
+    [3.9, 7.0, 0.98, 0.88, trim],
+    [7, 8.1, 0.88, 0.82, oxide],
+    [8.1, 9.05, 0.82, 0.77, trim],
+    [9.05, 9.28, 1.13, 1.14, iron],
+    [9.28, 10.24, 0.66, 0.66, [0.82, 0.62, 0.24]],
+    [10.24, 10.43, 0.94, 1.12, iron],
+    [10.43, 11.05, 1.12, 0.19, oxide],
+  ]) {
+    addTube(
+      m,
+      [tx, y0, tz, r0, tx, y1, tz, r1],
+      [col],
+      6,
+      0,
+      y0 === 9.28 ? 4.2 : 0,
+    );
+  }
+  for (let k = 0; k < 8; k++) {
+    const angle = (k * pi) / 4;
+    const x = tx + 0.73 * cosine(angle);
+    const z = tz + 0.73 * sine(angle);
+    tube([x, 9.19, z], [x, 10.28, z], 0.047, iron);
+    const b = ((k + 1) * pi) / 4;
+    if (!lod) {
+      tube(
+        [tx + 1.04 * cosine(angle), 9.28, tz + 1.04 * sine(angle)],
+        [tx + 1.04 * cosine(angle), 9.75, tz + 1.04 * sine(angle)],
+        0.026,
+        iron,
+      );
+      tube(
+        [tx + 1.04 * cosine(angle), 9.73, tz + 1.04 * sine(angle)],
+        [tx + 1.04 * cosine(b), 9.73, tz + 1.04 * sine(b)],
+        0.026,
+        iron,
+      );
+    }
+  }
+  tube([tx, 11.0, tz], [tx, 12.1, tz], 0.027, iron);
+  // Each practical is a steel goose-neck with a downward enamel shade over a
+  // warm bulb.
+  for (const x of [3.5, 15.5, 34.2]) {
+    const z = -1.94;
+    const h = 4.3;
+    box(x - 0.26, x + 0.26, 1.16, 1.42, z - 0.26, z + 0.26, iron, 12);
+    tube([x, 1.4, z], [x, h, z], 0.075, iron);
+    tube([x, h, z], [x, h + 0.26, z + 0.22], 0.075, iron);
+    tube([x, h + 0.26, z + 0.22], [x, h + 0.26, z + 0.88], 0.067, iron);
+    tube([x, h + 0.26, z + 0.88], [x, h + 0.03, z + 0.98], 0.05, iron);
+    addTube(
+      m,
+      [x, h - 0.13, z + 0.98, 0.36, x, h + 0.05, z + 0.98, 0.12],
+      [teal],
+      6,
+    );
+    addTube(
+      m,
+      [x, h - 0.25, z + 0.98, 0.16, x, h - 0.12, z + 0.98, 0.26],
+      [[1, 0.77, 0.39]],
+      6,
+      0,
+      3.4,
+    );
+  }
+  if (!lod) {
+    // A mooring bollard, a hose reel and a tide staff are human-scale reference
+    // points.
+    for (const x of [0, 10, 21, 37]) {
+      tube([x, 1.17, 1.84], [x, 1.5, 1.84], 0.13, iron);
+      tube([x, 1.46, 1.84], [x, 1.53, 1.84], 0.18, iron);
+    }
+    const x = 19.8;
+    const z = 4.95;
+    box(x - 0.65, x + 0.65, 1.16, 1.3, z - 0.5, z + 0.5, iron, 12);
+    tube([x, 1.3, z], [x, 2.16, z], 0.44, oxide);
+    for (let k = 0; k < 5; k++)
+      tube([x, 1.36 + k * 0.13, z], [x, 1.42 + k * 0.13, z], 0.52, beam, 10);
+    box(34, 34.24, -1.25, 2.25, 6.65, 6.79, trim);
+    for (let k = 0; k < 11; k++)
+      box(
+        33.99,
+        34.25,
+        -0.83 + k * 0.24,
+        -0.75 + k * 0.24,
+        6.74,
+        6.82,
+        oxide,
+        12,
+      );
+    // Faded warning chevrons painted directly onto the landing approach.
+    for (let i = 0; i < 5; i++)
+      box(
+        17.85 + i * 0.38,
+        18.05 + i * 0.38,
+        1.175,
+        1.182,
+        -1.95,
+        -0.86,
+        brass,
+        12,
+      );
+  }
+}
+
 // The settlement: a level, paved square with a bell tower, a well, a long
 // arcaded house and market stalls; houses on the slopes around it; paved lanes
 // from each door; a jetty with boats and a boathouse; the lighthouse and its
@@ -2880,7 +3601,7 @@ function layVillage(H, L, M, P, S, seed) {
     const side =
       k < 4
         ? k % 2
-          ? 3.4
+          ? 9.8
           : -3.4
         : k < 6
           ? -15 + (k - 4) * 13
@@ -3604,7 +4325,7 @@ const $ = (id) => document.getElementById(id);
 // The grown world: layout, height grid, GPU objects; "detail" scales every
 // detail distance.
 const W = { detail: 1 };
-const FB = new Float32Array(52);
+const FB = new Float32Array(100);
 const frameUbo = gl.createBuffer();
 const proj = new Float32Array(16);
 const view = new Float32Array(16);
@@ -3654,10 +4375,27 @@ layout(std140) uniform F {
   vec4 uHor;
   // Exposure, tide, day 0..1.
   vec4 uMisc;
+  // Jetty origin (world x,z) followed by local forward (x,z); zero before the
+  // settlement exists.
+  vec4 uHarbour;
+  vec4 uMoorings[11];
 };
 // Land (height, slopes, sky view), cover, shadows, noise, waves, paving.
 uniform sampler2D tH, tM, tS, tN, tW, tV;
 const float WORLD = 2048.0;
+vec3 harbourLamp(int i) {
+  vec3 fixture = i == 0
+      ? vec3(3.5,4.12,-0.96)
+      : i == 1
+      ? vec3(15.5,4.12,-0.96)
+      : i == 2
+      ? vec3(34.2,4.12,-0.96)
+      : vec3(29.6,9.86,5.42);
+  vec2 p = uHarbour.xy
+      + fixture.x * uHarbour.zw
+      + fixture.z * vec2(-uHarbour.w,uHarbour.z);
+  return vec3(p.x,fixture.y,p.y);
+}
 `;
 
 // Grows the world: every layer's onGrow step in turn, with a pause between so
@@ -3795,62 +4533,63 @@ vec4 soft(vec2 uv) {
   vec2 i = floor(uv), f = fract(uv);
   return textureLod(tN, (i + f * f * (3.0 - 2.0 * f) - 0.5) / 256.0, 0.0);
 }
-// Cloud thickness 0..1 at a point on the cloud deck (metres): big shapes, then
-// smaller billows eating the edges.
-float cloudAt(vec2 q) {
-  q = q * 0.00007 + uCam.w * vec2(0.0007, 0.00025);
-  float n = soft(q).r * 0.6
-      + soft(q * 2.9 + uCam.w * 0.0004).g * 0.27
-      + textureLod(tN, q * 9.3, 1.0).b * 0.13;
-  return smoothstep(0.0, 0.14, n - 1.0 + uSunCol.w);
-}
-// Sky with clouds, as seen from the camera along d. "fine" adds the second
-// look-up that shades the clouds.
-vec3 skyFull(vec3 d, bool fine) {
-  vec3 c = skyBase(d);
-  if (d.y < 0.01) return c;
-  float sd = max(dot(d, uSun.xyz), 0.0);
-  // High thin cloud: long streaks far above the first layer, lit before and
-  // after it.
-  if (fine) {
-    vec2 q2 = uCam.xz + d.xz * (CLOUD_Y * 3.4 - uCam.y) / d.y;
-    float wisp = soft(q2 * vec2(0.000019, 0.00006) + uCam.w * 0.0002).g
-        + soft(q2 * 0.00021).r * 0.35;
-    wisp = smoothstep(0.62, 0.95, wisp) * smoothstep(0.02, 0.22, d.y) * 0.6;
-    c = mix(
-        c,
-        uSunCol.rgb
-            * uSunCol.rgb
-            / (uSunCol.r + 0.05)
-            * (0.2 + 0.5 * pow(sd, 3.0))
-            + uHor.rgb * 0.4,
-        wisp
-    );
-  }
-  vec2 q = uCam.xz + d.xz * (CLOUD_Y - uCam.y) / d.y;
-  float den = cloudAt(q);
-  if (den < 0.003) return c;
-  // A cloud is bright on the side where less cloud lies between it and the sun,
-  // and its thick middle is dim from below.
-  float lit = fine
-      ? clamp(
-          0.5 + 2.6 * (den - cloudAt(q + normalize(uSun.xz) * 420.0)),
-          0.0,
-          1.0
-      )
-      : 0.5;
-  lit *= 1.0 - 0.5 * den;
-  vec3 gold = uSunCol.rgb
-      * mix(vec3(1.0), uSunCol.rgb / (uSunCol.r + 0.05), 0.6);
-  vec3 col = mix(
-      uZen.rgb * 0.62 + uHor.rgb * 0.26,
-      gold * 0.42 + uHor.rgb * 0.2,
-      lit
+// Coverage is shared by the sky, sea reflection and terrain shadows. The first
+// octave sets the size of a whole bank; fine noise only breaks its edges.
+float cloudAt(vec2 metres) {
+  vec2 p = metres * vec2(0.000061, 0.000078) + uCam.w * vec2(0.00028, 0.00009);
+  vec2 warp = (soft(p * 0.78).rg - 0.5) * 0.11;
+  float bank = soft(p + warp).r;
+  float folds = soft(p * 2.75 - warp).g;
+  return smoothstep(
+      0.46,
+      0.73,
+      bank * 0.83 + folds * 0.17 + (uSunCol.w - 0.50) * 0.42
   );
-  // Thin edges glow near the sun.
-  col += uSunCol.rgb * 1.5 * pow(sd, 8.0) * (1.0 - den) * (1.0 - den);
-  return mix(c, col, den * smoothstep(0.01, 0.16, d.y) * (fine ? 1.0 : 0.6));
 }
+
+vec3 skyFull(vec3 d, bool fine) {
+  vec3 air = skyBase(d);
+  if (d.y < 0.008) return air;
+  float sunFacing = max(dot(d, uSun.xyz), 0.0);
+  float rangeFade = smoothstep(0.008, 0.17, d.y);
+  vec2 ray = d.xz / max(d.y, 0.025);
+  vec2 foot = uCam.xz + ray * (CLOUD_Y - uCam.y);
+  vec2 sunward = uSun.xz / max(0.28, abs(uSun.y));
+  // The distant deck dissolves into air. A much higher, thin wind-sheared
+  // layer crosses the sky above the banks and stays visible in their gaps.
+  vec2 high = (uCam.xz + ray * (CLOUD_Y * 3.9 - uCam.y)) * 0.000035;
+  float veil = soft(high * vec2(0.37, 1.65) + 0.18 * soft(high * 0.44).rg).g;
+  air = mix(
+      air,
+      uHor.rgb * 0.67 + uSunCol.rgb * (0.14 + 0.24 * sunFacing),
+      0.19 * rangeFade * smoothstep(0.40, 0.70, veil)
+  );
+  float airLeft = 1.0;
+  vec3 layers = vec3(0.0);
+  // See different parts of the same bank as the ray crosses the bottom,
+  // centre and crown. Light is sampled on the side facing the sun.
+  int count = fine ? 3 : 1;
+  for (int i = 0; i < 3; i++) {
+    if (i >= count) break;
+    float level = (float(i) + 0.5) / float(count);
+    vec2 sampleAt = foot + ray * (level * 360.0);
+    float mass = cloudAt(sampleAt);
+    float crossSection = sin(level * 3.14159);
+    float density = smoothstep(0.05, 0.83, mass - 0.18 * (1.0 - crossSection));
+    float opticalDepth = density * (fine ? 1.05 : 2.1);
+    float opacity = (1.0 - exp(-opticalDepth)) * rangeFade;
+    float ahead = fine ? cloudAt(sampleAt + sunward * 260.0) : mass;
+    float transmission = exp(-1.9 * ahead) * (0.45 + 0.55 * level);
+    vec3 underside = uZen.rgb * 0.50 + uHor.rgb * 0.19;
+    vec3 direct = uSunCol.rgb * (0.34 + 0.42 * pow(sunFacing, 4.0));
+    vec3 cloud = underside * (0.72 + 0.28 * level) + direct * transmission;
+    cloud += uSunCol.rgb * pow(sunFacing, 15.0) * (1.0 - mass) * 0.65;
+    layers += airLeft * opacity * cloud;
+    airLeft *= 1.0 - opacity;
+  }
+  return layers + airLeft * air;
+}
+
 // Shade from clouds on the ground: follow the light up to the cloud deck.
 float cloudShade(vec3 p) {
   vec2 q = p.xz + uSun.xz * (CLOUD_Y - p.y) / max(uSun.y, 0.12);
@@ -3867,12 +4606,17 @@ vec3 haze(vec3 col, vec3 p) {
   float k = v.y * 0.012;
   float low = exp(-max(uCam.y, 0.0) * 0.012)
       * (abs(k) < 1e-5 ? d : (1.0 - exp(-d * k)) / k);
-  float a = 1.0 - exp(-uZen.w * (d * 0.35 + low * 0.65));
-  return mix(
-      col,
-      skyBase(normalize(vec3(v.x, abs(v.y) * 0.3 + 0.03, v.z))) * 0.9,
-      a
+  // Sea spray flattens distant contrast near the water. Backlit mist
+  // takes its colour from the sunward horizon; shaded air stays blue-grey.
+  float a = 1.0 - exp(-uZen.w * (d * 0.62 + low * 1.8));
+  vec3 skyDir = normalize(vec3(v.x, abs(v.y) * 0.25 + 0.035, v.z));
+  float sunward = pow(max(dot(skyDir, uSun.xyz), 0.0), 5.0);
+  vec3 mist = mix(
+      uZen.rgb * 0.65 + uHor.rgb * 0.20,
+      skyBase(skyDir),
+      0.22 + 0.62 * sunward
   );
+  return mix(col, mist, a);
 }
 `;
 const GLSL_LIGHT = `
@@ -3887,8 +4631,17 @@ vec3 lightOn(vec3 n, float sky, float sun) {
       uZen.rgb * 0.95 + uHor.rgb * 0.4,
       0.5 + 0.5 * n.y
   );
-  // Rough ground catches a low sun.
-  return uSunCol.rgb * max(dot(n, uSun.xyz) * 0.8 + 0.2, 0.0) * sun + amb * sky;
+  // Open sky fills an upward face. The underside of a beam sees mostly
+  // the dim ground. This keeps a roof lip dark even at noon.
+  float horizon = smoothstep(-0.6, 0.65, n.y);
+  float indirect = mix(0.29, 0.80, horizon);
+  vec3 cool = mix(
+      amb,
+      vec3(dot(amb, vec3(0.2126, 0.7152, 0.0722))) * vec3(0.84, 1.0, 1.04),
+      0.36
+  );
+  return uSunCol.rgb * max(dot(n, uSun.xyz) * 0.91 + 0.09, 0.0) * sun
+      + cool * sky * indirect;
 }
 `;
 const GLSL_FILM = `
@@ -3906,7 +4659,11 @@ vec3 finish(vec3 c) {
   // Part of the curve acts on brightness only, to keep colour.
   c = mix(curve(c), c * (curve(vec3(top)).r / top), 0.45);
   c = pow(clamp(c, 0.0, 1.0), vec3(1.0 / 2.2));
-  c = mix(vec3(dot(c, vec3(0.3, 0.59, 0.11))), c, 1.12);
+  // Keep the dark sea and timber cool. Preserve hue around the signal
+  // lamps and limit the saturation of the brightest highlights.
+  float luma = dot(c, vec3(0.2126, 0.7152, 0.0722));
+  c = mix(vec3(luma), c, mix(0.86, 0.98, smoothstep(0.07, 0.63, luma)));
+  c *= mix(vec3(0.90, 0.975, 1.012), vec3(1.0), smoothstep(0.02, 0.45, luma));
   vec2 q = gl_FragCoord.xy / vec2(uRight.w, uUp.w) - 0.5;
   return c * (1.0 - 0.35 * dot(q, q)) + (grain(gl_FragCoord.xy) - 0.5) / 255.0;
 }
@@ -4024,6 +4781,8 @@ const SEA_FS =
   GLSL_FILM +
   GLSL_SEA +
   `
+uniform sampler2D tPortMirror;
+uniform float uPortReflection;
 in vec3 vP;
 out vec4 o;
 void main() {
@@ -4114,6 +4873,43 @@ void main() {
               + pow(sun, 18.0) * 0.5 * spark
               + pow(sr, 60.0) * 0.12
       );
+  if(dot(uHarbour.zw,uHarbour.zw)>.5 && distance(p,uHarbour.xy)<120.0) {
+    vec2 dir=uHarbour.zw,side=vec2(-dir.y,dir.x),xz=p-uHarbour.xy;
+    vec2 local=vec2(dot(xz,dir),dot(xz,side));
+    // Soft occlusion immediately below the actual deck. The offscreen draw
+    // supplies its reflected geometry.
+    float deck=length(max(abs(local-vec2(15.5,0.0))-vec2(22.4,2.06),0.0));
+    refl*=mix(.74,1.0,smoothstep(0.0,1.4,deck));
+    for(int j=0;j<11;j++) {
+      vec4 boat=uMoorings[j];
+      float size=length(boat.zw);
+      if(size<.1)continue;
+      vec2 forward=boat.zw/size,across=vec2(-forward.y,forward.x);
+      vec2 q=p-boat.xy;
+      vec2 b=vec2(dot(q,forward),dot(q,across))/size;
+      float contact=length(b/vec2(3.34,.96));
+      float wake=(
+          1.0-smoothstep(.018,.065,abs(contact-1.035))
+      )*smoothstep(.29,.64,c.a);
+      refl+=vec3(.16,.23,.23)*wake;
+    }
+  }
+  if(uMisc.w>0.5 && distance(p,uHarbour.xy)<74.0) {
+    // Reflect the direction to each lantern against the moving water normal.
+    // Elongation follows the camera.
+    for(int i=0;i<4;i++) {
+      vec3 delta=harbourLamp(i)-vP;
+      vec3 L=normalize(delta);
+      float highlight=pow(
+          max(dot(n,normalize(L-v)),0.0),
+          mix(135.0,52.0,smoothstep(10.0,65.0,dist))
+      );
+      float jitter=0.35+0.8*smoothstep(.24,.76,c.a);
+      refl+=vec3(1.0,0.43,0.115)*highlight*jitter*155.0/(
+          1.0+0.032*dot(delta,delta)
+      );
+    }
+  }
   // Foam: a wash at the waterline and lines that travel in to shore, broken up
   // by noise.
   float lap = sin(depth * 2.2 + t * 1.2 + a.b * 5.0) * 0.5 + 0.5;
@@ -4130,7 +4926,30 @@ void main() {
   // drawn: mixing in the same space keeps shallow and deep water seamless.
   float cover = smoothstep(10.0, 22.0, depth);
   float alpha = fres + (1.0 - fres) * cover;
-  vec3 col = finish(haze(refl, vP)) * fres
+  vec3 mirrorColour = finish(haze(refl, vP));
+  if (uPortReflection > 0.0) {
+    // The reflected camera uses the same projection. Undisturbed water reads
+    // the same screen pixel; waves shift the read horizontally and vertically.
+    vec2 pixel = gl_FragCoord.xy / vec2(uRight.w, uUp.w);
+    vec2 drift = vec2(
+        dot(slope, normalize(uRight.xz + 0.00001)),
+        dot(slope, normalize(uFwd.xz + 0.00001))
+    )
+        * vec2(0.033, 0.051);
+    vec2 uvPort = pixel + drift * clamp(19.0 / (8.0 + dist), 0.21, 1.0);
+    vec4 mirrored = texture(tPortMirror, uvPort);
+    // Linear filtering averages covered pixels with transparent black around
+    // the silhouette. The RGB is already multiplied by the coverage.
+    float border = smoothstep(
+        0.0,
+        0.015,
+        min(min(uvPort.x,uvPort.y),min(1.0-uvPort.x,1.0-uvPort.y))
+    );
+    float strength = uPortReflection * border;
+    mirrorColour = mirrorColour * (1.0 - mirrored.a * strength)
+        + mirrored.rgb * strength;
+  }
+  vec3 col = mirrorColour * fres
       + finish(haze(seaDeep(), vP)) * (1.0 - fres) * cover;
   vec3 white = finish(
       haze(
@@ -4250,6 +5069,27 @@ vec3 ground(vec3 vP, vec4 L, vec4 M, out vec3 n, out float wet) {
       * (0.7 + 0.6 * nC.g)
       * (0.68 + 0.32 * ledge)
       * (0.85 + 0.3 * nE.b * close);
+  // Strike lines cut across the cliff. The sharp foot of a bed, small
+  // fissures and coarse shale cast different shadows as the light rotates.
+  vec2 faceMetres = vec2(dot(vP.xz, vec2(0.78, -0.62)), vP.y);
+  float shear = faceMetres.y * 0.39
+      + faceMetres.x * 0.105
+      + texture(tN, faceMetres / 42.0).r * 1.7;
+  float stratum = abs(fract(shear) - 0.50);
+  float line = 1.0
+      - smoothstep(0.018, 0.095 + min(fwidth(shear), 0.3), stratum);
+  float chipped = smoothstep(0.28, 0.60, nB.g + nD.r * 0.18);
+  float fissures = (
+      1.0 - smoothstep(0.025, 0.16, abs(nD.g - (0.30 + 0.4 * nB.b)))
+  )
+      * chipped;
+  float cliff = smoothstep(0.13, 0.52, steep) * rocky;
+  rock *= 1.0 - cliff * (0.32 * line * chipped + 0.21 * fissures);
+  rock = mix(
+      rock,
+      vec3(0.31, 0.32, 0.295) * (0.59 + nB.r * 0.7),
+      cliff * 0.32 * smoothstep(0.62, 0.90, nC.g + 0.26 * hard)
+  );
   // Moss where little sky shows.
   rock = mix(
       rock,
@@ -4605,6 +5445,7 @@ const THING_VS =
   GLSL_SKY +
   GLSL_WIND +
   `
+uniform bool uMirrorPort;
 layout(location = 0) in vec3 aPos;
 layout(location = 1) in vec3 aNrm;
 layout(location = 2) in vec3 aCol;
@@ -4640,7 +5481,7 @@ void main() {
       aI1.z,
       aI1.w
   );
-  gl_Position = uVP * vec4(vP, 1.0);
+  gl_Position = uVP * vec4(vP.x, uMirrorPort ? -vP.y : vP.y, vP.z, 1.0);
 }`;
 const THING_FS =
   GLSL_HEAD +
@@ -4649,12 +5490,116 @@ const THING_FS =
   GLSL_FILM +
   GLSL_SEA +
   `
+uniform bool uMirrorPort;
 in vec3 vP, vN, vCol, vObj, vLit;
 in vec4 vExt;
 in vec2 vPat;
 in float vUp;
 out vec4 o;
+// Close-range finishes on the jetty. Face UVs and world coordinates are metres.
+// tN is the island's seeded noise tile, also used by the land and sky.
+void harbourFinish(
+    float kind,
+    vec3 world,
+    vec3 local,
+    vec2 face,
+    inout vec3 normal,
+    inout vec3 albedo,
+    out float wet
+) {
+  float top = smoothstep(0.4, 0.85, normal.y);
+  vec4 weather = texture(tN, world.xz * 0.13 + world.y * vec2(0.09, 0.06));
+  float damp = smoothstep(0.34, 0.68, weather.r + 0.06 * weather.g);
+  float relief;
+  if (kind < 10.5) {
+    // The deck boards span the pier. The grain runs along their length.
+    vec2 wood = mix(vec2(local.y, local.x + local.z), local.zx, top);
+    float board = floor(wood.y / 0.32);
+    float tree = grain(vec2(board, 1.7));
+    vec2 knotCell = vec2(floor(wood.x / 2.1), board);
+    float knotCentre = 0.35 + 1.35 * grain(knotCell + 4.3);
+    vec2 knot = vec2(mod(wood.x, 2.1) - knotCentre, mod(wood.y, 0.32) - 0.16);
+    float knotBend = exp(-dot(knot * vec2(3.4, 20.0), knot * vec2(3.4, 20.0)));
+    float warp = texture(tN, vec2(wood.x * 0.08, wood.y * 0.6 + tree)).r;
+    float rings = wood.y * 29.0 + warp * 1.8 + knotBend * 1.6 + tree;
+    float ripple = cos(6.283185 * rings)
+        * (1.0 - smoothstep(0.22, 0.52, fwidth(rings)));
+    float fibre = texture(tN, wood * vec2(0.37, 2.6) + tree).g;
+    albedo *= (0.79 + 0.30 * tree + 0.26 * fibre + 0.09 * ripple);
+    albedo *= 1.0 - 0.29 * knotBend * knotBend;
+    wet = top * (0.15 + 0.75 * damp);
+    albedo *= mix(vec3(1.0), vec3(0.51, 0.49, 0.47), wet);
+    relief = 0.0017 * ripple + 0.006 * fibre;
+  } else if (kind < 11.5) {
+    // Large hand-laid stones. The joints are recessed and irregular on both
+    // edges.
+    vec2 scale = vec2(0.76, 0.37);
+    vec2 stone = (face + 0.026 * (weather.rg - 0.5)) / scale;
+    stone.x += 0.5 * mod(floor(stone.y), 2.0);
+    vec2 block = floor(stone);
+    vec2 edges = (0.5 - abs(fract(stone) - 0.5)) * scale;
+    float edge = min(edges.x, edges.y);
+    float aa = max(0.0015, 0.6 * max(fwidth(face.x), fwidth(face.y)));
+    float rock = smoothstep(0.012 - aa, 0.030 + aa, edge);
+    float pits = texture(tN, face * 1.8 + grain(block)).b;
+    float salt = smoothstep(0.50, 0.73, weather.g)
+        * (1.0 - smoothstep(1.4, 2.8, abs(world.y - 1.1)));
+    albedo *= 0.73 + 0.34 * grain(block) + 0.28 * pits;
+    albedo = mix(albedo * vec3(0.49, 0.46, 0.42), albedo, rock);
+    albedo = mix(albedo, vec3(0.40, 0.39, 0.34), 0.20 * salt);
+    wet = clamp(
+        (0.20 + 0.42 * top) * damp
+            + 0.39 * (1.0 - smoothstep(0.12, 1.25, world.y)),
+        0.0,
+        0.85
+    );
+    albedo *= 1.0 - 0.34 * wet;
+    relief = 0.016 * rock + 0.006 * pits;
+  } else {
+    // Most paint survives. Where it flakes the oxidised iron is rough and dark.
+    float fine = texture(tN, face * 2.0 + 0.24 * local.xy).b;
+    float flakes = smoothstep(0.59, 0.67, 0.61 * weather.g + 0.39 * fine);
+    float streak = texture(tN, vec2(face.x * 0.9, world.y * 0.06)).r;
+    float rust = smoothstep(0.56, 0.76, streak) * 0.21 + 0.79 * flakes;
+    vec3 oxide = mix(vec3(0.068, 0.026, 0.012), vec3(0.30, 0.105, 0.037), fine);
+    albedo = mix(albedo * (0.87 + 0.23 * weather.r), oxide, rust);
+    wet = (0.10 + 0.66 * damp) * (1.0 - 0.85 * flakes);
+    relief = 0.0025 * flakes;
+  }
+  // Perturb the lighting normal using the surface gradient in metres. This
+  // works on rotated walls as well as the deck, without storing tangents in
+  // each mesh.
+  vec3 dx = dFdx(world), dy = dFdy(world);
+  vec3 acrossY = cross(dy, normal), acrossX = cross(normal, dx);
+  float area = dot(dx, acrossY);
+  if (abs(area) > 0.0000001) {
+    vec3 slope = (dFdx(relief) * acrossY + dFdy(relief) * acrossX) / area;
+    normal = normalize(normal - slope / max(1.0, 2.0 * length(slope)));
+  }
+}
+
+vec3 harbourSheen(
+    vec3 lit,
+    vec3 normal,
+    vec3 viewRay,
+    float wet,
+    float openSky,
+    float sunlit
+) {
+  vec3 reflected = reflect(viewRay, normal);
+  float grazing = 1.0 - clamp(dot(-viewRay, normal), 0.0, 1.0);
+  float amount = wet
+      * (0.027 + 0.67 * pow(grazing, 5.0))
+      * openSky
+      * smoothstep(-0.10, 0.10, reflected.y);
+  vec3 reflectedSky = skyBase(reflected);
+  float glint = pow(max(dot(reflected, uSun.xyz), 0.0), mix(20.0, 130.0, wet));
+  return mix(lit, reflectedSky, amount)
+      + wet * sunlit * glint * uSunCol.rgb * 1.4;
+}
+
 void main() {
+  if (uMirrorPort && vP.y < 0.0) discard;
   vec3 n = normalize(vN), v = normalize(vP - uCam.xyz), col = vCol;
   float shade = vExt.x, leaf = vExt.z, through = 0.0, gloss = 0.0;
   bool card = leaf > 0.5 && leaf < 1.5;
@@ -4677,24 +5622,34 @@ void main() {
     col *= 0.55 + 0.4 * m;
     through = 0.3;
   }
-  // Leaf card: cut a rosette of six leaves out of the square.
+  // Each card carries a twig with offset pairs of leaves. The unit coordinates
+  // span a whole spray, so its individual leaves are much smaller than the
+  // card.
   if (card) {
     vec2 q = vPat;
-    vec2 r1 = vec2(q.x * 0.5 + q.y * 0.866, q.y * 0.5 - q.x * 0.866);
-    vec2 r2 = vec2(q.x * 0.5 - q.y * 0.866, q.y * 0.5 + q.x * 0.866);
-    // Far away the leaves merge into a disc.
-    float wide = 0.42 + distance(vP, uCam.xyz) / 260.0;
-    float f = min(
-        abs(q.y) / (wide * (1.0 - q.x * q.x)),
-        min(
-            abs(r1.y) / (wide * (1.0 - r1.x * r1.x)),
-            abs(r2.y) / (wide * (1.0 - r2.x * r2.x))
-        )
-    );
-    if (f > 1.0 || dot(q, q) > 1.0) discard;
-    // Lighter along each leaf's midrib.
-    col *= 1.12 - 0.3 * f;
-    through = 0.7;
+    float bend = 0.12 * (q.y*q.y - 0.35);
+    float branch = q.x - bend;
+    float side = branch > 0.0 ? 1.0 : -1.0;
+    float y = q.y - 0.095 * side;
+    float row = clamp(floor((y + 0.94) / 0.35), 0.0, 4.0);
+    float rootY = -0.89 + 0.35 * row + 0.095 * side;
+    float len = 0.77 - 0.18 * max(rootY, 0.0) - 0.19 * abs(rootY);
+    float reach = abs(branch) / len;
+    float arch = rootY + 0.36 * reach + 0.07 * sin(3.14159 * reach);
+    float blade = (0.038 + 0.095 * sin(3.14159 * clamp(reach, 0.0, 1.0)))
+        * (1.08 - 0.17 * row / 4.0);
+    float leafEdge = min((1.0 - reach) * 0.42, blade - abs(q.y - arch));
+    float twigEdge = 0.014 + 0.013 * (1.0 - q.y) - abs(branch);
+    float hull = 1.0 - q.x*q.x * 1.65 - q.y*q.y * 1.06;
+    float pixelSpan = max(fwidth(q.x), fwidth(q.y));
+    // A distant pixel covers more than one leaf. Close the smallest gaps
+    // gradually, keeping the outside of the spray broken up while it recedes.
+    float merge = smoothstep(0.11, 0.38, pixelSpan);
+    if (hull < 0.0 || max(twigEdge, leafEdge) + 0.067 * merge < 0.0) discard;
+    float ribs = 1.0 - smoothstep(0.0, 0.048 + pixelSpan, abs(q.y - arch));
+    float leafTone = 0.78 + 0.17 * sin(row * 7.1 + side * 2.6) + 0.13 * ribs;
+    col *= mix(leafTone, 0.93, merge);
+    through = 0.28 + 0.22 * smoothstep(0.0, 0.12, leafEdge);
   }
   if (card || ball) {
     col *= mix(
@@ -4704,13 +5659,13 @@ void main() {
     );
     // In blossom: most cards are petals.
     if (
-        vLit.y > 0.9 && card && fract(vCol.g * 931.7) > 0.4
+        vLit.y > 0.94 && card && fract(vCol.g * 931.7) > 0.62
     ) col = (
         vLit.z > 0.66
-            ? vec3(0.80, 0.30, 0.44)
+            ? vec3(0.52, 0.23, 0.27)
             : vLit.z > 0.33
-            ? vec3(0.88, 0.82, 0.68)
-            : vec3(0.62, 0.20, 0.50)
+            ? vec3(0.58, 0.54, 0.42)
+            : vec3(0.44, 0.17, 0.22)
     )
         * (1.1 - 0.35 * dot(vPat, vPat));
   }
@@ -4725,7 +5680,7 @@ void main() {
   }
   // Laid stone (and one house in six is bare stone): courses of blocks with
   // staggered joints, no two alike.
-  if (leaf > 5.5 && (leaf < 6.5 || vLit.y > 0.82)) {
+  if (leaf > 5.5 && leaf < 7.5 && (leaf < 6.5 || vLit.y > 0.82)) {
     vec2 t = vec2(vPat.x / 0.9, vPat.y / 0.42);
     t.x += 0.5 * mod(floor(t.y), 2.0);
     vec2 in_ = abs(fract(t) - 0.5);
@@ -4759,7 +5714,9 @@ void main() {
           && fract(vPat.y * 6.0) > 0.2
   ) discard;
   // A striped awning.
-  if (leaf > 8.5) col = mix(
+  if (
+      leaf > 8.5 && leaf < 9.5
+  ) col = mix(
       col * (0.6 + 1.2 * vLit.y),
       vec3(0.8, 0.76, 0.66),
       step(0.5, fract(vPat.y / 0.44))
@@ -4768,11 +5725,38 @@ void main() {
   if (
       leaf < 0.5 || leaf > 3.5
   ) col *= mix(vec3(0.8, 0.82, 0.86), vec3(1.12, 1.0, 0.86), vLit.z);
+  bool launch = leaf > 4.5 && leaf < 5.5;
+  vec3 boatLocal=vObj-37.0*vLit.z;
+  if (launch) {
+    float grainy=texture(tN,boatLocal.xy*vec2(.24,2.8)+boatLocal.z*.33).r;
+    float salt=texture(tN,boatLocal.xy*.89+boatLocal.zy*.09).b;
+    float stripe=.5+.5*cos(6.28318*(vUp*10.0 + .035*grainy));
+    float seam=smoothstep(.86,1.0,stripe)*(1.0-smoothstep(.06,.24,fwidth(vUp)));
+    col*=.85+.27*grainy-.18*seam*(1.0-abs(n.y));
+    col=mix(col,vec3(.092,.144,.085),.48*smoothstep(.27,.02,vUp)*(.4+.6*salt));
+  }
+  float harbourWet = 0.0;
+  bool harbour = leaf > 9.5 && leaf < 12.5;
+  if(harbour) harbourFinish(leaf,vP,vObj,vPat,n,col,harbourWet);
   vec3 c = col * lightOn(n, shade, vLit.x * smoothstep(0.05, 0.6, shade));
+  if(harbour) c = harbourSheen(c,n,v,harbourWet,shade,vLit.x);
+  if(uMisc.w>0.5 && distance(vP.xz,uHarbour.xy)<67.0) {
+    for(int i=0;i<4;i++) {
+      vec3 delta=harbourLamp(i)-vP;
+      vec3 L=normalize(delta);
+      float d2=dot(delta,delta);
+      float incident=max(dot(n,L),0.0);
+      float halfDot=max(dot(n,normalize(L-v)),0.0);
+      vec3 amber=vec3(1.0,0.48,0.16);
+      c+=amber*(
+          col*(0.18+incident)+harbourWet*pow(halfDot,35.0)*0.30
+      )*4.4/(1.0+d2*0.43);
+    }
+  }
   // Sunlight shining through leaves: seen against the sun, a crown glows at its
   // thin edges.
   c += col
-      * vec3(1.3, 1.25, 0.4)
+      * vec3(0.76, 1.03, 0.47)
       * uSunCol.rgb
       * vLit.x
       * through
@@ -4784,7 +5768,22 @@ void main() {
       * gloss
       * pow(max(dot(reflect(v, n), uSun.xyz), 0.0), 8.0);
   // Lit windows and the lantern.
-  c += vExt.w * vec3(1.0, 0.62, 0.25) * (0.15 + 4.0 * uSun.w);
+  float emit = vExt.w;
+  if (launch && emit < -.5) {
+    vec3 skyDir=reflect(v,n);
+    float shine=pow(1.0-max(dot(-v,n),0.0),3.0);
+    vec3 pane=mix(vec3(.02,.031,.036),skyBase(skyDir),.28+.39*shine);
+    c=mix(c,pane,.72);
+    emit=0.0;
+  }
+  if (((leaf>12.5 && leaf<13.5) || emit>2.0) && uMisc.w<0.5) emit=0.0;
+  if(leaf>13.5 && leaf<14.5) {
+    float room=fract(13.31*vLit.z + emit*1.81);
+    emit=mix(0.008,0.16+.21*room,smoothstep(.55,.63,room));
+  }
+  if(leaf>12.5 && leaf<13.5) emit *= 0.2
+      + 0.55*smoothstep(.12,.55,texture(tN,vPat*1.4+vObj.yz*.13).r);
+  c += emit * vec3(1.0, 0.43, 0.115) * (0.24 + 2.55 * uSun.w);
   // What stands in the sea fades into it with depth.
   if (vP.y < 0.0) c = throughWater(c, -vP.y * 2.5, max(-v.y, 0.0));
   o = vec4(finish(haze(c, vP)), 1.0);
@@ -4999,7 +5998,7 @@ onDraw(20, () => {
 // endregion: 2-land (page)
 
 // region: 3-light (page)
-let day = +(Q.get('day') || 0);
+let day = +(Q.get('day') || 0.352);
 let lastSun = [9, 9, 9];
 const SKY = new Float32Array(20);
 onGrow(() => {
@@ -5035,7 +6034,7 @@ onTick((dt) => {
   FB.set(S.subarray(0, 16), 32);
   // Cloud cover, haze, wind, exposure.
   FB[39] = 0.5;
-  FB[43] = 0.0005;
+  FB[43] = 0.00125;
   FB[47] = 1;
   FB[48] = S[16];
   FB[49] = 0;
@@ -5095,6 +6094,18 @@ onGrow(() => {
     gl.LINEAR_MIPMAP_LINEAR,
   );
   W.pSea = program(SEA_VS, SEA_FS);
+  texture(
+    6,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    1,
+    new Uint8Array(4),
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+  gl.uniform1i(gl.getUniformLocation(W.pSea, 'tPortMirror'), 6);
+  W.seaPortReflection = gl.getUniformLocation(W.pSea, 'uPortReflection');
 });
 // The sea is drawn last and blended over what is there, so the bed shows
 // through the shallows.
@@ -5104,6 +6115,7 @@ onDraw(70, () => {
   gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
   gl.depthMask(false);
   gl.useProgram(W.pSea);
+  gl.uniform1f(W.seaPortReflection, W.portReflection || 0);
   draw(gl.TRIANGLE_STRIP, 4, 0);
 });
 // endregion: 4-water (page)
@@ -5115,7 +6127,24 @@ onGrow(() => {
   const M = W.M;
   const P = W.P;
   const S = (W.S = scout(H, L, M, P));
+  W.harbourPlot =
+    Math.floor((S.beach[1] + HALF) / PLOT) * PLOTS +
+    Math.floor((S.beach[0] + HALF) / PLOT);
+  FB.set([S.beach[0], S.beach[1], S.sea[0], S.sea[1]], 52);
+  FB[51] = Q.get('lamps') === '0' ? 0 : 1;
   W.village = layVillage(H, L, M, P, S, hash2(seed, 6, 2));
+  const boats = W.village.lists[14];
+  for (let k = 0; k < boats.length; k += 8) {
+    FB.set(
+      [
+        boats[k],
+        boats[k + 2],
+        boats[k + 4] * boats[k + 3],
+        boats[k + 5] * boats[k + 3],
+      ],
+      56 + k / 2,
+    );
+  }
   // The village levelled some ground.
   bakeLand(H, L, W.village.dirty);
   const things = (W.things = placeThings(
@@ -5173,17 +6202,20 @@ onDraw(30, () => {
       (((x0 + HALF) / (CHUNK * CELL)) | 0);
     const lo = W.bounds[b * 2];
     const hi = W.bounds[b * 2 + 1];
+    // A jetty, boarding ramp and loading arm occupy more ground than their
+    // single anchor instance.
+    const pad = c === W.harbourPlot ? 60 : 6;
     plotLod[c] = -1;
     if (
       hi < -3 ||
       boxHidden(
         planes,
-        x0 - 6,
+        x0 - pad,
         lo - 2,
-        z0 - 6,
-        x0 + PLOT + 6,
+        z0 - pad,
+        x0 + PLOT + pad,
         hi + 26,
-        z0 + PLOT + 6,
+        z0 + PLOT + pad,
       )
     )
       continue;
@@ -5235,6 +6267,204 @@ onDraw(30, () => {
       );
   });
 });
+// The height map reflects the coast. Near the pier, draw the fishing boats,
+// jetty and boathouse into a small transparent image as seen in the water.
+onGrow(() => {
+  W.mirrorPort = gl.getUniformLocation(W.pThing, 'uMirrorPort');
+  W.portTarget = gl.createFramebuffer();
+  W.portDepth = gl.createRenderbuffer();
+  W.portImage = gl.createTexture();
+  gl.activeTexture(gl.TEXTURE6);
+  gl.bindTexture(gl.TEXTURE_2D, W.portImage);
+  gl.texImage2D(
+    gl.TEXTURE_2D,
+    0,
+    gl.RGBA8,
+    1,
+    1,
+    0,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    new Uint8Array(4),
+  );
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+});
+onDraw(59, () => {
+  const beach = W.S.beach;
+  const distance = Math.hypot(
+    cam.eye[0] - beach[0],
+    cam.eye[1],
+    cam.eye[2] - beach[1],
+  );
+  W.portReflection = 1 - smooth(90, 175, distance);
+  if (W.portReflection <= 0) return;
+  const scale = (PHONE ? 300 : 540) / Math.max(canvas.width, canvas.height);
+  const width = Math.max(1, Math.round(canvas.width * scale));
+  const height = Math.max(1, Math.round(canvas.height * scale));
+  gl.bindFramebuffer(gl.FRAMEBUFFER, W.portTarget);
+  gl.activeTexture(gl.TEXTURE6);
+  if (width !== W.portWidth || height !== W.portHeight) {
+    W.portWidth = width;
+    W.portHeight = height;
+    gl.bindTexture(gl.TEXTURE_2D, W.portImage);
+    gl.texImage2D(
+      gl.TEXTURE_2D,
+      0,
+      gl.RGBA8,
+      width,
+      height,
+      0,
+      gl.RGBA,
+      gl.UNSIGNED_BYTE,
+      null,
+    );
+    gl.framebufferTexture2D(
+      gl.FRAMEBUFFER,
+      gl.COLOR_ATTACHMENT0,
+      gl.TEXTURE_2D,
+      W.portImage,
+      0,
+    );
+    gl.bindRenderbuffer(gl.RENDERBUFFER, W.portDepth);
+    gl.renderbufferStorage(
+      gl.RENDERBUFFER,
+      gl.DEPTH_COMPONENT16,
+      width,
+      height,
+    );
+    gl.framebufferRenderbuffer(
+      gl.FRAMEBUFFER,
+      gl.DEPTH_ATTACHMENT,
+      gl.RENDERBUFFER,
+      W.portDepth,
+    );
+    gl.bindRenderbuffer(gl.RENDERBUFFER, null);
+    if (gl.checkFramebufferStatus(gl.FRAMEBUFFER) !== gl.FRAMEBUFFER_COMPLETE)
+      throw new Error('The harbour reflection framebuffer is incomplete');
+  }
+  gl.bindTexture(gl.TEXTURE_2D, null);
+  gl.viewport(0, 0, width, height);
+  gl.enable(gl.DEPTH_TEST);
+  gl.depthMask(true);
+  gl.disable(gl.BLEND);
+  gl.clearColor(0, 0, 0, 0);
+  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+  gl.useProgram(W.pThing);
+  gl.uniform1i(W.mirrorPort, 1);
+  for (const kind of [13, 14, 16]) {
+    const copies = W.things[kind];
+    const count = copies.data.length / 8;
+    if (!count) continue;
+    const mesh = copies.lods[1];
+    gl.bindVertexArray(mesh.vao);
+    gl.bindBuffer(gl.ARRAY_BUFFER, copies.buf);
+    gl.vertexAttribPointer(5, 4, gl.FLOAT, false, 32, 0);
+    gl.vertexAttribPointer(6, 4, gl.FLOAT, false, 32, 16);
+    draw(gl.TRIANGLES, mesh.count, gl.UNSIGNED_SHORT, 0, count);
+  }
+  gl.uniform1i(W.mirrorPort, 0);
+  gl.bindVertexArray(null);
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  gl.viewport(0, 0, canvas.width, canvas.height);
+  gl.bindTexture(gl.TEXTURE_2D, W.portImage);
+});
+
+// Fog catches the turning signal. Each fixture covers a small screen rectangle.
+// Compare the light's depth with the scene so nearby roofs and posts occult it.
+const PORT_AIR = `
+flat int lightId;
+vec3 signalDirection() {
+  float angle = 1.12 + uCam.w * 0.19;
+  vec2 axis = uHarbour.zw;
+  vec2 d = cos(angle)*axis + sin(angle)*vec2(-axis.y,axis.x);
+  return normalize(vec3(d.x,-0.022,d.y));
+}
+`;
+onGrow(() => {
+  const vertex =
+    GLSL_HEAD +
+    PORT_AIR.replace('flat int', 'flat out int') +
+    `
+void main() {
+  lightId = gl_InstanceID;
+  bool beam = lightId == 4;
+  vec3 start = harbourLamp(min(3,lightId));
+  vec3 end = start + (beam ? 46.0*signalDirection() : vec3(0));
+  vec4 a=uVP*vec4(start,1), b=uVP*vec4(end,1);
+  vec2 low=vec2(-1), high=vec2(1);
+  float radius = beam ? 2.65 : 1.6;
+  if(max(a.w,b.w)<-radius) {
+    gl_Position=vec4(2,2,0,1);
+    return;
+  }
+  if(min(a.w,b.w)>radius) {
+    vec2 pad=vec2(
+        1./length(uRight.xyz),
+        1./length(uUp.xyz)
+    )*radius/(min(a.w,b.w)-radius);
+    low=clamp(min(a.xy/a.w,b.xy/b.w)-pad,-1.,1.);
+    high=clamp(max(a.xy/a.w,b.xy/b.w)+pad,-1.,1.);
+  }
+  vec2 corner=vec2(gl_VertexID&1,gl_VertexID>>1);
+  gl_Position=vec4(mix(low,high,corner),0,1);
+}`;
+  const fragment =
+    GLSL_HEAD +
+    PORT_AIR.replace('flat int', 'flat in int') +
+    `
+out vec4 colour;
+void main() {
+  vec2 ndc=gl_FragCoord.xy / vec2(uRight.w,uUp.w)*2.-1.;
+  vec3 ray=normalize(uFwd.xyz+ndc.x*uRight.xyz+ndc.y*uUp.xyz);
+  vec3 delta=harbourLamp(min(lightId,3))-uCam.xyz;
+  float t=dot(delta,ray);
+  float light;
+  vec3 tint;
+  if(lightId==4) {
+    vec3 d=signalDirection();
+    float v=dot(d,ray);
+    float s=clamp((v*t-dot(delta,d))/max(1.-v*v,0.00001),0.,46.);
+    vec3 mid=delta+s*d;
+    t=dot(mid,ray);
+    vec3 miss=mid-t*ray;
+    float width=.19+.046*s;
+    float q=dot(miss,miss)/(width*width);
+    if(q>5. || t<.5) discard;
+    light=.23*exp(-1.35*q)*smoothstep(0.,1.5,s)*(1.-smoothstep(5.,46.,s));
+    tint=vec3(.93,.77,.51);
+  } else {
+    vec3 miss=delta-ray*t;
+    float r2=dot(miss,miss);
+    if(r2>2.55 || t<.5) discard;
+    light=.11*exp(-4.*r2)+.16*exp(-27.*r2);
+    tint=vec3(1.,.65,.30);
+    t-=.37;
+  }
+  if(light<.002) discard;
+  vec4 projected=uVP*vec4(uCam.xyz+t*ray,1.);
+  gl_FragDepth=.5+.5*projected.z/projected.w;
+  colour=vec4(tint*light,0.);
+}`;
+  W.pAir = program(vertex, fragment);
+});
+onDraw(75, () => {
+  if (FB[51] < 0.5 || !W.portReflection) return;
+  gl.useProgram(W.pAir);
+  gl.bindVertexArray(null);
+  gl.enable(gl.DEPTH_TEST);
+  gl.enable(gl.BLEND);
+  gl.depthMask(false);
+  gl.blendFunc(gl.ONE, gl.ONE);
+  gl.drawArraysInstanced(gl.TRIANGLE_STRIP, 0, 4, 5);
+  stat.calls++;
+  stat.tris += 10;
+  gl.disable(gl.BLEND);
+  gl.depthMask(true);
+});
+
 // endregion: 6-things (page)
 
 // region: 7-motion (page)

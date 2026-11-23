@@ -7728,6 +7728,16 @@
       "contentLicense": "CC-BY-4.0"
     },
     {
+      "path": "courses/one-file-world/lessons/figures/harbour-lamps-off.jpg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/harbour-lamps-on.jpg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/one-file-world/lessons/figures/stage-01-broken-turned.png",
       "kind": "original-illustration",
       "contentLicense": "CC-BY-4.0"
@@ -7799,6 +7809,11 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-04-low.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-04-wave-slopes.png",
       "kind": "original-illustration",
       "contentLicense": "CC-BY-4.0"
     },

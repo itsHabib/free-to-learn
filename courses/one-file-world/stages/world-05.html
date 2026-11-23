@@ -1047,7 +1047,7 @@ const $ = (id) => document.getElementById(id);
 // The grown world: layout, height grid, GPU objects; "detail" scales every
 // detail distance.
 const W = { detail: 1 };
-const FB = new Float32Array(52);
+const FB = new Float32Array(100);
 const frameUbo = gl.createBuffer();
 const proj = new Float32Array(16);
 const view = new Float32Array(16);
@@ -1097,10 +1097,27 @@ layout(std140) uniform F {
   vec4 uHor;
   // Exposure, tide, day 0..1.
   vec4 uMisc;
+  // Jetty origin (world x,z) followed by local forward (x,z); zero before the
+  // settlement exists.
+  vec4 uHarbour;
+  vec4 uMoorings[11];
 };
 // Land (height, slopes, sky view), cover, shadows, noise, waves, paving.
 uniform sampler2D tH, tM, tS, tN, tW, tV;
 const float WORLD = 2048.0;
+vec3 harbourLamp(int i) {
+  vec3 fixture = i == 0
+      ? vec3(3.5,4.12,-0.96)
+      : i == 1
+      ? vec3(15.5,4.12,-0.96)
+      : i == 2
+      ? vec3(34.2,4.12,-0.96)
+      : vec3(29.6,9.86,5.42);
+  vec2 p = uHarbour.xy
+      + fixture.x * uHarbour.zw
+      + fixture.z * vec2(-uHarbour.w,uHarbour.z);
+  return vec3(p.x,fixture.y,p.y);
+}
 `;
 
 // Grows the world: every layer's onGrow step in turn, with a pause between so
@@ -1247,62 +1264,63 @@ vec4 soft(vec2 uv) {
   vec2 i = floor(uv), f = fract(uv);
   return textureLod(tN, (i + f * f * (3.0 - 2.0 * f) - 0.5) / 256.0, 0.0);
 }
-// Cloud thickness 0..1 at a point on the cloud deck (metres): big shapes, then
-// smaller billows eating the edges.
-float cloudAt(vec2 q) {
-  q = q * 0.00007 + uCam.w * vec2(0.0007, 0.00025);
-  float n = soft(q).r * 0.6
-      + soft(q * 2.9 + uCam.w * 0.0004).g * 0.27
-      + textureLod(tN, q * 9.3, 1.0).b * 0.13;
-  return smoothstep(0.0, 0.14, n - 1.0 + uSunCol.w);
-}
-// Sky with clouds, as seen from the camera along d. "fine" adds the second
-// look-up that shades the clouds.
-vec3 skyFull(vec3 d, bool fine) {
-  vec3 c = skyBase(d);
-  if (d.y < 0.01) return c;
-  float sd = max(dot(d, uSun.xyz), 0.0);
-  // High thin cloud: long streaks far above the first layer, lit before and
-  // after it.
-  if (fine) {
-    vec2 q2 = uCam.xz + d.xz * (CLOUD_Y * 3.4 - uCam.y) / d.y;
-    float wisp = soft(q2 * vec2(0.000019, 0.00006) + uCam.w * 0.0002).g
-        + soft(q2 * 0.00021).r * 0.35;
-    wisp = smoothstep(0.62, 0.95, wisp) * smoothstep(0.02, 0.22, d.y) * 0.6;
-    c = mix(
-        c,
-        uSunCol.rgb
-            * uSunCol.rgb
-            / (uSunCol.r + 0.05)
-            * (0.2 + 0.5 * pow(sd, 3.0))
-            + uHor.rgb * 0.4,
-        wisp
-    );
-  }
-  vec2 q = uCam.xz + d.xz * (CLOUD_Y - uCam.y) / d.y;
-  float den = cloudAt(q);
-  if (den < 0.003) return c;
-  // A cloud is bright on the side where less cloud lies between it and the sun,
-  // and its thick middle is dim from below.
-  float lit = fine
-      ? clamp(
-          0.5 + 2.6 * (den - cloudAt(q + normalize(uSun.xz) * 420.0)),
-          0.0,
-          1.0
-      )
-      : 0.5;
-  lit *= 1.0 - 0.5 * den;
-  vec3 gold = uSunCol.rgb
-      * mix(vec3(1.0), uSunCol.rgb / (uSunCol.r + 0.05), 0.6);
-  vec3 col = mix(
-      uZen.rgb * 0.62 + uHor.rgb * 0.26,
-      gold * 0.42 + uHor.rgb * 0.2,
-      lit
+// Coverage is shared by the sky, sea reflection and terrain shadows. The first
+// octave sets the size of a whole bank; fine noise only breaks its edges.
+float cloudAt(vec2 metres) {
+  vec2 p = metres * vec2(0.000061, 0.000078) + uCam.w * vec2(0.00028, 0.00009);
+  vec2 warp = (soft(p * 0.78).rg - 0.5) * 0.11;
+  float bank = soft(p + warp).r;
+  float folds = soft(p * 2.75 - warp).g;
+  return smoothstep(
+      0.46,
+      0.73,
+      bank * 0.83 + folds * 0.17 + (uSunCol.w - 0.50) * 0.42
   );
-  // Thin edges glow near the sun.
-  col += uSunCol.rgb * 1.5 * pow(sd, 8.0) * (1.0 - den) * (1.0 - den);
-  return mix(c, col, den * smoothstep(0.01, 0.16, d.y) * (fine ? 1.0 : 0.6));
 }
+
+vec3 skyFull(vec3 d, bool fine) {
+  vec3 air = skyBase(d);
+  if (d.y < 0.008) return air;
+  float sunFacing = max(dot(d, uSun.xyz), 0.0);
+  float rangeFade = smoothstep(0.008, 0.17, d.y);
+  vec2 ray = d.xz / max(d.y, 0.025);
+  vec2 foot = uCam.xz + ray * (CLOUD_Y - uCam.y);
+  vec2 sunward = uSun.xz / max(0.28, abs(uSun.y));
+  // The distant deck dissolves into air. A much higher, thin wind-sheared
+  // layer crosses the sky above the banks and stays visible in their gaps.
+  vec2 high = (uCam.xz + ray * (CLOUD_Y * 3.9 - uCam.y)) * 0.000035;
+  float veil = soft(high * vec2(0.37, 1.65) + 0.18 * soft(high * 0.44).rg).g;
+  air = mix(
+      air,
+      uHor.rgb * 0.67 + uSunCol.rgb * (0.14 + 0.24 * sunFacing),
+      0.19 * rangeFade * smoothstep(0.40, 0.70, veil)
+  );
+  float airLeft = 1.0;
+  vec3 layers = vec3(0.0);
+  // See different parts of the same bank as the ray crosses the bottom,
+  // centre and crown. Light is sampled on the side facing the sun.
+  int count = fine ? 3 : 1;
+  for (int i = 0; i < 3; i++) {
+    if (i >= count) break;
+    float level = (float(i) + 0.5) / float(count);
+    vec2 sampleAt = foot + ray * (level * 360.0);
+    float mass = cloudAt(sampleAt);
+    float crossSection = sin(level * 3.14159);
+    float density = smoothstep(0.05, 0.83, mass - 0.18 * (1.0 - crossSection));
+    float opticalDepth = density * (fine ? 1.05 : 2.1);
+    float opacity = (1.0 - exp(-opticalDepth)) * rangeFade;
+    float ahead = fine ? cloudAt(sampleAt + sunward * 260.0) : mass;
+    float transmission = exp(-1.9 * ahead) * (0.45 + 0.55 * level);
+    vec3 underside = uZen.rgb * 0.50 + uHor.rgb * 0.19;
+    vec3 direct = uSunCol.rgb * (0.34 + 0.42 * pow(sunFacing, 4.0));
+    vec3 cloud = underside * (0.72 + 0.28 * level) + direct * transmission;
+    cloud += uSunCol.rgb * pow(sunFacing, 15.0) * (1.0 - mass) * 0.65;
+    layers += airLeft * opacity * cloud;
+    airLeft *= 1.0 - opacity;
+  }
+  return layers + airLeft * air;
+}
+
 // Shade from clouds on the ground: follow the light up to the cloud deck.
 float cloudShade(vec3 p) {
   vec2 q = p.xz + uSun.xz * (CLOUD_Y - p.y) / max(uSun.y, 0.12);
@@ -1319,12 +1337,17 @@ vec3 haze(vec3 col, vec3 p) {
   float k = v.y * 0.012;
   float low = exp(-max(uCam.y, 0.0) * 0.012)
       * (abs(k) < 1e-5 ? d : (1.0 - exp(-d * k)) / k);
-  float a = 1.0 - exp(-uZen.w * (d * 0.35 + low * 0.65));
-  return mix(
-      col,
-      skyBase(normalize(vec3(v.x, abs(v.y) * 0.3 + 0.03, v.z))) * 0.9,
-      a
+  // Sea spray flattens distant contrast near the water. Backlit mist
+  // takes its colour from the sunward horizon; shaded air stays blue-grey.
+  float a = 1.0 - exp(-uZen.w * (d * 0.62 + low * 1.8));
+  vec3 skyDir = normalize(vec3(v.x, abs(v.y) * 0.25 + 0.035, v.z));
+  float sunward = pow(max(dot(skyDir, uSun.xyz), 0.0), 5.0);
+  vec3 mist = mix(
+      uZen.rgb * 0.65 + uHor.rgb * 0.20,
+      skyBase(skyDir),
+      0.22 + 0.62 * sunward
   );
+  return mix(col, mist, a);
 }
 `;
 const GLSL_LIGHT = `
@@ -1339,8 +1362,17 @@ vec3 lightOn(vec3 n, float sky, float sun) {
       uZen.rgb * 0.95 + uHor.rgb * 0.4,
       0.5 + 0.5 * n.y
   );
-  // Rough ground catches a low sun.
-  return uSunCol.rgb * max(dot(n, uSun.xyz) * 0.8 + 0.2, 0.0) * sun + amb * sky;
+  // Open sky fills an upward face. The underside of a beam sees mostly
+  // the dim ground. This keeps a roof lip dark even at noon.
+  float horizon = smoothstep(-0.6, 0.65, n.y);
+  float indirect = mix(0.29, 0.80, horizon);
+  vec3 cool = mix(
+      amb,
+      vec3(dot(amb, vec3(0.2126, 0.7152, 0.0722))) * vec3(0.84, 1.0, 1.04),
+      0.36
+  );
+  return uSunCol.rgb * max(dot(n, uSun.xyz) * 0.91 + 0.09, 0.0) * sun
+      + cool * sky * indirect;
 }
 `;
 const GLSL_FILM = `
@@ -1358,7 +1390,11 @@ vec3 finish(vec3 c) {
   // Part of the curve acts on brightness only, to keep colour.
   c = mix(curve(c), c * (curve(vec3(top)).r / top), 0.45);
   c = pow(clamp(c, 0.0, 1.0), vec3(1.0 / 2.2));
-  c = mix(vec3(dot(c, vec3(0.3, 0.59, 0.11))), c, 1.12);
+  // Keep the dark sea and timber cool. Preserve hue around the signal
+  // lamps and limit the saturation of the brightest highlights.
+  float luma = dot(c, vec3(0.2126, 0.7152, 0.0722));
+  c = mix(vec3(luma), c, mix(0.86, 0.98, smoothstep(0.07, 0.63, luma)));
+  c *= mix(vec3(0.90, 0.975, 1.012), vec3(1.0), smoothstep(0.02, 0.45, luma));
   vec2 q = gl_FragCoord.xy / vec2(uRight.w, uUp.w) - 0.5;
   return c * (1.0 - 0.35 * dot(q, q)) + (grain(gl_FragCoord.xy) - 0.5) / 255.0;
 }
@@ -1476,6 +1512,8 @@ const SEA_FS =
   GLSL_FILM +
   GLSL_SEA +
   `
+uniform sampler2D tPortMirror;
+uniform float uPortReflection;
 in vec3 vP;
 out vec4 o;
 void main() {
@@ -1566,6 +1604,43 @@ void main() {
               + pow(sun, 18.0) * 0.5 * spark
               + pow(sr, 60.0) * 0.12
       );
+  if(dot(uHarbour.zw,uHarbour.zw)>.5 && distance(p,uHarbour.xy)<120.0) {
+    vec2 dir=uHarbour.zw,side=vec2(-dir.y,dir.x),xz=p-uHarbour.xy;
+    vec2 local=vec2(dot(xz,dir),dot(xz,side));
+    // Soft occlusion immediately below the actual deck. The offscreen draw
+    // supplies its reflected geometry.
+    float deck=length(max(abs(local-vec2(15.5,0.0))-vec2(22.4,2.06),0.0));
+    refl*=mix(.74,1.0,smoothstep(0.0,1.4,deck));
+    for(int j=0;j<11;j++) {
+      vec4 boat=uMoorings[j];
+      float size=length(boat.zw);
+      if(size<.1)continue;
+      vec2 forward=boat.zw/size,across=vec2(-forward.y,forward.x);
+      vec2 q=p-boat.xy;
+      vec2 b=vec2(dot(q,forward),dot(q,across))/size;
+      float contact=length(b/vec2(3.34,.96));
+      float wake=(
+          1.0-smoothstep(.018,.065,abs(contact-1.035))
+      )*smoothstep(.29,.64,c.a);
+      refl+=vec3(.16,.23,.23)*wake;
+    }
+  }
+  if(uMisc.w>0.5 && distance(p,uHarbour.xy)<74.0) {
+    // Reflect the direction to each lantern against the moving water normal.
+    // Elongation follows the camera.
+    for(int i=0;i<4;i++) {
+      vec3 delta=harbourLamp(i)-vP;
+      vec3 L=normalize(delta);
+      float highlight=pow(
+          max(dot(n,normalize(L-v)),0.0),
+          mix(135.0,52.0,smoothstep(10.0,65.0,dist))
+      );
+      float jitter=0.35+0.8*smoothstep(.24,.76,c.a);
+      refl+=vec3(1.0,0.43,0.115)*highlight*jitter*155.0/(
+          1.0+0.032*dot(delta,delta)
+      );
+    }
+  }
   // Foam: a wash at the waterline and lines that travel in to shore, broken up
   // by noise.
   float lap = sin(depth * 2.2 + t * 1.2 + a.b * 5.0) * 0.5 + 0.5;
@@ -1582,7 +1657,30 @@ void main() {
   // drawn: mixing in the same space keeps shallow and deep water seamless.
   float cover = smoothstep(10.0, 22.0, depth);
   float alpha = fres + (1.0 - fres) * cover;
-  vec3 col = finish(haze(refl, vP)) * fres
+  vec3 mirrorColour = finish(haze(refl, vP));
+  if (uPortReflection > 0.0) {
+    // The reflected camera uses the same projection. Undisturbed water reads
+    // the same screen pixel; waves shift the read horizontally and vertically.
+    vec2 pixel = gl_FragCoord.xy / vec2(uRight.w, uUp.w);
+    vec2 drift = vec2(
+        dot(slope, normalize(uRight.xz + 0.00001)),
+        dot(slope, normalize(uFwd.xz + 0.00001))
+    )
+        * vec2(0.033, 0.051);
+    vec2 uvPort = pixel + drift * clamp(19.0 / (8.0 + dist), 0.21, 1.0);
+    vec4 mirrored = texture(tPortMirror, uvPort);
+    // Linear filtering averages covered pixels with transparent black around
+    // the silhouette. The RGB is already multiplied by the coverage.
+    float border = smoothstep(
+        0.0,
+        0.015,
+        min(min(uvPort.x,uvPort.y),min(1.0-uvPort.x,1.0-uvPort.y))
+    );
+    float strength = uPortReflection * border;
+    mirrorColour = mirrorColour * (1.0 - mirrored.a * strength)
+        + mirrored.rgb * strength;
+  }
+  vec3 col = mirrorColour * fres
       + finish(haze(seaDeep(), vP)) * (1.0 - fres) * cover;
   vec3 white = finish(
       haze(
@@ -1702,6 +1800,27 @@ vec3 ground(vec3 vP, vec4 L, vec4 M, out vec3 n, out float wet) {
       * (0.7 + 0.6 * nC.g)
       * (0.68 + 0.32 * ledge)
       * (0.85 + 0.3 * nE.b * close);
+  // Strike lines cut across the cliff. The sharp foot of a bed, small
+  // fissures and coarse shale cast different shadows as the light rotates.
+  vec2 faceMetres = vec2(dot(vP.xz, vec2(0.78, -0.62)), vP.y);
+  float shear = faceMetres.y * 0.39
+      + faceMetres.x * 0.105
+      + texture(tN, faceMetres / 42.0).r * 1.7;
+  float stratum = abs(fract(shear) - 0.50);
+  float line = 1.0
+      - smoothstep(0.018, 0.095 + min(fwidth(shear), 0.3), stratum);
+  float chipped = smoothstep(0.28, 0.60, nB.g + nD.r * 0.18);
+  float fissures = (
+      1.0 - smoothstep(0.025, 0.16, abs(nD.g - (0.30 + 0.4 * nB.b)))
+  )
+      * chipped;
+  float cliff = smoothstep(0.13, 0.52, steep) * rocky;
+  rock *= 1.0 - cliff * (0.32 * line * chipped + 0.21 * fissures);
+  rock = mix(
+      rock,
+      vec3(0.31, 0.32, 0.295) * (0.59 + nB.r * 0.7),
+      cliff * 0.32 * smoothstep(0.62, 0.90, nC.g + 0.26 * hard)
+  );
   // Moss where little sky shows.
   rock = mix(
       rock,
@@ -2073,7 +2192,7 @@ onDraw(20, () => {
 // endregion: 2-land (page)
 
 // region: 3-light (page)
-let day = +(Q.get('day') || 0);
+let day = +(Q.get('day') || 0.352);
 let lastSun = [9, 9, 9];
 const SKY = new Float32Array(20);
 onGrow(() => {
@@ -2109,7 +2228,7 @@ onTick((dt) => {
   FB.set(S.subarray(0, 16), 32);
   // Cloud cover, haze, wind, exposure.
   FB[39] = 0.5;
-  FB[43] = 0.0005;
+  FB[43] = 0.00125;
   FB[47] = 1;
   FB[48] = S[16];
   FB[49] = 0;
@@ -2169,6 +2288,18 @@ onGrow(() => {
     gl.LINEAR_MIPMAP_LINEAR,
   );
   W.pSea = program(SEA_VS, SEA_FS);
+  texture(
+    6,
+    gl.RGBA8,
+    gl.RGBA,
+    gl.UNSIGNED_BYTE,
+    1,
+    new Uint8Array(4),
+    gl.CLAMP_TO_EDGE,
+    gl.LINEAR,
+  );
+  gl.uniform1i(gl.getUniformLocation(W.pSea, 'tPortMirror'), 6);
+  W.seaPortReflection = gl.getUniformLocation(W.pSea, 'uPortReflection');
 });
 // The sea is drawn last and blended over what is there, so the bed shows
 // through the shallows.
@@ -2178,6 +2309,7 @@ onDraw(70, () => {
   gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
   gl.depthMask(false);
   gl.useProgram(W.pSea);
+  gl.uniform1f(W.seaPortReflection, W.portReflection || 0);
   draw(gl.TRIANGLE_STRIP, 4, 0);
 });
 // endregion: 4-water (page)

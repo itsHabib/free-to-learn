@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 35775,
-      "sha256": "dbc76e4aa0e382440f2b2d218fabc39c3b08f04a5a84a1d60252f6a04f79a34a"
+      "sha256": "93fc3e515f048990d55b24a5f495e87b656e53947827deff853a0ab55d16916a"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -159,13 +159,13 @@
     },
     {
       "path": ".packages/one-file-world.zip",
-      "bytes": 9744793,
-      "sha256": "f1937000c3b2602d7ebd7bd8d464836b3d283409abec318b3008fa540e592f79"
+      "bytes": 9428786,
+      "sha256": "a27fb67914f72ad2abafeaa101c20b4b03dbc9ef6a74f1bd8103dd9bfd62aea7"
     },
     {
       "path": ".packages/one-file-world.zip.sha256",
       "bytes": 85,
-      "sha256": "a27276bd9293a8d866ac11b79296c9158d6db1a59d3cf8ef1a6f159d6ea09297"
+      "sha256": "5f34eb2f0ad45293798578f69038e8a11fb8d1ed4781e205a4c2228dd6233c6f"
     },
     {
       "path": ".packages/onion-routing.zip",
@@ -259,8 +259,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 443935,
-      "sha256": "09fb2f8438b764754521e69817c067f43bb4797d7a7004c0c405f06a6753ed61"
+      "bytes": 444435,
+      "sha256": "c02e8bac8319a0488621e9a94664879ca60014dc7600edf61d36416639cfef58"
     },
     {
       "path": "LICENSE.md",
@@ -5749,8 +5749,8 @@
     },
     {
       "path": "courses/one-file-world/README.md",
-      "bytes": 1918,
-      "sha256": "2140f2e507c9609eea3f1efcd40b8708b42351c7b12a83f1235fc69630818765"
+      "bytes": 2305,
+      "sha256": "d38dfac40e80f65b16e96c125793cfa76b3bcdc121420cc4a9516c967a003bab"
     },
     {
       "path": "courses/one-file-world/checks/1.mjs",
@@ -5919,8 +5919,8 @@
     },
     {
       "path": "courses/one-file-world/examples/light.txt",
-      "bytes": 4452,
-      "sha256": "2845c3a180a2733b59d1bd87ea6f4b49f1f781841e3b7b490704f01d9ea8aea6"
+      "bytes": 4761,
+      "sha256": "e7aa812064627d46d63be75a48e2d0fe3c6ef627b1fe99c882b42a0ee7d0dec7"
     },
     {
       "path": "courses/one-file-world/examples/motion.txt",
@@ -6019,13 +6019,13 @@
     },
     {
       "path": "courses/one-file-world/lessons/03.md",
-      "bytes": 16854,
-      "sha256": "93a58888dc5f1db0b553b589d73c152a39e248f917a2fb999a4de882da78c0d4"
+      "bytes": 18596,
+      "sha256": "accbbb9caef29bae35acbeb032b61aa005fbbe588724fa7b28cabc596879fa9d"
     },
     {
       "path": "courses/one-file-world/lessons/04.md",
-      "bytes": 12353,
-      "sha256": "cd36b77643c56c0df8e8fcd5e51cd5cd9bb3c6e240f14cd93921a63815d045fb"
+      "bytes": 14315,
+      "sha256": "175825ce3395512ce7c129778319b4cae8e2e80bcc0b890cabe610cdad528d4e"
     },
     {
       "path": "courses/one-file-world/lessons/05.md",
@@ -6034,8 +6034,8 @@
     },
     {
       "path": "courses/one-file-world/lessons/06.md",
-      "bytes": 13791,
-      "sha256": "f2f48c7ce7cd7cd256232e349f77a8b4f03c39a1d01655491cdffa97cb400656"
+      "bytes": 15999,
+      "sha256": "59fe85794306e576135b1ac6508d49160b0c31b5dc4c0aa8df69d9fa772fa8b9"
     },
     {
       "path": "courses/one-file-world/lessons/07.md",
@@ -6049,13 +6049,23 @@
     },
     {
       "path": "courses/one-file-world/lessons/09.md",
-      "bytes": 14461,
-      "sha256": "61e01bbad4a8f8e144f8773ba341662f8fc338593cb697b42bea0872e2f9f9bd"
+      "bytes": 16364,
+      "sha256": "a2b2d370647b23f8ab2c66de000389c406fc5310d4e0e3715388587ee183a095"
     },
     {
       "path": "courses/one-file-world/lessons/figures/frustum-plan.svg",
       "bytes": 13814,
       "sha256": "0e2b941f9f8d5771a9027ddbbf5ed92cdab3444a7c5112871283947ce4526d59"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/harbour-lamps-off.jpg",
+      "bytes": 176252,
+      "sha256": "ce000aa4f46d9390b60762eabcae210a26c58cb56931b6baa12f12ec91927c43"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/harbour-lamps-on.jpg",
+      "bytes": 187028,
+      "sha256": "def47d73ee32f2123505a9a39ea72696266a1d00df0f085acc9423667fd6509d"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-01-broken-turned.png",
@@ -6094,8 +6104,8 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-03-break.png",
-      "bytes": 280971,
-      "sha256": "e7a93e722ca347ac09ac78cbbd1c58b93375925659de8c73f033732fe1bc4d1b"
+      "bytes": 209296,
+      "sha256": "cd419b48cb1c1582414e6b6d68929488d02c2ef7a516e5f0822e03e2dd61bb3c"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-03-moon.png",
@@ -6104,23 +6114,23 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-03-noon.png",
-      "bytes": 298296,
-      "sha256": "0acf7d56971b76377a15909c6a2394aba80203c2e257257c1036c2e8b03e3d9a"
+      "bytes": 223059,
+      "sha256": "ed93485d854f595c90593fad4dcedb547cb305519a630e83adfa729d5b18a223"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-03-sunset.png",
-      "bytes": 292692,
-      "sha256": "467658088c91ebdc5c3d82500b9e74a5925f255b1a26661aa68865d8f9d90f35"
+      "bytes": 214029,
+      "sha256": "f95e43fdbb2cc86f8030e670e6bae7201f37b72cddd7fc721690989716d55805"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-03.png",
-      "bytes": 297823,
-      "sha256": "cff39279a16f850b573a505084c889707461734d588925f9861ec86bb3ef5bd2"
+      "bytes": 208967,
+      "sha256": "932a2fc0b6486e5a7b489682648e78130164f8e13337446bc8bf9e4ec91d86cb"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-04-break.png",
-      "bytes": 364031,
-      "sha256": "6584808682e36c6be9b242c5f05fdf391567bd7f3a3ba254c9173256ead2b603"
+      "bytes": 258969,
+      "sha256": "da377a21fc91462b6829f514c33dd08119285bb67607456ccc57d8c09a3b5903"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-04-lagoon.png",
@@ -6129,13 +6139,18 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-04-low.png",
-      "bytes": 356013,
-      "sha256": "0fcb37da40460131a56e6e1345509942cef95b663580e9ff4e82dcaf4800d11d"
+      "bytes": 252429,
+      "sha256": "6d17f8911de295867b17a5fd974156933c2f0481b7123be8ae507b911ee2899f"
+    },
+    {
+      "path": "courses/one-file-world/lessons/figures/stage-04-wave-slopes.png",
+      "bytes": 459170,
+      "sha256": "3038bc3398bce5dee193ce1140899c3a0e4bffcad16570a9ab9f800e315b7b10"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-04.png",
-      "bytes": 380603,
-      "sha256": "912fb01e88d24e8ec1c68d647ce82a7231cabc1beecc68e4e89cd9a4dbd47878"
+      "bytes": 247771,
+      "sha256": "7a70c8fc6f170796fc02859ca68dbce94f584e8c6dfbd552b0577b7e893cd5e7"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-05-break.png",
@@ -6159,13 +6174,13 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-06-break.png",
-      "bytes": 478094,
-      "sha256": "e9a51bb3ebe2a151fdf39eeb3cf4e2f677c00a32fcfbe43912242a8b430b7932"
+      "bytes": 359234,
+      "sha256": "af0065a939ff8c2d5fb265ace5b2ce0cd23dbd2e9f2df67bf7fadc3e8d4b095a"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-06-even.png",
-      "bytes": 481010,
-      "sha256": "bc82512ae7f5f2e6226227b2623ecab2d75083e5e4be1735c43982f2add4e378"
+      "bytes": 366355,
+      "sha256": "331536797e4dee9fa22b818ca66316b2ad36c30b7607f991a639b8dd34e290ef"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-06-kiosk.png",
@@ -6174,8 +6189,8 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-06.png",
-      "bytes": 419261,
-      "sha256": "230723592a9214a53f4b99a3e09971c1049b76c875fdb2a5531852ec0762a3db"
+      "bytes": 257641,
+      "sha256": "f9bdc17fc9a04ab0bb1de3e4effb9d8e9d7108de8f2711886705f1cb2ceb85eb"
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-07-break.png",
@@ -6199,8 +6214,8 @@
     },
     {
       "path": "courses/one-file-world/lessons/figures/stage-09.png",
-      "bytes": 533923,
-      "sha256": "e49e9a80677925c19cb064e53cb950b61fd6d0c117c556356b4dd365a7d0fade"
+      "bytes": 382834,
+      "sha256": "9248489964b2be5cb6f611d0b3225df4e9e4e8ca39fada6fd60d1fbef58be353"
     },
     {
       "path": "courses/one-file-world/lessons/figures/tile-fraction.png",
@@ -6249,48 +6264,48 @@
     },
     {
       "path": "courses/one-file-world/stages/world-01.html",
-      "bytes": 29403,
-      "sha256": "05dda35d24ffdffd3e0154eb303cdfc6fed5234e35f36c36e040b8548155c01d"
+      "bytes": 29886,
+      "sha256": "bb69bf7e2bc6e92e1b01b7e930420bbf6b47786680af7a5d4fe18cc3836c76e2"
     },
     {
       "path": "courses/one-file-world/stages/world-02.html",
-      "bytes": 41483,
-      "sha256": "ddc922e99c8d746d06368e7a4945a781d5f17244b4fbf12df32526e717fbb897"
+      "bytes": 41966,
+      "sha256": "9b546b168985c7e08f796133d6084f1957db4741bc948d1f525e0535e2d6cc93"
     },
     {
       "path": "courses/one-file-world/stages/world-03.html",
-      "bytes": 53592,
-      "sha256": "b2e79bb568ddb23b26dd6febacc18da9d78ff8a2cd3eaab4a17b934e3b4647e2"
+      "bytes": 55489,
+      "sha256": "2f70e102cdfe71f2b45a930161d30a0e8855b7c5d4ff9d364440ccd5d6c3da14"
     },
     {
       "path": "courses/one-file-world/stages/world-04.html",
-      "bytes": 61516,
-      "sha256": "81269c0f55161b5a35076a66d2421d86f73b9fda04d8954f5d350430c418c55e"
+      "bytes": 66260,
+      "sha256": "60263ee75798531a309e2f35deca060d10652f26ca58e32f3cd5c4d7597903fe"
     },
     {
       "path": "courses/one-file-world/stages/world-05.html",
-      "bytes": 74803,
-      "sha256": "d92ac680309984432d8c22dc65ecd95468648753fe0f0012aa5cbd5f370cb9f0"
+      "bytes": 80445,
+      "sha256": "01ca437c8e31a8f7b0c50ce845da457d2c102b5fefb77653e4151279a664ea9d"
     },
     {
       "path": "courses/one-file-world/stages/world-06.html",
-      "bytes": 146644,
-      "sha256": "dbd0521c37632530542882067adaecf1a38b25daca0591a10a6301ce5cf2a927"
+      "bytes": 188050,
+      "sha256": "7cccabc87c51cfcdec69af817c21d9f32c23998fb9574a11c13506ceec951c33"
     },
     {
       "path": "courses/one-file-world/stages/world-07.html",
-      "bytes": 161001,
-      "sha256": "83a1776a04e7df2d587a88faafd0bd258e67a5c22d2c5f97dd77da89ccdfd572"
+      "bytes": 202407,
+      "sha256": "4d1b7fa4683f532514955106af553eb1aeb5611f4a8ea7c142cb91d6dee29d08"
     },
     {
       "path": "courses/one-file-world/stages/world-08.html",
-      "bytes": 168026,
-      "sha256": "79f44859275814a55165ec2f9c71cff135e91fed1c9d65b814b254f429033350"
+      "bytes": 209432,
+      "sha256": "6be710e4b7b4204ff4f0c4216c0e9cb71339f53da02e25fe3050b6b387b77785"
     },
     {
       "path": "courses/one-file-world/stages/world-09.html",
-      "bytes": 179818,
-      "sha256": "f973401c3b924169078ea820b0ca76956895e611f6781ab008934c337828d2cf"
+      "bytes": 221486,
+      "sha256": "8bfd270ceb2c8f6e0e1913fb9b9e5ea0b39a410ecddf880aecab9d74856331af"
     },
     {
       "path": "courses/onion-network-course/LICENSE.md",
