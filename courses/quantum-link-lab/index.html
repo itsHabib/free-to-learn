@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Can two boxes beat the rulebook? · Free to Learn</title>
+<link rel="stylesheet" href="reader/lab.css"></head>
+<body>
+<header><span>Free to Learn</span><nav aria-label="Course"><a href="teleport/index.html">Receiver</a> · <a href="#watch">Films</a> · <a href="#build">Build the tool</a></nav></header>
+<main>
+<section aria-labelledby="title"><div class="kicker">Quantum link lab</div>
+<h1 id="title">Can two boxes beat the rulebook?</h1>
+<p>Give Alice and Bob a box each. Each box sees its own input, 0 or 1, and gives one answer. They win if their answers match, except when <b>both inputs are 1</b>. Then they must disagree. The boxes can agree on rules before the game and cannot talk during it.</p>
+<div class="stage"><h2>Try to win all four cases</h2>
+<p>Tap Bob’s answer for input 1. Which loss moves?</p>
+<div class="stations">
+<div class="station"><strong>Alice’s answers</strong><button class="switch" data-key="0" aria-pressed="false" aria-label="Alice’s answer for input 0, toggle 0 or 1">Input 0 <b>0</b></button><button class="switch" data-key="1" aria-pressed="false" aria-label="Alice’s answer for input 1, toggle 0 or 1">Input 1 <b>0</b></button></div>
+<div class="station"><strong>Bob’s answers</strong><button class="switch" data-key="2" aria-pressed="false" aria-label="Bob’s answer for input 0, toggle 0 or 1">Input 0 <b>0</b></button><button class="switch" data-key="3" aria-pressed="false" aria-label="Bob’s answer for input 1, toggle 0 or 1">Input 1 <b>0</b></button></div></div>
+<ul class="cases" aria-label="Results for each input pair">
+<li><b>00</b><span>Match</span><span class="status">Win</span></li><li><b>01</b><span>Match</span><span class="status">Win</span></li><li><b>10</b><span>Match</span><span class="status">Win</span></li><li class="fail"><b>11</b><span>Differ</span><span class="status">Loss</span></li></ul>
+<output id="result" aria-live="polite">3 of 4 cases won. Loss on 11.</output></div>
+<noscript><p>With all four answers set to 0, only 11 loses. Flipping Bob’s second answer moves the loss to 01. Enable JavaScript to try other rules.</p></noscript>
+<details><summary>Why does the loss move?</summary><p>A win on 00 ties Alice’s first answer to Bob’s first. A win on 01 ties it to Bob’s second answer too. Now a win on 10 forces Alice’s second answer to match all the others. That leaves 11 with identical answers when it needs different ones. Picking a random rulebook each round mixes strategies with the same ceiling. With independent, equally likely inputs, their best average is 75%.</p></details>
+</section>
+<section aria-labelledby="lab"><h2 id="lab">Now try a pair of qubits.</h2>
+<p>A qubit is a physical system you can measure to get one bit. An entangled pair shares a state. Here the input selects how each box measures its half. Each answer on its own looks like a fair coin. Compare the answers afterward and a pattern appears: with the right measurement angles the pair wins about <b>85 times in 100</b> on average.</p>
+<p>Your project is a Python tool that tells those cases apart. First you’ll score a round. Then you’ll try to fool your scorekeeper. Finally you’ll use it on measurements from two electron spins in labs 1.3 km apart.</p>
+</section>
+<section id="build"><h2>Build your Bell-test reporter</h2><p>You’ll need Python 3.10+ and enough Python to edit a function. On a computer, open a terminal in your Free to Learn clone and run the two commands below. The tap exercise and films work in this page.</p>
+<pre><code>cd courses/quantum-link-lab
+python3 lab.py demo</code></pre>
+<ol class="path"><li><b><a href="reader/lesson.html#score">Score a single round.</a></b> Write the win rule in your own reporter and catch the four-input bug.</li><li><b><a href="reader/lesson.html#correlate">Break your metric.</a></b> A box with a fixed answer scores 97%. Figure out how it did that.</li><li><b><a href="reader/lesson.html#report">Inspect the Delft run.</a></b> Combine four correlations, report uncertainty and diagnose a new dataset.</li></ol>
+<p><a href="README.md">Project setup and files</a> · <a href="lab.py">Reference implementation</a> · <a href="starter.py">Learner starter</a> · <a href="BOOKS.md">Where the six books fit</a></p>
+</section>
+<section id="receiver"><h2>A healthy pair. A broken receiver.</h2>
+<p>Alice’s 0 and 1 both make it to Bob. A caller says the link still loses information. Which state would you send to reproduce the fault?</p>
+<p><a href="teleport/index.html"><b>Try the receiver bench</b></a> · <a href="reader/lesson.html#teleport">Repair it in Python</a> · <a href="reader/lesson.html#night-shift">Take the night shift</a></p></section>
+<section id="watch"><h2>Watch the experiments</h2><div class="films">
+<article><h3>The fourth card</h3><p>Predict which input pair will lose when Bob changes one answer.</p><video controls playsinline preload="metadata" poster="films/01-public.jpg" aria-label="The fourth card"><source src="films/01-fourth-card.mp4" type="video/mp4"><track kind="captions" srclang="en" label="English" src="films/01-fourth-card.vtt"></video><p><a href="films/01-fourth-card.md">Read transcript</a> · <a href="films/01-fourth-card.mp4">Open film</a></p></article>
+<article><h3>196 wins in Delft</h3><p>Two scoreboards both say 80%. Decide whether you trust them equally.</p><video controls playsinline preload="metadata" poster="films/02-public.jpg" aria-label="196 wins in Delft"><source src="films/02-196-wins.mp4" type="video/mp4"><track kind="captions" srclang="en" label="English" src="films/02-196-wins.vtt"></video><p><a href="films/02-196-wins.md">Read transcript</a> · <a href="films/02-196-wins.mp4">Open film</a></p></article>
+<article><h3>Fix the scorekeeper</h3><p>Watch one wrong line fail four tests. Then find the catch in a 97% win rate.</p><video controls playsinline preload="metadata" poster="films/03-scorekeeper.jpg" aria-label="Fix the scorekeeper"><source src="films/03-scorekeeper.mp4" type="video/mp4"><track kind="captions" srclang="en" label="English" src="films/03-scorekeeper.vtt"></video><p><a href="films/03-scorekeeper.md">Read transcript</a> · <a href="films/03-scorekeeper.mp4">Open film</a></p></article>
+<article><h3>The receiver that passed</h3><p>Pick a probe, follow Alice’s two-bit message and watch the failed delivery replay after the fix.</p><video controls playsinline preload="metadata" poster="films/04-phase-slip.jpg" aria-label="Teleportation incident film"><source src="films/04-phase-slip.mp4" type="video/mp4"><track kind="captions" srclang="en" label="English" src="films/04-phase-slip.vtt"></video><p><a href="films/04-phase-slip.md">Read transcript</a> · <a href="films/04-phase-slip.mp4">Open film</a></p></article></div></section>
+</main><footer><a href="https://doi.org/10.1038/nature15759">Read the original Delft experiment</a></footer>
+<script>
+const switches = [...document.querySelectorAll('button.switch')];
+const cells = [...document.querySelectorAll('.cases li')];
+const answers = [0, 0, 0, 0];
+function update() {
+ const losses = [];
+ for (const [pair, cell] of cells.entries()) {
+   const x = Math.floor(pair/2), y = pair%2;
+   const win = (answers[x] ^ answers[2+y]) === (x & y);
+   if (!win) losses.push(String(x)+y);
+   cell.classList.toggle('fail', !win);
+   cell.querySelector('.status').textContent = win ? 'Win' : 'Loss';
+ }
+ document.querySelector('#result').textContent = (4-losses.length)+' of 4 cases won. Loss on '+losses.join(', ')+'.';
+}
+for (const button of switches) button.addEventListener('click', () => {
+ const k = Number(button.dataset.key);
+ answers[k] ^= 1;
+ button.setAttribute('aria-pressed', String(Boolean(answers[k])));
+ button.querySelector('b').textContent = answers[k];
+ update();
+});
+</script></body></html>

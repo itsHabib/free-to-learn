@@ -128,3 +128,7 @@ capstone without Git.
 ## Build a world in one file
 
 Open [lesson 1](courses/one-file-world/lessons/01.md). From `courses/one-file-world`, run `node lab.mjs start project write` to implement the camera functions. The supplied route starts with working code. Each later lesson adds one layer to your island and keeps your earlier project files.
+
+## Quantum Link Lab
+
+Follow the [project setup](courses/quantum-link-lab/README.md), enter `courses/quantum-link-lab`, and run `python3 lab.py demo`. Open `index.html` for the Bell game and `teleport/index.html` for the receiver incident.

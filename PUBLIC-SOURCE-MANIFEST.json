@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 35775,
-      "sha256": "4bf9637d3507fe68b775d07b55e46090feff5205ae2299b7a1fbb64e188582b1"
+      "bytes": 38641,
+      "sha256": "59f880f7c394ef6eb5503e3b8bb209bedaf5bdedf81dc370c0e563acb264a229"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -178,6 +178,16 @@
       "sha256": "2a3310da207f4d746ea2fefe022b76c82f7d77cf85a6376b493f0a8db354c75c"
     },
     {
+      "path": ".packages/quantum-link-lab.zip",
+      "bytes": 6775538,
+      "sha256": "cfb0efe950cf3b4b53d261c124bfb58a14488587fc2c33dd2323e952b66ea28c"
+    },
+    {
+      "path": ".packages/quantum-link-lab.zip.sha256",
+      "bytes": 87,
+      "sha256": "0dc6de63fbefdf0f4bed4b9eb23073fdbd6fffd64168ad782209e1e5dd1e3e14"
+    },
+    {
       "path": ".packages/recoverable-storage.zip",
       "bytes": 83113,
       "sha256": "6037e14821d2c0dd2c10e9096d3f6c82a802b0cd22d25a00d6f00e7b95422da2"
@@ -259,8 +269,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 444598,
-      "sha256": "1e384f875334e4c4a99514903bb84ba7bed11bcb74d9978478c5140e86e40ba4"
+      "bytes": 458631,
+      "sha256": "5ff9825af39ad7e0a4d2e7366167d43067e086609fdb551ff5ee81c6c8230199"
     },
     {
       "path": "LICENSE.md",
@@ -284,18 +294,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2911,
-      "sha256": "229dc87d95423bc7152536ce0f319a54e660dce2be6f27cdaf6365f6d741bb49"
+      "bytes": 3125,
+      "sha256": "48fe40c6674f81e880972e5724ac0552977ff160334b838ef9471509fdce2f2e"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 8262,
-      "sha256": "49484f2fd1c8b4a4b49cb9527bac37bcc68e796a29082de4e4ef565dd08f64dc"
+      "bytes": 8502,
+      "sha256": "24c7f1e3ec111c125768e1b5be2e74cc0785b72aad5ce9d858ea310e7b1e2530"
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "bytes": 3957,
-      "sha256": "cb282572cf14d2f6a1f10b4fe34468ff608f92a48e4ebbebe3c27f8e75915fe6"
+      "bytes": 4808,
+      "sha256": "e3bf627650b9f610d5878d5919eaf06029e879d456a7d215ce91468778ec043d"
     },
     {
       "path": "courses/adaptive-decision-engine/API.md",
@@ -6701,6 +6711,311 @@
       "path": "courses/onion-network-course/style.css",
       "bytes": 1264,
       "sha256": "d8f6f0fcbdf530f8c05271175d8e78188fcff6d7006db3e0771974261a082a3b"
+    },
+    {
+      "path": "courses/quantum-link-lab/BOOKS.md",
+      "bytes": 4003,
+      "sha256": "06bf853870e77b7ba1c86a42dd9300272a42274b5268ddc55232eb738243d0c7"
+    },
+    {
+      "path": "courses/quantum-link-lab/README.md",
+      "bytes": 5077,
+      "sha256": "fcc369daca2f34ea7939f7902a3ce4f112f63beb01f4fa3174775be55f55471a"
+    },
+    {
+      "path": "courses/quantum-link-lab/build.mjs",
+      "bytes": 1609,
+      "sha256": "46918572ff79c2a962109684ee802b1827e8dec48ac98a9b0792d875aecfbcfa"
+    },
+    {
+      "path": "courses/quantum-link-lab/examples/measurement.py",
+      "bytes": 720,
+      "sha256": "fc7276e45d0bd45d05fd5960e15b96beb78dceed331f516d0da2cf72ea5724a4"
+    },
+    {
+      "path": "courses/quantum-link-lab/examples/recover.py",
+      "bytes": 251,
+      "sha256": "b8fd77fbf4d56c774e397ba311239d125304fca77650ea727ed681cde13f707d"
+    },
+    {
+      "path": "courses/quantum-link-lab/examples/scorer.py",
+      "bytes": 845,
+      "sha256": "e17821f5e3bc1407e769fedc6f8568ad8cd9196b4c6151e591ec2ea710daa96f"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-fourth-card.md",
+      "bytes": 1570,
+      "sha256": "f372d9c8600241474028f2e97386005b78b12df9ac64fdfe5ecf3969237b69ca"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-fourth-card.mp4",
+      "bytes": 1760767,
+      "sha256": "bb192dd66da840ae575c37b2e4aff86f4bd81157b7e35d69d596d6a6851afed4"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-fourth-card.vtt",
+      "bytes": 2443,
+      "sha256": "0139459b07fb96efcb0a29a1f0f5ad5989c10d24074abeb31b090cf3ba2eed6f"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-public.jpg",
+      "bytes": 83303,
+      "sha256": "4e1e80167345b6b05fe4aceb986d429782f3196aa5db00d5a5730042e86c79f7"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-196-wins.md",
+      "bytes": 1719,
+      "sha256": "781bd3d44cadcc829394927d7f6cb7ad1a5befdb27dc0a9eeaf53283cd5ccf2c"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-196-wins.mp4",
+      "bytes": 1973253,
+      "sha256": "b44e3f30e3d15f7ffede82ff38d8752321730f8d5c247fbc714e8e1f762c7a90"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-196-wins.vtt",
+      "bytes": 2615,
+      "sha256": "e538b3824e5440ce57a42a6259e55976252003ff0160330255c29dc9d8ca6f7b"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-public.jpg",
+      "bytes": 68487,
+      "sha256": "2d9bde33e33c190bd7fe9987fc2be38357cf290d15710efd2f0e61ea64364137"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper-build.py",
+      "bytes": 9135,
+      "sha256": "250444968594f46a6a4ba18f24825427814e1bb4f6fb4f394d85af557b7f2b4b"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.jpg",
+      "bytes": 92456,
+      "sha256": "fd5ed4cf7f0ad97409db454bbd5e687f5501fad2131d73b72714591976111828"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.md",
+      "bytes": 1067,
+      "sha256": "94308184c56f9e2e91816c4e53b9f4de274ad3fbc1d09a978e0ebf2fccc81cf1"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.mp4",
+      "bytes": 1266928,
+      "sha256": "b4894830ac1c661bd0e6cdc09b7fbb24f34820482684fea4f2504bb4ca1844d3"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.vtt",
+      "bytes": 1723,
+      "sha256": "b4c8f5171ee22d64a143f9de5a82f59a191c2a06f05e74bba5aeeb7bc1dd7c49"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip-build.py",
+      "bytes": 12254,
+      "sha256": "d26c893a542443fcb02dfce6db632dceb4badeed9dcfc3397dc7533e033ba2e3"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.jpg",
+      "bytes": 69752,
+      "sha256": "0764f887d1dd9d42b7b0092c257674bcb0cf29b3bde3be77a37857a98fd9e480"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.md",
+      "bytes": 1664,
+      "sha256": "ad7843f1e0df4794387f15a828a797b82768f82f42b187d6a7e663a771ccf235"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.mp4",
+      "bytes": 1833131,
+      "sha256": "58bf13c425b2e5761e9820001c659e6594038079cbf870af563df682b1be5bd0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.vtt",
+      "bytes": 2618,
+      "sha256": "05b1767c65781423ee83c3985d89582855545b12e57858d84dd4b86d23cf34ba"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/REBUILD.md",
+      "bytes": 3217,
+      "sha256": "a5f44531576a0810cec8a68b2e346b73d289d472d64b8b783b154dc51893b890"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/build.py",
+      "bytes": 5445,
+      "sha256": "91f3adb362f91c1643e89c45b83dea626d6379ccf95abf3cbc4b0b899ea5c12f"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/drawings.py",
+      "bytes": 13171,
+      "sha256": "55b292f5236806363eefd73f0ec2ad4ae71712e7e0c407b10481ef6aeabf1726"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/story.py",
+      "bytes": 4023,
+      "sha256": "ba0b8bc659f899b4bc93076a71841c7afa29c3ee948fc731d68a173aa2395a9a"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/README.md",
+      "bytes": 2020,
+      "sha256": "3af2e44959a31ed91c3b8dcd4d79723345f71d9ca265e4875da6a82197e9fb18"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/delft-2015.csv",
+      "bytes": 58,
+      "sha256": "31dfe51800842516d7ed298384805c16ff2289ecb9fe8ef399bad54c64db7fa6"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/missing-setting.csv",
+      "bytes": 47,
+      "sha256": "b527f054bf6c77fca1cdd3ccefd95821d2f09cfd9c0305eb909234b16b631c77"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/skewed-classical.csv",
+      "bytes": 57,
+      "sha256": "072758229e0b701f49fb4e0fbc207dbf108ff4dd9a872a8d7486314af6296a1a"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/verify_delft.py",
+      "bytes": 1975,
+      "sha256": "f448743f3b4ba0558fde723165cee6d40ec74dff156ed8a61f6b8d7947e0b569"
+    },
+    {
+      "path": "courses/quantum-link-lab/handoff.csv",
+      "bytes": 59,
+      "sha256": "4e5b96880adaf588c8d18d28028c8c7e8bbd047581250511505aef66097cddc9"
+    },
+    {
+      "path": "courses/quantum-link-lab/index.html",
+      "bytes": 7923,
+      "sha256": "7ea22bfe99308766fbd126b7f5e42f1f97fc81ac00c7ff334cdbaed9703c6b7e"
+    },
+    {
+      "path": "courses/quantum-link-lab/lab.py",
+      "bytes": 9738,
+      "sha256": "9865a5da6c11b258bb44e71a661d0b916844548bd089c2d6594f93ce72913c61"
+    },
+    {
+      "path": "courses/quantum-link-lab/learner_checks.py",
+      "bytes": 1179,
+      "sha256": "9a15294ab5125df1b6f1fb10718d087a15fdaeca1bc8f8e19fd772d1b6795168"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/01.md",
+      "bytes": 5120,
+      "sha256": "28df0470c26d346d38d517ff4e28ae31e23c8466c39caad819ef5d72b2cbe22e"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/02.md",
+      "bytes": 3544,
+      "sha256": "3b293130496810c4f7960868f9ad44e49cb8098772b86a9af3d23da9faec1453"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/03.md",
+      "bytes": 4025,
+      "sha256": "259fc188f0c6820b8e4640b123ebc73232fe7d59b3dc990e6856eac099f0e7e7"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/04.md",
+      "bytes": 6837,
+      "sha256": "10f35ce5cdc733d0e61e551dc151cee8bcfa4dd96176280b6b683406ad805c6f"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/05.md",
+      "bytes": 3704,
+      "sha256": "d12d82f1949b557c4886628c96cbff0dcb967f36be6c2911fb9414affc461a8d"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/code-example.css",
+      "bytes": 1995,
+      "sha256": "4bfc888966174a24f3bafa82db1878563fdab631ccd99c6aff7d715c8bdff36c"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/code-example.mjs",
+      "bytes": 3203,
+      "sha256": "5728768f4af74f4219addf8ab60a7e7daaf82142e97676667055e05a60eb29ad"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/lab.css",
+      "bytes": 3560,
+      "sha256": "2791db40e3dfea3d30c0f9698295f17df0a2650f7c8336323ca340b2353ca3ea"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/lesson.html",
+      "bytes": 33296,
+      "sha256": "12dd23126f9512f1f2a67cf825ca534caf7e802dd873dd916f739ac3e0190a1a"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/markdown.mjs",
+      "bytes": 3093,
+      "sha256": "b3b42e2cfff746a72f9e495365e3377e5608491e5ee63fccdd5af05a719dff3c"
+    },
+    {
+      "path": "courses/quantum-link-lab/starter.py",
+      "bytes": 834,
+      "sha256": "6e9c2ae99505956e719506079d8e91933396e1091cf60d3d790d2e87428648e7"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/bench.css",
+      "bytes": 5967,
+      "sha256": "56be24047fa19f49dbf3b44b2073d42609d3491e7eb30a119ba6b3ef9e0356f9"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/bench.py",
+      "bytes": 5059,
+      "sha256": "e588d1ef4772ea160b566769e97b535fa3d1ee723c2be687fda10112eb820e83"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/export_web.py",
+      "bytes": 1608,
+      "sha256": "dd6216d9864d769d5ab49225e26b70203501490478d48ce731a15ccb58c5ca76"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/incident_regression.py",
+      "bytes": 1213,
+      "sha256": "565a0fcda2cad8f9d89fe70027d7d1dd76f5d2da3ae03b2b279c8ba06d540d6c"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/index.html",
+      "bytes": 4704,
+      "sha256": "b203afea229f846a5af00a427f80ec3708ee8d4798451293ce2e2cf219348dbe"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/learner_checks.py",
+      "bytes": 556,
+      "sha256": "2ae8be1cf1c5163b22e84260cb8f3c4212a554f9036955e622ed1855647eddd9"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/night_shift.py",
+      "bytes": 380,
+      "sha256": "bf55f02514239f34f49b6c49f46876e18be03643599826c7ff995d1ad1e861f0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/protocol.py",
+      "bytes": 2486,
+      "sha256": "5286a5faf2e971b3a75a7e79683d71037721975c32959739262b71368a3e6a3f"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/reader.js",
+      "bytes": 4656,
+      "sha256": "80a1ded636fceeb9bce9ab3065503847eb39f910a45e9fdc8cec737396ccd47f"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/receiver.py",
+      "bytes": 279,
+      "sha256": "826207da39f075bec62210a92b9d77b128a5df2f58519a129d559c06b8cb3a1d"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/test_protocol.py",
+      "bytes": 3815,
+      "sha256": "870e378ed45010ac9f96fe4aba8d789ab2c0c984622c6ce50dee0af86815cea7"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/trace-data.js",
+      "bytes": 6971,
+      "sha256": "efe5d5997beb0095ca7fd5f41e298cfdf018c8b6792be68094a448e786aba849"
+    },
+    {
+      "path": "courses/quantum-link-lab/test_lab.py",
+      "bytes": 5745,
+      "sha256": "65b85438023ab8b4d6ec24597f482e7ca9d0c80b2062666e5e2f6e3554ce64eb"
     },
     {
       "path": "courses/recoverable-storage/BROWSER-LIMITS.md",
