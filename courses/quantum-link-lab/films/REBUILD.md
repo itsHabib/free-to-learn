@@ -20,6 +20,10 @@ python3 -m venv /tmp/quantum-film-tools
 `story.py` holds the narration and prediction pauses. `drawings.py` defines the card table, equality graph, measurement axes and count distributions. `build.py` runs eSpeak NG, generates captions from the duration of each spoken phrase, and encodes 720 × 900 video. To rebuild one film, append its slug to the last command. Rebuilding regenerates the corresponding captions, transcript and poster as well.
 
 
+## Scorekeeper film
+
+From this directory run `/tmp/quantum-film-tools/bin/python -B 03-scorekeeper-build.py` to rebuild the terminal walkthrough from a scratch learner copy.
+
 ## Teleportation incident film
 
 From this directory run `/tmp/quantum-film-tools/bin/python -B 04-phase-slip-build.py` with the environment described above. The script reads a separate calibration run from the Bell simulator, follows the receiver traces, patches a disposable learner copy, and renders its results. The video, poster, transcript and captions share the `04-phase-slip` stem.

@@ -1199,7 +1199,7 @@
     {
       "id": "quantum-link-lab",
       "archive": ".packages/quantum-link-lab.zip",
-      "sha256": "d683ffd370ca701794c66ed09a41a0128be5a7526de32b4835d2d9a54c567686",
+      "sha256": "cfb0efe950cf3b4b53d261c124bfb58a14488587fc2c33dd2323e952b66ea28c",
       "archive_prefix": "quantum-link-lab/",
       "direct_root": "courses/quantum-link-lab",
       "root": "quantum-link-lab",

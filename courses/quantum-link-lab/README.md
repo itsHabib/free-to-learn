@@ -37,6 +37,8 @@ python3 -m unittest discover -s teleport -p 'test_*.py'
 - [Score one round](lessons/01.md). Predict what a change to one box does. Write a scorer, run the classical and entangled simulations, and inspect the [circuit generator](examples/measurement.py).
 - [Catch a false alarm](lessons/02.md). Write the per-setting correlation and signed sum. Diagnose a misleading 97% and an input with missing measurements.
 - [Run the Delft report](lessons/03.md). Recover a published measurement, compare evidence at two sample sizes, and deliver a calibration diagnosis on a fresh case.
+- [Repair the receiver](lessons/04.md). Use a phase-sensitive probe and repair a two-bit receiver.
+- [Take the night shift](lessons/05.md). Separate readout from delivery, then write a regression that catches the original incident.
 
 Save your first predictions, any assistance and your revisions in your own notes. Keep the measured counts and the original starter available in version control. Use `lab.py` as a separate reference checkpoint at any time. To preserve the original starter before editing, duplicate the whole course folder into a new directory. No command resets learner work.
 

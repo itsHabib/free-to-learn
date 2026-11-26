@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 38641,
-      "sha256": "a520244816fccea71a41e245aba51e49593ab27a310c8d778d95ab8d83c433f0"
+      "sha256": "59f880f7c394ef6eb5503e3b8bb209bedaf5bdedf81dc370c0e563acb264a229"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -179,13 +179,13 @@
     },
     {
       "path": ".packages/quantum-link-lab.zip",
-      "bytes": 6774299,
-      "sha256": "d683ffd370ca701794c66ed09a41a0128be5a7526de32b4835d2d9a54c567686"
+      "bytes": 6775538,
+      "sha256": "cfb0efe950cf3b4b53d261c124bfb58a14488587fc2c33dd2323e952b66ea28c"
     },
     {
       "path": ".packages/quantum-link-lab.zip.sha256",
       "bytes": 87,
-      "sha256": "181f241b840b9a0e66aabd159c6864ecaa943ba672960a4c5fc308163df86aed"
+      "sha256": "0dc6de63fbefdf0f4bed4b9eb23073fdbd6fffd64168ad782209e1e5dd1e3e14"
     },
     {
       "path": ".packages/recoverable-storage.zip",
@@ -299,8 +299,8 @@
     },
     {
       "path": "START-HERE.md",
-      "bytes": 8262,
-      "sha256": "49484f2fd1c8b4a4b49cb9527bac37bcc68e796a29082de4e4ef565dd08f64dc"
+      "bytes": 8502,
+      "sha256": "24c7f1e3ec111c125768e1b5be2e74cc0785b72aad5ce9d858ea310e7b1e2530"
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
@@ -6719,8 +6719,8 @@
     },
     {
       "path": "courses/quantum-link-lab/README.md",
-      "bytes": 4845,
-      "sha256": "6329d75b91adfdcfb9fca02c11adbd16b67a3b1ca2104176aeff97dd3841a42e"
+      "bytes": 5077,
+      "sha256": "fcc369daca2f34ea7939f7902a3ce4f112f63beb01f4fa3174775be55f55471a"
     },
     {
       "path": "courses/quantum-link-lab/build.mjs",
@@ -6834,8 +6834,8 @@
     },
     {
       "path": "courses/quantum-link-lab/films/REBUILD.md",
-      "bytes": 3042,
-      "sha256": "37bbd0a7933b10a21ab46e6980411e20aa8b2c1422afe497a1e942ab88cc7107"
+      "bytes": 3217,
+      "sha256": "a5f44531576a0810cec8a68b2e346b73d289d472d64b8b783b154dc51893b890"
     },
     {
       "path": "courses/quantum-link-lab/films/build.py",
@@ -6899,8 +6899,8 @@
     },
     {
       "path": "courses/quantum-link-lab/lessons/01.md",
-      "bytes": 4060,
-      "sha256": "70b0097dbc173c2fb4116c716b369fb413e27e323866e5f5e6abee34f4f0d989"
+      "bytes": 5120,
+      "sha256": "28df0470c26d346d38d517ff4e28ae31e23c8466c39caad819ef5d72b2cbe22e"
     },
     {
       "path": "courses/quantum-link-lab/lessons/02.md",
@@ -6909,13 +6909,13 @@
     },
     {
       "path": "courses/quantum-link-lab/lessons/03.md",
-      "bytes": 3897,
-      "sha256": "c95df1991e316d3b22a08e68006ac1ed65f73728a0f03aa853a71cfd1c450cdb"
+      "bytes": 4025,
+      "sha256": "259fc188f0c6820b8e4640b123ebc73232fe7d59b3dc990e6856eac099f0e7e7"
     },
     {
       "path": "courses/quantum-link-lab/lessons/04.md",
-      "bytes": 6742,
-      "sha256": "5609d442419d91e7fe20b9fb5ae1c034f8070b3e56c9129763ac3d6f072594ce"
+      "bytes": 6837,
+      "sha256": "10f35ce5cdc733d0e61e551dc151cee8bcfa4dd96176280b6b683406ad805c6f"
     },
     {
       "path": "courses/quantum-link-lab/lessons/05.md",
@@ -6939,8 +6939,8 @@
     },
     {
       "path": "courses/quantum-link-lab/reader/lesson.html",
-      "bytes": 31038,
-      "sha256": "794198bc43e7fdae47a19a305593934aab6abbc9085ce528e7bbb76903eb2f16"
+      "bytes": 33296,
+      "sha256": "12dd23126f9512f1f2a67cf825ca534caf7e802dd873dd916f739ac3e0190a1a"
     },
     {
       "path": "courses/quantum-link-lab/reader/markdown.mjs",
@@ -6974,8 +6974,8 @@
     },
     {
       "path": "courses/quantum-link-lab/teleport/index.html",
-      "bytes": 4687,
-      "sha256": "6341dbe1d3b4049170f64dda23e81492ee234fcb785492fc76052007ab038de4"
+      "bytes": 4704,
+      "sha256": "b203afea229f846a5af00a427f80ec3708ee8d4798451293ce2e2cf219348dbe"
     },
     {
       "path": "courses/quantum-link-lab/teleport/learner_checks.py",
