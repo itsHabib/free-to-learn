@@ -47,3 +47,5 @@ or newer. Each has its own starter and reader. Clone for the shared capstone,
 or extract their two ZIPs side by side.
 
 [Build a world in one file](courses/one-file-world) teaches procedural terrain, lighting, erosion, instancing, flocking, synthesized sound and a frame budget. Start with [the camera lesson](courses/one-file-world/lessons/01.md).
+
+[Quantum Link Lab](courses/quantum-link-lab) turns a four-switch game into a Python Bell-test reporter. Replay a published Delft result, then repair a teleportation receiver and diagnose a fresh readout incident.

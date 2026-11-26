@@ -204,6 +204,17 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": ".packages/quantum-link-lab.zip",
+      "kind": "archive-of-the-corresponding-course-files",
+      "terms": "Same per-file original/third-party terms as matching courses directory; no private history or learner implementation."
+    },
+    {
+      "path": ".packages/quantum-link-lab.zip.sha256",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": ".packages/recoverable-storage.zip",
       "kind": "archive-of-the-corresponding-course-files",
       "terms": "Same per-file original/third-party terms as the matching courses directory; no private Git history."
@@ -8460,6 +8471,367 @@
     },
     {
       "path": "courses/onion-network-course/style.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/BOOKS.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/build.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/examples/measurement.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/examples/recover.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/examples/scorer.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-fourth-card.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-fourth-card.mp4",
+      "kind": "original-narrated-film",
+      "contentLicense": "CC-BY-4.0",
+      "terms": "Free to Learn narration script, animation and audiovisual edit; see THIRD-PARTY-NOTICES.md."
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-fourth-card.vtt",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/01-public.jpg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-196-wins.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-196-wins.mp4",
+      "kind": "original-narrated-film",
+      "contentLicense": "CC-BY-4.0",
+      "terms": "Free to Learn narration script, animation and audiovisual edit; see THIRD-PARTY-NOTICES.md."
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-196-wins.vtt",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/02-public.jpg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper-build.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.jpg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.mp4",
+      "kind": "original-narrated-film",
+      "contentLicense": "CC-BY-4.0",
+      "terms": "Free to Learn narration script, animation and audiovisual edit; see THIRD-PARTY-NOTICES.md."
+    },
+    {
+      "path": "courses/quantum-link-lab/films/03-scorekeeper.vtt",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip-build.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.jpg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.mp4",
+      "kind": "original-narrated-film",
+      "contentLicense": "CC-BY-4.0",
+      "terms": "Free to Learn narration script, animation and audiovisual edit; see THIRD-PARTY-NOTICES.md."
+    },
+    {
+      "path": "courses/quantum-link-lab/films/04-phase-slip.vtt",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/REBUILD.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/build.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/drawings.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/films/story.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/delft-2015.csv",
+      "kind": "reported-experimental-measurements",
+      "terms": "Published numerical facts; attribution and methodology in fixtures/README.md."
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/missing-setting.csv",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/skewed-classical.csv",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/fixtures/verify_delft.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/handoff.csv",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/index.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/lab.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/learner_checks.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/01.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/02.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/03.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/04.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/05.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/code-example.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/code-example.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/lab.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/lesson.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/reader/markdown.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/starter.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/bench.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/bench.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/export_web.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/incident_regression.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/index.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/learner_checks.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/night_shift.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/protocol.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/reader.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/receiver.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/test_protocol.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/teleport/trace-data.js",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/test_lab.py",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"

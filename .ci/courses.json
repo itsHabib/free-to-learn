@@ -1195,6 +1195,121 @@
       "unverified": [
         "Public CI checks the starting projects and a camera experiment. Human learning and physical-phone performance are unmeasured."
       ]
+    },
+    {
+      "id": "quantum-link-lab",
+      "archive": ".packages/quantum-link-lab.zip",
+      "sha256": "d683ffd370ca701794c66ed09a41a0128be5a7526de32b4835d2d9a54c567686",
+      "archive_prefix": "quantum-link-lab/",
+      "direct_root": "courses/quantum-link-lab",
+      "root": "quantum-link-lab",
+      "runner": "ubuntu-24.04",
+      "commands": [
+        {
+          "stage": "bell_reference_tests",
+          "argv": [
+            "python3",
+            "-B",
+            "-m",
+            "unittest",
+            "test_lab"
+          ],
+          "exit": 0,
+          "match": "OK"
+        },
+        {
+          "stage": "source_report",
+          "argv": [
+            "python3",
+            "-B",
+            "lab.py",
+            "replay",
+            "fixtures/delft-2015.csv",
+            "--uniform-null"
+          ],
+          "exit": 0,
+          "match": "196/245"
+        },
+        {
+          "stage": "missing_setting",
+          "argv": [
+            "python3",
+            "-B",
+            "lab.py",
+            "replay",
+            "fixtures/missing-setting.csv"
+          ],
+          "exit": 2,
+          "match": "Missing trials for setting 11"
+        },
+        {
+          "stage": "receiver_reference_tests",
+          "argv": [
+            "python3",
+            "-B",
+            "-m",
+            "unittest",
+            "discover",
+            "-s",
+            "teleport",
+            "-p",
+            "test_protocol.py"
+          ],
+          "exit": 0,
+          "match": "OK"
+        },
+        {
+          "stage": "browser_traces_match_cli",
+          "argv": [
+            "python3",
+            "-B",
+            "teleport/export_web.py",
+            "--check"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "unfinished_receiver",
+          "argv": [
+            "python3",
+            "-B",
+            "teleport/learner_checks.py"
+          ],
+          "exit": 1,
+          "match": "FAILED"
+        },
+        {
+          "stage": "reference_receiver",
+          "argv": [
+            "python3",
+            "-B",
+            "teleport/bench.py",
+            "trace",
+            "--receiver",
+            "ideal",
+            "--state",
+            "plus",
+            "--bits",
+            "10"
+          ],
+          "exit": 0,
+          "match": "Bob applies Z"
+        },
+        {
+          "stage": "weak_initial_regression",
+          "argv": [
+            "python3",
+            "-B",
+            "teleport/incident_regression.py"
+          ],
+          "exit": 1,
+          "match": "Original incident also passes"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "CI checks the published measurement arithmetic, the supplied simulator, and initial learner failures. Human transfer and physical devices require separate testing."
+      ]
     }
   ]
 }

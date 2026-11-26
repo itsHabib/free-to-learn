@@ -1,0 +1,84 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.984
+Open starter dot py and find wins.
+
+00:00:02.984 --> 00:00:07.042
+In a scratch copy, I'll replace the
+exception with my first guess.
+
+00:00:07.042 --> 00:00:10.158
+Give the players a point whenever their
+answers match.
+
+00:00:10.158 --> 00:00:12.344
+Which pair of settings breaks it?
+
+00:00:14.875 --> 00:00:16.325
+Run the Game check.
+
+00:00:16.325 --> 00:00:17.864
+Four cases fail.
+
+00:00:17.864 --> 00:00:21.531
+Here, both stations got a one, both
+answered zero,
+
+00:00:21.531 --> 00:00:23.720
+and our scorer gave them a point.
+
+00:00:23.720 --> 00:00:25.645
+The check expected a loss.
+
+00:00:26.250 --> 00:00:28.008
+Let's fix that case.
+
+00:00:28.008 --> 00:00:31.216
+If both settings are one, the answers
+have to differ.
+
+00:00:31.216 --> 00:00:33.974
+For every other setting, they have to
+match.
+
+00:00:34.625 --> 00:00:36.488
+Run the same check again.
+
+00:00:36.488 --> 00:00:37.534
+It passes.
+
+00:00:37.534 --> 00:00:41.919
+The one test tries all four settings
+against all four possible pairs
+
+00:00:41.919 --> 00:00:42.980
+of answers.
+
+00:00:43.500 --> 00:00:48.303
+Now use the finished reporter, lab dot
+py, to inspect a different run.
+
+00:00:48.303 --> 00:00:50.713
+These boxes always answered zero.
+
+00:00:50.713 --> 00:00:54.084
+Pause and count how many trials could
+possibly lose.
+
+00:00:56.625 --> 00:00:57.639
+Only three.
+
+00:00:57.639 --> 00:01:02.621
+The boxes won ninety-seven times because
+the one-one setting hardly appeared.
+
+00:01:02.621 --> 00:01:05.862
+Each setting has the same correlation,
+plus one.
+
+00:01:05.862 --> 00:01:10.149
+Add the first three, subtract the last,
+and the Bell score is two,
+
+00:01:10.149 --> 00:01:12.148
+right at the classical bound.

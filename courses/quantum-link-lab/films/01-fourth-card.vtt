@@ -1,0 +1,115 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:02.539
+Alice and Bob sit in separate rooms.
+
+00:00:02.539 --> 00:00:05.894
+Each receives one card, marked zero or
+one.
+
+00:00:06.250 --> 00:00:08.491
+They can agree on a plan beforehand.
+
+00:00:08.491 --> 00:00:11.940
+Once the cards arrive, each must answer
+with one bit,
+
+00:00:11.940 --> 00:00:13.895
+without seeing the other card.
+
+00:00:14.250 --> 00:00:17.168
+For three deals, their answers have to
+match.
+
+00:00:17.168 --> 00:00:20.618
+If both cards show one, their answers
+have to differ.
+
+00:00:21.250 --> 00:00:23.459
+Suppose they always answer zero.
+
+00:00:23.459 --> 00:00:25.566
+Which deal costs them a point?
+
+00:00:25.566 --> 00:00:26.896
+Pause and pick it.
+
+00:00:29.500 --> 00:00:30.558
+One and one.
+
+00:00:30.558 --> 00:00:34.601
+They give matching answers just when the
+referee needs different answers.
+
+00:00:35.125 --> 00:00:38.095
+What if Alice alone changes her answer on
+a one?
+
+00:00:38.095 --> 00:00:40.079
+Watch the lost point move.
+
+00:00:40.750 --> 00:00:42.537
+She saves the last deal.
+
+00:00:42.537 --> 00:00:46.098
+Now she loses when her card is one and
+Bob's is zero.
+
+00:00:46.098 --> 00:00:48.398
+Could a cleverer plan win all four?
+
+00:00:49.375 --> 00:00:51.692
+Put each possible answer on a pin.
+
+00:00:51.692 --> 00:00:55.942
+To win the first deal, Alice on zero must
+equal Bob on zero.
+
+00:00:56.375 --> 00:01:00.259
+To win the next two, Bob on one must
+match Alice on zero,
+
+00:01:00.259 --> 00:01:03.112
+and Alice on one must match Bob on zero.
+
+00:01:03.625 --> 00:01:05.139
+Follow the green path.
+
+00:01:05.139 --> 00:01:07.381
+All four answers must now match.
+
+00:01:07.381 --> 00:01:10.046
+The last deal asks the two ends to
+differ.
+
+00:01:10.750 --> 00:01:15.043
+With independent fair cards, every deal
+has a one in four chance.
+
+00:01:15.043 --> 00:01:18.627
+A local plan can win at most three
+quarters on average.
+
+00:01:18.627 --> 00:01:21.363
+Mixing plans cannot improve that limit.
+
+00:01:22.000 --> 00:01:24.545
+A quantum pair offers a different move.
+
+00:01:24.545 --> 00:01:26.749
+Let each card choose the angle
+
+00:01:26.749 --> 00:01:30.339
+at which its holder measures one half of
+an entangled pair.
+
+00:01:30.875 --> 00:01:35.217
+At these angles the ideal quantum win
+rate is about eighty five percent.
+
+00:01:35.217 --> 00:01:37.671
+Each answer alone still looks random.
+
+00:01:37.671 --> 00:01:40.568
+The pattern appears when you compare the
+two logs.

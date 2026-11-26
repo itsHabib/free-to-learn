@@ -1,0 +1,122 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.052
+Two runs both won eighty percent of their
+trials.
+
+00:00:03.052 --> 00:00:04.964
+One scored eight out of ten.
+
+00:00:04.964 --> 00:00:09.891
+The other scored a hundred and ninety six
+out of two hundred and forty five.
+
+00:00:10.375 --> 00:00:13.989
+Imagine each run had a fixed length
+before the first trial.
+
+00:00:13.989 --> 00:00:18.248
+Which score is harder for separated
+players using an ordinary shared
+
+00:00:18.248 --> 00:00:19.631
+plan to produce?
+
+00:00:19.631 --> 00:00:20.715
+Make your pick.
+
+00:00:23.250 --> 00:00:25.931
+Start with ten independent fair deals.
+
+00:00:25.931 --> 00:00:30.263
+Players who always answer zero win three
+times out of four on average.
+
+00:00:30.263 --> 00:00:31.728
+They still get lucky.
+
+00:00:32.125 --> 00:00:35.625
+Each bar shows how often they finish with
+that many wins.
+
+00:00:35.625 --> 00:00:38.036
+The bright bars cover eight or more.
+
+00:00:38.036 --> 00:00:42.410
+Together, those results happen about
+fifty three percent of the time.
+
+00:00:43.000 --> 00:00:46.921
+Now give the same players two hundred and
+forty five deals.
+
+00:00:46.921 --> 00:00:50.237
+Their wins cluster around a hundred and
+eighty four.
+
+00:00:50.750 --> 00:00:53.829
+A hundred and ninety six sits farther
+out.
+
+00:00:53.829 --> 00:00:56.708
+The chance of that many wins or more
+falls
+
+00:00:56.708 --> 00:00:59.876
+to about three point nine percent under
+this model.
+
+00:01:00.375 --> 00:01:04.183
+That larger score comes from a real Bell
+experiment in Delft.
+
+00:01:04.183 --> 00:01:08.522
+In twenty fifteen, researchers measured
+electron spins one point
+
+00:01:08.522 --> 00:01:10.199
+three kilometers apart.
+
+00:01:10.750 --> 00:01:14.112
+The percentage answers a question about
+the shared plan.
+
+00:01:14.112 --> 00:01:18.688
+If that plan generated the data, how
+often would its score reach this far?
+
+00:01:19.250 --> 00:01:22.132
+Now imagine quietly deleting losing
+trials.
+
+00:01:22.132 --> 00:01:25.590
+Keep the same one hundred and ninety six
+wins.
+
+00:01:25.590 --> 00:01:27.676
+Delete all forty nine losses.
+
+00:01:27.676 --> 00:01:29.640
+What will your dashboard report?
+
+00:01:31.750 --> 00:01:34.841
+A perfect run, manufactured with a
+filter.
+
+00:01:34.841 --> 00:01:38.314
+Decide which trials count before reading
+their outcomes.
+
+00:01:38.314 --> 00:01:39.990
+Keep a record of the rule.
+
+00:01:40.500 --> 00:01:42.520
+A file can reproduce the tally.
+
+00:01:42.520 --> 00:01:46.925
+To judge the physical claim, read how the
+team separated the stations,
+
+00:01:46.925 --> 00:01:50.383
+chose the settings, and decided when a
+trial began.

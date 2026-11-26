@@ -45,3 +45,11 @@ original Free to Learn material under the split licenses in LICENSE.md. Sightlin
 fixtures/recorded/ holds measurement records of two models run locally on Ollama,
 llama3.2:1b and qwen2.5:7b. No model weights, Ollama code or other third-party
 code is included, and those models keep their own terms.
+
+## Quantum Link Lab
+
+The eight Delft parity counts are numerical results reported by Hensen et al. (2015), Fig. 4a. The paper, archive, and individual time-ordered measurements remain at their original sources. The local table preserves the reported counts. See the [measurement provenance](courses/quantum-link-lab/fixtures/README.md). The book guide describes cited publications and contains no book scans or source text.
+
+Original learner code and lesson materials follow LICENSE.md. Film typography is rendered into pixels; no font programs are distributed.
+
+The four original scripts are voiced with the included en-us formant voice of eSpeak NG 1.52.0. The files carry the generated speech. The eSpeak NG program, dictionaries, and model files remain external tools. [Production credits and sources](courses/quantum-link-lab/films/REBUILD.md).
