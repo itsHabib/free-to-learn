@@ -1,0 +1,5 @@
+angle  0x10130  f32
+power  0x10134  i32
+wind   0x10138  f32
+flag   0x10140  f32
+status line 0x11928, message 0x11968; 8 experiments, 4 new rounds.

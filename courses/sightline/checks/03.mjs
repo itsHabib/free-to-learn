@@ -36,7 +36,7 @@ export const cases = [
   {
     id: '03-test-shot', title: 'testShot reads each landing: from the message until the landing slot is known, then from the slot',
     requirement: 'testShot sets the barrel, fires and waits for the message. A miss gives the flag plus or minus the miss, and the slots in memory within 0.6 of that landing become candidates, narrowed on the next miss; once one is left it is found.landing and landings are read from it. A hit before then gives the flag\'s place.',
-    reread: `${L}, test shots and the landing spot`,
+    reread: `${L}, measuring a shot`,
     async run({ fn }) {
       const testShot = await fn('learn.mjs', 'testShot');
       const ref = referee({ game: 'lob', mode: 0, seed: 23 });
@@ -153,7 +153,7 @@ export const cases = [
   {
     id: '03-nearest', title: 'nearest picks the practice shot that landed closest to the flag',
     requirement: 'nearest(shots, state) returns the { angle, power } of the shot whose impact_x is closest to state.target_x, or null with no shots.',
-    reread: `${L}, aim that needs no fit`,
+    reread: `${L}, from a fit to a setting`,
     async run({ fn }) {
       const nearest = await fn('learn.mjs', 'nearest');
       expectSame(nearest(shots(), { target_x: 640 }), { angle: 30, power: 70 }, { checked: 'nearest with the flag at 640', input: 'fixtures/shots-seed7.json', what: 'the shot' });
@@ -164,7 +164,7 @@ export const cases = [
   {
     id: '03-search', title: 'search finds a whole-number setting that lands where the flag will be',
     requirement: 'search(predict, at, { enough, order }) tries angles in the order asked; for each, powers every 10, then halves each gap where the landing passes the target down to neighbouring whole powers; it stops at the first setting within `enough`, and returns { angle, power, x, frames, miss } or null.',
-    reread: `${L}, from a fit to a shot`,
+    reread: `${L}, from a fit to a setting`,
     async run({ fn }) {
       const search = await fn('learn.mjs', 'search');
       const range = (a, p) => ({ x: 90 + (p * p * Math.sin((2 * a * Math.PI) / 180)) / 8, frames: Math.round(p * Math.sin((a * Math.PI) / 180)) });
@@ -210,7 +210,7 @@ export const cases = [
   {
     id: '03-budget', title: 'playLevel stays inside a level\'s budget, even one too small to learn anything',
     requirement: 'playLevel learns with metered(host, kit, allowance(level)), offers only options whose estimated cost fits what is left, stops repairing when OutOfBudget is thrown, and still plays the scored rounds; it never goes over the budget and never throws for it.',
-    reread: `${L}, the budget`,
+    reread: `${L}, running the loop`,
     timeLimitMs: 20000,
     async run({ load }) {
       const engine = await load('engine.mjs');
@@ -238,7 +238,7 @@ export const cases = [
   {
     id: '03-play', title: 'playRounds plays the level\'s rounds with the kit\'s aim, and fires nothing it cannot aim',
     requirement: 'playRounds starts each scored round, aims with the best part in the kit and fires once. With nothing in the kit that reads the state it logs why and fires nothing, without throwing.',
-    reread: `${L}, from a fit to a shot`,
+    reread: `${L}, playing the scored rounds`,
     timeLimitMs: 20000,
     async run({ fn }) {
       const playRounds = await fn('engine.mjs', 'playRounds');
@@ -254,7 +254,16 @@ export const cases = [
       const env2 = envWith({ async decide() { return { choice: 0 }; } });
       await playRounds(bare.host, level, { controls: { ...CONTROLS }, statusLine: bare.truth.lineAddr(), message: bare.truth.msgAddr() }, env2);
       if (bare.shots.length) fail({ checked: 'playRounds with nothing that reads the state', observed: `${bare.shots.length} shots fired`, expected: 'none, and a log entry saying why' });
-      if (!env2.entries.some((e) => String(e.result).includes('cannot play'))) fail({ checked: 'what playRounds logged with nothing that reads the state', observed: env2.entries.length ? env2.entries.slice(0, 3).map((e) => `${e.step}: ${e.result}`).join(' / ') : 'nothing', expected: 'an entry for the round whose result starts "cannot play:" and says why, as the lesson gives it' });
+      // The lessons print these notes as `round N: ...`: the step is `round N`, the result the rest.
+      const said = (entries) => (entries.length ? entries.slice(0, 3).map((e) => `step "${e.step}", result "${String(e.result).split('\n')[0].slice(0, 90)}"`).join(' / ') : 'nothing');
+      if (!env2.entries.some((e) => e.step === 'round 1' && /^cannot play: .+; firing nothing$/.test(String(e.result)))) fail({ checked: 'what playRounds logged with nothing that reads the state', observed: said(env2.entries), expected: 'an entry with the step "round 1" and the result "cannot play: WHY; firing nothing", as the lesson gives it' });
+      // With addresses that read the state but nothing that aims: a note for every round, and no shot.
+      const blind = referee(level);
+      const env3 = envWith({ async decide() { return { choice: 0 }; } });
+      await playRounds(blind.host, level, { controls: { ...CONTROLS }, statusLine: blind.truth.lineAddr(), message: blind.truth.msgAddr(), found: { ...foundFor(blind.truth), landing: { addr: blind.truth.stateBase() + 56, type: 'f32' } } }, env3);
+      if (blind.shots.length) fail({ checked: 'playRounds with found addresses but no fit, shots or physics', observed: `${blind.shots.length} shots fired`, expected: 'none, and a note for each round' });
+      const notes = env3.entries.filter((e) => e.result === 'nothing in the kit can aim');
+      if (notes.length !== level.rounds || notes.some((e, i) => e.step !== `round ${i + 1}`)) fail({ checked: 'what playRounds logged with nothing in the kit that can aim', observed: said(env3.entries), expected: `${level.rounds} entries, the step "round N" for N from 1 to ${level.rounds} and the result "nothing in the kit can aim"` });
     },
   },
   {

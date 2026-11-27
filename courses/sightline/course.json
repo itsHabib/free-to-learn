@@ -32,6 +32,8 @@
   "game/",
   "starter/",
   "lessons/",
+  "examples/",
+  "reader/",
   "API.md",
   "README.md"
  ],

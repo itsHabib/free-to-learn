@@ -1,0 +1,7 @@
+the kit handed to level 8 holds:
+    controls, statusLine, message, found, shots, fit, physics
+    reader, mover
+  kit.game is Lob's: true
+when your engine first read its memory, it holds:
+    controls
+  kit.game is Lob II's: true

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 514" role="img" aria-labelledby="search-run-t search-run-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="search-run-t">One search, experiment by experiment</title>
+<desc id="search-run-d">The walkthrough's findValues on seed 1, taking option 0 every time, finds all four values in eight experiments, four of them new rounds. A table with one row for each experiment and a column for each value, giving how many candidates are left after it, or found, or not scanned yet. at the start: angle 65,536, power 65,536, wind not scanned, flag not scanned. angle up key: angle 2, power 65,524, wind not scanned, flag not scanned. write-test angle: angle found, power 65,524, wind not scanned, flag not scanned. power up key: angle found, power 2, wind not scanned, flag not scanned. write-test power: angle found, power found, wind not scanned, flag not scanned. new round 1: angle found, power found, wind found, flag 3. new round 2: angle found, power found, wind found, flag 3. new round 3: angle found, power found, wind found, flag 3. new round 4: angle found, power found, wind found, flag found.</desc>
+<rect width="720" height="514" fill="#ffffff"/>
+<text x="20" y="30" font-size="22" fill="#57606a">After each experiment: how many candidates are left</text>
+<text x="20" y="62" font-weight="700" font-size="22">experiment</text>
+<text x="380" y="62" font-weight="700" font-size="22" text-anchor="middle">angle</text>
+<text x="480" y="62" font-weight="700" font-size="22" text-anchor="middle">power</text>
+<text x="585" y="62" font-weight="700" font-size="22" text-anchor="middle">wind</text>
+<text x="670" y="62" font-weight="700" font-size="22" text-anchor="middle">flag</text>
+<rect x="12" y="74" width="696" height="44" fill="#f6f8fa"/>
+<text x="20" y="104" font-size="22" fill="#57606a">at the start</text>
+<text x="380" y="104" font-size="22" text-anchor="middle" fill="#1b1f24">65,536</text>
+<text x="480" y="104" font-size="22" text-anchor="middle" fill="#1b1f24">65,536</text>
+<text x="585" y="104" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="670" y="104" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="20" y="148" font-size="22">angle up key</text>
+<text x="380" y="148" font-size="22" text-anchor="middle" fill="#1b1f24" font-weight="700">2</text>
+<text x="480" y="148" font-size="22" text-anchor="middle" fill="#1b1f24" font-weight="700">65,524</text>
+<text x="585" y="148" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="670" y="148" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<rect x="12" y="162" width="696" height="44" fill="#f6f8fa"/>
+<text x="20" y="192" font-size="22">write-test angle</text>
+<text x="380" y="192" font-size="22" text-anchor="middle" fill="#1a7f37" font-weight="700">found</text>
+<text x="480" y="192" font-size="22" text-anchor="middle" fill="#1b1f24">65,524</text>
+<text x="585" y="192" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="670" y="192" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="20" y="236" font-size="22">power up key</text>
+<text x="380" y="236" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="480" y="236" font-size="22" text-anchor="middle" fill="#1b1f24" font-weight="700">2</text>
+<text x="585" y="236" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="670" y="236" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<rect x="12" y="250" width="696" height="44" fill="#f6f8fa"/>
+<text x="20" y="280" font-size="22">write-test power</text>
+<text x="380" y="280" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="480" y="280" font-size="22" text-anchor="middle" fill="#1a7f37" font-weight="700">found</text>
+<text x="585" y="280" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="670" y="280" font-size="22" text-anchor="middle" fill="#57606a">–</text>
+<text x="20" y="324" font-size="22">new round 1</text>
+<text x="380" y="324" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="480" y="324" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="585" y="324" font-size="22" text-anchor="middle" fill="#1a7f37" font-weight="700">found</text>
+<text x="670" y="324" font-size="22" text-anchor="middle" fill="#1b1f24" font-weight="700">3</text>
+<rect x="12" y="338" width="696" height="44" fill="#f6f8fa"/>
+<text x="20" y="368" font-size="22">new round 2</text>
+<text x="380" y="368" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="480" y="368" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="585" y="368" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="670" y="368" font-size="22" text-anchor="middle" fill="#1b1f24">3</text>
+<text x="20" y="412" font-size="22">new round 3</text>
+<text x="380" y="412" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="480" y="412" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="585" y="412" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="670" y="412" font-size="22" text-anchor="middle" fill="#1b1f24">3</text>
+<rect x="12" y="426" width="696" height="44" fill="#f6f8fa"/>
+<text x="20" y="456" font-size="22">new round 4</text>
+<text x="380" y="456" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="480" y="456" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="585" y="456" font-size="22" text-anchor="middle" fill="#1a7f37">found</text>
+<text x="670" y="456" font-size="22" text-anchor="middle" fill="#1a7f37" font-weight="700">found</text>
+<text x="20" y="500" font-size="22" fill="#57606a">– not scanned yet; bold: changed by that experiment</text>
+</svg>

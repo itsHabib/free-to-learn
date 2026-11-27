@@ -40,17 +40,43 @@ function codeOnly(src) {
 export const cases = [
   {
     id: '08-new-game', title: 'nothing learned on Lob is used on Lob II',
-    requirement: 'On a game whose file differs from the kit\'s, the engine drops every address, part and practice shot before it does anything else. With the kit level 7 left and a budget too small to learn anything on Lob II, it fires no shot, and afterwards the kit holds nothing of Lob.',
+    requirement: 'On a game whose file differs from the kit\'s, the engine deletes the eight entries learned on the other game (statusLine, message, found, shots, fit, physics, reader, mover) before it reads that game\'s memory or screen, writes to it or presses a key. With a kit learned on Lob and a budget too small to learn anything on Lob II, it fires no shot, and afterwards the kit holds nothing of Lob.',
     reread: `${L}, a kit from another game`,
     timeLimitMs: 90000,
     async run({ load }) {
       const engine = await load('engine.mjs');
-      const kit = await kitBy(engine, 7);
-      const r = await playOn(engine, 8, kit, ruleFor(engine), { budget: { rounds: 12, shots: 10 } });
-      if (r.error) fail({ checked: 'level 8 with the kit level 7 left and 2 rounds to learn with', observed: `the engine threw: ${String(r.error.message).split('\n')[0]}`, expected: 'no error' });
+      // The kit levels 1 to 7 leave, played with your heuristic. Its reader and physics take
+      // the place of found addresses, practice shots and a fit, so those three come from
+      // level 1 played from an empty kit with option 0 on every menu, which searches memory
+      // and fits practice shots. All eight entries are then ones learned on Lob.
+      const kit = {};
+      for (let n = 1; n <= 7; n++) {
+        const r = await playOn(engine, n, kit, ruleFor(engine));
+        if (!r.pass) fail({ checked: 'the kit your engine builds on levels 1 to 7, which this check starts from', input: `level ${n}, with your heuristic answering the menus`, observed: `level ${n} was not passed: ${sayScore(r)}`, expected: `level ${n} passed within its budget, as its own check requires. This check plays Lob's levels 1 to 7 with your engine before it reaches Lob II, so a change that loses a Lob level fails here` });
+      }
+      const early = {};
+      await playOn(engine, 1, early, first);
+      for (const k of ['found', 'shots', 'fit']) if ((kit[k] === undefined || kit[k] === null) && early[k] !== undefined && early[k] !== null) kit[k] = structuredClone(early[k]);
+      const ENTRIES = ['statusLine', 'message', 'found', 'shots', 'fit', 'physics', 'reader', 'mover'];
+      const planted = Object.fromEntries(ENTRIES.filter((k) => kit[k] !== undefined && kit[k] !== null).map((k) => [k, JSON.stringify(kit[k])]));
+      const missing = ENTRIES.filter((k) => !(k in planted));
+      if (missing.length) fail({ checked: 'the kit learned on Lob that this check carries to Lob II', observed: `it has no ${missing.join(', ')}`, expected: 'all eight entries: levels 1 to 7 with your heuristic, and level 1 with option 0 on every menu for found, shots and fit' });
+      // What the kit still held from Lob when the engine first used Lob II: its first read of
+      // memory or the screen, write or key press. Reading the file, as gameId does, comes before.
+      let atFirstUse = null;
+      const watch = (host) => {
+        const first = (name) => (...args) => {
+          if (!atFirstUse) atFirstUse = ENTRIES.filter((k) => kit[k] !== undefined && kit[k] !== null && JSON.stringify(kit[k]) === planted[k]);
+          return host[name](...args);
+        };
+        return Object.freeze({ binary: () => host.binary(), memory: first('memory'), screen: first('screen'), write: first('write'), press: first('press'), tick: first('tick') });
+      };
+      const r = await playOn(engine, 8, kit, ruleFor(engine), { budget: { rounds: 12, shots: 10 } }, watch);
+      if (r.error) fail({ checked: 'level 8 with a kit learned on Lob and 2 rounds to learn with', observed: `the engine threw: ${String(r.error.message).split('\n')[0]}`, expected: 'no error' });
+      if (atFirstUse?.length) fail({ checked: 'the kit when your engine first read Lob II\'s memory or screen or pressed a key', observed: `it still held ${atFirstUse.join(', ')} from Lob`, expected: 'none of the eight entries learned on Lob: the game step deletes them before anything else' });
       if (r.fired) fail({ checked: 'shots fired on Lob II with only Lob\'s kit', observed: `${r.fired} shots`, expected: 'none: Lob\'s reader and physics are not known to be right for Lob II, and there is no room to learn' });
       const lob = gameIdOf('lob');
-      const left = ['found', 'shots', 'fit', 'physics', 'reader', 'mover'].filter((k) => kit[k] && (kit[k].game === lob || k === 'found' || k === 'shots'));
+      const left = ENTRIES.filter((k) => kit[k] !== undefined && kit[k] !== null && (JSON.stringify(kit[k]) === planted[k] || kit[k]?.game === lob));
       if (kit.game !== gameIdOf('lob2') || left.length) fail({ checked: 'the kit after level 8', observed: `game ${show(kit.game)}; still holding ${left.join(', ') || 'nothing of Lob'}`, expected: `game ${gameIdOf('lob2')} and nothing learned on Lob` });
     },
   },
@@ -130,7 +156,7 @@ export const cases = [
   {
     id: '08-option0', title: 'with option 0 on every menu, the engine stays inside every budget',
     requirement: 'Climbing with option 0 on every menu, the engine may fail levels (it searches memory that moves on level 3), but no level goes over its budget and the engine never throws.',
-    reread: `${L}, the measurement`,
+    reread: `${L}, when no picker helps`,
     timeLimitMs: 120000,
     async run({ load }) {
       const engine = await load('engine.mjs');
@@ -142,7 +168,7 @@ export const cases = [
   {
     id: '08-unavailable', title: 'with a decision model that is never there, the engine stays inside every budget',
     requirement: 'Climbing with a decision model that throws on every call, choose takes option 0 each time; no level goes over its budget and the engine never throws.',
-    reread: `${L}, the measurement`,
+    reread: `${L}, when no picker helps`,
     timeLimitMs: 120000,
     async run({ load }) {
       const engine = await load('engine.mjs');

@@ -1,0 +1,7 @@
+level 3, from the kit levels 1 and 2 left with option 0:
+  part: state
+  why: a round later the addresses found by searching no longer hold
+       what the screen shows (angle 0 there, 45 on screen)
+  evidence: [moves]
+  0: search:0, 6 rounds, 0 shots, ruled out by moves, arrows
+  1: reader:0, 3 rounds, 0 shots, ruled out by none

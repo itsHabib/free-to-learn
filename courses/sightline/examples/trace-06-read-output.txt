@@ -1,0 +1,7 @@
+build 2, round 2: 45, 60, -1.80, null, 765.60
+  the status line: ANGLE 45  POWER 60  WIND -1.8  SCORE 0/0
+build 6, round 2: 45, 60, 2.03, null, 734.84
+  the status line: ANGLE 45  POWER 60  WIND +2.0  SCORE 0/0
+build 7, round 2: 45, 60, null, 1, 573.60
+  the status line: ANGLE 45  POWER 60  WIND >  SCORE 0/0
+(angle, power, wind, wind_arrows, target_x)

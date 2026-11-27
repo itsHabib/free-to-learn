@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 630" role="img" aria-labelledby="function-index-t function-index-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="function-index-t">Function indexes</title>
+<desc id="function-index-d">Function indexes count Lob's four imported functions first, so the first function the file defines is function 4, and its entry in the function section is its index minus 4. A table of the first ten functions and the last, of 29: each one's index, its name as funcName gives it, its import entry or its entry in the function section, and its type index. 0, env.server_round: import 0, type 0, (i32) to (i32); 1, env.cos: import 1, type 1, (f64) to (f64); 2, env.sin: import 2, type 1, (f64) to (f64); 3, env.server_wind: import 3, type 2, () to (f32); 4, game_init: entry 0, type 3, (i32 i32) to (); 5, func5: entry 1, type 4, () to (); 6, func6: entry 2, type 4, () to (); 7, game_key: entry 3, type 5, (i32) to (); 8, game_tick: entry 4, type 4, () to (); 9, r_angle: entry 5, type 2, () to (f32); 28, r_state: entry 24, type 6, () to (i32). Functions 10 to 27 are 18 more exported functions.</desc>
+<rect width="720" height="630" fill="#ffffff"/>
+<text x="20" y="30" font-size="22" fill="#57606a">Lob's 29 functions by index, the first ten and the last</text>
+<text x="190" y="62" font-weight="700" font-size="22" text-anchor="end">index</text>
+<text x="206" y="62" font-weight="700" font-size="22">name</text>
+<text x="444" y="62" font-weight="700" font-size="22">entry</text>
+<text x="590" y="62" font-weight="700" font-size="22">type</text>
+<rect x="142" y="74" width="558" height="40" fill="#f6f8fa"/>
+<text x="190" y="102" font-size="22" font-weight="700" text-anchor="end">0</text>
+<text x="206" y="102" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">env.server_round</text>
+<text x="444" y="102" font-size="22" fill="#57606a">import 0</text>
+<text x="590" y="102" font-size="22">type 0</text>
+<text x="190" y="142" font-size="22" font-weight="700" text-anchor="end">1</text>
+<text x="206" y="142" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">env.cos</text>
+<text x="444" y="142" font-size="22" fill="#57606a">import 1</text>
+<text x="590" y="142" font-size="22">type 1</text>
+<rect x="142" y="154" width="558" height="40" fill="#f6f8fa"/>
+<text x="190" y="182" font-size="22" font-weight="700" text-anchor="end">2</text>
+<text x="206" y="182" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">env.sin</text>
+<text x="444" y="182" font-size="22" fill="#57606a">import 2</text>
+<text x="590" y="182" font-size="22">type 1</text>
+<text x="190" y="222" font-size="22" font-weight="700" text-anchor="end">3</text>
+<text x="206" y="222" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">env.server_wind</text>
+<text x="444" y="222" font-size="22" fill="#57606a">import 3</text>
+<text x="590" y="222" font-size="22">type 2</text>
+<rect x="142" y="234" width="558" height="40" fill="#f6f8fa"/>
+<text x="190" y="262" font-size="22" font-weight="700" text-anchor="end">4</text>
+<text x="206" y="262" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">game_init</text>
+<text x="444" y="262" font-size="22">entry 0</text>
+<text x="590" y="262" font-size="22">type 3</text>
+<text x="190" y="302" font-size="22" font-weight="700" text-anchor="end">5</text>
+<text x="206" y="302" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">func5</text>
+<text x="444" y="302" font-size="22">entry 1</text>
+<text x="590" y="302" font-size="22">type 4</text>
+<rect x="142" y="314" width="558" height="40" fill="#f6f8fa"/>
+<text x="190" y="342" font-size="22" font-weight="700" text-anchor="end">6</text>
+<text x="206" y="342" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">func6</text>
+<text x="444" y="342" font-size="22">entry 2</text>
+<text x="590" y="342" font-size="22">type 4</text>
+<text x="190" y="382" font-size="22" font-weight="700" text-anchor="end">7</text>
+<text x="206" y="382" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">game_key</text>
+<text x="444" y="382" font-size="22">entry 3</text>
+<text x="590" y="382" font-size="22">type 5</text>
+<rect x="142" y="394" width="558" height="40" fill="#f6f8fa"/>
+<text x="190" y="422" font-size="22" font-weight="700" text-anchor="end">8</text>
+<text x="206" y="422" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">game_tick</text>
+<text x="444" y="422" font-size="22">entry 4</text>
+<text x="590" y="422" font-size="22">type 4</text>
+<text x="190" y="462" font-size="22" font-weight="700" text-anchor="end">9</text>
+<text x="206" y="462" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">r_angle</text>
+<text x="444" y="462" font-size="22">entry 5</text>
+<text x="590" y="462" font-size="22">type 2</text>
+<text x="206" y="502" font-size="22" fill="#57606a">… 18 more exported functions, 10 to 27</text>
+<rect x="142" y="514" width="558" height="40" fill="#f6f8fa"/>
+<text x="190" y="542" font-size="22" font-weight="700" text-anchor="end">28</text>
+<text x="206" y="542" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">r_state</text>
+<text x="444" y="542" font-size="22">entry 24</text>
+<text x="590" y="542" font-size="22">type 6</text>
+<path d="M138 78 H126 V230 H138" fill="none" stroke="#57606a" stroke-width="3"/>
+<text x="116" y="162" font-size="22" font-weight="700" text-anchor="end" fill="#57606a">imports</text>
+<path d="M138 238 H126 V550 H138" fill="none" stroke="#3553d4" stroke-width="3"/>
+<text x="116" y="376" font-size="22" font-weight="700" text-anchor="end" fill="#3553d4">defined</text>
+<text x="116" y="402" font-size="22" font-weight="700" text-anchor="end" fill="#3553d4">in the</text>
+<text x="116" y="428" font-size="22" font-weight="700" text-anchor="end" fill="#3553d4">file</text>
+<text x="20" y="586" font-size="22" fill="#57606a">entry: its place in the import or the function section</text>
+<text x="20" y="616" font-size="22" fill="#3553d4">a defined function's entry is its index − 4</text>
+</svg>

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 634" role="img" aria-labelledby="file-sections-t file-sections-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="file-sections-t">The sections of Lob's file</title>
+<desc id="file-sections-d">Lob's 6,682-byte file is 8 fixed bytes and then nine sections, each an id byte, its size as a LEB128 number and that many bytes of contents, and the code section is most of the file. A table from the top of the file, with each section's contents drawn as a bar to scale. First the bytes 00 61 73 6D 01 00 00 00, the magic number and the version. Then id 1, type, at byte 8: size 1F, 31 bytes; id 2, import, at byte 41: size 3A, 58 bytes; id 3, function, at byte 101: size 1A, 26 bytes; id 4, table, at byte 129: size 05, 5 bytes; id 5, memory, at byte 136: size 03, 3 bytes; id 6, global, at byte 141: size 08, 8 bytes; id 7, export, at byte 151: size 96 02, 278 bytes; id 10, code, at byte 432: size C2 2E, 5,954 bytes; id 11, data, at byte 6,389: size A2 02, 290 bytes. A size counts the contents that follow it, not the id byte or the size itself, so the data section's 290 bytes hold its 281 bytes of data and the few bytes before them that say where they go.</desc>
+<rect width="720" height="634" fill="#ffffff"/>
+<text x="20" y="30" font-size="22" fill="#57606a">Lob's file, 6,682 bytes, from the top</text>
+<text x="20" y="66" font-weight="700" font-size="22">id</text>
+<text x="84" y="66" font-weight="700" font-size="22">size</text>
+<text x="200" y="66" font-weight="700" font-size="22">contents, drawn to scale</text>
+<rect x="20" y="78" width="680" height="0.1" fill="#f6f8fa" stroke="#8c959f" stroke-width="2" rx="6"/>
+<text x="20" y="130" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">00 61 73 6D 01 00 00 00</text>
+<text x="420" y="130" font-size="22" fill="#57606a">magic and version</text>
+<rect x="12" y="146" width="696" height="46" fill="#f6f8fa"/>
+<text x="20" y="176" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">01</text>
+<text x="84" y="176" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">1F</text>
+<rect x="200" y="156" width="4" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="214" y="177" font-size="22">1, type: 31 bytes</text>
+<text x="20" y="222" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">02</text>
+<text x="84" y="222" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">3A</text>
+<rect x="200" y="202" width="4.87" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="214.87" y="223" font-size="22">2, import: 58 bytes</text>
+<rect x="12" y="238" width="696" height="46" fill="#f6f8fa"/>
+<text x="20" y="268" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">03</text>
+<text x="84" y="268" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">1A</text>
+<rect x="200" y="248" width="4" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="214" y="269" font-size="22">3, function: 26 bytes</text>
+<text x="20" y="314" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">04</text>
+<text x="84" y="314" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">05</text>
+<rect x="200" y="294" width="4" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="214" y="315" font-size="22">4, table: 5 bytes</text>
+<rect x="12" y="330" width="696" height="46" fill="#f6f8fa"/>
+<text x="20" y="360" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">05</text>
+<text x="84" y="360" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">03</text>
+<rect x="200" y="340" width="4" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="214" y="361" font-size="22">5, memory: 3 bytes</text>
+<text x="20" y="406" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">06</text>
+<text x="84" y="406" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">08</text>
+<rect x="200" y="386" width="4" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="214" y="407" font-size="22">6, global: 8 bytes</text>
+<rect x="12" y="422" width="696" height="46" fill="#f6f8fa"/>
+<text x="20" y="452" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">07</text>
+<text x="84" y="452" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">96 02</text>
+<rect x="200" y="432" width="23.35" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="233.35" y="453" font-size="22">7, export: 278 bytes</text>
+<text x="20" y="498" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">0A</text>
+<text x="84" y="498" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">C2 2E</text>
+<rect x="200" y="478" width="500" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="212" y="499" font-size="22" font-weight="700">10, code: 5,954 bytes</text>
+<rect x="12" y="514" width="696" height="46" fill="#f6f8fa"/>
+<text x="20" y="544" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">0B</text>
+<text x="84" y="544" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">A2 02</text>
+<rect x="200" y="524" width="24.35" height="26" fill="#e7ecfb" stroke="#3553d4" stroke-width="2"/>
+<text x="234.35" y="545" font-size="22">11, data: 290 bytes</text>
+<text x="20" y="590" font-size="22" fill="#57606a">each section: its id byte, its size in LEB128, its contents;</text>
+<text x="20" y="620" font-size="22" fill="#57606a">a size counts the contents after it, not the id or size</text>
+</svg>

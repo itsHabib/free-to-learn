@@ -1,0 +1,7 @@
+moverOf: 6 stores of game_tick
+  *0x13120+96, f32.store, 2 conditions
+  *0x13120+16, i32.store, 1 condition
+  *0x13120+100, i32.store, 1 condition
+  *0x13120+96, f32.store, 2 conditions
+  *0x13120+80, i32.store, 2 conditions
+  *0x13120+100, i32.store, 2 conditions

@@ -1,0 +1,5 @@
+level 1's fit, a flag at 455 and a wind of +3.9
+  45: 10 113.3, 20 162.8, 30 239.0, 40 342.1, 50 471.9
+  45: 60 628.5, 70 811.9, 80 1022.1, 90 1259.1, 100 1522.9
+search: angle 43, power 49, 455.02, miss 0.02
+  4 angles, 56 predictions

@@ -9,8 +9,11 @@ import { createServer } from 'node:http';
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { renderCode } from './reader/code-example.mjs';
 
 const root = dirname(fileURLToPath(import.meta.url));
+// The shared listing style, copied into reader/ by the repository's example sync.
+const CODE_CSS = readFileSync(join(root, 'reader', 'code-example.css'), 'utf8');
 const config = JSON.parse(readFileSync(join(root, 'course.json'), 'utf8'));
 
 export const escape = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -30,20 +33,26 @@ export function splitLesson(md) {
 }
 
 // Markdown subset used by the lessons and API.md. Consecutive text lines join into one
-// paragraph (or one list item); code blocks are kept exactly, line for line.
+// paragraph (or one list item); code blocks are kept exactly, line for line. A fence with
+// an info string (```js {"file":...}) goes through the shared code display, which labels
+// the listing with its file and region; a bare fence stays a plain block. The comment
+// lines that mark a listing extracted from a source file are not shown.
+export const exampleMarker = line => /^<!-- (code-example \{.*\}|\/code-example) -->$/.test(line);
 export function renderMarkdown(md, practice) {
   const parts = [];
-  let code = null, para = null, list = null, item = null;
+  let code = null, info = '', para = null, list = null, item = null;
+  const block = () => info ? renderCode(code.join('\n'), info) : '<pre class="code"><code>' + escape(code.join('\n')) + '</code></pre>';
   const flushItem = () => { if (item !== null) { list.items.push(item.join(' ')); item = null; } };
   const flushList = () => { flushItem(); if (list) { parts.push(`<${list.tag}>` + list.items.map(x => '<li>' + inline(x) + '</li>').join('') + `</${list.tag}>`); list = null; } };
   const flushPara = () => { if (para) { parts.push('<p>' + inline(para.join(' ')) + '</p>'); para = null; } };
   for (const line of md.split('\n')) {
     if (code) {
-      if (line.startsWith('```')) { parts.push('<pre class="code"><code>' + escape(code.join('\n')) + '</code></pre>'); code = null; }
+      if (line.startsWith('```')) { parts.push(block()); code = null; }
       else code.push(line);
       continue;
     }
-    if (line.startsWith('```')) { flushPara(); flushList(); code = []; continue; }
+    if (line.startsWith('```')) { flushPara(); flushList(); code = []; info = line.slice(3).trim(); continue; }
+    if (exampleMarker(line)) continue;
     if (!line.trim()) { flushPara(); flushItem(); continue; }
     const h = line.match(/^(#{1,4}) (.*)$/);
     if (h) { flushPara(); flushList(); parts.push(`<h${h[1].length} id="${slug(h[2])}">${inline(h[2])}</h${h[1].length}>`); continue; }
@@ -67,10 +76,17 @@ export function renderMarkdown(md, practice) {
   }
   flushPara();
   flushList();
-  if (code) parts.push('<pre class="code"><code>' + escape(code.join('\n')) + '</code></pre>');
+  if (code) parts.push(block());
   return parts.join('\n');
 }
 
+// figureDesc(name): the figure's <desc>, what it shows in words, or null when the file is missing.
+// The terminal lesson (node lab.mjs lesson) prints it where the page shows the drawing.
+export function figureDesc(name) {
+  const file = join(root, 'lessons', 'figures', `${name}.svg`);
+  if (!existsSync(file)) return null;
+  return ((readFileSync(file, 'utf8').match(/<desc[^>]*>([\s\S]*?)<\/desc>/) ?? [])[1] ?? '').trim();
+}
 // A figure is an SVG file in lessons/figures with a <title> (its short name) and a
 // <desc> (what it shows, in words). The caption under it is the desc's opening sentence, or
 // sentences until it reaches 40 characters; the whole desc stays the figure's description for
@@ -79,7 +95,7 @@ function figureHtml(name) {
   const file = join(root, 'lessons', 'figures', `${name}.svg`);
   if (!existsSync(file)) return `<p><em>Figure ${escape(name)} is missing.</em></p>`;
   let svg = readFileSync(file, 'utf8').replace(/<\?xml[^>]*\?>\s*/, '');
-  const desc = ((svg.match(/<desc[^>]*>([\s\S]*?)<\/desc>/) ?? [])[1] ?? '').trim();
+  const desc = figureDesc(name);
   const sentences = desc.match(/[^.!?]+[.!?]+(?=\s|$)|[^.!?]+$/g) ?? [desc];
   let caption = '';
   for (const x of sentences) { caption += (caption ? ' ' : '') + x.trim(); if (caption.length >= 40) break; }
@@ -93,11 +109,15 @@ function practiceHtml(id, practice) {
   const prompts = items.map((it, v) => `<div class="variant" data-variant="${v}"${v ? ' hidden' : ''}><p class="prompt">${inline(it.prompt)}</p>
 <label>Your answer (${answerLabel(it.answer)}) <input name="answer" autocomplete="off"></label> <button type="button" class="commit">Commit answer</button>
 <p class="feedback" aria-live="polite" tabindex="-1"></p></div>`).join('\n');
-  const kind = /^p\d/.test(id) ? 'Predict, then commit' : 'Practice';
+  const kind = practiceKind(id);
   return `<section class="practice" data-practice="${escape(id)}" data-variants="${items.length}"><h3 class="kind">${kind}</h3>${prompts}${items.length > 1 ? '<button type="button" class="next" hidden>Another question like this</button>' : ''}</section>`;
 }
 
+// Ids starting with p and a digit are predictions; the rest are practice.
+export const practiceKind = id => /^p\d/.test(id) ? 'Predict, then commit' : 'Practice';
+
 // ----- answers (same rules as the example course kit) -----
+// The browser view and the terminal commands (node lab.mjs question and answer) both grade here.
 export function answerFormat(expected) {
   if (typeof expected === 'boolean') return 'Answer yes or no.';
   if (typeof expected === 'number') return 'Answer with a number.';
@@ -144,6 +164,29 @@ const places = (n) => { const [m, e] = String(n).toLowerCase().split('e'); retur
 const closeTo = (a, key, round) => { if (typeof a !== 'number' || typeof key !== 'number') return false; if (Number.isInteger(key) && !round) return a === key; const tol = 0.5 * 10 ** -places(key); return Math.abs(a - key) <= tol * (1 + 1e-6); };
 const roundsTo = (a, b, round) => (typeof b === 'number' ? closeTo(a, b, round) : Array.isArray(b) && Array.isArray(a) && a.length === b.length && b.every((x, i) => closeTo(a[i], x, round)));
 
+// Whether the section a miss points to goes on in text that opens only after item id: the
+// item's own gate falls inside that section, or before it. Re-reading such a section before
+// the item's questions are answered shows nothing new, so the pointer says when it opens.
+const sectionCache = new Map();
+export function explainedAfterGate(id, objective, section) {
+  const key = `${id}|${objective}|${section}`;
+  if (sectionCache.has(key)) return sectionCache.get(key);
+  let after = false;
+  const file = lessonFile(objective);
+  if (file && existsSync(file)) {
+    const lines = readFileSync(file, 'utf8').split('\n');
+    let fence = false, start = -1, end = lines.length, gate = -1;
+    lines.forEach((line, n) => {
+      if (line.startsWith('```')) fence = !fence;
+      if (!fence && line.startsWith('## ')) { if (line.slice(3).trim() === section) start = n; else if (start >= 0 && n > start && end === lines.length) end = n; }
+      if (line.trim() === `{{gate:${id}}}`) gate = n;
+    });
+    after = gate >= 0 && start >= 0 && gate < end;
+  }
+  sectionCache.set(key, after);
+  return after;
+}
+
 export function grade(practice, id, variant, text) {
   const item = practice[id]?.[variant];
   if (!item) return { ok: false, hint: 'Unknown practice item.' };
@@ -159,12 +202,15 @@ export function grade(practice, id, variant, text) {
   const why = (wrong ? wrong.feedback : item.feedback).replace(new RegExp(`^${shown.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\.\\s+`), '');
   // The page sets the verdict apart from the reason, and links the section a miss points to.
   const verdict = correct ? 'Right.' : `Not quite: the answer is ${shown}.`;
-  const pointer = !correct && item.section ? { text: `lesson ${item.objective}, under "${item.section}"`, href: `/lesson/${item.objective}#${slug(item.section)}` } : null;
-  // The page shows an item's questions in order, so another one is left only before the last.
+  // The page and the terminal show an item's questions in order, so another one comes next
+  // only before the last. A committed answer is never replaced, so there is no second try.
   const another = variant < (practice[id]?.length ?? 1) - 1;
+  const opensAfter = Boolean(item.section) && explainedAfterGate(id, item.objective, item.section);
+  const pointer = !correct && item.section ? { text: `lesson ${item.objective}, under "${item.section}"`, href: `/lesson/${item.objective}#${slug(item.section)}`, section: item.section, objective: item.objective, opensAfter, opensNow: opensAfter && !another } : null;
+  const when = !pointer?.opensAfter ? '' : another ? ', in the text that opens once every question of this item has an answer' : ', in the text this answer opens';
   return {
     ok: true, correct, verdict, pointer,
-    text: correct ? `${verdict} ${item.feedback}` : `${verdict} ${why}${pointer ? ` This is taught in ${pointer.text}.` : ''}${another ? ' Then try another question like this.' : ''}`,
+    text: correct ? `${verdict} ${item.feedback}` : `${verdict} ${why}${pointer ? ` This is taught in ${pointer.text}${when}.` : ''}${another ? ' The next question of this item is on the same idea.' : ''}`,
   };
 }
 
@@ -174,15 +220,15 @@ export function grade(practice, id, variant, text) {
 const CSS = `:root{color-scheme:only light;--bg:#fff;--ink:#1b1f24;--muted:#57606a;--line:#d8dee4;--accent:#3553d4;--soft:#f6f8fa}
 body{background:var(--bg);color:var(--ink);font:17px/1.6 system-ui,sans-serif;margin:0}main{max-width:46rem;margin:0 auto;padding:1.5rem 16px 4rem}
 main :is(p,ul,ol,h1,h2,h3,h4,figcaption){max-width:38rem}
-a{color:var(--accent)}code{background:var(--soft);padding:0 .25em;border-radius:3px;font-size:.9em;overflow-wrap:anywhere}pre{box-sizing:border-box;width:max-content;min-width:100%;max-width:calc(100% + (100vw - 100%) / 2 - 32px);padding:.75rem;overflow-x:auto;border-radius:6px;line-height:1.45;font-size:.9rem;background:linear-gradient(to right,var(--soft) 30%,rgba(246,248,250,0)) left/40px 100% no-repeat local,linear-gradient(to left,var(--soft) 30%,rgba(246,248,250,0)) right/40px 100% no-repeat local,radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.2),transparent) left/12px 100% no-repeat scroll,radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.2),transparent) right/12px 100% no-repeat scroll,var(--soft)}pre code{background:none;padding:0;font-size:1em}.scroll-cue{margin:-.9rem 0 1rem;font-size:.8rem;color:var(--muted)}@media (max-width:480px){pre{font-size:.72rem;padding:.5rem}}
+a{color:var(--accent)}.code-example pre{width:auto;min-width:0}code{background:var(--soft);padding:0 .25em;border-radius:3px;font-size:.9em;overflow-wrap:anywhere}pre{box-sizing:border-box;width:max-content;min-width:100%;max-width:calc(100% + (100vw - 100%) / 2 - 32px);padding:.75rem;overflow-x:auto;border-radius:6px;line-height:1.45;font-size:.9rem;background:linear-gradient(to right,var(--soft) 30%,rgba(246,248,250,0)) left/40px 100% no-repeat local,linear-gradient(to left,var(--soft) 30%,rgba(246,248,250,0)) right/40px 100% no-repeat local,radial-gradient(farthest-side at 0 50%,rgba(0,0,0,.2),transparent) left/12px 100% no-repeat scroll,radial-gradient(farthest-side at 100% 50%,rgba(0,0,0,.2),transparent) right/12px 100% no-repeat scroll,var(--soft)}pre code{background:none;padding:0;font-size:1em}.scroll-cue{margin:-.9rem 0 1rem;font-size:.8rem;color:var(--muted)}@media (max-width:480px){pre{font-size:.72rem;padding:.5rem}}
 .practice{border:1px solid var(--line);border-radius:8px;padding:.75rem 1rem;margin:1.25rem 0;background:var(--soft)}.practice .kind{margin:0 0 .25rem;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}.variant+.variant{border-top:1px solid var(--line);margin-top:.75rem;padding-top:.5rem}figure{margin:1.25rem 0}figure svg{width:100%;height:auto;display:block}figcaption{color:var(--muted);font-size:.9rem;margin-top:.35rem}
 input{font:inherit;padding:.2rem .4rem;max-width:100%}input:disabled{color:var(--ink);-webkit-text-fill-color:var(--ink);opacity:1;background:#fff;border:1px solid var(--line);border-radius:3px}button{font:inherit;padding:.2rem .7rem;cursor:pointer}.feedback{color:var(--muted)}.feedback:empty{margin:0}.verdict{color:var(--ink);font-weight:700}.gate-note{color:var(--muted);font-style:italic}nav a{margin-right:1rem}.after{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--line);font-weight:600}`;
 
 // A code block that is wider than its box scrolls sideways, takes keyboard focus and says so
 // in a line under it. All three are taken back when the block fits again after a resize.
-const WIDE = '<script>function markWide(root){for(const p of root.querySelectorAll("pre")){const over=p.scrollWidth>p.clientWidth+2,n=p.nextElementSibling,cue=n&&n.classList.contains("scroll-cue")?n:null;if(over){p.tabIndex=0;p.setAttribute("role","region");p.setAttribute("aria-label","Code, scrolls sideways");if(!cue){const c=document.createElement("p");c.className="scroll-cue";c.textContent="This block is wider than the column: scroll it sideways.";p.after(c)}}else{if(document.activeElement!==p)p.removeAttribute("tabindex");p.removeAttribute("role");p.removeAttribute("aria-label");if(cue)cue.remove()}}}addEventListener("load",()=>markWide(document));addEventListener("resize",()=>markWide(document));</script>';
+const WIDE = '<script>function markWide(root){for(const p of root.querySelectorAll("pre")){if(p.closest(".code-example"))continue;const over=p.scrollWidth>p.clientWidth+2,n=p.nextElementSibling,cue=n&&n.classList.contains("scroll-cue")?n:null;if(over){p.tabIndex=0;p.setAttribute("role","region");p.setAttribute("aria-label","Code, scrolls sideways");if(!cue){const c=document.createElement("p");c.className="scroll-cue";c.textContent="This block is wider than the column: scroll it sideways.";p.after(c)}}else{if(document.activeElement!==p)p.removeAttribute("tabindex");p.removeAttribute("role");p.removeAttribute("aria-label");if(cue)cue.remove()}}}addEventListener("load",()=>markWide(document));addEventListener("resize",()=>markWide(document));</script>';
 function page(title, body, script = '') {
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light"><title>${escape(title)}</title><style>${CSS}</style></head><body><main><nav><a href="/">Course</a><a href="/api">API</a></nav>${body}</main>${WIDE}${script}</body></html>`;
+  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="only light"><title>${escape(title)}</title><style>${CSS}\n${CODE_CSS}</style></head><body><main><nav><a href="/">Course</a><a href="/api">API</a></nav>${body}</main>${WIDE}${script}</body></html>`;
 }
 
 // The lesson page's script. A committed answer is kept in this browser's storage with the
@@ -226,12 +272,12 @@ async function openGates(){const gates=JSON.parse(document.body.dataset.gates);
 wire(document);openGates();
 </script>`;
 
-async function loadPractice() {
+export async function loadPractice() {
   const mod = await import(pathToFileURL(join(root, 'lessons', 'practice.mjs')).href);
   return mod.practice;
 }
 
-function lessonFile(id) {
+export function lessonFile(id) {
   const l = config.lessons.find(x => x.id === id);
   return l ? join(root, l.file) : null;
 }

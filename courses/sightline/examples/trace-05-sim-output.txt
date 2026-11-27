@@ -1,0 +1,4 @@
+seed 1: simulated from memory, then fired
+  30/70: 714.09 after 92; the game 714.09 after 92
+  55/80: 733.37 after 163; the game 733.37 after 163
+  40/85: 959.80 after 137; the game 959.80 after 137

@@ -1,0 +1,4 @@
+seed 1: the 2 angle candidates
+  f32 at 65840: held true, reads 46 after
+  i32 at 71968: held false, reads 46 after
+status line: ANGLE 46  POWER 60  WIND +3.7  SCORE 0/0

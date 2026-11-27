@@ -1,0 +1,7 @@
+seed 24: pressed ArrowRight, then ticked 2 frames
+changed at 66284: ";d0Dkod%"
+  now "ow0Dkod%"
+  label null
+changed at 71976: "ANGLE 45  POWER 60  WIND -3.5  SCORE 0/0"
+  now "ANGLE 46  POWER 60  WIND -3.5  SCORE 0/0"
+  label "angle"

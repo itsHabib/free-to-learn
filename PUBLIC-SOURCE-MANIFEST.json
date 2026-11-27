@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 42486,
-      "sha256": "445c2de3ddbf9c844c7ad9433c84579a13cd5fb3ade25d497a743f6f9955b015"
+      "sha256": "ad88c2c47adca099012b40a919e62ea49b9dccc04e73133c328df6d2a99f4afe"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -219,13 +219,13 @@
     },
     {
       "path": ".packages/sightline.zip",
-      "bytes": 333249,
-      "sha256": "0afbdb35fb89cf9d586d287afc8dc16bc130af187c4a90b9892abcf3a0a6bae9"
+      "bytes": 651957,
+      "sha256": "a57be5c9eb2977651640b4f50dc74cefdb11cc6e6e41d1beb816b70c2062b6db"
     },
     {
       "path": ".packages/sightline.zip.sha256",
       "bytes": 80,
-      "sha256": "582bb4c83bd14dc771fc84a0cf98d4aa46d2b3ec3003a67f2a140a541248aa1f"
+      "sha256": "ec6d7cf5d9ab054d9ce5bbb9805e7ac651acb286f318ae96992e8b294967e290"
     },
     {
       "path": ".packages/small-llm-runtime.zip",
@@ -7864,8 +7864,8 @@
     },
     {
       "path": "courses/sightline/API.md",
-      "bytes": 84301,
-      "sha256": "702aed5ab54bd0c4d975bdf5d2ca3ff4ca8d079304d728b2944b950252ceb183"
+      "bytes": 89447,
+      "sha256": "dfc711a6e2d767b0ed6de087bea77fb296b975de717e473052113f8a67d0fb51"
     },
     {
       "path": "courses/sightline/LICENSE.md",
@@ -7884,8 +7884,8 @@
     },
     {
       "path": "courses/sightline/README.md",
-      "bytes": 12678,
-      "sha256": "9c9ff4f52126216eb0d13039b7fbf9b6ad88d8d467afcd84570e20ba5afaaee9"
+      "bytes": 15451,
+      "sha256": "0d66e8638129a686272dc35bb320ea0a36c4edfcf95e64d8d283ed9a776f7051"
     },
     {
       "path": "courses/sightline/checks/01.mjs",
@@ -7894,13 +7894,13 @@
     },
     {
       "path": "courses/sightline/checks/02.mjs",
-      "bytes": 23577,
-      "sha256": "c1a76ff7e4ed06268f767766243b7cd0be36c90cdb6f6cea1f1fd54de6aa8d4f"
+      "bytes": 23567,
+      "sha256": "43a2cf4239a8e61226f5bca86467b462c45cc83598671243f328fffb1a6b79f9"
     },
     {
       "path": "courses/sightline/checks/03.mjs",
-      "bytes": 24471,
-      "sha256": "7005be953574823c14fdaa42f48eef09b954c291dcafbb5096da1fa47f7b355e"
+      "bytes": 25820,
+      "sha256": "738840f0871caad794526aad9fb54e7a90a608546b16e50eeb7331ea3773e8fa"
     },
     {
       "path": "courses/sightline/checks/04.mjs",
@@ -7909,23 +7909,23 @@
     },
     {
       "path": "courses/sightline/checks/05.mjs",
-      "bytes": 43935,
-      "sha256": "c7d26ed37adb25ee65f2a1cb1730c74dfd0acb561250be05c3b11de2df958188"
+      "bytes": 43978,
+      "sha256": "1c02941cff837a49b6d44ca17a650107b33ca59ae433a744739d5193513b611e"
     },
     {
       "path": "courses/sightline/checks/06.mjs",
-      "bytes": 25304,
-      "sha256": "0fbe345ac40d1a10a99ea0dfb1f3b88c7839695bb7407e8d9c7e3a2f0f5646d6"
+      "bytes": 25349,
+      "sha256": "3345ee1b5d1bc4ff9e85056061ddeae96f5bcaf5f8cfec35bcd3bd2623576611"
     },
     {
       "path": "courses/sightline/checks/07.mjs",
-      "bytes": 18517,
-      "sha256": "e5e41cb20518aee3e60685d0ebb3a2333a457d5c5cd998c1466427064256c602"
+      "bytes": 18521,
+      "sha256": "bfd6b0bf8b54e1feeb7704d66d8024a0789848a72402ff42b89bb5ddf6441a8b"
     },
     {
       "path": "courses/sightline/checks/08.mjs",
-      "bytes": 10908,
-      "sha256": "5430b9857bbaeb9569223925a04b2634ade0412ddf0cc381cd12ea4529616a7d"
+      "bytes": 13748,
+      "sha256": "d894a716185700508f48781b24cfdfe2f02124d098085ac1415af83e427493d3"
     },
     {
       "path": "courses/sightline/checks/format.mjs",
@@ -7934,8 +7934,8 @@
     },
     {
       "path": "courses/sightline/checks/harness.mjs",
-      "bytes": 10225,
-      "sha256": "9b1a11e3323db2a42f07da224826be89985837909f62d630e7c8fe1e5762ae46"
+      "bytes": 10361,
+      "sha256": "faa149d62bb3e88fd53dc2d7c7364249f1b65717ad0dffe4607397321d83dbeb"
     },
     {
       "path": "courses/sightline/checks/run.mjs",
@@ -7949,8 +7949,398 @@
     },
     {
       "path": "courses/sightline/course.json",
-      "bytes": 8331,
-      "sha256": "b9eea365e9e9a05751ce53a8e2dbef4e0a519e53dfcd63fafdb6128c77dbcaf5"
+      "bytes": 8359,
+      "sha256": "6a149489f0c81a300bc33b08c1c67cdd2c96380b1922a5caad855b93214727b7"
+    },
+    {
+      "path": "courses/sightline/examples/attempt.mjs",
+      "bytes": 4867,
+      "sha256": "93944f57acc553ada960bb575c33e65301754ea3deb57155667a2b460fc3d9fc"
+    },
+    {
+      "path": "courses/sightline/examples/check-encode.mjs",
+      "bytes": 4373,
+      "sha256": "f7eaa9dc144afbc8f3a3f2435c9ebceb3f7399c446835bf99ed9b374b9be805f"
+    },
+    {
+      "path": "courses/sightline/examples/check-flight-time.mjs",
+      "bytes": 4577,
+      "sha256": "9162fb3118b35257b54d1f8f947dc2207e1243b5114160100442396a63dce80a"
+    },
+    {
+      "path": "courses/sightline/examples/check-landing-age.mjs",
+      "bytes": 5001,
+      "sha256": "28e5a71f9d5032fbedc153598070484abbfeb17b5cd82b7ce80509270a7b8dd7"
+    },
+    {
+      "path": "courses/sightline/examples/check-result.mjs",
+      "bytes": 3835,
+      "sha256": "a35b8e6e45ba2f7e7e3a117407abf256780f6ab9c995d5aac89c4388c91378d8"
+    },
+    {
+      "path": "courses/sightline/examples/check-score-anywhere.mjs",
+      "bytes": 5411,
+      "sha256": "cd849eaf380096df64c26b20f004f6906312c6171c81c63cb042bbbeb82f7c60"
+    },
+    {
+      "path": "courses/sightline/examples/check-score.mjs",
+      "bytes": 5176,
+      "sha256": "48ca81e3e90d91beed24a24312fb2c31cf3fb24615df95d83ef51beb1185912c"
+    },
+    {
+      "path": "courses/sightline/examples/check-shots.mjs",
+      "bytes": 4758,
+      "sha256": "879ae16734edbbd13a409c89ac43b8abdd7f18f1fcf562ae8a879662c5129e4b"
+    },
+    {
+      "path": "courses/sightline/examples/check-turn.mjs",
+      "bytes": 4157,
+      "sha256": "99ad938e172b0a6094f2484b7b0fc8772c44cefa4f078e709f2f03fc3847d835"
+    },
+    {
+      "path": "courses/sightline/examples/engine-checkpoint-02.mjs",
+      "bytes": 12982,
+      "sha256": "8fb2d145c6533b59972b5d8e13341b7d632f5e6d569af5893a28953f71d53c8a"
+    },
+    {
+      "path": "courses/sightline/examples/engine-checkpoint-03.mjs",
+      "bytes": 23568,
+      "sha256": "8cb8c995229a934d89503a05c0fbb10a1bf37646a80e314bd252dbfea0407996"
+    },
+    {
+      "path": "courses/sightline/examples/engine-checkpoint-05.mjs",
+      "bytes": 30222,
+      "sha256": "46f2d6a82ffa74d9f25ff69118b0a6a4a00ce1e70ee1523e6e74969e72dc3256"
+    },
+    {
+      "path": "courses/sightline/examples/engine-checkpoint-06.mjs",
+      "bytes": 37483,
+      "sha256": "236277dbe21313b98dedae4f1d9be8c4c3df6064a486abca2de2e2e810a936b6"
+    },
+    {
+      "path": "courses/sightline/examples/engine-checkpoint-07.mjs",
+      "bytes": 43286,
+      "sha256": "ae6784a626b4a840ecb0e3d9eb10ba9258d8fac893ed4e37a39be9345ac1905b"
+    },
+    {
+      "path": "courses/sightline/examples/engine-checkpoint-08.mjs",
+      "bytes": 43942,
+      "sha256": "992331a7a20635ac841a7a6bd5752e79074c683bf1448a55ac1a255f0b9bbc4c"
+    },
+    {
+      "path": "courses/sightline/examples/engine-checkpoint.mjs",
+      "bytes": 12130,
+      "sha256": "86b10fd7c329e1788b2359a5a3e5514b88f2bcfb167dee35bcf6fb146bd0bad2"
+    },
+    {
+      "path": "courses/sightline/examples/find-02-output.txt",
+      "bytes": 147,
+      "sha256": "92f6ccc45c4923e3b590662aadb917ec19976651958db6f4739bd0bafa25e1cb"
+    },
+    {
+      "path": "courses/sightline/examples/find-checkpoint.mjs",
+      "bytes": 9888,
+      "sha256": "b35914db832fdde66ced7b99f38ddf83ebd354f9a86e95cc1295ccfe1a434fee"
+    },
+    {
+      "path": "courses/sightline/examples/flight-checkpoint-06.mjs",
+      "bytes": 13043,
+      "sha256": "5536c6d407e782d67870de631a04803ec51e7150bafc0145e884a4dc360945a0"
+    },
+    {
+      "path": "courses/sightline/examples/flight-checkpoint.mjs",
+      "bytes": 12647,
+      "sha256": "9e29e644dba8b662b06c2a518efd84f3a9affc4d25ff2ebf4bb9caf6aefb1533"
+    },
+    {
+      "path": "courses/sightline/examples/learn-checkpoint.mjs",
+      "bytes": 9335,
+      "sha256": "6dba16a9db99e8d6e926ce8da35778a82535971d98a1fbb3a978bc7989ec98e8"
+    },
+    {
+      "path": "courses/sightline/examples/lift-checkpoint.mjs",
+      "bytes": 29755,
+      "sha256": "7d14e35529186d975486b9cc4db42ee41d1062d7d9374675f599e4c35c570e6d"
+    },
+    {
+      "path": "courses/sightline/examples/listing-04-output.txt",
+      "bytes": 172,
+      "sha256": "ba481e75b0058662671cbf9f8cc4a9e01462de3b5a13d837da9c6f52eac7593e"
+    },
+    {
+      "path": "courses/sightline/examples/race-checkpoint.mjs",
+      "bytes": 5596,
+      "sha256": "45f39f416439e518468045845e7feed3eedb79caa2aaf4d74c0028af5c574958"
+    },
+    {
+      "path": "courses/sightline/examples/reader-checkpoint.mjs",
+      "bytes": 9016,
+      "sha256": "5386ec6ebc29e5b7478b65a7d412dc8ab4f2e78776c5bd5f74faf07f6d5f7bab"
+    },
+    {
+      "path": "courses/sightline/examples/scan-checkpoint-02.mjs",
+      "bytes": 8612,
+      "sha256": "e71adf40643479a01b351b137efa346c470fda7c8a4dc2ec37650ec5a3c545b4"
+    },
+    {
+      "path": "courses/sightline/examples/scan-checkpoint.mjs",
+      "bytes": 5585,
+      "sha256": "56aff5fd132014df7dcda3a70a844bde7419a29a90489ebfa6083c699d919d20"
+    },
+    {
+      "path": "courses/sightline/examples/start-01.mjs",
+      "bytes": 3812,
+      "sha256": "27e1b83feca379429640ebe303062e2c1d10f1be86926686eff5e4410d435d34"
+    },
+    {
+      "path": "courses/sightline/examples/start-02.mjs",
+      "bytes": 7137,
+      "sha256": "76d2584f0cacf4d6393abc671961cb38e1111fbec8f875f669e4298671f2aa3f"
+    },
+    {
+      "path": "courses/sightline/examples/start-03.mjs",
+      "bytes": 7730,
+      "sha256": "500a0eddef0d7ab2624628e2c240384b6d22affe65296743cbb588bba756af84"
+    },
+    {
+      "path": "courses/sightline/examples/start-04.mjs",
+      "bytes": 4424,
+      "sha256": "42d8a9a41605aa31584800b24c96c0be83a3784ee2037de16e2abf88ba8468e9"
+    },
+    {
+      "path": "courses/sightline/examples/start-05.mjs",
+      "bytes": 8385,
+      "sha256": "efc373fe797e158eb6a3adbca21511ad0efe6030ebe76ac46b2ebee2aafa8446"
+    },
+    {
+      "path": "courses/sightline/examples/start-06.mjs",
+      "bytes": 9349,
+      "sha256": "69ba8b89cdaaf84be80027f3870b720462bd83c6830830939ca48b581f8bee43"
+    },
+    {
+      "path": "courses/sightline/examples/start-07.mjs",
+      "bytes": 8630,
+      "sha256": "acdbd92f2fa03be652d58a9d20938c22a34a7686dec178242d4983075037441a"
+    },
+    {
+      "path": "courses/sightline/examples/start-08.mjs",
+      "bytes": 7414,
+      "sha256": "8516ca3cbb812287a4bb55f3ff9738eadfea8ef9e52e6dfd68fb6c74eb8f9078"
+    },
+    {
+      "path": "courses/sightline/examples/trace-01.mjs",
+      "bytes": 2991,
+      "sha256": "cb070c293ba2b36cdee0dac4831e2dbd23e4c70e6f74dcbb533029e5ce7a890c"
+    },
+    {
+      "path": "courses/sightline/examples/trace-02-choose-output.txt",
+      "bytes": 519,
+      "sha256": "03ec3553a96d4d770297590b1877b78e6e85c0294342c7eb87d37848530011cc"
+    },
+    {
+      "path": "courses/sightline/examples/trace-02-flag-output.txt",
+      "bytes": 301,
+      "sha256": "94ad27b19287447be3f311f265c1683196ac2683829dd819bb97a3e94a549b96"
+    },
+    {
+      "path": "courses/sightline/examples/trace-02-menu-output.txt",
+      "bytes": 726,
+      "sha256": "f05767f825483bec4539a3331e7864a83805ff3024958422da18f448a9f2ca34"
+    },
+    {
+      "path": "courses/sightline/examples/trace-02-press-output.txt",
+      "bytes": 178,
+      "sha256": "ccc0c5f994dadf31686ce6b6399ed88ff2331f6070b6f4216a2013e63c863d82"
+    },
+    {
+      "path": "courses/sightline/examples/trace-02-slots-output.txt",
+      "bytes": 203,
+      "sha256": "5d7916784a4b3a43735c00674f594c9ab67577dec1ef4c1290dc7da79cd1bbfc"
+    },
+    {
+      "path": "courses/sightline/examples/trace-02-write-output.txt",
+      "bytes": 170,
+      "sha256": "88e8ba3dd446ed7745f001409c61ff85352590cdbfe6458fd4339f634af90efa"
+    },
+    {
+      "path": "courses/sightline/examples/trace-02.mjs",
+      "bytes": 5492,
+      "sha256": "45c5143334baab693b1797ad73a7f918c483c25b4312c5aa29c1013f3becea18"
+    },
+    {
+      "path": "courses/sightline/examples/trace-03-features-output.txt",
+      "bytes": 47,
+      "sha256": "3fc328d816fee3b7675016fe4b423239e4d675572a959f4efc57ebf0ef924a94"
+    },
+    {
+      "path": "courses/sightline/examples/trace-03-fit-output.txt",
+      "bytes": 208,
+      "sha256": "8f8e3d40623cb153791f316c2e58c6f2499bb57e822a2c5859549a57aa36f86a"
+    },
+    {
+      "path": "courses/sightline/examples/trace-03-judge-output.txt",
+      "bytes": 222,
+      "sha256": "bb25f99fa0210a3668a7e0c9b3eef357aa80539ccdaa9553823fea719b4a7b05"
+    },
+    {
+      "path": "courses/sightline/examples/trace-03-practice-output.txt",
+      "bytes": 117,
+      "sha256": "015245447819e9cdcbab1fd838d9173f0c83a93cb2ad3b4f620170c67bd358d1"
+    },
+    {
+      "path": "courses/sightline/examples/trace-03-search-output.txt",
+      "bytes": 235,
+      "sha256": "81812a50c67c4e5ebc7475a89b46eb2eb890d96c186859d629bf51fc5f6f230b"
+    },
+    {
+      "path": "courses/sightline/examples/trace-03-shot-output.txt",
+      "bytes": 307,
+      "sha256": "312cf1f5c50987d364f5c38344c7abbe16d1994dc650ae0f2c0ee31b0c6c0bc0"
+    },
+    {
+      "path": "courses/sightline/examples/trace-03.mjs",
+      "bytes": 7746,
+      "sha256": "5bcfcee0ef2d16f29307ae68dde50d1c0048f32ff6a868f512e1eb31e24ebd4a"
+    },
+    {
+      "path": "courses/sightline/examples/trace-04-decode-output.txt",
+      "bytes": 130,
+      "sha256": "bdecb2c28da49285c2b0a551559341fb0c2f6c63029e9ec90f5abdde07283c74"
+    },
+    {
+      "path": "courses/sightline/examples/trace-04-depth-output.txt",
+      "bytes": 118,
+      "sha256": "8f55b680f355ab2c11db280a12801ff584756676bb7967b32378800dd0cdbe60"
+    },
+    {
+      "path": "courses/sightline/examples/trace-04-leb-output.txt",
+      "bytes": 252,
+      "sha256": "bc63291ef07665b52c5ec9b8faaab832649dcd51be1cb1ba861bf516984dee63"
+    },
+    {
+      "path": "courses/sightline/examples/trace-04-names-output.txt",
+      "bytes": 120,
+      "sha256": "313843229f35d12bcbe2d4a0e3ca11b8a86a2af4519934cd07b921309e090029"
+    },
+    {
+      "path": "courses/sightline/examples/trace-04-sections-output.txt",
+      "bytes": 290,
+      "sha256": "d69b86a80166d4c15e2cdc3da4cdc4e7805a67a83fe786310ce1a8599445dc6a"
+    },
+    {
+      "path": "courses/sightline/examples/trace-04.mjs",
+      "bytes": 3891,
+      "sha256": "1c3b7918273c900ec68c25a0a5de32ef5d1ee31ffead66de728dc8805c00490b"
+    },
+    {
+      "path": "courses/sightline/examples/trace-05-eval-output.txt",
+      "bytes": 140,
+      "sha256": "9d9893afd4eeb1675c11e02ce2eeaf98bd3f9625d9e3bc50b514802eb439f4b8"
+    },
+    {
+      "path": "courses/sightline/examples/trace-05-key-output.txt",
+      "bytes": 438,
+      "sha256": "c7385b85a19c74359ef7d9950d9be7a41180830ca9ede6156751c3a7efa48de0"
+    },
+    {
+      "path": "courses/sightline/examples/trace-05-sim-output.txt",
+      "bytes": 199,
+      "sha256": "5bd0219e949ee4ea839570fdac161135d42ca377329ca815279ae2d57c7f068c"
+    },
+    {
+      "path": "courses/sightline/examples/trace-05-tiny-output.txt",
+      "bytes": 140,
+      "sha256": "e9a9b930a10278865906e2f24858cfd34be5e59f1bb6b620b57d003b193e4500"
+    },
+    {
+      "path": "courses/sightline/examples/trace-05.mjs",
+      "bytes": 5084,
+      "sha256": "46d8b0e19e9bfde36a4bdd9ac3d4d42646d4e916d7da66cb04e50fc9f31b8848"
+    },
+    {
+      "path": "courses/sightline/examples/trace-06-band-output.txt",
+      "bytes": 229,
+      "sha256": "647a63fec2c4d0bd76adcb1a6f97c57461adcc7069f21e92317fe318c4735cc7"
+    },
+    {
+      "path": "courses/sightline/examples/trace-06-check-output.txt",
+      "bytes": 227,
+      "sha256": "dd96fc501003d451c783e1f76cd2b8d0f4c04f6c9e67c564820b0081ec7fe5cb"
+    },
+    {
+      "path": "courses/sightline/examples/trace-06-flag-output.txt",
+      "bytes": 277,
+      "sha256": "f82a130a48ae7ee5e33238beddbb3f5d1fe564ce9ecb7bfb022287d205b4a068"
+    },
+    {
+      "path": "courses/sightline/examples/trace-06-menu-output.txt",
+      "bytes": 332,
+      "sha256": "b9baa256d8146f08f9de9a77835b7567fe028957cd0da19ccdaf7ee45d4ccc38"
+    },
+    {
+      "path": "courses/sightline/examples/trace-06-read-output.txt",
+      "bytes": 354,
+      "sha256": "bc338ca1b994c789d541e8ccd45cf9886e62be4369af176c296a2fd35d57b878"
+    },
+    {
+      "path": "courses/sightline/examples/trace-06.mjs",
+      "bytes": 6200,
+      "sha256": "ec2a84b015b7ce14cefd1859f0f02dca16bfba3edae045dde8e7d7faa448e1ed"
+    },
+    {
+      "path": "courses/sightline/examples/trace-07-judge-output.txt",
+      "bytes": 182,
+      "sha256": "59bc6d94807e46df0e48194d10b091c83ea544067f20bfa00463e260f5abe895"
+    },
+    {
+      "path": "courses/sightline/examples/trace-07-lead-output.txt",
+      "bytes": 231,
+      "sha256": "4e7a0e56a908d6d30c3aece036ba78ca911527b5824c7887540b14a0d35862c4"
+    },
+    {
+      "path": "courses/sightline/examples/trace-07-mover-output.txt",
+      "bytes": 265,
+      "sha256": "0f7dd06b1caa233b2ba9da301bbd00ba53a8c3671b13adf23c80664a220b30a1"
+    },
+    {
+      "path": "courses/sightline/examples/trace-07-path-output.txt",
+      "bytes": 311,
+      "sha256": "1db21d8f6f7a61ce153159e169f76f421526296a829760c7462de33eca228789"
+    },
+    {
+      "path": "courses/sightline/examples/trace-07.mjs",
+      "bytes": 4897,
+      "sha256": "3e9661b23ad01530f1a22125b43d67309646400b0474173f87c37583c392d524"
+    },
+    {
+      "path": "courses/sightline/examples/trace-08-kit-output.txt",
+      "bytes": 231,
+      "sha256": "ba189d25abd924ecc90ed26a40fb95762e1900bfc3ca42e39edd065875cdf617"
+    },
+    {
+      "path": "courses/sightline/examples/trace-08.mjs",
+      "bytes": 3014,
+      "sha256": "77d1937607452d70d6221ed9397b871171e17bddef11cc921414a3ac1f0db2b2"
+    },
+    {
+      "path": "courses/sightline/examples/trace-controls-output.txt",
+      "bytes": 488,
+      "sha256": "e0d27a8b1f95ac460cc0583472c44c99a7c9bf3f32feb4a7c6f66f22b3bd2969"
+    },
+    {
+      "path": "courses/sightline/examples/trace-press-output.txt",
+      "bytes": 235,
+      "sha256": "901d2984a8f7db80e8db03ad67f95453666f7be572adbd41339110ab82ad016c"
+    },
+    {
+      "path": "courses/sightline/examples/trace-strings-output.txt",
+      "bytes": 147,
+      "sha256": "482a800a8c205c8d83f50dc38a9873f92952c51ab6d6dd80cbf574b7e994527c"
+    },
+    {
+      "path": "courses/sightline/examples/wasm-checkpoint.mjs",
+      "bytes": 13005,
+      "sha256": "12f70346e72609e76c878d4beb60e51c515fb767fd6e31b5f16f2a97bcd1ec69"
     },
     {
       "path": "courses/sightline/fixtures/manifest.json",
@@ -7999,48 +8389,48 @@
     },
     {
       "path": "courses/sightline/lab.mjs",
-      "bytes": 34116,
-      "sha256": "a2496e2acc6447a1d7f9acc86e6b334ec57e62d2d46302327d8be3d2699eaab2"
+      "bytes": 60815,
+      "sha256": "a2e3153b29a2a6cc342aa667ba190adecb4d0414afc6541b8a448817ff3348cd"
     },
     {
       "path": "courses/sightline/lessons/01.md",
-      "bytes": 29264,
-      "sha256": "f7f8bcbb9a8c6ab78b2c1d564707133e285fbc271a4a6dc2ccc267df4ad2f0c5"
+      "bytes": 56765,
+      "sha256": "f1ea06e8bb7318166ff988df220602304da0c1a45d2adca43d054db5cd304336"
     },
     {
       "path": "courses/sightline/lessons/02.md",
-      "bytes": 23868,
-      "sha256": "9bccbe500cda948142524592d1432cd12c21603c4f6dcd7007b152a1c56ba86d"
+      "bytes": 70172,
+      "sha256": "e537d54f4848db8fb0713a4a5a5b30297b3b6ae3629f9f81621ec9418edf3a55"
     },
     {
       "path": "courses/sightline/lessons/03.md",
-      "bytes": 38149,
-      "sha256": "d88d9aaae6cfed603679eb9d31869a0bfdca4d9c1fd2f612219ef971db9e69fe"
+      "bytes": 93321,
+      "sha256": "7f648d6366cf100983e09313ddcf0032514a8c6df77d5b9a4f5e78d7451e6e29"
     },
     {
       "path": "courses/sightline/lessons/04.md",
-      "bytes": 26226,
-      "sha256": "53587b55d28ab37ba9ac14b9415ac4375ca5ecc28c168916646c1f3d68900d8a"
+      "bytes": 62316,
+      "sha256": "7e8d22de16b377249b783efd5e39e653ab4b19bdf9fcb01fe5fa2eb6b07086fd"
     },
     {
       "path": "courses/sightline/lessons/05.md",
-      "bytes": 51811,
-      "sha256": "e0d55b7415b1d412265c7d6bf262461c6644a3294063643cc4c4e1a989dc0c37"
+      "bytes": 128032,
+      "sha256": "85218dce63d6075bf0e443ffbd758428a46725828a9558a05a3ab490254b1a4f"
     },
     {
       "path": "courses/sightline/lessons/06.md",
-      "bytes": 43992,
-      "sha256": "bc65b976c36f25d93524c45783d72faebbf25119fb74d2dfa0c76ba0b55e783c"
+      "bytes": 96472,
+      "sha256": "d0edb45c87a47b895b52d87ca5f0de8a5a7fb3da80d9ed9308efb3844f8ed523"
     },
     {
       "path": "courses/sightline/lessons/07.md",
-      "bytes": 27590,
-      "sha256": "7814d466ebefb5dc23344fb6314dbd35e8f2ffc254cfb490f0dae68597c6c975"
+      "bytes": 66419,
+      "sha256": "0cf99738eab13be0646ecd0dbc5447367bf6fc3e2319b8062403e7cd3370a41c"
     },
     {
       "path": "courses/sightline/lessons/08.md",
-      "bytes": 26071,
-      "sha256": "7bd0d20cc627672316ea6faef94506260b414129e49888e7d9a50cc7dc71e5f9"
+      "bytes": 39065,
+      "sha256": "221a3d750654aa487ae19d501681c17bf52bd24aab4b6110358d7c03466b4a2f"
     },
     {
       "path": "courses/sightline/lessons/figures/early-exit.svg",
@@ -8053,14 +8443,44 @@
       "sha256": "e72f97585400d3ef501f9e53185aa8832f32986cf6213ed5c90f551b81425829"
     },
     {
+      "path": "courses/sightline/lessons/figures/file-sections.svg",
+      "bytes": 5919,
+      "sha256": "e5c741abc9f9ec5eedaeb6be2de9153426c656f1c3527dae4cc907e008a6a0d1"
+    },
+    {
+      "path": "courses/sightline/lessons/figures/function-index.svg",
+      "bytes": 6189,
+      "sha256": "2e224a8ac90558f485a3d457df737be3017f1ff4d086e5a3e02288782d331c62"
+    },
+    {
       "path": "courses/sightline/lessons/figures/late-decision.svg",
       "bytes": 3093,
       "sha256": "9ffc3d951ef5d5bade5891d426dc7c14b5bd9ced16b3a435612eec5b48c7dcfb"
     },
     {
+      "path": "courses/sightline/lessons/figures/leb-78112.svg",
+      "bytes": 5947,
+      "sha256": "6095a37cfa530b8acffe74933b9d9c600df51e103a2d0ae955ed43b58139ac7c"
+    },
+    {
       "path": "courses/sightline/lessons/figures/lifted-store.svg",
       "bytes": 3332,
       "sha256": "c19bff12305f846ebf0c089ad00a28b6eff6bd020c95844a35093d1ce28d0a23"
+    },
+    {
+      "path": "courses/sightline/lessons/figures/line-test.svg",
+      "bytes": 3616,
+      "sha256": "98b8445101a5d7103a356b4d42c34ef540037a847a6cb362240ce19976494b4c"
+    },
+    {
+      "path": "courses/sightline/lessons/figures/lob2-search.svg",
+      "bytes": 5736,
+      "sha256": "e164524727c6117a38b213d949416855a1de7d779ad7e93f33a7e0b81973dda7"
+    },
+    {
+      "path": "courses/sightline/lessons/figures/lob2-state.svg",
+      "bytes": 4913,
+      "sha256": "7f4ab555b98d8e33ac7eafe58dad680185b12ef150d6fa98009a185364f065b1"
     },
     {
       "path": "courses/sightline/lessons/figures/planned-surprise.svg",
@@ -8073,19 +8493,34 @@
       "sha256": "0a0dad102ab4bf2aaf11aabee69a53165deba3dbda871017d53d2d816aff1d25"
     },
     {
+      "path": "courses/sightline/lessons/figures/search-run.svg",
+      "bytes": 5925,
+      "sha256": "ad172546965c3f846cfac4f96c0f31d44556eb41cf674b5c62eb5e973dc69f1e"
+    },
+    {
       "path": "courses/sightline/lessons/figures/shell-flight.svg",
       "bytes": 2650,
       "sha256": "06b43b6fd4a07c24288e19753adb9b6c44ee86c4037987b2fac9f5c160353afb"
     },
     {
+      "path": "courses/sightline/lessons/figures/state-slots.svg",
+      "bytes": 4267,
+      "sha256": "529bc5dfd3de540ead6d04a99299b81c2ca7d977d0ceb95a088d343ef1d80a92"
+    },
+    {
+      "path": "courses/sightline/lessons/figures/write-break.svg",
+      "bytes": 3650,
+      "sha256": "cece875b37772d4bb35ecfe88d89e483b83d33ad470ea60b196f2c412a0addf6"
+    },
+    {
       "path": "courses/sightline/lessons/practice.mjs",
-      "bytes": 173344,
-      "sha256": "b0fe68fe390999af9e6b932f4186475b729cd0200074edeea5c07c01061ab47d"
+      "bytes": 173683,
+      "sha256": "860f73f5d7f9fb4abb73b302b09c56c45cce0acae2d9ee5c290e8f3d3cec0229"
     },
     {
       "path": "courses/sightline/lessons/sections.json",
-      "bytes": 7382,
-      "sha256": "0ed4888d92618f5b824b6c86c6652790a33bac21a41181c8bcb0d8fcbd30c9a4"
+      "bytes": 7379,
+      "sha256": "baf0742de92cbcda8e3a3e5d15fdd325ac9700f945372c4b2480b7afac047e7e"
     },
     {
       "path": "courses/sightline/levels.mjs",
@@ -8098,9 +8533,34 @@
       "sha256": "9a3a8cb2273dafc5264147113fe2b57c824bdeb4c1d14ea25c241efb8cc41249"
     },
     {
+      "path": "courses/sightline/reader/code-example.css",
+      "bytes": 1995,
+      "sha256": "4bfc888966174a24f3bafa82db1878563fdab631ccd99c6aff7d715c8bdff36c"
+    },
+    {
+      "path": "courses/sightline/reader/code-example.mjs",
+      "bytes": 3203,
+      "sha256": "5728768f4af74f4219addf8ab60a7e7daaf82142e97676667055e05a60eb29ad"
+    },
+    {
+      "path": "courses/sightline/starter/encode-leb.mjs",
+      "bytes": 375,
+      "sha256": "1f6f263a248ec3010b7ec3c77c9ca936606e42c5ee181aaa835fe9357c3d98d5"
+    },
+    {
+      "path": "courses/sightline/starter/engine-build.mjs",
+      "bytes": 9689,
+      "sha256": "528f38c449d68024ea6890c5aa401e84b59b93fd6527a1573f652d9a38f42e1f"
+    },
+    {
       "path": "courses/sightline/starter/engine.mjs",
       "bytes": 8552,
       "sha256": "e712870f4deb96284c327ffff0c3acf169a06cc3c8768c18a28bb4fe4d485c36"
+    },
+    {
+      "path": "courses/sightline/starter/find-build.mjs",
+      "bytes": 3381,
+      "sha256": "c148a59dea3119721f876db8b04a7433e2cc0909bdfb14c20c92c04034f85273"
     },
     {
       "path": "courses/sightline/starter/find.mjs",
@@ -8108,14 +8568,39 @@
       "sha256": "81e7cca3ad4cc4e74849638b0252f8af6681a993f4227c598ed64b917ddaac70"
     },
     {
+      "path": "courses/sightline/starter/flight-build.mjs",
+      "bytes": 4224,
+      "sha256": "b1a8f2eb82fbd27f77961854f90f421122f4a59983a20ef16ec61e7ac9e18230"
+    },
+    {
+      "path": "courses/sightline/starter/flight-time.mjs",
+      "bytes": 514,
+      "sha256": "10935a97b6950bca0637b7b6d16012b89851fd7ffbd90531c5b86930a2de8292"
+    },
+    {
       "path": "courses/sightline/starter/flight.mjs",
       "bytes": 3341,
       "sha256": "c8c06ca63b9cf4c827d7cced4a16bcf55da4c830f90740d531e485e49f31ae9e"
     },
     {
+      "path": "courses/sightline/starter/landing-age.mjs",
+      "bytes": 735,
+      "sha256": "236c6f3ffe8668b4628a21a3258ace1fb68a5ba378dd6ede6650c4319782b0e7"
+    },
+    {
+      "path": "courses/sightline/starter/learn-build.mjs",
+      "bytes": 3327,
+      "sha256": "003058845b87dc1385592b6433cbc4b071134cfcc19021aa83fa4d05f5b183c7"
+    },
+    {
       "path": "courses/sightline/starter/learn.mjs",
       "bytes": 3172,
       "sha256": "7a5cf22fd2ab681800b35ad42f7127ca2f5e55830ad4f3f478284acd795d445a"
+    },
+    {
+      "path": "courses/sightline/starter/lift-build.mjs",
+      "bytes": 14993,
+      "sha256": "c3ef4b98087aae4d8b3f6306a29a0dc5e2becfac9930f5eee10f74a53a378118"
     },
     {
       "path": "courses/sightline/starter/lift.mjs",
@@ -8128,9 +8613,24 @@
       "sha256": "7c4f9ee64deb995841084494ea30cb49f6eaf32998f3036b077786e193c1f307"
     },
     {
+      "path": "courses/sightline/starter/race-build.mjs",
+      "bytes": 2720,
+      "sha256": "120c5f36ce711f474c43e6a78e3afa970d4c31336c58779d8ce5f94f1d1ef42f"
+    },
+    {
       "path": "courses/sightline/starter/race.mjs",
       "bytes": 2172,
       "sha256": "f0352adfa6583c3c094e55016a3f41ef669ee875b745a57751bd6fd4a9fc1a6b"
+    },
+    {
+      "path": "courses/sightline/starter/read-result.mjs",
+      "bytes": 648,
+      "sha256": "3f83b478ac60c5966feeb768d4e6e2b810d8e7da57cda74333b67890dd9a8385"
+    },
+    {
+      "path": "courses/sightline/starter/reader-build.mjs",
+      "bytes": 3665,
+      "sha256": "a233de3bdd44ff7c31e042fde02e101a13ce250418c61fd3f4de45e637e4e27b"
     },
     {
       "path": "courses/sightline/starter/reader.mjs",
@@ -8138,9 +8638,39 @@
       "sha256": "17394fca747898e2ef85a845d12206608cf5dfd90956c5fb641d5c08d301fb28"
     },
     {
+      "path": "courses/sightline/starter/scan-build.mjs",
+      "bytes": 3834,
+      "sha256": "a2354314efb9bf26d45d8f1de756d2e8e65570d378365f3e1d138baaab5bb588"
+    },
+    {
       "path": "courses/sightline/starter/scan.mjs",
       "bytes": 3279,
       "sha256": "fc18fc19e218190205153968c738cf9962aa02282a96da1895f33cf4a713140b"
+    },
+    {
+      "path": "courses/sightline/starter/score-anywhere.mjs",
+      "bytes": 683,
+      "sha256": "56fd072e370f6baf1a0ae41274f53d2a1adf0a03cc939a06a77ff79cbde8fd52"
+    },
+    {
+      "path": "courses/sightline/starter/score-reader.mjs",
+      "bytes": 614,
+      "sha256": "5b95c30b99af2ca7c579c3ab18287344fbd8587fb929e753f8e0be8bb315aee9"
+    },
+    {
+      "path": "courses/sightline/starter/shot-count.mjs",
+      "bytes": 432,
+      "sha256": "7a3e44ceb96576a50de4bc6964cfefbe69645e395c85d3b83ccc127a9cd15e7d"
+    },
+    {
+      "path": "courses/sightline/starter/turn.mjs",
+      "bytes": 627,
+      "sha256": "3bd3b80db531f15483a26e0d0704662918b1ae1892d4e7615ab138f70f448b8e"
+    },
+    {
+      "path": "courses/sightline/starter/wasm-build.mjs",
+      "bytes": 3340,
+      "sha256": "0fcf296a9319fd0c210a412a5451e22f396b7c57cc1ebfda6d1916c7ee8bb840"
     },
     {
       "path": "courses/sightline/starter/wasm.mjs",
@@ -8154,8 +8684,8 @@
     },
     {
       "path": "courses/sightline/web.mjs",
-      "bytes": 22797,
-      "sha256": "7d4b707843da88b06c440fe446808e0e331ef9c3266d766945741866c7976324"
+      "bytes": 25757,
+      "sha256": "912d025784cae779619271dd4bce26200e10d600916b11a56f6090745aad6b92"
     },
     {
       "path": "courses/small-llm-runtime/API.md",

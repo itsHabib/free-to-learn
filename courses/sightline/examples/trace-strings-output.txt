@@ -1,0 +1,4 @@
+findStrings(bytes): [{"addr":3,"text":"WIND +2.3"}]
+readCString(bytes, 3): "WIND +2.3"
+readCString(bytes, 3, 4): "WIND"
+findStrings(bytes, 10): []

@@ -1,0 +1,5 @@
+seed 1: pressed ArrowRight, then ticked 2 frames
+angle, filterDelta +1: 2 candidates
+  f32 slot 16460 at 65840
+  i32 slot 17992 at 71968
+power, filterUnchanged: 65524 candidates

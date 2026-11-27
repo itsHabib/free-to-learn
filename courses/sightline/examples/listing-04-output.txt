@@ -1,0 +1,10 @@
+(func r_angle (param -) (result f32))
+  i32.const 0
+  i32.load offset=78112
+  local.tee 0
+  i32.load offset=92
+  local.get 0
+  i32.load
+  i32.xor
+  f32.reinterpret_i32
+end

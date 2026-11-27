@@ -1,0 +1,6 @@
+build 0: radius 12, flag kept at *0x13120+16
+  decoded now: 625.10; the game's flag: 625.10
+build 6: radius 12, flag kept at *0x13120+16
+  decoded now: 686.90; the game's flag: 686.90
+build 14: radius 12, flag kept at *0x13120+16
+  decoded now: 697.85; the game's flag: 697.85

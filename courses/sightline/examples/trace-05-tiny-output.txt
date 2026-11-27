@@ -1,0 +1,5 @@
+a store of param0 + 1:
+  at 4: i[0x68] = (param0 + 1)
+a block left early by br_if:
+  at 6: i[0x12c] = 5   when param0
+  at 10: i[0x130] = 9

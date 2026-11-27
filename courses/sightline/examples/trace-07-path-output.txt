@@ -1,0 +1,7 @@
+flagPath: 301 entries; every 60th beside the game
+  after 0 frames: 767.15; the game 767.15
+  after 60 frames: 830.22; the game 830.22
+  after 120 frames: 893.29; the game 893.29
+  after 180 frames: 844.29; the game 844.29
+  after 240 frames: 790.69; the game 790.69
+  after 300 frames: 771.35; the game 771.35

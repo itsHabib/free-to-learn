@@ -1,0 +1,4 @@
+seed 32: 15 shots, 1 before practice
+landing slot at 66392
+practice landings unlike the game's: 0 of 14
+kit.fit: set

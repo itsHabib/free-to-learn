@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 640" role="img" aria-labelledby="lob2-state-t lob2-state-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="lob2-state-t">Lob II's state, two pointers away</title>
+<desc id="lob2-state-d">Lob II keeps its state behind two pointers: the word at 0x14120 holds the address of a struct whose field +4 holds the address of the state, and each value there is stored with a key word added. Three boxes joined by arrows, from level 9's build as the referee starts it. The word at 0x14120 holds 66544. Field +4 of the struct at 66544 holds 70160. The state, the struct at 70160: +8, the key: 0x4A0020C8, changes every round; +36, flag: 501.63, stored − key; +56, wind: -3.34, stored − key; +96, power: 55, stored − key; +100, angle: 45, stored − key; +104, cannon x: 64, no key. A new round moves the state and changes the key.</desc>
+<rect width="720" height="640" fill="#ffffff"/>
+<text x="20" y="30" font-size="22" fill="#57606a">Level 9's build at the start: *0x14120+4+36 is the flag</text>
+<rect x="20" y="50" width="680" height="64" fill="#f6f8fa" stroke="#8c959f" stroke-width="2" rx="6"/>
+<text x="36" y="92" font-weight="700">the word at 0x14120</text>
+<text x="684" y="92" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace">holds 66544</text>
+<line x1="80" y1="114" x2="80" y2="140" stroke="#1b1f24" stroke-width="3"/>
+<path d="M80 150 l-7 -12 h14 z" fill="#1b1f24"/>
+<rect x="20" y="150" width="680" height="64" fill="#f6f8fa" stroke="#8c959f" stroke-width="2" rx="6"/>
+<text x="36" y="192" font-weight="700">struct at 66544, field +4</text>
+<text x="684" y="192" text-anchor="end" font-family="ui-monospace, Menlo, Consolas, monospace">holds 70160</text>
+<line x1="80" y1="214" x2="80" y2="240" stroke="#1b1f24" stroke-width="3"/>
+<path d="M80 250 l-7 -12 h14 z" fill="#1b1f24"/>
+<rect x="20" y="250" width="680" height="336" fill="#e7ecfb" stroke="#3553d4" stroke-width="2" rx="6"/>
+<text x="36" y="290" font-weight="700">the state: struct at 70160</text>
+<rect x="28" y="310" width="664" height="40" fill="#ffffff" rx="4"/>
+<text x="44" y="338" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">+8</text>
+<text x="140" y="338" font-size="22">the key</text>
+<text x="300" y="338" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">0x4A0020C8</text>
+<text x="676" y="338" font-size="22" fill="#57606a" text-anchor="end">changes every round</text>
+<rect x="28" y="356" width="664" height="40" fill="#ffffff" rx="4"/>
+<text x="44" y="384" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">+36</text>
+<text x="140" y="384" font-size="22">flag</text>
+<text x="300" y="384" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">501.63</text>
+<text x="676" y="384" font-size="22" fill="#57606a" text-anchor="end">stored − key</text>
+<rect x="28" y="402" width="664" height="40" fill="#ffffff" rx="4"/>
+<text x="44" y="430" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">+56</text>
+<text x="140" y="430" font-size="22">wind</text>
+<text x="300" y="430" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">-3.34</text>
+<text x="676" y="430" font-size="22" fill="#57606a" text-anchor="end">stored − key</text>
+<rect x="28" y="448" width="664" height="40" fill="#ffffff" rx="4"/>
+<text x="44" y="476" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">+96</text>
+<text x="140" y="476" font-size="22">power</text>
+<text x="300" y="476" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">55</text>
+<text x="676" y="476" font-size="22" fill="#57606a" text-anchor="end">stored − key</text>
+<rect x="28" y="494" width="664" height="40" fill="#ffffff" rx="4"/>
+<text x="44" y="522" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">+100</text>
+<text x="140" y="522" font-size="22">angle</text>
+<text x="300" y="522" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">45</text>
+<text x="676" y="522" font-size="22" fill="#57606a" text-anchor="end">stored − key</text>
+<rect x="28" y="540" width="664" height="40" fill="#ffffff" rx="4"/>
+<text x="44" y="568" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">+104</text>
+<text x="140" y="568" font-size="22">cannon x</text>
+<text x="300" y="568" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">64</text>
+<text x="676" y="568" font-size="22" fill="#57606a" text-anchor="end">no key</text>
+<text x="20" y="624" font-size="22" fill="#57606a">a new round moves the state and changes the key</text>
+</svg>

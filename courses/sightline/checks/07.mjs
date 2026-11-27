@@ -45,7 +45,7 @@ export const cases = [
   {
     id: '07-mover', title: 'the flag\'s motion is the slice of game_tick that decides the flag\'s word',
     requirement: 'moverOf(tickFn, flagRaw) is slice(tickFn.stores, [the flag\'s place]): 6 stores on Lob (the flag, its speed twice, its timer twice, the random generator).',
-    reread: `${L}, the flag's motion in the code`,
+    reread: `${L}, the flag's motion is a slice`,
     async run({ fn }) {
       const moverOf = await fn('race.mjs', 'moverOf');
       for (const [game, want] of [['lob', 6]]) {
@@ -58,7 +58,7 @@ export const cases = [
   {
     id: '07-path', title: 'flagPath predicts the flag frame by frame',
     requirement: 'flagPath(bytes, mover, flag, frames) runs the motion slice on a copy of memory a frame at a time and decodes the flag after each: frames + 1 entries, path[0] now. On Lob builds 14 and 15 (bounces and random speed changes) it matches the game to 0.05 paces for 300 frames.',
-    reread: `${L}, the flag's motion in the code`,
+    reread: `${L}, running the slice on a copy of memory`,
     timeLimitMs: 20000,
     async run({ fn }) {
       const moverOf = await fn('race.mjs', 'moverOf');
@@ -83,7 +83,7 @@ export const cases = [
   {
     id: '07-judge-motion', title: 'judgeMotion accepts a right path and refutes wrong ones',
     requirement: 'judgeMotion(host, look, pathNow, { newRound, rounds, frames }) predicts, lets the game run and compares frame by frame within 0.05: { ok, problems, predicted }. A path that ignores the bounce is refuted, and so is one that gives null so early that fewer than 20 frames are predicted.',
-    reread: `${L}, judging a path`,
+    reread: `${L}, the motion judge`,
     timeLimitMs: 30000,
     async run({ fn }) {
       const judgeMotion = await fn('race.mjs', 'judgeMotion');
@@ -124,7 +124,7 @@ export const cases = [
   {
     id: '07-learn-motion', title: 'learnMotion watches the flag for 2 rounds before installing its motion',
     requirement: 'learnMotion(host, kit, env, which) judges the path from analyse(host).readers[which] over 2 rounds and only then sets kit.mover = { game, which, says }.',
-    reread: `${L}, judging a path`,
+    reread: `${L}, the motion judge`,
     timeLimitMs: 60000,
     async run({ load }) {
       const engine = await load('engine.mjs');
@@ -139,7 +139,7 @@ export const cases = [
   {
     id: '07-decider', title: 'the model may decide in time only if its answers are steady enough',
     requirement: 'pickDecider(env, budget) times three answers: the middle one, in frames, is the delay to plan for; the spread between fastest and slowest must be within the budget for the model to decide; otherwise, or if the model is not there, code decides with { who: "code", frames: 1 }.',
-    reread: `${L}, when the model may decide`,
+    reread: `${L}, when the decision model may decide`,
     async run({ fn }) {
       const pickDecider = await fn('engine.mjs', 'pickDecider');
       expectSame(await pickDecider(envWith(scripted({ decide: () => 0, decideMs: [100, 110, 105] })), 5), { who: 'model', frames: 6 }, { checked: 'answers of 100, 110 and 105 ms with a budget of 5 frames', what: 'the decider' });
@@ -218,7 +218,7 @@ export const cases = [
   {
     id: '07-sweep', title: 'FRAME_BUDGET is what your own sweep gives',
     requirement: 'FRAME_BUDGET in race.mjs is the largest unplanned delay at which your sweep of level 6 still hit 9 of 10, less 1.',
-    reread: `${L}, planned delay and surprise delay`,
+    reread: `${L}, the frame budget`,
     timeLimitMs: 90000,
     async run({ load }) {
       const engine = await load('engine.mjs');

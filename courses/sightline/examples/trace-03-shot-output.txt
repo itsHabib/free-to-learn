@@ -1,0 +1,9 @@
+seed 1, a fresh game: testShot at 45 and power 60
+  message SHORT BY 149, flag at 780.33
+  impact_x 631.71, frames 110
+  found.landing at 65896
+a new round: testShot at 30 and power 70
+  message LONG BY 25, flag at 688.84
+  impact_x 714.09, frames 92
+  found.landing at 65896
+the game's own landing: 714.09

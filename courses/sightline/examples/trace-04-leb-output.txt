@@ -1,0 +1,7 @@
+readU32(1F): value 31, next 1
+readU32(C2 2E): value 5954, next 2
+readU32(A0 E2 04): value 78112, next 3
+readU32(A0 E2 84 80 00): value 78112, next 5
+readS32(7F): value -1, next 1
+readS32(E8 00): value 104, next 2
+readS32(80 80 04): value 65536, next 3

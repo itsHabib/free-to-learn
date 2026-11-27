@@ -1,0 +1,6 @@
+three points, features 1 and x: [1.1667 1.5]
+three points all at x = 2: null
+fitShots on the 14 seed-7 shots:
+  [88.0514 21.5225 0.1153 0.0103 0.9721]
+worst miss on those 14: 7.05
+fitShots on 4 of them: null
