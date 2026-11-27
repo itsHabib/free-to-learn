@@ -1,5 +1,5 @@
 // The two cuts, as data: what is said, what is on screen, and how long a silent pause holds.
-// films/build.mjs turns each segment into stills (films/stage.html), speech (eSpeak NG), captions and a
+// films/build.mjs turns each segment into stills (films/stage.html), speech (Pip's voice, Kokoro af_heart), captions and a
 // transcript. Every number on screen comes from the game or from a recorded output in examples/ at render
 // time. The voice does not read out what a still already shows; captions carry every spoken line.
 //   shot.kind: 'game' (a frame of a level), 'clip' (frames of the level 2 run with its watch table),
@@ -9,7 +9,7 @@ export const COURSE_URL = 'freetolearn.world';
 export const film = {
   name: 'wall-clip',
   title: 'Par is 100. A search finished in 70 frames. How did Kettle get through the wall?',
-  width: 1280, height: 720, scale: 1, voice: { speed: 157, pitch: 43 },
+  width: 1280, height: 720, scale: 1, voice: { name: 'af_heart', speed: 1 },
   segments: [
     { shot: { kind: 'game', level: 'level2', frame: 0, label: 'Level 2 · par 100 frames' },
       say: ['Kettle is a small platformer built for the course Frame Perfect, named after the copper kettle you steer.',
@@ -59,7 +59,7 @@ export const film = {
 export const short = {
   name: 'wall-clip-short',
   title: 'Par 100. By design, 186. A search found 70. How?',
-  width: 540, height: 960, scale: 2, voice: { speed: 166, pitch: 43 }, burn: true,
+  width: 540, height: 960, scale: 2, voice: { name: 'af_heart', speed: 1 }, burn: true,
   segments: [
     { shot: { kind: 'game', level: 'level2', frame: 0 },
       say: ['Par for this level of Kettle is 100 frames.', 'Under the rules its makers meant, the fastest run takes 186.', 'A search found one that takes 70.'],

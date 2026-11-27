@@ -56,7 +56,7 @@ The four original scripts are voiced with the included en-us formant voice of eS
 
 ## Frame Perfect
 
-Frame Perfect, its game Kettle, the lessons, the bench page and the films' scripts and drawings are original Free to Learn material under the split licenses in LICENSE.md. The films are voiced with the included en-us formant voice of eSpeak NG 1.52.0; the files carry the generated speech, and the eSpeak NG program and data remain external tools.
+Frame Perfect, its game Kettle, the lessons, the bench page and the films' scripts and drawings are original Free to Learn material under the split licenses in LICENSE.md. The films are narrated by Pip, the channel's voice: Kokoro voice af_heart from the Kokoro-82M speech model (Apache License 2.0), run locally with kokoro-onnx 0.6.1 (MIT License). The files carry the generated speech; the model, its voices and kokoro-onnx remain external tools and are not included.
 
 The films' text is set in two fonts whose files are included in `courses/frame-perfect/films/fonts/`, each under the SIL Open Font License 1.1 with its license beside it:
 

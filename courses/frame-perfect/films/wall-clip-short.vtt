@@ -1,35 +1,35 @@
 WEBVTT
 
-00:00:00.500 --> 00:00:04.019
+00:00:00.500 --> 00:00:03.726
 Par for this level of
 Kettle is 100 frames.
 
-00:00:04.069 --> 00:00:09.263
+00:00:03.776 --> 00:00:08.585
 Under the rules its makers
 meant, the fastest run takes 186.
 
-00:00:09.313 --> 00:00:12.621
+00:00:08.635 --> 00:00:11.140
 A search found one that takes 70.
 
-00:00:12.671 --> 00:00:17.455
+00:00:11.190 --> 00:00:15.498
 Here Kettle closes on the wall,
 slowing to five pixels a frame.
 
-00:00:17.505 --> 00:00:25.192
+00:00:15.548 --> 00:00:22.423
 Does it stop, get pushed
 back, or go through?
 
-00:00:25.242 --> 00:00:26.240
+00:00:22.473 --> 00:00:23.315
 Through.
 
-00:00:26.290 --> 00:00:35.284
+00:00:23.365 --> 00:00:32.119
 A five-pixel move puts Kettle's front edge more than halfway into the
 8-pixel wall, and the game pushes it out of the nearer side, the far one.
 
-00:00:35.334 --> 00:00:40.682
+00:00:32.169 --> 00:00:36.633
 Walking speed is one and a half pixels
 a frame. So how did it get to five?
 
-00:00:40.732 --> 00:00:48.683
+00:00:36.683 --> 00:00:43.951
 In Frame Perfect you write the search that found
 this run, then read the game's code to see how.

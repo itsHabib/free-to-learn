@@ -1,7 +1,9 @@
-// Builds the Frame Perfect films from films/script.mjs: speech with eSpeak NG, stills from films/stage.html in
-// headless Chrome, captions, a transcript, then one MP4 per cut with the system ffmpeg.
-//   node films/build.mjs SCRATCH_DIR [film|short ...]
-// Needs: Node 22+, Google Chrome, espeak-ng with the en-us voice, ffmpeg. Writes into films/:
+// Builds the Frame Perfect films from films/script.mjs: speech in Pip's voice (Kokoro af_heart, through
+// films/speak.py), stills from films/stage.html in headless Chrome, captions, a transcript, then one MP4 per cut
+// with the system ffmpeg.
+//   KOKORO_DIR=... [KOKORO_PYTHON=...] node films/build.mjs SCRATCH_DIR [film|short ...]
+// Needs: Node 22+, Google Chrome, ffmpeg, and a Python with the kokoro_onnx package whose KOKORO_DIR holds
+// kokoro.onnx, voices.bin and lib/ (see films/REBUILD.md). Writes into films/:
 //   NAME.mp4, NAME.vtt, NAME.md for each cut, and wall-clip.jpg (the thumbnail). Deletes its stills when done.
 // On a shared machine take the Chrome lock around it (see films/REBUILD.md).
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node:fs';
@@ -15,18 +17,23 @@ const films = dirname(fileURLToPath(import.meta.url));
 const course = resolve(films, '..');
 const scratch = resolve(process.argv[2] ?? join(course, '.scratch', 'film'));
 const which = process.argv.slice(3).length ? process.argv.slice(3) : ['film', 'short'];
-const LEAD = 0.5, GAP = 0.35, TAIL = 0.7, END_HOLD = 1.6, RATE = 22050;
+const LEAD = 0.5, GAP = 0.35, TAIL = 0.7, END_HOLD = 1.6, RATE = 24000;
+const KOKORO = process.env.KOKORO_DIR;
+if (!KOKORO || !['kokoro.onnx', 'voices.bin', 'lib/kokoro_onnx'].every((f) => existsSync(join(KOKORO, f)))) throw new Error('Set KOKORO_DIR to a folder with kokoro.onnx, voices.bin and lib/ (see films/REBUILD.md)');
 
 // ---------------------------------------------------------------- speech
-function speak(text, voice, file) {
-  execFileSync('espeak-ng', ['-v', 'en-us', '-s', String(voice.speed), '-p', String(voice.pitch), '-w', file, '--', text]);
-  const buf = readFileSync(file);
-  // A WAV from espeak-ng: find the "data" chunk; 16-bit mono at 22050 Hz.
-  if (buf.readUInt16LE(22) !== 1 || buf.readUInt32LE(24) !== RATE || buf.readUInt16LE(34) !== 16) throw new Error(`unexpected WAV format from espeak-ng: ${file}`);
-  let at = 12;
-  while (buf.toString('ascii', at, at + 4) !== 'data') at += 8 + buf.readUInt32LE(at + 4);
-  const size = Math.min(buf.readUInt32LE(at + 4), buf.length - at - 8);
-  return new Int16Array(buf.buffer.slice(buf.byteOffset + at + 8, buf.byteOffset + at + 8 + size));
+// Every line of a cut in one Kokoro run, so the model loads once. Returns the samples of each line, in order.
+function speakAll(texts, voice, dir) {
+  const lines = texts.map((text, i) => ({ text, file: join(dir, `say-${i}.wav`) }));
+  execFileSync(process.env.KOKORO_PYTHON ?? 'python3', [join(films, 'speak.py'), KOKORO], { input: JSON.stringify({ voice: voice.name, speed: voice.speed, lines }), stdio: ['pipe', 'inherit', 'inherit'] });
+  return lines.map(({ file }) => {
+    const buf = readFileSync(file);
+    if (buf.readUInt16LE(22) !== 1 || buf.readUInt32LE(24) !== RATE || buf.readUInt16LE(34) !== 16) throw new Error(`unexpected WAV format from speak.py: ${file}`);
+    let at = 12;
+    while (buf.toString('ascii', at, at + 4) !== 'data') at += 8 + buf.readUInt32LE(at + 4);
+    const size = Math.min(buf.readUInt32LE(at + 4), buf.length - at - 8);
+    return new Int16Array(buf.buffer.slice(buf.byteOffset + at + 8, buf.byteOffset + at + 8 + size));
+  });
 }
 
 function wav(samples) {
@@ -41,12 +48,13 @@ function wav(samples) {
 
 // ---------------------------------------------------------------- timeline
 function timeline(cut, dir) {
-  let t = LEAD;
+  let t = LEAD, n = 0;
   const lines = [], segs = [];
+  const spoken = speakAll(cut.segments.flatMap((seg) => seg.say), cut.voice, dir);
   cut.segments.forEach((seg, si) => {
     const start = t;
     seg.say.forEach((text, k) => {
-      const audio = speak(text, cut.voice, join(dir, `say-${si}-${k}.wav`));
+      const audio = spoken[n++];
       const dur = audio.length / RATE;
       lines.push({ si, k, text, start: t, end: t + dur, audio });
       t += dur + GAP;

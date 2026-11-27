@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 40622,
-      "sha256": "e423137f8239ee0be36be530de20cb05f30f4e94be4d92c6f64c8b8597bcae08"
+      "sha256": "7ba04dd899f59f5aea37ec6231443ed8b242f8931d0a2d657b964ba7044f36aa"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -129,13 +129,13 @@
     },
     {
       "path": ".packages/frame-perfect.zip",
-      "bytes": 3893394,
-      "sha256": "798a002bd95dc355b3befc40e51e6bb1aadb3144d520b9f4e11591248ea220c7"
+      "bytes": 3908043,
+      "sha256": "812084721243d4becc47ec31bf858c4a7801bd915e5eb29c6f906108284ce966"
     },
     {
       "path": ".packages/frame-perfect.zip.sha256",
       "bytes": 84,
-      "sha256": "167d9db167997032cedb0ebf15dda4e7c07e7b5698ce16316ce295b9aa3bbb38"
+      "sha256": "3c4a40fa5c14c4c21b317dd099b6fc50861134ca42a84444099070a8c97ca1a8"
     },
     {
       "path": ".packages/inside-the-shot.zip",
@@ -279,8 +279,8 @@
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 485893,
-      "sha256": "91392984df4894dacab053377872515ffadfa1d1523aeb083c1aeae3b7032c8a"
+      "bytes": 486118,
+      "sha256": "acc729c9d5b01759d07081d9b9c300aa214d850914b40c9f57fac67a2d64c999"
     },
     {
       "path": "LICENSE.md",
@@ -314,8 +314,8 @@
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "bytes": 5709,
-      "sha256": "d2811de91fa263fbe4060f32632557f76665f41a3b950ad435fe09ee211c002c"
+      "bytes": 5832,
+      "sha256": "7c2d68d0b736a55927ad237cda44537409d4507ebe50c19d90ddf2e1c94826d5"
     },
     {
       "path": "courses/adaptive-decision-engine/API.md",
@@ -4019,8 +4019,8 @@
     },
     {
       "path": "courses/frame-perfect/films/REBUILD.md",
-      "bytes": 2489,
-      "sha256": "96d613c4053e1bc98331b8dae043adf28765c5797cba2a492411a113fe31600c"
+      "bytes": 2800,
+      "sha256": "94d6b34ec4f200e6e3a0cb20b2e2b28d1f60257a8ba0f5036d04c4df16bc3310"
     },
     {
       "path": "courses/frame-perfect/films/browser.mjs",
@@ -4029,8 +4029,8 @@
     },
     {
       "path": "courses/frame-perfect/films/build.mjs",
-      "bytes": 10244,
-      "sha256": "5e2a678df5d666da975f02c63af9e042b578585daacb2ea46b4febf521b108c8"
+      "bytes": 10977,
+      "sha256": "44cffe6aec49f732c63659236288839fe5c7a138c02256e01dc1c166d26e92e0"
     },
     {
       "path": "courses/frame-perfect/films/capture.mjs",
@@ -4074,8 +4074,13 @@
     },
     {
       "path": "courses/frame-perfect/films/script.mjs",
-      "bytes": 7267,
-      "sha256": "937e014c7e8f5dfd1f1b5d1b9bffd2610200c729f34f2625d51abd66b484b028"
+      "bytes": 7296,
+      "sha256": "fc6ad33fa194a912471482dfa114437bda609902a11bd2479d324bac2c4ccd0d"
+    },
+    {
+      "path": "courses/frame-perfect/films/speak.py",
+      "bytes": 1665,
+      "sha256": "462c21320c1f4a9aeada9309d17628860d253e5364b245968931d991da02fcba"
     },
     {
       "path": "courses/frame-perfect/films/stage.css",
@@ -4095,17 +4100,17 @@
     {
       "path": "courses/frame-perfect/films/wall-clip-short.md",
       "bytes": 1297,
-      "sha256": "d0e4579caff6d91fe1f05264003e5bbac8d2d22de31219a77de01cf6aa255eac"
+      "sha256": "51ec7d4c573a44813444b166184915ef17093a2e17a7281112fe623d659f499a"
     },
     {
       "path": "courses/frame-perfect/films/wall-clip-short.mp4",
-      "bytes": 892789,
-      "sha256": "99016475e3aa4f125d1497ad6d3985cc716138aa64222d131f048920b3e6854c"
+      "bytes": 880852,
+      "sha256": "ece38ab3f48d534167f2a32ecdaf98d3d8daaef34c81d706a222bc0afb3291fa"
     },
     {
       "path": "courses/frame-perfect/films/wall-clip-short.vtt",
       "bytes": 860,
-      "sha256": "de69b99e7b2287f40134956535229151a578094aa4f8009ef39967fb659e8d95"
+      "sha256": "1b95587f89b3a653941241c1f297220c3e789ddfb340aa0cf050f1675765c55b"
     },
     {
       "path": "courses/frame-perfect/films/wall-clip.jpg",
@@ -4115,17 +4120,17 @@
     {
       "path": "courses/frame-perfect/films/wall-clip.md",
       "bytes": 3846,
-      "sha256": "f3ddb1f3bbab3248768d38d0e16b6052375c3eff90f79097ddc3c5cccd47e285"
+      "sha256": "d2bd6077fdd3ad52f35a43564f24aad5e1b4dcb6013c31c420b18f39f92c6892"
     },
     {
       "path": "courses/frame-perfect/films/wall-clip.mp4",
-      "bytes": 2146450,
-      "sha256": "0d6dd6017b94703b236554bdc500a89fe8d7e7c618a41d599cf25a96da167d9e"
+      "bytes": 2138498,
+      "sha256": "59012b77b4e733ca9430da3842bdb74f59ce6b6242830dd1a0b92dea1f8a092b"
     },
     {
       "path": "courses/frame-perfect/films/wall-clip.vtt",
       "bytes": 2655,
-      "sha256": "a7da80b3c53e9708dc52f4aaeb0206cdb7dc160aaecb0071217263a151147402"
+      "sha256": "5ac1b4751c89a227d9f919409d8e20632816df51f8d8b3bd824198b85d570400"
     },
     {
       "path": "courses/frame-perfect/game/builds.json",

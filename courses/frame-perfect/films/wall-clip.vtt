@@ -1,88 +1,88 @@
 WEBVTT
 
-00:00:00.500 --> 00:00:07.224
+00:00:00.500 --> 00:00:06.447
 Kettle is a small platformer built for the course
 Frame Perfect, named after the copper kettle you steer.
 
-00:00:07.274 --> 00:00:14.754
+00:00:06.497 --> 00:00:13.620
 A run is a file with one line of buttons for each frame,
 and the game plays that file back the same way every time.
 
-00:00:14.804 --> 00:00:21.682
+00:00:13.670 --> 00:00:20.007
 On level 2 the flag sits behind a tall wall, and
 the intended route climbs the platforms over it.
 
-00:00:21.732 --> 00:00:25.865
+00:00:20.057 --> 00:00:23.758
 Par is the frame count the
 level sets as its target.
 
-00:00:25.915 --> 00:00:32.153
+00:00:23.808 --> 00:00:29.052
 With the game working as its makers
 meant, the best run takes 186 frames.
 
-00:00:32.203 --> 00:00:42.307
+00:00:29.102 --> 00:00:38.358
 Could any run finish within par?
 Decide before the next result.
 
-00:00:42.357 --> 00:00:46.939
+00:00:38.408 --> 00:00:42.476
 A breadth-first search assumes nothing
 about how the game should behave.
 
-00:00:46.989 --> 00:00:52.444
+00:00:42.526 --> 00:00:47.425
 It tries every input on every frame and
 merges runs that reach the same state.
 
-00:00:52.494 --> 00:01:01.033
+00:00:47.475 --> 00:00:55.269
 Its run is 116 frames shorter than the intended best,
 so something moves Kettle faster than its makers meant.
 
-00:01:01.083 --> 00:01:06.540
+00:00:55.319 --> 00:01:00.234
 Here is that run near the wall, with position
 and speed read from the game's memory.
 
-00:01:06.590 --> 00:01:17.819
+00:01:00.284 --> 00:01:10.696
 Left presses on frames 64 and 66 each take half a pixel off the
 speed, which leaves the front edge just short of the wall on frame 66.
 
-00:01:17.869 --> 00:01:28.115
+00:01:10.746 --> 00:01:19.673
 On the next frame, does it stop,
 get pushed back, or go through?
 
-00:01:28.165 --> 00:01:29.953
+00:01:19.723 --> 00:01:21.270
 It goes through.
 
-00:01:30.003 --> 00:01:35.187
+00:01:21.320 --> 00:01:25.844
 The game moves Kettle first, then tests
 only the edge it is moving toward.
 
-00:01:35.237 --> 00:01:40.257
+00:01:25.894 --> 00:01:30.411
 If that edge is inside a wall, the game
 pushes Kettle out on the nearer side.
 
-00:01:40.307 --> 00:01:47.626
+00:01:30.461 --> 00:01:36.932
 At walking speed the edge ends at most one and a half
 pixels in, so the nearer side is the one it came from.
 
-00:01:47.676 --> 00:01:54.677
+00:01:36.982 --> 00:01:43.606
 At five pixels the edge ends past the middle of the
 8-pixel tile, and the nearer side is the far one.
 
-00:01:54.727 --> 00:02:04.019
+00:01:43.656 --> 00:01:52.347
 Near the start, a belt adds half a pixel a frame to walking speed,
 which makes two, and a jump made at that speed adds half a pixel more.
 
-00:02:04.069 --> 00:02:13.429
+00:01:52.397 --> 00:02:01.506
 The cap that holds Kettle to walking speed runs only on ground frames
 without a jump, so a jump on the frame Kettle lands keeps every boost.
 
-00:02:13.479 --> 00:02:17.643
+00:02:01.556 --> 00:02:05.021
 Eight of those jumps take
 it to six pixels a frame.
 
-00:02:17.693 --> 00:02:25.219
+00:02:05.071 --> 00:02:11.897
 In Frame Perfect you write the search that found this run,
 and a minimiser that keeps only the presses the clip needs.
 
-00:02:25.269 --> 00:02:32.415
+00:02:11.947 --> 00:02:18.416
 The capstone is level 3, which you
 finish with your own tools and no lesson.

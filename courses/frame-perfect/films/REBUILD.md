@@ -13,14 +13,15 @@ The build scripts are included so you can read how each picture is made. They ne
 
 ## What the build uses
 
-- **Software:** Node 22 or newer, Google Chrome (set `CHROME` if it isn't at the macOS default path), eSpeak NG with its `en-us` voice (the cuts were made with 1.52.0), and ffmpeg. ffmpeg needs no subtitle or text filters, because captions are drawn into the stills.
+- **Software:** Node 22 or newer, Google Chrome (set `CHROME` if it isn't at the macOS default path), ffmpeg, and Kokoro for the voice. ffmpeg needs no subtitle or text filters, because captions are drawn into the stills.
+- **Voice:** Pip, the channel's voice, is Kokoro `af_heart`. `films/speak.py` runs it locally with the `kokoro_onnx` package (the cuts were made with 0.6.1). Set `KOKORO_DIR` to a folder holding `kokoro.onnx`, `voices.bin` (the v1.0 voice set) and `lib/` with the package, and `KOKORO_PYTHON` to a Python that can load it.
 - **Fonts:** `fonts/` holds Barlow and IBM Plex Mono, both under the SIL Open Font License 1.1. Nothing is downloaded.
 
 From `courses/frame-perfect/`, with the reference run in place:
 
 ```sh
 node films/capture.mjs
-node films/build.mjs SCRATCH_DIR
+KOKORO_DIR=... KOKORO_PYTHON=... node films/build.mjs SCRATCH_DIR
 ```
 
 - **`capture.mjs`** re-derives every number the cuts show or say, from the game, the reference run and the recorded outputs, and stops if any differs.
