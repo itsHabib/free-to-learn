@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 42486,
-      "sha256": "12fc7784ef39ca921ead44867a79af000508e4607f6a0a89bad557a5f9e5ef0d"
+      "sha256": "445c2de3ddbf9c844c7ad9433c84579a13cd5fb3ade25d497a743f6f9955b015"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -79,13 +79,13 @@
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip",
-      "bytes": 526061,
-      "sha256": "87fe62b4f794963ab5c55c6886326eb0a5629ca0f4ee7385779bd500f06b1986"
+      "bytes": 544543,
+      "sha256": "1645e249ff5ee941825b4cfce2628b5ae07c53caaa068118627c9eebf4e8e67d"
     },
     {
       "path": ".packages/anti-cheat-engineering-part-two.zip.sha256",
       "bytes": 102,
-      "sha256": "e637cf1e1e7427c2fe51cf543dacc3b20d3a7143eac4efcbabffc8cbb3ced621"
+      "sha256": "a7cbb9afa366c13405d7674c9827ccf3bbc52b357596b32ca5ff99b6f4c067e8"
     },
     {
       "path": ".packages/anti-cheat-engineering.zip",
@@ -1439,33 +1439,88 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/12.md",
-      "bytes": 41714,
-      "sha256": "4686e95d5818fd5904097a2b5208c87b12c97718264c86239276da35fd272de0"
+      "bytes": 42095,
+      "sha256": "14300cef304ae9e2ffe06beb9b511b5f65a5f8c90099ead3d627b45801f8f7c4"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/13.md",
-      "bytes": 27856,
-      "sha256": "b70fd5e21e13db15e209c29b540df8b58cd84b72632d9aa5d933b44e0ffbb815"
+      "bytes": 28386,
+      "sha256": "a5be161b274da4a13d01f35bf706aa08d7163a8d8d3fa616a605e079f31de871"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/14.md",
-      "bytes": 44004,
-      "sha256": "fb3a11f173d975b6c9508f30e4203565f70639a114f38b3d4caa663243d41e2e"
+      "bytes": 44824,
+      "sha256": "fe4700c9ff49b1c2a23ff659d6b40f6f7ca1e276478f4d473097c788ffc4d8ca"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/15.md",
-      "bytes": 34734,
-      "sha256": "64795dba5bbb4b124594aeae078acbc76e620da51d28dea211fac68c1f23b90c"
+      "bytes": 35794,
+      "sha256": "7cd3892cfed5c36fc578a378e89dad5b84046b2318ff854b0f7a1877a2d840aa"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/16.md",
-      "bytes": 28506,
-      "sha256": "b453577c4e13174889a9cda9eb7b6d08a1e0688a41988ddbe0db6893f414cb23"
+      "bytes": 29254,
+      "sha256": "5c4fa9a3633734ed66f412425ecfa6e11647725b194f72c481ef8e757e0b7199"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/17.md",
-      "bytes": 22870,
-      "sha256": "2cb56779f3649b98db70980793cfb3ae28592eff152b5c403a16384e96b5169d"
+      "bytes": 23128,
+      "sha256": "1433d4142f2f928e9226729e39537f61b8cf6fde5bc378e759b73d6360efd267"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/base-rate.svg",
+      "bytes": 3754,
+      "sha256": "b84d6e293c78de00f17c2b757ae5ff672f279a73b5cdf5d76b21441c18a51216"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/defence-map.svg",
+      "bytes": 5220,
+      "sha256": "563fa5ee87cd39cf27159d2b3ce79bf52658ac0b2780164678587e5d1659c4f6"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/detector-pipeline.svg",
+      "bytes": 4124,
+      "sha256": "151d90cf010ac2a6286edbeb44503380d1facafe939469732a2549817c072372"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/full-vs-drawn.svg",
+      "bytes": 6137,
+      "sha256": "eae1e61a58de0a19fc585e4c73760dfb211fc6d4bfc88e765e8d389b3fe2e44f"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/late-press.svg",
+      "bytes": 6417,
+      "sha256": "20438181a07fadb4cd15d1d68db7aaa480dac16e7bfefbe44a8fce23f533f6ec"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/noninterference.svg",
+      "bytes": 4689,
+      "sha256": "28b93e84a95ea807e1d16f058ec99e9df0f3b408c5d319e83fc9346a7e126d3e"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/one-feature-score.svg",
+      "bytes": 7179,
+      "sha256": "65bdd88dd27baf84ea1aee30cc3bbef5319f60bfe329d836f6f971ea31a044ab"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/replay-tamper.svg",
+      "bytes": 4164,
+      "sha256": "b500401e84add4eb85d3fa2aa2e646ae7bbcb192ae0c5fa2be7be003f26bbb27"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/server-tick.svg",
+      "bytes": 5024,
+      "sha256": "5feda510290cadcf82af85ad8ce2d4f31132d68d315501667e48bac1b168130c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/trade-writes.svg",
+      "bytes": 5280,
+      "sha256": "a948c9fbb85021c1bc6665d987bd378e9c680868fa68a2df2ec4c84ef87ae23c"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/window-tradeoff.svg",
+      "bytes": 6784,
+      "sha256": "61a4e593a8fe1ea53f493d74c39d45a73ee994e4781e289af0bc683a3aa88dfe"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/lessons/sections.json",
@@ -1474,8 +1529,8 @@
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/practice.json",
-      "bytes": 66937,
-      "sha256": "331e6219d523cfd218f1b10b3f7425188c89fc73b5bbe21d53d41ae6917c55fb"
+      "bytes": 71870,
+      "sha256": "cecd557c130f024b050e43f2b39f086d581be62650f864a7e18d1ab2fd6c6625"
     },
     {
       "path": "courses/anti-cheat-engineering-part-two/public/adversaries.mjs",

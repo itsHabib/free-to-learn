@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="440" viewBox="0 0 400 440" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">The one-feature score on the dev split</title>
+<desc id="d">Two bar charts of the dev split's sessions by hits in 12 shots, legal above and searcher below. Legal sessions with 0 to 12 hits: 243, 344, 199, 112, 58, 26, 11, 5, 0, 2, 0, 0, 0. Searcher sessions: 0, 0, 0, 0, 1, 7, 11, 24, 28, 25, 3, 1, 0. The one-feature score's threshold, 5.379032258064517, is the score of 9 hits in 12, so the bars from 9 hits on are flagged: 2 legal sessions and 29 of 100 searcher sessions. 21 legal sessions fired fewer than 12 shots; each is counted in the bar of its hits, and none reaches the threshold.</desc>
+<rect width="400" height="440" fill="#ffffff"/>
+<text x="16" y="22" font-weight="600">The one-feature score on the dev split</text>
+<text x="16" y="39" font-size="12" fill="#5f6a70">sessions by hits in 12 shots; the score rises with the hits</text>
+<text x="16" y="70" font-size="13" font-weight="600">1,000 legal sessions</text>
+<line x1="44" y1="192" x2="384" y2="192" stroke="#c4ccd0"/>
+<rect x="46" y="121.36" width="22.15" height="70.64" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="57.08" y="117.36" font-size="12" text-anchor="middle">243</text>
+<rect x="72.15" y="92" width="22.15" height="100" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="83.23" y="88" font-size="12" text-anchor="middle">344</text>
+<rect x="98.31" y="134.15" width="22.15" height="57.85" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="109.38" y="130.15" font-size="12" text-anchor="middle">199</text>
+<rect x="124.46" y="159.44" width="22.15" height="32.56" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="135.54" y="155.44" font-size="12" text-anchor="middle">112</text>
+<rect x="150.62" y="175.14" width="22.15" height="16.86" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="161.69" y="171.14" font-size="12" text-anchor="middle">58</text>
+<rect x="176.77" y="184.44" width="22.15" height="7.56" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="187.85" y="180.44" font-size="12" text-anchor="middle">26</text>
+<rect x="202.92" y="188.8" width="22.15" height="3.2" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="214" y="184.8" font-size="12" text-anchor="middle">11</text>
+<rect x="229.08" y="190.55" width="22.15" height="1.45" fill="#eef2f3" stroke="#5f6a70"/>
+<text x="240.15" y="186.55" font-size="12" text-anchor="middle">5</text>
+<rect x="281.38" y="191.42" width="22.15" height="0.58" fill="#b23a2a" stroke="#b23a2a"/>
+<text x="292.46" y="187.42" font-size="12" text-anchor="middle" font-weight="600" fill="#b23a2a">2</text>
+<text x="57.08" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">0</text>
+<text x="83.23" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">1</text>
+<text x="109.38" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">2</text>
+<text x="135.54" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">3</text>
+<text x="161.69" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">4</text>
+<text x="187.85" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">5</text>
+<text x="214" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">6</text>
+<text x="240.15" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">7</text>
+<text x="266.31" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">8</text>
+<text x="292.46" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">9</text>
+<text x="318.62" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">10</text>
+<text x="344.77" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">11</text>
+<text x="370.92" y="206" font-size="12" text-anchor="middle" fill="#5f6a70">12</text>
+<text x="16" y="240" font-size="13" font-weight="600">100 searcher sessions</text>
+<line x1="44" y1="342" x2="384" y2="342" stroke="#c4ccd0"/>
+<rect x="150.62" y="339.14" width="22.15" height="2.86" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="161.69" y="335.14" font-size="12" text-anchor="middle">1</text>
+<rect x="176.77" y="322" width="22.15" height="20" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="187.85" y="318" font-size="12" text-anchor="middle">7</text>
+<rect x="202.92" y="310.57" width="22.15" height="31.43" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="214" y="306.57" font-size="12" text-anchor="middle">11</text>
+<rect x="229.08" y="273.43" width="22.15" height="68.57" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="240.15" y="269.43" font-size="12" text-anchor="middle">24</text>
+<rect x="255.23" y="262" width="22.15" height="80" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="266.31" y="258" font-size="12" text-anchor="middle">28</text>
+<rect x="281.38" y="270.57" width="22.15" height="71.43" fill="#2f6f8f" stroke="#2f6f8f"/>
+<text x="292.46" y="266.57" font-size="12" text-anchor="middle" font-weight="600" fill="#2f6f8f">25</text>
+<rect x="307.54" y="333.43" width="22.15" height="8.57" fill="#2f6f8f" stroke="#2f6f8f"/>
+<text x="318.62" y="329.43" font-size="12" text-anchor="middle" font-weight="600" fill="#2f6f8f">3</text>
+<rect x="333.69" y="339.14" width="22.15" height="2.86" fill="#2f6f8f" stroke="#2f6f8f"/>
+<text x="344.77" y="335.14" font-size="12" text-anchor="middle" font-weight="600" fill="#2f6f8f">1</text>
+<text x="57.08" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">0</text>
+<text x="83.23" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">1</text>
+<text x="109.38" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">2</text>
+<text x="135.54" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">3</text>
+<text x="161.69" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">4</text>
+<text x="187.85" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">5</text>
+<text x="214" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">6</text>
+<text x="240.15" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">7</text>
+<text x="266.31" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">8</text>
+<text x="292.46" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">9</text>
+<text x="318.62" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">10</text>
+<text x="344.77" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">11</text>
+<text x="370.92" y="356" font-size="12" text-anchor="middle" fill="#5f6a70">12</text>
+<line x1="279.38" y1="52" x2="279.38" y2="358" stroke="#22282b" stroke-width="1.5" stroke-dasharray="5 3"/>
+<text x="283.38" y="62" font-size="12" font-weight="600">threshold 5.379:</text>
+<text x="283.38" y="76" font-size="12" font-weight="600">9 hits or more</text>
+<text x="283.38" y="90" font-size="12" font-weight="600">flagged</text>
+<text x="16" y="372" font-size="12" fill="#5f6a70">hits in 12 shots</text>
+<text x="16" y="394" font-size="13" font-weight="600">flagged: 2 legal, 29 of 100 searcher</text>
+<text x="16" y="412" font-size="12" fill="#5f6a70">21 legal sessions fired fewer than 12 shots; each is drawn</text>
+<text x="16" y="427" font-size="12" fill="#5f6a70">in the bar of its own hits</text>
+</svg>

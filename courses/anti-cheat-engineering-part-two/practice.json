@@ -1197,6 +1197,51 @@
   "lesson": "15",
   "section": "The judge"
  },
+ "15g": {
+  "version": 1,
+  "lesson": "15",
+  "section": "A press, late",
+  "retry": "15g2",
+  "question": "Suppose the courier server judged every press at the tick it decides it, with no rewind. Which honest players would lose presses that their own screen showed in range? (a) none (b) mostly players with long round trips (c) mostly players with short round trips (d) all players about equally",
+  "format": "one letter",
+  "expected": "b",
+  "reason": "A press judged at the tick it is decided is judged about one round trip after the moment the player saw. A player with a short round trip still stands in range then; a player with a long one has walked on, so the server refuses a press the player's screen showed in range. The window table's first row counts these refusals.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "The courier keeps moving while the view and the press travel. A player far enough away has walked out of range by the time the server decides."
+   },
+   {
+    "answer": "c",
+    "feedback": "A short round trip means the press arrives while the courier is still near where the player saw it. The players with long round trips are the ones who lose presses."
+   },
+   {
+    "answer": "d",
+    "feedback": "How far the courier walks before the decision grows with the round trip, so the lost presses fall on players far away."
+   }
+  ]
+ },
+ "15g2": {
+  "version": 1,
+  "lesson": "15",
+  "section": "A press, late",
+  "retryOnly": true,
+  "variantOf": "15g",
+  "question": "With no rewind, two honest players press interact at the first view that shows the courier in range. One stops with the press; the other keeps walking. Which of them keeps its presses up to the longer round trip? (a) the one who stops (b) the one who keeps walking (c) neither: their limits are the same",
+  "format": "one letter",
+  "expected": "a",
+  "reason": "A stop is admitted with the press, so the courier stops moving in the tick the server decides it and stays nearer the place the player saw. The courier that keeps walking moves one more step before the decision, so it leaves the zone at a shorter round trip.",
+  "wrong": [
+   {
+    "answer": "b",
+    "feedback": "Walking on carries the courier further from where the player saw it. Stopping keeps it in range for a longer round trip."
+   },
+   {
+    "answer": "c",
+    "feedback": "The stop takes effect before the courier moves in the decided tick, so the player who stops is judged one step nearer than the one who walks on."
+   }
+  ]
+ },
  "16e": {
   "version": 1,
   "lesson": "16",
@@ -1232,6 +1277,55 @@
   "wrong": [],
   "lesson": "16",
   "section": "Write what you will do first"
+ },
+ "16f": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Four writes and a crash",
+  "retry": "16f2",
+  "question": "The server makes the four writes in this order: the sword into Bo's inventory, the sword out of Ana's, the coins out of Bo's purse, the coins into Ana's. It stops right after the second write, and nobody retries. Who holds the sword, and has Bo paid? (a) Ana holds it, and Bo has not paid (b) Bo holds it, and Bo has not paid (c) Bo holds it, and Bo has paid (d) nobody holds it",
+  "format": "one letter",
+  "expected": "b",
+  "reason": "The first write puts the sword into Bo's inventory and the second takes it out of Ana's. The coins move only in the third and fourth writes, which never happened, so Bo holds the sword and has paid nothing.",
+  "wrong": [
+   {
+    "answer": "a",
+    "feedback": "The first write already gave Bo the sword, and the second took it out of Ana's inventory, so Bo holds it."
+   },
+   {
+    "answer": "c",
+    "feedback": "The coins move in the third and fourth writes, and the server stopped before them: Bo has paid nothing."
+   },
+   {
+    "answer": "d",
+    "feedback": "The sword would be in nobody's inventory only if it left Ana before it reached Bo. Here the first write gives it to Bo."
+   }
+  ]
+ },
+ "16f2": {
+  "version": 1,
+  "lesson": "16",
+  "section": "Four writes and a crash",
+  "retryOnly": true,
+  "variantOf": "16f",
+  "question": "The same four writes in the same order. This time the server stops right after the third write, and nobody retries. Who holds the sword, and who has been paid? (a) Ana holds it, and nobody has paid (b) Bo holds it, and Bo has not paid (c) Bo holds it, Bo has paid and Ana has been paid (d) Bo holds it, Bo has paid and Ana has not been paid",
+  "format": "one letter",
+  "expected": "d",
+  "reason": "The first two writes move the sword to Bo, and the third takes the coins out of Bo's purse. The fourth, which pays Ana, never happened, so Bo has paid and Ana has not been paid: those coins are in nobody's purse.",
+  "wrong": [
+   {
+    "answer": "b",
+    "feedback": "The third write is the one that takes the coins out of Bo's purse, and it happened."
+   },
+   {
+    "answer": "c",
+    "feedback": "Ana is paid in the fourth write, and the server stopped before it."
+   },
+   {
+    "answer": "a",
+    "feedback": "The first write gave Bo the sword and the second took it from Ana, so Bo holds it."
+   }
+  ]
  },
  "17f": {
   "version": 1,

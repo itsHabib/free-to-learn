@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="452" viewBox="0 0 400 452" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">One server tick</title>
+<desc id="d">A flow from top to bottom. For each text that arrived since the last tick, in arrival order: parseInput(text) refuses it with one of text, too-long, json, object, keys, version, seq, angle, power, fire; otherwise admit(state, input, facts), given the tick, the round and whether the shell is flying, refuses it with stale, flying, fired, leaving the state unchanged; otherwise the input is admitted: session.apply(input), the state becomes next, and the recorder hears admitted(tick, input). Then the next text. When no text is left, session.step() runs the game 3 frames, and view(game, { tick, ack }) makes the one message sent to the client.</desc>
+<rect width="400" height="452" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5f6a70"/></marker><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b23a2a"/></marker></defs>
+<text x="16" y="22" font-weight="600">One 50 ms tick of one player's session</text>
+<text x="16" y="39" font-size="12" fill="#5f6a70">public/runtime.mjs, tick(); your two functions in blue</text>
+<rect x="16" y="52" width="368" height="40" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="24" y="69" font-size="13" font-weight="600">for each text that arrived since the last tick,</text>
+<text x="26" y="85" font-size="12" fill="#5f6a70">in arrival order; refused or admitted, then the next:</text>
+<rect x="30" y="112" width="208" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="38" y="129" font-size="12" font-weight="600" font-family="ui-monospace, Menlo, Consolas, monospace">parseInput(text)</text>
+<text x="40" y="145" font-size="12" fill="#5f6a70">reads the text alone</text>
+<rect x="30" y="184" width="208" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="38" y="201" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">admit(state, input, facts)</text>
+<text x="40" y="217" font-size="12" fill="#5f6a70">facts: tick, round, flying</text>
+<rect x="30" y="244" width="354" height="56" fill="#dcefe2" stroke="#2c7a4b" rx="4"/>
+<text x="38" y="261" font-size="13" font-weight="600">admitted</text>
+<text x="40" y="277" font-size="12" fill="#5f6a70" font-family="ui-monospace, Menlo, Consolas, monospace">session.apply(input)</text>
+<text x="40" y="292" font-size="12" fill="#5f6a70" font-family="ui-monospace, Menlo, Consolas, monospace">state = next; recorder.admitted(tick, input)</text>
+<rect x="16" y="336" width="368" height="40" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="24" y="353" font-size="12" font-weight="600" font-family="ui-monospace, Menlo, Consolas, monospace">session.step()</text>
+<text x="26" y="369" font-size="12" fill="#5f6a70">the game runs 3 frames</text>
+<rect x="16" y="396" width="368" height="40" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="24" y="413" font-size="12" font-weight="600" font-family="ui-monospace, Menlo, Consolas, monospace">view(game, { tick, ack })</text>
+<text x="26" y="429" font-size="12" fill="#5f6a70">one message, sent to the client</text>
+<line x1="70" y1="92" x2="70" y2="110" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<line x1="70" y1="152" x2="70" y2="182" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<line x1="70" y1="224" x2="70" y2="242" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<line x1="70" y1="300" x2="70" y2="334" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<line x1="70" y1="376" x2="70" y2="394" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<path d="M30 272 L 20 272 L 20 94" fill="none" stroke="#5f6a70" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#a)"/>
+<text x="80" y="324" font-size="12" fill="#5f6a70">when no text is left</text>
+<line x1="238" y1="132" x2="250" y2="132" stroke="#b23a2a" stroke-width="1.4" marker-end="url(#b)"/>
+<text x="254" y="117" font-size="12" font-weight="600" fill="#b23a2a">refused:</text>
+<text x="254" y="132" font-size="12" fill="#b23a2a">text, too-long, json,</text>
+<text x="254" y="146" font-size="12" fill="#b23a2a">object, keys,</text>
+<text x="254" y="160" font-size="12" fill="#b23a2a">version, seq, angle,</text>
+<text x="254" y="174" font-size="12" fill="#b23a2a">power, fire</text>
+<line x1="238" y1="204" x2="250" y2="204" stroke="#b23a2a" stroke-width="1.4" marker-end="url(#b)"/>
+<text x="254" y="189" font-size="12" font-weight="600" fill="#b23a2a">refused:</text>
+<text x="254" y="204" font-size="12" fill="#b23a2a">stale, flying, fired;</text>
+<text x="254" y="218" font-size="12" fill="#b23a2a">state unchanged</text>
+</svg>

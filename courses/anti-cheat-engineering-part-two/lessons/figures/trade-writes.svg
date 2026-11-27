@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="412" viewBox="0 0 400 412" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">The six writes of a sale</title>
+<desc id="d">A table of the store after each write of lesson 16's sale, Ana selling Bo the sword for 40, by the worked trade. Start: Ana sword lamp with 20 coins, Bo bow with 100, journal -. Write 1, trade:sale-1: Ana sword lamp with 20 coins, Bo bow with 100, journal pending. Write 2, inv:ana: Ana lamp with 20 coins, Bo bow with 100, journal pending. Write 3, inv:bo: Ana lamp with 20 coins, Bo bow sword with 100, journal pending. Write 4, coins:bo: Ana lamp with 20 coins, Bo bow sword with 60, journal pending. Write 5, coins:ana: Ana lamp with 60 coins, Bo bow sword with 60, journal pending. Write 6, trade:sale-1: Ana lamp with 60 coins, Bo bow sword with 60, journal done. After write 2 the sword is in no inventory and after write 4 the two hold 80 coins of 120; both are held in the pending journal entry. A crash after any write, a restart and the worked recover end where write 6 ends.</desc>
+<rect width="400" height="412" fill="#ffffff"/>
+<text x="16" y="22" font-weight="600">The six writes of a sale</text>
+<text x="16" y="39" font-size="12" fill="#5f6a70">Ana sells Bo the sword for 40; the store after each write</text>
+<text x="22" y="64" font-size="12" font-weight="600">write</text>
+<text x="72" y="64" font-size="12" font-weight="600">Ana: items, coins</text>
+<text x="188" y="64" font-size="12" font-weight="600">Bo: items, coins</text>
+<text x="296" y="64" font-size="12" font-weight="600" font-family="ui-monospace, Menlo, Consolas, monospace">trade:sale-1</text>
+<rect x="16" y="76" width="368" height="26" fill="#ffffff" stroke="#c4ccd0" rx="3"/>
+<text x="24" y="93" font-size="12" font-weight="600">start</text>
+<text x="72" y="93" font-size="12">sword lamp, 20</text>
+<text x="188" y="93" font-size="12">bow, 100</text>
+<text x="304" y="93" font-size="12">-</text>
+<rect x="16" y="106" width="368" height="26" fill="#f6f8f8" stroke="#c4ccd0" rx="3"/>
+<text x="24" y="123" font-size="12" font-weight="600">1</text>
+<text x="72" y="123" font-size="12">sword lamp, 20</text>
+<text x="188" y="123" font-size="12">bow, 100</text>
+<rect x="298" y="109" width="82" height="20" fill="#dbe9f0" stroke="#2f6f8f" rx="3"/>
+<text x="304" y="123" font-size="12" font-weight="600">pending</text>
+<rect x="16" y="136" width="368" height="26" fill="#ffffff" stroke="#c4ccd0" rx="3"/>
+<text x="24" y="153" font-size="12" font-weight="600" fill="#b23a2a">2 !</text>
+<rect x="66" y="139" width="112" height="20" fill="#dbe9f0" stroke="#2f6f8f" rx="3"/>
+<text x="72" y="153" font-size="12" font-weight="600">lamp, 20</text>
+<text x="188" y="153" font-size="12">bow, 100</text>
+<text x="304" y="153" font-size="12">pending</text>
+<rect x="16" y="166" width="368" height="26" fill="#f6f8f8" stroke="#c4ccd0" rx="3"/>
+<text x="24" y="183" font-size="12" font-weight="600">3</text>
+<text x="72" y="183" font-size="12">lamp, 20</text>
+<rect x="182" y="169" width="112" height="20" fill="#dbe9f0" stroke="#2f6f8f" rx="3"/>
+<text x="188" y="183" font-size="12" font-weight="600">bow sword, 100</text>
+<text x="304" y="183" font-size="12">pending</text>
+<rect x="16" y="196" width="368" height="26" fill="#ffffff" stroke="#c4ccd0" rx="3"/>
+<text x="24" y="213" font-size="12" font-weight="600" fill="#b23a2a">4 !</text>
+<text x="72" y="213" font-size="12">lamp, 20</text>
+<rect x="182" y="199" width="112" height="20" fill="#dbe9f0" stroke="#2f6f8f" rx="3"/>
+<text x="188" y="213" font-size="12" font-weight="600">bow sword, 60</text>
+<text x="304" y="213" font-size="12">pending</text>
+<rect x="16" y="226" width="368" height="26" fill="#f6f8f8" stroke="#c4ccd0" rx="3"/>
+<text x="24" y="243" font-size="12" font-weight="600">5</text>
+<rect x="66" y="229" width="112" height="20" fill="#dbe9f0" stroke="#2f6f8f" rx="3"/>
+<text x="72" y="243" font-size="12" font-weight="600">lamp, 60</text>
+<text x="188" y="243" font-size="12">bow sword, 60</text>
+<text x="304" y="243" font-size="12">pending</text>
+<rect x="16" y="256" width="368" height="26" fill="#ffffff" stroke="#c4ccd0" rx="3"/>
+<text x="24" y="273" font-size="12" font-weight="600">6</text>
+<text x="72" y="273" font-size="12">lamp, 60</text>
+<text x="188" y="273" font-size="12">bow sword, 60</text>
+<rect x="298" y="259" width="82" height="20" fill="#dbe9f0" stroke="#2f6f8f" rx="3"/>
+<text x="304" y="273" font-size="12" font-weight="600">done</text>
+<text x="16" y="300" font-size="12" fill="#b23a2a">! after write 2 the sword is in no inventory; after</text>
+<text x="16" y="315" font-size="12" fill="#b23a2a">write 4 Bo has paid and Ana not: 80 coins of 120.</text>
+<text x="16" y="330" font-size="12" fill="#b23a2a">Both are held in the pending journal entry.</text>
+<rect x="16" y="344" width="14" height="12" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="36" y="354" font-size="12">the value this write changed</text>
+<text x="16" y="380" font-size="13" font-weight="600">A crash after any write, then recover: the store</text>
+<text x="16" y="398" font-size="13" font-weight="600">ends as after write 6, from the entry's values.</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="468" viewBox="0 0 400 468" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">The full view and the drawn view</title>
+<desc id="d">The full view and the drawn view of one moment of a scripted session, aiming before the first shot: 484 bytes against 170. Row by row, the full view's field and the drawn view's: wind: windExact 2.2877, wind &quot;&gt;&gt;&quot;; flag: targetX 633.7328, flag 634; flag speed: flagSpeed 15.6938, not sent; flag timer: flagTimer 154, not sent; random state: rng 2483175847, not sent; cloud: cloud 867.9961, cloud 868; aim: angle 60, power 35, angle 60, power 35; scores: score 0, shots 0, score 0, shots 0; message: message &quot;ROUND 1&quot;, message &quot;ROUND 1&quot;. The full view also sends 9 fields the drawn view has none for: cannonX, vx, vy, result, missBy, frame, mode, trailN, key. Both send round, shell, trail, impact, here 1, null, [], null.</desc>
+<rect width="400" height="468" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5f6a70"/></marker></defs>
+<text x="16" y="22" font-weight="600">One moment, aiming before the first shot</text>
+<text x="16" y="46" font-size="13" font-weight="600">full view: 484 bytes</text>
+<text x="214" y="46" font-size="13" font-weight="600">drawn view: 170 bytes</text>
+<rect x="16" y="70" width="172" height="26" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="24" y="87" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">windExact 2.2877</text>
+<line x1="190" y1="83" x2="210" y2="83" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="214" y="70" width="170" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="222" y="87" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">wind &quot;&gt;&gt;&quot;</text>
+<rect x="16" y="104" width="172" height="26" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="24" y="121" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">targetX 633.7328</text>
+<line x1="190" y1="117" x2="210" y2="117" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="214" y="104" width="170" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="222" y="121" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">flag 634</text>
+<rect x="16" y="138" width="172" height="26" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="24" y="155" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">flagSpeed 15.6938</text>
+<text x="214" y="155" font-size="12" fill="#b23a2a" font-style="italic">not sent</text>
+<rect x="16" y="172" width="172" height="26" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="24" y="189" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">flagTimer 154</text>
+<text x="214" y="189" font-size="12" fill="#b23a2a" font-style="italic">not sent</text>
+<rect x="16" y="206" width="172" height="26" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="24" y="223" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">rng 2483175847</text>
+<text x="214" y="223" font-size="12" fill="#b23a2a" font-style="italic">not sent</text>
+<rect x="16" y="240" width="172" height="26" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="24" y="257" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">cloud 867.9961</text>
+<line x1="190" y1="253" x2="210" y2="253" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="214" y="240" width="170" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="222" y="257" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">cloud 868</text>
+<rect x="16" y="274" width="172" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="24" y="291" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">angle 60, power 35</text>
+<line x1="190" y1="287" x2="210" y2="287" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="214" y="274" width="170" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="222" y="291" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">angle 60, power 35</text>
+<rect x="16" y="308" width="172" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="24" y="325" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">score 0, shots 0</text>
+<line x1="190" y1="321" x2="210" y2="321" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="214" y="308" width="170" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="222" y="325" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">score 0, shots 0</text>
+<rect x="16" y="342" width="172" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="24" y="359" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">message &quot;ROUND 1&quot;</text>
+<line x1="190" y1="355" x2="210" y2="355" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="214" y="342" width="170" height="26" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="222" y="359" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">message &quot;ROUND 1&quot;</text>
+<text x="16" y="382" font-size="12" fill="#5f6a70">The full view also sends 9 fields the drawn view has none for:</text>
+<text x="16" y="397" font-size="12" fill="#5f6a70" font-family="ui-monospace, Menlo, Consolas, monospace">cannonX, vx, vy, result, missBy, frame,</text>
+<text x="16" y="412" font-size="12" fill="#5f6a70" font-family="ui-monospace, Menlo, Consolas, monospace">mode, trailN, key.</text>
+<text x="16" y="430" font-size="12" fill="#5f6a70">Both send round, shell, trail, impact: here 1, null, [], null.</text>
+<rect x="16" y="444" width="14" height="12" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="36" y="454" font-size="12">red: a value the screen never shows exactly</text>
+</svg>

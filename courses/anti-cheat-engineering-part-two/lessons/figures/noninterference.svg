@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="326" viewBox="0 0 400 326" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">A non-interference test</title>
+<desc id="d">At the aiming moment the exact wind is 2.2877159784547985 and the arrows show &gt;&gt;. setHidden('wind', k) on three clones sets the wind to 2.625, 3, 3.375 for k = 1, 2, 3, each inside the same band, so the arrows do not change. The drawn view of each clone has the same bytes as the original's; the full view's bytes differ for all three, so the wind leaks from the full view and not from the drawn view.</desc>
+<rect width="400" height="326" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5f6a70"/></marker></defs>
+<text x="16" y="22" font-weight="600">Change one hidden thing on a copy, compare bytes</text>
+<text x="16" y="39" font-size="12" fill="#5f6a70">the aiming moment; the hidden thing: wind</text>
+<rect x="16" y="52" width="368" height="40" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="26" y="69" font-size="13" font-weight="600">the game: exact wind 2.2877</text>
+<text x="26" y="85" font-size="12" fill="#5f6a70">the arrows show &gt;&gt;; its view's bytes are kept</text>
+<line x1="200" y1="92" x2="74.67" y2="130" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="16" y="132" width="117.33" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="74.67" y="148" font-size="12" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">clone, k = 1</text>
+<text x="74.67" y="164" font-size="12" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">wind 2.625</text>
+<rect x="16" y="186" width="117.33" height="36" fill="#dcefe2" stroke="#2c7a4b" rx="4"/>
+<text x="74.67" y="201" font-size="12" text-anchor="middle">drawn view</text>
+<text x="74.67" y="216" font-size="12" text-anchor="middle" font-weight="600" fill="#2c7a4b">same bytes</text>
+<rect x="16" y="230" width="117.33" height="36" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="74.67" y="245" font-size="12" text-anchor="middle">full view</text>
+<text x="74.67" y="260" font-size="12" text-anchor="middle" font-weight="600" fill="#b23a2a">bytes differ</text>
+<line x1="200" y1="92" x2="200" y2="130" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="141.33" y="132" width="117.33" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="200" y="148" font-size="12" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">clone, k = 2</text>
+<text x="200" y="164" font-size="12" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">wind 3</text>
+<rect x="141.33" y="186" width="117.33" height="36" fill="#dcefe2" stroke="#2c7a4b" rx="4"/>
+<text x="200" y="201" font-size="12" text-anchor="middle">drawn view</text>
+<text x="200" y="216" font-size="12" text-anchor="middle" font-weight="600" fill="#2c7a4b">same bytes</text>
+<rect x="141.33" y="230" width="117.33" height="36" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="200" y="245" font-size="12" text-anchor="middle">full view</text>
+<text x="200" y="260" font-size="12" text-anchor="middle" font-weight="600" fill="#b23a2a">bytes differ</text>
+<line x1="200" y1="92" x2="325.33" y2="130" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="266.67" y="132" width="117.33" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="325.33" y="148" font-size="12" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">clone, k = 3</text>
+<text x="325.33" y="164" font-size="12" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">wind 3.375</text>
+<rect x="266.67" y="186" width="117.33" height="36" fill="#dcefe2" stroke="#2c7a4b" rx="4"/>
+<text x="325.33" y="201" font-size="12" text-anchor="middle">drawn view</text>
+<text x="325.33" y="216" font-size="12" text-anchor="middle" font-weight="600" fill="#2c7a4b">same bytes</text>
+<rect x="266.67" y="230" width="117.33" height="36" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="325.33" y="245" font-size="12" text-anchor="middle">full view</text>
+<text x="325.33" y="260" font-size="12" text-anchor="middle" font-weight="600" fill="#b23a2a">bytes differ</text>
+<text x="16" y="292" font-size="13" fill="#2c7a4b">drawn view: wind changed no byte at k = 1, 2, 3</text>
+<text x="16" y="312" font-size="13" fill="#b23a2a">full view: every change reached the bytes, so wind leaks</text>
+</svg>

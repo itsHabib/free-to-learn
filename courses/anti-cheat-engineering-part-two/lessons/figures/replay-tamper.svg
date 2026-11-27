@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="340" viewBox="0 0 400 340" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">Replay of a record and a tampered copy</title>
+<desc id="d">Two timelines of the first 3 rounds, in ticks. The record: round 1 starts at tick 0, fires at tick 38 with power 79 and lands SHORT BY 21; round 2 starts at 97 and HIT; round 3 starts at 194. The copy with input 8's power set to 70: round 1 fires at the same tick and lands SHORT BY 163, so round 2 starts at 93, 4 ticks earlier, and its unchanged shot lands SHORT BY 27. From round 3 on both run the same. The re-run game ends with score 4 where the record says 5, so replay refuses the copy with reason final.</desc>
+<rect width="400" height="340" fill="#ffffff"/>
+<text x="16" y="22" font-weight="600">Replay re-runs both records from the seed</text>
+<text x="16" y="39" font-size="12" fill="#5f6a70">the default record, and the copy with input 8's power set to 70</text>
+<text x="16" y="66" font-size="13" font-weight="600">the record</text>
+<line x1="16" y1="98" x2="384" y2="98" stroke="#c4ccd0"/>
+<rect x="16" y="84" width="44.82" height="14" fill="#eef2f3" stroke="#c4ccd0"/>
+<rect x="60.82" y="84" width="46" height="14" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="16" y="114" font-size="12" fill="#5f6a70">0</text>
+<text x="83.82" y="79" font-size="12" text-anchor="middle" fill="#22282b">SHORT BY 21</text>
+<text x="60.82" y="128" font-size="12" fill="#5f6a70">shot: power 79</text>
+<rect x="130.41" y="84" width="46" height="14" fill="#eef2f3" stroke="#c4ccd0"/>
+<rect x="176.41" y="84" width="44.82" height="14" fill="#dcefe2" stroke="#2c7a4b"/>
+<text x="130.41" y="114" font-size="12" fill="#5f6a70">97</text>
+<text x="198.82" y="79" font-size="12" text-anchor="middle" fill="#22282b">HIT</text>
+<rect x="244.82" y="84" width="71.95" height="14" fill="#eef2f3" stroke="#c4ccd0"/>
+<rect x="316.77" y="84" width="36.56" height="14" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="244.82" y="114" font-size="12" fill="#5f6a70">194</text>
+<text x="335.05" y="79" font-size="12" text-anchor="middle" fill="#22282b">LONG BY 23</text>
+<text x="16" y="152" font-size="13" font-weight="600">the tampered copy</text>
+<line x1="16" y1="184" x2="384" y2="184" stroke="#c4ccd0"/>
+<rect x="16" y="170" width="44.82" height="14" fill="#eef2f3" stroke="#c4ccd0"/>
+<rect x="60.82" y="170" width="41.28" height="14" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="16" y="200" font-size="12" fill="#5f6a70">0</text>
+<text x="81.46" y="165" font-size="12" text-anchor="middle" fill="#b23a2a" font-weight="600">SHORT BY 163</text>
+<text x="60.82" y="214" font-size="12" fill="#b23a2a">shot: power 70</text>
+<rect x="125.69" y="170" width="50.72" height="14" fill="#eef2f3" stroke="#c4ccd0"/>
+<rect x="176.41" y="170" width="44.82" height="14" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="125.69" y="200" font-size="12" fill="#5f6a70">93</text>
+<text x="198.82" y="165" font-size="12" text-anchor="middle" fill="#b23a2a" font-weight="600">SHORT BY 27</text>
+<rect x="244.82" y="170" width="71.95" height="14" fill="#eef2f3" stroke="#c4ccd0"/>
+<rect x="316.77" y="170" width="36.56" height="14" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="244.82" y="200" font-size="12" fill="#5f6a70">194</text>
+<text x="335.05" y="165" font-size="12" text-anchor="middle" fill="#22282b">LONG BY 23</text>
+<rect x="16" y="222" width="14" height="12" fill="#eef2f3" stroke="#c4ccd0"/>
+<text x="36" y="232" font-size="12">aiming, from the round's start tick</text>
+<rect x="16" y="240" width="14" height="12" fill="#f7e1dc" stroke="#b23a2a"/>
+<rect x="32" y="240" width="14" height="12" fill="#dcefe2" stroke="#2c7a4b"/>
+<text x="52" y="250" font-size="12">the shell in the air: a miss, a hit</text>
+<text x="16" y="282" font-size="13">Rounds 3 to 12 are the same in both.</text>
+<text x="16" y="304" font-size="13" font-weight="600">final score: record 5, re-run of the copy 4</text>
+<text x="16" y="324" font-size="13" fill="#b23a2a" font-weight="600">replay of the copy: refused, reason final</text>
+</svg>

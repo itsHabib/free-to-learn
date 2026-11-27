@@ -1740,6 +1740,61 @@
       "codeExamplesLicense": "MIT"
     },
     {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/base-rate.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/defence-map.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/detector-pipeline.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/full-vs-drawn.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/late-press.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/noninterference.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/one-feature-score.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/replay-tamper.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/server-tick.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/trade-writes.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/anti-cheat-engineering-part-two/lessons/figures/window-tradeoff.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/anti-cheat-engineering-part-two/lessons/sections.json",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",

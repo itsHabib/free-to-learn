@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="406" viewBox="0 0 400 406" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">Every window, priced in two errors</title>
+<desc id="d">Two bar charts over windows 0 to 8, from the sweep's table for seed 1. Honest presses refused although in range at seen, as a share of honest presses: window 0 20.77%, window 1 17.67%, window 2 11.9%, window 3 7.86%, window 4 4.67%, window 5 3.84%, window 6 1.96%, window 7 0.24%, window 8 0%. Brackets mark the windows within the budgets 1%, from window 7 and 2%, from window 6. The slow-pong faker's presses accepted while out of range now, as a share of its presses: window 0 0%, window 1 0%, window 2 0%, window 3 9%, window 4 23%, window 5 40%, window 6 62%, window 7 91%, window 8 100%. Windows 10 and 12 read as window 8.</desc>
+<rect width="400" height="406" fill="#ffffff"/>
+<text x="16" y="22" font-weight="600">Every window, priced in two errors</text>
+<text x="16" y="39" font-size="12" fill="#5f6a70">the sweep's table, seed 1</text>
+<text x="16" y="70" font-size="13" font-weight="600">honest presses refused, of all honest presses</text>
+<line x1="50" y1="184" x2="384" y2="184" stroke="#c4ccd0"/>
+<line x1="46" y1="184" x2="50" y2="184" stroke="#5f6a70"/>
+<text x="43" y="188" font-size="12" text-anchor="end" fill="#5f6a70">0%</text>
+<line x1="46" y1="142.4" x2="50" y2="142.4" stroke="#5f6a70"/>
+<text x="43" y="146.4" font-size="12" text-anchor="end" fill="#5f6a70">10%</text>
+<line x1="46" y1="100.8" x2="50" y2="100.8" stroke="#5f6a70"/>
+<text x="43" y="104.8" font-size="12" text-anchor="end" fill="#5f6a70">20%</text>
+<rect x="54" y="97.6" width="29.11" height="86.4" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="68.56" y="93.6" font-size="12" text-anchor="middle">21</text>
+<rect x="91.11" y="110.49" width="29.11" height="73.51" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="105.67" y="106.49" font-size="12" text-anchor="middle">18</text>
+<rect x="128.22" y="134.5" width="29.11" height="49.5" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="142.78" y="130.5" font-size="12" text-anchor="middle">12</text>
+<rect x="165.33" y="151.3" width="29.11" height="32.7" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="179.89" y="147.3" font-size="12" text-anchor="middle">7.9</text>
+<rect x="202.44" y="164.57" width="29.11" height="19.43" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="217" y="160.57" font-size="12" text-anchor="middle">4.7</text>
+<rect x="239.56" y="168.03" width="29.11" height="15.97" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="254.11" y="164.03" font-size="12" text-anchor="middle">3.8</text>
+<rect x="276.67" y="175.85" width="29.11" height="8.15" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="291.22" y="171.85" font-size="12" text-anchor="middle">2.0</text>
+<rect x="313.78" y="183" width="29.11" height="1" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="328.33" y="179" font-size="12" text-anchor="middle">0.2</text>
+<rect x="350.89" y="184" width="29.11" height="0" fill="#f7e1dc" stroke="#b23a2a"/>
+<text x="365.44" y="180" font-size="12" text-anchor="middle">0</text>
+<line x1="276.67" y1="196" x2="380" y2="196" stroke="#22282b" stroke-width="1.5"/>
+<line x1="276.67" y1="192" x2="276.67" y2="200" stroke="#22282b" stroke-width="1.5"/>
+<line x1="380" y1="192" x2="380" y2="200" stroke="#22282b" stroke-width="1.5"/>
+<text x="270.67" y="200" font-size="12" text-anchor="end" font-weight="600">within 2%: window 6 on</text>
+<line x1="313.78" y1="214" x2="380" y2="214" stroke="#22282b" stroke-width="1.5"/>
+<line x1="313.78" y1="210" x2="313.78" y2="218" stroke="#22282b" stroke-width="1.5"/>
+<line x1="380" y1="210" x2="380" y2="218" stroke="#22282b" stroke-width="1.5"/>
+<text x="307.78" y="218" font-size="12" text-anchor="end" font-weight="600">within 1%: window 7 on</text>
+<text x="16" y="260" font-size="13" font-weight="600">slow-pong lies accepted, of its presses</text>
+<line x1="50" y1="360" x2="384" y2="360" stroke="#c4ccd0"/>
+<line x1="46" y1="360" x2="50" y2="360" stroke="#5f6a70"/>
+<text x="43" y="364" font-size="12" text-anchor="end" fill="#5f6a70">0%</text>
+<line x1="46" y1="315" x2="50" y2="315" stroke="#5f6a70"/>
+<text x="43" y="319" font-size="12" text-anchor="end" fill="#5f6a70">50%</text>
+<line x1="46" y1="270" x2="50" y2="270" stroke="#5f6a70"/>
+<text x="43" y="274" font-size="12" text-anchor="end" fill="#5f6a70">100%</text>
+<rect x="54" y="360" width="29.11" height="0" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="68.56" y="356" font-size="12" text-anchor="middle">0</text>
+<rect x="91.11" y="360" width="29.11" height="0" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="105.67" y="356" font-size="12" text-anchor="middle">0</text>
+<rect x="128.22" y="360" width="29.11" height="0" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="142.78" y="356" font-size="12" text-anchor="middle">0</text>
+<rect x="165.33" y="352.03" width="29.11" height="7.97" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="179.89" y="348.03" font-size="12" text-anchor="middle">8.9</text>
+<rect x="202.44" y="339.47" width="29.11" height="20.53" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="217" y="335.47" font-size="12" text-anchor="middle">23</text>
+<rect x="239.56" y="324.41" width="29.11" height="35.59" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="254.11" y="320.41" font-size="12" text-anchor="middle">40</text>
+<rect x="276.67" y="304.28" width="29.11" height="55.72" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="291.22" y="300.28" font-size="12" text-anchor="middle">62</text>
+<rect x="313.78" y="278.46" width="29.11" height="81.54" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="328.33" y="274.46" font-size="12" text-anchor="middle">91</text>
+<rect x="350.89" y="270.11" width="29.11" height="89.89" fill="#dbe9f0" stroke="#2f6f8f"/>
+<text x="365.44" y="266.11" font-size="12" text-anchor="middle">99.9</text>
+<text x="68.56" y="378" font-size="12" text-anchor="middle" fill="#5f6a70">0</text>
+<text x="105.67" y="378" font-size="12" text-anchor="middle" fill="#5f6a70">1</text>
+<text x="142.78" y="378" font-size="12" text-anchor="middle" fill="#5f6a70">2</text>
+<text x="179.89" y="378" font-size="12" text-anchor="middle" fill="#5f6a70">3</text>
+<text x="217" y="378" font-size="12" text-anchor="middle" fill="#5f6a70">4</text>
+<text x="254.11" y="378" font-size="12" text-anchor="middle" fill="#5f6a70">5</text>
+<text x="291.22" y="378" font-size="12" text-anchor="middle" font-weight="600">6</text>
+<text x="328.33" y="378" font-size="12" text-anchor="middle" font-weight="600">7</text>
+<text x="365.44" y="378" font-size="12" text-anchor="middle" fill="#5f6a70">8</text>
+<text x="50" y="394" font-size="12" fill="#5f6a70">window, in ticks (10 and 12 read as 8)</text>
+</svg>

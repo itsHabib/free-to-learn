@@ -993,7 +993,7 @@
     {
       "id": "anti-cheat-engineering-part-two",
       "archive": ".packages/anti-cheat-engineering-part-two.zip",
-      "sha256": "87fe62b4f794963ab5c55c6886326eb0a5629ca0f4ee7385779bd500f06b1986",
+      "sha256": "1645e249ff5ee941825b4cfce2628b5ae07c53caaa068118627c9eebf4e8e67d",
       "archive_prefix": "anti-cheat-engineering-part-two/",
       "direct_root": "courses/anti-cheat-engineering-part-two",
       "root": "anti-cheat-engineering-part-two",

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="430" viewBox="0 0 400 430" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#22282b">
+<title id="t">From sessions to a frozen detector</title>
+<desc id="d">7 steps from top to bottom: dev split: 1,000 legal and 100 searcher sessions (design on these as often as you like); features: 8 numbers for each session (from its inputs and rounds alone); score: one number, higher is more suspicious (your own rule and settings); threshold: at most 2 of the 1,000 legal scores at or above (chooseThreshold at budget 0.002); freeze: hash the settings and detector files (a later change shows in your receipt); held-out split, read once: 2,000 legal and 200 searcher (the frozen detector flags; count recall and false flags); precision when 1 session in 100 is a cheat (how many flags would be cheats). A bar beside the first four marks the steps that use the dev split.</desc>
+<rect width="400" height="430" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5f6a70"/></marker></defs>
+<text x="16" y="22" font-weight="600">From sessions to a frozen detector</text>
+<text x="16" y="39" font-size="12" fill="#5f6a70">blue boxes: your code; the bar on the right: the dev split</text>
+<rect x="16" y="52" width="368" height="40" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="26" y="69" font-size="13" font-weight="600">dev split: 1,000 legal and 100 searcher sessions</text>
+<text x="26" y="85" font-size="12" fill="#5f6a70">design on these as often as you like</text>
+<line x1="56" y1="92" x2="56" y2="104" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="16" y="106" width="368" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="26" y="123" font-size="13" font-weight="600">features: 8 numbers for each session</text>
+<text x="26" y="139" font-size="12" fill="#5f6a70">from its inputs and rounds alone</text>
+<line x1="56" y1="146" x2="56" y2="158" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="16" y="160" width="368" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="26" y="177" font-size="13" font-weight="600">score: one number, higher is more suspicious</text>
+<text x="26" y="193" font-size="12" fill="#5f6a70">your own rule and settings</text>
+<line x1="56" y1="200" x2="56" y2="212" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="16" y="214" width="368" height="40" fill="#dbe9f0" stroke="#2f6f8f" rx="4"/>
+<text x="26" y="231" font-size="13" font-weight="600">threshold: at most 2 of the 1,000 legal scores at or above</text>
+<text x="26" y="247" font-size="12" fill="#5f6a70">chooseThreshold at budget 0.002</text>
+<line x1="56" y1="254" x2="56" y2="266" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="16" y="268" width="368" height="40" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="26" y="285" font-size="13" font-weight="600">freeze: hash the settings and detector files</text>
+<text x="26" y="301" font-size="12" fill="#5f6a70">a later change shows in your receipt</text>
+<line x1="56" y1="308" x2="56" y2="320" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="16" y="322" width="368" height="40" fill="#f7e1dc" stroke="#b23a2a" rx="4"/>
+<text x="26" y="339" font-size="13" font-weight="600">held-out split, read once: 2,000 legal and 200 searcher</text>
+<text x="26" y="355" font-size="12" fill="#5f6a70">the frozen detector flags; count recall and false flags</text>
+<line x1="56" y1="362" x2="56" y2="374" stroke="#5f6a70" stroke-width="1.4" marker-end="url(#a)"/>
+<rect x="16" y="376" width="368" height="40" fill="#eef2f3" stroke="#c4ccd0" rx="4"/>
+<text x="26" y="393" font-size="13" font-weight="600">precision when 1 session in 100 is a cheat</text>
+<text x="26" y="409" font-size="12" fill="#5f6a70">how many flags would be cheats</text>
+<line x1="392" y1="52" x2="392" y2="254" stroke="#2f6f8f" stroke-width="3"/>
+</svg>
