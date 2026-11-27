@@ -1,0 +1,4 @@
+pixel (4, 3), centre [72,56]: w = 9088, 5248, 4608
+pixel (3, 1), centre [56,24]: w = 14208, 4736, 0
+twice the area: 18944
+edge v0 -> v1 owns its ties: false

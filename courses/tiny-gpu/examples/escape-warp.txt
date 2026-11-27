@@ -1,0 +1,7 @@
+// region: alone
+turns per lane:  3, 3, 3, 3, 3, 3, 3, 40
+issues alone:    54, 54, 54, 54, 54, 54, 54, 535
+// endregion: alone
+// region: warp
+issues as one warp: 536
+// endregion: warp

@@ -1,0 +1,20 @@
+{
+  "unit": "7",
+  "regions": [
+    {
+      "file": "memory.mjs",
+      "fn": "transactions",
+      "text": "// addresses[k] is lane k's byte address; bit k of mask is lane k.\nexport function transactions(addresses, mask) {\n  const segments = new Set();\n  for (let k = 0; k < addresses.length; k++) {\n    if (mask & (1 << k)) {\n      segments.add(Math.floor(addresses[k] / SEGMENT));\n    }\n  }\n  return segments.size;\n}"
+    },
+    {
+      "file": "memory.mjs",
+      "fn": "TextureCache",
+      "text": "// Set-associative, least recently used replacement. Line n of memory\n// (bytes 32n to 32n + 31) can only live in set n % sets.\nexport class TextureCache {\n  constructor({ sets, ways }) {\n    this.sets = sets;\n    this.ways = ways;\n    // each set lists its lines, least recently used first\n    this.lines = Array.from({ length: sets }, () => []);\n    this.hits = 0;\n    this.misses = 0;\n    this.bytes = 0;\n  }\n\n  access(addr) {\n    const line = Math.floor(addr / SEGMENT);\n    const set = this.lines[line % this.sets];\n    const at = set.indexOf(line);\n    if (at >= 0) {\n      set.splice(at, 1);\n      set.push(line); // now the most recently used\n      this.hits += 1;\n      return true;\n    }\n    if (set.length === this.ways) set.shift(); // evict the oldest\n    set.push(line);\n    this.misses += 1;\n    this.bytes += SEGMENT;\n    return false;\n  }\n}"
+    },
+    {
+      "file": "memory.mjs",
+      "fn": "texelAddress",
+      "text": "// Byte address of texel (x, y). 'linear': row after row. 'tiled':\n// blocks of 4 x 2 texels, 32 bytes each, the blocks row after row.\nexport function texelAddress(tex, x, y, layout) {\n  if (layout === 'linear') return (y * tex.w + x) * 4;\n  const block = (y >> 1) * (tex.w >> 2) + (x >> 2);\n  const inside = (y & 1) * 4 + (x & 3);\n  return block * SEGMENT + inside * 4;\n}"
+    }
+  ]
+}

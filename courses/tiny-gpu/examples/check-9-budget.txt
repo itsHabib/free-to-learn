@@ -1,0 +1,14 @@
+  FAIL 9.shading-budget: "hall-1" launched 14029 warps; the budget is
+       4021, 1.25 x its 3217 visible warps (for each 4 x 2 block, the
+       number of different triangles seen in it, added up). That is 4.36
+       warps per visible warp.
+       Every hall: "hall-1": 14,029 warps, budget 4,021 (3,217 visible
+       warps); "hall-2": 14,208 warps, budget 3,910 (3,128 visible
+       warps); "hall-3": 15,274 warps, budget 3,961 (3,169 visible
+       warps); "hall-4": 15,919 warps, budget 3,990 (3,192 visible
+       warps); "hall-5": 15,444 warps, budget 4,085 (3,268 visible
+       warps); "hall-6": 17,485 warps, budget 3,971 (3,177 visible
+       warps); "hall-7": 16,574 warps, budget 4,028 (3,223 visible
+       warps).
+       Reread lesson 9, "The shading budget".
+4 of 5 checks pass in unit 9.

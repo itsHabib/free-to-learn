@@ -1,0 +1,15 @@
+{
+  "unit": "3",
+  "regions": [
+    {
+      "file": "interp.mjs",
+      "fn": "interpolate",
+      "text": "// w = the three edge values rasterize handed to emit.\nexport function interpolate(v, w, n) {\n  const sum = w[0] + w[1] + w[2];\n  const b = [w[0] / sum, w[1] / sum, w[2] / sum];\n  // z / w is linear on screen, so depth uses the screen weights.\n  const z = b[0] * v[0].z + b[1] * v[1].z + b[2] * v[2].z;\n  // Attributes are linear in the world: weight each vertex by its\n  // 1/w, then divide by the interpolated 1/w.\n  const q = [b[0] * v[0].invW, b[1] * v[1].invW, b[2] * v[2].invW];\n  const qSum = q[0] + q[1] + q[2];\n  const attrs = new Array(n);\n  for (let k = 0; k < n; k++) {\n    const s = q[0] * v[0].a[k] + q[1] * v[1].a[k] + q[2] * v[2].a[k];\n    attrs[k] = s / qSum;\n  }\n  return { z, attrs };\n}"
+    },
+    {
+      "file": "interp.mjs",
+      "fn": "depthTest",
+      "text": "// LESS: a fragment wins only if strictly nearer than what is stored.\nexport function depthTest(depth, i, z) {\n  const zf = Math.fround(z); // the buffer holds float32, compare those\n  if (!(zf < depth[i])) return false;\n  depth[i] = zf;\n  return true;\n}"
+    }
+  ]
+}

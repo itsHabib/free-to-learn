@@ -1,0 +1,37 @@
+// The functions of gpu/diff.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: diffImages
+// Coverage first: a pixel owned by different triangles is a coverage
+// mismatch and its colour is not compared. Colour is compared (r, g,
+// b) only where both pictures drew the same triangle.
+export function diffImages(mine, theirs, ties) {
+  if (mine.w !== theirs.w || mine.h !== theirs.h) {
+    throw new Error('diffImages: the pictures differ in size');
+  }
+  let coverage = 0;
+  let onTies = 0;
+  let maxLevel = 0;
+  let overOne = 0;
+  for (let i = 0; i < mine.ids.length; i++) {
+    if (mine.ids[i] !== theirs.ids[i]) {
+      coverage++;
+      if (ties && ties[i]) onTies++;
+      continue;
+    }
+    if (mine.ids[i] < 0) continue;
+    const level = channelGap(mine.rgba, theirs.rgba, i);
+    maxLevel = Math.max(maxLevel, level);
+    if (level > 1) overOne++;
+  }
+  return { coverage, onTies, maxLevel, overOne };
+}
+
+function channelGap(a, b, i) {
+  let gap = 0;
+  for (let k = 0; k < 3; k++) {
+    gap = Math.max(gap, Math.abs(a[i * 4 + k] - b[i * 4 + k]));
+  }
+  return gap;
+}
+// endregion: diffImages

@@ -1,0 +1,130 @@
+// Supplied functions of gpu/pipeline.mjs.
+// Copied by the course's listing tool. Do not edit.
+
+// region: windowTris
+// One scene triangle -> 0, 1 or 2 window triangles of
+// { x, y, z, invW, a } (x, y in subpixels).
+export function windowTris(tri, ctx) {
+  const { target, vp } = ctx;
+  if (!vp) {
+    const pts = snap2(tri.v.map((v) => v.p));
+    return [tri.v.map((v, k) => ({
+      x: pts[k][0], y: pts[k][1],
+      z: v.p[2] ?? 0.5, invW: 1 / (v.p[3] ?? 1), a: attrsOf(v),
+    }))];
+  }
+  const clip = tri.v.map((v) => ({
+    c: transform(vp, v.p), a: attrsOf(v),
+  }));
+  return clipNear(clip).map((piece) => piece.map((cv) => ({
+    ...toWindow(cv.c, target.w, target.h), a: cv.a,
+  })));
+}
+// endregion: windowTris
+
+// region: drawTriangle
+// Rasterize one window triangle inside rect, depth-test (stage 3+),
+// shade the survivors and write them.
+export function drawTriangle(tri, win, rect, ctx) {
+  const { target, stage } = ctx;
+  const frags = [];
+  const covered = ctx.memory ? [] : null; // for unit 7's counts
+  const pts = win.map((v) => [v.x, v.y]);
+  rasterize(pts, rect, (x, y, w0, w1, w2) => {
+    const i = y * target.w + x;
+    target.counts.fragments++;
+    covered?.push({ x, y });
+    if (stage < 3) return void frags.push({ x, y, i, attrs: null });
+    const f = interpolate(win, [w0, w1, w2], ATTRS.length);
+    if (depthTest(target.depth, i, f.z)) {
+      frags.push({ x, y, i, attrs: f.attrs });
+    }
+  });
+  const colours = ctx.shade(tri, frags);
+  target.counts.shaded += frags.length;
+  frags.forEach((f, k) =>
+    writePixel(target, f.i, colours[k], tri.id, f.attrs));
+  if (covered) countFramebuffer(ctx, covered, frags);
+}
+// endregion: drawTriangle
+
+// region: shadeWarps
+function shadeWarps(ctx, tri, frags) {
+  const out = new Array(frags.length);
+  for (const b of groupBlocks(ctx, frags)) {
+    const attrsOf = (k) => (b.at[k] >= 0 ? frags[b.at[k]].attrs : null);
+    const colours = runBlock(ctx, tri, attrsOf, maskOf(b.at), b);
+    b.at.forEach((n, k) => {
+      if (n >= 0) out[n] = colours[k];
+    });
+  }
+  return out;
+}
+// endregion: shadeWarps
+
+// region: runBlock
+// One warp: the program (or fixed shading) on the lanes in mask.
+// at = { x0, y0 }, the block, for opts.trace.
+function runBlock(ctx, tri, attrsOf, mask, at) {
+  const { counts } = ctx.target;
+  const before = { issues: counts.issues,
+    misses: ctx.memory?.cache.misses ?? 0 };
+  counts.warps += 1;
+  ctx.memory?.begin();
+  let colours;
+  if (ctx.program) {
+    const lanes = loadWarp(ctx.program, attrsOf);
+    const r = runWarp(ctx.program, lanes, mask, ctx.env,
+      { skip: ctx.opts.skip });
+    counts.issues += r.issues;
+    colours = lanes.map((l) => l.out);
+  } else {
+    colours = Array.from({ length: LANES }, (_, k) =>
+      (mask & (1 << k) ? ctx.fixed(tri, attrsOf(k)) : null));
+  }
+  ctx.memory?.end();
+  ctx.opts.trace?.push({ x0: at.x0, y0: at.y0, id: tri.id,
+    issues: counts.issues - before.issues,
+    misses: (ctx.memory?.cache.misses ?? 0) - before.misses });
+  return colours;
+}
+// endregion: runBlock
+
+// region: countFramebuffer
+// Immediate mode, one triangle: per block, depth read by the covered
+// lanes, depth and colour written by the lanes that passed.
+function countFramebuffer(ctx, covered, frags) {
+  const { w } = ctx.target;
+  const { bytes } = ctx.target.counts;
+  const blocks = new Map();
+  const note = (f, field) => {
+    const b = blockOf(ctx, f.x, f.y);
+    if (!blocks.has(b.key)) {
+      const [bw] = ctx.opts.block ?? [4, 2];
+      const addr = Array.from({ length: LANES }, (_, k) =>
+        ((b.y0 + Math.floor(k / bw)) * w + b.x0 + (k % bw)) * 4);
+      blocks.set(b.key, { addr, cover: 0, pass: 0 });
+    }
+    blocks.get(b.key)[field] |= 1 << b.lane;
+  };
+  covered.forEach((f) => note(f, 'cover'));
+  frags.forEach((f) => note(f, 'pass'));
+  for (const { addr, cover, pass } of blocks.values()) {
+    const read = transactions(addr, cover) * SEGMENT;
+    const written = transactions(addr, pass) * SEGMENT;
+    bytes.depth += read + written;
+    bytes.color += written;
+  }
+}
+// endregion: countFramebuffer
+
+// region: countBins
+// Binning traffic: 4 bytes per list entry and 64 per triangle record
+// written; 4 per entry and 64 per record read for every entry.
+function countBins(target, lists) {
+  const entries = lists.reduce((n, l) => n + l.length, 0);
+  const records = new Set(lists.flat()).size;
+  target.counts.bytes.bins += 4 * entries + 64 * records
+    + (4 + 64) * entries;
+}
+// endregion: countBins

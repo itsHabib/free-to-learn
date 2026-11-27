@@ -1,0 +1,25 @@
+{
+  "unit": "6",
+  "regions": [
+    {
+      "file": "warp.mjs",
+      "fn": "runWarp",
+      "text": "export function runWarp(program, lanes, mask, env, opts = {}) {\n  const code = program.code;\n  let st = { pc: 0, mask, stack: [] };\n  let issues = 0;\n  while (st.pc < code.length) {\n    const ins = code[st.pc];\n    // one issue per instruction visited, however many lanes run it\n    issues += 1;\n    const handler = HANDLERS[ins.op];\n    if (handler) {\n      st = handler(st, ins, lanes, opts);\n      continue;\n    }\n    for (let k = 0; k < LANES; k++) {\n      // inactive lanes keep their registers and their colour\n      if (st.mask & (1 << k)) step(lanes[k], ins, env);\n    }\n    st.pc += 1;\n  }\n  return { issues };\n}"
+    },
+    {
+      "file": "warp.mjs",
+      "fn": "onIf",
+      "text": "export function onIf(st, ins, lanes, opts) {\n  const taken = lanesWhere(lanes, st.mask, ins.args[0]);\n  st.stack.push({ kind: 'if', saved: st.mask, taken });\n  if (taken === 0 && opts.skip !== false) {\n    // no lane takes the if side: go to the else (it runs) or endif\n    const pc = ins.match.else ?? ins.match.end;\n    return { pc, mask: taken, stack: st.stack };\n  }\n  return { pc: st.pc + 1, mask: taken, stack: st.stack };\n}"
+    },
+    {
+      "file": "warp.mjs",
+      "fn": "onElse",
+      "text": "export function onElse(st, ins, lanes, opts) {\n  const top = st.stack.at(-1);\n  // the other lanes of the parent mask, not of all eight\n  const mask = top.saved & ~top.taken;\n  if (mask === 0 && opts.skip !== false) {\n    return { pc: ins.match.end, mask, stack: st.stack };\n  }\n  return { pc: st.pc + 1, mask, stack: st.stack };\n}"
+    },
+    {
+      "file": "warp.mjs",
+      "fn": "onEndif",
+      "text": "export function onEndif(st) {\n  const top = st.stack.pop();\n  return { pc: st.pc + 1, mask: top.saved, stack: st.stack };\n}"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Unit 9: Capstone: a scene you have not seen, under a budget
+  WAIT 9.practice-halls: renderVisible: not written yet
+  WAIT 9.unseen-halls: renderVisible: not written yet
+  WAIT 9.colour-from-warps: renderVisible: not written yet
+  WAIT 9.shading-budget: renderVisible: not written yet
+  WAIT 9.memory-budget: renderVisible: not written yet
+0 of 5 checks pass in unit 9; 5 wait for functions not written yet.

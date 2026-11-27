@@ -1,0 +1,21 @@
+Recorded 2026-11-25: node lab.mjs compare 4 --headless on the
+reference, in headless Chrome. "owner" is pixels whose triangle
+differs, away from edges / beside one; "colour" the largest
+difference / pixels over 1 level, away from texel edges.
+
+backend      scene            grid   owner  colour  verdict
+SwiftShader  courtyard        1/16   0/1    1/0     match
+SwiftShader  one-triangle     1/16   0/0    0/0     match
+SwiftShader  shared-diagonal  1/16   0/0    0/0     match
+SwiftShader  fan-8            1/16   0/0    0/0     match
+SwiftShader  quad-grid        1/16   0/0    0/0     match
+SwiftShader  bbox-edges       1/16   0/0    0/0     match
+SwiftShader  coplanar-pair    1/16   0/0    0/0     match
+Metal        courtyard        1/256  0/1    1/0     match
+             on a texel edge: 1 (74 levels, 9.5e-7)
+Metal        one-triangle     1/256  0/0    0/0     match
+Metal        shared-diagonal  1/256  0/0    0/0     match
+Metal        fan-8            1/256  0/0    0/0     match
+Metal        quad-grid        1/256  0/0    0/0     match
+Metal        bbox-edges       1/256  0/0    0/0     match
+Metal        coplanar-pair    1/256  0/0    0/0     match

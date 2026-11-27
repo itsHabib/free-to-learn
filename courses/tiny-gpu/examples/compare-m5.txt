@@ -1,0 +1,13 @@
+Recorded 2026-11-25: node lab.mjs compare 4 --headless on the
+reference, Apple M5 through Metal. The top of the verdict:
+
+snap grid  the GPU snaps corners to 1/256 pixel; WebGL promises
+           1/16 or finer. The pipeline ran at 1/256.
+tie rule   top-left, the rule the rasterizer is taught
+courtyard  19,200 pixels compared
+  owner    0 pixels differ away from edges; 1 within one
+           grid step of an edge, 0.04 of a step from it
+  colour   largest difference 1 level, 0 pixels over 1
+           level; 1 more pixel within float32 error of a
+           texel edge, 74 levels apart, 9.5e-7 from it
+verdict    match

@@ -1,0 +1,4 @@
+New application: An escape loop on one warp
+  WAIT t6.predict-issues: predictIssues: not written yet (make
+       transfer/6.mjs in your project folder, as lesson 6 asks)
+0 of 1 pass; 1 wait for files not made yet.

@@ -1,0 +1,4 @@
+New application: A vertex shared by six triangles
+  WAIT t1.vertex-owner: vertexOwner: not written yet (make
+       transfer/1.mjs in your project folder, as lesson 1 asks)
+0 of 1 pass; 1 wait for files not made yet.

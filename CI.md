@@ -93,3 +93,7 @@ The public contract starts both a type-in project and a supplied project, checks
 ## Frame Perfect
 
 The contract checks exact packaging, JavaScript syntax, `node lab.mjs start ./work`, the write route for module 01, and that module 01's untouched check exits 1 with "readMovie: not written yet". Modules 02 to 07, the capstone, the movie player, the bench page and the films are not run. The course's self-test and reference toolkit are author material and are not in this repository.
+
+## Build a tiny GPU
+
+The contract checks exact packaging, JavaScript syntax, `node lab.mjs start project`, the write route for unit 1, and that unit 1's untouched check exits 1 with "0 of 14 checks pass in unit 1". Units 2 to 8, the capstone, the browser comparison page and the bench page are not run. The course's self-test, its deliberately wrong versions that the checks must catch, and its reference GPU are author material and are not in this repository.

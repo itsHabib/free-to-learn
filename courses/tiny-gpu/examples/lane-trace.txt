@@ -1,0 +1,12 @@
+inputs r0..r5 = 0.9, 0.6, 0.3, 0, 1, 0
+mul r6, r3, light.x      r6 = 0
+mad r6, r4, light.y, r6  r6 = 0.80812
+mad r6, r5, light.z, r6  r6 = 0.80812
+max r6, r6, 0            r6 = 0.80812
+mad r6, r6, 0.8, 0.2     r6 = 0.846496
+mul r0, r0, r6           r0 = 0.761846
+mul r1, r1, r6           r1 = 0.507898
+mul r2, r2, r6           r2 = 0.253949
+out r0, r1, r2
+out    0.761846, 0.507898, 0.253949
+issues 9

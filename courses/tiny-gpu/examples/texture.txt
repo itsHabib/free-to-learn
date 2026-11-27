@@ -1,0 +1,54 @@
+// The functions of gpu/texture.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: makeTexture
+// fn(x, y) returns [r, g, b, a] as 0..255 levels.
+export function makeTexture(w, h, fn) {
+  const data = new Uint8Array(w * h * 4);
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) data.set(fn(x, y), (y * w + x) * 4);
+  }
+  return { w, h, data };
+}
+// endregion: makeTexture
+
+// region: checker
+// Squares of `cell` texels, colours a and b (RGBA levels).
+export function checker(w, h, cell, a, b) {
+  const odd = (x, y) =>
+    (Math.floor(x / cell) + Math.floor(y / cell)) & 1;
+  return makeTexture(w, h, (x, y) => (odd(x, y) ? b : a));
+}
+// endregion: checker
+
+// region: sample
+export function sample(tex, u, v, mode) {
+  if (mode === 'nearest') {
+    return texel(tex, Math.floor(u * tex.w), Math.floor(v * tex.h));
+  }
+  if (mode !== 'linear') throw new Error(`sample: unknown ${mode}`);
+  // Texel centres sit at +0.5, so step back half a texel first.
+  const x = u * tex.w - 0.5;
+  const y = v * tex.h - 0.5;
+  const x0 = Math.floor(x);
+  const y0 = Math.floor(y);
+  const fx = x - x0;
+  const fy = y - y0;
+  const c00 = texel(tex, x0, y0);
+  const c10 = texel(tex, x0 + 1, y0);
+  const c01 = texel(tex, x0, y0 + 1);
+  const c11 = texel(tex, x0 + 1, y0 + 1);
+  return c00.map((_, k) =>
+    (1 - fx) * (1 - fy) * c00[k] + fx * (1 - fy) * c10[k]
+    + (1 - fx) * fy * c01[k] + fx * fy * c11[k]);
+}
+
+// Repeat wrapping: texel -1 is the last one, texel w the first.
+function texel(tex, x, y) {
+  const tx = ((x % tex.w) + tex.w) % tex.w;
+  const ty = ((y % tex.h) + tex.h) % tex.h;
+  const i = (ty * tex.w + tx) * 4;
+  const d = tex.data;
+  return [d[i] / 255, d[i + 1] / 255, d[i + 2] / 255, d[i + 3] / 255];
+}
+// endregion: sample

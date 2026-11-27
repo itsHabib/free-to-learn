@@ -1,0 +1,8 @@
+  FAIL 4.wrap: Outside 0..1, and at the edges for bilinear, texels must
+       repeat: texel -1 is the last one, texel w the first: nearest
+       sampling picks texel (floor(u * w), floor(v * h)), wrapped, as
+       RGBA floats 0..1. On the 4 x 4 texture "probe" at (u, v) = (-0.1,
+       0.3) with 'nearest' it returned [0.8745, 0.6471, 0.5137, 1],
+       expected [0.4941, 0.7843, 0.8784, 1].
+       Reread lesson 4, "Repeat wrapping".
+4 of 7 checks pass in unit 4.

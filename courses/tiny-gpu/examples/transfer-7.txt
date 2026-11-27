@@ -1,0 +1,4 @@
+New application: A vertical blur
+  WAIT t7.blur-misses: blurMisses: not written yet (make transfer/7.mjs
+       in your project folder, as lesson 7 asks)
+0 of 1 pass; 1 wait for files not made yet.

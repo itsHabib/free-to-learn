@@ -1363,6 +1363,58 @@
         "node lab.mjs view and serve, the browser player and recorder, the bench page and the films are not run or played by this contract.",
         "The course's self-test, mutants and reference toolkit are author material outside this repository; nothing here replays them, and the films can't be rebuilt from this copy (films/REBUILD.md says why)."
       ]
+    },
+    {
+      "id": "tiny-gpu",
+      "archive": ".packages/tiny-gpu.zip",
+      "sha256": "bff981766bce1668d52f63b7ff08c7f394f990e74f12b52a34e0a30e66118f31",
+      "archive_prefix": "tiny-gpu/",
+      "direct_root": "courses/tiny-gpu",
+      "root": "tiny-gpu",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "project"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "next",
+            "project",
+            "1",
+            "write"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "1"
+          ],
+          "exit": 1,
+          "match": "0 of 14 checks pass in unit 1"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise and capstone success needs a learner-owned implementation. None is published as a CI fixture.",
+        "This public CI profile checks packaging, syntax, the documented setup (start, then the write route for unit 1) and the untouched starter's diagnostic for unit 1 only. Units 2 to 8 and the capstone are not run.",
+        "The browser comparison page (node lab.mjs compare) and the bench page need a browser with WebGL2 and are not run by this contract.",
+        "The AI learner run and cold reads recorded in QUALIFICATION.md are separate from this contract and are not replayed here.",
+        "The course's self-test, its designed wrong versions and its reference GPU are author material outside this repository; nothing here replays them."
+      ]
     }
   ]
 }

@@ -4,8 +4,8 @@
   "files": [
     {
       "path": ".ci/courses.json",
-      "bytes": 40622,
-      "sha256": "622ea54264a1d13107c024e85c27ea805226dfe853eca1f0c52a417443536c55"
+      "bytes": 42486,
+      "sha256": "12fc7784ef39ca921ead44867a79af000508e4607f6a0a89bad557a5f9e5ef0d"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -268,19 +268,29 @@
       "sha256": "a9458e011f2482c8cc135c8d9f23d85f687df8baa08cd3625fa1da32eec990ba"
     },
     {
+      "path": ".packages/tiny-gpu.zip",
+      "bytes": 393136,
+      "sha256": "bff981766bce1668d52f63b7ff08c7f394f990e74f12b52a34e0a30e66118f31"
+    },
+    {
+      "path": ".packages/tiny-gpu.zip.sha256",
+      "bytes": 79,
+      "sha256": "dbe3fa712f694270befa26615bed12b747884a6d37508bb2e988f315fc73e78e"
+    },
+    {
       "path": "BACKUP-AND-RESTORE.md",
       "bytes": 1532,
       "sha256": "8df9204a9bb87e3cb1950431cb201cb1ef4d3cdb6093627d04d00304b3673bd1"
     },
     {
       "path": "CI.md",
-      "bytes": 5882,
-      "sha256": "f2daaff691f3cde1d2d1ade89a49ef48df5dceddf6b9d0aac61fcc813b702541"
+      "bytes": 6344,
+      "sha256": "97a6eeca9b481a6252ac8a6526059e3e8b982b8eb2b505b7582456cb44c0c0cc"
     },
     {
       "path": "LICENSE-SCOPE.json",
-      "bytes": 486118,
-      "sha256": "acc729c9d5b01759d07081d9b9c300aa214d850914b40c9f57fac67a2d64c999"
+      "bytes": 527671,
+      "sha256": "9e1649b3d04ebf328ffe9f98166c8fcfa504dc4d9a1e2f048bccc8b756104d47"
     },
     {
       "path": "LICENSE.md",
@@ -299,23 +309,23 @@
     },
     {
       "path": "QUALIFICATION.md",
-      "bytes": 9357,
-      "sha256": "89aabec7a11b0f908f635b0779ef62ec7c430c8cbfe36cf4299ff8ed8dad3816"
+      "bytes": 11255,
+      "sha256": "64358ede552f9f10f275ae7ed136490c02d2e2a236f07f624b94e66f9e2f8098"
     },
     {
       "path": "README.md",
-      "bytes": 3620,
-      "sha256": "113ec37ba2fbf10d0069db2644dcfefb76d46918375618a649902a8dd4801d66"
+      "bytes": 4228,
+      "sha256": "13ccdbe40bff91a13e4775fac24228ed1750a06fc3566357fedc7f48ae5dc5f4"
     },
     {
       "path": "START-HERE.md",
-      "bytes": 9099,
-      "sha256": "8cec9a99a6484888224478c24e6b9103e76a8b02fe5f5c55dc24f9a6a20eb406"
+      "bytes": 10185,
+      "sha256": "ee57a702aa8a505d767ab8008543bb5c4de20452cfbc13f0994dcb664baa7747"
     },
     {
       "path": "THIRD-PARTY-NOTICES.md",
-      "bytes": 5832,
-      "sha256": "7c2d68d0b736a55927ad237cda44537409d4507ebe50c19d90ddf2e1c94826d5"
+      "bytes": 6277,
+      "sha256": "aad28f7c8be0d6e80d74df47c6df919cdde0bf0f8f97cac2678b4d4c53281bae"
     },
     {
       "path": "courses/adaptive-decision-engine/API.md",
@@ -9626,6 +9636,891 @@
       "path": "courses/tiny-browser-engine/tools/stage.mjs",
       "bytes": 1378,
       "sha256": "f1275218ee2048fe1dd6beb4f8a457617ef5df895340d36dcbcaa0865e1d056c"
+    },
+    {
+      "path": "courses/tiny-gpu/LICENSE.md",
+      "bytes": 552,
+      "sha256": "5e529a9104a68d082f565b2a8ee8013ab82ea44708af1d775bb8e5fb9db2e08f"
+    },
+    {
+      "path": "courses/tiny-gpu/LICENSES/CC-BY-4.0.txt",
+      "bytes": 18615,
+      "sha256": "2ade8c89b8bbe0d859b124a9e47032c8494022f43091e8278ae8e2554a292196"
+    },
+    {
+      "path": "courses/tiny-gpu/LICENSES/MIT.txt",
+      "bytes": 1070,
+      "sha256": "50aad69be195509a7fe344dacc14ee5fb7f1d326103c27c5938fa54890c4713b"
+    },
+    {
+      "path": "courses/tiny-gpu/README.md",
+      "bytes": 4851,
+      "sha256": "f43079d3db28c7400a833016ebda31558f0a55da9d465161d48fed9a306aa1ad"
+    },
+    {
+      "path": "courses/tiny-gpu/bench/bench.css",
+      "bytes": 3174,
+      "sha256": "a1d596b67713484e64a754eac5a452978eeedcab6086138cd43ae7db7883cbea"
+    },
+    {
+      "path": "courses/tiny-gpu/bench/bench.mjs",
+      "bytes": 13995,
+      "sha256": "11740773dd3a50e645c3b886a6eaee4e7924473349b16ee377e4e3cbf1ac23f5"
+    },
+    {
+      "path": "courses/tiny-gpu/bench/icon.svg",
+      "bytes": 253,
+      "sha256": "9d0676e2c3de8dc333132f7c0acc070df98fc5752f9b1051e0013a8f93be89c6"
+    },
+    {
+      "path": "courses/tiny-gpu/bench/index.html",
+      "bytes": 6431,
+      "sha256": "3c7d4e84399888f202cc7d74e5f24b048e3d59b599cd9b323b98b7b76f9d246a"
+    },
+    {
+      "path": "courses/tiny-gpu/bench/raster.mjs",
+      "bytes": 2250,
+      "sha256": "0c554caa6c8e713e2b62c7355db5b495abc7c915630436915a1717b099305879"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/1.mjs",
+      "bytes": 17628,
+      "sha256": "2b83fc8301780956462f090f25ede74d33c98bcee85db1517b5b0b7a12806b8d"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/2.mjs",
+      "bytes": 5855,
+      "sha256": "c0a95ddaf247de12c11d40606929a1e5d349bfcd6bceee74208ba260388adc7a"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/3.mjs",
+      "bytes": 7830,
+      "sha256": "62f2641a14ab9a7d255988b98fc20181e2ffaa91627b07585f33fd89a0153f8c"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/4.mjs",
+      "bytes": 4511,
+      "sha256": "501b0138abba45ca50fd563561cc8cc4c73f0ca665487b032c1068be99acc7de"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/5.mjs",
+      "bytes": 9566,
+      "sha256": "6b46c054f56cdc24b1402cf9e9990bcceaa2f5a75488f6ef2b2a0260b18f6989"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/6.mjs",
+      "bytes": 12195,
+      "sha256": "8d3774a3d212c6b3dcca59cb6ced6a5af7d3c133c0ac25d5ea2b4056d7b7e017"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/7.mjs",
+      "bytes": 9203,
+      "sha256": "a9b80565ac47a0fd973956d4c70a6b0d1a3571b2898f8280bc455ba4359c2411"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/8.mjs",
+      "bytes": 8602,
+      "sha256": "4a2bcc13721aba85da9475ae79ed12bb48c7a16682c9981005e285a33f95d864"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/9.mjs",
+      "bytes": 7519,
+      "sha256": "792e56f9b7b3de4782052711d2b31e8b181a57ca212707021e0394f901812a99"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/1-coverage.json",
+      "bytes": 8030,
+      "sha256": "e61ca6b59767abe4a2a28db604e4ebae95df8c4fbadd05e7ba0a9f3695cd645d"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/1-edge.json",
+      "bytes": 1056,
+      "sha256": "e51a268828c82f614bbfc38fde2f6c7cfb9c3f000019075b6af285f66f741902"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/2-clip.json",
+      "bytes": 3438,
+      "sha256": "5f3dcba47791a56011b25ca24c898c817d58c27a83cf2db4c4bbc06a6c5898f0"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/2-stops.json",
+      "bytes": 28115,
+      "sha256": "fe49531d02b9c2fe08b05a90ebd970958c728c6127e126f8d24f91f126c04267"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/2-transform.json",
+      "bytes": 2510,
+      "sha256": "311ab884c6d0f55491f25efdbbc3a81c60f17d47158299c165eb893debecba0a"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/2-window.json",
+      "bytes": 676,
+      "sha256": "7a8983ed2a5bbacc0f5195b90298bee0427eb0817c26e34a88d74bd6e3a05632"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/3-interp.json",
+      "bytes": 1287,
+      "sha256": "9d5ac019a943803226aa7d64d36ed84697b8b5d3cb0904a3162102d83d6dcb8f"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/3-scenes.json",
+      "bytes": 131020,
+      "sha256": "79fb1b3817c47605e61f5cf8ab4ce0849c7832439bab54027ea683c433211bdf"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/4-courtyard.json",
+      "bytes": 63326,
+      "sha256": "de2e65f0a1019677de55b7ecb2f5e4672c720293728b1d6b39fec26ac41a568e"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/4-diff.json",
+      "bytes": 7662,
+      "sha256": "b9aad9b65b91993380c06be17026921f74f62d9f9ba0999fcda2b4495c3ea49a"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/4-sample.json",
+      "bytes": 8253,
+      "sha256": "d73ee2e46f23e707ebe8cbec780c5599e54aac69ced232bbe1972b2bad7f4632"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/5-assemble.json",
+      "bytes": 26794,
+      "sha256": "3150d67aa859dcd4581ede2cbc7383ad5ccb6c070eed59e6fcb98f5012a2cdd5"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/5-courtyard.json",
+      "bytes": 24749,
+      "sha256": "8aaf7c7955ceabe1a30e368adca80dd10e2588d605489bf5240ed40acc9e2f2f"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/5-run.json",
+      "bytes": 12750,
+      "sha256": "0355075f102c787571635e3342dec6bf2aab421b65ae661c797be58a3b6ad9ed"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/5-step.json",
+      "bytes": 16042,
+      "sha256": "9c069e0df8d2d6d3d11c979b7153dedf2343f54be64f6eb27e434d0fe9a7426e"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/6-courtyard.json",
+      "bytes": 192,
+      "sha256": "aee75937bd04c8914c054625ea13305bb8bbf69243c2d74aad09c63d1e6676e8"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/6-handlers.json",
+      "bytes": 6064,
+      "sha256": "6614d8ee9b4aa0160c9be37d37694855b26d5ada8ca91c6305c77605c2206f62"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/6-warps.json",
+      "bytes": 79532,
+      "sha256": "916f4e4ef03dfffe9e3adc3baa5059efe292ca27f157a15c0befdcf8183ee120"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/7-memory.json",
+      "bytes": 5517,
+      "sha256": "74e7ed7527490775a2ea0d41cd378796301ff5af0250f6a6ee3d534f7d5a7742"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/7-scenes.json",
+      "bytes": 473,
+      "sha256": "0b14add8b9ced089d1b5aa850f99afd9fd1cf292f5b1a73985cca5bce09a12c1"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/8-bins.json",
+      "bytes": 2141,
+      "sha256": "64ee3f3f9aa30d8a8c1941ccb4bc0d6978c4ee23115720bee3322426dc2c6029"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/8-traffic.json",
+      "bytes": 123,
+      "sha256": "ac3329bade8b9f84279ef173a550cfe34b0ab6340bd9d88ffe36f8b62088be5a"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/9-halls.json",
+      "bytes": 22362,
+      "sha256": "1333baddd3c42f8a7a520818ec29b48d3cc30c1957bf0f227abf9cb1b86a67a2"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/fixtures/transfer.json",
+      "bytes": 6828,
+      "sha256": "0bf5d9899e92cda87ef2c9b4aeae98bbaf4356dd6ff7cd3e670b245fc8fd8a6f"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/run.mjs",
+      "bytes": 3656,
+      "sha256": "7e5ffae89a9f9f9deabba859cccc530c0c46e797bd0c33963d597f0d4fd5af83"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/supplied.mjs",
+      "bytes": 2451,
+      "sha256": "b1f4c2fbd9b536df766bcf2f10ef5bcda80d96c5069b9c8ca23f5e53050e4570"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-1.mjs",
+      "bytes": 1171,
+      "sha256": "ae1a204d604caeb056ab3fdd88ff09fdaaafabc3c62826a45ce5ef7744edf61b"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-2.mjs",
+      "bytes": 1775,
+      "sha256": "bba53552735d819a27d8dd69230f2e26cdd643cb09572193b929ddabcf8db12d"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-3.mjs",
+      "bytes": 1400,
+      "sha256": "05178405b51077c0aa4974500db62c491e888da50daa875debb01cd878f16076"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-4.mjs",
+      "bytes": 1164,
+      "sha256": "3a0080038f686562a33412ec2a14ee3b39a9e878eca32a752fdfaedbecd81784"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-5.mjs",
+      "bytes": 5553,
+      "sha256": "39a32a493812c883aa78c05c2e2d1d744868ff0ec5c0ca9a6dab2095721d3ea4"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-6.mjs",
+      "bytes": 1137,
+      "sha256": "b981bb96c20ba12fb356e0103fe4ecc04ff95cf31bd43a2cd33e6f6811df7376"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-7.mjs",
+      "bytes": 1330,
+      "sha256": "0fa8e37e60f43fbd005b8557ce14437c4a8a387ded01a92190c0fe870c692ed6"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-8.mjs",
+      "bytes": 1044,
+      "sha256": "91c692e1be753c71b26ee64d53ca4dfdc7eede719f2d25f61e8d754d01514d94"
+    },
+    {
+      "path": "courses/tiny-gpu/checks/transfer-common.mjs",
+      "bytes": 819,
+      "sha256": "ebc9255fba2b77c833d04778b8fa179452834ab3aa48a0d8e7fb64660d0352fe"
+    },
+    {
+      "path": "courses/tiny-gpu/course.json",
+      "bytes": 25145,
+      "sha256": "18b54d8b026af837b686daa089a749c0cd15bfea7a4a7042ce5bb661070bf52d"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/capstone.txt",
+      "bytes": 1034,
+      "sha256": "b4f6269ffe88723860426a7c72a8f4d88caab6d037b1a5248f82de59126068f1"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-1-break.txt",
+      "bytes": 330,
+      "sha256": "3a9f15f2bbd6ecf8557fc155442fc0b7254d9b630a871e03f8359f1915d28afa"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-1-pass.txt",
+      "bytes": 32,
+      "sha256": "54ca3490b747324a30affcfc8b60ebf08e8aa74ec64fe8d152a506121431d662"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-1-start.txt",
+      "bytes": 250,
+      "sha256": "7c5b2c914bc17be84179d5cb828b38da1d24d613e5bf6a4b975bc4a9cfd839a0"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-2-break.txt",
+      "bytes": 850,
+      "sha256": "5e0fe8e8eb2b1b663b053ecf99ef7cb93d51f62760be77fc86a674358e99c52d"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-3-break.txt",
+      "bytes": 808,
+      "sha256": "16c14ed4817ca5ee63f7aa14d096d63760d61e6162a5372825dc12885222c2de"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-4-break.txt",
+      "bytes": 469,
+      "sha256": "72c19975e13c2894b002a88bc9d27ad5daa0ff80a5876e22048ab92141d3057e"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-5-break.txt",
+      "bytes": 212,
+      "sha256": "e6e1e9865b99d254c951f8d0a58944e9130175d6ed61efeb4a48b597fbf01653"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-6-break.txt",
+      "bytes": 342,
+      "sha256": "ad635affca3e358454b9e3d9dfb34286db637653f699c0a8ac7619239d20dcf6"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-7-break.txt",
+      "bytes": 818,
+      "sha256": "0e3984968be77d704ac69e91399762683b241af7209388df93dcf0f8ebd7e090"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-8-break.txt",
+      "bytes": 402,
+      "sha256": "680b6ec94d0c5b3dce668a41f0c39c03495d503a56ea1092c0874cab87705270"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-9-budget.txt",
+      "bytes": 808,
+      "sha256": "33f25adf4ed735668b9a7c474456846eb37dfc9c13365fb697cdac22717d001a"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/check-9-start.txt",
+      "bytes": 408,
+      "sha256": "3ccb1efc4a77fada381fcc80167f90d9dd40e34b32092cb53674c6fed1273ad4"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/clip-trace.mjs",
+      "bytes": 1801,
+      "sha256": "526d93e65af0084eb24c730d0c5e9f90fdd07a0fc1e2bf43b5797188b07888ec"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/clip-trace.txt",
+      "bytes": 448,
+      "sha256": "08507759e031e3e2e5e432bef98c5554942a10044cdb0727b20264248da0e8bc"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/compare-m5.txt",
+      "bytes": 625,
+      "sha256": "c122261abba6170ebcf7945d5d7c9bf9555d94731d6376485e6f239a2b7e04b6"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/compare-recorded.txt",
+      "bytes": 1168,
+      "sha256": "230032a2e4408118fc1a44c5d1af6c64a0a785ebb605afb40e858a873d6dbc42"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/diff.txt",
+      "bytes": 1156,
+      "sha256": "eb419ccce0076b8408aeeefb3bbed19f51aefd901d4f61a712c908ee81e19801"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/edge-values.mjs",
+      "bytes": 1270,
+      "sha256": "9f640ab3e3b520cf6e99f25feca87dc234800883aebf33bc8965ccf88a4fe4dc"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/edge-values.txt",
+      "bytes": 157,
+      "sha256": "e3a7d5d6ca4cacb9352c1ae2331ac2932f2ac8a3676f53f5cc8461a7fe3a5584"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/escape-warp.mjs",
+      "bytes": 1552,
+      "sha256": "8fa671c86b42b77e4b5a0cbd8e478ebd0407b9899b2687769cd043ce4bc27823"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/escape-warp.txt",
+      "bytes": 186,
+      "sha256": "6dc4f39c7180f03e5a77c7de936a90bb500f4765ef83f5e01d438a19416bfe2c"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/floor-misses.mjs",
+      "bytes": 1159,
+      "sha256": "13a5752ca2dfa4b30eaac969aa5dba52d9fe8853ba2107e8fc55d44245fd39ae"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/floor-misses.txt",
+      "bytes": 214,
+      "sha256": "b46206959e6768755aa713e340db465e03ca2d31eb89eefeb63ce41cd4393c96"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/interp.txt",
+      "bytes": 1351,
+      "sha256": "45e7e467a439f2c821a8909b830dfe3303dcd721449fa3397edeb84a49f8a779"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/lane-trace.mjs",
+      "bytes": 1416,
+      "sha256": "b2f62027b5c7dde9f9ac081d4d43ab4c5d4b57e30767e79b03bbbfa78ea17072"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/lane-trace.txt",
+      "bytes": 401,
+      "sha256": "65f1db1d1de28f28da3fbc37e0782a55290cdc685fff995b70a99ded434e02cd"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/matrix.txt",
+      "bytes": 1072,
+      "sha256": "06de59ce891ef71102522cccd0923499cf48f5954601cd515c1d685f6d7271ff"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/memory.txt",
+      "bytes": 2887,
+      "sha256": "0bd06f839dff416ec65b55adb308de3ba42fa88c4877c0cbdca7e8a3a96721e3"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/overdraw-traffic.mjs",
+      "bytes": 1048,
+      "sha256": "6462b9fb7c241230677ebf9ab9617f51977160d114ab7425166b9d947f3d3f0c"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/overdraw-traffic.txt",
+      "bytes": 153,
+      "sha256": "30d7cd7c03c148cf2dfaf084e9d881a2a0ec0fa5567e70f50df2e5ed50cb5449"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/perspective-error.mjs",
+      "bytes": 1827,
+      "sha256": "e62b76ff215dcbd93970197b7d3719378c8e7137b8f09808d43919aa2d15025e"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/perspective-error.txt",
+      "bytes": 176,
+      "sha256": "8b32e6297abec7ab5b84d6b8aff45bdfd5ccb257dc625f2426bcfdb7fc1c83eb"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/pipeline.txt",
+      "bytes": 4489,
+      "sha256": "09a449966ed421b3c499b88f01460f26b1ac43368665495715addf32c178e15f"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/raster-grid.txt",
+      "bytes": 735,
+      "sha256": "c077b834594c339e9e650e6e9b03796155957d2ffca0464f6257682ee57cc0e3"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/raster.txt",
+      "bytes": 2323,
+      "sha256": "b4576a9ed11156a5ce446f09d4e507d7085b7fae0e09823679f7ee1fc17b35ca"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/shader.txt",
+      "bytes": 7308,
+      "sha256": "ea38890d2eaa098137cdcc51fe1b808eca57e0bcc4166495dc56e1c96d413616"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/shaders.txt",
+      "bytes": 5224,
+      "sha256": "da954f02e42d20abb19427293b09850215f691794700f1e09c96fd5bb802ba43"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/snap-grids.mjs",
+      "bytes": 1054,
+      "sha256": "445720bc98e59ce2db2cd9b8a88943544fbe171b748dea6ff5867774c26070a1"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/snap-grids.txt",
+      "bytes": 94,
+      "sha256": "d8b5a9e7f49ba8a95987f5eebe23f19278a117835e6e0b94af413929e2390b30"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/texture.txt",
+      "bytes": 1798,
+      "sha256": "60c10665a227dc634bcb84953919ee53571066e3679c2005d7dd155087edf293"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/tiles.txt",
+      "bytes": 2532,
+      "sha256": "b35ab277bbfe193c75dc4f3643998309a114daa41ebc864f7021b26dacf653d0"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-1.txt",
+      "bytes": 217,
+      "sha256": "5a71c15872bc0fa0b1dc4ba5d4f4ede51605cd8b2ad05485f2368f08de8029cd"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-2.txt",
+      "bytes": 188,
+      "sha256": "0f40b61120c8d25b38359f1094bbdf0fe4d833fef5c58210ce49733d0bf29feb"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-3.txt",
+      "bytes": 193,
+      "sha256": "29db65a2b837fb474daf20d5c0a53869931b861948c7b383d80e419d3d00eddf"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-4.txt",
+      "bytes": 201,
+      "sha256": "e4676026afcf782c49b73727ff581f31f0c311fd6abf363efd91e6c2304c62dc"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-5.txt",
+      "bytes": 321,
+      "sha256": "5222b8b65ab997096d0292c315e77f85e0f448d948afff165f45318d188b9730"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-6.txt",
+      "bytes": 215,
+      "sha256": "e3514931025721536db4526aa926ef091c5a9f9c08e78d8e001276710a142f03"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-7.txt",
+      "bytes": 198,
+      "sha256": "29cc6e5be2fa079a51db3198a582ad11401ad3bdc5e8583ab265ee45b7e640f5"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/transfer-8.txt",
+      "bytes": 211,
+      "sha256": "1c5bd1759057a721a7e5ef74ce818a159a88eb98c7421298ca6689e538dcc0e7"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/vertex.txt",
+      "bytes": 1657,
+      "sha256": "2e5cbffe4a2e478be2987f8f81ad5524bef764fce0d4455e7f744a4801a609ec"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/view-1.txt",
+      "bytes": 338,
+      "sha256": "16ad2c0180812c4b916a739c2a81c8157be3ee908425c70d8b47c61b002d8268"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/view-2-break.txt",
+      "bytes": 170,
+      "sha256": "2eaba01defc16d6249760ed9fb3ee40caa2b6d8ca3d73cad7160cce2335f6fd1"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/view-2.txt",
+      "bytes": 168,
+      "sha256": "aa5aac74c0ede10a4d1aefe638f5079d465506d6972b2ed55a0086cd71a6455e"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/view-3.txt",
+      "bytes": 162,
+      "sha256": "3a3fe205c055976364261cfd8048d3eab7598df3514ee9baba87b0d84c0e1839"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/view-5.txt",
+      "bytes": 157,
+      "sha256": "8ccf84f46565e9370a80d800a732b6fd2aabbdf4077720b8d8a06b3cdb1577b4"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/view-6.txt",
+      "bytes": 160,
+      "sha256": "d1245d9d4a2f2f17648af69c42a7f7f89a87391047864524e127eca95318cea9"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/view-9.txt",
+      "bytes": 165,
+      "sha256": "2694936ef10fa11845bf48d74c0b2cbeec3cd3bc6b50557fa7aa8da58781ada8"
+    },
+    {
+      "path": "courses/tiny-gpu/examples/warp.txt",
+      "bytes": 4518,
+      "sha256": "9a8a6c3b2ef9b6fabc3bd588768f4dedcc9b75e9ce5474217ff7f0da1457fa75"
+    },
+    {
+      "path": "courses/tiny-gpu/lab.mjs",
+      "bytes": 66884,
+      "sha256": "77949053ce95d63234cf5b916b56723a3080afd8fbd832d4eb5048230ea4bef6"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/01.md",
+      "bytes": 18300,
+      "sha256": "e15686f5c31e0a477f9c24046e5fd95f41b00ff27eb11b8e093c5b493ef79c67"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/02.md",
+      "bytes": 18462,
+      "sha256": "c4898012b0889602355b31fc1a18e2bef8b7c9640d1242dded3267449fb24b45"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/03.md",
+      "bytes": 13885,
+      "sha256": "401d5e09fe873a3f835b5ecd083d94dc056b75d84af2a1cde48199da8fbbf73a"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/04.md",
+      "bytes": 18337,
+      "sha256": "0ff867c09ee5a84d60c011cf8d9bec5f576357679c393d662a34b4d9b1ab33be"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/05.md",
+      "bytes": 25497,
+      "sha256": "db8119f9b5ad814d848d602fc90fb61d1f794ed9b1d1a1d56b05c4956f001acd"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/06.md",
+      "bytes": 19550,
+      "sha256": "593a9d0d1422f11430dc7f6d2b730f2fcc8038dbbfac135ebdbac77d919c6a33"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/07.md",
+      "bytes": 17865,
+      "sha256": "e41c5522c76f3264835ec5af7bf3c05d856442b62ad6de0354a7c3123a9f7fc1"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/08.md",
+      "bytes": 15065,
+      "sha256": "84432e0776e8b18877aa6d54991324b01773939c9dda6ccab04bdce6c3310389"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/09.md",
+      "bytes": 13303,
+      "sha256": "5d2393e2c8a8f2d6512143c2b74aac8cf89f2dcd341bfae406510395dfc1c294"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/clip-plan.svg",
+      "bytes": 2525,
+      "sha256": "41be96934a7ac202053b51739d1be036ee2beb9956876486deb0921e72ce02d4"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/column-clip.svg",
+      "bytes": 206656,
+      "sha256": "284b192018bf50fae3b126cd4e329f6d9e0d58847378ae30d8cdfbd098a8539c"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/edge-grid.svg",
+      "bytes": 14070,
+      "sha256": "f26e97c55c6e36c9832b6029c46f9b711e8258af40a41212b76837689f1f4736"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/floor-bend.svg",
+      "bytes": 277341,
+      "sha256": "c370eab39f465edbfc9143d5ce175efff25c769d6967ea16f7a3a09e1cac3ba5"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/hall-blocks.svg",
+      "bytes": 135237,
+      "sha256": "1e92fed53ee7ce2145f9847e084e72efdb6034120af641c634953c80b4770f5a"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/overdraw-tiles.svg",
+      "bytes": 233840,
+      "sha256": "65a986fb61904c1f7fb8f0c4871be087b2b50ff933e893c2d30b62f073fe8bc9"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/seam-coverage.svg",
+      "bytes": 71776,
+      "sha256": "e77ec9d0932802a7c6ae5d08fa1649fcb7f6b3f11d2b4b1b813958dacd630d62"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/turned-floor-misses.svg",
+      "bytes": 413288,
+      "sha256": "af0a121aa8cd4373f1c8eb3c8ca2ffbacc02ffaa4f2ff0e8391c1c73cfef12a8"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/warp-divergence.svg",
+      "bytes": 22529,
+      "sha256": "5c8ab33ac2fc6595b7d2b3dde3a6edee9a9151037c1c463a6af4b3ccb5541ee4"
+    },
+    {
+      "path": "courses/tiny-gpu/practice.json",
+      "bytes": 101837,
+      "sha256": "07670caf4a1437c165464aacfe2cdd17a1fe52654c8f563ab6f06c0da85f2f22"
+    },
+    {
+      "path": "courses/tiny-gpu/public/code-example.css",
+      "bytes": 1995,
+      "sha256": "4bfc888966174a24f3bafa82db1878563fdab631ccd99c6aff7d715c8bdff36c"
+    },
+    {
+      "path": "courses/tiny-gpu/public/code-example.mjs",
+      "bytes": 3203,
+      "sha256": "5728768f4af74f4219addf8ab60a7e7daaf82142e97676667055e05a60eb29ad"
+    },
+    {
+      "path": "courses/tiny-gpu/public/compare.html",
+      "bytes": 5273,
+      "sha256": "7db029b60c84d72d676302783a8de34ea405d34ffd2b3a0830eb957be549b86c"
+    },
+    {
+      "path": "courses/tiny-gpu/public/compare.mjs",
+      "bytes": 20950,
+      "sha256": "8f00cb8f8c70030b912e3a0ce1853fc4522fe08173628e6827cd7ad2b8f5ed48"
+    },
+    {
+      "path": "courses/tiny-gpu/public/tie-rules.json",
+      "bytes": 40078,
+      "sha256": "11ff61b965d548106a00dd236f8601c51e62eaf85dc74b8a587e03fd3f747986"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/courtyard.mjs",
+      "bytes": 8972,
+      "sha256": "7d2e911aabca41c05c083673f8421d3678a8c6a0a3e66a9d4027cba80522ead5"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/flat2d.mjs",
+      "bytes": 6765,
+      "sha256": "fb1e039bb8787186485b9fd07cff08d95ec301a60bfd6f0c2f313f5e065aaac3"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/floor.mjs",
+      "bytes": 2091,
+      "sha256": "a6e4746d57c887156a82274015246f4f9d16dc5f7603d03d27281c4d47a5d1a4"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/hall.mjs",
+      "bytes": 9239,
+      "sha256": "6d879cf30bc779e81d857103ebd302435f19a75aa6c2c942918f2849e9cc6ad4"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/overdraw.mjs",
+      "bytes": 3086,
+      "sha256": "3d335bfefa85f51e71ff9ea6cb19b501f9f5f36240eea7d4eef1f24c10f9d45f"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/programs.mjs",
+      "bytes": 485,
+      "sha256": "f540a1429b374ddb819e92b63dfbe30d5fb19c2787c01d362699452cca1191fb"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/checker-branch.asm",
+      "bytes": 754,
+      "sha256": "94ee36ba43715e37f7a38e210e52b3c890d1fb570697a87e00f5dda5e544ad46"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/checker-branch.glsl",
+      "bytes": 721,
+      "sha256": "824dc4b85131083972e8acf1370f20ebe7b2e23f5bfc2a939c35a73003579a6a"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/coherent-branch.asm",
+      "bytes": 1157,
+      "sha256": "46a4e1b86d8642b489b8a1e19dc5e78d64a5565387727f9ba1e90d5b7e594e0d"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/coherent-branch.glsl",
+      "bytes": 799,
+      "sha256": "b992b069aa49aa1cfe792ab79ba8c04d784ae1040585aea213266b7b8a170fb5"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/escape.asm",
+      "bytes": 994,
+      "sha256": "c6c497e396b767204ab85e36dc05b39bd48a08de052536fd8f9e262eb4b5d6dc"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/escape.glsl",
+      "bytes": 778,
+      "sha256": "6f6ea84d86b4c5dfaa906e2a9b56ac207502f0fea74ee4b08847e6864430df76"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/hall.asm",
+      "bytes": 662,
+      "sha256": "a71700258cd6ceb3a3d1afaa0d97addc92604c2419b2bbd7f0135bb29f689c36"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/hall.glsl",
+      "bytes": 619,
+      "sha256": "e973d49efc3753353d3bbb131ac1dda7f81ac9f30cca5f6d9fe61a9f2c1c9d73"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/lambert.asm",
+      "bytes": 628,
+      "sha256": "8051d1171b5c5c19a30c7faaa571eefa12c0331bd8b32ea3557dc166de4f4416"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/lambert.glsl",
+      "bytes": 760,
+      "sha256": "9fb451ca83e8c9602aa1796ec1724994ed342a24f72aac00fb4b571134bfa33d"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/textured.asm",
+      "bytes": 552,
+      "sha256": "a80601e4434cee416baf5a99f1cf94e911071dedfe4f1c2c4aa0ae0570146024"
+    },
+    {
+      "path": "courses/tiny-gpu/scenes/shaders/textured.glsl",
+      "bytes": 615,
+      "sha256": "82ca8710fb990ef692d1e8faf7f484e259fc7c0ae1e957f60be0619fae64faba"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/capstone.mjs",
+      "bytes": 1133,
+      "sha256": "91a407fc3b981a5153145bba233f6ecc5d26844162af004e9eb560f0943ad3f9"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/diff.mjs",
+      "bytes": 684,
+      "sha256": "f59e9b32d12e25c2bf09d0baa41d7194f9c9f367c1f7caf51faa8115fb9f7601"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/interp.mjs",
+      "bytes": 702,
+      "sha256": "bc7c6e894007121c168aa2935b6da3efe8ac3cf7bee66ac1e9e2ffd86ef3716a"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/matrix.mjs",
+      "bytes": 2684,
+      "sha256": "f3bbef9dfa2e3d51ad57bb168c55b4e8eb053eb84fec893060c41d9c5ab8b53e"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/memory.mjs",
+      "bytes": 2219,
+      "sha256": "9a4239833802d58a9eaa023af44dee669af5c2ff1761652dbbef1d148a8e34f6"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/pipeline.mjs",
+      "bytes": 22073,
+      "sha256": "578684986e5389c10c543b6d418e587a75e62c55b39e00e72a200ac3b7cf2b6f"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/png.mjs",
+      "bytes": 2531,
+      "sha256": "2ff059f1b6a5fdd2cf212a0bf927edea3dff0cc09ec8da6f3beced88fca863fb"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/raster.mjs",
+      "bytes": 1874,
+      "sha256": "b762d861df8722dbed5a48a07f98e5b00fe24b51777323d7c1fa80eb8cf7ca3e"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/shader.mjs",
+      "bytes": 6215,
+      "sha256": "1e763a0715d709e0f121cd4896f235282ea4e18732fad5ecd67b3c93ff1c487b"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/texture.mjs",
+      "bytes": 1176,
+      "sha256": "802a1374c9c3e619af4dfd7eee654453c28a080c49c83cb3e97fa0345e0fd85c"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/tiles.mjs",
+      "bytes": 1183,
+      "sha256": "2f23a954bc6ca170508a7cb6f1ddba3a61646f42ab936cdc40057e041973f907"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/vertex.mjs",
+      "bytes": 880,
+      "sha256": "6275b03de798fc0fdec4ee4cb159842c3ca23633d65e87fef3466666124ed0ac"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/gpu/warp.mjs",
+      "bytes": 3644,
+      "sha256": "8c049e5421ac59a468608bb5c6d6fcf96e3ee61d3a36897bfa49d60a380f4e23"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/1.json",
+      "bytes": 2081,
+      "sha256": "df2dca24d011fb2578171cb3f7c1c83c5ea917ee5540e05631eeb13ee5189171"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/2.json",
+      "bytes": 1724,
+      "sha256": "dcf5595d03d22292a5cdc1e0072bbc4798974b4c4d3fab677e3bbd496613c185"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/3.json",
+      "bytes": 1186,
+      "sha256": "e92e756ae63e837a9be9dff64388f3ee2ce4ee232109c0d696ccc346214a78b6"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/4.json",
+      "bytes": 2279,
+      "sha256": "81b2b5e6f69484af9f7f5ae5f10196527d5764c5d24eb1d41dbfec1d6b30a2ef"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/5.json",
+      "bytes": 3033,
+      "sha256": "1f322ff113a2c83085076d05ba5a2c6f0c4913dc6fec2a2d8bc4f86142ef741f"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/6.json",
+      "bytes": 1894,
+      "sha256": "0edaf7e7fd62a1906363b3f9c811da05e0cc715a723c5451138a3b3504144fa9"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/7.json",
+      "bytes": 1879,
+      "sha256": "ee78e4caf498022e5914e9ea0e3b8b2cf9627c8c8f35feb6884314bbdcf84c0f"
+    },
+    {
+      "path": "courses/tiny-gpu/starter/supplied/8.json",
+      "bytes": 2486,
+      "sha256": "a0b8b320a635af6269763aa4fae45ef8d5d9bbdf99b43c173b6a8fc6991ea82d"
     }
   ],
   "selfHash": "Omitted to avoid circularity; exact Git tree and external manifest hash bind this file."

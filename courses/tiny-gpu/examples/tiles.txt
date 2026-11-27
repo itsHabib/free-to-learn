@@ -1,0 +1,67 @@
+// The functions of gpu/tiles.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: TILE
+export const TILE = 16; // pixels on a side of a tile
+// endregion: TILE
+
+// region: bin
+// tris[k] is three [x, y] points in subpixels. Returns one list per
+// tile, tile (tx, ty) at index ty * tilesX + tx, each holding the
+// indices k of the triangles whose pixel bounding box touches it.
+export function bin(tris, W, H, size = TILE) {
+  const tilesX = Math.ceil(W / size);
+  const tilesY = Math.ceil(H / size);
+  const lists = Array.from({ length: tilesX * tilesY }, () => []);
+  tris.forEach((tri, k) => {
+    const xs = tri.map((p) => p[0]);
+    const ys = tri.map((p) => p[1]);
+    // the box rasterize walks, clamped to the screen
+    const x0 = Math.max(0, Math.floor(Math.min(...xs) / SUB));
+    const x1 = Math.min(W, Math.ceil(Math.max(...xs) / SUB));
+    const y0 = Math.max(0, Math.floor(Math.min(...ys) / SUB));
+    const y1 = Math.min(H, Math.ceil(Math.max(...ys) / SUB));
+    if (x0 >= x1 || y0 >= y1) return; // off the screen
+    for (let ty = Math.floor(y0 / size); ty * size < y1; ty++) {
+      for (let tx = Math.floor(x0 / size); tx * size < x1; tx++) {
+        lists[ty * tilesX + tx].push(k);
+      }
+    }
+  });
+  return lists;
+}
+// endregion: bin
+
+// region: renderTile
+// ctx: { W, H, size, tris: [{ id, pts, win }], chip, background,
+//        shade(t, frags), store(tx, ty, parts) }
+// chip is the tile's on-chip memory, reused for every tile:
+// { depth, rgba, ids }, pixel (x, y) at (y - y0) * size + (x - x0).
+export function renderTile(tx, ty, list, ctx) {
+  const { size, chip } = ctx;
+  const x0 = tx * size;
+  const y0 = ty * size;
+  const rect = { x0, y0, x1: Math.min(x0 + size, ctx.W),
+    y1: Math.min(y0 + size, ctx.H) };
+  chip.depth.fill(1); // every tile starts far away and empty
+  chip.ids.fill(-1);
+  chip.rgba.set(ctx.background);
+  for (const k of list) {
+    const t = ctx.tris[k];
+    const frags = [];
+    rasterize(t.pts, rect, (x, y, w0, w1, w2) => {
+      const j = (y - y0) * size + (x - x0);
+      const f = interpolate(t.win, [w0, w1, w2], ATTRS.length);
+      if (depthTest(chip.depth, j, f.z)) {
+        frags.push({ x, y, j, attrs: f.attrs });
+      }
+    });
+    const colours = ctx.shade(t, frags); // RGBA levels per fragment
+    frags.forEach((f, n) => {
+      chip.rgba.set(colours[n], f.j * 4);
+      chip.ids[f.j] = t.id;
+    });
+  }
+  ctx.store(tx, ty, ['colour']); // depth never leaves the chip
+}
+// endregion: renderTile

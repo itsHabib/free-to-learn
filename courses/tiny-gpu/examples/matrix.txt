@@ -1,0 +1,36 @@
+// The functions of gpu/matrix.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: perspective
+// fovY in degrees. A point at distance near lands on z = -w, a point
+// at distance far on z = w; w is the distance in front of the eye.
+export function perspective(fovY, aspect, near, far) {
+  const f = 1 / Math.tan((fovY * Math.PI) / 360);
+  const m = new Float64Array(16);
+  m[0] = f / aspect;
+  m[5] = f;
+  m[10] = (far + near) / (near - far);
+  m[11] = -1;
+  m[14] = (2 * far * near) / (near - far);
+  return m;
+}
+// endregion: perspective
+
+// region: lookAt
+// World to camera: the eye moves to the origin, looking down -z.
+export function lookAt(eye, target, up) {
+  const f = normalize3(sub3(target, eye));
+  const s = normalize3(cross3(f, up));
+  const u = cross3(s, f);
+  const m = identity();
+  for (let c = 0; c < 3; c++) {
+    m[c * 4 + 0] = s[c];
+    m[c * 4 + 1] = u[c];
+    m[c * 4 + 2] = -f[c];
+  }
+  m[12] = -dot3(s, eye);
+  m[13] = -dot3(u, eye);
+  m[14] = dot3(f, eye);
+  return m;
+}
+// endregion: lookAt

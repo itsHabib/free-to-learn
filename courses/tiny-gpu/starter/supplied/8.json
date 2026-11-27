@@ -1,0 +1,15 @@
+{
+  "unit": "8",
+  "regions": [
+    {
+      "file": "tiles.mjs",
+      "fn": "bin",
+      "text": "// tris[k] is three [x, y] points in subpixels. Returns one list per\n// tile, tile (tx, ty) at index ty * tilesX + tx, each holding the\n// indices k of the triangles whose pixel bounding box touches it.\nexport function bin(tris, W, H, size = TILE) {\n  const tilesX = Math.ceil(W / size);\n  const tilesY = Math.ceil(H / size);\n  const lists = Array.from({ length: tilesX * tilesY }, () => []);\n  tris.forEach((tri, k) => {\n    const xs = tri.map((p) => p[0]);\n    const ys = tri.map((p) => p[1]);\n    // the box rasterize walks, clamped to the screen\n    const x0 = Math.max(0, Math.floor(Math.min(...xs) / SUB));\n    const x1 = Math.min(W, Math.ceil(Math.max(...xs) / SUB));\n    const y0 = Math.max(0, Math.floor(Math.min(...ys) / SUB));\n    const y1 = Math.min(H, Math.ceil(Math.max(...ys) / SUB));\n    if (x0 >= x1 || y0 >= y1) return; // off the screen\n    for (let ty = Math.floor(y0 / size); ty * size < y1; ty++) {\n      for (let tx = Math.floor(x0 / size); tx * size < x1; tx++) {\n        lists[ty * tilesX + tx].push(k);\n      }\n    }\n  });\n  return lists;\n}"
+    },
+    {
+      "file": "tiles.mjs",
+      "fn": "renderTile",
+      "text": "// ctx: { W, H, size, tris: [{ id, pts, win }], chip, background,\n//        shade(t, frags), store(tx, ty, parts) }\n// chip is the tile's on-chip memory, reused for every tile:\n// { depth, rgba, ids }, pixel (x, y) at (y - y0) * size + (x - x0).\nexport function renderTile(tx, ty, list, ctx) {\n  const { size, chip } = ctx;\n  const x0 = tx * size;\n  const y0 = ty * size;\n  const rect = { x0, y0, x1: Math.min(x0 + size, ctx.W),\n    y1: Math.min(y0 + size, ctx.H) };\n  chip.depth.fill(1); // every tile starts far away and empty\n  chip.ids.fill(-1);\n  chip.rgba.set(ctx.background);\n  for (const k of list) {\n    const t = ctx.tris[k];\n    const frags = [];\n    rasterize(t.pts, rect, (x, y, w0, w1, w2) => {\n      const j = (y - y0) * size + (x - x0);\n      const f = interpolate(t.win, [w0, w1, w2], ATTRS.length);\n      if (depthTest(chip.depth, j, f.z)) {\n        frags.push({ x, y, j, attrs: f.attrs });\n      }\n    });\n    const colours = ctx.shade(t, frags); // RGBA levels per fragment\n    frags.forEach((f, n) => {\n      chip.rgba.set(colours[n], f.j * 4);\n      chip.ids[f.j] = t.id;\n    });\n  }\n  ctx.store(tx, ty, ['colour']); // depth never leaves the chip\n}"
+    }
+  ]
+}

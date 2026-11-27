@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build a tiny GPU: which pixels does a triangle cover?</title>
+<meta name="description" content="Two triangles share an edge: decide who draws the pixels on it. Then drag a triangle's corners and count the 8-lane warps a GPU launches to shade it.">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="stylesheet" href="bench.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">Build a tiny GPU</p>
+    <h1>Which pixels does a triangle cover?</h1>
+    <p>A GPU draws a picture as triangles. For each pixel it tests the pixel's centre against the triangle's three edges, and it colours the pixels whose centres fall inside. Every grid on this page is drawn by that test, the same JavaScript the course's learners write in lesson 1.</p>
+  </header>
+
+  <section aria-labelledby="seam-title" id="seam">
+    <h2 id="seam-title">1. Two triangles, one edge</h2>
+    <p>A square of 8 by 8 pixels is cut along its diagonal into two triangles, blue below and orange above. The diagonal runs exactly through the centres of 8 pixels. For each edge the test gives a number, <code>w</code>, positive on the triangle's side and 0 on the edge itself. For those 8 centres <code>w</code> is 0, so the test can't say which side they are on.</p>
+    <canvas id="seam-canvas" class="grid" role="img" aria-label="A square of 8 by 8 pixels split along its diagonal into two triangles. The 8 pixels on the diagonal are not decided yet."></canvas>
+    <ul class="key" aria-label="Key">
+      <li><span class="sw blue"></span>drawn by the blue triangle</li>
+      <li><span class="sw orange"></span>drawn by the orange triangle</li>
+      <li><span class="sw both"></span>drawn by both</li>
+      <li><span class="sw ring grey"></span>a centre on the diagonal, not decided yet</li>
+      <li id="seam-key-miss" hidden><span class="sw ring"></span>a centre on the diagonal drawn by neither</li>
+    </ul>
+    <form id="seam-predict" class="predict">
+      <fieldset>
+        <legend>Say the inside test is "on an edge counts as inside". Who draws the 8 pixels on the diagonal?</legend>
+        <label><input type="radio" name="guess" value="one"> Exactly one triangle draws each pixel</label>
+        <label><input type="radio" name="guess" value="both"> Both triangles</label>
+        <label><input type="radio" name="guess" value="neither"> Neither triangle</label>
+      </fieldset>
+      <button type="submit" id="seam-commit">Lock in my answer</button>
+      <p class="hint" id="seam-hint" aria-live="polite"></p>
+    </form>
+    <div id="seam-rules" hidden>
+      <fieldset class="rules">
+        <legend>The inside test for a centre exactly on an edge</legend>
+        <label><input type="radio" name="rule" value="ge"> On an edge counts as inside (<code>w &gt;= 0</code>)</label>
+        <label><input type="radio" name="rule" value="gt"> On an edge counts as outside (<code>w &gt; 0</code>)</label>
+        <label><input type="radio" name="rule" value="tie"> The tie rule: the triangle to the right of the edge keeps it</label>
+      </fieldset>
+      <p class="status" id="seam-status" aria-live="polite"></p>
+      <div id="seam-result" class="result" tabindex="-1"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="warp-title" id="warp">
+    <h2 id="warp-title">2. Drag a corner, count the warps</h2>
+    <p>The course's GPU works out pixel colours, or <strong>shades</strong> them, a 4 by 2 block at a time. Each block is one <strong>warp</strong> of 8 lanes, one lane per pixel, all running the same instructions. Real GPUs use wider warps, 32 or 64 lanes. A lane whose pixel the triangle misses does no work, but the warp still carries it. The faint lines mark the blocks.</p>
+    <canvas id="warp-canvas" class="grid" tabindex="0" role="application" aria-label="A triangle on a 32 by 24 pixel grid. After your guess, pick a corner and use the arrow keys to move it." aria-describedby="warp-status warp-keys"></canvas>
+    <ul class="key" aria-label="Key">
+      <li><span class="sw blue"></span>a pixel the triangle covers: its lane does work</li>
+      <li><span class="sw wait"></span>a lane that waits</li>
+      <li><span class="sw box"></span>one warp, a 4 by 2 block</li>
+    </ul>
+    <p class="status" id="warp-status" aria-live="polite"></p>
+    <form id="warp-predict" class="predict">
+      <fieldset>
+        <legend>The big triangle keeps most of its lanes busy. A thin sliver, one pixel wide, crosses the grid. How busy will its lanes be?</legend>
+        <label><input type="radio" name="guess" value="same"> About as busy as the big triangle's</label>
+        <label><input type="radio" name="guess" value="less"> Much less busy</label>
+        <label><input type="radio" name="guess" value="more"> Busier</label>
+      </fieldset>
+      <button type="submit" id="warp-commit">Lock in and show the sliver</button>
+      <p class="hint" id="warp-hint" aria-live="polite"></p>
+    </form>
+    <div id="warp-result" class="result" tabindex="-1"></div>
+    <div id="warp-play" hidden>
+      <div class="buttons" role="group" aria-label="Corner to move with the arrow keys">
+        <button type="button" class="corner" data-k="0" aria-pressed="true">Corner A</button>
+        <button type="button" class="corner" data-k="1" aria-pressed="false">Corner B</button>
+        <button type="button" class="corner" data-k="2" aria-pressed="false">Corner C</button>
+      </div>
+      <p class="note" id="warp-keys">Drag a corner, or pick one with the buttons and press an arrow key. Each press moves it 1/16 of a pixel, the grid the course snaps corners to. Hold Shift to move a whole pixel.</p>
+      <div class="buttons" role="group" aria-label="Try a shape">
+        <button type="button" data-shape="big">A big triangle</button>
+        <button type="button" data-shape="sliver">A thin sliver</button>
+        <button type="button" data-shape="tiny">A tiny triangle</button>
+      </div>
+      <p class="note" id="warp-coords"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>This page and the course are original to Free to Learn. The test is <code>bench/raster.mjs</code>, copied from lesson 1 of the course, where learners write the code that turns a triangle into pixels.</p>
+  </footer>
+</main>
+<script type="module" src="bench.mjs"></script>
+</body>
+</html>

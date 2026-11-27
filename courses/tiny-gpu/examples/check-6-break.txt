@@ -1,0 +1,7 @@
+  FAIL 6.active-mask: "lambert, the triangle covers lanes 1, 4, 5, 7"
+       (lambert, mask 10110010, skip on): lane 0 is not in the mask, but
+       it wrote colour
+       [0.7618463635444641,0.4232479929924011,0.25394880771636963].
+       Inactive lanes must not run
+       Reread lesson 6, "The active mask".
+4 of 9 checks pass in unit 6.

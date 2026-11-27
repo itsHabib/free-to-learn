@@ -1,0 +1,3 @@
+Wrote project/out/u5-floorScene.png: floor, 160 × 120 pixels, each drawn
+       2 × 2.
+  counted: fragments 19,200, shaded 19,200, warps 0, issues 249,600

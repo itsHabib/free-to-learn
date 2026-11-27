@@ -1,0 +1,3 @@
+Wrote project/out/u9-hallScene-1-tiled.png: hall-1, 160 × 120 pixels,
+       each drawn 2 × 2.
+  counted: fragments 0, shaded 95,291, warps 14,029, issues 182,377

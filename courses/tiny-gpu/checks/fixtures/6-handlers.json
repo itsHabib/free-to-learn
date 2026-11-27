@@ -1,0 +1,491 @@
+{
+ "cases": [
+  {
+   "name": "if: lanes split",
+   "fn": "onIf",
+   "st": {
+    "pc": 4,
+    "mask": 255,
+    "stack": []
+   },
+   "ins": {
+    "op": "if",
+    "args": [
+     {
+      "r": 0
+     }
+    ],
+    "match": {
+     "else": 9,
+     "end": 13
+    }
+   },
+   "r0": [
+    1,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    1
+   ],
+   "opts": {},
+   "expect": {
+    "pc": 5,
+    "mask": 197,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 197
+     }
+    ]
+   }
+  },
+  {
+   "name": "if: only active lanes can take it",
+   "fn": "onIf",
+   "st": {
+    "pc": 4,
+    "mask": 15,
+    "stack": []
+   },
+   "ins": {
+    "op": "if",
+    "args": [
+     {
+      "r": 0
+     }
+    ],
+    "match": {
+     "else": 9,
+     "end": 13
+    }
+   },
+   "r0": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "opts": {},
+   "expect": {
+    "pc": 5,
+    "mask": 15,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 15,
+      "taken": 15
+     }
+    ]
+   }
+  },
+  {
+   "name": "if: no lane takes it, skip to the else",
+   "fn": "onIf",
+   "st": {
+    "pc": 4,
+    "mask": 102,
+    "stack": []
+   },
+   "ins": {
+    "op": "if",
+    "args": [
+     {
+      "r": 0
+     }
+    ],
+    "match": {
+     "else": 9,
+     "end": 13
+    }
+   },
+   "r0": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "opts": {},
+   "expect": {
+    "pc": 9,
+    "mask": 0,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 102,
+      "taken": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "if: no lane takes it, skip off",
+   "fn": "onIf",
+   "st": {
+    "pc": 4,
+    "mask": 102,
+    "stack": []
+   },
+   "ins": {
+    "op": "if",
+    "args": [
+     {
+      "r": 0
+     }
+    ],
+    "match": {
+     "else": 9,
+     "end": 13
+    }
+   },
+   "r0": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "opts": {
+    "skip": false
+   },
+   "expect": {
+    "pc": 5,
+    "mask": 0,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 102,
+      "taken": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "if: no lane takes it, no else",
+   "fn": "onIf",
+   "st": {
+    "pc": 2,
+    "mask": 255,
+    "stack": []
+   },
+   "ins": {
+    "op": "if",
+    "args": [
+     {
+      "r": 0
+     }
+    ],
+    "match": {
+     "end": 6
+    }
+   },
+   "r0": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "opts": {},
+   "expect": {
+    "pc": 6,
+    "mask": 0,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 0
+     }
+    ]
+   }
+  },
+  {
+   "name": "if inside an if",
+   "fn": "onIf",
+   "st": {
+    "pc": 6,
+    "mask": 60,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 60
+     }
+    ]
+   },
+   "ins": {
+    "op": "if",
+    "args": [
+     {
+      "r": 0
+     }
+    ],
+    "match": {
+     "else": 10,
+     "end": 14
+    }
+   },
+   "r0": [
+    0,
+    0,
+    1,
+    0,
+    1,
+    0,
+    1,
+    1
+   ],
+   "opts": {},
+   "expect": {
+    "pc": 7,
+    "mask": 20,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 60
+     },
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 20
+     }
+    ]
+   }
+  },
+  {
+   "name": "else: the rest of the parent mask",
+   "fn": "onElse",
+   "st": {
+    "pc": 9,
+    "mask": 12,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 12
+     }
+    ]
+   },
+   "ins": {
+    "op": "else",
+    "args": [],
+    "match": {
+     "end": 13
+    }
+   },
+   "r0": [],
+   "opts": {},
+   "expect": {
+    "pc": 10,
+    "mask": 48,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 12
+     }
+    ]
+   }
+  },
+  {
+   "name": "else: nothing left, skip to endif",
+   "fn": "onElse",
+   "st": {
+    "pc": 9,
+    "mask": 60,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 60
+     }
+    ]
+   },
+   "ins": {
+    "op": "else",
+    "args": [],
+    "match": {
+     "end": 13
+    }
+   },
+   "r0": [],
+   "opts": {},
+   "expect": {
+    "pc": 13,
+    "mask": 0,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 60
+     }
+    ]
+   }
+  },
+  {
+   "name": "else: nothing left, skip off",
+   "fn": "onElse",
+   "st": {
+    "pc": 9,
+    "mask": 60,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 60
+     }
+    ]
+   },
+   "ins": {
+    "op": "else",
+    "args": [],
+    "match": {
+     "end": 13
+    }
+   },
+   "r0": [],
+   "opts": {
+    "skip": false
+   },
+   "expect": {
+    "pc": 10,
+    "mask": 0,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 60
+     }
+    ]
+   }
+  },
+  {
+   "name": "else inside an if",
+   "fn": "onElse",
+   "st": {
+    "pc": 10,
+    "mask": 20,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 60
+     },
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 20
+     }
+    ]
+   },
+   "ins": {
+    "op": "else",
+    "args": [],
+    "match": {
+     "end": 14
+    }
+   },
+   "r0": [],
+   "opts": {},
+   "expect": {
+    "pc": 11,
+    "mask": 40,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 60
+     },
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 20
+     }
+    ]
+   }
+  },
+  {
+   "name": "endif pops one entry",
+   "fn": "onEndif",
+   "st": {
+    "pc": 14,
+    "mask": 40,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 60
+     },
+     {
+      "kind": "if",
+      "saved": 60,
+      "taken": 20
+     }
+    ]
+   },
+   "ins": {
+    "op": "endif",
+    "args": [],
+    "match": {}
+   },
+   "r0": [],
+   "opts": {},
+   "expect": {
+    "pc": 15,
+    "mask": 60,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 255,
+      "taken": 60
+     }
+    ]
+   }
+  },
+  {
+   "name": "endif restores the mask before the if",
+   "fn": "onEndif",
+   "st": {
+    "pc": 13,
+    "mask": 192,
+    "stack": [
+     {
+      "kind": "if",
+      "saved": 240,
+      "taken": 48
+     }
+    ]
+   },
+   "ins": {
+    "op": "endif",
+    "args": [],
+    "match": {}
+   },
+   "r0": [],
+   "opts": {},
+   "expect": {
+    "pc": 14,
+    "mask": 240,
+    "stack": []
+   }
+  }
+ ]
+}

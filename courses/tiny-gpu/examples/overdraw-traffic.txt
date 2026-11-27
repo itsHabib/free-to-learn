@@ -1,0 +1,3 @@
+mode       depth      colour     bins       total
+immediate  1924672    962336     0          2887008
+tiled      0          76800      118512     195312

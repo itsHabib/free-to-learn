@@ -1,0 +1,14 @@
+  FAIL 7.segments: A warp costs one transaction per distinct 32-byte
+       segment (Math.floor(address / 32)) its lanes touch, not one per
+       address. For "eight neighbours from 0": addresses
+       [0,4,8,12,16,20,24,28] (lane 0 first), mask 11111111 (lane 0 is
+       the last bit): transactions returned 8, expected 1.
+       Reread lesson 7, "Counting transactions".
+  FAIL 7.framebuffer-bytes: Per block, the pipeline counts the depth
+       reads of the covered lanes and the depth and colour writes of the
+       lanes that passed, each as transactions x 32 bytes. The
+       courtyard, 64 x 64, 4 x 2 blocks:
+       {"warps":892,"depth":246112,"color":105824}, expected
+       {"warps":892,"depth":108896,"color":44416}.
+       Reread lesson 7, "Coalescing the framebuffer".
+6 of 9 checks pass in unit 7.

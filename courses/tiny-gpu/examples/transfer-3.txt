@@ -1,0 +1,4 @@
+New application: Fog from depth
+  WAIT t3.fog-depth: fogDepth: not written yet (make transfer/3.mjs in
+       your project folder, as lesson 3 asks)
+0 of 1 pass; 1 wait for files not made yet.

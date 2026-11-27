@@ -1,0 +1,19 @@
+// region: front
+ahead [1,0,-5]
+  clip     1.299, 0.000, 4.810, 5.000
+  z + w    9.810
+  x / w    0.260
+  window x 100.81 pixels
+// endregion: front
+// region: behind
+behind [1,0,2]
+  clip     1.299, 0.000, -2.204, -2.000
+  z + w    -4.204
+  x / w    -0.650
+  window x 28.06 pixels
+// endregion: behind
+// region: clip
+clipNear: 2 triangles
+  z + w at the corners: 9.810, 0.000, 0.000
+  z + w at the corners: 9.810, 0.000, 9.810
+// endregion: clip

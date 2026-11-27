@@ -1,0 +1,14 @@
+  FAIL 3.colour-perspective: With w = 1, 6 and 2.5 at the corners,
+       colour must be interpolated perspective-correctly
+       ("colour-perspective", stage 3, colour = round(c * 255)): 1,330
+       pixels differ by more than 0 levels (largest difference 107 of
+       255). First at pixel (18, 5): yours [3, 0, 252], expected [7, 0,
+       248].
+       Reread lesson 3, "Perspective-correct interpolation".
+  FAIL 3.floor-straight: The checker floor seen from low down must keep
+       straight lines (camera stop "low", 64 x 64, stage 3): colour: 833
+       pixels differ by more than 1 level (largest difference 36 of
+       255). First at pixel (23, 0): yours [240, 240, 240], expected
+       [204, 204, 204].
+       Reread lesson 3, "Perspective-correct interpolation".
+5 of 9 checks pass in unit 3.

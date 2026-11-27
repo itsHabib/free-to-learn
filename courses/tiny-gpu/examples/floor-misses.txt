@@ -1,0 +1,5 @@
+floor      layout  misses  hits    texture bytes
+along      linear  2179    2741    69728
+along      tiled   2112    368     67584
+turned     linear  7445    2235    238240
+turned     tiled   2112    2768    67584

@@ -1,0 +1,762 @@
+{
+  "id": "tiny-gpu",
+  "title": "Build a tiny GPU",
+  "status": "early edition: human learner trials pending",
+  "runtime": "Node 22 or newer for the lab, its checks and every picture. No packages, account or network. A browser with WebGL2 for the comparison page.",
+  "project": "gpu/",
+  "workFiles": [
+    "gpu/",
+    "briefs/",
+    "transfer/"
+  ],
+  "lessons": [
+    {
+      "id": "1",
+      "title": "Edge functions and the fill rule",
+      "lesson": "lessons/01.md",
+      "scene": "tieScenes",
+      "compare": false,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "raster.mjs",
+          "fn": "edge"
+        },
+        {
+          "file": "raster.mjs",
+          "fn": "owns"
+        },
+        {
+          "file": "raster.mjs",
+          "fn": "rasterize"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "edge",
+            "pattern": "\\bedge\\b",
+            "example": "edge(a, b, p)"
+          },
+          {
+            "name": "owns",
+            "pattern": "\\bowns\\b",
+            "example": "owns(a, b)"
+          },
+          {
+            "name": "rasterize",
+            "pattern": "\\brasterize\\b",
+            "example": "rasterize(tri, rect, emit)"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "integer subpixel units",
+            "pattern": "\\bsub-?pixel\\b|\\bSUB\\b|\\b1\\s*/\\s*16\\b|\\bintegers?\\b",
+            "example": "points are integers in 1/16 pixel units (SUB = 16)"
+          },
+          {
+            "name": "the tie rule",
+            "pattern": "\\btie\\b|\\btop-left\\b|\\bfill rule\\b|\\bexactly on (an|the) edge\\b",
+            "example": "a pixel centre exactly on an edge follows the tie rule"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 1\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/1.mjs",
+        "fn": "vertexOwner",
+        "section": "A vertex shared by six triangles",
+        "check": "checks/transfer-1.mjs",
+        "run": "node checks/run.mjs project transfer-1"
+      }
+    },
+    {
+      "id": "2",
+      "title": "From 3D to the screen: transform, clip, snap",
+      "lesson": "lessons/02.md",
+      "scene": "courtyard",
+      "compare": false,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "vertex.mjs",
+          "fn": "transform"
+        },
+        {
+          "file": "vertex.mjs",
+          "fn": "clipNear"
+        },
+        {
+          "file": "vertex.mjs",
+          "fn": "toWindow"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "transform",
+            "pattern": "\\btransform\\b",
+            "example": "transform(m, p)"
+          },
+          {
+            "name": "clipNear",
+            "pattern": "\\bclipNear\\b",
+            "example": "clipNear(tri)"
+          },
+          {
+            "name": "toWindow",
+            "pattern": "\\btoWindow\\b",
+            "example": "toWindow(c, W, H)"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "column-major matrices",
+            "pattern": "\\bcolumn[- ]major\\b|m\\[\\s*c\\s*\\*\\s*4\\s*\\+\\s*r\\s*\\]",
+            "example": "matrices are column-major: m[c * 4 + r]"
+          },
+          {
+            "name": "the near plane z = -w",
+            "pattern": "z\\s*=\\s*-\\s*w|z\\s*\\+\\s*w\\s*>=?\\s*0|\\bnear plane\\b",
+            "example": "clip against the near plane z = -w"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 2\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/2.mjs",
+        "fn": "clipFar",
+        "section": "A far plane",
+        "check": "checks/transfer-2.mjs",
+        "run": "node checks/run.mjs project transfer-2"
+      }
+    },
+    {
+      "id": "3",
+      "title": "Perspective-correct interpolation and depth",
+      "lesson": "lessons/03.md",
+      "scene": "courtyard",
+      "compare": false,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "interp.mjs",
+          "fn": "interpolate"
+        },
+        {
+          "file": "interp.mjs",
+          "fn": "depthTest"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "interpolate",
+            "pattern": "\\binterpolate\\b",
+            "example": "interpolate(v, w, n)"
+          },
+          {
+            "name": "depthTest",
+            "pattern": "\\bdepthTest\\b",
+            "example": "depthTest(depth, i, z)"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "perspective-correct: divide by w",
+            "pattern": "\\bperspective[- ]correct\\b|\\binvW\\b|\\b1\\s*/\\s*w\\b",
+            "example": "attributes are weighted by 1/w and divided by the sum"
+          },
+          {
+            "name": "depth test LESS",
+            "pattern": "\\bLESS\\b|\\bstrictly (less|smaller)\\b|<\\s*depth",
+            "example": "a fragment passes when its depth is strictly less (LESS)"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 3\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/3.mjs",
+        "fn": "fogDepth",
+        "section": "Fog from depth",
+        "check": "checks/transfer-3.mjs",
+        "run": "node checks/run.mjs project transfer-3"
+      }
+    },
+    {
+      "id": "4",
+      "title": "The browser's GPU as the oracle",
+      "lesson": "lessons/04.md",
+      "scene": "courtyard",
+      "compare": true,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "texture.mjs",
+          "fn": "sample"
+        },
+        {
+          "file": "diff.mjs",
+          "fn": "diffImages"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "sample",
+            "pattern": "\\bsample\\b",
+            "example": "sample(tex, u, v, mode)"
+          },
+          {
+            "name": "diffImages",
+            "pattern": "\\bdiffImages\\b",
+            "example": "diffImages(mine, theirs, ties)"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "repeat wrapping",
+            "pattern": "\\brepeat\\b|\\bwrap(s|ping)?\\b",
+            "example": "texture coordinates wrap (repeat)"
+          },
+          {
+            "name": "texel centres at +0.5",
+            "pattern": "\\+\\s*0?\\.5\\b|-\\s*0?\\.5\\b|\\btexel cent(re|er)s?\\b",
+            "example": "texel centres sit at +0.5"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 4\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/4.mjs",
+        "fn": "movedVertices",
+        "section": "A second GPU",
+        "check": "checks/transfer-4.mjs",
+        "run": "node checks/run.mjs project transfer-4"
+      }
+    },
+    {
+      "id": "5",
+      "title": "A shader core: a small shader language, an assembler and one lane",
+      "lesson": "lessons/05.md",
+      "scene": "courtyard",
+      "compare": true,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "shader.mjs",
+          "fn": "assemble"
+        },
+        {
+          "file": "shader.mjs",
+          "fn": "step"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "assemble",
+            "pattern": "\\bassemble\\b",
+            "example": "assemble(text)"
+          },
+          {
+            "name": "step",
+            "pattern": "\\bstep\\b",
+            "example": "step(lane, ins, env)"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "float32 arithmetic",
+            "pattern": "\\bfloat ?32\\b|Math\\.fround",
+            "example": "every result goes through Math.fround (float32)"
+          },
+          {
+            "name": "errors name the line",
+            "pattern": "\\bline N\\b|\\berrors?\\b[^.]{0,60}\\bline\\b",
+            "example": "errors start with \"line N:\" and the reason"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 5\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/toon.asm",
+        "fn": "toon shader",
+        "section": "A toon shader",
+        "check": "checks/transfer-5.mjs",
+        "run": "node checks/run.mjs project transfer-5",
+        "files": [
+          "transfer/toon.asm",
+          "transfer/toon.glsl"
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "title": "Warps, masks and divergence",
+      "lesson": "lessons/06.md",
+      "scene": "courtyard",
+      "compare": true,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "warp.mjs",
+          "fn": "runWarp"
+        },
+        {
+          "file": "warp.mjs",
+          "fn": "onIf"
+        },
+        {
+          "file": "warp.mjs",
+          "fn": "onElse"
+        },
+        {
+          "file": "warp.mjs",
+          "fn": "onEndif"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "runWarp",
+            "pattern": "\\brunWarp\\b",
+            "example": "runWarp(program, lanes, mask, env, opts)"
+          },
+          {
+            "name": "onIf",
+            "pattern": "\\bonIf\\b",
+            "example": "onIf"
+          },
+          {
+            "name": "onElse",
+            "pattern": "\\bonElse\\b",
+            "example": "onElse"
+          },
+          {
+            "name": "onEndif",
+            "pattern": "\\bonEndif\\b",
+            "example": "onEndif"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "eight lanes in a 4×2 block",
+            "pattern": "\\b(8|eight)\\b[^.]{0,30}\\blanes?\\b|\\b4\\s*[x×]\\s*2\\b",
+            "example": "a warp is eight lanes, a 4×2 block of pixels"
+          },
+          {
+            "name": "the active mask and its stack",
+            "pattern": "\\bmask\\b[^.]{0,60}\\bstack\\b|\\bstack\\b[^.]{0,60}\\bmask\\b",
+            "example": "an active mask, pushed and popped on a stack"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 6\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/6.mjs",
+        "fn": "predictIssues",
+        "section": "An escape loop on one warp",
+        "check": "checks/transfer-6.mjs",
+        "run": "node checks/run.mjs project transfer-6"
+      }
+    },
+    {
+      "id": "7",
+      "title": "Memory transactions, coalescing and the texture cache",
+      "lesson": "lessons/07.md",
+      "scene": "courtyard",
+      "compare": true,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "memory.mjs",
+          "fn": "transactions"
+        },
+        {
+          "file": "memory.mjs",
+          "fn": "TextureCache",
+          "methods": [
+            "constructor",
+            "access"
+          ]
+        },
+        {
+          "file": "memory.mjs",
+          "fn": "texelAddress"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "transactions",
+            "pattern": "\\btransactions\\b",
+            "example": "transactions(addresses, mask)"
+          },
+          {
+            "name": "TextureCache",
+            "pattern": "\\bTextureCache\\b",
+            "example": "new TextureCache({ sets, ways }) with access(addr)"
+          },
+          {
+            "name": "texelAddress",
+            "pattern": "\\btexelAddress\\b",
+            "example": "texelAddress(tex, x, y, layout)"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "32-byte segments",
+            "pattern": "\\b32[- ]?bytes?\\b|\\bSEGMENT\\b",
+            "example": "memory moves in 32-byte segments and lines"
+          },
+          {
+            "name": "least recently used replacement",
+            "pattern": "\\bleast[- ]recently[- ]used\\b|\\bLRU\\b",
+            "example": "the cache replaces the least recently used line"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 7\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/7.mjs",
+        "fn": "blurMisses",
+        "section": "A vertical blur",
+        "check": "checks/transfer-7.mjs",
+        "run": "node checks/run.mjs project transfer-7"
+      }
+    },
+    {
+      "id": "8",
+      "title": "Tiled rendering",
+      "lesson": "lessons/08.md",
+      "scene": "courtyard",
+      "compare": true,
+      "supplied": true,
+      "writes": [
+        {
+          "file": "tiles.mjs",
+          "fn": "bin"
+        },
+        {
+          "file": "tiles.mjs",
+          "fn": "renderTile"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "bin",
+            "pattern": "\\bbin\\b",
+            "example": "bin(tris, W, H)"
+          },
+          {
+            "name": "renderTile",
+            "pattern": "\\brenderTile\\b",
+            "example": "renderTile(tx, ty, list, ctx)"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "16×16 tiles",
+            "pattern": "\\b16\\s*[x×]\\s*16\\b|\\bTILE\\b",
+            "example": "tiles are 16×16 pixels"
+          },
+          {
+            "name": "the fill rule holds at tile edges",
+            "pattern": "\\btile (edge|border|boundar)|\\bfill rule\\b|\\btie rule\\b",
+            "example": "the fill rule must hold where a triangle crosses a tile edge"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 8\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      },
+      "transfer": {
+        "file": "transfer/8.mjs",
+        "fn": "dustBytes",
+        "section": "Twenty thousand tiny triangles",
+        "check": "checks/transfer-8.mjs",
+        "run": "node checks/run.mjs project transfer-8"
+      }
+    },
+    {
+      "id": "9",
+      "title": "Capstone: a scene you have not seen, under a budget",
+      "lesson": "lessons/09.md",
+      "scene": "hall",
+      "compare": true,
+      "supplied": false,
+      "writes": [
+        {
+          "file": "capstone.mjs",
+          "fn": "renderVisible"
+        }
+      ],
+      "brief": {
+        "interface": [
+          {
+            "name": "renderVisible",
+            "pattern": "\\brenderVisible\\b",
+            "example": "renderVisible"
+          }
+        ],
+        "constraints": [
+          {
+            "name": "no packages",
+            "pattern": "\\b(no|not|without|never|zero|free of)\\b[^.]{0,60}\\b(librar(y|ies)|dependenc(y|ies)|packages?|npm|imports? from outside)\\b|\\bplain JavaScript\\b",
+            "example": "plain JavaScript for Node 22, no packages"
+          },
+          {
+            "name": "only these functions change",
+            "pattern": "\\b(only|just)\\b[^.]{0,60}\\b(functions?|regions?|methods?)\\b|\\b(do not|don't|never|must not)\\b[^.]{0,40}\\b(change|edit|touch|modify|rename)\\b[^.]{0,60}\\b(other|supplied|signatures?|anything else|files?)\\b",
+            "example": "change only these functions; keep their signatures and leave the supplied code alone"
+          },
+          {
+            "name": "the shading budget",
+            "pattern": "\\bbudget\\b|\\bvisible warps\\b",
+            "example": "warps launched within the shading budget"
+          },
+          {
+            "name": "colours come from shadeWarp",
+            "pattern": "\\bshadeWarp\\b",
+            "example": "every visible colour comes from shadeWarp"
+          }
+        ],
+        "check": {
+          "name": "the check command",
+          "pattern": "node lab\\.mjs check 9\\b"
+        },
+        "notes": [
+          {
+            "name": "the goal",
+            "pattern": "^#+\\s*goal"
+          },
+          {
+            "name": "references, described by what they do",
+            "pattern": "^#+\\s*references?"
+          },
+          {
+            "name": "what to hand back",
+            "pattern": "^#+\\s*(hand ?back|report|what to hand back)"
+          }
+        ]
+      }
+    }
+  ]
+}

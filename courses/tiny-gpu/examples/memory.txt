@@ -1,0 +1,93 @@
+// The functions of gpu/memory.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: SEGMENT
+export const SEGMENT = 32; // bytes in one memory transaction
+// endregion: SEGMENT
+
+// region: CACHE
+// The texture cache the pipeline uses: 8 sets of 8 lines, 2 KB.
+export const CACHE = { sets: 8, ways: 8 };
+// endregion: CACHE
+
+// region: transactions
+// addresses[k] is lane k's byte address; bit k of mask is lane k.
+export function transactions(addresses, mask) {
+  const segments = new Set();
+  for (let k = 0; k < addresses.length; k++) {
+    if (mask & (1 << k)) {
+      segments.add(Math.floor(addresses[k] / SEGMENT));
+    }
+  }
+  return segments.size;
+}
+// endregion: transactions
+
+// region: TextureCache
+// Set-associative, least recently used replacement. Line n of memory
+// (bytes 32n to 32n + 31) can only live in set n % sets.
+export class TextureCache {
+  constructor({ sets, ways }) {
+    this.sets = sets;
+    this.ways = ways;
+    // each set lists its lines, least recently used first
+    this.lines = Array.from({ length: sets }, () => []);
+    this.hits = 0;
+    this.misses = 0;
+    this.bytes = 0;
+  }
+
+  access(addr) {
+    const line = Math.floor(addr / SEGMENT);
+    const set = this.lines[line % this.sets];
+    const at = set.indexOf(line);
+    if (at >= 0) {
+      set.splice(at, 1);
+      set.push(line); // now the most recently used
+      this.hits += 1;
+      return true;
+    }
+    if (set.length === this.ways) set.shift(); // evict the oldest
+    set.push(line);
+    this.misses += 1;
+    this.bytes += SEGMENT;
+    return false;
+  }
+}
+// endregion: TextureCache
+
+// region: texelAddress
+// Byte address of texel (x, y). 'linear': row after row. 'tiled':
+// blocks of 4 x 2 texels, 32 bytes each, the blocks row after row.
+export function texelAddress(tex, x, y, layout) {
+  if (layout === 'linear') return (y * tex.w + x) * 4;
+  const block = (y >> 1) * (tex.w >> 2) + (x >> 2);
+  const inside = (y & 1) * 4 + (x & 3);
+  return block * SEGMENT + inside * 4;
+}
+// endregion: texelAddress
+
+// region: storeTexture
+// The texture's bytes in memory order for a layout. 'tiled' copies
+// block by block: in each 4 x 2 block, the bottom row of four texels,
+// then the row above.
+export function storeTexture(tex, layout) {
+  if (layout === 'linear') return tex.data;
+  if (layout !== 'tiled') throw new Error(`unknown layout ${layout}`);
+  if (tex.w % 4 || tex.h % 2) {
+    throw new Error('a tiled texture needs w % 4 = 0 and h % 2 = 0');
+  }
+  const out = new Uint8Array(tex.data.length);
+  let at = 0;
+  for (let by = 0; by < tex.h; by += 2) {
+    for (let bx = 0; bx < tex.w; bx += 4) {
+      for (let y = by; y < by + 2; y++) {
+        const row = (y * tex.w + bx) * 4;
+        out.set(tex.data.subarray(row, row + 16), at);
+        at += 16;
+      }
+    }
+  }
+  return out;
+}
+// endregion: storeTexture

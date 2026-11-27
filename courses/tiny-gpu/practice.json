@@ -1,0 +1,2388 @@
+{
+  "1a": {
+    "version": 1,
+    "lesson": "1",
+    "section": "The edge function",
+    "retry": "1a2",
+    "question": "With a = [16, 16] and b = [176, 16] (subpixels), what is edge(a, b, p) for the centre of pixel (5, 0)?",
+    "format": "a whole number, such as 512 or -512",
+    "expected": "-1280",
+    "reason": "The centre of pixel (5, 0) is (5.5, 0.5), so p = [88, 8] in subpixels. edge(a, b, p) = (176 - 16)(8 - 16) - (16 - 16)(88 - 16) = 160 × (-8) - 0 = -1,280. It is negative because walking from a to b runs right along y = 1, and the centre at y 0.5 lies on the right of that walk.",
+    "wrong": [
+      {
+        "answer": "1280",
+        "feedback": "The size is right and the sign is not. Walking from a to b goes right, and the centre at y 0.5 is below the line y = 1, which is on your right: the edge function is negative there."
+      },
+      {
+        "answer": "-5",
+        "feedback": "That is the value in pixel units. The edge function works on subpixels, 16 to a pixel, so every coordinate is 16 times larger and the product 256 times larger."
+      },
+      {
+        "answer": "-2560",
+        "feedback": "That uses the pixel's corner [80, 0]. A pixel is tested at its centre, (5.5, 0.5), which is [88, 8] in subpixels."
+      },
+      {
+        "answer": "0",
+        "feedback": "The centre isn't on the line: the line runs along y = 1, and the centre of pixel (5, 0) is at y 0.5."
+      }
+    ]
+  },
+  "1a2": {
+    "version": 1,
+    "lesson": "1",
+    "variantOf": "1a",
+    "question": "A fresh case. With a = [32, 0] and b = [32, 160] (subpixels), what is edge(a, b, p) for the centre of pixel (3, 1)?",
+    "format": "a whole number, such as 512 or -512",
+    "expected": "-3840",
+    "reason": "The centre of pixel (3, 1) is [56, 24]. edge(a, b, p) = (32 - 32)(24 - 0) - (160 - 0)(56 - 32) = 0 - 160 × 24 = -3,840. Walking up along x = 2, the centre at x 3.5 is on your right, so the value is negative.",
+    "wrong": [
+      {
+        "answer": "3840",
+        "feedback": "Walking from a to b goes up, and the centre at x 3.5 lies to the right of x = 2: right of the walk means negative."
+      },
+      {
+        "answer": "-240",
+        "feedback": "That mixes units: one factor is in subpixels and the other in pixels, as in 160 × 1.5. Put every coordinate in subpixels, 16 to a pixel."
+      }
+    ]
+  },
+  "1b": {
+    "version": 1,
+    "lesson": "1",
+    "section": "Walking the bounding box",
+    "retry": "1b2",
+    "question": "A triangle's corners have x at 3.5, 20.625 and 12.5 pixels. How many columns does its bounding box visit?",
+    "format": "a whole number",
+    "expected": "18",
+    "reason": "In subpixels the corners are at x 56, 330 and 200. The box starts at floor(56 / 16) = 3 and stops before ceil(330 / 16) = 21, so it visits columns 3 to 20: 18 columns. Column 20 is needed because its centre, 20.5, is left of the corner at 20.625.",
+    "wrong": [
+      {
+        "answer": "17",
+        "feedback": "That stops before floor(330 / 16) = 20 and loses column 20. Its centre, 20.5, is left of the corner at 20.625, so a centre there can be inside: the end is rounded up."
+      },
+      {
+        "answer": "19",
+        "feedback": "The end, ceil(330 / 16) = 21, is excluded: the box visits columns 3 to 20, which is 18."
+      },
+      {
+        "answer": "17.125",
+        "feedback": "The box holds whole columns: from floor(56 / 16) = 3 up to, not including, ceil(330 / 16) = 21."
+      }
+    ]
+  },
+  "1b2": {
+    "version": 1,
+    "lesson": "1",
+    "variantOf": "1b",
+    "question": "A fresh case. A triangle's corners have x at 0.25, 9.5 and 5 pixels. How many columns does its bounding box visit?",
+    "format": "a whole number",
+    "expected": "10",
+    "reason": "In subpixels the corners are at x 4, 152 and 80. The box runs from floor(4 / 16) = 0 up to, not including, ceil(152 / 16) = 10: columns 0 to 9, which is 10. Column 9's centre, 9.5, sits exactly on the corner's x, so it has to be tested.",
+    "wrong": [
+      {
+        "answer": "9",
+        "feedback": "That stops at floor(152 / 16) = 9 and loses column 9, whose centre at 9.5 can still be covered (it is exactly the corner's x)."
+      },
+      {
+        "answer": "11",
+        "feedback": "The end, ceil(152 / 16) = 10, is excluded: columns 0 to 9."
+      }
+    ]
+  },
+  "1c": {
+    "version": 1,
+    "lesson": "1",
+    "section": "The tie rule",
+    "retry": "1c2",
+    "question": "The square with corners (8.5, 7.5) and (56.5, 55.5) is cut along its diagonal from (8.5, 55.5) to (56.5, 7.5) into two triangles. If every edge counted a centre on it as inside (w >= 0 on every edge), how many pixels would both triangles draw?",
+    "format": "a whole number",
+    "expected": "49",
+    "reason": "The diagonal from (8.5, 55.5) to (56.5, 7.5) passes through the centres (8.5, 55.5), (9.5, 54.5) and so on down to (56.5, 7.5): 56 - 8 + 1 = 49 centres, both end corners included. Each lies on the shared edge, so with >= both triangles draw it. Centres on the outer edges belong to one triangle only, so they are drawn once.",
+    "wrong": [
+      {
+        "answer": "48",
+        "feedback": "Count both ends: the centres run from (8.5, 55.5) to (56.5, 7.5), one column at a time, which is 56 - 8 + 1 = 49."
+      },
+      {
+        "answer": "47",
+        "feedback": "The two end corners are corners of both triangles, and with >= on every edge both triangles include them too: 49 in all."
+      },
+      {
+        "answer": "98",
+        "feedback": "That counts each drawing. The question asks for pixels: 49 pixels, each drawn by both triangles."
+      },
+      {
+        "answer": "0",
+        "feedback": "With > on every edge no pixel would be drawn twice, but the diagonal's centres would be lost. With >=, both triangles draw each of them."
+      }
+    ]
+  },
+  "1c2": {
+    "version": 1,
+    "lesson": "1",
+    "variantOf": "1c",
+    "question": "A fresh case. A square with corners (4.5, 10.5) and (40.5, 46.5) is cut along the diagonal between those corners. With >= on every edge, how many pixels do both triangles draw?",
+    "format": "a whole number",
+    "expected": "37",
+    "reason": "The diagonal steps one pixel right and one up from (4.5, 10.5) to (40.5, 46.5), passing through 40 - 4 + 1 = 37 centres, each drawn by both triangles.",
+    "wrong": [
+      {
+        "answer": "36",
+        "feedback": "Count both ends: 40 - 4 + 1 = 37."
+      },
+      {
+        "answer": "74",
+        "feedback": "That counts drawings. 37 pixels are each drawn twice."
+      }
+    ]
+  },
+  "1d": {
+    "version": 1,
+    "lesson": "1",
+    "section": "The tie rule",
+    "retry": "1d2",
+    "question": "Each of these is an edge a -> b of a counter-clockwise triangle. Which own their ties? (a) a -> b runs straight down, (b) straight up, (c) straight right, (d) straight left.",
+    "format": "the letters of the edges that own their ties, such as a,b, or none",
+    "expected": "a,c",
+    "reason": "The interior is on the left of a -> b. Going down (a), the left is +x, so the nudge right moves inside: it owns. Going up (b), the interior is to the left (-x): no. Going right (c), the interior is above, and the e * e part of the nudge moves up into it: it owns. Going left (d), the interior is below: no. In owns, (a) has gx > 0, (b) gx < 0, (c) gx = 0 and gy > 0, (d) gx = 0 and gy < 0.",
+    "wrong": [
+      {
+        "answer": "b,d",
+        "feedback": "That is the mirrored rule, the nudge left and down. The course's rule nudges right and up: an edge going down has its interior on the right, and an edge going right has it above."
+      },
+      {
+        "answer": "a,d",
+        "feedback": "Edge (d), going left, has its interior below it, and the nudge moves up, out of the triangle. Edge (c), going right, has its interior above, so it owns its ties."
+      },
+      {
+        "answer": "b,c",
+        "feedback": "Edge (b), going up, has its interior on the left (-x), and the nudge moves right, out. Edge (a), going down, has its interior on the right: it owns."
+      },
+      {
+        "answer": "a",
+        "feedback": "Edge (c) owns too: a horizontal edge going right has the interior above it, and the e * e part of the nudge moves up into it."
+      },
+      {
+        "answer": "c",
+        "feedback": "Edge (a) owns too: going straight down, the interior lies to the right (+x), where the nudge moves."
+      },
+      {
+        "answer": "none",
+        "feedback": "Every tie must go to exactly one triangle, so the edges that own are the ones whose interior the nudge (right, and a tinier bit up) moves into: (a) and (c)."
+      }
+    ]
+  },
+  "1d2": {
+    "version": 1,
+    "lesson": "1",
+    "variantOf": "1d",
+    "question": "A fresh case. Edges a -> b of counter-clockwise triangles: (a) runs down and to the right at 45°, (b) up and to the left, (c) up and to the right, (d) down and to the left. Which own their ties?",
+    "format": "the letters of the edges that own their ties, such as a,b, or none",
+    "expected": "a,d",
+    "reason": "gx = -(b.y - a.y) is positive whenever the edge goes down, whatever its x direction: (a) and (d). Their interiors lie on the +x side of the edge, where the nudge moves. Edges going up, (b) and (c), have gx < 0.",
+    "wrong": [
+      {
+        "answer": "b,c",
+        "feedback": "Those go up, so gx = -(b.y - a.y) is negative: the interior is on the -x side and the nudge moves away from it."
+      },
+      {
+        "answer": "a,c",
+        "feedback": "Edge (c) goes up, so gx < 0. Only the vertical part decides here. gy matters only when gx is 0."
+      }
+    ]
+  },
+  "1e": {
+    "version": 1,
+    "lesson": "1",
+    "section": "Snapping to the subpixel grid",
+    "retry": "1e2",
+    "question": "A corner sits at x 5.28 pixels. Where does snap2 put it, in pixels?",
+    "format": "a number of pixels, such as 3.75",
+    "expected": "5.25",
+    "reason": "snap2 rounds x × 16 to the nearest integer: 5.28 × 16 = 84.48, which rounds to 84, and 84 / 16 = 5.25. Every corner lands on a multiple of 1/16 pixel before any edge value is computed, the same grid the GPU snaps to.",
+    "wrong": [
+      {
+        "answer": "5.28",
+        "feedback": "snap2 rounds to the nearest 1/16 pixel before any edge value is computed: 5.28 × 16 = 84.48, which rounds to 84, or 5.25 pixels."
+      },
+      {
+        "answer": "5.3125",
+        "feedback": "That rounds 84.48 up to 85. snap2 rounds to the nearest: 84, which is 5.25 pixels."
+      },
+      {
+        "answer": "5",
+        "feedback": "The grid is 1/16 pixel, not a whole pixel: 5.28 × 16 = 84.48 rounds to 84, which is 5.25."
+      },
+      {
+        "answer": "5.5",
+        "feedback": "The grid is 1/16 pixel, not a pixel centre: 5.28 × 16 = 84.48 rounds to 84, which is 5.25."
+      },
+      {
+        "answer": "84",
+        "feedback": "That is the subpixel integer. In pixels it is 84 / 16 = 5.25."
+      }
+    ]
+  },
+  "1e2": {
+    "version": 1,
+    "lesson": "1",
+    "variantOf": "1e",
+    "question": "A fresh case. A corner sits at x 12.97 pixels. Where does snap2 put it, in pixels?",
+    "format": "a number of pixels",
+    "expected": "13",
+    "reason": "12.97 × 16 = 207.52, which rounds to 208, and 208 / 16 = 13.",
+    "wrong": [
+      {
+        "answer": "12.9375",
+        "feedback": "That rounds 207.52 down to 207. Math.round gives 208, which is 13 pixels."
+      },
+      {
+        "answer": "208",
+        "feedback": "That is the subpixel integer. In pixels it is 208 / 16 = 13."
+      }
+    ]
+  },
+  "1t": {
+    "version": 1,
+    "lesson": "1",
+    "section": "A vertex shared by six triangles",
+    "retry": "1t2",
+    "question": "Six triangles meet at the centre of pixel (32, 32), at (32.5, 32.5). Their outer corners in counter-clockwise order are r0 (52.5, 32.5), r1 (42.5, 50.5), r2 (22.5, 50.5), r3 (12.5, 32.5), r4 (22.5, 14.5) and r5 (42.5, 14.5). Triangle k has the centre, rk and the next outer corner in that order as its corners. Which triangle owns pixel (32, 32)?",
+    "format": "the triangle's number k, 0 to 5",
+    "expected": "0",
+    "reason": "The centre lies on two edges of every one of the six triangles. Nudged right by e and up by e * e, it moves just above the line from the centre to r0, which points straight right. Triangle 0 lies between r0 and r1, above that line, so it owns the pixel. Triangle 5, between r5 and r0, lies below it.",
+    "wrong": [
+      {
+        "answer": "5",
+        "feedback": "Triangle 5 lies below the line from the centre to r0. The nudge moves right and a tinier amount up, so it lands in triangle 0, just above that line."
+      },
+      {
+        "answer": "3",
+        "feedback": "The nudge moves right, towards r0, not left towards r3."
+      },
+      {
+        "answer": "2",
+        "feedback": "The nudge moves right, towards r0. Triangle 2 lies on the left."
+      },
+      {
+        "answer": "1",
+        "feedback": "Triangle 1 lies between r1 and r2, up and to the left. The nudge goes right and only a tiny bit up, so it lands between r0 and r1: triangle 0."
+      },
+      {
+        "answer": "none",
+        "feedback": "Every centre inside a fan belongs to exactly one of its triangles, and the nudge picks which."
+      }
+    ]
+  },
+  "1t2": {
+    "version": 1,
+    "lesson": "1",
+    "variantOf": "1t",
+    "question": "A fresh case. Four triangles meet at the centre of pixel (10, 10). Their outer corners, counter-clockwise, are r0 (10.5, 20.5) straight up, r1 (0.5, 10.5) left, r2 (10.5, 0.5) down and r3 (20.5, 10.5) right. Triangle k has the centre, rk and the next corner round. Which triangle owns pixel (10, 10)?",
+    "format": "the triangle's number k, 0 to 3",
+    "expected": "3",
+    "reason": "The nudge moves the centre right and a tinier amount up, just above the line towards r3. Triangle 3 lies between r3 (right) and r0 (up), so it owns the pixel.",
+    "wrong": [
+      {
+        "answer": "2",
+        "feedback": "Triangle 2 lies between down and right, below the line towards r3. The nudge moves up a little, into triangle 3."
+      },
+      {
+        "answer": "0",
+        "feedback": "Triangle 0 lies between up and left. The nudge moves right."
+      }
+    ]
+  },
+  "2a": {
+    "version": 1,
+    "lesson": "2",
+    "section": "Matrices and homogeneous points",
+    "retry": "2a2",
+    "question": "With the camera of examples/clip-trace.mjs (perspective(60, 160 / 120, 0.1, 100), the eye at the origin, a 160 by 120 picture), a point sits 10 m ahead and 2 m to the left, at (-2, 0, -10). Which pixel column does it land in?",
+    "format": "a whole number, the column",
+    "expected": "59",
+    "reason": "Clip x is -2 × 1.299 = -2.598 and w is 10, so x / w = -0.260: the mirror of the traced point, which had x / w = 0.260 (twice as far to the side, twice as far away). The window x is (1 - 0.260) / 2 × 160 = 59.19 pixels, in column 59.",
+    "wrong": [
+      {
+        "answer": "100",
+        "feedback": "That is the traced point's column. This point is to the left, so x / w is -0.260 and it lands at 160 - 100.81 = 59.19."
+      },
+      {
+        "answer": "80",
+        "feedback": "It isn't at the centre: twice as far to the side and twice as far away gives the same size of x / w as the traced point, 0.260, on the left."
+      },
+      {
+        "answer": "60",
+        "feedback": "The window x is 59.19 pixels, which is in column 59: a column holds x from 59 up to 60."
+      },
+      {
+        "answer": "40",
+        "feedback": "x / w is -2.598 / 10 = -0.260, not -0.5: perspective scales x by 1.299, and the point is 10 m away."
+      }
+    ]
+  },
+  "2a2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2a",
+    "question": "A fresh case. Same camera. A point sits 20 m ahead and 2 m to the right, at (2, 0, -20). Which pixel column does it land in?",
+    "format": "a whole number, the column",
+    "expected": "90",
+    "reason": "Clip x is 2 × 1.299 = 2.598 and w is 20, so x / w = 0.130, half the traced point's. The window x is (1 + 0.130) / 2 × 160 = 90.4 pixels, in column 90.",
+    "wrong": [
+      {
+        "answer": "100",
+        "feedback": "This point is four times as far away as the traced one but only twice as far to the side, so x / w is half as big: 0.130."
+      },
+      {
+        "answer": "91",
+        "feedback": "The window x is 90.4 pixels: column 90."
+      }
+    ]
+  },
+  "2b": {
+    "version": 1,
+    "lesson": "2",
+    "section": "The divide and the snap",
+    "retry": "2b2",
+    "question": "A clip point is (0.5, -0.25, 0, 1) and the picture is 160 by 120. What x does toWindow return, in subpixels?",
+    "format": "a whole number of subpixels",
+    "expected": "1920",
+    "reason": "x / w = 0.5, which maps to (0.5 + 1) / 2 × 160 = 120 pixels. In subpixels that is 120 × 16 = 1,920, already a whole number, so rounding leaves it.",
+    "wrong": [
+      {
+        "answer": "120",
+        "feedback": "That is in pixels. toWindow returns subpixels: 120 × 16 = 1,920."
+      },
+      {
+        "answer": "640",
+        "feedback": "x / w = 0.5 maps to (0.5 + 1) / 2 of the width, not 0.5 / 2: the range -1..1 is moved to 0..2 first."
+      },
+      {
+        "answer": "1440",
+        "feedback": "That uses the height. x is mapped with the width, 160: (0.5 + 1) / 2 × 160 × 16 = 1,920."
+      },
+      {
+        "answer": "720",
+        "feedback": "That is y: (-0.25 + 1) / 2 × 120 × 16. The question asks for x."
+      }
+    ]
+  },
+  "2b2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2b",
+    "question": "A fresh case. A clip point is (-0.5, 0.5, 0, 2) and the picture is 160 by 120. What x does toWindow return, in subpixels?",
+    "format": "a whole number of subpixels",
+    "expected": "960",
+    "reason": "Divide by w first: x / w = -0.25, which maps to (-0.25 + 1) / 2 × 160 = 60 pixels, 960 subpixels.",
+    "wrong": [
+      {
+        "answer": "320",
+        "feedback": "Divide by w before mapping: -0.5 / 2 = -0.25, not -0.5."
+      },
+      {
+        "answer": "60",
+        "feedback": "That is in pixels: 60 × 16 = 960 subpixels."
+      }
+    ]
+  },
+  "2c": {
+    "version": 1,
+    "lesson": "2",
+    "section": "Clipping at the near plane",
+    "retry": "2c2",
+    "question": "With the trace's camera, take the point 2 m behind the eye and 1 m to the right, (1, 0, 2). Where does the divide put it? (a) off the screen, (b) in the right half, (c) in the left half, (d) at the centre.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Its clip w is -2, the negative of its distance behind the eye. Clip x is 1.299, so x / w = -0.650: the sign flips and the point lands left of centre, at about 28 pixels, inside the picture. A triangle with a corner behind the eye is therefore drawn mirrored across the screen unless it is clipped first.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "x / w is -0.650, between -1 and 1, so the divide puts it inside the picture: w is -2 and flips the sign."
+      },
+      {
+        "answer": "b",
+        "feedback": "The point is to the right, but its w is negative (-2), so x / w = 1.299 / -2 = -0.650, left of centre."
+      },
+      {
+        "answer": "d",
+        "feedback": "x / w is -0.650, not 0: the point is 1 m to the side, and the negative w flips it to the left."
+      }
+    ]
+  },
+  "2c2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2c",
+    "question": "A fresh case. The point is 3 m behind the eye and 1 m to the left, (-1, 0, 3). Where does the divide put it? (a) off the screen, (b) right half, (c) left half, (d) centre.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "w = -3 and clip x = -1.299, so x / w = 0.433: a point behind you on the left lands in the right half.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "The point is to the left, but w = -3 is negative, so x / w = -1.299 / -3 = 0.433, right of centre."
+      }
+    ]
+  },
+  "2d": {
+    "version": 1,
+    "lesson": "2",
+    "section": "Clipping at the near plane",
+    "retry": "2d2",
+    "question": "A triangle's corners have z + w of 0.6, -0.2 and 0.6. On the edge v0 -> v1, at what fraction t of the way from v0 is the cut?",
+    "format": "a number between 0 and 1, such as 0.4",
+    "expected": "0.75",
+    "reason": "t = d_s / (d_s - d_e) = 0.6 / (0.6 - (-0.2)) = 0.6 / 0.8 = 0.75. Along the edge, z + w falls by 0.8 in all and reaches 0 once it has fallen 0.6, which is 0.6 / 0.8 = 0.75 of the way.",
+    "wrong": [
+      {
+        "answer": "0.25",
+        "feedback": "That is measured from v1. From v0, t = 0.6 / (0.6 + 0.2) = 0.75."
+      },
+      {
+        "answer": "3",
+        "feedback": "t is d_s / (d_s - d_e), not d_s / d_e: 0.6 / 0.8 = 0.75."
+      },
+      {
+        "answer": "0.5",
+        "feedback": "The cut isn't halfway: v0 is three times as far in front (0.6) as v1 is behind (0.2), so the cut is three quarters of the way."
+      }
+    ]
+  },
+  "2d2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2d",
+    "question": "A fresh case. Corners have z + w of 0.3, 0.9 and -0.6. On the edge v1 -> v2, at what fraction t of the way from v1 is the cut?",
+    "format": "a number between 0 and 1",
+    "expected": "0.6",
+    "reason": "t = 0.9 / (0.9 - (-0.6)) = 0.9 / 1.5 = 0.6.",
+    "wrong": [
+      {
+        "answer": "0.4",
+        "feedback": "That is measured from v2. From v1, t = 0.9 / 1.5 = 0.6."
+      },
+      {
+        "answer": "1.5",
+        "feedback": "1.5 is d_s - d_e, the bottom of the fraction on its own. Divide d_s by it: t = 0.9 / 1.5."
+      }
+    ]
+  },
+  "2e": {
+    "version": 1,
+    "lesson": "2",
+    "section": "The courtyard in perspective",
+    "retry": "2e2",
+    "question": "A clipped piece of the floor has an edge a -> b from (40, 8) to (8, 40) in pixels, and its interior is on the left of that direction. Does the edge own its ties? Answer yes or no.",
+    "format": "yes or no",
+    "expected": "no",
+    "reason": "The edge goes up and to the left, so gx = -(b.y - a.y) = -(40 - 8) = -32 is negative: the interior lies on the -x side, and the nudge right moves away from it. The tie rule from lesson 1 works the same on clipped and snapped corners.",
+    "wrong": [
+      {
+        "answer": "yes",
+        "feedback": "gx = -(40 - 8) = -32 is negative. The edge goes up, its interior is on the left, and the nudge moves right, out of the triangle."
+      }
+    ]
+  },
+  "2e2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2e",
+    "question": "A fresh case. An edge a -> b runs from (8, 40) to (40, 8) in pixels, with the interior on its left. Does it own its ties?",
+    "format": "yes or no",
+    "expected": "yes",
+    "reason": "Going down and to the right, gx = -(8 - 40) = 32 is positive: the interior lies to the right, where the nudge moves.",
+    "wrong": [
+      {
+        "answer": "no",
+        "feedback": "gx = -(b.y - a.y) = -(8 - 40) = 32, positive: an edge going down has its interior on the +x side."
+      }
+    ]
+  },
+  "2f": {
+    "version": 1,
+    "lesson": "2",
+    "section": "A far plane",
+    "retry": "2f2",
+    "question": "A corner lies exactly on the far plane, where clip z equals w. What depth z does toWindow give it?",
+    "format": "a number",
+    "expected": "1",
+    "reason": "On the far plane z / w = 1, and toWindow maps it to (1 + 1) / 2 = 1, the largest depth, the value the depth buffer is cleared to in lesson 3. A corner on the near plane gets (-1 + 1) / 2 = 0.",
+    "wrong": [
+      {
+        "answer": "0",
+        "feedback": "0 is the near plane, where z = -w. On the far plane z / w = 1, so the depth is (1 + 1) / 2 = 1."
+      },
+      {
+        "answer": "100",
+        "feedback": "toWindow's z is z / w mapped to 0..1, not metres: (1 + 1) / 2 = 1."
+      },
+      {
+        "answer": "0.5",
+        "feedback": "0.5 is z / w = 0, which is not on either plane. On the far plane z / w = 1."
+      }
+    ]
+  },
+  "2f2": {
+    "version": 1,
+    "lesson": "2",
+    "variantOf": "2f",
+    "question": "A fresh case. A corner lies exactly on the near plane, where clip z equals -w. What depth z does toWindow give it, up to rounding?",
+    "format": "a number",
+    "expected": "0",
+    "reason": "z / w = -1 on the near plane, and (-1 + 1) / 2 = 0.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "1 is the far plane. On the near plane z / w = -1, so the depth is 0."
+      },
+      {
+        "answer": "-1",
+        "feedback": "toWindow maps z / w = -1 to (-1 + 1) / 2 = 0."
+      }
+    ]
+  },
+  "3a": {
+    "version": 1,
+    "lesson": "3",
+    "section": "Smooth colour",
+    "retry": "3a2",
+    "question": "A triangle has a red corner v0, a green corner v1 and a blue corner v2, with w = 1 at all three. At one pixel the edge values are 20, 30 and 50. What level does the pixel's green channel get?",
+    "format": "a whole number from 0 to 255",
+    "expected": "77",
+    "reason": "The weights are 20 / 100, 30 / 100 and 50 / 100. Green comes only from v1, so green = 0.3, and toByte gives Math.round(0.3 × 255) = Math.round(76.5) = 77.",
+    "wrong": [
+      {
+        "answer": "76",
+        "feedback": "0.3 × 255 = 76.5, and toByte rounds to the nearest level, with .5 going up: 77."
+      },
+      {
+        "answer": "30",
+        "feedback": "The weight is 0.3, and the stored level is 0.3 × 255 rounded, 77."
+      },
+      {
+        "answer": "128",
+        "feedback": "The green channel takes v1's weight only, 0.3, not an average of the three."
+      },
+      {
+        "answer": "255",
+        "feedback": "Green comes from v1 alone, weighted 30 / 100 = 0.3, so the level is 0.3 × 255 rounded, 77."
+      }
+    ]
+  },
+  "3a2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3a",
+    "question": "A fresh case. Same corners, w = 1 at all three, edge values 70, 20 and 10. What level does the blue channel get?",
+    "format": "a whole number from 0 to 255",
+    "expected": "26",
+    "reason": "Blue comes from v2, whose weight is 10 / 100 = 0.1. 0.1 × 255 = 25.5, which rounds to 26.",
+    "wrong": [
+      {
+        "answer": "25",
+        "feedback": "25.5 rounds to the nearest level, with .5 going up: 26."
+      },
+      {
+        "answer": "51",
+        "feedback": "That is v1's weight, 0.2. Blue comes from v2, weight 0.1."
+      }
+    ]
+  },
+  "3b": {
+    "version": 1,
+    "lesson": "3",
+    "section": "Perspective-correct interpolation",
+    "retry": "3b2",
+    "question": "Lesson 1's `one-triangle` scene, coloured red, green and blue at its corners, with clip w of 1, 6 and 2.5. Blend its colour by screen weights alone and compare with the correct picture. What is the largest difference in any channel? (a) 0 or 1 level, (b) about 10, (c) about 50, (d) over 100.",
+    "format": "one letter",
+    "expected": "d",
+    "reason": "The green corner is six times as far away as the red one, so the divide by w squeezes the far part of the surface into few pixels, and screen weights spread the far corner's colour over too many of them: the largest difference is 107 of 255 levels, at pixel (43, 47), and every one of the 1,330 pixels differs by more than a level.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "With all three w equal the two blends would agree. Here w runs from 1 to 6, and the difference reaches 107 levels."
+      },
+      {
+        "answer": "b",
+        "feedback": "The far corner is six times as far away as the near one, and screen weights alone put colours off by up to 107 levels."
+      },
+      {
+        "answer": "c",
+        "feedback": "It is larger: 107 levels at the worst pixel, with every pixel off by more than 1."
+      }
+    ]
+  },
+  "3b2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3b",
+    "question": "A fresh case. The same triangle with clip w = 4 at all three corners. What is the largest difference between screen-weight blending and perspective-correct blending? (a) 0 or 1 level, (b) about 10, (c) about 50, (d) over 100.",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "With equal w, each q_i is b_i / 4, and dividing by their sum cancels the 4: the perspective-correct blend equals the screen blend. Only rounding can differ.",
+    "wrong": [
+      {
+        "answer": "d",
+        "feedback": "The error comes from w differing between corners. With w = 4 at all three, the 1/w factors cancel."
+      }
+    ]
+  },
+  "3c": {
+    "version": 1,
+    "lesson": "3",
+    "section": "Perspective-correct interpolation",
+    "retry": "3c2",
+    "question": "An edge runs from a corner with w = 1 and texture coordinate u = 0 to a corner with w = 3 and u = 1. What u does the pixel halfway between them on screen get?",
+    "format": "a number, such as 0.4",
+    "expected": "0.25",
+    "reason": "The screen weights are 0.5 and 0.5, so q = 0.5 × 1 and 0.5 × 1/3 = 0.167. u = (0.5 × 0 + 0.167 × 1) / (0.5 + 0.167) = 0.167 / 0.667 = 0.25. Halfway on screen is a quarter of the way along the edge in 3D.",
+    "wrong": [
+      {
+        "answer": "0.5",
+        "feedback": "That is the screen-weight blend. Weight each corner by 1 / w first: q = 0.5 and 0.167, so u = 0.167 / 0.667 = 0.25."
+      },
+      {
+        "answer": "0.75",
+        "feedback": "That gives the near corner the smaller weight. The far corner, w = 3, gets it: 0.5 / 3, so u = 0.25."
+      },
+      {
+        "answer": "0.167",
+        "feedback": "Divide by the sum of the q weights, 0.667: u = 0.167 / 0.667 = 0.25."
+      }
+    ]
+  },
+  "3c2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3c",
+    "question": "A fresh case. From w = 1, u = 0 to w = 4, u = 1. What u does the pixel halfway on screen get?",
+    "format": "a number",
+    "expected": "0.2",
+    "reason": "q = 0.5 and 0.125, so u = 0.125 / 0.625 = 0.2.",
+    "wrong": [
+      {
+        "answer": "0.5",
+        "feedback": "Weight each corner by 1 / w: q = 0.5 and 0.125, so u = 0.125 / 0.625 = 0.2."
+      },
+      {
+        "answer": "0.125",
+        "feedback": "Divide by the sum 0.625: 0.2."
+      }
+    ]
+  },
+  "3d": {
+    "version": 1,
+    "lesson": "3",
+    "section": "Equal depth keeps the first draw",
+    "retry": "3d2",
+    "question": "A red triangle is drawn, then a green copy at exactly the same depths. Suppose the test used <= instead of <, the rule WebGL calls LEQUAL. How many of the red copy's 1,492 pixels would the green copy win? (a) none, (b) about half, (c) all of them.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Every pixel of the copy has exactly the stored depth, and <= lets an equal depth pass, so green wins all 1,492. Under LESS it wins none, which is what both measured GPUs do.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That is LESS. With <=, an equal depth passes, and every pixel of the copy is equal."
+      },
+      {
+        "answer": "b",
+        "feedback": "The depths are equal at every pixel, not just some, so the rule decides all 1,492 the same way. About half, 771 of the 1,492 in the check's pair, is what comparing unrounded float64 depths against the stored float32 depths gives."
+      }
+    ]
+  },
+  "3d2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3d",
+    "question": "A fresh case. Under LESS, the green copy is drawn first and the red one second, at the same depths. Which colour shows? (a) red, (b) green, (c) half each.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "Under LESS the second draw loses every tie, so whichever copy came first stays: green.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Under LESS an equal depth fails the test, so the second draw, red, loses every pixel."
+      }
+    ]
+  },
+  "3e": {
+    "version": 1,
+    "lesson": "3",
+    "section": "Occlusion in the courtyard",
+    "retry": "3e2",
+    "question": "A corner's clip coordinates have z = 2 and w = 4. What depth does toWindow give it?",
+    "format": "a number from 0 to 1",
+    "expected": "0.75",
+    "reason": "toWindow divides first, z / w = 0.5, then maps -1..1 to 0..1: (0.5 + 1) / 2 = 0.75.",
+    "wrong": [
+      {
+        "answer": "0.5",
+        "feedback": "That is z / w. toWindow then maps it from -1..1 to 0..1: (0.5 + 1) / 2 = 0.75."
+      },
+      {
+        "answer": "0.25",
+        "feedback": "That is 1 / w, which toWindow keeps as invW. The depth is (z / w + 1) / 2 = 0.75."
+      },
+      {
+        "answer": "1.5",
+        "feedback": "Divide by 2 after adding 1: (0.5 + 1) / 2 = 0.75."
+      }
+    ]
+  },
+  "3e2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3e",
+    "question": "A fresh case. Clip z = -3 and w = 5. What depth does toWindow give?",
+    "format": "a number from 0 to 1",
+    "expected": "0.2",
+    "reason": "z / w = -0.6, and (-0.6 + 1) / 2 = 0.2.",
+    "wrong": [
+      {
+        "answer": "-0.6",
+        "feedback": "That is z / w. Mapped to 0..1 it is (-0.6 + 1) / 2 = 0.2."
+      }
+    ]
+  },
+  "3f": {
+    "version": 1,
+    "lesson": "3",
+    "section": "Fog from depth",
+    "retry": "3f2",
+    "question": "Which expression gives d, the distance in front of the eye, at a pixel, where b0, b1 and b2 are the screen weights and w0, w1 and w2 the corners' clip w? (a) b0 w0 + b1 w1 + b2 w2, (b) 1 / (b0/w0 + b1/w1 + b2/w2), (c) b0 z0 + b1 z1 + b2 z2, using the window depths, (d) (w0 + w1 + w2) / 3.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "d is an attribute that varies evenly across the surface in 3D, so it needs the perspective-correct blend: (b0 w0/w0 + b1 w1/w1 + b2 w2/w2) / (b0/w0 + b1/w1 + b2/w2). The top is b0 + b1 + b2 = 1, which leaves 1 / (b0/w0 + b1/w1 + b2/w2): the interpolated 1/w, turned over.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That blends w by screen weights alone, the mistake that bent the floor. w varies evenly in 3D, so it needs the 1/w correction, which simplifies to 1 / (b0/w0 + b1/w1 + b2/w2)."
+      },
+      {
+        "answer": "c",
+        "feedback": "Window depth, (z / w + 1) / 2, runs from 0 to 1 and grows much faster near the eye than far away, so it isn't a distance in metres."
+      },
+      {
+        "answer": "d",
+        "feedback": "That is the same at every pixel of the triangle. d changes across it."
+      }
+    ]
+  },
+  "3f2": {
+    "version": 1,
+    "lesson": "3",
+    "variantOf": "3f",
+    "question": "A fresh case. On the screen, a pixel lies halfway between a corner with w = 2 and a corner with w = 6 (weights 0.5 and 0.5, the third 0). What is d there?",
+    "format": "a number of metres",
+    "expected": "3",
+    "reason": "d = 1 / (0.5 / 2 + 0.5 / 6) = 1 / (0.25 + 0.083) = 3. Halfway on screen is only a quarter of the way from 2 m to 6 m.",
+    "wrong": [
+      {
+        "answer": "4",
+        "feedback": "That is w blended by screen weights. d = 1 / (0.5 / 2 + 0.5 / 6) = 3."
+      },
+      {
+        "answer": "0.333",
+        "feedback": "That is the interpolated 1/w. Turn it over: d = 3."
+      }
+    ]
+  },
+  "5a": {
+    "version": 1,
+    "lesson": "5",
+    "section": "Jumping ahead",
+    "retry": "5a2",
+    "question": "In checker-branch.asm the if is instruction 7 (counting from 0). What number does assemble store in its match.else?",
+    "format": "a whole number, an instruction index",
+    "expected": "11",
+    "reason": "Counting from 0: the seven instructions before the if are 0 to 6, the if is 7, its three muls 8 to 10, and the else 11. Then come the three mads, 12 to 14, and the endif, 15, which goes in match.end. Comments, the .in line and blank lines make no instruction.",
+    "wrong": [
+      {
+        "answer": "15",
+        "feedback": "15 is the endif, which goes in match.end. match.else is the else, instruction 11."
+      },
+      {
+        "answer": "12",
+        "feedback": "12 is the first mad, after the else. runLane jumps there when the if is false, but match.else holds the else itself: 11."
+      },
+      {
+        "answer": "16",
+        "feedback": "That counts text lines, or starts from 1. Targets are instruction numbers counted from 0: the else is 11."
+      }
+    ]
+  },
+  "5a2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5a",
+    "question": "A fresh case. Read scenes/shaders/escape.asm. Its loop is instruction 5 (counting from 0). What number does assemble store in its match.end?",
+    "format": "a whole number, an instruction index",
+    "expected": "18",
+    "reason": "Five instructions come before the loop (0 to 4), the loop is 5, its body runs from 6 to 17 (seven up to and including the break, then five more), and the endloop is 18.",
+    "wrong": [
+      {
+        "answer": "12",
+        "feedback": "12 is the break. match.end is the endloop, instruction 18."
+      },
+      {
+        "answer": "19",
+        "feedback": "19 is the mul after the endloop. The endloop is 18."
+      }
+    ]
+  },
+  "5b": {
+    "version": 1,
+    "lesson": "5",
+    "section": "Float32 arithmetic",
+    "retry": "5b2",
+    "question": "A register holds a = 1 + 2^-12. With two roundings, mad r1, r0, r0, -1 gives exactly 2^-11 = 0.00048828125. What does a fused version, with one rounding at the end, give? (a) the same 0.00048828125, (b) 0.00048834085, a little more, (c) 0, (d) a little less than 0.00048828125.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "a × a = 1 + 2^-11 + 2^-24. A float32 near 1 has steps of 2^-23, so rounding the product alone drops the 2^-24, and subtracting 1 leaves 2^-11. Fused, the subtraction happens on the exact product, and near 2^-11 a float32's steps are 2^-34, so 2^-11 + 2^-24 keeps its 2^-24 part: 0.00048834085.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Rounding the product drops its 2^-24 part. A fused multiply-add subtracts 1 from the exact product first, and 2^-11 + 2^-24 keeps it: 0.00048834085."
+      },
+      {
+        "answer": "c",
+        "feedback": "1 + 2^-11 is well inside float32's precision: the product isn't rounded all the way back to 1."
+      },
+      {
+        "answer": "d",
+        "feedback": "The exact result, 2^-11 + 2^-24, is a little more than 2^-11, and the fused version keeps it."
+      }
+    ]
+  },
+  "5b2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5b",
+    "question": "A fresh case. r0 holds 0.1, stored as a float32. After mul r1, r0, r0, is r1 exactly 0.01? (a) yes, (b) no, a float32 close to 0.01.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "0.1 has no exact float32 form, and neither has 0.01. The product of the stored 0.1 with itself is rounded to the nearest float32, close to 0.01 but not equal to it.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Neither 0.1 nor 0.01 is exact in binary floating point. r1 is the float32 nearest the product, close to 0.01."
+      }
+    ]
+  },
+  "5c": {
+    "version": 1,
+    "lesson": "5",
+    "section": "Negative and zero inputs",
+    "retry": "5c2",
+    "question": "What does frac give for -1.375?",
+    "format": "a number",
+    "expected": "0.625",
+    "reason": "frac(x) = x - floor(x). floor(-1.375) = -2, so frac(-1.375) = -1.375 + 2 = 0.625, the distance up from the whole number below.",
+    "wrong": [
+      {
+        "answer": "0.375",
+        "feedback": "That is the fraction of 1.375. For a negative number frac measures up from floor(-1.375) = -2: 0.625."
+      },
+      {
+        "answer": "-0.375",
+        "feedback": "frac is x - floor(x), never negative: -1.375 - (-2) = 0.625. Taking the part after the point, x - trunc(x), gives -0.375."
+      },
+      {
+        "answer": "1.375",
+        "feedback": "frac is the part above floor(x), between 0 and 1: 0.625."
+      }
+    ]
+  },
+  "5c2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5c",
+    "question": "A fresh case. What does frac give for 2.3, as a float32, to one decimal place?",
+    "format": "a number",
+    "expected": "0.3",
+    "accept": [
+      "0.30000001",
+      "0.30000001192092896"
+    ],
+    "reason": "floor(2.3) = 2, so frac(2.3) = 0.3, stored as the float32 nearest 2.3 - 2 (0.30000001).",
+    "wrong": [
+      {
+        "answer": "2.3",
+        "feedback": "frac keeps only the part above floor(x) = 2: 0.3."
+      },
+      {
+        "answer": "0.7",
+        "feedback": "That is the distance up to 3. frac is the distance up from 2: 0.3."
+      }
+    ]
+  },
+  "5d": {
+    "version": 1,
+    "lesson": "5",
+    "section": "Running a shader",
+    "retry": "5d2",
+    "question": "checker-branch.asm runs on one lane whose pixel sits on a dark square, where the if is true. How many issues does runLane count?",
+    "format": "a whole number",
+    "expected": "14",
+    "reason": "Seven instructions before the if, the if, the three muls of the if side, the else (reached from the if side, it jumps to the endif), the endif and the out: 7 + 1 + 3 + 1 + 1 + 1 = 14. The three mads of the else side never run.",
+    "wrong": [
+      {
+        "answer": "17",
+        "feedback": "That is every instruction. On a dark square the else jumps straight to the endif, so the three mads are skipped: 14."
+      },
+      {
+        "answer": "13",
+        "feedback": "13 is a light square, where the false if jumps past the else. On a dark square the else itself is carried out (it makes the jump to endif): 14."
+      },
+      {
+        "answer": "11",
+        "feedback": "Count the jumps too: the if, the else and the endif are each one issue."
+      }
+    ]
+  },
+  "5d2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5d",
+    "question": "A fresh case. The same shader on one lane on a light square, where the if is false. How many issues?",
+    "format": "a whole number",
+    "expected": "13",
+    "reason": "Seven before the if, the if (false, it jumps past the else), the three mads, the endif and the out: 13.",
+    "wrong": [
+      {
+        "answer": "14",
+        "feedback": "A false if jumps to the instruction after the else, so the else isn't carried out: 13."
+      },
+      {
+        "answer": "17",
+        "feedback": "The three muls of the if side are skipped: 13."
+      }
+    ]
+  },
+  "5e": {
+    "version": 1,
+    "lesson": "5",
+    "section": "The lit courtyard",
+    "retry": "5e2",
+    "question": "A triangle's edge runs from a corner with w = 1 and u = 0 to a corner with w = 2 and u = 1. What value does the u input of a shader hold at the pixel halfway between them on screen?",
+    "format": "a number, to three decimal places",
+    "expected": "0.333",
+    "accept": [
+      "1/3",
+      "0.33",
+      "0.3333",
+      "0.33333"
+    ],
+    "reason": "The shader's inputs are lesson 3's perspective-correct attributes. q = 0.5 × 1 = 0.5 and 0.5 × 1/2 = 0.25, so u = 0.25 / (0.5 + 0.25) = 1/3, about 0.333.",
+    "wrong": [
+      {
+        "answer": "0.5",
+        "feedback": "That is the screen-weight blend. Weight each corner by 1 / w: q = 0.5 and 0.25, so u = 0.25 / 0.75 = 0.333."
+      },
+      {
+        "answer": "0.667",
+        "feedback": "That weights the wrong corner. The far corner, w = 2, gets the smaller weight: u = 0.25 / 0.75 = 0.333."
+      },
+      {
+        "answer": "0.25",
+        "feedback": "Divide by the sum of the q weights, 0.75: 0.333."
+      }
+    ]
+  },
+  "5e2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5e",
+    "question": "A fresh case. From a corner with w = 1 and u = 1 to a corner with w = 3 and u = 0. What u does the shader get halfway on screen?",
+    "format": "a number",
+    "expected": "0.75",
+    "reason": "q = 0.5 (u = 1) and 0.5 / 3 = 0.167 (u = 0), so u = 0.5 / 0.667 = 0.75.",
+    "wrong": [
+      {
+        "answer": "0.5",
+        "feedback": "Weight by 1 / w: the near corner, u = 1, counts three times as much: 0.75."
+      },
+      {
+        "answer": "0.25",
+        "feedback": "That weights the far corner more. The near one, w = 1, has u = 1: 0.75."
+      }
+    ]
+  },
+  "5f": {
+    "version": 1,
+    "lesson": "5",
+    "section": "Textures and the colour",
+    "retry": "5f2",
+    "question": "A texture is 8 texels wide. Sampled bilinear at u = 0.3, what weight does texel column 2 get?",
+    "format": "a number from 0 to 1",
+    "expected": "0.9",
+    "reason": "x = u × w - 0.5 = 2.4 - 0.5 = 1.9, so x0 = 1 and fx = 0.9. Texel 1 gets 1 - fx = 0.1 and texel 2 gets fx = 0.9: the point sits close to texel 2's centre.",
+    "wrong": [
+      {
+        "answer": "0.1",
+        "feedback": "That is texel 1's weight, 1 - fx. Texel 2 is the near one: fx = 0.9."
+      },
+      {
+        "answer": "0.6",
+        "feedback": "That leaves out the half-texel step: x = u × w - 0.5 = 1.9, not 2.4, so texel 2 gets 0.9."
+      },
+      {
+        "answer": "1",
+        "feedback": "That is nearest sampling, which picks texel floor(2.4) = 2 alone. Bilinear blends texels 1 and 2: 0.1 and 0.9."
+      }
+    ]
+  },
+  "5f2": {
+    "version": 1,
+    "lesson": "5",
+    "variantOf": "5f",
+    "question": "A fresh case. 8 texels wide, bilinear at u = 0.7. What weight does texel column 6 get?",
+    "format": "a number from 0 to 1",
+    "expected": "0.1",
+    "reason": "x = 5.6 - 0.5 = 5.1, so x0 = 5 and fx = 0.1: texel 5 gets 0.9 and texel 6 gets 0.1.",
+    "wrong": [
+      {
+        "answer": "0.9",
+        "feedback": "That is texel 5's weight. Texel 6 is the far one: fx = 0.1."
+      },
+      {
+        "answer": "0.6",
+        "feedback": "x = u × w - 0.5 = 5.1, not 5.6: texel 6 gets 0.1."
+      }
+    ]
+  },
+  "6a": {
+    "version": 1,
+    "lesson": "6",
+    "section": "Eight lanes, one issue",
+    "retry": "6a2",
+    "question": "One pixel at a time, the floor took 249,600 issues, 13 for each of its 19,200 pixels. Shaded by warps of 4 by 2, about how many issues does it take? (a) about 249,600, (b) about 125,000, (c) about 32,000, (d) about 4,000.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "A full warp issues the 13 instructions once for eight pixels, so the floor needs about 19,200 / 8 = 2,400 warps × 13 = 31,200 issues. It takes 32,240, because blocks along the diagonal split between the floor's two triangles.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That is one pixel at a time. A warp issues each instruction once for up to eight pixels."
+      },
+      {
+        "answer": "b",
+        "feedback": "A warp holds eight lanes, not two: about an eighth of the issues."
+      },
+      {
+        "answer": "d",
+        "feedback": "That is about the number of warps, 2,480. Each warp still issues all 13 instructions."
+      }
+    ]
+  },
+  "6a2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6a",
+    "question": "A fresh case. A picture of 160 by 120 is covered by a single triangle, lit by a 9-instruction shader. Shaded by warps, how many issues? (a) 172,800, (b) 21,600, (c) 2,400, (d) 86,400.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "One triangle covering everything fills every 4 by 2 block: 19,200 / 8 = 2,400 warps, each issuing 9 instructions, 21,600.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "That is one lane at a time, 19,200 × 9. Warps issue once for eight lanes."
+      },
+      {
+        "answer": "c",
+        "feedback": "That is the number of warps. Each issues 9 instructions."
+      }
+    ]
+  },
+  "6b": {
+    "version": 1,
+    "lesson": "6",
+    "section": "If, else and endif",
+    "retry": "6b2",
+    "question": "At an else, the top entry has saved = 11110000 and taken = 10100000, written lane 7 first. What mask does onElse return, written the same way?",
+    "format": "eight binary digits, lane 7 first",
+    "expected": "01010000",
+    "reason": "The else side runs on saved & ~taken: the lanes of the saved mask that did not take the if. 11110000 with 10100000 removed leaves 01010000, lanes 6 and 4.",
+    "wrong": [
+      {
+        "answer": "01011111",
+        "feedback": "That inverts taken against all eight lanes. Lanes 0 to 3 were off before the if (not in saved) and must stay off: saved & ~taken = 01010000."
+      },
+      {
+        "answer": "10100000",
+        "feedback": "That is the if side, taken. The else side is the rest of saved: 01010000."
+      },
+      {
+        "answer": "11110000",
+        "feedback": "That is saved, the mask endif brings back. The else runs only on the lanes that did not take the if: 01010000."
+      }
+    ]
+  },
+  "6b2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6b",
+    "question": "A fresh case. saved = 00111111 and taken = 00001100. What mask does onElse return?",
+    "format": "eight binary digits, lane 7 first",
+    "expected": "00110011",
+    "reason": "saved & ~taken: 00111111 without 00001100 is 00110011.",
+    "wrong": [
+      {
+        "answer": "11110011",
+        "feedback": "~taken against all eight lanes brings back lanes 6 and 7, which were off before the if: 00110011."
+      },
+      {
+        "answer": "00001100",
+        "feedback": "That is the if side. The else side is the rest of saved: 00110011."
+      }
+    ]
+  },
+  "6c": {
+    "version": 1,
+    "lesson": "6",
+    "section": "Divergence",
+    "retry": "6c2",
+    "question": "A warp of checker-branch.asm has lanes on both dark and light squares. How many more issues does it take than a warp whose lanes are all on dark squares?",
+    "format": "a whole number",
+    "expected": "3",
+    "reason": "The split warp runs both sides: the three muls on the dark lanes, then the three mads on the light ones, 17 issues. An all-dark warp runs the if side, finds no lane for the else and skips to the endif, 14. The difference is the three mads.",
+    "wrong": [
+      {
+        "answer": "0",
+        "feedback": "A split warp has lanes on both sides of the if, so it steps through both sides: the three mads run on the light lanes after the three muls on the dark ones."
+      },
+      {
+        "answer": "6",
+        "feedback": "The all-dark warp also runs the if side's three muls. Only the else side's three mads are extra."
+      },
+      {
+        "answer": "17",
+        "feedback": "17 is the split warp's whole count. The question asks how many more than the all-dark warp's 14."
+      }
+    ]
+  },
+  "6c2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6c",
+    "question": "A fresh case. Read scenes/shaders/coherent-branch.asm, which paints a gold stripe over the last eighth of each unit of u. A warp with some lanes inside the stripe and some outside, against a warp wholly inside the stripe, both with skipping on. How many more issues does the split warp take?",
+    "format": "a whole number",
+    "expected": "1",
+    "reason": "Wholly inside, the warp runs the 17-instruction if side, finds no lane for the else and jumps to the endif. Split, it also runs the else side's one out on the outside lanes. One more issue.",
+    "wrong": [
+      {
+        "answer": "0",
+        "feedback": "The split warp has lanes for the else side, so it runs its out instruction too."
+      },
+      {
+        "answer": "17",
+        "feedback": "Both warps run the stripe side. Only the else side's single out is extra."
+      }
+    ]
+  },
+  "6d": {
+    "version": 1,
+    "lesson": "6",
+    "section": "Counting issues",
+    "retry": "6d2",
+    "question": "One lane runs coherent-branch.asm on a pixel outside the stripe, where its if is false. Two instructions come before the if, the if side holds 17 instructions, the else side 1, and the endif is the last instruction. How many issues does runLane count?",
+    "format": "a whole number",
+    "expected": "5",
+    "reason": "Two instructions before the if (frac, sge), the if, which is false and jumps past the else, then the else side's out and the endif: 2 + 1 + 1 + 1 = 5. The 17 instructions of the if side never run.",
+    "wrong": [
+      {
+        "answer": "6",
+        "feedback": "A false if in runLane jumps to the instruction after the else, so the else itself isn't carried out: 5."
+      },
+      {
+        "answer": "23",
+        "feedback": "That is every instruction. The 17 of the if side are skipped: 5."
+      },
+      {
+        "answer": "4",
+        "feedback": "Count the endif too: frac, sge, if, out, endif."
+      }
+    ]
+  },
+  "6d2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6d",
+    "question": "A fresh case. One lane runs coherent-branch.asm inside the stripe, where the if is true. How many issues?",
+    "format": "a whole number",
+    "expected": "22",
+    "reason": "frac, sge, the if, the 17 of the if side, the else (reached from the if side, it jumps to the endif) and the endif: 22.",
+    "wrong": [
+      {
+        "answer": "23",
+        "feedback": "The else side's out never runs: the else jumps to the endif. 22."
+      },
+      {
+        "answer": "20",
+        "feedback": "Count the if, the else and the endif, one issue each: 22."
+      }
+    ]
+  },
+  "6e": {
+    "version": 1,
+    "lesson": "6",
+    "section": "Skipping an empty side",
+    "retry": "6e2",
+    "question": "A warp of coherent-branch.asm lies wholly outside the stripe, so no lane takes the if. With skipping on, how many issues does it take?",
+    "format": "a whole number",
+    "expected": "6",
+    "reason": "frac, sge, the if (no lane takes it, so it jumps to the else), the else (its mask is every lane), the out and the endif: 6. Without skipping it walks all 23 instructions.",
+    "wrong": [
+      {
+        "answer": "5",
+        "feedback": "That is one lane alone, where a false if jumps past the else. A warp's if jumps to the else, which runs as an issue and sets the mask: 6."
+      },
+      {
+        "answer": "23",
+        "feedback": "That is skipping off: every instruction of both sides. With skipping, the empty if side is jumped over: 6."
+      },
+      {
+        "answer": "22",
+        "feedback": "That is a lane inside the stripe. This warp has no lane there."
+      }
+    ]
+  },
+  "6e2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6e",
+    "question": "A fresh case. A warp of coherent-branch.asm lies wholly inside the stripe. With skipping on, how many issues?",
+    "format": "a whole number",
+    "expected": "22",
+    "reason": "frac, sge, the if, the 17 of the stripe side, the else (no lane is left for it, so it jumps to the endif) and the endif: 22.",
+    "wrong": [
+      {
+        "answer": "23",
+        "feedback": "The else side's out has no lane, so the else skips over it: 22."
+      }
+    ]
+  },
+  "6t": {
+    "version": 1,
+    "lesson": "6",
+    "section": "An escape loop on one warp",
+    "retry": "6t2",
+    "question": "escape.asm: one lane alone takes 15 + 13 × its turns issues. One warp's eight lanes leave after 3, 3, 3, 3, 3, 3, 3 and 40 turns. How many issues does the warp take, with skipping on?",
+    "format": "a whole number",
+    "expected": "536",
+    "reason": "The warp keeps looping while any lane is in it, so it runs as long as the 40-turn lane: 15 + 13 × 40 = 535 issues of the program, and one more for the endloop. When the last lane breaks, a lane alone jumps past the endloop, but the warp goes to the endloop, which pops the loop entry: 536. The seven fast lanes sit masked off for most of it.",
+    "wrong": [
+      {
+        "answer": "535",
+        "feedback": "That is the slowest lane alone. A warp's last break goes to the endloop, which runs as one more issue to pop the loop: 536."
+      },
+      {
+        "answer": "913",
+        "feedback": "That adds the lanes up, as one lane at a time would. A warp issues each instruction once for all its lanes: it runs as long as its slowest lane, 536."
+      },
+      {
+        "answer": "54",
+        "feedback": "That is a 3-turn lane. The warp can't leave the loop while the 40-turn lane is still in it."
+      }
+    ]
+  },
+  "6t2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6t",
+    "question": "A fresh case. A warp's lanes leave after 5, 5, 5, 5, 5, 5, 5 and 10 turns. How many issues, with skipping on?",
+    "format": "a whole number",
+    "expected": "146",
+    "reason": "The slowest lane sets the length: 15 + 13 × 10 = 145, plus the endloop that pops the loop: 146.",
+    "wrong": [
+      {
+        "answer": "145",
+        "feedback": "Add the endloop the warp runs when its last lane breaks: 146."
+      },
+      {
+        "answer": "80",
+        "feedback": "That is a 5-turn lane plus one. The 10-turn lane keeps the warp looping: 146."
+      }
+    ]
+  },
+  "6f": {
+    "version": 1,
+    "lesson": "6",
+    "section": "The mask stack",
+    "retry": "6f2",
+    "question": "A warp reaches an outer if with all eight lanes active, and lanes 1 to 6 take it. On its if side, an inner if has an operand that isn't 0 on lanes 0, 2, 3 and 7. What mask does the inner else run on, written lane 7 first?",
+    "format": "eight binary digits, lane 7 first",
+    "expected": "01110010",
+    "reason": "The inner if pushes saved = 01111110, the outer if's mask, and taken = 00001100, because lanes 0 and 7 were already off. Its else runs on saved & ~taken = 01110010, lanes 1, 4, 5 and 6.",
+    "wrong": [
+      {
+        "answer": "11110011",
+        "feedback": "That flips taken against all eight lanes, as if the inner entry saved 11111111. Its saved is the outer if's mask, 01111110, so lanes 0 and 7 stay off: 01110010."
+      },
+      {
+        "answer": "10000001",
+        "feedback": "That is the outer else's mask, the lanes that didn't take the outer if. The inner else runs inside the outer if side: 01110010."
+      },
+      {
+        "answer": "00001100",
+        "feedback": "That is the inner if side, taken. The inner else is the rest of the inner saved mask: 01110010."
+      }
+    ]
+  },
+  "6f2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6f",
+    "question": "A fresh case. A warp reaches an outer if with mask 11110000, and lanes 4, 5 and 6 take it. The inner if's operand isn't 0 on lanes 0, 5 and 7. What mask does the inner else run on?",
+    "format": "eight binary digits, lane 7 first",
+    "expected": "01010000",
+    "reason": "Inner saved = 01110000, inner taken = 00100000 (lanes 0 and 7 are off), so the inner else runs on 01010000, lanes 4 and 6.",
+    "wrong": [
+      {
+        "answer": "11010000",
+        "feedback": "That uses the outer entry's saved, 11110000. The inner entry saved the outer if's mask, 01110000: 01010000."
+      },
+      {
+        "answer": "11011111",
+        "feedback": "That flips taken against all eight lanes. Only the lanes of the inner saved mask can run: 01010000."
+      },
+      {
+        "answer": "00100000",
+        "feedback": "That is the inner if side. The else is the rest of the inner saved mask: 01010000."
+      }
+    ]
+  },
+  "6g": {
+    "version": 1,
+    "lesson": "6",
+    "section": "Loops and break",
+    "retry": "6g2",
+    "question": "A warp enters a loop with all eight lanes. Inside the loop, an if is taken by lanes 0 to 3, so its entry holds saved = 11111111. On the if side, a break fires on lane 1. What mask does that if's endif bring back, written lane 7 first?",
+    "format": "eight binary digits, lane 7 first",
+    "expected": "11111101",
+    "reason": "onBreak takes lane 1 out of the mask and out of every if entry opened inside the loop, so the entry's saved becomes 11111101, and that is what the endif brings back. Lane 1 returns only at the endloop.",
+    "wrong": [
+      {
+        "answer": "11111111",
+        "feedback": "That brings lane 1 back at the endif, so it would run the rest of the loop body after its break. onBreak removed it from the if entry's saved: 11111101."
+      },
+      {
+        "answer": "00001101",
+        "feedback": "That is the mask right after the break, still on the if side. The endif brings back the entry's saved, now without lane 1: 11111101."
+      },
+      {
+        "answer": "11110000",
+        "feedback": "That is the if's else side. The endif restores the saved mask, without the lane that broke: 11111101."
+      }
+    ]
+  },
+  "6g2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6g",
+    "question": "A fresh case. A warp enters a loop with mask 00111111. Inside it, an if is taken by lanes 2, 3 and 4, and on the if side a break fires on lanes 3 and 4. What mask does the endif bring back?",
+    "format": "eight binary digits, lane 7 first",
+    "expected": "00100111",
+    "reason": "The if entry saved 00111111. The break removes lanes 3 and 4 from it, leaving 00100111, which the endif brings back.",
+    "wrong": [
+      {
+        "answer": "00111111",
+        "feedback": "Lanes 3 and 4 have left the loop, so no endif brings them back before the endloop: 00100111."
+      },
+      {
+        "answer": "00000100",
+        "feedback": "That is the mask after the break, on the if side. The endif restores the entry's saved mask without lanes 3 and 4: 00100111."
+      }
+    ]
+  },
+  "6h": {
+    "version": 1,
+    "lesson": "6",
+    "section": "Skipping an empty side",
+    "retry": "6h2",
+    "question": "A warp of coherent-branch.asm has no lane inside the stripe. Its if is instruction 2. Which instruction number does onIf send the program counter to?",
+    "format": "a whole number, an instruction index",
+    "expected": "20",
+    "reason": "The if is 2, its 17 instructions are 3 to 19, and the else is 20, which assemble stored in match.else. onIf jumps to the else itself, so that onElse sets the mask for the else side.",
+    "wrong": [
+      {
+        "answer": "21",
+        "feedback": "21 is the instruction after the else, where runLane jumps for a false if. A warp's onIf jumps to the else itself, 20, so that onElse can set the else side's mask."
+      },
+      {
+        "answer": "22",
+        "feedback": "22 is the endif, match.end. onIf uses match.else when the if has an else: 20."
+      },
+      {
+        "answer": "19",
+        "feedback": "19 is the last instruction of the if side, 3 to 19. The else comes next: 20."
+      }
+    ]
+  },
+  "6h2": {
+    "version": 1,
+    "lesson": "6",
+    "variantOf": "6h",
+    "question": "A fresh case. In checker-branch.asm the if is instruction 7 and each side holds three instructions. A warp whose lanes all take the if reaches the else. Which instruction number does onElse send it to?",
+    "format": "a whole number, an instruction index",
+    "expected": "15",
+    "reason": "The else is 11, the three mads are 12 to 14, and the endif is 15, match.end. No lane is left for the else side, so onElse jumps to the endif, which pops the entry.",
+    "wrong": [
+      {
+        "answer": "16",
+        "feedback": "16 is the out after the endif. onElse jumps to the endif itself, 15, so that onEndif pops the entry and restores the mask."
+      },
+      {
+        "answer": "12",
+        "feedback": "12 is the first mad of the else side. No lane is left for that side, so onElse jumps to the endif, 15."
+      }
+    ]
+  },
+  "7a": {
+    "version": 1,
+    "lesson": "7",
+    "section": "Counting transactions",
+    "retry": "7a2",
+    "question": "A texture is stored row after row from address 0, 100 texels wide, 4 bytes a texel. A warp's lanes read texels (0, 0) to (3, 0) and (0, 1) to (3, 1). How many transactions does it cost?",
+    "format": "a whole number",
+    "expected": "2",
+    "reason": "Row 0's four texels are bytes 0 to 15, inside segment 0. Row 1 starts 400 bytes on, so its texels are bytes 400 to 415, inside segment 12. Two distinct segments: 2 transactions.",
+    "wrong": [
+      {
+        "answer": "8",
+        "feedback": "That counts one per lane. Lanes whose bytes share a 32-byte segment are merged: two segments, 2 transactions."
+      },
+      {
+        "answer": "1",
+        "feedback": "The two rows are 400 bytes apart, so they can't share a 32-byte segment: 2."
+      },
+      {
+        "answer": "4",
+        "feedback": "Each row's four texels are 16 bytes, inside one segment: 2 in all."
+      }
+    ]
+  },
+  "7a2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7a",
+    "question": "A fresh case. Eight lanes read 4 bytes each at bytes 0, 100, 200, 300, 400, 500, 600 and 700. How many transactions?",
+    "format": "a whole number",
+    "expected": "8",
+    "reason": "The addresses are 100 bytes apart, more than a segment, so each lies in its own 32-byte segment: 8.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "The reads are 100 bytes apart: no two share a 32-byte segment."
+      },
+      {
+        "answer": "4",
+        "feedback": "Each address is in a different segment: floor(100 k / 32) differs for every k. 8."
+      }
+    ]
+  },
+  "7b": {
+    "version": 1,
+    "lesson": "7",
+    "section": "Only active lanes count",
+    "retry": "7b2",
+    "question": "A warp writes colour for a full 4 by 2 block of a framebuffer stored row after row, 160 pixels wide, 4 bytes a pixel, but its mask is 00010001, lane 7 first. How many transactions does the write cost?",
+    "format": "a whole number",
+    "expected": "2",
+    "reason": "Only lanes 0 and 4 are active. Lane 0 is in the bottom row and lane 4 in the row above, 640 bytes apart, so they touch two segments: 2 transactions.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "Lanes 0 and 4 are in different rows of the block, 640 bytes apart: two segments."
+      },
+      {
+        "answer": "8",
+        "feedback": "Inactive lanes make no request: only lanes 0 and 4 count."
+      },
+      {
+        "answer": "0",
+        "feedback": "Two lanes are active, so the warp writes: 2 transactions."
+      }
+    ]
+  },
+  "7b2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7b",
+    "question": "A fresh case. The same block with mask 00001111. How many transactions?",
+    "format": "a whole number",
+    "expected": "1",
+    "reason": "Lanes 0 to 3, the bottom row: 16 bytes inside one segment.",
+    "wrong": [
+      {
+        "answer": "2",
+        "feedback": "Only the bottom row is active, and its four pixels share a segment: 1."
+      },
+      {
+        "answer": "4",
+        "feedback": "Four neighbouring pixels are 16 bytes, one segment: 1."
+      }
+    ]
+  },
+  "7c": {
+    "version": 1,
+    "lesson": "7",
+    "section": "Which line leaves",
+    "retry": "7c2",
+    "question": "A cache of 1 set with 2 ways, empty at first, gets accesses to lines A, B, A, C, B. How many misses does it count?",
+    "format": "a whole number",
+    "expected": "4",
+    "reason": "A misses, B misses, A hits (now most recent), C misses and evicts the least recently used, B, then B misses again. 4 misses and 1 hit.",
+    "wrong": [
+      {
+        "answer": "3",
+        "feedback": "That evicts the most recently used line at C (A), so B is still there. Least recently used evicts B, the older one: 4."
+      },
+      {
+        "answer": "5",
+        "feedback": "The second A finds A still in the cache: a hit. 4 misses."
+      },
+      {
+        "answer": "2",
+        "feedback": "C must evict a line, and B, the least recently used, is the one that goes, so the last B misses: 4."
+      }
+    ]
+  },
+  "7c2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7c",
+    "question": "A fresh case. The same cache gets A, B, C, A, B. How many misses?",
+    "format": "a whole number",
+    "expected": "5",
+    "reason": "A, B miss. C misses and evicts A. A misses and evicts B. B misses. Every access misses: 5.",
+    "wrong": [
+      {
+        "answer": "3",
+        "feedback": "With two ways, C pushes out A, then A pushes out B: nothing is ever there when it comes back. 5."
+      },
+      {
+        "answer": "4",
+        "feedback": "A comes back after C has evicted it, and B after A has evicted it: 5."
+      }
+    ]
+  },
+  "7d": {
+    "version": 1,
+    "lesson": "7",
+    "section": "A tiled texture layout",
+    "retry": "7d2",
+    "question": "In the tiled layout of a texture 100 texels wide, what is the byte address of texel (5, 3)?",
+    "format": "a whole number of bytes",
+    "expected": "852",
+    "reason": "Blocks are 4 by 2, 25 to a row of blocks. Texel (5, 3) is in block row 1 (3 / 2, rounded down) and block column 1 (5 / 4, rounded down), so block 1 × 25 + 1 = 26, which starts at 26 × 32 = 832. y is odd, so its place is 4 plus the remainder of 5 / 4, 4 + 1 = 5, 20 bytes in: 852.",
+    "wrong": [
+      {
+        "answer": "1220",
+        "feedback": "That is the row-major address, (3 × 100 + 5) × 4. Tiled, the texel is in block 26: 26 × 32 + 5 × 4 = 852."
+      },
+      {
+        "answer": "832",
+        "feedback": "That is the start of block 26. Add the texel's place inside it, 5 × 4 = 20: 852."
+      },
+      {
+        "answer": "836",
+        "feedback": "Inside the block, the bottom row comes first: texel (5, 3) is in the block's upper row, position 4 + 1 = 5, 20 bytes in: 852."
+      }
+    ]
+  },
+  "7d2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7d",
+    "question": "A fresh case. Tiled, texture 100 texels wide: the byte address of texel (9, 6)?",
+    "format": "a whole number of bytes",
+    "expected": "2468",
+    "reason": "Block row 3, block column 2: block 3 × 25 + 2 = 77, starting at 2,464. Inside: row 0, column 1, 4 bytes in: 2,468.",
+    "wrong": [
+      {
+        "answer": "2464",
+        "feedback": "That is the block's start. Texel (9, 6) is column 1 of its block: 4 bytes in, 2,468."
+      },
+      {
+        "answer": "2436",
+        "feedback": "That is the row-major address, (6 × 100 + 9) × 4. Tiled: 2,468."
+      }
+    ]
+  },
+  "7e": {
+    "version": 1,
+    "lesson": "7",
+    "section": "The turned floor",
+    "retry": "7e2",
+    "question": "Turn the floor a quarter turn, with the texture still stored row after row. About how many times as many misses as the tiled layout does the row-major floor count? (a) about the same, (b) about 1.5 times, (c) about 3.5 times, (d) about 16 times.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Turned, a 4 by 2 warp reads four texel rows, four lines with row-major texels, and each line is wanted again only a whole row of warps later, after the cache has thrown it out. 7,445 misses against the tiled layout's 2,112: 3.53 times.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Along the picture the two layouts are close. Turned, row-major reads four lines per warp and loses them before they are reused: 3.53 times."
+      },
+      {
+        "answer": "b",
+        "feedback": "It is worse than that: 7,445 misses against 2,112, 3.53 times."
+      },
+      {
+        "answer": "d",
+        "feedback": "A row-major line is fetched about four times instead of once, not sixteen: 3.53 times."
+      }
+    ]
+  },
+  "7e2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7e",
+    "question": "A fresh case. The floor along the picture, not turned: row-major against tiled misses? (a) about the same, (b) about 1.5 times, (c) about 3.5 times, (d) about 16 times.",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "Along the picture a warp reads two texel rows either way, and the next warps reuse those lines before the cache throws them out: 2,179 misses row-major against 2,112 tiled.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "That is the turned floor. Along the picture a row-major warp reads two lines and a tiled warp one: 2,179 misses against 2,112."
+      }
+    ]
+  },
+  "7t": {
+    "version": 1,
+    "lesson": "7",
+    "section": "A vertical blur",
+    "retry": "7t2",
+    "question": "A vertical blur reads the texel below each pixel, its own and the one above, over a 100 by 100 picture with a texture 100 texels wide, through the course's cache. Which layout counts fewer misses, and by about how much? (a) tiled, about 3 times fewer, (b) about the same, (c) row-major, about 3 times fewer, (d) row-major, about 10 times fewer.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "A row of warps reads four texel rows. Row-major that is 4 × 100 × 4 bytes, 50 lines, which fit in the cache's 64, so the next row of warps finds the two rows it shares. Tiled it reaches into three rows of blocks, 75 lines, more than the cache holds, and every line misses: 1,276 misses against 3,750.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Tiled won on the turned floor, where each pixel reads one texel. Here a row of warps needs 75 tiled lines, more than the cache's 64, against 50 row-major lines that fit: row-major misses 1,276 times, tiled 3,750."
+      },
+      {
+        "answer": "b",
+        "feedback": "The two working sets differ: 50 lines row-major fit in the cache, 75 tiled lines don't. 1,276 against 3,750."
+      },
+      {
+        "answer": "d",
+        "feedback": "Row-major still misses each line about once: 1,276 against 3,750, about 3 times."
+      }
+    ]
+  },
+  "7t2": {
+    "version": 1,
+    "lesson": "7",
+    "variantOf": "7t",
+    "question": "A fresh case. The same blur over a 160 by 120 picture with a texture 160 texels wide. (a) tiled, about 3 times fewer, (b) about the same, (c) row-major, about 1.5 times fewer, (d) row-major, about 10 times fewer.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Row-major, a row of warps now needs 4 × 160 × 4 / 32 = 80 lines, more than 64, so its reuse is lost too, but it still touches fewer lines per warp: 4,800 misses against 7,200 tiled.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Tiled needs three rows of 40 blocks, 120 lines, per row of warps: 7,200 misses against 4,800 row-major."
+      },
+      {
+        "answer": "b",
+        "feedback": "Row-major misses 4,800 times and tiled 7,200: 1.5 times."
+      }
+    ]
+  },
+  "8a": {
+    "version": 1,
+    "lesson": "8",
+    "section": "Binning triangles",
+    "retry": "8a2",
+    "question": "In a 160 by 120 picture, a triangle has corners at pixel positions (10.25, 3.25), (37.5, 5) and (20, 20.5). How many tiles' bins does it join?",
+    "format": "a whole number",
+    "expected": "6",
+    "reason": "Its pixel box runs over columns 10 to 37 and rows 3 to 20. Columns 10 to 37 touch tile columns 0, 1 and 2 (0 to 15, 16 to 31, 32 to 47), rows 3 to 20 touch tile rows 0 and 1: 3 × 2 = 6 tiles.",
+    "wrong": [
+      {
+        "answer": "3",
+        "feedback": "Rows 3 to 20 reach into tile row 1 (16 to 31) as well as row 0: 3 × 2 = 6."
+      },
+      {
+        "answer": "2",
+        "feedback": "Columns 10 to 37 touch three tile columns, 0, 1 and 2: 6 tiles."
+      },
+      {
+        "answer": "1",
+        "feedback": "A triangle joins every tile its box overlaps, not only the tile of its first corner: 6."
+      }
+    ]
+  },
+  "8a2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8a",
+    "question": "A fresh case. Corners at (2, 2), (60, 10) and (30, 40). How many tiles' bins does it join?",
+    "format": "a whole number",
+    "expected": "12",
+    "reason": "Columns 2 to 59 touch tile columns 0 to 3, rows 2 to 39 touch tile rows 0 to 2: 4 × 3 = 12.",
+    "wrong": [
+      {
+        "answer": "9",
+        "feedback": "Columns 2 to 59 reach tile column 3 (48 to 63): 4 × 3 = 12."
+      },
+      {
+        "answer": "3",
+        "feedback": "Binning by the corners misses the tiles between them. The box overlaps 12."
+      }
+    ]
+  },
+  "8b": {
+    "version": 1,
+    "lesson": "8",
+    "section": "The fill rule at a tile edge",
+    "retry": "8b2",
+    "question": "An edge of a counter-clockwise triangle runs straight down along x = 16.5, through the centres of pixel column 16, the first column of tile column 1. The interior lies to its right on the screen, toward larger x. Is pixel (16, 5), on that edge, drawn by (a) tile 0, (b) tile 1, (c) both or (d) neither?",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "An edge going down has its interior to the right, so it owns its ties and the triangle covers pixel (16, 5). Column 16 belongs to tile column 1 only, because tile 0's rect stops before x = 16.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Tile 0's rect runs x from 0 up to, not including, 16. Column 16 is tile 1's first column."
+      },
+      {
+        "answer": "c",
+        "feedback": "Each tile draws only x0 <= x < x0 + 16, so a pixel belongs to one tile. Drawing it in both is the bug of a tile rect that includes its far edge, x0 + 16."
+      },
+      {
+        "answer": "d",
+        "feedback": "An edge going down has its interior on the right, where the nudge moves: it owns its ties, so the pixel is covered."
+      }
+    ]
+  },
+  "8b2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8b",
+    "question": "A fresh case. The edge runs straight up along x = 16.5, the interior on its left. Which tile draws pixel (16, 5) for this triangle? (a) tile 0, (b) tile 1, (c) both, (d) neither.",
+    "format": "one letter",
+    "expected": "d",
+    "reason": "An edge going up has its interior on the left, away from the nudge, so it doesn't own its ties. The triangle doesn't cover pixel (16, 5), and no tile draws it for this triangle. The triangle on the other side of the edge does.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The triangle's interior is left of x = 16.5, but the pixel's centre is on the edge, and an edge going up doesn't own its ties."
+      },
+      {
+        "answer": "b",
+        "feedback": "Column 16 is in tile 1, but this triangle doesn't cover the pixel: its edge doesn't own the tie."
+      }
+    ]
+  },
+  "8c": {
+    "version": 1,
+    "lesson": "8",
+    "section": "Colour once, depth never",
+    "retry": "8c2",
+    "question": "How many colour bytes does the tiled renderer write for a 160 by 120 picture, at 4 bytes a pixel?",
+    "format": "a whole number of bytes",
+    "expected": "76800",
+    "reason": "Each pixel's colour is written once, when its tile is done: 160 × 120 × 4 = 76,800 bytes, whatever the scene.",
+    "wrong": [
+      {
+        "answer": "19200",
+        "feedback": "That is the number of pixels. Each pixel's colour is 4 bytes: 76,800."
+      },
+      {
+        "answer": "153600",
+        "feedback": "That also counts depth. Depth stays on chip in the tiled renderer: 76,800."
+      },
+      {
+        "answer": "441600",
+        "feedback": "That counts colour per layer, as the immediate renderer writes it. Tiled writes each pixel once."
+      }
+    ]
+  },
+  "8c2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8c",
+    "question": "A fresh case. The same for a 64 by 64 picture?",
+    "format": "a whole number of bytes",
+    "expected": "16384",
+    "reason": "64 × 64 × 4 = 16,384.",
+    "wrong": [
+      {
+        "answer": "4096",
+        "feedback": "That is pixels. Times 4 bytes: 16,384."
+      }
+    ]
+  },
+  "8d": {
+    "version": 1,
+    "lesson": "8",
+    "section": "Counting the traffic",
+    "retry": "8d2",
+    "question": "About how many times the tiled renderer's bytes does the immediate renderer move on the overdraw scene? (a) about the same, (b) about 2 times, (c) about 15 times, (d) about 100 times.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "Immediate reads and writes depth and writes colour for every layer, about 24 bytes per pixel per layer, 5.75 layers deep: 2,887,008 bytes. Tiled writes colour once and pays binning: 195,312 bytes. 14.78 times.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Immediate pays for depth and colour on every one of about six layers, tiled for colour once and the bins: 14.78 times."
+      },
+      {
+        "answer": "b",
+        "feedback": "Six layers of depth reads, depth writes and colour writes add up to far more: 14.78 times."
+      },
+      {
+        "answer": "d",
+        "feedback": "Binning costs the tiled renderer 118,512 bytes, so it isn't free: 14.78 times, not 100."
+      }
+    ]
+  },
+  "8d2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8d",
+    "question": "A fresh case. About how many times the tiled renderer's bytes does the immediate renderer move on the courtyard at 160 by 120? (a) about the same, (b) about 3 times, (c) about 15 times, (d) about 100 times.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The courtyard is shallower and its big floor triangles join many tiles: 576,704 bytes against 191,744, of which binning is 112,896. 3.01 times.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "That is the overdraw scene, about six layers deep. The courtyard has less overdraw and more binning: 3.01 times."
+      }
+    ]
+  },
+  "8t": {
+    "version": 1,
+    "lesson": "8",
+    "section": "Twenty thousand tiny triangles",
+    "retry": "8t2",
+    "question": "dustScene(1) is 20,000 triangles of about one pixel each. Once binning is counted, which renderer moves fewer bytes, with 16 by 16 tiles and with 64 by 64 tiles? (a) tiled at both sizes, (b) tiled at 64 by 64 only, (c) immediate at both sizes, (d) immediate at 64 by 64 only.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "A one-pixel triangle costs the immediate renderer at most 96 bytes. Tiled, it costs a 64-byte record and 72 bytes per bin, at least 136. Immediate moves 1,655,936 bytes, tiled 3,049,016 with 16-pixel tiles and 2,842,016 with 64-pixel tiles.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Tiling saves on overdraw. Here there is little, and every triangle pays at least 136 bytes of binning: immediate wins at both sizes."
+      },
+      {
+        "answer": "b",
+        "feedback": "Bigger tiles help a little, since fewer triangles straddle an edge, but binning still costs more than immediate's 96 bytes a triangle."
+      },
+      {
+        "answer": "d",
+        "feedback": "Immediate wins at 16 by 16 too, by more: 3,049,016 tiled bytes against 1,655,936."
+      }
+    ]
+  },
+  "8t2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8t",
+    "question": "A fresh case. A one-pixel triangle binned to exactly one tile: how many bytes of binning traffic does it cost, record and entry, written and read?",
+    "format": "a whole number of bytes",
+    "expected": "136",
+    "reason": "64 bytes for its record written, 4 for its entry written, then 4 + 64 read back for that one entry: 136.",
+    "wrong": [
+      {
+        "answer": "68",
+        "feedback": "Binning writes the record and the entry, then reads both back for each entry: 68 + 68 = 136."
+      },
+      {
+        "answer": "72",
+        "feedback": "Add the 64-byte record written once: 136."
+      }
+    ]
+  },
+  "8e": {
+    "version": 1,
+    "lesson": "8",
+    "section": "A triangle bigger than a tile",
+    "retry": "8e2",
+    "question": "A triangle's corners have z + w of 0.5, -1.5 and 0.5. On the edge v0 -> v1, at what fraction t of the way from v0 does clipNear cut it?",
+    "format": "a number between 0 and 1, such as 0.4",
+    "expected": "0.25",
+    "reason": "t = d_s / (d_s - d_e) = 0.5 / (0.5 - (-1.5)) = 0.5 / 2 = 0.25. v1 is three times as far behind the plane as v0 is in front, so the cut is a quarter of the way along.",
+    "wrong": [
+      {
+        "answer": "0.75",
+        "feedback": "That is measured from v1. From v0, t = 0.5 / 2 = 0.25."
+      },
+      {
+        "answer": "0.333",
+        "feedback": "That is d_s / |d_e|, 0.5 / 1.5. t is d_s / (d_s - d_e) = 0.5 / 2 = 0.25."
+      },
+      {
+        "answer": "0.5",
+        "feedback": "The cut isn't halfway: v0 is 0.5 in front and v1 1.5 behind, so the cut is a quarter of the way from v0."
+      }
+    ]
+  },
+  "8e2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8e",
+    "question": "A fresh case. Corners have z + w of -0.4, 1.6 and 1.6. On the edge v0 -> v1, at what fraction t of the way from v0 is the cut?",
+    "format": "a number between 0 and 1",
+    "expected": "0.2",
+    "reason": "t = d_s / (d_s - d_e) = -0.4 / (-0.4 - 1.6) = -0.4 / -2 = 0.2.",
+    "wrong": [
+      {
+        "answer": "0.8",
+        "feedback": "That is measured from v1. From v0, t = 0.4 / 2 = 0.2."
+      },
+      {
+        "answer": "0.25",
+        "feedback": "That is 0.4 / 1.6. t is d_s / (d_s - d_e) = -0.4 / -2 = 0.2."
+      }
+    ]
+  },
+  "8f": {
+    "version": 1,
+    "lesson": "8",
+    "section": "Same picture, tile by tile",
+    "retry": "8f2",
+    "question": "A cache set with 2 ways, empty at first, gets accesses to lines A, B, A, C, A. How many misses does least recently used replacement count?",
+    "format": "a whole number",
+    "expected": "3",
+    "reason": "A misses, B misses, A hits and becomes the most recently used, so C evicts B, the least recently used, and the last A hits. 3 misses and 2 hits.",
+    "wrong": [
+      {
+        "answer": "4",
+        "feedback": "That evicts A at C, the line that arrived first. Least recently used looks at the last access: A was used after B, so B leaves and the last A hits. 3."
+      },
+      {
+        "answer": "5",
+        "feedback": "The second A finds A still in the set: a hit. So does the last one. 3 misses."
+      },
+      {
+        "answer": "2",
+        "feedback": "C is new, so it misses too and must evict a line: A, B and C miss. 3."
+      }
+    ]
+  },
+  "8f2": {
+    "version": 1,
+    "lesson": "8",
+    "variantOf": "8f",
+    "question": "A fresh case. The same set gets A, B, C, B, A, C. How many misses?",
+    "format": "a whole number",
+    "expected": "5",
+    "reason": "A, B miss. C misses and evicts A. B hits. A misses and evicts C, now the least recently used. C misses and evicts B. 5 misses, 1 hit.",
+    "wrong": [
+      {
+        "answer": "4",
+        "feedback": "That evicts by arrival order. After B's hit, C is the least recently used, so A evicts C and the last C misses: 5."
+      },
+      {
+        "answer": "3",
+        "feedback": "A comes back after C evicted it, and C after A evicted it: 5 misses."
+      }
+    ]
+  },
+  "9a": {
+    "version": 1,
+    "lesson": "9",
+    "section": "Five halls you have not seen",
+    "retry": "9a2",
+    "question": "Two triangles cover a pixel at exactly the same depth. Which one's id must the pixel hold? (a) the one drawn first, (b) the one drawn second, (c) whichever covers more of the tile, (d) either, the check accepts both.",
+    "format": "one letter",
+    "expected": "a",
+    "reason": "The depth test is LESS: a fragment wins only if it is strictly nearer than what is stored. At equal depth the second draw loses, so the first drawn keeps the pixel, as lesson 3's equal-depth rule says and both measured GPUs do.",
+    "wrong": [
+      {
+        "answer": "b",
+        "feedback": "That is LEQUAL. Under LESS an equal depth fails the test, so the first drawn keeps the pixel."
+      },
+      {
+        "answer": "c",
+        "feedback": "The depth test decides pixel by pixel, and an equal depth goes to the first drawn."
+      },
+      {
+        "answer": "d",
+        "feedback": "The ids must match exactly, so the rule has to be fixed: LESS, the first drawn wins."
+      }
+    ]
+  },
+  "9a2": {
+    "version": 1,
+    "lesson": "9",
+    "variantOf": "9a",
+    "question": "A fresh case. A triangle drawn later is strictly nearer at a pixel than the one drawn first. Which id does the pixel hold? (a) the first, (b) the later one.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "Strictly nearer passes LESS, whatever the order: the later, nearer triangle owns the pixel.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Draw order decides only exact ties. A strictly nearer fragment passes the depth test."
+      }
+    ]
+  },
+  "9b": {
+    "version": 1,
+    "lesson": "9",
+    "section": "The shading budget",
+    "retry": "9b2",
+    "question": "In the final picture, the eight pixels of one block show triangles 3, 3, 7, 7, 7, the background, 3 and 9. How many visible warps does that block add?",
+    "format": "a whole number",
+    "expected": "3",
+    "reason": "Count the different triangles that own at least one pixel of the block: 3, 7 and 9. The background isn't a triangle. 3 visible warps.",
+    "wrong": [
+      {
+        "answer": "7",
+        "feedback": "That counts pixels with a triangle. Visible warps count different triangles: 3, 7 and 9."
+      },
+      {
+        "answer": "4",
+        "feedback": "The background is no triangle and needs no shading: 3, 7 and 9 make 3."
+      },
+      {
+        "answer": "8",
+        "feedback": "One warp shades all the lanes of one triangle in the block, so triangles 3, 7 and 9 need 3 warps."
+      }
+    ]
+  },
+  "9b2": {
+    "version": 1,
+    "lesson": "9",
+    "variantOf": "9b",
+    "question": "A fresh case. A block's pixels show triangles 1, 2, 3, 4, 1, 2, 3, 4. How many visible warps?",
+    "format": "a whole number",
+    "expected": "4",
+    "reason": "Four different triangles own pixels of the block: 4.",
+    "wrong": [
+      {
+        "answer": "8",
+        "feedback": "Count triangles, not pixels: 1, 2, 3 and 4."
+      },
+      {
+        "answer": "2",
+        "feedback": "Four different triangles appear: 4."
+      }
+    ]
+  },
+  "9c": {
+    "version": 1,
+    "lesson": "9",
+    "section": "Measure the renderer you have",
+    "retry": "9c2",
+    "question": "On practice hall 1, a renderer shades every fragment that passes the depth test, in draw order. About how many times the shading budget of 4,021 warps does it launch? (a) under the budget, (b) about 1.5 times, (c) about 3 to 5 times, (d) about 20 times.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "It launches 14,029 warps, 3.49 times the budget: most pixels near the camera are shaded once for every screen behind them that passed the depth test when it arrived, and only the last shading survives.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Testing depth before shading doesn't stop a nearer triangle drawn later from being shaded over farther ones already shaded: 14,029 warps."
+      },
+      {
+        "answer": "b",
+        "feedback": "Most pixels have several screens behind them, each shaded in turn as it arrived: 3.49 times the budget."
+      },
+      {
+        "answer": "d",
+        "feedback": "Depth testing still rejects fragments behind what is already drawn, which keeps it to 3.49 times."
+      }
+    ]
+  },
+  "9c2": {
+    "version": 1,
+    "lesson": "9",
+    "variantOf": "9c",
+    "question": "A fresh case. Practice hall 2 has 3,128 visible warps, a budget of 3,910. Shaded in draw order it launches 14,208 warps. About how many times the budget? (a) under, (b) about 1.5, (c) about 3 to 5, (d) about 20.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "14,208 / 3,910 = 3.63 times.",
+    "wrong": [
+      {
+        "answer": "d",
+        "feedback": "14,208 / 3,910 is 3.63."
+      }
+    ]
+  },
+  "4a": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Nearest sampling",
+    "retry": "4a2",
+    "question": "A texture is 4 texels wide. Which texel column does nearest sampling pick at u = 0.6?",
+    "format": "a whole number, the column",
+    "expected": "2",
+    "reason": "u × w = 2.4, and nearest takes floor(2.4) = 2: texel 2 covers u from 0.5 to 0.75.",
+    "wrong": [
+      {
+        "answer": "3",
+        "feedback": "That rounds 2.4 up, as Math.ceil does. Texel 2 covers u from 0.5 to 0.75, so floor(u × w) = 2 is the texel that holds the point."
+      },
+      {
+        "answer": "1",
+        "feedback": "u × w = 2.4, so the point is in texel 2, which covers 2 to 3 in texel units."
+      }
+    ]
+  },
+  "4a2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4a",
+    "question": "A fresh case. 8 texels wide, u = 0.99. Which column?",
+    "format": "a whole number",
+    "expected": "7",
+    "reason": "floor(0.99 × 8) = floor(7.92) = 7, the last texel.",
+    "wrong": [
+      {
+        "answer": "8",
+        "feedback": "Texel 8 would be past the edge: floor(7.92) = 7."
+      }
+    ]
+  },
+  "4b": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Repeat wrapping",
+    "retry": "4b2",
+    "question": "A texture is 4 texels wide. Which texel column does nearest sampling pick at u = -0.3?",
+    "format": "a whole number, the column",
+    "expected": "2",
+    "reason": "u × w = -1.2, floor gives -2, and repeating wraps -2 to 4 - 2 = 2.",
+    "wrong": [
+      {
+        "answer": "0",
+        "feedback": "That clamps to the edge. The course's textures repeat: texel -2 is texel 2."
+      },
+      {
+        "answer": "3",
+        "feedback": "floor(-1.2) is -2, not -1: floor rounds down, towards minus infinity. -2 wraps to 2."
+      },
+      {
+        "answer": "-2",
+        "feedback": "Texel -2 doesn't exist: repeating wraps it to 4 - 2 = 2."
+      }
+    ]
+  },
+  "4b2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4b",
+    "question": "A fresh case. 4 texels wide, u = 1.25. Which column?",
+    "format": "a whole number",
+    "expected": "1",
+    "reason": "floor(1.25 × 4) = 5, which wraps to 5 - 4 = 1.",
+    "wrong": [
+      {
+        "answer": "3",
+        "feedback": "Clamping would give the last texel. Repeating wraps 5 to 1."
+      }
+    ]
+  },
+  "4c": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Bilinear filtering",
+    "retry": "4c2",
+    "question": "A texture is 4 texels wide. At u = 0.4, what weight does bilinear filtering give texel column 2?",
+    "format": "a number from 0 to 1",
+    "expected": "0.1",
+    "reason": "x = u × w - 0.5 = 1.1, so x0 = 1 and fx = 0.1. Texel 1 gets 1 - fx = 0.9 and texel 2 gets fx = 0.1: the point is close to texel 1's centre.",
+    "wrong": [
+      {
+        "answer": "0.9",
+        "feedback": "That is texel 1's weight. Texel 2 is the far one: fx = 0.1."
+      },
+      {
+        "answer": "0.6",
+        "feedback": "That leaves out the half-texel step. x = u × w - 0.5 = 1.1, so fx = 0.1."
+      },
+      {
+        "answer": "0.4",
+        "feedback": "Weights come from x = u × w - 0.5 = 1.1, not from u itself: texel 2 gets 0.1."
+      }
+    ]
+  },
+  "4c2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4c",
+    "question": "A fresh case. 4 texels wide, u = 0.5. What weight does texel column 1 get?",
+    "format": "a number from 0 to 1",
+    "expected": "0.5",
+    "reason": "x = 2 - 0.5 = 1.5, so texels 1 and 2 each get 0.5: u = 0.5 is exactly between their centres.",
+    "wrong": [
+      {
+        "answer": "1",
+        "feedback": "u = 0.5 is the edge between texels 1 and 2, halfway between their centres: 0.5 each."
+      },
+      {
+        "answer": "0",
+        "feedback": "x = 1.5: texel 1 is one of the two blended, with weight 0.5."
+      }
+    ]
+  },
+  "4d": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Textures in the pipeline",
+    "retry": "4d2",
+    "question": "A floor triangle's edge runs from a corner with w = 1 and u = 0 to a corner with w = 4 and u = 1. Nearest sampling a texture 16 texels wide, which texel column does the pixel halfway between them on screen pick?",
+    "format": "a whole number, the column",
+    "expected": "3",
+    "reason": "Perspective-correct, q = 0.5 and 0.5 / 4 = 0.125, so u = 0.125 / 0.625 = 0.2. Then floor(0.2 × 16) = floor(3.2) = 3.",
+    "wrong": [
+      {
+        "answer": "8",
+        "feedback": "That uses the screen-weight u, 0.5. The perspective-correct u is 0.2: texel 3."
+      },
+      {
+        "answer": "12",
+        "feedback": "That weights the near corner less. The far corner, w = 4, gets the smaller weight: u = 0.2, texel 3."
+      },
+      {
+        "answer": "4",
+        "feedback": "u × 16 = 3.2, and nearest takes floor: 3."
+      }
+    ]
+  },
+  "4d2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4d",
+    "question": "A fresh case. An edge runs from a corner with w = 2 and u = 0 to a corner with w = 6 and u = 1. For the pixel halfway between them on screen, which column does nearest sampling pick in a texture 16 texels wide?",
+    "format": "a whole number",
+    "expected": "4",
+    "reason": "q = 0.25 and 0.083, so u = 0.083 / 0.333 = 0.25, and floor(0.25 × 16) = 4.",
+    "wrong": [
+      {
+        "answer": "8",
+        "feedback": "Screen weights give 0.5. Perspective-correct, u = 0.25: texel 4."
+      }
+    ]
+  },
+  "4e": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Diffing two pictures",
+    "retry": "4e2",
+    "question": "Two pictures of four pixels. In pixel 0 both drew triangle 5, and green differs by 2 levels. In pixel 1 yours drew triangle 5, theirs triangle 6, and the colours are 190 levels apart. In pixel 2 both left background. In pixel 3 both drew triangle 6, 1 level apart. What maxLevel does diffImages return?",
+    "format": "a whole number of levels",
+    "expected": "2",
+    "reason": "Pixel 1 is a coverage mismatch, so its colour isn't compared: two different triangles are expected to differ in colour. Background isn't compared either. Of pixels 0 and 3, the largest difference is 2 levels.",
+    "wrong": [
+      {
+        "answer": "190",
+        "feedback": "Pixel 1 belongs to different triangles, a coverage mismatch: its colour isn't compared. maxLevel looks only where both drew the same triangle: 2."
+      },
+      {
+        "answer": "1",
+        "feedback": "Pixel 0 differs by 2 levels in green, and maxLevel keeps the largest: 2."
+      },
+      {
+        "answer": "0",
+        "feedback": "Pixels 0 and 3 are compared: the largest difference is 2."
+      }
+    ]
+  },
+  "4e2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4e",
+    "question": "A fresh case. Pixel 0: same triangle, 0 levels apart. Pixel 1: different triangles, 50 levels apart. Pixel 2: same triangle, 3 levels apart. What overOne does diffImages return?",
+    "format": "a whole number of pixels",
+    "expected": "1",
+    "reason": "Only pixels drawn by the same triangle are compared: pixel 2 is more than 1 level off, pixel 0 isn't. Pixel 1 counts in coverage instead.",
+    "wrong": [
+      {
+        "answer": "2",
+        "feedback": "Pixel 1 is a coverage mismatch, so its colour isn't compared: only pixel 2 counts."
+      },
+      {
+        "answer": "0",
+        "feedback": "Pixel 2 differs by 3 levels, more than 1."
+      }
+    ]
+  },
+  "4f": {
+    "version": 1,
+    "lesson": "4",
+    "section": "Where a GPU may choose",
+    "retry": "4f2",
+    "question": "Suppose the reference courtyard is drawn at 1/16 instead of 1/256 and compared with the Apple GPU. About how many pixels differ in triangle ownership? (a) 0, (b) 1, (c) about 50, (d) about 5,000.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "The courtyard's corners land anywhere after the divide, so most of them snap to a slightly different place on the two grids, and the pixels whose centres lie within a step of an edge can change owner. On the recorded run, 51 pixels differ, all beside an edge.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "Both grids are allowed by WebGL, but they put most corners in slightly different places, and pixels beside the edges follow them: 51 on the recorded run."
+      },
+      {
+        "answer": "b",
+        "feedback": "One pixel is what's left when your pipeline runs on the GPU's own grid. On the wrong grid, 51 differ."
+      },
+      {
+        "answer": "d",
+        "feedback": "A corner moves by less than 1/16 of a pixel, so only pixels within a step of an edge can change: 51, not thousands."
+      }
+    ]
+  },
+  "4f2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4f",
+    "question": "A fresh case. Suppose the reference is drawn at 1/256 instead and compared with SwiftShader, which snaps to 1/16. About how many pixels differ? (a) 0, (b) 1, (c) about 50, (d) about 5,000.",
+    "format": "one letter",
+    "expected": "c",
+    "reason": "The same two grids as in 4f, swapped. Drawn in Node at stage 4, the reference courtyard at 1/16 and at 1/256 gives 52 pixels to different triangles; lesson 4's recorded run, the reference at 1/16 against the Apple GPU at 1/256, found 51.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The grids differ, so the corners land in different places: about 50 pixels differ."
+      }
+    ]
+  },
+  "4t": {
+    "version": 1,
+    "lesson": "4",
+    "section": "A second GPU",
+    "retry": "4t2",
+    "question": "Suppose the phone reports the top-left rule and a grid of 1/64. Drawn at 1/16, which of unit 4's scenes would your pictures need to change to match it exactly, bands aside? (a) none, (b) the courtyard only, (c) the tie scenes only, (d) all of them.",
+    "format": "one letter",
+    "expected": "b",
+    "reason": "The tie scenes and the coplanar pair have their corners on the 1/16 grid, and every 1/16 point is also a 1/64 point, so they snap to the same places and the tie rule is the same. The courtyard's corners land anywhere after the divide, so they move.",
+    "wrong": [
+      {
+        "answer": "a",
+        "feedback": "The courtyard's corners, which land anywhere after the divide, snap to other places on a 1/64 grid."
+      },
+      {
+        "answer": "c",
+        "feedback": "The tie scenes' corners sit on the 1/16 grid, which a 1/64 grid contains, and the tie rule is the same, so they don't change."
+      },
+      {
+        "answer": "d",
+        "feedback": "A corner already on the 1/16 grid stays put on the finer 1/64 grid. Only the courtyard moves."
+      }
+    ]
+  },
+  "4t2": {
+    "version": 1,
+    "lesson": "4",
+    "variantOf": "4t",
+    "question": "A fresh case. A GPU on the 1/16 grid uses the mirrored tie rule: it nudges a centre left and down instead of right and up. How many pixels of the shared-diagonal scene change owner?",
+    "format": "a whole number of pixels",
+    "expected": "237",
+    "reason": "Every pixel whose centre lies exactly on an edge goes to the other triangle, or to none: the shared-diagonal scene has 237 such tie pixels, and all of them change.",
+    "wrong": [
+      {
+        "answer": "49",
+        "feedback": "That counts only the diagonal. The square's outer edges pass through pixel centres too: 237 tie pixels in all."
+      }
+    ]
+  }
+}

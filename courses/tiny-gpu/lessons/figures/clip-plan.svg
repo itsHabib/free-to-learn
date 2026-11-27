@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 420" width="390" height="420" role="img" aria-label="Seen from above: the eye, the near plane 0.1 m ahead, and a triangle with corners v0 (1, 0, -5), v1 (1, 0, 2), 2 m behind the eye, and v2 (-1, 0, -5). Its part in front of the plane is kept as 2 triangles that fan out from v0, the first corner; the cut points lie on the plane.">
+<style>
+text { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  fill: #1f2328; font-size: 13px; }
+.h { font-size: 15px; font-weight: 600; }
+.s { font-size: 13px; fill: #57606a; }
+.m { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+</style>
+<rect width="390" height="420" fill="#ffffff"/>
+<text x="8" y="22" class="h" >A triangle cut at the near plane, seen from above</text>
+<rect x="4" y="296" width="382" height="90" fill="#f3f4f6"/>
+<polygon points="235.0,100.0 235.0,380.0 155.0,100.0" fill="none" stroke="#57606a" stroke-dasharray="4 3"/>
+<polygon points="235.0,100.0 235.0,296.0 211.0,296.0" fill="#dbe7fb" stroke="#2f6fdb" stroke-width="1.2" fill-opacity="0.85"/>
+<polygon points="235.0,100.0 211.0,296.0 155.0,100.0" fill="#c9b8f0" stroke="#2f6fdb" stroke-width="1.2" fill-opacity="0.85"/>
+<line x1="4" x2="386" y1="296" y2="296" stroke="#1f2328" stroke-width="1.4"/>
+<text x="8" y="290" class="s" >near plane, 0.1 m ahead: z = -w</text>
+<text x="8" y="314" class="s" >behind it: cut away</text>
+<circle cx="195" cy="300" r="4" fill="#1f2328"/>
+<text x="165" y="318" class="s" >eye</text>
+<line x1="51" y1="260" x2="51" y2="196" stroke="#1f2328" marker-end="url(#a)"/>
+<defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1f2328"/></marker></defs>
+<text x="59" y="236" class="s" >the camera</text>
+<text x="59" y="252" class="s" >looks along -z</text>
+<circle cx="235" cy="100" r="5" fill="#1f2328"/>
+<text x="243" y="104" class="m" >v0 (1, 0, -5)</text>
+<text x="243" y="122" class="s" >first corner,</text>
+<text x="243" y="138" class="s" >the fan's hub</text>
+<text x="149" y="104" class="m" text-anchor="end">v2 (-1, 0, -5)</text>
+<text x="241" y="384" class="m" >v1 (1, 0, 2)</text>
+<text x="227" y="384" class="s" text-anchor="end">behind</text>
+<circle cx="235" cy="296" r="3.5" fill="#c2410c"/>
+<circle cx="211" cy="296" r="3.5" fill="#c2410c"/>
+<text x="243" y="274" class="s" >cut points</text>
+<text x="8" y="406" class="s" >Kept: 2 triangles, a fan from v0, the first corner.</text>
+</svg>

@@ -1,0 +1,6 @@
+  FAIL 1.seam-once: Two triangles sharing an edge must not both draw a
+       pixel whose centre lies on that edge. On "shared-diagonal" (a
+       square cut along its diagonal) 49 pixels were drawn twice, first
+       at (56, 7): both edges claimed the tie.
+       Reread lesson 1, "The tie rule".
+7 of 14 checks pass in unit 1.

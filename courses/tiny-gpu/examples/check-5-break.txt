@@ -1,0 +1,4 @@
+  FAIL 5.step-arith: mad is a * b + c: "mad r3, r0, r1, r2" with r0 = 2,
+       r1 = 3, r2 = 4 left r3 = 14 (it was 0); expected 10
+       Reread lesson 5, "One lane's arithmetic".
+5 of 10 checks pass in unit 5.

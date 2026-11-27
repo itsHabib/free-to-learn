@@ -1,0 +1,5 @@
+Unit 1: Edge functions and the fill rule
+  WAIT 1.edge-values: edge: not written yet
+  WAIT 1.owns-directions: owns: not written yet
+  WAIT 1.zero-area: rasterize: not written yet
+0 of 14 checks pass in unit 1; 14 wait for functions not written yet.

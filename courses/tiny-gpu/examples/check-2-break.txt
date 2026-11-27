@@ -1,0 +1,14 @@
+  FAIL 2.behind-eye: A triangle wholly behind the near plane must draw
+       nothing. From camera stop "low" 2 triangles are wholly behind it,
+       yet 10 pixels show one of them (first: pixel (35, 41), triangle
+       106). Clip before dividing by w: a negative w flips the triangle
+       onto the screen.
+       Reread lesson 2, "Clipping at the near plane".
+  FAIL 2.column-walk: Standing closer to a column than the near plane,
+       its faces must be cut at the plane, not dropped or drawn whole
+       (camera stop "column", 64 x 64, stage 2: flat colours drawn in
+       order): 3,311 pixels differ from the expected picture (yours
+       covers 4,096, expected 3,935). First difference at pixel (24, 0):
+       yours has triangle 384, expected triangle 316.
+       Reread lesson 2, "Walking into a column".
+2 of 6 checks pass in unit 2.

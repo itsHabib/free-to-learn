@@ -1,0 +1,15 @@
+{
+  "unit": "4",
+  "regions": [
+    {
+      "file": "texture.mjs",
+      "fn": "sample",
+      "text": "export function sample(tex, u, v, mode) {\n  if (mode === 'nearest') {\n    return texel(tex, Math.floor(u * tex.w), Math.floor(v * tex.h));\n  }\n  if (mode !== 'linear') throw new Error(`sample: unknown ${mode}`);\n  // Texel centres sit at +0.5, so step back half a texel first.\n  const x = u * tex.w - 0.5;\n  const y = v * tex.h - 0.5;\n  const x0 = Math.floor(x);\n  const y0 = Math.floor(y);\n  const fx = x - x0;\n  const fy = y - y0;\n  const c00 = texel(tex, x0, y0);\n  const c10 = texel(tex, x0 + 1, y0);\n  const c01 = texel(tex, x0, y0 + 1);\n  const c11 = texel(tex, x0 + 1, y0 + 1);\n  return c00.map((_, k) =>\n    (1 - fx) * (1 - fy) * c00[k] + fx * (1 - fy) * c10[k]\n    + (1 - fx) * fy * c01[k] + fx * fy * c11[k]);\n}\n\n// Repeat wrapping: texel -1 is the last one, texel w the first.\nfunction texel(tex, x, y) {\n  const tx = ((x % tex.w) + tex.w) % tex.w;\n  const ty = ((y % tex.h) + tex.h) % tex.h;\n  const i = (ty * tex.w + tx) * 4;\n  const d = tex.data;\n  return [d[i] / 255, d[i + 1] / 255, d[i + 2] / 255, d[i + 3] / 255];\n}"
+    },
+    {
+      "file": "diff.mjs",
+      "fn": "diffImages",
+      "text": "// Coverage first: a pixel owned by different triangles is a coverage\n// mismatch and its colour is not compared. Colour is compared (r, g,\n// b) only where both pictures drew the same triangle.\nexport function diffImages(mine, theirs, ties) {\n  if (mine.w !== theirs.w || mine.h !== theirs.h) {\n    throw new Error('diffImages: the pictures differ in size');\n  }\n  let coverage = 0;\n  let onTies = 0;\n  let maxLevel = 0;\n  let overOne = 0;\n  for (let i = 0; i < mine.ids.length; i++) {\n    if (mine.ids[i] !== theirs.ids[i]) {\n      coverage++;\n      if (ties && ties[i]) onTies++;\n      continue;\n    }\n    if (mine.ids[i] < 0) continue;\n    const level = channelGap(mine.rgba, theirs.rgba, i);\n    maxLevel = Math.max(maxLevel, level);\n    if (level > 1) overOne++;\n  }\n  return { coverage, onTies, maxLevel, overOne };\n}\n\nfunction channelGap(a, b, i) {\n  let gap = 0;\n  for (let k = 0; k < 3; k++) {\n    gap = Math.max(gap, Math.abs(a[i * 4 + k] - b[i * 4 + k]));\n  }\n  return gap;\n}"
+    }
+  ]
+}

@@ -1,0 +1,1710 @@
+{
+ "programs": [
+  {
+   "name": "operands",
+   "text": "; operands of every kind\n.in u v nx            ; r0 r1 r2\n.const tint 0.1 0.2 0.3 1\n.const half 0.5\n\nmov r3, -0.25\nadd r4,r0,tint.y      ; no spaces after commas\nmul r5, r1, tint.b    ; colour names for components\nmad r15, r2, 1e-3, .5\nsub r6, half, tint.w\ntex r12, r0, r1, floor\nout r12 r13 tint.r    ; commas are optional\n",
+   "expect": {
+    "code": [
+     {
+      "op": "mov",
+      "args": [
+       {
+        "r": 3
+       },
+       {
+        "k": -0.25
+       }
+      ],
+      "line": 6
+     },
+     {
+      "op": "add",
+      "args": [
+       {
+        "r": 4
+       },
+       {
+        "r": 0
+       },
+       {
+        "k": 0.20000000298023224
+       }
+      ],
+      "line": 7
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 1
+       },
+       {
+        "k": 0.30000001192092896
+       }
+      ],
+      "line": 8
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 15
+       },
+       {
+        "r": 2
+       },
+       {
+        "k": 0.0010000000474974513
+       },
+       {
+        "k": 0.5
+       }
+      ],
+      "line": 9
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "k": 0.5
+       },
+       {
+        "k": 1
+       }
+      ],
+      "line": 10
+     },
+     {
+      "op": "tex",
+      "args": [
+       {
+        "r": 12
+       },
+       {
+        "r": 0
+       },
+       {
+        "r": 1
+       },
+       {
+        "tex": "floor"
+       }
+      ],
+      "line": 11
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 12
+       },
+       {
+        "r": 13
+       },
+       {
+        "k": 0.10000000149011612
+       }
+      ],
+      "line": 12
+     }
+    ],
+    "inputs": [
+     "u",
+     "v",
+     "nx"
+    ],
+    "consts": {
+     "tint": [
+      0.10000000149011612,
+      0.20000000298023224,
+      0.30000001192092896,
+      1
+     ],
+     "half": [
+      0.5
+     ]
+    }
+   }
+  },
+  {
+   "name": "lambert",
+   "text": "; Lambert diffuse: the vertex colour times how squarely the surface\n; faces a fixed light, plus a little ambient so shadowed faces are\n; not black. Normals are unit length (each face has one normal).\n.in r g b nx ny nz                ; r0 r1 r2 = colour, r3 r4 r5 = normal\n.const light 0.30305 0.80812 0.50508  ; unit vector towards the light\nmul r6, r3, light.x\nmad r6, r4, light.y, r6\nmad r6, r5, light.z, r6           ; r6 = n . light\nmax r6, r6, 0                     ; a face turned away gets no light\nmad r6, r6, 0.8, 0.2              ; 20% ambient, 80% diffuse\nmul r0, r0, r6\nmul r1, r1, r6\nmul r2, r2, r6\nout r0, r1, r2\n",
+   "expect": {
+    "code": [
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 3
+       },
+       {
+        "k": 0.3030500113964081
+       }
+      ],
+      "line": 6
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 4
+       },
+       {
+        "k": 0.8081200122833252
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 7
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 5
+       },
+       {
+        "k": 0.505079984664917
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 8
+     },
+     {
+      "op": "max",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 6
+       },
+       {
+        "k": 0
+       }
+      ],
+      "line": 9
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 6
+       },
+       {
+        "k": 0.800000011920929
+       },
+       {
+        "k": 0.20000000298023224
+       }
+      ],
+      "line": 10
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 0
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 11
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 1
+       },
+       {
+        "r": 1
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 12
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 2
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 13
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 1
+       },
+       {
+        "r": 2
+       }
+      ],
+      "line": 14
+     }
+    ],
+    "inputs": [
+     "r",
+     "g",
+     "b",
+     "nx",
+     "ny",
+     "nz"
+    ],
+    "consts": {
+     "light": [
+      0.3030500113964081,
+      0.8081200122833252,
+      0.505079984664917
+     ]
+    }
+   }
+  },
+  {
+   "name": "checker-branch",
+   "text": "; A checker of 8 x 8 squares in (u, v), shaded with a branch: dark\n; squares take the if side, light squares the else side. Pixels on\n; either side of a square's edge disagree, so a warp that straddles\n; an edge runs both sides.\n.in u v r g b                     ; r0 = u, r1 = v, r2 r3 r4 = colour\nmul r5, r0, 8\nfloor r5, r5                      ; column\nmul r6, r1, 8\nfloor r6, r6                      ; row\nadd r5, r5, r6\nmul r5, r5, 0.5\nfrac r5, r5                       ; 0.5 on odd squares, 0 on even\nif r5\n  mul r2, r2, 0.3                 ; dark square: a dim, cool copy\n  mul r3, r3, 0.35\n  mul r4, r4, 0.45\nelse\n  mad r2, r2, 0.6, 0.4            ; light square: towards white\n  mad r3, r3, 0.6, 0.4\n  mad r4, r4, 0.6, 0.38\nendif\nout r2, r3, r4\n",
+   "expect": {
+    "code": [
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 0
+       },
+       {
+        "k": 8
+       }
+      ],
+      "line": 6
+     },
+     {
+      "op": "floor",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 5
+       }
+      ],
+      "line": 7
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 1
+       },
+       {
+        "k": 8
+       }
+      ],
+      "line": 8
+     },
+     {
+      "op": "floor",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 9
+     },
+     {
+      "op": "add",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 5
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 10
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 5
+       },
+       {
+        "k": 0.5
+       }
+      ],
+      "line": 11
+     },
+     {
+      "op": "frac",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 5
+       }
+      ],
+      "line": 12
+     },
+     {
+      "op": "if",
+      "args": [
+       {
+        "r": 5
+       }
+      ],
+      "line": 13,
+      "match": {
+       "else": 11,
+       "end": 15
+      }
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 2
+       },
+       {
+        "k": 0.30000001192092896
+       }
+      ],
+      "line": 14
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 3
+       },
+       {
+        "r": 3
+       },
+       {
+        "k": 0.3499999940395355
+       }
+      ],
+      "line": 15
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 4
+       },
+       {
+        "r": 4
+       },
+       {
+        "k": 0.44999998807907104
+       }
+      ],
+      "line": 16
+     },
+     {
+      "op": "else",
+      "args": [],
+      "line": 17,
+      "match": {
+       "end": 15
+      }
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 2
+       },
+       {
+        "k": 0.6000000238418579
+       },
+       {
+        "k": 0.4000000059604645
+       }
+      ],
+      "line": 18
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 3
+       },
+       {
+        "r": 3
+       },
+       {
+        "k": 0.6000000238418579
+       },
+       {
+        "k": 0.4000000059604645
+       }
+      ],
+      "line": 19
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 4
+       },
+       {
+        "r": 4
+       },
+       {
+        "k": 0.6000000238418579
+       },
+       {
+        "k": 0.3799999952316284
+       }
+      ],
+      "line": 20
+     },
+     {
+      "op": "endif",
+      "args": [],
+      "line": 21,
+      "match": {}
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 3
+       },
+       {
+        "r": 4
+       }
+      ],
+      "line": 22
+     }
+    ],
+    "inputs": [
+     "u",
+     "v",
+     "r",
+     "g",
+     "b"
+    ],
+    "consts": {}
+   }
+  },
+  {
+   "name": "coherent-branch",
+   "text": "; A branch most warps agree on: a gold stripe over the last eighth of\n; each unit of u. The condition changes only at the stripe's two\n; edges, so nearly every 4 x 2 block is all inside or all outside and\n; runs one side. The stripe side is long; the other is one line.\n.in u v r g b                     ; r0 = u, r1 = v, r2 r3 r4 = colour\n.const gold 1.0 0.78 0.3\nfrac r5, r0                       ; 0 to 1 across each unit of u\nsge r6, r5, 0.875                 ; the last eighth is the stripe\nif r6\n  sub r7, r5, 0.9375              ; -0.0625 to 0.0625 across it\n  mul r7, r7, 16                  ; -1 to 1\n  mul r7, r7, r7\n  sub r7, 1, r7                   ; 1 at the centre, 0 at the edges\n  mul r8, r7, r7                  ; a sharper sheen\n  sub r9, gold.r, r2\n  mad r2, r9, r8, r2              ; colour + (gold - colour) * sheen\n  sub r9, gold.g, r3\n  mad r3, r9, r8, r3\n  sub r9, gold.b, r4\n  mad r4, r9, r8, r4\n  mul r8, r8, r8\n  mul r8, r8, r8                  ; a narrow glint on top\n  mad r2, r8, 0.2, r2\n  mad r3, r8, 0.2, r3\n  mad r4, r8, 0.2, r4\n  out r2, r3, r4\nelse\n  out r2, r3, r4                  ; outside the stripe: the colour\nendif\n",
+   "expect": {
+    "code": [
+     {
+      "op": "frac",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 0
+       }
+      ],
+      "line": 7
+     },
+     {
+      "op": "sge",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 5
+       },
+       {
+        "k": 0.875
+       }
+      ],
+      "line": 8
+     },
+     {
+      "op": "if",
+      "args": [
+       {
+        "r": 6
+       }
+      ],
+      "line": 9,
+      "match": {
+       "else": 20,
+       "end": 22
+      }
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 7
+       },
+       {
+        "r": 5
+       },
+       {
+        "k": 0.9375
+       }
+      ],
+      "line": 10
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 7
+       },
+       {
+        "r": 7
+       },
+       {
+        "k": 16
+       }
+      ],
+      "line": 11
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 7
+       },
+       {
+        "r": 7
+       },
+       {
+        "r": 7
+       }
+      ],
+      "line": 12
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 7
+       },
+       {
+        "k": 1
+       },
+       {
+        "r": 7
+       }
+      ],
+      "line": 13
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 8
+       },
+       {
+        "r": 7
+       },
+       {
+        "r": 7
+       }
+      ],
+      "line": 14
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 9
+       },
+       {
+        "k": 1
+       },
+       {
+        "r": 2
+       }
+      ],
+      "line": 15
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 9
+       },
+       {
+        "r": 8
+       },
+       {
+        "r": 2
+       }
+      ],
+      "line": 16
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 9
+       },
+       {
+        "k": 0.7799999713897705
+       },
+       {
+        "r": 3
+       }
+      ],
+      "line": 17
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 3
+       },
+       {
+        "r": 9
+       },
+       {
+        "r": 8
+       },
+       {
+        "r": 3
+       }
+      ],
+      "line": 18
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 9
+       },
+       {
+        "k": 0.30000001192092896
+       },
+       {
+        "r": 4
+       }
+      ],
+      "line": 19
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 4
+       },
+       {
+        "r": 9
+       },
+       {
+        "r": 8
+       },
+       {
+        "r": 4
+       }
+      ],
+      "line": 20
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 8
+       },
+       {
+        "r": 8
+       },
+       {
+        "r": 8
+       }
+      ],
+      "line": 21
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 8
+       },
+       {
+        "r": 8
+       },
+       {
+        "r": 8
+       }
+      ],
+      "line": 22
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 8
+       },
+       {
+        "k": 0.20000000298023224
+       },
+       {
+        "r": 2
+       }
+      ],
+      "line": 23
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 3
+       },
+       {
+        "r": 8
+       },
+       {
+        "k": 0.20000000298023224
+       },
+       {
+        "r": 3
+       }
+      ],
+      "line": 24
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 4
+       },
+       {
+        "r": 8
+       },
+       {
+        "k": 0.20000000298023224
+       },
+       {
+        "r": 4
+       }
+      ],
+      "line": 25
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 3
+       },
+       {
+        "r": 4
+       }
+      ],
+      "line": 26
+     },
+     {
+      "op": "else",
+      "args": [],
+      "line": 27,
+      "match": {
+       "end": 22
+      }
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 3
+       },
+       {
+        "r": 4
+       }
+      ],
+      "line": 28
+     },
+     {
+      "op": "endif",
+      "args": [],
+      "line": 29,
+      "match": {}
+     }
+    ],
+    "inputs": [
+     "u",
+     "v",
+     "r",
+     "g",
+     "b"
+    ],
+    "consts": {
+     "gold": [
+      1,
+      0.7799999713897705,
+      0.30000001192092896
+     ]
+    }
+   }
+  },
+  {
+   "name": "textured",
+   "text": "; A texture fetch times Lambert: colour x texel x light.\n.in r g b u v nx ny nz            ; r0-r2 colour, r3 r4 uv, r5-r7 normal\n.const light 0.30305 0.80812 0.50508  ; unit vector towards the light\ntex r8, r3, r4, floor             ; r8 r9 r10 r11 = texel RGBA (nearest)\nmul r12, r5, light.x\nmad r12, r6, light.y, r12\nmad r12, r7, light.z, r12         ; n . light\nmax r12, r12, 0\nmad r12, r12, 0.8, 0.2            ; 20% ambient, 80% diffuse\nmul r0, r0, r8\nmul r1, r1, r9\nmul r2, r2, r10\nmul r0, r0, r12\nmul r1, r1, r12\nmul r2, r2, r12\nout r0, r1, r2\n",
+   "expect": {
+    "code": [
+     {
+      "op": "tex",
+      "args": [
+       {
+        "r": 8
+       },
+       {
+        "r": 3
+       },
+       {
+        "r": 4
+       },
+       {
+        "tex": "floor"
+       }
+      ],
+      "line": 4
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 12
+       },
+       {
+        "r": 5
+       },
+       {
+        "k": 0.3030500113964081
+       }
+      ],
+      "line": 5
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 12
+       },
+       {
+        "r": 6
+       },
+       {
+        "k": 0.8081200122833252
+       },
+       {
+        "r": 12
+       }
+      ],
+      "line": 6
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 12
+       },
+       {
+        "r": 7
+       },
+       {
+        "k": 0.505079984664917
+       },
+       {
+        "r": 12
+       }
+      ],
+      "line": 7
+     },
+     {
+      "op": "max",
+      "args": [
+       {
+        "r": 12
+       },
+       {
+        "r": 12
+       },
+       {
+        "k": 0
+       }
+      ],
+      "line": 8
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 12
+       },
+       {
+        "r": 12
+       },
+       {
+        "k": 0.800000011920929
+       },
+       {
+        "k": 0.20000000298023224
+       }
+      ],
+      "line": 9
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 0
+       },
+       {
+        "r": 8
+       }
+      ],
+      "line": 10
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 1
+       },
+       {
+        "r": 1
+       },
+       {
+        "r": 9
+       }
+      ],
+      "line": 11
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 2
+       },
+       {
+        "r": 10
+       }
+      ],
+      "line": 12
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 0
+       },
+       {
+        "r": 12
+       }
+      ],
+      "line": 13
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 1
+       },
+       {
+        "r": 1
+       },
+       {
+        "r": 12
+       }
+      ],
+      "line": 14
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 2
+       },
+       {
+        "r": 12
+       }
+      ],
+      "line": 15
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 1
+       },
+       {
+        "r": 2
+       }
+      ],
+      "line": 16
+     }
+    ],
+    "inputs": [
+     "r",
+     "g",
+     "b",
+     "u",
+     "v",
+     "nx",
+     "ny",
+     "nz"
+    ],
+    "consts": {
+     "light": [
+      0.3030500113964081,
+      0.8081200122833252,
+      0.505079984664917
+     ]
+    }
+   }
+  },
+  {
+   "name": "escape",
+   "text": "; Escape count: iterate z = z * z + c from z = 0, with c from (u, v),\n; until |z| reaches 2 or 40 turns have run. The grey level is the\n; number of turns. Each lane leaves the loop after its own count.\n.in u v                           ; r0 = u, r1 = v\nmad r2, r0, 3, -2.2               ; c.x from -2.2 to 0.8\nmad r3, r1, 2.4, -1.2             ; c.y from -1.2 to 1.2\nmov r4, 0                         ; z.x\nmov r5, 0                         ; z.y\nmov r6, 0                         ; n, the turns run so far\nloop\n  mul r7, r4, r4                  ; z.x squared\n  mul r8, r5, r5                  ; z.y squared\n  add r9, r7, r8\n  sge r10, r9, 4                  ; |z| >= 2\n  sge r11, r6, 40                 ; or 40 turns already\n  max r10, r10, r11\n  break r10\n  mul r9, r4, r5\n  mad r5, r9, 2, r3               ; z.y = 2 z.x z.y + c.y\n  sub r7, r7, r8\n  add r4, r7, r2                  ; z.x = z.x^2 - z.y^2 + c.x\n  add r6, r6, 1\nendloop\nmul r6, r6, 0.025                 ; n / 40\nout r6, r6, r6\n",
+   "expect": {
+    "code": [
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 2
+       },
+       {
+        "r": 0
+       },
+       {
+        "k": 3
+       },
+       {
+        "k": -2.200000047683716
+       }
+      ],
+      "line": 5
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 3
+       },
+       {
+        "r": 1
+       },
+       {
+        "k": 2.4000000953674316
+       },
+       {
+        "k": -1.2000000476837158
+       }
+      ],
+      "line": 6
+     },
+     {
+      "op": "mov",
+      "args": [
+       {
+        "r": 4
+       },
+       {
+        "k": 0
+       }
+      ],
+      "line": 7
+     },
+     {
+      "op": "mov",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "k": 0
+       }
+      ],
+      "line": 8
+     },
+     {
+      "op": "mov",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "k": 0
+       }
+      ],
+      "line": 9
+     },
+     {
+      "op": "loop",
+      "args": [],
+      "line": 10,
+      "match": {
+       "end": 18
+      }
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 7
+       },
+       {
+        "r": 4
+       },
+       {
+        "r": 4
+       }
+      ],
+      "line": 11
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 8
+       },
+       {
+        "r": 5
+       },
+       {
+        "r": 5
+       }
+      ],
+      "line": 12
+     },
+     {
+      "op": "add",
+      "args": [
+       {
+        "r": 9
+       },
+       {
+        "r": 7
+       },
+       {
+        "r": 8
+       }
+      ],
+      "line": 13
+     },
+     {
+      "op": "sge",
+      "args": [
+       {
+        "r": 10
+       },
+       {
+        "r": 9
+       },
+       {
+        "k": 4
+       }
+      ],
+      "line": 14
+     },
+     {
+      "op": "sge",
+      "args": [
+       {
+        "r": 11
+       },
+       {
+        "r": 6
+       },
+       {
+        "k": 40
+       }
+      ],
+      "line": 15
+     },
+     {
+      "op": "max",
+      "args": [
+       {
+        "r": 10
+       },
+       {
+        "r": 10
+       },
+       {
+        "r": 11
+       }
+      ],
+      "line": 16
+     },
+     {
+      "op": "break",
+      "args": [
+       {
+        "r": 10
+       }
+      ],
+      "line": 17,
+      "match": {
+       "end": 18
+      }
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 9
+       },
+       {
+        "r": 4
+       },
+       {
+        "r": 5
+       }
+      ],
+      "line": 18
+     },
+     {
+      "op": "mad",
+      "args": [
+       {
+        "r": 5
+       },
+       {
+        "r": 9
+       },
+       {
+        "k": 2
+       },
+       {
+        "r": 3
+       }
+      ],
+      "line": 19
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 7
+       },
+       {
+        "r": 7
+       },
+       {
+        "r": 8
+       }
+      ],
+      "line": 20
+     },
+     {
+      "op": "add",
+      "args": [
+       {
+        "r": 4
+       },
+       {
+        "r": 7
+       },
+       {
+        "r": 2
+       }
+      ],
+      "line": 21
+     },
+     {
+      "op": "add",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 6
+       },
+       {
+        "k": 1
+       }
+      ],
+      "line": 22
+     },
+     {
+      "op": "endloop",
+      "args": [],
+      "line": 23,
+      "match": {
+       "start": 5
+      }
+     },
+     {
+      "op": "mul",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 6
+       },
+       {
+        "k": 0.02500000037252903
+       }
+      ],
+      "line": 24
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 6
+       },
+       {
+        "r": 6
+       },
+       {
+        "r": 6
+       }
+      ],
+      "line": 25
+     }
+    ],
+    "inputs": [
+     "u",
+     "v"
+    ],
+    "consts": {}
+   }
+  },
+  {
+   "name": "nested",
+   "text": ".in u v\nloop\n  if r0\n    if r1\n      break r1\n    else\n      sub r1, r1, 1\n    endif\n  else\n    add r0, r0, 1\n    break r0\n  endif\n  sub r0, r0, 0.5\nendloop\nout r0, r1, 0\n",
+   "expect": {
+    "code": [
+     {
+      "op": "loop",
+      "args": [],
+      "line": 2,
+      "match": {
+       "end": 12
+      }
+     },
+     {
+      "op": "if",
+      "args": [
+       {
+        "r": 0
+       }
+      ],
+      "line": 3,
+      "match": {
+       "else": 7,
+       "end": 10
+      }
+     },
+     {
+      "op": "if",
+      "args": [
+       {
+        "r": 1
+       }
+      ],
+      "line": 4,
+      "match": {
+       "else": 4,
+       "end": 6
+      }
+     },
+     {
+      "op": "break",
+      "args": [
+       {
+        "r": 1
+       }
+      ],
+      "line": 5,
+      "match": {
+       "end": 12
+      }
+     },
+     {
+      "op": "else",
+      "args": [],
+      "line": 6,
+      "match": {
+       "end": 6
+      }
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 1
+       },
+       {
+        "r": 1
+       },
+       {
+        "k": 1
+       }
+      ],
+      "line": 7
+     },
+     {
+      "op": "endif",
+      "args": [],
+      "line": 8,
+      "match": {}
+     },
+     {
+      "op": "else",
+      "args": [],
+      "line": 9,
+      "match": {
+       "end": 10
+      }
+     },
+     {
+      "op": "add",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 0
+       },
+       {
+        "k": 1
+       }
+      ],
+      "line": 10
+     },
+     {
+      "op": "break",
+      "args": [
+       {
+        "r": 0
+       }
+      ],
+      "line": 11,
+      "match": {
+       "end": 12
+      }
+     },
+     {
+      "op": "endif",
+      "args": [],
+      "line": 12,
+      "match": {}
+     },
+     {
+      "op": "sub",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 0
+       },
+       {
+        "k": 0.5
+       }
+      ],
+      "line": 13
+     },
+     {
+      "op": "endloop",
+      "args": [],
+      "line": 14,
+      "match": {
+       "start": 0
+      }
+     },
+     {
+      "op": "out",
+      "args": [
+       {
+        "r": 0
+       },
+       {
+        "r": 1
+       },
+       {
+        "k": 0
+       }
+      ],
+      "line": 15
+     }
+    ],
+    "inputs": [
+     "u",
+     "v"
+    ],
+    "consts": {}
+   }
+  }
+ ],
+ "errors": [
+  {
+   "name": "unknown op",
+   "text": "mov r0, 1\n\nmull r1, r0, r0",
+   "line": 3,
+   "message": "line 3: unknown op 'mull'"
+  },
+  {
+   "name": "too few operands",
+   "text": ".in u\nadd r1, r0",
+   "line": 2,
+   "message": "line 2: add takes 3 operands, not 2"
+  },
+  {
+   "name": "register out of range",
+   "text": "mov r16, 1",
+   "line": 1,
+   "message": "line 1: r16 is out of range: r0 to r15"
+  },
+  {
+   "name": "unknown constant",
+   "text": ".const k 1 2\nmul r0, r0, j.x",
+   "line": 2,
+   "message": "line 2: unknown constant 'j'"
+  },
+  {
+   "name": "constant component missing",
+   "text": ".const k 1 2\nmov r0, k.z",
+   "line": 2,
+   "message": "line 2: k has no component 'z'"
+  },
+  {
+   "name": "else without if",
+   "text": "mov r0, 1\nelse\nendif",
+   "line": 2,
+   "message": "line 2: else without an open if, or a 2nd else"
+  },
+  {
+   "name": "endif without if",
+   "text": "mov r0, 1\nendif",
+   "line": 2,
+   "message": "line 2: endif without an open if"
+  },
+  {
+   "name": "second else",
+   "text": "if r0\nelse\nelse\nendif",
+   "line": 3,
+   "message": "line 3: else without an open if, or a 2nd else"
+  },
+  {
+   "name": "endloop closing an if",
+   "text": "loop\n  if r0\nendloop\nendif",
+   "line": 3,
+   "message": "line 3: endloop without an open loop (the if on line 2 is still open)"
+  },
+  {
+   "name": "break outside a loop",
+   "text": "if r0\n  break r0\nendif",
+   "line": 2,
+   "message": "line 2: break outside a loop"
+  },
+  {
+   "name": "if never closed",
+   "text": "mov r0, 1\nif r0\n  mov r1, 2\n",
+   "line": 2,
+   "message": "line 2: if is never closed"
+  },
+  {
+   "name": "loop never closed",
+   "text": "; comment\nloop\n  if r0\n  endif\n",
+   "line": 2,
+   "message": "line 2: loop is never closed"
+  },
+  {
+   "name": "written constant",
+   "text": "mov 1, r0",
+   "line": 1,
+   "message": "line 1: '1' cannot be written: use a register"
+  }
+ ]
+}

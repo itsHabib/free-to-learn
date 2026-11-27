@@ -1,0 +1,6 @@
+Wrote project/out/u1-tieScenes-one-triangle.png: one-triangle, 64 × 64
+       pixels, each drawn 5 × 5.
+  counted: fragments 1,330, shaded 1,330, warps 0, issues 0
+Wrote project/out/u1-tieScenes-shared-diagonal.png: shared-diagonal, 64
+       × 64 pixels, each drawn 5 × 5.
+  counted: fragments 2,304, shaded 2,304, warps 0, issues 0

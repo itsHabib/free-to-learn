@@ -1,0 +1,4 @@
+New application: Twenty thousand tiny triangles
+  WAIT t8.dust-bytes: dustBytes: not written yet (make transfer/8.mjs in
+       your project folder, as lesson 8 asks)
+0 of 1 pass; 1 wait for files not made yet.

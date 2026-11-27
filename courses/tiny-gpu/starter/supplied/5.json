@@ -1,0 +1,15 @@
+{
+  "unit": "5",
+  "regions": [
+    {
+      "file": "shader.mjs",
+      "fn": "assemble",
+      "text": "export function assemble(text) {\n  const prog = { code: [], inputs: [], consts: {} };\n  const open = []; // if and loop entries still waiting for their end\n  text.split(/\\r?\\n/).forEach((raw, i) => {\n    const line = i + 1;\n    const ins = parseLine(raw, prog, line);\n    if (!ins) return;\n    const { op } = ins;\n    const at = prog.code.length;\n    const top = open.at(-1);\n    if (op === 'if' || op === 'loop') open.push({ ins, at, later: [] });\n    if (op === 'else') {\n      // one else per if; where it jumps is not known until endif\n      if (top?.ins.op !== 'if' || top.ins.match.else !== undefined) {\n        throw lineError(line, 'else without an open if, or a 2nd else');\n      }\n      top.ins.match.else = at;\n      top.later.push(ins);\n    }\n    if (op === 'break') {\n      const loop = open.findLast((o) => o.ins.op === 'loop');\n      if (!loop) throw lineError(line, 'break outside a loop');\n      loop.later.push(ins);\n    }\n    if (op === 'endif' || op === 'endloop') {\n      const want = op === 'endif' ? 'if' : 'loop';\n      if (top?.ins.op !== want) {\n        const inner = !top ? '' :\n          ` (the ${top.ins.op} on line ${top.ins.line} is still open)`;\n        throw lineError(line, `${op} without an open ${want}${inner}`);\n      }\n      open.pop();\n      // the end is known now: fill in the targets that pointed ahead\n      for (const x of [top.ins, ...top.later]) x.match.end = at;\n      if (op === 'endloop') ins.match.start = top.at;\n    }\n    prog.code.push(ins);\n  });\n  const left = open.at(-1)?.ins;\n  if (left) throw lineError(left.line, `${left.op} is never closed`);\n  return prog;\n}"
+    },
+    {
+      "file": "shader.mjs",
+      "fn": "step",
+      "text": "export function step(lane, ins, env) {\n  const f = Math.fround;\n  const r = lane.r;\n  const [x, y, z] = ins.args.slice(1).map((o) => read(lane, o));\n  if (ins.op === 'out') {\n    lane.out = ins.args.map((o) => read(lane, o));\n    return;\n  }\n  const d = ins.args[0].r;\n  switch (ins.op) {\n    case 'mov': r[d] = x; break;\n    case 'add': r[d] = f(x + y); break;\n    case 'sub': r[d] = f(x - y); break;\n    case 'mul': r[d] = f(x * y); break;\n    // round the product first, as a separate multiply and add would\n    case 'mad': r[d] = f(f(x * y) + z); break;\n    case 'min': r[d] = Math.min(x, y); break;\n    case 'max': r[d] = Math.max(x, y); break;\n    case 'rcp': r[d] = f(1 / x); break;\n    case 'rsq': r[d] = f(1 / Math.sqrt(x)); break;\n    case 'floor': r[d] = Math.floor(x); break;\n    // x - floor(x): frac(-0.25) is 0.75, the distance up from floor\n    case 'frac': r[d] = f(x - Math.floor(x)); break;\n    case 'slt': r[d] = x < y ? 1 : 0; break;\n    case 'sge': r[d] = x >= y ? 1 : 0; break;\n    case 'tex': r.set(env.tex(ins.args[3].tex, x, y), d); break;\n    default: throw new Error(`step: ${ins.op} is not an arithmetic op`);\n  }\n}"
+    }
+  ]
+}

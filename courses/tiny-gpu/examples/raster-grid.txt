@@ -1,0 +1,19 @@
+// The functions of gpu/raster.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: SUB
+export let SUB = 16; // WebGL reports 4 subpixel bits: 1/16 pixel
+// endregion: SUB
+
+// region: setSubpixelBits
+// The comparison runs your pipeline on the browser GPU's own grid:
+// 2 ** bits steps a pixel (4 bits = 1/16). Code that reads SUB when
+// it runs sees the new value. Up to 10 bits, edge values on the
+// course's scenes stay exact integers in a JavaScript number.
+export function setSubpixelBits(bits) {
+  if (!Number.isInteger(bits) || bits < 4 || bits > 10) {
+    throw new Error(`setSubpixelBits: 4 to 10 bits, not ${bits}`);
+  }
+  SUB = 2 ** bits;
+}
+// endregion: setSubpixelBits

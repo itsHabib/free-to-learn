@@ -1,0 +1,7 @@
+  FAIL 8.tile-edges: A tile draws only its own pixels, x0 <= x < x0 + 16
+       and the same in y, and the fill rule decides the pixels on its
+       edges as it does anywhere. "tile-borders-1" (triangles across
+       tile edges): pixel (0, 8) (tile (0, 0)) shows triangle 18 tiled,
+       no triangle drawn whole.
+       Reread lesson 8, "The fill rule at a tile edge".
+4 of 6 checks pass in unit 8.

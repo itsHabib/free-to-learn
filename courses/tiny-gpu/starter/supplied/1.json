@@ -1,0 +1,20 @@
+{
+  "unit": "1",
+  "regions": [
+    {
+      "file": "raster.mjs",
+      "fn": "edge",
+      "text": "// Twice the signed area of triangle a, b, p: positive when p is to\n// the left of the line a -> b (y up), zero on the line.\nexport function edge(a, b, p) {\n  return (b[0] - a[0]) * (p[1] - a[1]) - (b[1] - a[1]) * (p[0] - a[0]);\n}"
+    },
+    {
+      "file": "raster.mjs",
+      "fn": "owns",
+      "text": "// A centre exactly on edge a -> b of a counter-clockwise triangle\n// belongs to the triangle if nudging it right by a tiny e and up by\n// e * e moves it inside: the edge's inward normal points right, or\n// straight up when the edge is horizontal.\nexport function owns(a, b) {\n  const gx = -(b[1] - a[1]);\n  const gy = b[0] - a[0];\n  return gx > 0 || (gx === 0 && gy > 0);\n}"
+    },
+    {
+      "file": "raster.mjs",
+      "fn": "rasterize",
+      "text": "export function rasterize(tri, rect, emit) {\n  let [v0, v1, v2] = tri;\n  const area = edge(v0, v1, v2);\n  if (area === 0) return 0;\n  // Work counter-clockwise; remember to hand weights back unswapped.\n  const swapped = area < 0;\n  if (swapped) [v1, v2] = [v2, v1];\n\n  const xs = [v0[0], v1[0], v2[0]];\n  const ys = [v0[1], v1[1], v2[1]];\n  const x0 = Math.max(rect.x0, Math.floor(Math.min(...xs) / SUB));\n  const x1 = Math.min(rect.x1, Math.ceil(Math.max(...xs) / SUB));\n  const y0 = Math.max(rect.y0, Math.floor(Math.min(...ys) / SUB));\n  const y1 = Math.min(rect.y1, Math.ceil(Math.max(...ys) / SUB));\n\n  const own = [owns(v1, v2), owns(v2, v0), owns(v0, v1)];\n  const inside = (w, k) => w > 0 || (w === 0 && own[k]);\n  let count = 0;\n  for (let y = y0; y < y1; y++) {\n    for (let x = x0; x < x1; x++) {\n      const p = [x * SUB + SUB / 2, y * SUB + SUB / 2];\n      const w0 = edge(v1, v2, p);\n      const w1 = edge(v2, v0, p);\n      const w2 = edge(v0, v1, p);\n      if (!inside(w0, 0) || !inside(w1, 1) || !inside(w2, 2)) continue;\n      if (swapped) emit(x, y, w0, w2, w1);\n      else emit(x, y, w0, w1, w2);\n      count++;\n    }\n  }\n  return count;\n}"
+    }
+  ]
+}

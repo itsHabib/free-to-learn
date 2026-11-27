@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare with WebGL</title>
+<style>
+  :root {
+    --ink: #1d2330; --muted: #4a5262; --line: #d6dbe4; --paper: #ffffff; --panel: #f4f6f9;
+    --accent: #2453c4; color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  header, main { max-width: 60rem; margin: 0 auto; padding: 0 16px; }
+  header { padding-top: 1.5rem; }
+  h1 { font-size: 1.5rem; margin: 0 0 .25rem; line-height: 1.25; }
+  h2 { font-size: 1.1rem; margin: 1.75rem 0 .75rem; }
+  #unit { color: var(--muted); margin: 0; }
+  #status { margin: .5rem 0 0; color: var(--muted); }
+  #grid { margin: .5rem 0 0; }
+  #grid:empty { display: none; }
+  .verdict {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+    padding: .75rem 1rem; margin: 1rem 0;
+  }
+  .verdict h2 { margin: 0 0 .5rem; }
+  #verdict {
+    margin: 0; white-space: pre-wrap; overflow-wrap: anywhere;
+    font-size: .95rem; font-variant-numeric: tabular-nums;
+  }
+  .tools { margin: 1rem 0; }
+  button {
+    font: inherit; color: var(--ink); background: var(--paper); border: 1px solid #9aa3b2;
+    border-radius: 6px; padding: .4rem .8rem; cursor: pointer; min-height: 44px;
+  }
+  button:hover { background: var(--panel); }
+  button[aria-pressed="true"] { background: var(--panel); border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
+  :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  figure {
+    margin: 0 0 1.25rem; display: grid; gap: .5rem 1rem;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  canvas {
+    display: block; width: 100%; height: auto; image-rendering: pixelated;
+    border: 1px solid var(--line); background: var(--panel);
+  }
+  body.actual canvas { width: auto; max-width: 100%; }
+  .wrap { position: relative; }
+  body.actual .wrap { width: fit-content; max-width: 100%; }
+  .rings { position: absolute; inset: 1px; width: calc(100% - 2px); height: calc(100% - 2px); pointer-events: none; overflow: visible; }
+  .rings circle { fill: none; stroke: var(--ink); stroke-width: 2px; vector-effect: non-scaling-stroke; }
+  .rings text { fill: var(--ink); paint-order: stroke; stroke: #fff; stroke-width: 3px; font-family: system-ui, sans-serif; font-weight: 600; vector-effect: non-scaling-stroke; }
+  .scene-verdict { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: .75rem 1rem; margin: 0 0 1.25rem; }
+  .scene-verdict h3 { font-size: 1rem; margin: 0 0 .25rem; }
+  .scene-verdict .short { margin: 0; }
+  .scene-verdict details { margin: .5rem 0 0; }
+  pre.lines { white-space: pre-wrap; overflow-wrap: anywhere; margin: .5rem 0 0; background: var(--paper); font-variant-numeric: tabular-nums; }
+  figcaption { font-size: .95rem; color: var(--muted); }
+  figcaption b { display: block; color: var(--ink); font-size: 1rem; }
+  details { margin: .5rem 0 1rem; }
+  summary { cursor: pointer; padding: .25rem 0; }
+  pre { background: var(--panel); padding: .75rem; overflow-x: auto; font-size: .85rem; }
+  .scene { border-top: 1px solid var(--line); }
+  footer { max-width: 60rem; margin: 2rem auto; padding: 0 16px; color: var(--muted); font-size: .9rem; }
+  @media (min-width: 720px) {
+    figure { grid-template-columns: minmax(0, 30rem) minmax(12rem, 1fr); align-items: start; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Your GPU and the browser's GPU</h1>
+  <p id="unit">Unit</p>
+  <p id="status" role="status">Loading…</p>
+  <p id="grid"></p>
+</header>
+<main>
+  <section class="verdict" aria-labelledby="verdict-title">
+    <h2 id="verdict-title">Verdict</h2>
+    <p id="verdict" aria-live="polite">The lab prints the same verdict in your terminal. Each scene's own lines appear under its pictures.</p>
+  </section>
+  <div class="tools">
+    <button id="zoom" type="button" aria-pressed="false">Show actual pixels</button>
+  </div>
+  <div id="scenes"></div>
+  <details>
+    <summary>How this page draws the scene</summary>
+    <p>The lab sent the scene's triangles, already in clip coordinates, and your picture.
+      This page draws the triangles twice with WebGL2, antialiasing off: once for colour and
+      once with each triangle's number as its colour, so the lab can tell which triangle owns
+      each pixel. First it draws three small scenes whose edges pass exactly through pixel
+      centres, to find which tie rule this GPU uses, and a scene of thin triangles whose
+      coverage depends on how finely the GPU snaps vertex positions. WebGL promises 1/16 of
+      a pixel or finer; the lab draws your picture on the grid this GPU really uses. The
+      pixels go back to the lab, which compares them with yours and prints the verdict.</p>
+  </details>
+</main>
+<footer>Opened by <code>node lab.mjs compare</code>. Close this tab when the lab has printed its verdict.</footer>
+<template id="picture">
+  <figure>
+    <div class="wrap"><canvas></canvas></div>
+    <figcaption><b></b><span class="about"></span></figcaption>
+  </figure>
+</template>
+<script type="module" src="compare.mjs"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+pixels covered: 1330
+pixels more than 1 level apart: 1330
+largest difference: 107 levels
+at pixel (43, 47):
+  screen weights only  70, 184, 1
+  perspective-correct  177, 77, 1

@@ -1,0 +1,145 @@
+// The functions of gpu/warp.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: laneOf
+// The lane of pixel (x, y) in the warp whose block starts at (x0, y0).
+export function laneOf(x, y, x0, y0) {
+  return (y - y0) * 4 + (x - x0);
+}
+// endregion: laneOf
+
+// region: lanesWhere
+// The active lanes (bits of mask) where operand a is not zero.
+export function lanesWhere(lanes, mask, a) {
+  let bits = 0;
+  for (let k = 0; k < LANES; k++) {
+    if (mask & (1 << k) && read(lanes[k], a) !== 0) bits |= 1 << k;
+  }
+  return bits;
+}
+// endregion: lanesWhere
+
+// region: runWarp
+export function runWarp(program, lanes, mask, env, opts = {}) {
+  const code = program.code;
+  let st = { pc: 0, mask, stack: [] };
+  let issues = 0;
+  while (st.pc < code.length) {
+    const ins = code[st.pc];
+    // one issue per instruction visited, however many lanes run it
+    issues += 1;
+    const handler = HANDLERS[ins.op];
+    if (handler) {
+      st = handler(st, ins, lanes, opts);
+      continue;
+    }
+    for (let k = 0; k < LANES; k++) {
+      // inactive lanes keep their registers and their colour
+      if (st.mask & (1 << k)) step(lanes[k], ins, env);
+    }
+    st.pc += 1;
+  }
+  return { issues };
+}
+// endregion: runWarp
+
+// region: HANDLERS
+export const HANDLERS = {
+  if: onIf, else: onElse, endif: onEndif,
+  loop: onLoop, break: onBreak, endloop: onEndloop,
+};
+// endregion: HANDLERS
+
+// region: onIf
+export function onIf(st, ins, lanes, opts) {
+  const taken = lanesWhere(lanes, st.mask, ins.args[0]);
+  st.stack.push({ kind: 'if', saved: st.mask, taken });
+  if (taken === 0 && opts.skip !== false) {
+    // no lane takes the if side: go to the else (it runs) or endif
+    const pc = ins.match.else ?? ins.match.end;
+    return { pc, mask: taken, stack: st.stack };
+  }
+  return { pc: st.pc + 1, mask: taken, stack: st.stack };
+}
+// endregion: onIf
+
+// region: onElse
+export function onElse(st, ins, lanes, opts) {
+  const top = st.stack.at(-1);
+  // the other lanes of the parent mask, not of all eight
+  const mask = top.saved & ~top.taken;
+  if (mask === 0 && opts.skip !== false) {
+    return { pc: ins.match.end, mask, stack: st.stack };
+  }
+  return { pc: st.pc + 1, mask, stack: st.stack };
+}
+// endregion: onElse
+
+// region: onEndif
+export function onEndif(st) {
+  const top = st.stack.pop();
+  return { pc: st.pc + 1, mask: top.saved, stack: st.stack };
+}
+// endregion: onEndif
+
+// region: onLoop
+export function onLoop(st) {
+  st.stack.push({ kind: 'loop', saved: st.mask, trips: 0 });
+  return { pc: st.pc + 1, mask: st.mask, stack: st.stack };
+}
+// endregion: onLoop
+
+// region: onBreak
+// Lanes where the operand is not zero leave the loop: they drop out of
+// the mask and out of every if entry opened inside the loop, so no
+// endif or else brings them back. When no lane is left in the loop
+// (and skipping), drop those if entries and go to the endloop.
+export function onBreak(st, ins, lanes, opts) {
+  const leaving = lanesWhere(lanes, st.mask, ins.args[0]);
+  const mask = st.mask & ~leaving;
+  let i = st.stack.length - 1;
+  let alive = mask;
+  for (; st.stack[i].kind !== 'loop'; i--) {
+    st.stack[i].saved &= ~leaving;
+    alive |= st.stack[i].saved;
+  }
+  if (alive === 0 && opts.skip !== false) {
+    st.stack.length = i + 1;
+    return { pc: ins.match.end, mask: 0, stack: st.stack };
+  }
+  return { pc: st.pc + 1, mask, stack: st.stack };
+}
+// endregion: onBreak
+
+// region: onEndloop
+// Lanes still active go round again. With none left, pop the loop and
+// bring back the lanes that entered it.
+export function onEndloop(st, ins) {
+  const top = st.stack.at(-1);
+  if (st.mask !== 0) {
+    top.trips += 1;
+    if (top.trips > MAX_TRIPS) {
+      throw new Error(`loop at ${ins.match.start}: over ${MAX_TRIPS} ` +
+        'trips: a break never fires');
+    }
+    return { pc: ins.match.start + 1, mask: st.mask, stack: st.stack };
+  }
+  st.stack.pop();
+  return { pc: st.pc + 1, mask: top.saved, stack: st.stack };
+}
+// endregion: onEndloop
+
+// region: loadWarp
+// Eight lanes for one 4x2 block. attrsOf(k) gives lane k's
+// interpolated attributes in ATTRS order, or null for a lane with no
+// fragment (its registers stay zero; leave its bit out of the mask).
+export function loadWarp(program, attrsOf) {
+  const lanes = [];
+  for (let k = 0; k < LANES; k++) {
+    const attrs = attrsOf(k);
+    lanes.push(attrs ? loadLane(program, attrs)
+      : { r: new Float32Array(16), out: null });
+  }
+  return lanes;
+}
+// endregion: loadWarp

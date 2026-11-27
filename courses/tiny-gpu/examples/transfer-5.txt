@@ -1,0 +1,6 @@
+New application: A toon shader
+  WAIT t5.toon-asm: toon shader: not written yet (make transfer/toon.asm
+       in your project folder, as lesson 5 asks)
+  WAIT t5.toon-glsl: toon shader: not written yet (make
+       transfer/toon.glsl in your project folder, as lesson 5 asks)
+0 of 2 pass; 2 wait for files not made yet.

@@ -1,0 +1,39 @@
+// The functions of gpu/interp.mjs, as the working version has them.
+// Copied by the course's listing tool. Do not edit.
+
+// region: toByte
+// Float colour 0..1 to a stored 8-bit level.
+export function toByte(c) {
+  return Math.round(Math.min(1, Math.max(0, c)) * 255);
+}
+// endregion: toByte
+
+// region: interpolate
+// w = the three edge values rasterize handed to emit.
+export function interpolate(v, w, n) {
+  const sum = w[0] + w[1] + w[2];
+  const b = [w[0] / sum, w[1] / sum, w[2] / sum];
+  // z / w is linear on screen, so depth uses the screen weights.
+  const z = b[0] * v[0].z + b[1] * v[1].z + b[2] * v[2].z;
+  // Attributes are linear in the world: weight each vertex by its
+  // 1/w, then divide by the interpolated 1/w.
+  const q = [b[0] * v[0].invW, b[1] * v[1].invW, b[2] * v[2].invW];
+  const qSum = q[0] + q[1] + q[2];
+  const attrs = new Array(n);
+  for (let k = 0; k < n; k++) {
+    const s = q[0] * v[0].a[k] + q[1] * v[1].a[k] + q[2] * v[2].a[k];
+    attrs[k] = s / qSum;
+  }
+  return { z, attrs };
+}
+// endregion: interpolate
+
+// region: depthTest
+// LESS: a fragment wins only if strictly nearer than what is stored.
+export function depthTest(depth, i, z) {
+  const zf = Math.fround(z); // the buffer holds float32, compare those
+  if (!(zf < depth[i])) return false;
+  depth[i] = zf;
+  return true;
+}
+// endregion: depthTest

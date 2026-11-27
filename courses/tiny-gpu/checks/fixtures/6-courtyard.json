@@ -1,0 +1,12 @@
+{
+ "width": 160,
+ "height": 120,
+ "shader": "lambert",
+ "fragments": 19814,
+ "shaded": 15353,
+ "laneIssues": 138177,
+ "warps": 3053,
+ "warpIssues": 27477,
+ "ratio": 5.029,
+ "ratioGate": 3.3
+}

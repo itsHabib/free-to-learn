@@ -64,3 +64,7 @@ The films' text is set in two fonts whose files are included in `courses/frame-p
 - IBM Plex Mono (IBMPlexMono-Regular.woff2, IBMPlexMono-Medium.woff2), Copyright © 2017 IBM Corp. with Reserved Font Name "Plex". License: `plex-license.txt`.
 
 These fonts are not covered by LICENSE.md.
+
+## Build a tiny GPU
+
+Build a tiny GPU, its scenes, lessons, figures, shaders and bench page are original Free to Learn material under the split licenses in LICENSE.md. It includes no third-party files. Lessons 1 and 4 report measurements of two WebGL implementations, SwiftShader and an Apple M5 GPU through Metal, as observed results. Neither ships with the course, and the comparison page uses only the WebGL in the browser you already have.
