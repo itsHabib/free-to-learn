@@ -1,0 +1,71 @@
+// Lesson 06's practice items. Shape: see lessons/practice.mjs.
+const q = (objective, prompt, answer, feedback, wrong = [], section = '') =>
+  ({ objective, prompt, answer, feedback, wrong, section });
+const w = (answer, feedback) => ({ answer, feedback });
+
+export default {
+  // ---------------------------------------------------------------- 06
+  'p06a': [
+    q('06', 'A* with the walking bound returned 121 frames on level 2. For a shorter level 2 movie to exist, which assumption behind the bound must fail somewhere? 1: Kettle sometimes moves more than 24 sub-pixels in a frame. 2: the flag is nearer than its column. 3: the search skipped some states. Answer 1, 2 or 3.',
+      1,
+      'One. The bound counts frames at 24 sub-pixels a frame, so it can only be too high if Kettle covers more ground than that in some frame. The flag\'s column is fixed, and de-duplication drops only states equal to one already kept.',
+      [w(2, 'The flag stays in its column; the bound measures to the column\'s left edge, the nearest point Kettle can touch.'),
+       w(3, 'De-duplication drops a state only when an equal one was already kept at the same depth or less, so no shorter route is lost. The estimate itself must be too high somewhere.')],
+      'Search without an estimate finds 70 frames'),
+    q('06', 'If breadth-first search finds a level 2 movie shorter than 121 frames, what does that tell you about the walking bound on level 2: does it overestimate somewhere?',
+      true,
+      'Yes. An estimate that never overestimates would have led A* to a shortest movie. If a shorter movie exists, then somewhere on level 2 Kettle needs fewer frames than walking speed allows: something moves it faster.',
+      [w(false, 'If the bound never overestimated, A* would have returned a shortest movie. A shorter one found another way shows the bound was too high somewhere.')],
+      'Search without an estimate finds 70 frames'),
+  ],
+  'p06b': [
+    q('06', 'Kettle leaves the belt at 2 px a frame. Each running jump adds 0.5 px, and a jump on the first frame back on the ground keeps all the speed. The game caps speed at 6 px a frame. How many such jumps take Kettle from 2 px to 6 px?',
+      8,
+      'Eight: 4 px of extra speed at 0.5 px a jump. The 70-frame movie makes them on frames 12, 19, 26, 33, 40, 47, 54 and 58, and vx (address 0x06) reads 6 px from frame 58.',
+      [w(9, 'That counts from walking speed, 1.5 px. The belt already gives 2 px before the first jump, so 4 px remain: 8 jumps of 0.5 px.'),
+       w(4, 'Each jump adds half a pixel, not one. 4 px of extra speed takes 8 of them.')],
+      'Bug one: the landing-frame jump'),
+    q('06', 'A version of the game whose jump boost is 1 px instead of 0.5 px, with the same 6 px cap. How many jumps of the kind in the last question take Kettle from 2 px to 6 px?',
+      4,
+      'Four: 4 px of extra speed at 1 px a jump.',
+      [w(8, 'That was for 0.5 px a jump. At 1 px a jump, 4 px of extra speed takes 4.')],
+      'Bug one: the landing-frame jump'),
+  ],
+  'p06c': [
+    q('06', 'Kettle moves right at exactly 4 px a frame toward a one-tile wall (8 px wide). Can its front edge ever end more than half a tile inside, so that the game pushes it out of the far side?',
+      false,
+      'No. The front edge starts the frame outside the wall, so it can end at most one move deep: 4 px, exactly half. The rule pushes to the far side only when the edge is more than half a tile in, so Kettle always goes back. A clip takes more than 4 px a frame.',
+      [w(true, 'At most one frame\'s move deep: 4 px is exactly half a tile, and the far side is chosen only for more than half.')],
+      'Bug two: the wall clip'),
+    q('06', 'Now Kettle\'s front edge is 1 px short of the wall and it moves 5.5 px in one frame. Is it pushed out of the far side?',
+      true,
+      'Yes. The front edge ends 4.5 px into the 8 px tile, more than half, so the nearer side is the far one.',
+      [w(false, 'Subtract the gap: 5.5 - 1 = 4.5 px deep, which is more than half of 8.')],
+      'Bug two: the wall clip'),
+  ],
+  'p06d': [
+    q('06', 'You minimise the 70-frame movie, keeping only presses needed for Kettle to get past the wall. Which bugs does the minimised movie still need: speed, clip or both? Answer with one word.',
+      'both',
+      'Both. Getting past the wall is the clip, and the clip needs more than 4 px a frame, which only the landing-frame jumps reach. So the minimised movie still has to build speed past 4 px: it keeps the belt walk and enough landing-frame jumps to get there.',
+      [w('clip', 'The clip happens only above 4 px a frame. Walking and the belt give 2 px, so the speed build-up must stay too.'),
+       w('speed', 'Speed alone stops at the wall: the push-out sends Kettle back unless its front edge goes more than half a tile deep. Getting past it is the clip.')],
+      'Minimise: keep only the presses that matter'),
+    q('06', 'Will the minimised movie still hold right on the frames Kettle spends on the belt?',
+      true,
+      'Yes. The belt\'s extra 0.5 px is what lifts Kettle to 2 px, the speed a jump needs before it gets its boost. Without it no jump gets a boost and the speed never builds.',
+      [w(false, 'A jump gets its boost only at 2 px a frame or more, and only walking on the belt reaches 2 px. Those presses are needed.')],
+      'Minimise: keep only the presses that matter'),
+  ],
+  'r06-thick': [
+    q('06', 'A wall two tiles thick, 16 px. Kettle\'s speed is capped at 6 px a frame. Can Kettle clip through it?',
+      true,
+      'Yes. On the clipping frame the far-side push puts Kettle\'s left edge at the start of the second tile, so its front edge, 6 px further right, is already almost through it. The next move of more than 2 px carries the front edge into the open, and the game tests only the front edge, so nothing pushes Kettle back. The author\'s search crossed a two-tile wall in the clip yard in 50 frames.',
+      [w(false, 'Follow the push: after the first tile, Kettle\'s left edge sits at the start of the second, and Kettle is 6 px wide. Only the front edge is tested, and one more move takes it out the far side.')],
+      'A new case: a wall two tiles thick'),
+    q('06', 'And a wall three tiles thick, 24 px? Kettle need not cross at top speed: on a ground frame without a jump, the game caps its speed at walking speed, 1.5 px.',
+      true,
+      'Yes, though not at top speed. After the first push Kettle\'s front edge is about 6 px into the next tile, already more than half. Moving 2 px or less, the edge stays in that tile, and the game pushes Kettle out of its far side, a whole tile a frame. Landing inside the wall caps the speed at walking speed, 1.5 px, so Kettle walks through. The author\'s search crossed three tiles in 55 frames.',
+      [w(false, 'Look at the second push. Kettle\'s front edge is already more than half a tile into the next tile, so any small move pushes it out of that tile\'s far side. Moving slowly, by landing inside the wall, repeats that tile after tile.')],
+      'A new case: a wall two tiles thick'),
+  ],
+};

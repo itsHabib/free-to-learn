@@ -1,0 +1,94 @@
+[
+ {
+  "name": "build 1",
+  "message": "Kettle 1.0",
+  "edits": [
+   {
+    "find": "  if (st.version === '1.1') { moveY(st, vy); moveX(st, vx); } // 1.1 settles the vertical move first\n  else { moveX(st, vx); moveY(st, vy); }\n",
+    "replace": "  moveX(st, vx);\n  moveY(st, vy);\n"
+   }
+  ]
+ },
+ {
+  "name": "build 2",
+  "message": "Rename under to below in step",
+  "edits": [
+   {
+    "find": "    const under = tileAt(st, u16(ram, ADDR.X) + W / 2, u16(ram, ADDR.Y) + H);\n    if (under === '>') vx += BELT;\n    if (under === '<') vx -= BELT;\n",
+    "replace": "    const below = tileAt(st, u16(ram, ADDR.X) + W / 2, u16(ram, ADDR.Y) + H);\n    if (below === '>') vx += BELT;\n    if (below === '<') vx -= BELT;\n"
+   }
+  ]
+ },
+ {
+  "name": "build 3",
+  "message": "Reword the comment on the random generator",
+  "edits": [
+   {
+    "find": "// A 16-bit xorshift generator. It advances once every frame and once more on every jump.\n",
+    "replace": "// The random generator: a 16-bit xorshift. One step every frame, and one more for each jump.\n"
+   }
+  ]
+ },
+ {
+  "name": "build 4",
+  "message": "Name the FNV-1a constants in hash",
+  "edits": [
+   {
+    "find": "// The game's sync check: FNV-1a over the 32 bytes of RAM.\n",
+    "replace": "const FNV_OFFSET = 0x811c9dc5, FNV_PRIME = 0x01000193;\n\n// The game's sync check: FNV-1a over the 32 bytes of RAM.\n"
+   },
+   {
+    "find": "  let h = 0x811c9dc5;\n",
+    "replace": "  let h = FNV_OFFSET;\n"
+   },
+   {
+    "find": "Math.imul(h, 0x01000193)",
+    "replace": "Math.imul(h, FNV_PRIME)"
+   }
+  ]
+ },
+ {
+  "name": "build 5",
+  "message": "Resolve landing before wall collisions",
+  "edits": [
+   {
+    "find": "  moveX(st, vx);\n  moveY(st, vy);\n",
+    "replace": "  moveY(st, vy); // settle the landing first, so walls are tested from where Kettle stands\n  moveX(st, vx);\n"
+   }
+  ]
+ },
+ {
+  "name": "build 6",
+  "message": "Reword the push-out comment in moveX",
+  "edits": [
+   {
+    "find": "      // Push Kettle out of the tile on the nearer side.\n",
+    "replace": "      // Push Kettle back out of the tile, on whichever side is nearer.\n"
+   }
+  ]
+ },
+ {
+  "name": "build 7",
+  "message": "Name the number of item slots",
+  "edits": [
+   {
+    "find": "export const GROUND = 1, HELD = 2;\n",
+    "replace": "export const GROUND = 1, HELD = 2;\nconst SLOT_COUNT = 4; // item slots, 0x0e to 0x11\n"
+   },
+   {
+    "find": "  const room = ram[ADDR.COUNT] < 4;\n",
+    "replace": "  const room = ram[ADDR.COUNT] < SLOT_COUNT;\n"
+   }
+  ]
+ },
+ {
+  "name": "build 8",
+  "message": "Rename foot to feet in moveY",
+  "edits": [
+   {
+    "find": "    const foot = y + H - 1;\n    if (solid(tileAt(st, x, foot)) || solid(tileAt(st, x + W - 1, foot))) {\n      y = Math.floor(foot / TILE) * TILE - H;\n",
+    "replace": "    const feet = y + H - 1;\n    if (solid(tileAt(st, x, feet)) || solid(tileAt(st, x + W - 1, feet))) {\n      y = Math.floor(feet / TILE) * TILE - H;\n"
+   }
+  ]
+ }
+]

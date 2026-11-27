@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frame Perfect player</title>
+<style>
+  :root {
+    --paper: #f7f4ee; --card: #fffdf9; --ink: #24211c; --muted: #6a6358; --line: #ddd6c9;
+    --accent: #b85a27; --accent-soft: #f6e4d6; --ok: #2b7a5c; --warn: #a33a2a; --focus: #1d5fa8;
+    color-scheme: light;
+  }
+  * { box-sizing: border-box; }
+  html { background: var(--paper); }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 900px; margin: 0 auto; padding: 12px 16px 32px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap; margin-bottom: 8px; }
+  h1 { font-size: 18px; margin: 0; font-weight: 650; }
+  h2 { font-size: 13px; margin: 0 0 6px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .meta { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .modes { display: inline-flex; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; background: var(--card); }
+  .modes button { border: 0; border-radius: 0; min-height: 36px; padding: 4px 14px; }
+  .modes button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .stage { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #edf2f2; }
+  canvas#game { display: block; width: 100%; height: auto; }
+  .legend { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 0 0; padding: 0; font-size: 13px; color: var(--muted); }
+  .legend li { display: flex; align-items: center; gap: 6px; }
+  .legend .legend-title { font-weight: 600; color: var(--ink, #24211c); }
+  .legend canvas { width: 22px; height: 22px; border-radius: 3px; background: #edf2f2; flex: none; }
+  .bar { display: flex; gap: 8px; align-items: center; margin: 8px 0 0; flex-wrap: wrap; }
+  button { font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 8px; padding: 6px 12px; min-width: 44px; min-height: 44px; cursor: pointer; }
+  button:hover { border-color: #c9c0b0; }
+  button:disabled { color: #aaa293; cursor: default; }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 600; }
+  input[type=range] { flex: 1 1 160px; min-width: 120px; height: 44px; accent-color: var(--accent); margin: 0; }
+  .frame { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+  .pads { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 8px; }
+  .pad { min-height: 64px; font-size: 20px; font-weight: 700; touch-action: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+  .pad small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); }
+  .pad[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+  .pad[aria-pressed="true"] small { color: #ddd6c9; }
+  .hint { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
+  .rec-status { font-variant-numeric: tabular-nums; font-weight: 600; margin-left: auto; white-space: nowrap; }
+  .bar.wide button { flex: 1 1 0; white-space: nowrap; }
+  .lower { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 16px; }
+  @media (min-width: 760px) { .lower { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); } }
+  .panel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .lights { display: flex; gap: 6px; align-items: center; margin-bottom: 8px; font-size: 13px; color: var(--muted); }
+  .light { width: 30px; height: 30px; border-radius: 6px; border: 1px solid var(--line); background: #fff; display: grid; place-items: center; font-weight: 700; font-size: 13px; color: #6f685d; }
+  .light.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  table { border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: 13px; width: 100%; }
+  th, td { text-align: left; padding: 4px 8px 4px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 500; }
+  tbody th { color: var(--ink); font-weight: 600; }
+  td:nth-child(-n+3) { white-space: nowrap; }
+  td.addr { color: var(--muted); font-family: ui-monospace, Menlo, monospace; font-size: 12px; }
+  td.hot { color: var(--accent); font-weight: 700; }
+  .save-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .save-row label { font-size: 13px; color: var(--muted); width: 100%; }
+  .save-row input { flex: 1 1 140px; min-width: 0; min-height: 44px; font: inherit; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); }
+  .msg { font-size: 13px; margin: 8px 0 0; min-height: 1.4em; }
+  .msg.bad { color: var(--warn); }
+  .msg.good { color: var(--ok); }
+  .note { font-size: 14px; margin: 4px 0 0; min-height: 1.45em; }
+  .note.bad { color: var(--warn); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  [hidden] { display: none !important; }
+</style>
+<script type="module" src="view.mjs"></script>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Kettle · <span id="lvname">loading</span></h1>
+    <div class="modes" role="group" aria-label="Mode">
+      <button id="mode-watch" type="button" aria-pressed="true">Watch</button>
+      <button id="mode-record" type="button" aria-pressed="false">Record</button>
+    </div>
+    <span class="meta" id="meta" style="width:100%"></span>
+  </header>
+
+  <div class="stage">
+    <canvas id="game" width="768" height="480" role="img" aria-label="The level, loading"></canvas>
+  </div>
+  <ul class="legend" id="legend" aria-label="Tiles in this level"></ul>
+  <p class="note" id="note" aria-live="polite"></p>
+
+  <section id="watch-bar" aria-label="Playback">
+    <div class="bar">
+      <button id="back" type="button" aria-label="Back one frame" title="Back one frame (Left arrow)">◀︎</button>
+      <button id="play" type="button" class="primary" title="Play or pause (Space)">Play</button>
+      <button id="fwd" type="button" aria-label="Forward one frame" title="Forward one frame (Right arrow)">▶︎</button>
+      <input id="scrub" type="range" min="0" max="0" value="0" aria-label="Frame">
+      <span class="frame" id="frame">frame 0 / 0</span>
+    </div>
+  </section>
+
+  <section id="record-bar" aria-label="Recorder" hidden>
+    <div class="bar wide">
+      <button id="undo" type="button" title="Remove the last frame (Backspace)">◀︎ Undo frame</button>
+      <button id="run" type="button" class="primary" title="Run live or pause (P)">Run live</button>
+      <button id="step" type="button" title="Advance one frame (.)">Step ▶︎</button>
+    </div>
+    <div class="pads" role="group" aria-label="Buttons for the next frame">
+      <button class="pad" type="button" data-bit="1" aria-pressed="false" aria-label="Left">L<small>left</small></button>
+      <button class="pad" type="button" data-bit="2" aria-pressed="false" aria-label="Right">R<small>right</small></button>
+      <button class="pad" type="button" data-bit="4" aria-pressed="false" aria-label="Jump">J<small>jump</small></button>
+    </div>
+    <div class="bar">
+      <button id="slot-save" type="button" title="Remember this frame">Savestate</button>
+      <button id="slot-load" type="button" disabled title="Go back to the savestate, dropping the frames after it">Load savestate</button>
+      <span class="rec-status"><span id="rec-frame">frame 0</span> · <span id="rerecords">rerecords: 0</span></span>
+    </div>
+    <p class="hint" id="rec-hint"></p>
+  </section>
+
+  <div class="lower">
+    <section class="panel" aria-labelledby="watch-title">
+      <h2 id="watch-title">Memory watch</h2>
+      <div class="lights" id="lights" aria-label="Buttons pressed on this frame: none">
+        <span aria-hidden="true">input</span>
+        <span class="light" id="light-1" aria-hidden="true">L</span>
+        <span class="light" id="light-2" aria-hidden="true">R</span>
+        <span class="light" id="light-4" aria-hidden="true">J</span>
+      </div>
+      <table>
+        <thead><tr><th scope="col">addr</th><th scope="col">name</th><th scope="col">value</th><th scope="col">meaning</th></tr></thead>
+        <tbody id="watch"></tbody>
+      </table>
+    </section>
+    <section class="panel" aria-labelledby="save-title">
+      <h2 id="save-title">Save movie</h2>
+      <div class="save-row">
+        <label for="save-name">Name, saved as work/movies/NAME.movie</label>
+        <input id="save-name" type="text" autocomplete="off" spellcheck="false" maxlength="41" pattern="[a-z0-9][a-z0-9\-]{0,40}">
+        <button id="save" type="button">Save</button>
+      </div>
+      <p class="msg" id="save-msg" role="status"></p>
+    </section>
+  </div>
+</main>
+</body>
+</html>

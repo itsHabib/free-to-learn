@@ -1,0 +1,2 @@
+breadth-first:     70 frames, 620,577 states expanded
+Saved the breadth-first movie as movies/level2.movie.

@@ -1,0 +1,11 @@
+running 'node' 'replay.mjs'
+reached the flag on frame 109
+Bisecting: 1 revision left to test after this (roughly 1 step)
+[52f46f8689a8a048c68090d92ee83affe888facf] Reword the push-out comment in moveX
+running 'node' 'replay.mjs'
+the movie ended before the flag
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[c6a0c616348e44852cc7915ffa8c0b8a21787c11] Resolve landing before wall collisions
+running 'node' 'replay.mjs'
+the movie ended before the flag
+c6a0c616348e44852cc7915ffa8c0b8a21787c11 is the first bad commit

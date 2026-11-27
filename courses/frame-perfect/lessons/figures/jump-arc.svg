@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="292" viewBox="0 0 400 292" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">A jump held and a jump let go after one frame</title>
+<desc id="d">Two jumps from standing, as height above the floor after each frame. Jump held: Kettle rises 18 px, is highest on frames 8 and 9, and is back at floor height on frame 17. Jump let go after frame 1: the rise is cut on frame 2, Kettle tops out at 4.5 px and lands on frame 7.</desc>
+<rect width="400" height="292" fill="#ffffff"/>
+<line x1="52" y1="248" x2="384" y2="248" stroke="#2b2620" stroke-width="1.5"/>
+<text x="52" y="280" fill="#6f685d">frame</text>
+<text x="52" y="265" text-anchor="middle" fill="#6f685d">0</text>
+<text x="149.65" y="265" text-anchor="middle" fill="#6f685d">5</text>
+<text x="247.29" y="265" text-anchor="middle" fill="#6f685d">10</text>
+<text x="344.94" y="265" text-anchor="middle" fill="#6f685d">15</text>
+<text x="384" y="265" text-anchor="middle" fill="#6f685d">17</text>
+<line x1="48" y1="248" x2="52" y2="248" stroke="#2b2620"/><text x="44" y="253" text-anchor="end" fill="#6f685d">0 px</text>
+<line x1="48" y1="207" x2="52" y2="207" stroke="#2b2620"/><text x="44" y="212" text-anchor="end" fill="#6f685d">4.5 px</text>
+<line x1="48" y1="84" x2="52" y2="84" stroke="#2b2620"/><text x="44" y="89" text-anchor="end" fill="#6f685d">18 px</text>
+<line x1="52" y1="84" x2="384" y2="84" stroke="#c9c1b4" stroke-dasharray="3 3"/>
+<line x1="52" y1="248" x2="52" y2="76" stroke="#2b2620"/>
+<text x="8" y="24" font-weight="600">Height above the floor, in pixels, after each frame</text>
+<path d="M52 248 L71.53 211.56 L91.06 179.67 L110.59 152.33 L130.12 129.56 L149.65 111.33 L169.18 97.67 L188.71 88.56 L208.24 84 L227.76 84 L247.29 88.56 L266.82 97.67 L286.35 111.33 L305.88 129.56 L325.41 152.33 L344.94 179.67 L364.47 211.56 L384 248" fill="none" stroke="#2f6f8f" stroke-width="2.2"/><circle cx="52" cy="248" r="2.6" fill="#2f6f8f"/><circle cx="71.53" cy="211.56" r="2.6" fill="#2f6f8f"/><circle cx="91.06" cy="179.67" r="2.6" fill="#2f6f8f"/><circle cx="110.59" cy="152.33" r="2.6" fill="#2f6f8f"/><circle cx="130.12" cy="129.56" r="2.6" fill="#2f6f8f"/><circle cx="149.65" cy="111.33" r="2.6" fill="#2f6f8f"/><circle cx="169.18" cy="97.67" r="2.6" fill="#2f6f8f"/><circle cx="188.71" cy="88.56" r="2.6" fill="#2f6f8f"/><circle cx="208.24" cy="84" r="2.6" fill="#2f6f8f"/><circle cx="227.76" cy="84" r="2.6" fill="#2f6f8f"/><circle cx="247.29" cy="88.56" r="2.6" fill="#2f6f8f"/><circle cx="266.82" cy="97.67" r="2.6" fill="#2f6f8f"/><circle cx="286.35" cy="111.33" r="2.6" fill="#2f6f8f"/><circle cx="305.88" cy="129.56" r="2.6" fill="#2f6f8f"/><circle cx="325.41" cy="152.33" r="2.6" fill="#2f6f8f"/><circle cx="344.94" cy="179.67" r="2.6" fill="#2f6f8f"/><circle cx="364.47" cy="211.56" r="2.6" fill="#2f6f8f"/><circle cx="384" cy="248" r="2.6" fill="#2f6f8f"/>
+<path d="M52 248 L71.53 211.56 L91.06 207 L110.59 207 L130.12 211.56 L149.65 220.67 L169.18 234.33 L188.71 248 L208.24 248 L227.76 248 L247.29 248 L266.82 248 L286.35 248 L305.88 248 L325.41 248 L344.94 248 L364.47 248 L384 248" fill="none" stroke="#b5541c" stroke-width="2.2"/><circle cx="52" cy="248" r="2.6" fill="#b5541c"/><circle cx="71.53" cy="211.56" r="2.6" fill="#b5541c"/><circle cx="91.06" cy="207" r="2.6" fill="#b5541c"/><circle cx="110.59" cy="207" r="2.6" fill="#b5541c"/><circle cx="130.12" cy="211.56" r="2.6" fill="#b5541c"/><circle cx="149.65" cy="220.67" r="2.6" fill="#b5541c"/><circle cx="169.18" cy="234.33" r="2.6" fill="#b5541c"/><circle cx="188.71" cy="248" r="2.6" fill="#b5541c"/><circle cx="208.24" cy="248" r="2.6" fill="#b5541c"/><circle cx="227.76" cy="248" r="2.6" fill="#b5541c"/><circle cx="247.29" cy="248" r="2.6" fill="#b5541c"/><circle cx="266.82" cy="248" r="2.6" fill="#b5541c"/><circle cx="286.35" cy="248" r="2.6" fill="#b5541c"/><circle cx="305.88" cy="248" r="2.6" fill="#b5541c"/><circle cx="325.41" cy="248" r="2.6" fill="#b5541c"/><circle cx="344.94" cy="248" r="2.6" fill="#b5541c"/><circle cx="364.47" cy="248" r="2.6" fill="#b5541c"/><circle cx="384" cy="248" r="2.6" fill="#b5541c"/>
+<text x="202.24" y="54" text-anchor="middle" fill="#2f6f8f">jump held: 18 px up,</text>
+<text x="202.24" y="71" text-anchor="middle" fill="#2f6f8f">back at floor height on frame 17</text>
+<text x="194.71" y="196" fill="#b5541c">let go after frame 1:</text>
+<text x="194.71" y="213" fill="#b5541c">cut on frame 2, 4.5 px up,</text>
+<text x="194.71" y="230" fill="#b5541c">lands on frame 7</text>
+</svg>

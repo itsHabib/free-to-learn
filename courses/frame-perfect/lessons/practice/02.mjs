@@ -1,0 +1,67 @@
+// Lesson 02's practice items. Shape: see lessons/practice.mjs.
+const q = (objective, prompt, answer, feedback, wrong = [], section = '') =>
+  ({ objective, prompt, answer, feedback, wrong, section });
+const w = (answer, feedback) => ({ answer, feedback });
+
+export default {
+  // ---------------------------------------------------------------- 02
+  'p02a': [
+    q('02', 'Predict: from the savestate, a jump made on frame 4 lands on top of the step on frame 18. Kettle is already at walking top speed by frame 4. On which frame does the jump made on frame 5 land?',
+      19,
+      'Frame 19. Kettle moves at the same speed on frames 4 and 5, so the jump on frame 5 is the same jump started one frame later, and it lands one frame later. It starts a pixel and a half further right, and Kettle still comes down on top of the step.',
+      [w(18, 'The jump has the same shape and starts one frame later, so it ends one frame later. Starting a little further right does not shorten the fall.'),
+       w(17, 'These two jumps rise and fall for the same number of frames, and the jump on frame 5 starts one frame later, so it cannot land earlier.')],
+      'Three tries at one jump'),
+    q('02', 'Predict: the script saves in slot 1, tries jumps on frames 3, 4 and 5 (loading slot 1 before the second and third tries), then loads slot 1 once more to replay the best try. What is session.rerecords at the end?',
+      3,
+      'Three. Each loadSlot adds one: two loads between the tries and one to replay the winner. Saving costs no rerecord, and neither does the first try, which plays on from the moment of the save without loading it.',
+      [w(2, 'Count the last load too. Replaying the best try starts with loadSlot(1), and every load is a rerecord.'),
+       w(4, 'The first try plays on from the moment of the save, with no load before it. Only loads count.'),
+       w(1, 'Every loadSlot adds one to the count, not only the first.')],
+      'Three tries at one jump'),
+  ],
+  'p02b': [
+    q('02', 'Predict: you try every jump frame from 1 to 60 on level 1, each try starting from frame 0. A jump on frame k needs k − 1 frames of walking first. How many frames of walking do the 60 tries play in all?',
+      1770,
+      'It is the sum 0 + 1 + 2 + ... + 59, which is 59 × 60 / 2 = 1,770. With a savestate kept before each jump frame, the walk is played once instead, 59 frames.',
+      [w(1830, 'That is 1 + 2 + ... + 60, which counts the jump frame too. The walk to a jump on frame k is k − 1 frames, so the sum runs from 0 to 59.'),
+       w(59, 'That is the walk with savestates, played once. From frame 0, every try walks again from the start.'),
+       w(3600, 'Each try walks k − 1 frames, not 60. The tries get longer one frame at a time, so the total is the sum 0 + 1 + ... + 59.')],
+      'What every try costs'),
+    q('02', 'The same from frame 0, with jump frames 1 to 100: how many frames of walking?',
+      4950,
+      'It is 0 + 1 + ... + 99 = 99 × 100 / 2 = 4,950. Trying 100 frames instead of 60 costs nearly three times the walking from frame 0, while with savestates the walk only grows from 59 frames to 99.',
+      [w(5050, 'That is 1 + 2 + ... + 100. The walk before a jump on frame k is k − 1 frames, so the sum stops at 99.'),
+       w(2950, 'Each of the 40 new tries walks 60 to 99 frames, so the total grows much faster than the number of tries.')],
+      'What every try costs'),
+  ],
+  'p02c': [
+    q('02', 'Predict: save returns { ...state }, and load is unchanged (it still copies the RAM). How many of module 02\'s four checks fail?',
+      3,
+      'Three. The savestate shares the live RAM, so any play after the save changes it. The check that plays on after saving, the 200 restore cases and Session (which plays two frames after its save) all fail. The check that loads one savestate twice passes, because nothing plays the original game after that save, and load still gives each copy its own RAM.',
+      [w(4, 'Look at the check that loads one savestate twice. Nothing plays the original game after its save, so the shared RAM never changes, and load still copies it for each of the two states.'),
+       w(1, 'Session saves, plays two more frames, then loads. With the RAM shared, those two frames changed the savestate. The restore cases play on before loading too.'),
+       w(2, 'Session calls your save, so it inherits the shared RAM. Count it with the two checks that play on after saving.')],
+      'Break it and repair it'),
+    q('02', 'A different break: save copies the RAM correctly, but load returns the savestate itself. How many of the four checks fail?',
+      1,
+      'One, the check that loads one savestate twice. Both loads return the same object, so playing the first changes the second. The other checks load each savestate once, and playing a savestate after a single load harms nothing they test, which is why the copy in load is easy to forget.',
+      [w(0, 'Load the same savestate twice and play the first. Both are one object, so the second changes too, and one check does exactly that.'),
+       w(3, 'The savestate is safe until it is loaded, because save copied the RAM. Only a second load of the same savestate shows the fault.')],
+      'Break it and repair it'),
+  ],
+  'r02-disk': [
+    { ...q('02', 'A savestate file needs some of these to restore the game and check it: 1 the 32 RAM bytes, 2 the level\'s tiles, 3 the level\'s name, 4 the game version. Which does the file need? Answer with their numbers.',
+      [1, 3, 4],
+      'The RAM is the only part that changes, so it is the only part that must be written out to restore the game. The tiles never change and already live in game/levels/, so the file names the level instead, and the loader refuses a file whose level name differs from the session\'s. The version is written for the same reason. Both are checked on load, not restored.',
+      [w([1], 'The RAM alone restores the bytes, but nothing would stop a level 1 savestate from being loaded onto level 2, or onto version 1.1. The name and the version are written so the loader can refuse a mismatch.'),
+       w([1, 2, 3, 4], 'The tiles are frozen and the lab already has them in game/levels/. Writing them would only make a second copy that could disagree with the first.'),
+       w([1, 2, 4], 'The level\'s name can stand in for its tiles, because the lab reads the level from game/levels/ by name.')],
+      'A new case: savestates on disk'), anyOrder: true },
+    q('02', 'Kettle comes in two versions, 1.0 and 1.1, whose rules differ in one place that lesson 03 finds; newState(level, \'1.1\') starts the second. MOVIES.level1Run is an array of input numbers, one per frame. You save after frame 96 of the fixture movie MOVIES.level1Run (in game/fixtures.mjs) on version 1.0, and a loader that does not check the version restores the RAM as version 1.1. You play the movie\'s remaining 13 frames. Does Kettle reach the flag? Try it: load the level with loadLevel(\'level1\') from game/levels.mjs and the movie from MOVIES in game/fixtures.mjs, then build { ram, level, version: \'1.1\' } and step it.',
+      false,
+      'No. The two versions agree after frame 96, so the bytes are right, but the next frame runs under 1.1\'s rules, and on that frame the two versions\' rules give different results. The movie ends without the flag. The RAM alone does not say which rules made it, which is why the file must name the version and the loader must check it. Module 3 finds that frame.',
+      [w(true, 'The bytes are the same in both versions after frame 96, but the rules for the next frames are not. Play the 13 frames with version 1.1 and look at the done byte, address 0x12.')],
+      'A new case: savestates on disk'),
+  ],
+};

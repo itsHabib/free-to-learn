@@ -1,0 +1,82 @@
+{
+ "room0": {
+  "frames": 24
+ },
+ "level1": {
+  "frames": 109,
+  "walkExpanded": 274,
+  "reachable": [
+   1,
+   3,
+   12,
+   55,
+   183,
+   450,
+   894,
+   1337,
+   1932,
+   2532,
+   2904,
+   3359,
+   3427,
+   3323,
+   3541,
+   3299,
+   2941,
+   2997,
+   2461,
+   2147,
+   1943
+  ],
+  "reach8": 4867,
+  "reach20": 39741
+ },
+ "pit": {
+  "frames": 25
+ },
+ "level2": {
+  "frames": 70,
+  "par": 100,
+  "referenceMovie": 70
+ },
+ "marker": {
+  "dx": 12,
+  "dy": 8,
+  "frames": 9,
+  "bruteExpanded": 1209335,
+  "searchExpanded": 6197
+ },
+ "desync": {
+  "frame": 97,
+  "addrs": [
+   4,
+   8,
+   9
+  ],
+  "n": 109
+ },
+ "bell": {
+  "par": 85,
+  "plan": "2222224444444444",
+  "want": 3,
+  "idle": 5,
+  "idleByDrop": [
+   4,
+   1,
+   0,
+   5
+  ],
+  "steeredTotal": 83,
+  "referenceMovie": 71
+ },
+ "level3": {
+  "par": 200,
+  "best": 137,
+  "bestProven": false
+ },
+ "clipYard": {
+  "frames": 49,
+  "movie": "2220260000006000000600000060000006000000600010040",
+  "minimisedPresses": 17
+ }
+}

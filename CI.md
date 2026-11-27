@@ -89,3 +89,7 @@ outside these CI checks.
 ## Build a world in one file
 
 The public contract starts both a type-in project and a supplied project, checks the unfinished type-in diagnostics and runs the supplied camera experiment.
+
+## Frame Perfect
+
+The contract checks exact packaging, JavaScript syntax, `node lab.mjs start ./work`, the write route for module 01, and that module 01's untouched check exits 1 with "readMovie: not written yet". Modules 02 to 07, the capstone, the movie player, the bench page and the films are not run. The course's self-test and reference toolkit are author material and are not in this repository.

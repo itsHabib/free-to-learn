@@ -1,0 +1,65 @@
+// Lesson 03's practice items. Shape: see lessons/practice.mjs.
+const q = (objective, prompt, answer, feedback, wrong = [], section = '') =>
+  ({ objective, prompt, answer, feedback, wrong, section });
+const w = (answer, feedback) => ({ answer, feedback });
+
+export default {
+  // ---------------------------------------------------------------- 03
+  'p03a': [
+    q('03', 'Predict: firstDivergence(probe, 109) starts with lo = 0 and hi = 109. Which frame does it probe first?',
+      54,
+      'Frame 54: Math.floor((0 + 109) / 2). If the runs agree after 54 frames, lo moves to 54 and the next probe is Math.floor((54 + 109) / 2) = 81.',
+      [w(55, 'Math.floor rounds down: (0 + 109) / 2 is 54.5, which becomes 54.'),
+       w(97, 'The first probe knows nothing about where the runs part. It always asks about the middle of the gap.')],
+      'Bisection'),
+    q('03', 'A movie 1,000 frames long that agrees at the start and disagrees at the end: at most how many probes does this firstDivergence make?',
+      10,
+      'Ten. Each probe halves the gap, and 2^10 = 1,024 is the first power of two at least 1,000, so ceil(log2 1000) = 10. A scan from frame 1 could need all 1,000.',
+      [w(11, 'That is the check\'s allowance, ceil(log2 n) + 1. The listing itself needs at most ceil(log2 1000) = 10, because it never probes frame 0 or frame n.'),
+       w(9, '2^9 = 512 is less than 1,000, so nine halvings leave a gap of more than one frame.'),
+       w(500, 'Bisection halves the gap with every probe, so the count grows with the logarithm of n, not with n.')],
+      'Bisection'),
+  ],
+  'p03b': [
+    q('03', 'Version 1.0 moves Kettle across first, then up or down; version 1.1 moves up or down first, then across. Predict: on frame 97 the movie jumps while Kettle moves right at 24 sub-pixels a frame, and the 1.1 Kettle bumps its head where the 1.0 Kettle does not. After frame 97, does x (address 2) differ between the two versions?',
+      false,
+      'No. Both builds move Kettle right by the same 24 sub-pixels, and in neither order does the move across meet a tile, so x is the same. Only the move up differs: one Kettle rises and the other stays on the floor. diffRam lists 4, 8 and 9, the y and the vertical speed.',
+      [w(true, 'The order changes what the move up hits, not the move across. Nothing stands to Kettle\'s right on that frame, so both builds add the same 24 to x.')],
+      "Naming the bytes that differ"),
+    q('03', 'Room 0 is a flat corridor with nothing in Kettle\'s way before the flag, and this movie never jumps. The 24-frame movie that holds right there: does it end with the same hash on 1.0 and on 1.1?',
+      true,
+      'Yes. Kettle never meets a corner, so moving across first or up and down first ends every frame in the same place, and the two builds hold the same 32 bytes all the way to the flag on frame 24.',
+      [w(false, 'The order of the two moves matters only when one move changes what the other hits, at a corner. Room 0 has none on Kettle\'s path.')],
+      'Why version 1.1 differs'),
+  ],
+  'p03c': [
+    q('03', 'Predict: git knows build 1 is good and build 8 is bad, so the first bad build is one of builds 2 to 8. At most how many builds does git bisect run test before it names it?',
+      3,
+      'Three. Seven candidates halve to four, then two, then one: ceil(log2 7) = 3. In the run printed after this question, git tests builds 4, 6 and 5.',
+      [w(7, 'That is a test of every candidate. Git bisects: each test halves the builds still in question.'),
+       w(8, 'Builds 1 and 8 are already known, so git does not test them, and it bisects the rest instead of testing each one.'),
+       w(2, 'Two tests leave up to two builds in question out of seven. A third is needed to tell them apart.')],
+      'Git finds the change'),
+    q('03', 'A repository of 64 builds, the first good and the last bad: at most how many builds does git bisect run test?',
+      6,
+      'Six. The first bad build is one of 63, and ceil(log2 63) = 6. Testing builds one by one could take 62.',
+      [w(64, 'Git tests neither end, and it halves the candidates with each test instead of trying each one.'),
+       w(7, '2^6 = 64 covers all 63 candidates, so six tests are enough.'),
+       w(5, '2^5 = 32 is fewer than 63 candidates, so five tests can leave more than one build in question.')],
+      'Git finds the change'),
+  ],
+  'r03-rejoin': [
+    q('03', 'The two runs in the lesson\'s new case (A: right for 39 frames, right and jump on frame 40, right after; B: idle on frame 1, then right) disagree after frames 1 to 18, agree after frames 19 to 39, and disagree from frame 40 to 50. A probe compares the two states after k frames. Which frame does firstDivergence(probe, 50) return?',
+      40,
+      'Frame 40. The first probe, frame 25, finds the runs agreeing, so bisection moves lo to 25 and never looks at frames 1 to 18 again. It then closes in on the jump. The true first disagreement is frame 1, when B stood still and A stepped. Bisection is right only when disagreement, once it starts, never stops.',
+      [w(1, 'That is the true first disagreement, but bisection never probes it. Its first probe, frame 25, falls where the runs agree again, so lo moves past frames 1 to 18.'),
+       w(19, 'Frame 19 is where the runs agree again. Bisection returns a frame where they disagree, the first one after the last agreeing frame it saw.')],
+      'A new case: runs that agree again'),
+    q('03', 'Change the probe so it answers "the runs have agreed after every frame from 1 to k". It is false from frame 1 on and never becomes true again. Which frame does firstDivergence(probe, 50) return now?',
+      1,
+      'Frame 1. The new probe is a running record: once the runs have disagreed, it stays false, so the answers change from true to false exactly once, at the true first disagreement, and bisection finds it in at most ceil(log2 50) = 6 probes. A tool can keep the same record cheaply by chaining the hashes, so that a hash after frame k includes every hash before it.',
+      [w(40, 'The new probe looks at every frame up to k, so it already says no at frame 25, because frames 1 to 18 disagreed. Bisection then searches below 25.'),
+       w(19, 'The new probe is false at every k from 1 on, because frame 1 disagreed. Bisection returns the first k where it is false.')],
+      'A new case: runs that agree again'),
+  ],
+};

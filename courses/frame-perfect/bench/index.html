@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frame Perfect: Kettle meets a wall, and par by hand</title>
+<meta name="description" content="Step Kettle into a wall one frame at a time, then beat level 1's par by hand with frame advance.">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="stylesheet" href="bench.css">
+</head>
+<body>
+<main>
+  <header>
+    <p class="kicker">Frame Perfect</p>
+    <h1>Step Kettle into a wall, one frame at a time</h1>
+    <p>Kettle is the course's small platformer. Every picture on this page is the game itself, run from the same code the course's checks run.</p>
+  </header>
+
+  <section aria-labelledby="wall-title" id="wall">
+    <h2 id="wall-title">1. The wall</h2>
+    <p>This is level 2, frame <span id="wall-from">63</span> of a run the course's search found. Kettle is in the air, moving right at <span id="wall-start-vx">6</span> px a frame, toward a wall one tile (8 px) thick that it is too low to jump over.</p>
+    <canvas id="wall-canvas" class="game" role="img" aria-label="Level 2: Kettle in the air, left of a wall one tile thick."></canvas>
+    <form id="predict" class="predict">
+      <fieldset>
+        <legend>What happens when Kettle reaches the wall?</legend>
+        <label><input type="radio" name="guess" value="stops"> It stops at the wall</label>
+        <label><input type="radio" name="guess" value="back"> It is pushed back</label>
+        <label><input type="radio" name="guess" value="through"> It goes through</label>
+      </fieldset>
+      <button type="submit" id="commit">Lock in my answer</button>
+      <p class="hint" id="predict-hint" aria-live="polite"></p>
+    </form>
+    <div id="wall-step" class="stepper" hidden>
+      <div class="buttons">
+        <button type="button" id="wall-back">Back a frame</button>
+        <button type="button" id="wall-next">Next frame</button>
+      </div>
+      <table class="ram" aria-describedby="ram-note">
+        <caption>Read from the game's RAM after each frame</caption>
+        <thead><tr><th scope="col">Frame</th><th scope="col">Buttons</th><th scope="col">x (px)</th><th scope="col">vx (px a frame)</th></tr></thead>
+        <tbody id="wall-rows"></tbody>
+      </table>
+      <p class="note" id="ram-note">x is Kettle's left edge; Kettle is 6 px wide. The wall covers x 272 to 279.</p>
+      <div id="wall-result" class="result" aria-live="polite" tabindex="-1"></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="par-title" id="par">
+    <h2 id="par-title">2. Beat par by hand</h2>
+    <p>Level 1, par <span id="par-value">120</span> frames. Hold buttons with the pads below, then play in real time or step one frame at a time, the way tool-assisted runs are made. While focus is on these controls, the left and right arrow keys hold left and right, and the up arrow holds jump.</p>
+    <canvas id="par-canvas" class="game" role="img" aria-label="Level 1: Kettle at the start."></canvas>
+    <p class="status" id="par-status" aria-live="polite">Frame 0. Par 120.</p>
+    <div class="pads" role="group" aria-label="Buttons held">
+      <button type="button" class="pad" id="pad-l" aria-pressed="false">L<span class="sr"> left</span></button>
+      <button type="button" class="pad" id="pad-j" aria-pressed="false">J<span class="sr"> jump</span></button>
+      <button type="button" class="pad" id="pad-r" aria-pressed="false">R<span class="sr"> right</span></button>
+    </div>
+    <div class="buttons">
+      <button type="button" id="par-play">Play</button>
+      <button type="button" id="par-step">Step one frame</button>
+      <button type="button" id="par-undo">Back a frame</button>
+      <button type="button" id="par-reset">Start over</button>
+    </div>
+    <p class="note">Tap a pad to hold it and tap again to let go. Going back a frame is what speedrunners call a rerecord: <span id="par-rerecords">0</span> so far.</p>
+  </section>
+
+  <footer>
+    <p>Kettle and this page are original to Free to Learn. The game is <code>game/core.mjs</code> in the course.</p>
+  </footer>
+</main>
+<script type="module" src="bench.mjs"></script>
+</body>
+</html>

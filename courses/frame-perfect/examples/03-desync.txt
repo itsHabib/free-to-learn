@@ -1,0 +1,13 @@
+level 1 run, 109 frames: on 1.0 it reaches the flag on frame 109; on 1.1 it does not reach the flag
+first disagreement after frame 97, found with 7 probes: 54 81 95 102 98 96 97
+the bound is ceil(log2 109) + 1 = 8; a scan from frame 1 needs 97 probes
+diffRam after frame 97: 4, 8, 9
+frame  version     x    y   vy
+   95  1.0      2400  896    0
+   95  1.1      2400  896    0
+   96  1.0      2424  896    0
+   96  1.1      2424  896    0
+   97  1.0      2448  832  -64
+   97  1.1      2448  896    0
+   98  1.0      2472  776  -56
+   98  1.1      2472  896    0

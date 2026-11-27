@@ -1,0 +1,4 @@
+replay from frame 0: 2790 frames played (1770 walking to the jump, 1020 jumping)
+savestates:          1079 frames played (59 walking to the jump, 1020 jumping), 60 loads
+57 of 60 tries end on top of the step; the earliest jump frame that does is 4
+both ways give the same result for every try

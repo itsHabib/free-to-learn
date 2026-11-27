@@ -1,0 +1,19 @@
+function moveX(st, vx) {
+  const ram = st.ram;
+  let x = u16(ram, ADDR.X) + vx;
+  const y = u16(ram, ADDR.Y);
+  if (vx !== 0) {
+    // Only the edge Kettle moves toward is tested, at the head and at the feet.
+    const edge = vx > 0 ? x + W - 1 : x;
+    if (solid(tileAt(st, edge, y)) || solid(tileAt(st, edge, y + H - 1))) {
+      const col = Math.floor(edge / TILE);
+      const depth = vx > 0 ? edge - col * TILE + 1 : (col + 1) * TILE - edge;
+      // Push Kettle out of the tile on the nearer side.
+      const farSide = depth > TILE / 2;
+      if (vx > 0) x = farSide ? (col + 1) * TILE : col * TILE - W;
+      else x = farSide ? col * TILE - W : (col + 1) * TILE;
+      if (!farSide) put16(ram, ADDR.VX, 0);
+    }
+  }
+  put16(ram, ADDR.X, x);
+}

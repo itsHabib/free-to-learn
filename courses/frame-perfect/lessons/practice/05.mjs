@@ -1,0 +1,72 @@
+// Lesson 05's practice items. Shape: see lessons/practice.mjs.
+const q = (objective, prompt, answer, feedback, wrong = [], section = '') =>
+  ({ objective, prompt, answer, feedback, wrong, section });
+const w = (answer, feedback) => ({ answer, feedback });
+
+export default {
+  // ---------------------------------------------------------------- 05
+  'p05a': [
+    q('05', 'Brute force tries every input sequence. Each frame of a movie holds one of six inputs. How many different sequences of exactly 8 frames are there?',
+      1679616,
+      '1,679,616, which is 6 to the power 8: six choices on the first frame, times six on the second, and so on. Brute force to the 9-frame marker tries every length from 1 to 9 in turn, so it needs more than a million expansions for an answer you could press in a third of a second.',
+      [w(48, 'That is 6 times 8. Each frame multiplies the number of sequences by six, so the count is 6 to the power 8.'),
+       w(262144, 'That is 8 to the power 6. Each of the 8 frames has 6 choices, so the count is 6 to the power 8.')],
+      'Brute force tries every sequence'),
+    q('05', 'A game with four useful inputs instead of six. How many sequences of exactly 8 frames are there?',
+      65536,
+      '65,536, which is 4 to the power 8. Fewer inputs help, but the count still multiplies on every frame.',
+      [w(32, 'That is 4 times 8. Each frame multiplies the count by four, so it is 4 to the power 8.')],
+      'Brute force tries every sequence'),
+  ],
+  'p05b': [
+    q('05', 'Level 1 has no bell. You keep the random state (address 0x0b) in the key. Within 8 frames of the start, does the number of distinct states go up, go down, or stay the same? Answer up, down or same.',
+      'up',
+      'Up. Nothing on level 1 reads the random state, so states that differ only there behave the same, but the key keeps them apart, and the count grows to 10,583.',
+      [w('same', 'The random state advances on every frame and once more on every jump, so it differs between states that are otherwise equal. A key that holds it tells those states apart.'),
+       w('down', 'Adding a byte to the key can only split states apart, never merge them. Fewer states would mean a byte was missing.')],
+      'Many sequences, few states'),
+    q('05', 'Instead, you leave the vertical speed (address 0x08) out of the key. Within 8 frames, does the number of distinct states go up, go down, or stay the same? Answer up, down or same.',
+      'down',
+      'Down, to 3,624. A Kettle rising and a Kettle falling through the same spot now get the same key and merge, though they will behave differently. A missing byte means fewer states, and the search loses routes.',
+      [w('same', 'Mid-jump, two states can match in every byte except the vertical speed. Without it in the key they merge.'),
+       w('up', 'Leaving a byte out can only merge states, never split them.')],
+      'Many sequences, few states'),
+  ],
+  'p05c': [
+    q('05', 'Will a breadth-first search of level 1 find a movie shorter than the 109-frame run you replayed in module 3?',
+      false,
+      'No. The search expands every state at depth 108 before any at depth 109, and none of them has finished the level. So nothing shorter than 109 frames exists over the six inputs: the run from module 3 was already as short as possible.',
+      [w(true, 'Breadth-first search expands every state at depth 108 before any at depth 109, and none of them has reached the flag.')],
+      'Proving that no shorter movie exists'),
+    q('05', 'The spike pit (level pit) is a small room with four spike tiles to jump across. The same search crosses it in 25 frames. Could some other movie cross it in 24?',
+      false,
+      'No, for the same reason. Every distinct state at depth 24 or less was expanded before the 25-frame finish left the frontier, and none had finished.',
+      [w(true, 'Breadth-first search with a correct key reaches every distinct state at each depth before going deeper. A 24-frame finish would have been found first.')],
+      'Proving that no shorter movie exists'),
+  ],
+  'p05d': [
+    q('05', 'A* on level 1 with the walking bound, which never overestimates there. How many frames long is the movie it returns?',
+      109,
+      '109, in 274 expansions instead of about 250,000. An estimate that never overestimates keeps every state of a shortest route ahead of any longer finish, so A* returns a shortest movie, just sooner.',
+      [w(108, 'A* can\'t find a route that doesn\'t exist, and breadth-first search proved that nothing shorter than 109 frames does.'),
+       w(110, 'With an estimate that never overestimates, A* returns a shortest movie. It saves expansions, not frames.')],
+      'A* search with an estimate'),
+    q('05', 'Now the estimate divides by 12 instead of 24, so it is twice too high. Is A* still sure to return a 109-frame movie?',
+      false,
+      'No. A slow state close to the flag now ranks ahead of a faster one further back, and A* can finish a longer route first. The lesson\'s run with this estimate returned 113.',
+      [w(true, 'The guarantee holds only when the estimate never overestimates. This one overestimates, so the first finish A* reaches can be on a longer route.')],
+      'A* search with an estimate'),
+  ],
+  'r05-spikes': [
+    q('05', 'In that version, must the key hold something from the frame counter?',
+      true,
+      'Yes. Two states that differ only in the counter can now behave differently: on the same input one walks onto the spikes safely and the other dies. A byte the future depends on must be in the key.',
+      [w(false, 'In the real game nothing reads the counter, which is why the key leaves it out. In this version the spikes read it, so states that differ only in the counter no longer behave the same.')],
+      'A new case: spikes that come and go'),
+    q('05', 'Must it hold the whole two-byte counter?',
+      false,
+      'No. Only whether the counter is even matters. Keeping the whole counter would stop states that behave the same from merging, so every depth would hold its own copy of each state. Keep one bit: the low bit of address 0.',
+      [w(true, 'The spikes care only whether the frame is even. Two states at frames 10 and 12 behave the same, and the whole counter would keep them apart.')],
+      'A new case: spikes that come and go'),
+  ],
+};

@@ -1,0 +1,12 @@
+{
+ "game/core.mjs": "a1aec7cba1ed78d92909b334c2db40e737925f9ec345fe60d3aeb2538f5275e7",
+ "game/levels.mjs": "f9f5764883797fe8df658623294abeab78952233afeb65afb532a15591f5be7c",
+ "game/fixtures.mjs": "5a8de76ae58079707f4e0d52aaf023da8a5649f98219e1edfc403fbdf297422d",
+ "game/levels/bell.txt": "3eab0f2c2b4e2e44874904c42e10b732b10da36c106a7df61151257ff322aa27",
+ "game/levels/level1.txt": "e4f53dcb53b2fd7eb63d64c79f4b61b222744aab2e489e9de59f6f2d9a817d49",
+ "game/levels/level2.txt": "5243fe58236c9cf8ba7d02e0400b208155a68bfe0e2810c5901c0a323c536f9f",
+ "game/levels/level3.txt": "f8a538a1de144f8fd82cae2b3c462544f4b160f10ccdbad59ed482246eb8921d",
+ "game/levels/pit.txt": "f2f6b200b35bfa56b9c5f4f7ff6296b75f86d9860fb42d6744d7f0753b28e764",
+ "game/levels/room0.txt": "eaf58da46c228677d6e88a927778f84db371e3fd8e391d5306072ca635483940",
+ "game/levels/vault.txt": "d40044ee5d515ea7bce13156ff1bd66b3f75cb178f3f94b42885fbb054f7f04a"
+}

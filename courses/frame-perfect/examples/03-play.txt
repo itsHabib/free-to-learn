@@ -1,0 +1,6 @@
+work/bisect/level1.movie on level1, game 1.0: 109 frames of input.
+Kettle reached the flag on frame 109, 11 under par (120).
+Final hash: 5767b3a4
+work/bisect/level1.movie on level1, game 1.1: 109 frames of input.
+Kettle did not reach the flag in the 109 frames played.
+Final hash: ffc6d42b

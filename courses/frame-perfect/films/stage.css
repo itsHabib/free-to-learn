@@ -1,0 +1,71 @@
+@font-face { font-family: "Barlow"; src: url("fonts/barlow-medium.ttf") format("truetype"); font-weight: 400 500; }
+@font-face { font-family: "Barlow"; src: url("fonts/barlow-semibold.ttf") format("truetype"); font-weight: 600 900; }
+@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Regular.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Plex Mono"; src: url("fonts/IBMPlexMono-Medium.woff2") format("woff2"); font-weight: 500 900; }
+:root { color-scheme: light; --ink: #2b2620; --soft: #6f685d; --line: #d8d0c2; --paper: #fbf8f1; --accent: #b5541c; --cool: #2f6f8f; --hit: #fbe0cc; --mark: #fff1c2; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); }
+#stage { position: relative; overflow: hidden; background: var(--paper); color: var(--ink); font-family: "Barlow", sans-serif; }
+.shot { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+canvas.game { display: block; image-rendering: pixelated; border: 2px solid var(--line); border-radius: 10px; background: #e6eff2; }
+table.watch { border-collapse: collapse; font-family: "Plex Mono", monospace; font-variant-numeric: tabular-nums; background: #fff; }
+table.watch th { color: var(--soft); font-weight: 600; text-align: right; padding: 4px 16px; border-bottom: 2px solid var(--line); }
+table.watch td { text-align: right; padding: 4px 16px; border-bottom: 1px solid var(--line); }
+table.watch tr.hit td { background: var(--hit); font-weight: 700; }
+.path { color: var(--soft); font-family: "Plex Mono", monospace; }
+.label { font-weight: 700; }
+.term, .codebox { background: #fff; border: 2px solid var(--line); border-radius: 14px; }
+.term pre, .codebox pre { margin: 0; font-family: "Plex Mono", monospace; }
+.codebox .line { display: block; padding: 0 10px; border-radius: 4px; white-space: pre; }
+.codebox .line.mark { background: var(--mark); box-shadow: inset 5px 0 0 var(--accent); }
+.codebox .num { display: inline-block; width: 2.4em; color: var(--soft); text-align: right; margin-right: 1em; }
+.par { font-weight: 800; color: var(--accent); }
+figure { margin: 0; }
+figcaption { color: var(--soft); }
+.s-card { text-align: center; }
+.bigpar { font-size: 150px; font-weight: 800; color: var(--accent); }
+.s-card .title { font-weight: 800; }
+.s-card .line { color: var(--soft); }
+.s-card .url { font-weight: 700; color: var(--accent); }
+
+/* landscape, 1280 x 720 */
+.landscape .s-game { gap: 22px; }
+.landscape .label { font-size: 40px; }
+.landscape .s-terminal { gap: 40px; }
+.landscape .term { width: 1120px; padding: 34px 40px; }
+.landscape .term .path { font-size: 26px; margin-bottom: 18px; }
+.landscape .term pre { font-size: 38px; white-space: pre-wrap; }
+.landscape .par { font-size: 64px; }
+.landscape .s-clip { flex-direction: row; gap: 34px; }
+.landscape figcaption { font-size: 22px; margin-top: 10px; }
+.landscape .s-clip table.watch { font-size: 30px; }
+.landscape .codebox { padding: 16px 18px; }
+.landscape .codebox .path { font-size: 20px; margin-bottom: 8px; }
+.landscape .codebox.full pre { font-size: 22px; line-height: 1.36; }
+.landscape .codebox.zoomed pre { font-size: 25px; line-height: 1.55; }
+.landscape .s-table table.watch { font-size: 28px; }
+.landscape .s-table table.watch td, .landscape .s-table table.watch th { padding: 2px 22px; }
+.landscape svg.figure text { font-family: "Barlow", sans-serif; }
+.landscape .figure { height: 640px; width: auto; border: 2px solid var(--line); border-radius: 12px; background: #fff; }
+.landscape .s-card { gap: 18px; }
+.landscape .s-card .title { font-size: 88px; }
+.landscape .s-card .line { font-size: 36px; }
+.landscape .s-card .url { font-size: 44px; margin-top: 20px; }
+
+/* portrait, 540 x 960 CSS px rendered at 2x for 1080 x 1920; captions sit at 600 to 720 px */
+.portrait .shot { justify-content: flex-start; padding-top: 110px; gap: 14px; }
+.portrait .label { font-size: 30px; }
+.portrait .s-game { padding-top: 190px; }
+.portrait .s-clip { padding-top: 30px; gap: 8px; }
+.portrait figcaption { font-size: 21px; margin-top: 6px; text-align: center; color: var(--ink); }
+.portrait .s-clip table.watch { font-size: 22px; }
+.portrait .s-clip table.watch th, .portrait .s-clip table.watch td { padding: 2px 10px; }
+.portrait .s-card { padding-top: 200px; gap: 14px; }
+.portrait .s-card .title { font-size: 56px; }
+.portrait .s-card .line { font-size: 24px; }
+.portrait .s-card .url { font-size: 30px; margin-top: 10px; }
+.caption {
+  position: absolute; left: 30px; right: 70px; top: 575px; min-height: 80px;
+  background: rgba(43, 38, 32, 0.92); color: #fff; border-radius: 12px; padding: 14px 18px;
+  font-size: 26px; line-height: 1.28; font-weight: 600; text-align: center;
+}

@@ -1,0 +1,15 @@
+  if (ground && jump && !held) {
+    vy = -JUMP;
+    if (Math.abs(vx) >= RUN && Math.sign(vx) === dir) vx += dir * BOOST;
+    nextRandom(ram);
+  } else if (ground) {
+    if (Math.abs(vx) > WALK_MAX) vx = Math.sign(vx) * WALK_MAX;
+    if (dir !== 0) {
+      vx += dir * ACCEL;
+      if (Math.abs(vx) > WALK_MAX) vx = Math.sign(vx) * WALK_MAX;
+    } else {
+      vx = Math.abs(vx) <= FRICTION ? 0 : vx - Math.sign(vx) * FRICTION;
+    }
+    const under = tileAt(st, u16(ram, ADDR.X) + W / 2, u16(ram, ADDR.Y) + H);
+    if (under === '>') vx += BELT;
+    if (under === '<') vx -= BELT;

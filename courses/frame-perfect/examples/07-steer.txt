@@ -1,0 +1,6 @@
+drop 0: 4 idle frames
+drop 1: 1 idle frame
+drop 2: 0 idle frames
+drop 3: 5 idle frames
+steered start 21 frames + search 62 frames = 83 frames
+Saved it as movies/bell.movie.

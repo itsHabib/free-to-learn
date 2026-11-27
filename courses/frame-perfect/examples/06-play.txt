@@ -1,0 +1,3 @@
+work/movies/level2.movie on level2, game 1.0: 70 frames of input.
+Kettle reached the flag on frame 70, 30 under par (100).
+Final hash: 596dc9ab

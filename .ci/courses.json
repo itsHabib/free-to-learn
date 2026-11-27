@@ -1310,6 +1310,59 @@
       "unverified": [
         "CI checks the published measurement arithmetic, the supplied simulator, and initial learner failures. Human transfer and physical devices require separate testing."
       ]
+    },
+    {
+      "id": "frame-perfect",
+      "archive": ".packages/frame-perfect.zip",
+      "sha256": "798a002bd95dc355b3befc40e51e6bb1aadb3144d520b9f4e11591248ea220c7",
+      "archive_prefix": "frame-perfect/",
+      "direct_root": "courses/frame-perfect",
+      "root": "frame-perfect",
+      "runner": "macos-26",
+      "commands": [
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "start",
+            "./work"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "documented_setup",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "route",
+            "01",
+            "write",
+            "./work"
+          ],
+          "exit": 0
+        },
+        {
+          "stage": "untouched_starter_expected_incomplete",
+          "argv": [
+            "node",
+            "lab.mjs",
+            "check",
+            "01",
+            "./work"
+          ],
+          "exit": 1,
+          "match": "readMovie: not written yet"
+        }
+      ],
+      "coverage_complete": false,
+      "unverified": [
+        "Complete exercise and capstone success needs a learner-owned implementation. None is published as a CI fixture.",
+        "This public CI profile checks packaging, syntax, the documented setup (start, then the write route for module 01) and the untouched starter's named diagnostic only. Modules 02 to 07, the capstone and the vault are not run.",
+        "The AI learner runs and the cold read recorded in QUALIFICATION.md are separate from this contract and are not replayed here.",
+        "node lab.mjs view and serve, the browser player and recorder, the bench page and the films are not run or played by this contract.",
+        "The course's self-test, mutants and reference toolkit are author material outside this repository; nothing here replays them, and the films can't be rebuilt from this copy (films/REBUILD.md says why)."
+      ]
     }
   ]
 }

@@ -115,3 +115,11 @@ text and no command that failed. They did find unclear sentences, which are
 listed for the next update. Sightline's lesson page was opened once in a browser
 and its first practice questions were answered there. Nothing else was tried in
 a browser, and these runs didn't use Node 22.
+
+## Frame Perfect
+
+Before release, two fresh AI learners worked earlier versions of the course from a learner copy. The first took the write route through all seven modules and the capstone. It passed every check, reached the capstone's top tier at 137 frames and got 60 of 61 first practice answers right. The second walked the revised lessons, passed all 25 checks and got 59 of 61 right. Each found defects, which were fixed. Two independent AI editors then reviewed the lessons and practice text for wording, and their findings were applied or answered. The learners and editors were AI agents, not people, and passing checks shows working code, not that the lessons teach.
+
+A third fresh AI learner then took this public copy in order from a clone of its release branch, on the write route for modules 01, 02, 04 and 06 and the supplied route elsewhere. It passed all 25 checks, reached the capstone's top tier at 137 frames, got 60 of 61 first practice answers right, and every recorded output it reproduced matched. It also read the text cold for terms used before they were explained. Its findings (a practice question that rested on a rule taught only in its answer, terms such as "region" and the tile size used before their definition, a misleading count in another question, and a memory figure a little low) were fixed in this copy. A separate AI cold reader of lesson 06 asked for the two bugs' code on the page and arithmetic that adds up; lesson 06 now shows both listings and the numbers.
+
+The course's own author checks are outside this repository: a self-test of ten steps, twelve deliberately wrong toolkits that the checks must catch, and replays of every number the lessons print. The capstone's best count, 137 frames, is the author's best and not proven optimal. A shorter movie passes. The films and the bench page were checked in a headless browser at phone widths, not on a physical phone, and no person has taken the course.

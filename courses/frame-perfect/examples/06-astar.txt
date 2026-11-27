@@ -1,0 +1,1 @@
+A*, walking bound: 121 frames, 649,752 states expanded

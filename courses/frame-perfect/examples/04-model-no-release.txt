@@ -1,0 +1,9 @@
+jump held 1 frame: first miss on frame 2: game y 1080, model y 1032
+jump held 2 frames: first miss on frame 3: game y 1024, model y 984
+jump held 3 frames: first miss on frame 4: game y 976, model y 944
+jump held 4 frames: first miss on frame 5: game y 936, model y 912
+jump held 5 frames: first miss on frame 6: game y 904, model y 888
+jump held 6 frames: first miss on frame 7: game y 880, model y 872
+jump held 7 frames: every frame matches
+jump held 8 frames: every frame matches
+2 of 8 jumps match

@@ -1,0 +1,2 @@
+A*, walking bound  109 frames, 274 states expanded
+A*, bound / 12     113 frames, 914 states expanded

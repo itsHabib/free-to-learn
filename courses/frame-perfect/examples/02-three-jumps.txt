@@ -1,0 +1,5 @@
+saved in slot 1 after frame 2
+jump on frame 3: lands on frame 20, on the floor in front of the step
+jump on frame 4: lands on frame 18, on top of the step
+jump on frame 5: lands on frame 19, on top of the step
+kept the jump on frame 4: the movie is 18 frames long, rerecords 3

@@ -49,3 +49,5 @@ or extract their two ZIPs side by side.
 [Build a world in one file](courses/one-file-world) teaches procedural terrain, lighting, erosion, instancing, flocking, synthesized sound and a frame budget. Start with [the camera lesson](courses/one-file-world/lessons/01.md).
 
 [Quantum Link Lab](courses/quantum-link-lab) turns a four-switch game into a Python Bell-test reporter. Replay a published Delft result, then repair a teleportation receiver and diagnose a fresh readout incident.
+
+[Frame Perfect](courses/frame-perfect) builds a tool-assisted speedrun toolkit for Kettle, a small original platformer: a movie player, savestates, a desync finder, a memory watch, searches that prove a route is the fastest, a movie minimiser and a way to steer the random generator. Use them to beat level 2's par, which the game's intended rules can't reach. It runs offline with Node 22 or newer. Its practice answers are in `lessons/practice/`, so read them only after committing your own.

@@ -1,0 +1,5 @@
+bell rung with drop 3: 5 frames, 640 states expanded
+  |.R.| |.R.| |..J| |...| |..J|
+the rest: 66 frames, 298,900 states expanded
+whole route: 71 frames
+Saved it as movies/bell-jumps.movie.

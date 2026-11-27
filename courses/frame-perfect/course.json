@@ -1,0 +1,44 @@
+{
+ "id": "frame-perfect",
+ "slug": "frame-perfect",
+ "version": "frame-perfect-0.1.0",
+ "title": "Frame Perfect",
+ "subtitle": "Build a tool-assisted speedrun toolkit, and use it to beat a par the game's own rules say is impossible",
+ "format": "ivy-course-contract-v1",
+ "entry": "tas.mjs",
+ "workFiles": [
+  "tas.mjs",
+  "movies/",
+  "notes/"
+ ],
+ "given": [],
+ "support": [
+  "lab.mjs",
+  "web.mjs",
+  "serve.mjs",
+  "game/",
+  "checks/",
+  "lessons/",
+  "examples/",
+  "public/",
+    "bench/",
+    "films/",
+  "API.md",
+  "README.md"
+ ],
+ "lead": "Kettle is a small platformer whose developers shipped two physics bugs without knowing. Build the tools speedrunners use: an input-movie player, savestates, a desync finder, a memory watch, a model of the jump, searches that prove a route is the fastest, a movie minimiser and a way to steer the random generator. Then use them to beat a par time that Kettle's own rules say cannot be beaten. You never edit the game: every claim you make is a movie, and code you did not write replays it.",
+ "prerequisites": "JavaScript functions, loops, arrays, Map and Set. Node.js 22 or newer. Breadth-first search met once is enough; module 5 builds it from the start.",
+ "scope": "Not covered: emulators, real console games, machine learning, drawing code.",
+ "runtime": "Node 22 or newer. Git for module 3. A browser to watch movies (optional). No packages, account or network.",
+ "timeEstimateHours": 10,
+ "lessons": [
+  { "id": "01", "title": "Movies: write one, replay it", "file": "lessons/01.md", "region": "movie", "writes": ["readMovie", "play"], "practice": [] },
+  { "id": "02", "title": "Savestates, frame advance and rerecords", "file": "lessons/02.md", "region": "savestate", "writes": ["save", "load"], "practice": [] },
+  { "id": "03", "title": "Desync: the first frame two versions disagree", "file": "lessons/03.md", "region": "desync", "writes": ["firstDivergence", "diffRam"], "practice": [] },
+  { "id": "04", "title": "A memory watch and a model of the jump", "file": "lessons/04.md", "region": "watch,model", "writes": ["peek", "predictArc"], "practice": [] },
+  { "id": "05", "title": "Search: from brute force to a proof", "file": "lessons/05.md", "region": "key,brute,search", "writes": ["stateKey", "search"], "practice": [] },
+  { "id": "06", "title": "The impossible par", "file": "lessons/06.md", "region": "minimise", "writes": ["minimise"], "practice": [] },
+  { "id": "07", "title": "Steering the random generator", "file": "lessons/07.md", "region": "steer", "writes": ["steer"], "practice": [] },
+  { "id": "08", "title": "Capstone: level 3", "file": "lessons/08.md", "region": "", "writes": [], "practice": [] }
+ ]
+}

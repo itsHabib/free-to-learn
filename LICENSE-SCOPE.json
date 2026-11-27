@@ -148,6 +148,17 @@
       "embeddedLessonProseLicense": "CC-BY-4.0"
     },
     {
+      "path": ".packages/frame-perfect.zip",
+      "kind": "archive-of-the-corresponding-course-files",
+      "terms": "Same per-file original/third-party terms as matching courses directory; no private history or learner implementation."
+    },
+    {
+      "path": ".packages/frame-perfect.zip.sha256",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
       "path": ".packages/inside-the-shot.zip",
       "kind": "archive-of-the-corresponding-course-files",
       "terms": "Same original/third-party terms as matching course files; no private Git history."
@@ -4668,6 +4679,714 @@
     },
     {
       "path": "courses/firmware-forensics/work.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/API.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/LICENSE.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/LICENSES/CC-BY-4.0.txt",
+      "kind": "standard-license-text",
+      "terms": "Official CC BY4.0 legal code; text itself has CC0 dedication; grants apply only where LICENSE.md says"
+    },
+    {
+      "path": "courses/frame-perfect/LICENSES/MIT.txt",
+      "kind": "standard-license-text",
+      "terms": "Complete MIT grant for identified original software; no assertion of ownership of standard wording"
+    },
+    {
+      "path": "courses/frame-perfect/README.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/bench/bench.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/bench/bench.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/bench/data.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/bench/icon.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/bench/index.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/checks/expected.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/checks/judge.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/checks/modules.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/checks/pins.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/checks/run.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/checks/worker.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/course.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/02-every-jump.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/02-every-jump.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/02-three-jumps.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/02-three-jumps.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/03-desync.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/03-desync.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/03-git-bisect.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/03-play.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/04-ledge.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/04-model-no-release.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/04-model.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/04-watch-jump.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/04-watch-release.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/04-watch-walk.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/04-watch.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/05-astar.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/05-count.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/05-count.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/05-level1-bfs.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/05-level1.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/05-marker.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/05-marker.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-astar.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-bfs.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-level2.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-minimise.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-minimise.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-movex-lines.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-play.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-step-lines.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-watch-speed.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-watch.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/06-watch.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/07-jumps.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/07-jumps.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/07-steer.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/07-steer.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/examples/toolkit.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/REBUILD.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/films/browser.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/build.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/capture.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/check-bench.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/fonts/IBMPlexMono-Medium.woff2",
+      "kind": "third-party",
+      "terms": "SIL Open Font License 1.1, under the license file beside it; see THIRD-PARTY-NOTICES.md; no Free to Learn grant"
+    },
+    {
+      "path": "courses/frame-perfect/films/fonts/IBMPlexMono-Regular.woff2",
+      "kind": "third-party",
+      "terms": "SIL Open Font License 1.1, under the license file beside it; see THIRD-PARTY-NOTICES.md; no Free to Learn grant"
+    },
+    {
+      "path": "courses/frame-perfect/films/fonts/barlow-license.txt",
+      "kind": "third-party",
+      "terms": "SIL Open Font License 1.1, under the license file beside it; see THIRD-PARTY-NOTICES.md; no Free to Learn grant"
+    },
+    {
+      "path": "courses/frame-perfect/films/fonts/barlow-medium.ttf",
+      "kind": "third-party",
+      "terms": "SIL Open Font License 1.1, under the license file beside it; see THIRD-PARTY-NOTICES.md; no Free to Learn grant"
+    },
+    {
+      "path": "courses/frame-perfect/films/fonts/barlow-semibold.ttf",
+      "kind": "third-party",
+      "terms": "SIL Open Font License 1.1, under the license file beside it; see THIRD-PARTY-NOTICES.md; no Free to Learn grant"
+    },
+    {
+      "path": "courses/frame-perfect/films/fonts/plex-license.txt",
+      "kind": "third-party",
+      "terms": "SIL Open Font License 1.1, under the license file beside it; see THIRD-PARTY-NOTICES.md; no Free to Learn grant"
+    },
+    {
+      "path": "courses/frame-perfect/films/script.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/stage.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/stage.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/stage.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/wall-clip-short.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/films/wall-clip-short.mp4",
+      "kind": "original-narrated-film",
+      "contentLicense": "CC-BY-4.0",
+      "terms": "Free to Learn narration script, drawings and audiovisual edit; see THIRD-PARTY-NOTICES.md."
+    },
+    {
+      "path": "courses/frame-perfect/films/wall-clip-short.vtt",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/films/wall-clip.jpg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/films/wall-clip.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/films/wall-clip.mp4",
+      "kind": "original-narrated-film",
+      "contentLicense": "CC-BY-4.0",
+      "terms": "Free to Learn narration script, drawings and audiovisual edit; see THIRD-PARTY-NOTICES.md."
+    },
+    {
+      "path": "courses/frame-perfect/films/wall-clip.vtt",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/game/builds.json",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/core.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/draw.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/fixtures.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels/bell.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels/level1.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels/level2.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels/level3.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels/pit.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels/room0.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/levels/vault.txt",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/shots/bell-390.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/shots/level3-760.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/shots/play-1280.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/shots/play-390.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/shots/record-390.png",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/view.html",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/game/view.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lab.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/01.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/02.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/03.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/04.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/05.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/06.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/07.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/08.md",
+      "kind": "original-prose-with-possible-code-examples",
+      "contentLicense": "CC-BY-4.0",
+      "codeExamplesLicense": "MIT"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/bisection.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/jump-arc.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/wall-clip.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/01.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/02.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/03.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/04.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/05.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/06.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/07.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/practice/08.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/public/code-example.css",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/public/code-example.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/serve.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/web.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"

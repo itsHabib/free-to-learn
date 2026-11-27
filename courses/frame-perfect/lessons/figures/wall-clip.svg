@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="310" viewBox="0 0 400 310" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">The wall clip, to scale</title>
+<desc id="d">Kettle, 6 px wide, against one wall tile 8 px wide that starts at x 272. At walking speed, 1.5 px a frame, its front edge ends at most 1.5 px inside the tile, less than half, and the game pushes it back out of the near side. On frame 67 of the 70-frame level 2 movie it moves 5 px, its front edge ends 5 px inside, more than half, and the game pushes it out of the far side, to x 280.</desc>
+<rect width="400" height="310" fill="#ffffff"/>
+<text x="8" y="24" font-weight="600">One wall tile and Kettle, enlarged to scale</text>
+<text x="8" y="52" fill="#2f6f8f">Walking, 1.5 px a frame: front edge 1.5 px in</text>
+<rect x="186" y="64" width="112" height="60" fill="#d9d2c5" stroke="#6f685d"/><line x1="242" y1="64" x2="242" y2="124" stroke="#2b2620" stroke-dasharray="4 3"/>
+<rect x="102" y="74" width="84" height="40" fill="#2f6f8f" fill-opacity="0.3" stroke="#2f6f8f" stroke-width="2"/>
+<rect x="123" y="74" width="84" height="40" fill="none" fill-opacity="0" stroke="#2f6f8f" stroke-width="2" stroke-dasharray="5 3"/>
+<line x1="207" y1="120" x2="184" y2="120" stroke="#2f6f8f" stroke-width="2"/><path d="M184 120 l7 -5 v10 z" fill="#2f6f8f"/>
+<text x="96" y="100" text-anchor="end">after the push</text>
+<text x="165" y="142" text-anchor="middle">after the move</text>
+<text x="304" y="100">wall, 8 px</text>
+<text x="8" y="166" fill="#b5541c">Frame 67 of the 70-frame movie, 5 px a frame:</text>
+<text x="8" y="184" fill="#b5541c">front edge 5 px in, past half</text>
+<rect x="186" y="196" width="112" height="60" fill="#d9d2c5" stroke="#6f685d"/><line x1="242" y1="196" x2="242" y2="256" stroke="#2b2620" stroke-dasharray="4 3"/>
+<rect x="172" y="206" width="84" height="40" fill="none" fill-opacity="0" stroke="#b5541c" stroke-width="2" stroke-dasharray="5 3"/>
+<rect x="298" y="206" width="84" height="40" fill="#b5541c" fill-opacity="0.3" stroke="#b5541c" stroke-width="2"/>
+<line x1="256" y1="252" x2="296" y2="252" stroke="#b5541c" stroke-width="2"/><path d="M296 252 l-7 -5 v10 z" fill="#b5541c"/>
+<text x="166" y="232" text-anchor="end">after the move</text>
+<text x="382" y="274" text-anchor="end">after the push</text>
+<text x="382" y="291" text-anchor="end">x 280</text>
+<text x="242" y="274" text-anchor="middle">half: 4 px</text>
+</svg>

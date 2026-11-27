@@ -1,0 +1,3 @@
+brute force: 9 frames, 1,209,335 states expanded
+search:      9 frames, 6,197 states expanded
+search did 0.51% of brute force's work

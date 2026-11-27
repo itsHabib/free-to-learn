@@ -53,3 +53,14 @@ The eight Delft parity counts are numerical results reported by Hensen et al. (2
 Original learner code and lesson materials follow LICENSE.md. Film typography is rendered into pixels; no font programs are distributed.
 
 The four original scripts are voiced with the included en-us formant voice of eSpeak NG 1.52.0. The files carry the generated speech. The eSpeak NG program, dictionaries, and model files remain external tools. [Production credits and sources](courses/quantum-link-lab/films/REBUILD.md).
+
+## Frame Perfect
+
+Frame Perfect, its game Kettle, the lessons, the bench page and the films' scripts and drawings are original Free to Learn material under the split licenses in LICENSE.md. The films are voiced with the included en-us formant voice of eSpeak NG 1.52.0; the files carry the generated speech, and the eSpeak NG program and data remain external tools.
+
+The films' text is set in two fonts whose files are included in `courses/frame-perfect/films/fonts/`, each under the SIL Open Font License 1.1 with its license beside it:
+
+- Barlow (barlow-medium.ttf, barlow-semibold.ttf), Copyright 2017 The Barlow Project Authors (https://github.com/jpt/barlow). License: `barlow-license.txt`.
+- IBM Plex Mono (IBMPlexMono-Regular.woff2, IBMPlexMono-Medium.woff2), Copyright © 2017 IBM Corp. with Reserved Font Name "Plex". License: `plex-license.txt`.
+
+These fonts are not covered by LICENSE.md.

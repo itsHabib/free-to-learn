@@ -132,3 +132,7 @@ Open [lesson 1](courses/one-file-world/lessons/01.md). From `courses/one-file-wo
 ## Quantum Link Lab
 
 Follow the [project setup](courses/quantum-link-lab/README.md), enter `courses/quantum-link-lab`, and run `python3 lab.py demo`. Open `index.html` for the Bell game and `teleport/index.html` for the receiver incident.
+
+## Frame Perfect
+
+Install Node.js 22 or newer and enter `courses/frame-perfect`. Read lesson 01 with `node lab.mjs lesson 01 ./work`; its first step has you run `node lab.mjs start ./work`. Each module begins with a route command, for example `node lab.mjs route 01 write ./work`, and `node lab.mjs check 01 ./work` runs its checks. The untouched write route's first check fails with a named "readMovie: not written yet" message. Your work lives in `work/`; keep your own copy of that folder. `node lab.mjs view --level level1 ./work` opens the movie player and recorder in a local browser page.

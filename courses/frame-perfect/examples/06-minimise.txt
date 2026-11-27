@@ -1,0 +1,5 @@
+before: 64 presses. after: 31 presses, found in 96 replays
+1|.R.| 2|.R.| 3|.R.| 4|.R.| 5|.R.| 6|.R.| 7|.R.| 8|.R.|
+9|.R.| 10|.R.| 11|.R.| 12|.RJ| 19|.RJ| 26|.RJ| 33|.RJ| 40|.RJ|
+47|.RJ| 54|.RJ| 56|..J| 58|..J| 59|..J| 64|L..| 66|L..| 68|..J|
+Saved it as movies/level2-clip.movie.
