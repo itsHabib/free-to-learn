@@ -90,7 +90,7 @@ export const cases = [
   {
     id: '05-lift', title: 'lift turns game_key into its 13 stores, each with its value, its guard and its instruction',
     requirement: 'lift(mod, index) returns { name, stores, returns, calls }. Each store is { addr, offset, type, value, guard, at }: at is the index of its store instruction in decode(mod, index). On Lob, game_key makes 13 stores outside loops; the angle steppers store at *[78112]+0 under guards that test the key code (param 0) against 1 and 2.',
-    reread: `${L}, lifting a function`,
+    reread: `${L}, stores and their guards`,
     async run({ fn }) {
       const decode = await fn('wasm.mjs', 'decode');
       const parseModule = await fn('wasm.mjs', 'parseModule');
@@ -140,7 +140,7 @@ export const cases = [
   {
     id: '05-guards', title: 'code after a block that some paths left early runs only on the paths that arrived',
     requirement: 'In Lob\'s game_tick the flag\'s speed is negated only when the flag would pass 420 or 900. The guard of that store must say so: it holds when the flag would pass an end and not otherwise.',
-    reread: `${L}, lifting a function`,
+    reread: `${L}, code after an early exit`,
     async run({ fn }) {
       const holds = await fn('lift.mjs', 'holds');
       const { tick } = await lifted(fn, 'lob', 8, 3);
@@ -161,7 +161,7 @@ export const cases = [
   {
     id: '05-forward', title: 'a load sees the stores made before it on its path',
     requirement: 'A load of a place after a store to it on the same path is the stored value; after a store that may not have run it is a phi. In game_key the launch reads the power after the power keys\' stores, so with the code for power up given, its speed uses the power plus 1.',
-    reread: `${L}, lifting a function`,
+    reread: `${L}, a load after a store`,
     async run({ fn }) {
       const evaluate = await fn('lift.mjs', 'evaluate');
       const parts = await fn('lift.mjs', 'parts');
@@ -183,7 +183,7 @@ export const cases = [
   {
     id: '05-evaluate', title: 'evaluate does the game\'s arithmetic',
     requirement: 'evaluate(e, env) rounds every f32 result to 32 bits, wraps i32 results, compares and shifts unsigned where the instruction says so, reinterprets bits both ways, takes the first phi path whose conditions hold, looks in env.given before anything else, and gives null when anything it needs is unknown.',
-    reread: `${L}, evaluating`,
+    reread: `${L}, the game's arithmetic`,
     async run({ fn }) {
       const evaluate = await fn('lift.mjs', 'evaluate');
       const make = await fn('lift.mjs', 'make');
@@ -226,7 +226,7 @@ export const cases = [
   {
     id: '05-apply', title: 'apply works out every value first, then writes the stores whose guards hold, in order, and never touches the game',
     requirement: 'overlay(bytes) reads through to bytes and keeps writes in a map; apply(stores, m, { call, given }) evaluates every store\'s address and value from memory as it was before the first, then writes in order those whose guards hold, and returns how many it wrote.',
-    reread: `${L}, evaluating`,
+    reread: `${L}, memory the engine can write`,
     async run({ fn }) {
       const overlay = await fn('lift.mjs', 'overlay');
       const apply = await fn('lift.mjs', 'apply');
@@ -253,7 +253,7 @@ export const cases = [
   {
     id: '05-xrefs', title: 'cross-references: who reads and who writes each place',
     requirement: 'xrefs(lifted) maps each place to { addr, offset, reads (a Set of function names), writes (the stores) }; a store at a computed address is left out. On Lob, *[78112]+20 is read by game_key and written by nothing; *[78112]+36 is written by game_key and game_tick.',
-    reread: `${L}, the passes`,
+    reread: `${L}, cross-references and constants`,
     async run({ fn }) {
       const xrefs = await fn('lift.mjs', 'xrefs');
       const { all } = await lifted(fn);
@@ -271,7 +271,7 @@ export const cases = [
   {
     id: '05-slice', title: 'a slice holds the stores that decide a set of places, and grows until nothing is added',
     requirement: 'slice(stores, keys) keeps the stores to the places named by placeKey, then the stores to every place their values and guards read, until nothing is added. On Lob\'s game_tick, the slice for the shell\'s four fields and the flying flag is 5 stores; the slice for the flag\'s word is 6.',
-    reread: `${L}, the passes`,
+    reread: `${L}, slices`,
     async run({ fn }) {
       const slice = await fn('lift.mjs', 'slice');
       const placeKey = await fn('lift.mjs', 'placeKey');
@@ -286,7 +286,7 @@ export const cases = [
   {
     id: '05-steppers', title: 'steppers: values the key handler puts back plus or minus 1 within a bound',
     requirement: 'steppers(keyFn) returns { code, delta, value, bound, store } for each store under a key-code test that writes a value plus or minus 1 and is guarded by a comparison with a constant; value is the compared expression (decoded), so on Lob II, where the power store is just the stored word plus 1, it is still the decoded power.',
-    reread: `${L}, recognising shapes`,
+    reread: `${L}, steppers`,
     async run({ fn }) {
       const steppers = await fn('flight.mjs', 'steppers');
       const evaluate = await fn('lift.mjs', 'evaluate');
@@ -315,7 +315,7 @@ export const cases = [
   {
     id: '05-decoding', title: 'decoding tells how a value is stored: plain, XOR with a key, or a key added',
     requirement: 'decoding(value, rawKey) returns { raw, key, op, float }: op is plain, xor or add; raw is the load of the stored word (told from the key by its place, rawKey); decoder(d, raw) builds the same decoding for another word; encode(m, d, value) gives the word the game would store.',
-    reread: `${L}, recognising shapes`,
+    reread: `${L}, the decode step`,
     async run({ fn }) {
       const steppers = await fn('flight.mjs', 'steppers');
       const decoding = await fn('flight.mjs', 'decoding');
@@ -361,7 +361,7 @@ export const cases = [
   {
     id: '05-launch', title: 'the launch: the stores the fire key makes, found by their sin and cos',
     requirement: 'launchOf(keyFn) returns { code, stores, trig, fields, flying, flyingStore }: code is the key code of the stores that use sin or cos, stores every store under that code, trig those four, fields their place keys, and flyingStore the store of 1 made with them. aimValues(keyFn, launch) gives the angle (the stepped value inside sin and cos) and the power.',
-    reread: `${L}, recognising shapes`,
+    reread: `${L}, the launch`,
     async run({ fn }) {
       const launchOf = await fn('flight.mjs', 'launchOf');
       const aimValues = await fn('flight.mjs', 'aimValues');
@@ -381,7 +381,7 @@ export const cases = [
   {
     id: '05-flight', title: 'the flight: six stores of game_tick, the landing, and the wind',
     requirement: 'flightOf(tickFn, launch) returns { stores, landing, landingKey, wind }: the slice for the launch\'s fields and the flying flag, plus the landing (the float store made under the same guard as the flag\'s reset); wind is what the sideways speed gains each frame, before the constant.',
-    reread: `${L}, recognising shapes`,
+    reread: `${L}, the flight and the landing`,
     async run({ fn }) {
       const launchOf = await fn('flight.mjs', 'launchOf');
       const flightOf = await fn('flight.mjs', 'flightOf');
@@ -450,7 +450,7 @@ export const cases = [
   {
     id: '05-physics', title: 'learnPhysics confirms the physics with check shots, and refutes it when it is wrong',
     requirement: 'learnPhysics fires 3 check shots, each simulated from memory just before it leaves, and installs kit.physics = { game, says } only if every one lands within a pace of its simulation after the same number of frames. When the code read is not the game being played (a file with another gravity), the check shots disagree and kit.physics is null.',
-    reread: `${L}, every finding is a hypothesis`,
+    reread: `${L}, check shots`,
     timeLimitMs: 30000,
     async run({ fn }) {
       const learnPhysics = await fn('engine.mjs', 'learnPhysics');
@@ -480,7 +480,7 @@ export const cases = [
   {
     id: '05-level-2', title: 'level 2 passes within its budget',
     requirement: 'From the kit level 1 leaves, playLevel passes level 2 (9 of the last 10 shots within 3 paces) without going over 24 rounds and 16 shots.',
-    reread: `${L}, level 2`,
+    reread: `${L}, level 2 with your engine`,
     timeLimitMs: 60000,
     async run({ load }) {
       const engine = await load('engine.mjs');

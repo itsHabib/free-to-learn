@@ -1,0 +1,8 @@
+types 7, the first {"params":["i32"],"results":["i32"]}
+imports 4: env.server_round, env.cos, env.sin, env.server_wind
+importedFuncs 4
+funcTypes 25, the first type 3
+code 25 bodies
+exports 24, the first memory kind 2, game_init kind 0
+globals 1: i32, true, 65536
+data 1: 281 bytes at 65536

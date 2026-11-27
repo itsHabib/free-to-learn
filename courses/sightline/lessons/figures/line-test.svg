@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 729.52" role="img" aria-labelledby="line-test-t line-test-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="line-test-t">The line test on three candidates</title>
+<desc id="line-test-d">Of the three flag candidates left after four new rounds on seed 1, the flag, the wind and the drifting cloud, the line test keeps only the flag, the one whose values climb in step with the cloth. For each candidate, a plot of its value against the cloth's middle, 699.5, 737.5, 519.5, 801.5, at one scale both ways, with its least-squares line; it is kept when 0.25 &lt; slope &lt; 4 and the worst residual is at most 1.5. 65856, the flag: values 688.84, 726.86, 509.15, 791.12; slope 1.00, worst residual 0.18; kept. 65916, the cloud, 0.3 a round: values 304.71, 305.01, 305.31, 305.61; slope 0.0003, worst residual 0.45; dropped for its slope. 65848, the wind: values 4.27, -2.39, -0.89, -4.71; slope -0.01, worst residual 5.30; dropped for its slope and worst residual.</desc>
+<rect width="720" height="729.52" fill="#ffffff"/>
+<text x="24" y="30" font-size="22" fill="#57606a">Each candidate's value (up) against the cloth's middle</text>
+<text x="24" y="58" font-size="22" fill="#57606a">(across), one dot per round, at one scale both ways.</text>
+<text x="24" y="88" font-size="22" font-weight="700">Kept when 0.25 &lt; slope &lt; 4 and worst residual ≤ 1.5.</text>
+<rect x="24" y="112" width="177.84" height="177.84" fill="#ffffff" stroke="#8c959f" stroke-width="2" rx="6"/>
+<line x1="33.36" y1="280.44" x2="192.48" y2="121.4" stroke="#1a7f37" stroke-width="2"/>
+<circle cx="133.2" cy="180.73" r="6" fill="#1b1f24"/>
+<circle cx="152.96" cy="160.96" r="6" fill="#1b1f24"/>
+<circle cx="39.6" cy="274.16" r="6" fill="#1b1f24"/>
+<circle cx="186.24" cy="127.54" r="6" fill="#1b1f24"/>
+<text x="229.84" y="146" font-weight="700">65856: the flag</text>
+<text x="229.84" y="182" font-size="22">slope 1.00</text>
+<text x="229.84" y="212" font-size="22">worst residual 0.18</text>
+<text x="229.84" y="250" font-size="22" font-weight="700" fill="#1a7f37">kept</text>
+<rect x="24" y="317.84" width="177.84" height="177.84" fill="#ffffff" stroke="#8c959f" stroke-width="2" rx="6"/>
+<line x1="33.36" y1="406.78" x2="192.48" y2="406.74" stroke="#cf222e" stroke-width="2"/>
+<circle cx="133.2" cy="406.99" r="6" fill="#1b1f24"/>
+<circle cx="152.96" cy="406.83" r="6" fill="#1b1f24"/>
+<circle cx="39.6" cy="406.68" r="6" fill="#1b1f24"/>
+<circle cx="186.24" cy="406.52" r="6" fill="#1b1f24"/>
+<text x="229.84" y="351.84" font-weight="700">65916: the cloud, 0.3 a round</text>
+<text x="229.84" y="387.84" font-size="22">slope 0.0003</text>
+<text x="229.84" y="417.84" font-size="22">worst residual 0.45</text>
+<text x="229.84" y="455.84" font-size="22" font-weight="700" fill="#cf222e">dropped: slope</text>
+<rect x="24" y="523.68" width="177.84" height="177.84" fill="#ffffff" stroke="#8c959f" stroke-width="2" rx="6"/>
+<line x1="33.36" y1="611.79" x2="192.48" y2="613.41" stroke="#cf222e" stroke-width="2"/>
+<circle cx="133.2" cy="610.05" r="6" fill="#1b1f24"/>
+<circle cx="152.96" cy="613.51" r="6" fill="#1b1f24"/>
+<circle cx="39.6" cy="612.73" r="6" fill="#1b1f24"/>
+<circle cx="186.24" cy="614.72" r="6" fill="#1b1f24"/>
+<text x="229.84" y="557.68" font-weight="700">65848: the wind</text>
+<text x="229.84" y="593.68" font-size="22">slope -0.01</text>
+<text x="229.84" y="623.68" font-size="22">worst residual 5.30</text>
+<text x="229.84" y="661.68" font-size="22" font-weight="700" fill="#cf222e">dropped: slope and worst residual</text>
+</svg>

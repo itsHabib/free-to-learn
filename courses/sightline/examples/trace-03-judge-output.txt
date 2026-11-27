@@ -1,0 +1,6 @@
+the fit on 11, judged on 14: accept
+  worst misses 6.9 fitted, 1.5 held back
+a fit on 5 of them: accept
+  worst misses 0.0 fitted, 10.6 held back
+no fit at all: send back
+  worst misses Infinity fitted, Infinity held back

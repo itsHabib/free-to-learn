@@ -912,7 +912,7 @@
     {
       "id": "sightline",
       "archive": ".packages/sightline.zip",
-      "sha256": "0afbdb35fb89cf9d586d287afc8dc16bc130af187c4a90b9892abcf3a0a6bae9",
+      "sha256": "e6d26dc8386fffd28d0615433757e9a36222621445b759d542234ae85f90a4c1",
       "archive_prefix": "sightline/",
       "direct_root": "courses/sightline",
       "root": "sightline",

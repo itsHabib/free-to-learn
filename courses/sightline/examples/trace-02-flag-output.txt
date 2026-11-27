@@ -1,0 +1,8 @@
+seed 1: the status line shows WIND 3.7
+scanNear within 0.051: 1 slot, at 65848
+round 1: cloth middle 699.5, flag 688.84
+round 2: cloth middle 737.5, flag 726.86
+round 3: cloth middle 519.5, flag 509.15
+round 4: cloth middle 801.5, flag 791.12
+lineFit: slope 1.00, intercept -10.18
+worst residual 0.18

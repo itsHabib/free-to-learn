@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 446" role="img" aria-labelledby="state-slots-t state-slots-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="state-slots-t">The four values in memory</title>
+<desc id="state-slots-d">The four values findValues found on seed 1 sit in a row of five slots from 65840, and only the view each was found in reads it as a sensible number. A table with one row for each slot: its address, its four bytes lowest first, and the number the bytes make as a float and as an integer, with the view the search found the value in marked. 65840, the angle, found as f32: bytes 00 00 38 42, as f32 46, as i32 1110966272. 65844, the power, found as i32: bytes 3D 00 00 00, as f32 8.5e-44, as i32 61. 65848, the wind, found as f32: bytes D0 C3 96 C0, as f32 -4.7114, as i32 -1063861296. 65852, not one of the four: bytes FD FF FF FF, as f32 NaN, as i32 -3. 65856, the flag, found as f32: bytes 6C C7 45 44, as f32 791.116, as i32 1145423724.</desc>
+<rect width="720" height="446" fill="#ffffff"/>
+<text x="20" y="56" font-weight="700" font-size="22">slot</text>
+<text x="196" y="56" font-weight="700" font-size="22">bytes</text>
+<text x="376" y="56" font-weight="700" font-size="22">as f32</text>
+<text x="548" y="56" font-weight="700" font-size="22">as i32</text>
+<text x="20" y="26" font-size="22" fill="#57606a">Seed 1 after the search: the four values sit in 5 slots in a row</text>
+<rect x="12" y="70" width="696" height="66" fill="#f6f8fa"/>
+<text x="20" y="98" font-weight="700">angle</text>
+<text x="20" y="124" font-size="22" fill="#57606a" font-family="ui-monospace, Menlo, Consolas, monospace">65840</text>
+<text x="196" y="112" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">00 00 38 42</text>
+<rect x="366" y="80" width="166" height="46" fill="#e7ecfb" stroke="#3553d4" stroke-width="2" rx="6"/>
+<text x="376" y="112" font-size="22" font-weight="700">46</text>
+<text x="548" y="112" font-size="22" fill="#57606a">1110966272</text>
+<text x="20" y="164" font-weight="700">power</text>
+<text x="20" y="190" font-size="22" fill="#57606a" font-family="ui-monospace, Menlo, Consolas, monospace">65844</text>
+<text x="196" y="178" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">3D 00 00 00</text>
+<text x="376" y="178" font-size="22" fill="#57606a">8.5e-44</text>
+<rect x="538" y="146" width="166" height="46" fill="#e7ecfb" stroke="#3553d4" stroke-width="2" rx="6"/>
+<text x="548" y="178" font-size="22" font-weight="700">61</text>
+<rect x="12" y="202" width="696" height="66" fill="#f6f8fa"/>
+<text x="20" y="230" font-weight="700">wind</text>
+<text x="20" y="256" font-size="22" fill="#57606a" font-family="ui-monospace, Menlo, Consolas, monospace">65848</text>
+<text x="196" y="244" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">D0 C3 96 C0</text>
+<rect x="366" y="212" width="166" height="46" fill="#e7ecfb" stroke="#3553d4" stroke-width="2" rx="6"/>
+<text x="376" y="244" font-size="22" font-weight="700">-4.7114</text>
+<text x="548" y="244" font-size="22" fill="#57606a">-1063861296</text>
+<text x="20" y="296" font-size="22" fill="#57606a">not one of them</text>
+<text x="20" y="322" font-size="22" fill="#57606a" font-family="ui-monospace, Menlo, Consolas, monospace">65852</text>
+<text x="196" y="310" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">FD FF FF FF</text>
+<text x="376" y="310" font-size="22" fill="#57606a">NaN</text>
+<text x="548" y="310" font-size="22" fill="#57606a">-3</text>
+<rect x="12" y="334" width="696" height="66" fill="#f6f8fa"/>
+<text x="20" y="362" font-weight="700">flag</text>
+<text x="20" y="388" font-size="22" fill="#57606a" font-family="ui-monospace, Menlo, Consolas, monospace">65856</text>
+<text x="196" y="376" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace">6C C7 45 44</text>
+<rect x="366" y="344" width="166" height="46" fill="#e7ecfb" stroke="#3553d4" stroke-width="2" rx="6"/>
+<text x="376" y="376" font-size="22" font-weight="700">791.116</text>
+<text x="548" y="376" font-size="22" fill="#57606a">1145423724</text>
+<text x="20" y="432" font-size="22" fill="#57606a">blue: the view the search found the value in</text>
+</svg>

@@ -190,12 +190,13 @@ export const menusOf = (picker) => (picker.calls ?? []).filter((c) => c.problem 
 // Play level n with an engine on a host the referee watches. Returns the
 // referee's score (with what the level used against its budget), what the picker
 // was asked, and the engine's log.
-export async function playOn(engine, n, kit, models, over = {}) {
+// wrap(host), when given, returns the host the engine is handed instead, so a check can watch it.
+export async function playOn(engine, n, kit, models, over = {}, wrap = null) {
   const level = { ...levelNo(n), ...over };
   const ref = referee(level);
   const env = envWith(models);
   let error = null;
-  try { await engine.playLevel(ref.host, level, kit, env); } catch (e) { error = e; }
+  try { await engine.playLevel(wrap ? wrap(ref.host) : ref.host, level, kit, env); } catch (e) { error = e; }
   if (error && String(error?.message ?? error).includes(NOT_WRITTEN)) throw error;
   return { ...score(level, ref.shots, ref.seen), error, ref, env, level, calls: models.calls ?? [] };
 }

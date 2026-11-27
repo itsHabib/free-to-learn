@@ -47,7 +47,7 @@ export const cases = [
   {
     id: '06-flag', title: 'flagOf finds the hit radius and where the flag is stored',
     requirement: 'flagOf(tickFn, flight, key) finds the value game_tick subtracts from the landing before comparing the distance with a constant: { value, radius, raws }, raws being loads of the places the flag may be stored at. On every build of Lob there is one, and decoded it is the flag.',
-    reread: `${L}, the flag, by the hit test`,
+    reread: `${L}, the flag, found by the hit test`,
     async run({ fn }) {
       const flagOf = await fn('reader.mjs', 'flagOf');
       const decoder = await fn('flight.mjs', 'decoder');
@@ -65,7 +65,7 @@ export const cases = [
   {
     id: '06-read-state', title: 'readState reads the game through what the code says',
     requirement: 'readerFrom(aim, flight, flagRaw) gives expressions for angle, power, wind and flag; readState(host, reader, lineAddr) evaluates them on live memory and returns { angle, power, wind, wind_arrows, target_x }. Where the code takes the wind from the server, wind is null and wind_arrows comes from the status line.',
-    reread: `${L}, a reader from what the code says`,
+    reread: `${L}, a reader made of the code's expressions`,
     async run({ fn }) {
       const flagOf = await fn('reader.mjs', 'flagOf'), readerFrom = await fn('reader.mjs', 'readerFrom'), readState = await fn('reader.mjs', 'readState');
       for (const [game, mode] of [['lob', 2], ['lob', 6], ['lob', 7], ['lob', 15]]) {
@@ -84,7 +84,7 @@ export const cases = [
   {
     id: '06-check-reader', title: 'checkReader accepts a right reader and refutes wrong ones',
     requirement: 'checkReader(host, look, { lineAddr, rounds, newRound }) starts each round, reads the state and compares it with the status line and the flag on screen: { ok, rows, problems }. A wrong angle, a flag far from the one on screen, and a number for the wind where the screen shows arrows are each refuted.',
-    reread: `${L}, checking a reader against the screen`,
+    reread: `${L}, the screen check`,
     async run({ fn }) {
       const checkReader = await fn('reader.mjs', 'checkReader');
       const run = (mode, change) => { const g = makeGame({ mode, seed: 11 }); return checkReader(g.host, truthState(g.truth, change), { lineAddr: g.truth.lineAddr(), rounds: 3, newRound: 'KeyN' }); };
@@ -104,7 +104,7 @@ export const cases = [
   {
     id: '06-wind-band', title: 'windBand gives the winds an arrow count can stand for',
     requirement: 'Each arrow is 1.5 units, the count is rounded, and the wind stays between -5 and 5: windBand(n) = [max(-5, 1.5 (n - 0.5)), min(5, 1.5 (n + 0.5))].',
-    reread: `${L}, aiming inside a band`,
+    reread: `${L}, wind the client never sees`,
     async run({ fn }) {
       const windBand = await fn('reader.mjs', 'windBand');
       expectSame([windBand(0), windBand(1), windBand(3), windBand(-3)], [[-0.75, 0.75], [0.75, 2.25], [3.75, 5], [-5, -3.75]], { checked: 'windBand for 0, 1, 3 and -3 arrows', what: 'bands' });
@@ -113,7 +113,7 @@ export const cases = [
   {
     id: '06-aim-band', title: 'aimBand plans for the middle of the band and takes the shortest flight that lands within 2 paces',
     requirement: 'aimBand(state, predict) searches with the wind at the middle of the band, lowest angle first, and stops at the first setting within 2 paces of the flag.',
-    reread: `${L}, aiming inside a band`,
+    reread: `${L}, aiming inside the band`,
     async run({ fn }) {
       const aimBand = await fn('reader.mjs', 'aimBand');
       const winds = [];
@@ -127,7 +127,7 @@ export const cases = [
   {
     id: '06-learn-reader', title: 'learnReader tests the code\'s reader against the screen for 3 rounds before installing it',
     requirement: 'learnReader(host, kit, env, which) builds the reader from analyse(host).readers[which], checks it against the screen for 3 rounds, and only then sets kit.reader = { game, which, says } and drops kit.found.',
-    reread: `${L}, a reader from what the code says`,
+    reread: `${L}, learning the reader`,
     timeLimitMs: 20000,
     async run({ fn }) {
       const learnReader = await fn('engine.mjs', 'learnReader');
@@ -180,7 +180,7 @@ export const cases = [
   {
     id: '06-menu', title: 'the state problem offers the search first, then each reader the code suggests',
     requirement: 'Each option is { kind, label, cost: { rounds, shots }, limits, run }: the search comes first (cost about 6 rounds; ruled out by moves and arrows), then a reader option for each reader the analysis found.',
-    reread: `${L}, a menu of repairs`,
+    reread: `${L}, the menu: options, costs and limits`,
     timeLimitMs: 40000,
     async run({ load }) {
       const engine = await load('engine.mjs');
@@ -198,7 +198,7 @@ export const cases = [
   {
     id: '06-heuristic', title: 'heuristic: the cheapest option no evidence rules out',
     requirement: 'heuristic(problem, options) returns the index of the cheapest option, rounds before shots, among those whose limits share nothing with problem.evidence; the first of equals; 0 when every option is ruled out.',
-    reread: `${L}, a rule to measure against`,
+    reread: `${L}, a rule to measure the decision model against`,
     async run({ fn }) {
       const heuristic = await fn('engine.mjs', 'heuristic');
       const o = (kind, rounds, shots, limits = []) => ({ kind, label: kind, cost: { rounds, shots }, limits });
@@ -218,7 +218,7 @@ export const cases = [
   {
     id: '06-picks', title: 'playLevel does what the picker picks',
     requirement: 'On level 3 from a kit with searched addresses: when the picker picks the reader, no search runs; when it picks the search, the search runs once and is not offered again on that level.',
-    reread: `${L}, a menu of repairs`,
+    reread: `${L}, budgets make the order matter`,
     timeLimitMs: 60000,
     async run({ load }) {
       const engine = await load('engine.mjs');
@@ -240,7 +240,7 @@ export const cases = [
   {
     id: '06-budget', title: 'playLevel never goes over a level\'s budget',
     requirement: 'With option 0 on every menu, level 3 from a searched kit runs out of rounds during the search: the engine stops repairing, plays what it can, and stays within 18 rounds and 12 shots, without throwing. An option whose cost does not fit what is left is not offered.',
-    reread: `${L}, why the order matters`,
+    reread: `${L}, budgets make the order matter`,
     timeLimitMs: 60000,
     async run({ load }) {
       const engine = await load('engine.mjs');

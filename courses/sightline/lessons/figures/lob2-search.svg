@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 686" role="img" aria-labelledby="lob2-search-t lob2-search-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="lob2-search-t">The search's order on Lob II</title>
+<desc id="lob2-search-d">On Lob II, whose flag moves, a key pressed between new rounds drops the real flag from the candidates, so a random order of the same experiments takes 8 new rounds where option 0 takes 4. Two lists of the search's experiments on seed 1 of the plain build, with how many flag candidates are left after each. Option 0, 8 experiments: angle up key, flag –; write-test angle, flag –; power up key, flag –; write-test power, flag –; new round 1, flag 7; new round 2, flag 7; new round 3, flag 7; new round 4, flag found. One of the 500 random orders, 12 experiments: power up key, flag –; new round 1, flag 7; write-test power, flag 7; new round 2, flag 7; angle down key, flag 4 (the flag moved during the press and was dropped); write-test angle, flag 4; new round 3, flag 4; new round 4, flag none left (no candidate fitted a line); new round 1, flag 7; new round 2, flag 7; new round 3, flag 7; new round 4, flag found.</desc>
+<rect width="720" height="686" fill="#ffffff"/>
+<text x="20" y="30" font-size="22" fill="#57606a">Lob II's plain build, seed 1: flag candidates after each experiment</text>
+<text x="20" y="70" font-weight="700">option 0</text>
+<text x="350" y="70" font-weight="700" font-size="22" text-anchor="end">flag</text>
+<rect x="12" y="86" width="344" height="40" fill="#f6f8fa"/>
+<text x="20" y="114" font-size="22">angle up key</text>
+<text x="350" y="114" font-size="22" text-anchor="end" fill="#57606a">–</text>
+<text x="20" y="154" font-size="22">write-test angle</text>
+<text x="350" y="154" font-size="22" text-anchor="end" fill="#57606a">–</text>
+<rect x="12" y="166" width="344" height="40" fill="#f6f8fa"/>
+<text x="20" y="194" font-size="22">power up key</text>
+<text x="350" y="194" font-size="22" text-anchor="end" fill="#57606a">–</text>
+<text x="20" y="234" font-size="22">write-test power</text>
+<text x="350" y="234" font-size="22" text-anchor="end" fill="#57606a">–</text>
+<rect x="12" y="246" width="344" height="40" fill="#f6f8fa"/>
+<text x="20" y="274" font-size="22" font-weight="700">new round 1</text>
+<text x="350" y="274" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<text x="20" y="314" font-size="22" font-weight="700">new round 2</text>
+<text x="350" y="314" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<rect x="12" y="326" width="344" height="40" fill="#f6f8fa"/>
+<text x="20" y="354" font-size="22" font-weight="700">new round 3</text>
+<text x="350" y="354" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<text x="20" y="394" font-size="22" font-weight="700">new round 4</text>
+<text x="350" y="394" font-size="22" text-anchor="end" fill="#1a7f37">found</text>
+<text x="20" y="442" font-size="22" font-weight="700">4 new rounds</text>
+<text x="380" y="70" font-weight="700">one random order</text>
+<text x="710" y="70" font-weight="700" font-size="22" text-anchor="end">flag</text>
+<rect x="372" y="86" width="344" height="40" fill="#f6f8fa"/>
+<text x="380" y="114" font-size="22">power up key</text>
+<text x="710" y="114" font-size="22" text-anchor="end" fill="#57606a">–</text>
+<text x="380" y="154" font-size="22" font-weight="700">new round 1</text>
+<text x="710" y="154" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<rect x="372" y="166" width="344" height="40" fill="#f6f8fa"/>
+<text x="380" y="194" font-size="22">write-test power</text>
+<text x="710" y="194" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<text x="380" y="234" font-size="22" font-weight="700">new round 2</text>
+<text x="710" y="234" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<rect x="372" y="246" width="344" height="40" fill="#ffebe9"/>
+<text x="380" y="274" font-size="22">angle down key</text>
+<text x="710" y="274" font-size="22" text-anchor="end" fill="#cf222e" font-weight="700">4</text>
+<text x="380" y="314" font-size="22">write-test angle</text>
+<text x="710" y="314" font-size="22" text-anchor="end" fill="#1b1f24">4</text>
+<rect x="372" y="326" width="344" height="40" fill="#f6f8fa"/>
+<text x="380" y="354" font-size="22" font-weight="700">new round 3</text>
+<text x="710" y="354" font-size="22" text-anchor="end" fill="#1b1f24">4</text>
+<rect x="372" y="366" width="344" height="40" fill="#ffebe9"/>
+<text x="380" y="394" font-size="22" font-weight="700">new round 4</text>
+<text x="710" y="394" font-size="22" text-anchor="end" fill="#cf222e" font-weight="700">none left</text>
+<rect x="372" y="406" width="344" height="40" fill="#f6f8fa"/>
+<text x="380" y="434" font-size="22" font-weight="700">new round 1</text>
+<text x="710" y="434" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<text x="380" y="474" font-size="22" font-weight="700">new round 2</text>
+<text x="710" y="474" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<rect x="372" y="486" width="344" height="40" fill="#f6f8fa"/>
+<text x="380" y="514" font-size="22" font-weight="700">new round 3</text>
+<text x="710" y="514" font-size="22" text-anchor="end" fill="#1b1f24">7</text>
+<text x="380" y="554" font-size="22" font-weight="700">new round 4</text>
+<text x="710" y="554" font-size="22" text-anchor="end" fill="#1a7f37">found</text>
+<text x="380" y="602" font-size="22" font-weight="700">8 new rounds</text>
+<text x="20" y="640" font-size="22" fill="#cf222e">red: the flag moved during a key press and was dropped;</text>
+<text x="20" y="670" font-size="22" fill="#cf222e">then no candidate fitted a line, so the test began again</text>
+</svg>

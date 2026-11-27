@@ -16,6 +16,18 @@ const config = JSON.parse(readFileSync(join(root, 'course.json'), 'utf8'));
 const hash = text => createHash('sha256').update(text).digest('hex');
 const GIVEN_FILES = [...(config.given ?? [])];
 const WORK_FILES = [...config.workFiles];
+// Each lesson's new case, which its own checker in examples/ grades and saves under
+// work/.attempts/ as ID-CHECK/CHECK.json; status reports the latest try of each.
+const NEW_CASES = [
+  { check: 'read-result', lesson: '01', command: 'node examples/check-result.mjs' },
+  { check: 'landing-age', lesson: '02', command: 'node examples/check-landing-age.mjs' },
+  { check: 'flight-time', lesson: '03', command: 'node examples/check-flight-time.mjs' },
+  { check: 'encode', lesson: '04', command: 'node examples/check-encode.mjs' },
+  { check: 'shots', lesson: '05', command: 'node examples/check-shots.mjs' },
+  { check: 'score', lesson: '06', command: 'node examples/check-score.mjs' },
+  { check: 'turn', lesson: '07', command: 'node examples/check-turn.mjs' },
+  { check: 'score-anywhere', lesson: '08', command: 'node examples/check-score-anywhere.mjs' },
+];
 
 const HELP = {
   main: `Sightline: course commands
@@ -23,7 +35,7 @@ const HELP = {
   node lab.mjs start ./work               create work/ with the starter files
   node lab.mjs check 03 ./work            check one module (01 to 08)
   node lab.mjs check all ./work           check every module
-  node lab.mjs status ./work              what passed, and whether your files changed since
+  node lab.mjs status ./work              what passed, whether your files changed since, and practice
   node lab.mjs strings ./work             the strings your findStrings finds in a fresh game
   node lab.mjs find ./work                run your findValues and print what it found
   node lab.mjs listing NAME ./work        your listing of the game function NAME
@@ -35,6 +47,9 @@ const HELP = {
   node lab.mjs sweep ./work               hit rate against decision time on the moving flag
   node lab.mjs watch N ./work             level N, recorded as a page you can replay in a browser
   node lab.mjs serve                      lessons and practice in your browser (this computer only)
+  node lab.mjs lesson 01 ./work           lesson 01 in this terminal, its newest open part
+  node lab.mjs question ID ./work         the next question of practice item ID
+  node lab.mjs answer ID ANSWER ./work    commit an answer to that question and see the verdict
 
 Add --help after any command for its details.`,
   start: `node lab.mjs start ./work
@@ -53,11 +68,49 @@ the input, what your code did, what was required and the lesson section that tea
   --json        print the machine-readable record instead of sentences
   --only IDS    run only the named checks of that module, separated by commas, for example
                 --only 03-fit,03-judge. Run a check as soon as its function is written
+  --help-used "TEXT"  record what helped with this attempt (a supplied file, an AI tool),
+                saved with the attempt; it does not change the checks
 Every run is saved under work/.attempts/.`,
-  status: `node lab.mjs status ./work [--json]
+  status: `node lab.mjs status ./work [--answers] [--json]
 
 Lists each module's latest check run, whether it passed, and whether your files have
-changed since that run.`,
+changed since that run. Then counts the practice answers committed in this folder with
+"node lab.mjs answer" and lists the practice items still waiting for one.
+  --answers     also list every committed answer, right or wrong
+  --json        print everything, every committed answer included, as JSON`,
+  lesson: `node lab.mjs lesson NN ./work [--part K [--whole] | --next | --all | --section "HEADING" [--whole]] [--sections]
+
+Prints lesson NN (01 to 08) as Markdown, the same text the browser view shows, one part
+at a time. A part ends at a prediction: the next part opens once every question of that
+prediction has an answer in this work folder. With no option it prints the newest open
+part. Its first lines say which part it is, of how many, and list its sections. A part
+longer than 12,000 characters prints only its first section; --next prints the next.
+  --part K      print part K, if it is open
+  --next        print the section after the one printed last for this lesson, kept in
+                work/.reading.json; at the end of a part it goes on to the next open part
+  --whole       with no --section, print the whole part however long it is
+  --all         print every open part, from the top of the lesson
+  --section "HEADING"  print one section of an open part, by its heading. A section
+                with subsections prints its text up to the first of them, then
+                lists them; each prints with its own --section
+  --whole       with --section, print the section and all its subsections
+  --sections    print only the first line and the section headings, with --part or
+                --all if you give one
+Each practice item is printed as the command that asks its questions. The work folder
+need not exist yet: lesson 01 says how to create it.`,
+  question: `node lab.mjs question ID ./work
+
+Prints the next question of practice item ID that has no committed answer in this work
+folder, and the kind of answer it wants. The lessons name each item's ID. When every
+question of ID has an answer, it says so.`,
+  answer: `node lab.mjs answer ID ANSWER ./work
+
+Commits ANSWER to the next unanswered question of practice item ID, the one "question"
+prints, and prints the verdict and the reason, as the browser view does. Then it prints
+the next question of ID, if one is left. A committed answer is saved in
+work/.practice.json and is never replaced: commit only once you have settled on it. An
+answer that can't be read (a word where a number is wanted) is not saved. Put a list of
+numbers in quotes: node lab.mjs answer ID "1, 2, 3" ./work`,
   strings: `node lab.mjs strings ./work [--mode N] [--seed S]
 
 Starts a fresh game and prints every string your findStrings finds in its memory,
@@ -70,10 +123,17 @@ and prints the addresses it found and how many experiments and rounds it took.`,
 
 Prints your listing of the game function NAME (for example game_tick). Once your
 lift.mjs is written, each store gets a note with what your lifter says it writes.`,
-  lift: `node lab.mjs lift NAME ./work [--game lob|lob2]
+  lift: `node lab.mjs lift NAME ./work [--place LIST] [--find TEXT] [--full] [--game lob|lob2]
 
 Lifts the game function NAME with your lift.mjs and prints every store it makes: the
-place, the expression stored, and the conditions under which it runs.`,
+place, the expression stored, and the conditions under which it runs. A line longer than
+160 characters is cut, and says how long it is.
+  --place LIST  only the stores to these places, separated by commas: a whole place
+                such as *0x13120+36, or a field such as +36 through any pointer;
+                +0 and *0x13120+0 name field +0, which the printout writes as *0x13120
+  --find TEXT   only the stores whose line contains TEXT, such as sin(
+  --full        print every line whole
+The last line counts every store lifted, whatever was shown.`,
   xrefs: `node lab.mjs xrefs ./work [--game lob|lob2]
 
 Lifts every function with your lift.mjs and prints your cross-references: for each
@@ -123,7 +183,8 @@ paused; Play runs it and Next shot steps through it.`,
 Serves the lessons, practice questions and the API page at http://127.0.0.1:4380/, or at
 PORT if you give one (0 picks any free port). Only this computer can connect. Ctrl-C stops
 it. Practice answers are kept in your browser's storage for that address, so serve on the
-same port each time to see them again.`,
+same port each time to see them again. The browser and the terminal commands (lesson,
+question, answer) keep separate records of your answers: pick one way to read.`,
 };
 
 function requireWork(dir) {
@@ -144,7 +205,7 @@ function start(dir) {
   const given = made.filter((n) => GIVEN_FILES.includes(n)).length;
   console.log(`Created ${dir} with ${made.length - given} starter files${given ? ` and ${given} given file${given > 1 ? 's' : ''} (${GIVEN_FILES.join(', ')})` : ''}${kept.length ? `; kept your existing ${kept.join(', ')}` : ''}.`);
   console.log('Every function throws "not written yet" until you write it, so the first check fails with that message.');
-  console.log(`Next: run \"node lab.mjs serve\" and read lesson 01 in the browser, edit scan.mjs and engine.mjs, then run: node lab.mjs check 01 ${dir}`);
+  console.log(`Next: read lesson 01, in the browser with \"node lab.mjs serve\" or in this terminal with \"node lab.mjs lesson 01 ${dir}\". Edit scan.mjs and engine.mjs, then run: node lab.mjs check 01 ${dir}`);
 }
 
 function snapshot(dir, label) {
@@ -165,7 +226,7 @@ function snapshot(dir, label) {
   return { id, attempt, files, hashes };
 }
 
-async function check(target, dir, { variant, json, only }) {
+async function check(target, dir, { variant, json, only, helpUsed }) {
   requireWork(dir);
   const modules = target === 'all' ? MODULES : [target];
   if (!modules.every(m => MODULES.includes(m))) throw new Error(`unknown module "${target}"; choose 01 to 08 or all`);
@@ -178,6 +239,7 @@ async function check(target, dir, { variant, json, only }) {
   const snap = snapshot(dir, target);
   // A run of chosen checks (--only) is recorded as such, so status never counts it as the module's result.
   const chosen = only ? { only } : {};
+  if (helpUsed) chosen.help_used = helpUsed;
   writeFileSync(join(snap.attempt, 'request.json'), JSON.stringify({ course: config.id, target, variant, ...chosen, at: new Date().toISOString(), hashes: snap.hashes }, null, 1) + '\n');
   const reports = [];
   for (const m of modules) reports.push(await runModule(snap.files, m, { variant, only }));
@@ -190,7 +252,7 @@ async function check(target, dir, { variant, json, only }) {
   process.exitCode = reports.every(r => r.pass) ? 0 : 1;
 }
 
-function status(dir, { json }) {
+async function status(dir, { json, typed = dir, answers = false }) {
   requireWork(dir);
   const base = join(dir, '.attempts');
   const latest = {}, partial = {};
@@ -215,7 +277,15 @@ function status(dir, { json }) {
     const changed = files.filter(f => current[f] !== l.hashes[f]);
     return { module: m, checked: true, pass: l.pass, passed: l.passed, total: l.total, attempt: l.id, changedSince: changed, newerPartial };
   });
-  if (json) { console.log(JSON.stringify({ course: config.id, modules: rows }, null, 1)); return; }
+  const newCases = NEW_CASES.map(({ check, lesson, command }) => {
+    const id = ids.filter((x) => existsSync(join(base, x, `${check}.json`))).at(-1);
+    if (!id) return { check, lesson, command, tried: false };
+    const r = JSON.parse(readFileSync(join(base, id, `${check}.json`), 'utf8'));
+    const results = r.results ?? [];
+    return { check, lesson, command, tried: true, attempt: id, passed: results.filter((x) => x.pass).length, total: results.length, helpUsed: r.helpUsed ?? null, loadError: r.loadError ?? null, finished: r.finished !== false };
+  });
+  const prac = await practiceStatus(dir);
+  if (json) { console.log(JSON.stringify({ course: config.id, modules: rows, newCases, practice: prac }, null, 1)); return; }
   for (const r of rows) {
     const title = config.lessons.find(x => x.id === r.module).title;
     const partialNote = r.newerPartial ? ' A later run checked only some of its checks (--only), so it does not count here.' : '';
@@ -226,6 +296,21 @@ function status(dir, { json }) {
   }
   const passing = rows.filter(r => r.pass && !r.changedSince.length).length;
   console.log(`${passing} of ${MODULES.length} modules pass with your current files.${passing === MODULES.length ? ' The course\'s code work is complete.' : ''}`);
+  for (const c of newCases) {
+    if (!c.tried) { console.log(`New case ${c.check} (lesson ${c.lesson}): no try yet. Check it with: ${c.command} ${typed}`); continue; }
+    const help = c.helpUsed ? `, help used: ${JSON.stringify(c.helpUsed)}` : '';
+    const how = c.loadError ? `could not be loaded, so no case ran (${c.loadError})` : !c.finished ? 'stopped before its cases finished' : `passed ${c.passed} of ${c.total} cases`;
+    console.log(`New case ${c.check} (lesson ${c.lesson}): the latest try ${how}${help}. It is saved in ${join(typed, '.attempts', c.attempt)}.`);
+  }
+  console.log('');
+  if (!prac.committed.length) console.log('Practice: no answers committed in this folder with "node lab.mjs answer" yet. Answers given in the browser view are kept by the browser.');
+  else {
+    const right = prac.committed.filter((c) => c.correct).length;
+    console.log(`Practice: ${prac.committed.length} of ${prac.questions} questions answered, ${right} of them right; ${prac.items - prac.waiting.length} of ${prac.items} items complete.${answers ? '' : ` Every answer: node lab.mjs status ${typed} --answers`}`);
+    if (answers) for (const c of prac.committed) console.log(`  ${c.id} question ${c.question}: ${c.correct ? 'right' : 'wrong'}, answer ${JSON.stringify(c.answer)}`);
+  }
+  if (prac.older.length) console.log(`${prac.older.length} earlier answer${prac.older.length === 1 ? ' was' : 's were'} to an older wording of the question: ${prac.older.map((o) => `${o.id} question ${o.question}`).join(', ')}. They are kept as they were, and the questions as they are now count as unanswered.`);
+  console.log(prac.waiting.length ? `Still waiting for an answer: ${prac.waiting.join(', ')}. Ask the next question of one with: node lab.mjs question ID ${typed}` : 'Every practice question has a committed answer.');
 }
 
 async function loadWork(dir) {
@@ -286,7 +371,21 @@ async function liftOne(name, dir, opts) {
   const mod = mods.wasm.parseModule(host.binary());
   const lifted = mods.lift.lift(mod, functionIndex(mod, name));
   const stores = lifted.stores.filter((st) => !st.inLoop);
-  for (const st of stores) console.log(mods.lift.showStore(st));
+  const WIDTH = 160;
+  const lines = stores.map((st) => mods.lift.showStore(st));
+  // --place: places separated by commas, each a whole place (*0x13120+36) or a field (+36).
+  const wanted = opts.place === undefined ? null : opts.place.split(',').map((p) => p.trim()).filter(Boolean);
+  const placeOf = (st) => mods.lift.place(st.addr, st.offset);
+  // A field matches by the store's offset, and a whole place by its address and offset, so +0 and
+  // *0x13120+0 find field +0, which place() prints without its +0.
+  const matches = (st, p) => {
+    if (/^\+\d+$/.test(p)) return st.offset === Number(p.slice(1));
+    return placeOf(st) === p || (st.offset === 0 && `${mods.lift.place(st.addr)}+0` === p);
+  };
+  const atPlace = (st) => !wanted || wanted.some((p) => matches(st, p));
+  const shown = lines.filter((line, i) => atPlace(stores[i]) && (opts.find === undefined || line.includes(opts.find)));
+  for (const line of shown) console.log(opts.full || line.length <= WIDTH ? line : `${line.slice(0, WIDTH)}… (${line.length} characters; --full prints it whole)`);
+  if (shown.length < lines.length) console.log(`${shown.length} of the ${lines.length} stores shown.`);
   console.log(`${stores.length} stores lifted from ${name}${lifted.stores.length > stores.length ? `, and ${lifted.stores.length - stores.length} inside loops left as unknown` : ''}.`);
 }
 
@@ -302,6 +401,316 @@ async function xrefTable(dir, opts) {
     const writers = [...new Set(p.writes.map((w) => w.fn))];
     console.log(`  +${String(p.offset).padEnd(4)} read by ${[...p.reads].join(', ') || 'nothing'}; written by ${writers.join(', ') || 'no store through this pointer'}`);
   }
+}
+
+// ---------- practice in the terminal ----------
+// The same items, grading and lesson gates as the browser view (web.mjs), with the commits
+// kept in work/.practice.json instead of the browser's storage. The two records are separate.
+// An item's answer and feedback are printed only in the reply to a commit of that question.
+
+const PRACTICE_FILE = '.practice.json';
+const practiceKey = (id, v) => `${id}:${v}`;
+// A question's version: a hash of its prompt and of what counts as right. A commit keeps the
+// version, prompt and kind of answer of the question it answered, so an edited question is a
+// new question, and the answer to the old wording stays on record as it was.
+const questionVersion = (it) => hash(JSON.stringify({ prompt: it.prompt, answer: it.answer, anyOrder: it.anyOrder ?? false, round: it.round ?? false, wrong: (it.wrong ?? []).map((w) => w.answer) })).slice(0, 16);
+// The commit that answers the current wording of question v, or null. A commit written before
+// commits kept a version has none, and counts for the question as it is now.
+function commitFor(commits, id, v, it) {
+  const version = questionVersion(it);
+  const first = commits[practiceKey(id, v)];
+  if (first && (first.version === undefined || first.version === version)) return first;
+  return commits[`${practiceKey(id, v)}@${version}`] ?? null;
+}
+// The commit at question v that answered an older wording, or null.
+function olderCommit(commits, id, v, it) {
+  const first = commits[practiceKey(id, v)];
+  return first && first.version !== undefined && first.version !== questionVersion(it) ? first : null;
+}
+
+function readCommits(dir) {
+  const file = join(dir, PRACTICE_FILE);
+  if (!existsSync(file)) return {};
+  let data;
+  try { data = JSON.parse(readFileSync(file, 'utf8')); } catch (e) { throw new Error(`${file} could not be read (${e.message}). Your committed answers are in it; fix or move it, then try again.`); }
+  return data.answers ?? {};
+}
+
+function saveCommit(dir, key, record) {
+  const file = join(dir, PRACTICE_FILE);
+  const data = existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : { course: config.id, format: 'sightline-answers-1' };
+  const answers = data.answers ?? {};
+  // First answers are kept, as in the browser: a question with a commit is never committed again.
+  // An answer to an older wording keeps its key; the answer to the current one goes beside it.
+  const at = answers[key] ? `${key}@${record.version}` : key;
+  if (answers[at]) throw new Error(`${key} already has a committed answer, and it is kept`);
+  answers[at] = record;
+  // Everything else in the file, records of an older format included, is written back as it was.
+  writeFileSync(file, JSON.stringify({ ...data, answers }, null, 1) + '\n');
+}
+
+async function practiceData() {
+  const web = await import('./web.mjs');
+  return { web, practice: await web.loadPractice() };
+}
+
+function itemOf(practice, id) {
+  const items = practice[id];
+  if (!items) throw new Error(`there is no practice item ${id}. The lessons name each one, on a line such as {{practice:p01a}}; "node lab.mjs lesson NN ./work" prints them as commands`);
+  return items;
+}
+
+// The first question of the item with no commit, or -1 when every one has one.
+const nextOpen = (items, commits, id) => items.findIndex((it, v) => !commitFor(commits, id, v, it));
+const fullyAnswered = (practice, commits, id) => nextOpen(practice[id] ?? [], commits, id) < 0;
+const lessonOfItem = (id) => config.lessons.find((l) => l.practice.includes(id));
+
+const olderNote = (id, v, typed) => `Your earlier answer to question ${v + 1} of ${id} was to an older wording of it. It is kept as it was in ${join(typed, PRACTICE_FILE)}, and the question as it is now has no answer yet.`;
+
+function printQuestion(web, items, id, v, typed, commits = {}) {
+  const it = items[v];
+  const home = lessonOfItem(id);
+  console.log(`${web.practiceKind(id)}: item ${id}${home ? ` (lesson ${home.id})` : ''}, question ${v + 1} of ${items.length}`);
+  if (olderCommit(commits, id, v, it)) console.log(olderNote(id, v, typed));
+  console.log('');
+  console.log(it.prompt);
+  console.log('');
+  console.log(`Your answer: ${web.answerLabel(it.answer)}.`);
+  console.log(`Commit it with: node lab.mjs answer ${id} ANSWER ${typed}`);
+}
+
+const doneLine = (id) => `Every question of ${id} is answered.`;
+
+async function question(id, dir, typed = dir) {
+  requireWork(dir);
+  const { web, practice } = await practiceData();
+  const items = itemOf(practice, id);
+  const commits = readCommits(dir);
+  const v = nextOpen(items, commits, id);
+  if (v < 0) { console.log(doneLine(id)); return; }
+  printQuestion(web, items, id, v, typed, commits);
+}
+
+async function answer(id, text, dir, typed = dir) {
+  requireWork(dir);
+  const { web, practice } = await practiceData();
+  const items = itemOf(practice, id);
+  const before = readCommits(dir);
+  const v = nextOpen(items, before, id);
+  if (v < 0) {
+    console.error(`${doneLine(id)} Nothing was recorded: a committed answer is kept and not replaced. "node lab.mjs status ${typed}" lists your answers.`);
+    process.exitCode = 1;
+    return;
+  }
+  const r = web.grade(practice, id, v, text);
+  if (!r.ok) {
+    console.error(r.hint);
+    process.exitCode = 2;
+    return;
+  }
+  const it = items[v];
+  if (olderCommit(before, id, v, it)) console.log(olderNote(id, v, typed));
+  saveCommit(dir, practiceKey(id, v), { answer: text, correct: r.correct, verdict: r.verdict, text: r.text, pointer: r.pointer, at: new Date().toISOString(), prompt: it.prompt, kind: web.answerLabel(it.answer), version: questionVersion(it) });
+  // The text the browser shows under the answer, with the same mark before the verdict.
+  console.log(`${r.correct ? '✓' : '✗'} ${r.text}`);
+  if (r.pointer) {
+    const read = `node lab.mjs lesson ${r.pointer.objective} ${typed} --section "${r.pointer.section}"`;
+    console.log(r.pointer.opensAfter && !r.pointer.opensNow ? `Once every question of ${id} has an answer, read it with: ${read}` : `Read it in this terminal with: ${read}`);
+  }
+  console.log(`Saved in ${join(typed, PRACTICE_FILE)}.`);
+  const after = nextOpen(items, readCommits(dir), id);
+  console.log('');
+  if (after < 0) {
+    console.log(doneLine(id));
+    const home = lessonOfItem(id);
+    if (home && splitLessonOf(web, home.id).some((s) => s.gate === id)) console.log(`The text after it is open: node lab.mjs lesson ${home.id} ${typed}`);
+  } else printQuestion(web, items, id, after, typed, readCommits(dir));
+}
+
+function splitLessonOf(web, nn) {
+  const file = web.lessonFile(nn);
+  if (!file || !existsSync(file)) throw new Error(`there is no lesson ${nn}; the lessons are ${config.lessons.map((l) => l.id).join(', ')}`);
+  return web.splitLesson(readFileSync(file, 'utf8'));
+}
+
+const unentity = (s) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+
+// The headings of a lesson text, outside code blocks: [{ level, title, line }].
+function headingsOf(lines) {
+  const out = [];
+  let fence = false;
+  lines.forEach((line, n) => {
+    if (line.startsWith('```')) fence = !fence;
+    const h = !fence && line.match(/^(#{2,3}) (.*)$/);
+    if (h) out.push({ level: h[1].length, title: h[2].trim(), line: n });
+  });
+  return out;
+}
+const sameHeading = (a, b) => a.replace(/[`*]/g, '').trim().toLowerCase() === b.replace(/[`*]/g, '').trim().toLowerCase();
+
+// A lesson is printed a part at a time: part K is the text between gate K-1 and gate K, and a
+// part is open once every question of the item at the gate before it has an answer. With no
+// option it prints the newest open part; --part K, --all and --section pick something else.
+// A part longer than this prints one section at a time, unless --whole asks for all of it.
+const PART_LIMIT = 12000;
+const READING_FILE = '.reading.json';
+// Where --next goes on from: for each lesson, the part and the section printed last.
+function readReading(dir) {
+  const file = join(dir, READING_FILE);
+  if (!existsSync(file)) return {};
+  try { return JSON.parse(readFileSync(file, 'utf8')); } catch { return {}; }
+}
+function saveReading(dir, nn, at) {
+  if (!existsSync(dir)) return;
+  writeFileSync(join(dir, READING_FILE), JSON.stringify({ ...readReading(dir), [nn]: at }) + '\n');
+}
+
+async function lessonText(nn, dir, typed = dir, { part, all, section, sections, whole, next } = {}) {
+  // Reading needs no work folder yet: lesson 01 says how to make one. Answers need one.
+  if (existsSync(dir)) requireWork(dir);
+  const { web, practice } = await practiceData();
+  const segments = splitLessonOf(web, nn);
+  const commits = readCommits(dir);
+  const shown = (text) => text.split('\n').filter((line) => !web.exampleMarker(line)).map((line) => {
+    const p = line.match(/^\{\{practice:([a-z0-9-]+)\}\}$/);
+    if (p) {
+      const n = practice[p[1]]?.length ?? 0;
+      const older = (practice[p[1]] ?? []).some((it, v) => olderCommit(commits, p[1], v, it) && !commitFor(commits, p[1], v, it));
+      const state = fullyAnswered(practice, commits, p[1]) ? 'answered' : `${n} question${n === 1 ? '' : 's'}${older ? ', an earlier answer was to an older wording' : ''}`;
+      return `> ${web.practiceKind(p[1])} (${p[1]}, ${state}): node lab.mjs question ${p[1]} ${typed}`;
+    }
+    const f = line.match(/^\{\{figure:([a-z0-9-]+)\}\}$/);
+    if (f) { const d = web.figureDesc(f[1]); return `> Figure (lessons/figures/${f[1]}.svg): ${d === null ? 'missing' : unentity(d)}`; }
+    return line;
+  }).join('\n').replace(/^\s+|\s+$/g, '');
+  const total = segments.length;
+  let open = 1;
+  while (open < total && fullyAnswered(practice, commits, segments[open].gate)) open++;
+  const closedNote = () => {
+    if (open >= total) return '';
+    const gate = segments[open].gate;
+    return `The lesson goes on once every question of ${gate} has a committed answer. Ask the next one with: node lab.mjs question ${gate} ${typed}`;
+  };
+  const endNote = () => {
+    if (open < total) return closedNote();
+    const at = config.lessons.findIndex((l) => l.id === nn), following = config.lessons[at + 1];
+    return `That is the end of lesson ${nn}.${following ? ` Next: node lab.mjs lesson ${following.id} ${typed}` : ''}`;
+  };
+  const cmd = `node lab.mjs lesson ${nn} ${typed}`;
+  const noFolder = existsSync(dir) ? '' : `(${typed} does not exist yet. Lesson 01's "Choose how to start" creates it; answers need it.)\n`;
+
+  if (section !== undefined) {
+    // Where each line of the lesson lives: [part index, line], over every part.
+    const lines = [];
+    segments.forEach((sg, k) => sg.text.split('\n').forEach((line) => lines.push({ k, line })));
+    const heads = headingsOf(lines.map((x) => x.line));
+    const h = heads.find((x) => sameHeading(x.title, section));
+    if (!h) throw new Error(`lesson ${nn} has no section "${section}". Its open sections: ${heads.filter((x) => lines[x.line].k < open).map((x) => `"${x.title}"`).join(', ')}`);
+    const k = lines[h.line].k;
+    if (k >= open) throw new Error(`section "${h.title}" is in part ${k + 1} of lesson ${nn}, which is not open yet. ${closedNote()}`);
+    const next = heads.find((x) => x.line > h.line && x.level <= h.level);
+    let end = next ? next.line : lines.length;
+    const firstClosed = lines.findIndex((x) => x.k >= open);
+    let cut = firstClosed >= 0 && firstClosed < end;
+    if (cut) end = firstClosed;
+    // A section with subsections prints up to the first of them and lists them, unless --whole.
+    const subs = heads.filter((x) => x.line > h.line && x.line < end && x.level > h.level);
+    const brief = subs.length > 0 && !whole;
+    if (brief) { end = subs[0].line; cut = false; }
+    const wholeNote = subs.length && whole ? ', with its subsections' : '';
+    console.log(`${noFolder}Lesson ${nn}, section "${h.title}"${wholeNote} (in part ${k + 1} of ${total}). The whole part: ${cmd} --part ${k + 1}`);
+    console.log('');
+    console.log(shown(lines.slice(h.line, end).map((x) => x.line).join('\n')));
+    console.log('');
+    if (brief) {
+      console.log(`Its subsections, each printed with --section "HEADING":\n${subs.map((x) => `  - ${x.title}`).join('\n')}`);
+      console.log(`The section and all its subsections: ${cmd} --section "${h.title}" --whole`);
+      return;
+    }
+    console.log(cut ? closedNote() : `End of section "${h.title}".`);
+    return;
+  }
+
+  let from, to;
+  // --next: the section after the one printed last for this lesson in this work folder.
+  let chunk = 0;
+  if (next) {
+    if (all || part !== undefined || section !== undefined || whole) throw new Error('--next takes no --part, --all, --section or --whole');
+    const at = readReading(dir)[nn];
+    if (at && Number.isInteger(at.part) && at.part >= 1 && at.part <= open) { part = at.part; chunk = at.next ?? 0; } else part = open;
+  }
+  if (all) { from = 0; to = open; }
+  else if (part !== undefined) {
+    if (!Number.isInteger(part) || part < 1 || part > total) throw new Error(`lesson ${nn} has parts 1 to ${total}`);
+    if (part > open) throw new Error(`part ${part} of lesson ${nn} is not open yet. ${closedNote()}`);
+    from = part - 1; to = part;
+  } else { from = open - 1; to = open; }
+
+  const text = segments.slice(from, to).map((sg) => sg.text).join('\n');
+  // The part's sections, so one can be printed on its own. A part that begins inside a
+  // section names that section first.
+  const before = segments.slice(0, from).map((sg) => sg.text).join('\n').split('\n');
+  const carried = from > 0 ? headingsOf(before).filter((x) => x.level === 2).at(-1) : null;
+  const heads = headingsOf(text.split('\n'));
+  const startsInside = carried && !(heads[0] && text.split('\n').slice(0, heads[0].line).every((l) => !l.trim()));
+  const list = [...(startsInside ? [`  - ${carried.title} (continued from the part before)`] : []), ...heads.map((x) => `${x.level === 3 ? '      - ' : '  - '}${x.title}`)];
+  const which = all ? `parts 1 to ${open} of ${total}, every part open so far` : `part ${from + 1} of ${total}`;
+  const others = [];
+  if (!all && open > 1) others.push(`another open part with --part K (1 to ${open})`);
+  if (!all && open > 1) others.push('every open part with --all');
+  others.push('one section with --section "HEADING" (a section with subsections prints up to them and lists them; add --whole for all of it)');
+  console.log(`${noFolder}Lesson ${nn}, ${which}. Print ${others.join(', ')}.`);
+  if (list.length) console.log(`Its sections:\n${list.join('\n')}`);
+  if (sections) {
+    console.log('');
+    console.log(`The text itself: ${cmd}${all ? ' --all' : part !== undefined ? ` --part ${part}` : ''}`);
+    return;
+  }
+  const full = shown(text);
+  const partNote = () => (to < open ? `Part ${to + 1} is open too: ${cmd} --part ${to + 1}` : endNote());
+  if (all || whole || (!next && full.length <= PART_LIMIT)) {
+    console.log('');
+    console.log(full);
+    console.log('');
+    console.log(partNote());
+    return;
+  }
+  // A long part prints one section at a time: the text before its first heading, if any, then
+  // each section and subsection on its own. --next prints the one after.
+  const lines = text.split('\n');
+  const starts = [0, ...heads.map((x) => x.line)].filter((n, i, a) => a.indexOf(n) === i);
+  const pieces = starts.map((n, i) => lines.slice(n, starts[i + 1] ?? lines.length).join('\n')).filter((t) => shown(t));
+  if (chunk >= pieces.length) {
+    // The part is read to its end: go on to the next open part, or say where the lesson stops.
+    if (to < open) { saveReading(dir, nn, { part: to + 1, next: 0 }); console.log(`Part ${to} is read to its end. Part ${to + 1}: ${cmd} --next`); return; }
+    console.log(endNote());
+    return;
+  }
+  console.log(`This part is long, so it prints one section at a time: section ${chunk + 1} of ${pieces.length}.`);
+  console.log('');
+  console.log(shown(pieces[chunk]));
+  console.log('');
+  saveReading(dir, nn, { part: from + 1, next: chunk + 1 });
+  const whole_ = `the whole part: ${cmd} --part ${from + 1} --whole`;
+  if (chunk + 1 < pieces.length) console.log(`The next section: ${cmd} --next (or ${whole_})`);
+  else console.log(`That is the last section of part ${from + 1}. ${partNote()}`);
+}
+
+async function practiceStatus(dir) {
+  const commits = readCommits(dir);
+  const { practice } = await practiceData();
+  const committed = [], waiting = [], older = [];
+  for (const l of config.lessons) for (const id of l.practice) {
+    (practice[id] ?? []).forEach((it, v) => {
+      const c = commitFor(commits, id, v, it);
+      if (c) committed.push({ id, question: v + 1, correct: c.correct, answer: c.answer });
+      const old = olderCommit(commits, id, v, it);
+      if (old) older.push({ id, question: v + 1, answer: old.answer, prompt: old.prompt });
+    });
+    if (!fullyAnswered(practice, commits, id)) waiting.push(id);
+  }
+  const ids = config.lessons.flatMap((l) => l.practice);
+  return { committed, waiting, older, items: ids.length, questions: ids.reduce((n, id) => n + (practice[id]?.length ?? 0), 0) };
 }
 
 // ---------- the ladder ----------
@@ -527,11 +936,17 @@ try {
   const json = argv.includes('--json');
   const help = argv.includes('--help') || argv.includes('-h');
   const flags = {};
-  const valued = ['--mode', '--seed', '--rounds', '--game', '--level', '--picker', '--model', '--pickers', '--runs'];
+  const valued = ['--mode', '--seed', '--rounds', '--game', '--level', '--picker', '--model', '--pickers', '--runs', '--help-used', '--part', '--section', '--place', '--find'];
   const onlyAt = argv.indexOf('--only');
   if (onlyAt >= 0 && (!argv[onlyAt + 1] || argv[onlyAt + 1].startsWith('--'))) throw new Error('--only needs the ids of the checks to run, separated by commas');
   const only = onlyAt >= 0 ? argv[onlyAt + 1].split(',').map((x) => x.trim()).filter(Boolean) : null;
   flags.fresh = argv.includes('--fresh');
+  flags.all = argv.includes('--all');
+  flags.sections = argv.includes('--sections');
+  flags.whole = argv.includes('--whole');
+  flags.next = argv.includes('--next');
+  flags.full = argv.includes('--full');
+  flags.answers = argv.includes('--answers');
   if (argv.includes('--live')) throw new Error('--live is gone: the only model is the decision model. Use --picker live (and --model M) to ask one on Ollama');
   const skip = new Set();
   for (const f of valued) {
@@ -541,6 +956,9 @@ try {
     const v = argv[i + 1];
     if (f === '--game') { if (!['lob', 'lob2'].includes(v)) throw new Error('--game is lob or lob2'); flags.game = v; continue; }
     if (f === '--picker') { if (!['rule', 'first', 'random', 'live'].includes(v)) throw new Error('--picker is rule, first, random or live'); flags.picker = v; continue; }
+    if (f === '--place' || f === '--find') { if (v === undefined) throw new Error(`${f} needs a text to match`); flags[f.slice(2)] = v; continue; }
+    if (f === '--section') { if (!v || v.startsWith('--')) throw new Error('--section needs a heading in quotes, as the lesson prints it'); flags.section = v; continue; }
+    if (f === '--help-used') { if (!v || v.startsWith('--')) throw new Error('--help-used needs a description in quotes'); flags.helpUsed = v; continue; }
     if (f === '--model' || f === '--pickers') { if (!v || v.startsWith('--')) throw new Error(`${f} needs a value`); flags[f.slice(2)] = v; continue; }
     const n = Number(v);
     if (!Number.isInteger(n) || n < 0 || n > 1e6) throw new Error(`${f} needs a whole number`);
@@ -552,8 +970,12 @@ try {
   if (!command || command === 'help') console.log(HELP.main);
   else if (help) console.log(HELP[command] ?? HELP.main);
   else if (command === 'start' && rest.length === 1) start(resolve(rest[0]));
-  else if (command === 'check' && rest.length === 2) await check(rest[0], resolve(rest[1]), { variant: 0, json, only });
-  else if (command === 'status' && rest.length === 1) status(resolve(rest[0]), { json });
+  else if (command === 'check' && rest.length === 2) await check(rest[0], resolve(rest[1]), { variant: 0, json, only, helpUsed: flags.helpUsed });
+  else if (command === 'status' && rest.length === 1) await status(resolve(rest[0]), { json, typed: rest[0], answers: flags.answers });
+  else if (command === 'lesson' && rest.length === 2) await lessonText(rest[0], resolve(rest[1]), rest[1], { part: flags.part, all: flags.all, section: flags.section, sections: flags.sections, whole: flags.whole, next: flags.next });
+  else if (command === 'question' && rest.length === 2) await question(rest[0], resolve(rest[1]), rest[1]);
+  // An answer may hold spaces ("1, 2, 3" typed without quotes): everything between ID and the folder.
+  else if (command === 'answer' && rest.length >= 3) await answer(rest[0], rest.slice(1, -1).join(' '), resolve(rest.at(-1)), rest.at(-1));
   else if (command === 'strings' && rest.length === 1) await strings(resolve(rest[0]), flags);
   else if (command === 'find' && rest.length === 1) await find(resolve(rest[0]), flags);
   else if (command === 'listing' && rest.length === 2) await listing(rest[0], resolve(rest[1]), flags);

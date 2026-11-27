@@ -1,0 +1,9 @@
+1 i32.const 0
+1 i32.load 2 78112
+1 local.tee 0
+1 i32.load 2 92
+1 local.get 0
+1 i32.load 2 0
+1 i32.xor
+1 f32.reinterpret_i32
+0 end

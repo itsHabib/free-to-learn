@@ -1,0 +1,5 @@
+the flag now: 851.47, wind 2.85
+delay 1: angle 61, power 79, flies 172 frames
+  lands at 885.01 at frame 173; the flag then 884.79
+delay 30: angle 43, power 75, flies 129 frames
+  lands at 882.21 at frame 159; the flag then 882.09

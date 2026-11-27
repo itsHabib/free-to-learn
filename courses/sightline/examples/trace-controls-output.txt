@@ -1,0 +1,15 @@
+learnControls with empty kit:
+  work out the controls: pressed each key and watched the status line
+  pressed: ArrowLeft ArrowRight ArrowUp ArrowDown KeyN KeyN
+learnControls with same kit again:
+  check the controls: the keys in the kit still do what they did
+  pressed: ArrowRight ArrowLeft ArrowUp ArrowDown
+kit.controls:
+  angle_down: ArrowLeft
+  angle_up: ArrowRight
+  power_up: ArrowUp
+  power_down: ArrowDown
+  new_round: KeyN
+  fire: Space
+kit.statusLine: 71976
+kit.message: 72040

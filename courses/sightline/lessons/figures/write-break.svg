@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 576" role="img" aria-labelledby="write-break-t write-break-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="write-break-t">The write-test without its second tick</title>
+<desc id="write-break-d">With the tick after the restore deleted, the copy's test starts while the copy still holds the real angle's probe, so the copy passes too. A table of the write-test's six steps on seed 1 after one RIGHT press, with what the real angle, a float at 65840, and the status line's copy, an integer at 71968, hold after each. 1: write the probe 53 into the real angle; real 53, copy 46. 2: tick 2 frames: the copy is rebuilt from the real angle; read back 53: held; real 53, copy 53. 3: restore the real angle to 46 with no tick after it; real 46, copy 53. 4: the copy reads 53, so its probe is 46: write 46 into it; real 46, copy 46. 5: tick 2 frames: the copy is rebuilt from the real angle; read back 46: held; real 46, copy 46. 6: restore the copy to 53 with no tick after it; real 46, copy 53. Afterwards the status line still reads ANGLE 46.</desc>
+<rect width="720" height="576" fill="#ffffff"/>
+<text x="20" y="30" font-size="22" fill="#57606a">The real angle: f32 at 65840; the copy: i32 at 71968</text>
+<text x="20" y="62" font-weight="700" font-size="22">step</text>
+<text x="520" y="62" font-weight="700" font-size="22" text-anchor="middle">real</text>
+<text x="640" y="62" font-weight="700" font-size="22" text-anchor="middle">copy</text>
+<rect x="12" y="74" width="696" height="76" fill="#f6f8fa"/>
+<text x="20" y="106" font-size="22">1. write the probe 53</text>
+<text x="50" y="134" font-size="22">into the real angle</text>
+<text x="520" y="120" text-anchor="middle" font-weight="700">53</text>
+<text x="640" y="120" text-anchor="middle" font-weight="700">46</text>
+<text x="20" y="182" font-size="22">2. tick 2 frames: the copy is rebuilt</text>
+<text x="50" y="210" font-size="22">from the real angle; read back 53: held</text>
+<text x="520" y="196" text-anchor="middle" font-weight="700">53</text>
+<text x="640" y="196" text-anchor="middle" font-weight="700">53</text>
+<rect x="12" y="226" width="696" height="76" fill="#ffebe9"/>
+<text x="20" y="258" font-size="22">3. restore the real angle to 46</text>
+<text x="50" y="286" font-size="22">with no tick after it</text>
+<text x="520" y="272" text-anchor="middle" font-weight="700">46</text>
+<text x="640" y="272" text-anchor="middle" font-weight="700">53</text>
+<text x="20" y="334" font-size="22">4. the copy reads 53, so its probe</text>
+<text x="50" y="362" font-size="22">is 46: write 46 into it</text>
+<text x="520" y="348" text-anchor="middle" font-weight="700">46</text>
+<text x="640" y="348" text-anchor="middle" font-weight="700">46</text>
+<rect x="12" y="378" width="696" height="76" fill="#f6f8fa"/>
+<text x="20" y="410" font-size="22">5. tick 2 frames: the copy is rebuilt</text>
+<text x="50" y="438" font-size="22" fill="#cf222e" font-weight="700">from the real angle; read back 46: held</text>
+<text x="520" y="424" text-anchor="middle" font-weight="700">46</text>
+<text x="640" y="424" text-anchor="middle" font-weight="700">46</text>
+<rect x="12" y="454" width="696" height="76" fill="#ffebe9"/>
+<text x="20" y="486" font-size="22">6. restore the copy to 53</text>
+<text x="50" y="514" font-size="22">with no tick after it</text>
+<text x="520" y="500" text-anchor="middle" font-weight="700">46</text>
+<text x="640" y="500" text-anchor="middle" font-weight="700">53</text>
+<text x="20" y="562" font-size="22" fill="#57606a">afterwards the status line still reads ANGLE 46</text>
+</svg>

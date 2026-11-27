@@ -1,0 +1,13 @@
+picker answers 1: choose returns 1, calls 1
+  decision, pick a test:
+    second
+picker answers 1.5: choose returns 0, calls 1
+  decision, pick a test:
+    answered 1.5, which is not on the menu; taking option 0
+picker answers "1": choose returns 0, calls 1
+  decision, pick a test:
+    answered "1", which is not on the menu; taking option 0
+picker is not running: choose returns 0, calls 1
+  decision, pick a test:
+    unavailable (not running); taking option 0
+picker answers 1, one option: choose returns 0, calls 0

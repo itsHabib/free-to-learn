@@ -204,13 +204,18 @@ after any command for its details.
 ```
 node lab.mjs start ./work
 node lab.mjs serve [PORT]
-node lab.mjs check NN ./work [--only IDS] [--json]
+node lab.mjs lesson NN ./work [--part K [--whole] | --next | --all
+                              | --section HEADING [--whole]] [--sections]
+node lab.mjs question ID ./work
+node lab.mjs answer ID ANSWER ./work
+node lab.mjs check NN ./work [--only IDS] [--help-used TEXT] [--json]
 node lab.mjs check all ./work [--json]
-node lab.mjs status ./work [--json]
+node lab.mjs status ./work [--answers] [--json]
 node lab.mjs strings ./work [--mode N] [--seed S]
 node lab.mjs find ./work [--mode N] [--seed S]
 node lab.mjs listing NAME ./work [--game lob|lob2]
-node lab.mjs lift NAME ./work [--game lob|lob2]
+node lab.mjs lift NAME ./work [--place LIST] [--find TEXT] [--full]
+                             [--game lob|lob2]
 node lab.mjs xrefs ./work [--game lob|lob2]
 node lab.mjs level N ./work [--picker P] [--model M] [--fresh]
 node lab.mjs climb ./work [--picker P] [--model M]
@@ -225,15 +230,49 @@ node lab.mjs watch N ./work
 - `serve` serves the lessons, the practice questions and this page at
   `http://127.0.0.1:PORT/`, on a free port when PORT is left out. Only this
   computer can connect. Practice answers are kept in your browser's storage.
+- `lesson NN ./work` prints lesson NN as Markdown in the terminal, one part
+  at a time. A part ends at a prediction, and the next part opens once every
+  question of that prediction has an answer in `work/.practice.json`. With
+  no option it prints the newest open part, after a first line that says
+  which part of how many it is and a list of its sections. `--part K` prints
+  part K if it is open, `--all` every open part, and `--section "HEADING"`
+  one section of an open part. A section with subsections prints its text
+  up to the first of them and then lists them, each printable with its own
+  `--section`; `--whole` after `--section` prints the section with all its
+  subsections. `--sections` prints only the first line and the headings. A
+  part longer than 12,000 characters prints only its first section and says
+  how to go on: `--next` prints the section after the one printed last for
+  that lesson, kept in `work/.reading.json`, and goes on to the next open
+  part at the end of one; `--whole` without `--section` prints the whole
+  part. Each practice item is printed as the
+  `question` command that asks it. The work folder need not exist yet.
+- `question ID ./work` prints the next question of practice item ID that has
+  no committed answer, and the kind of answer it wants, or says that every
+  question of ID is answered.
+- `answer ID ANSWER ./work` commits ANSWER to that question, prints the
+  verdict and the reason as the browser does, saves the answer in
+  `work/.practice.json` and prints the next question of ID. After the last
+  one it prints `Every question of ID is answered.` A committed answer is
+  never replaced, and an answer that can't be read is not saved. Each commit
+  keeps the question's prompt, the kind of answer it asked for and a version
+  of the question; an answer to an older wording is kept as it was, the
+  commands say so, and the question as it is now counts as unanswered. The
+  browser keeps its own record, separate from this file, so use one or the
+  other.
 - `check NN ./work` runs the checks of module NN (01 to 08) against your
   files, each in its own process with a time limit, and `check all ./work`
   runs every module. `--only` runs the named checks of one module, separated
   by commas, as in `--only 03-test-shot,03-fit`. A failed check says what was
   checked, the input, what your code did, what was required and the lesson
   section that teaches it. Every run is saved under `work/.attempts/`, and
-  `--json` prints the record instead of sentences.
+  `--json` prints the record instead of sentences. `--help-used "TEXT"`
+  saves a note with the attempt saying what helped, such as a supplied
+  file or an AI tool. It changes nothing about the checks.
 - `status ./work` lists each module's latest check run, whether it passed,
-  and whether your files have changed since.
+  and whether your files have changed since. Then it counts the practice
+  answers committed with `answer` and lists the items still waiting for one.
+  `--answers` also lists every committed answer, and `--json` prints all of
+  it.
 - `strings ./work` starts a fresh game and prints every string your
   `findStrings` finds in its memory, with its address.
 - `find ./work` starts a fresh game, runs your `findValues` with the controls
@@ -245,7 +284,13 @@ node lab.mjs watch N ./work
   is written, each store gets a note: what your lifter says it writes.
 - `lift NAME ./work` lifts NAME with your `lift.mjs` and prints every store
   it makes, as `showStore` prints it, then how many stores inside loops it
-  left as unknown.
+  left as unknown. A line over 160 characters is cut, with its length;
+  `--full` prints every line whole. `--place` keeps the stores to the places
+  it lists, separated by commas, each a whole place such as `*0x13120+40` or
+  a field such as `+40` through any pointer (`+0` and `*0x13120+0` name
+  field +0, which `place` prints as `*0x13120`), and `--find TEXT` the stores
+  whose line contains TEXT. With a filter, a line says how many of the
+  stores were shown; the last line always counts them all.
 - `xrefs ./work` lifts every function and prints your cross-references for
   each field the code reaches through a pointer: its offset, the functions
   that read it and the functions that write it, or
@@ -799,7 +844,8 @@ windWord(flight, d)           // a load expression, or null
   writes the new value scrambled again, while the bound test compares the
   value as the game sees it.
 - `decoding(value, rawKey)` says how a value is stored: `{ raw, key, op,
-  float }`. A `f32.reinterpret_i32` around the value is taken off, with
+  float }`. Here `raw` and `key` are `i32.load` expressions (`op: 'load'`),
+  not stores like `aimValues`' `raw`. A `f32.reinterpret_i32` around the value is taken off, with
   `float` true. A plain `i32.load` is `{ raw: that load, key: null,
   op: 'plain' }`. An `i32.xor` of two loads is `op: 'xor'`: `raw` is the load
   whose place key is `rawKey` (the place the stepper writes), or else the
@@ -820,8 +866,10 @@ windWord(flight, d)           // a load expression, or null
   is inside the launch's `sin` or `cos` calls; the power is the first stepper
   with another `value` that the launch's `trig` stores use. Each is
   `{ value, raw, codes }`: the stepper's `value`, its store, and
-  `[code, delta]` for every stepper with that value. `null` when either is
-  missing.
+  `[code, delta]` for every stepper with that value. Here `raw` is a store,
+  `{ addr, offset, type, value, guard, at }` as `lift` lists it, not a load:
+  `decoding` below takes the place key of its `addr` and `offset`. `null`
+  when either is missing.
 - `flightOf(tickFn, launch)` finds the flight: the slice of the frame
   function's stores for the launch's `fields` and its `flying` place, then the
   landing. The reset is the first frame-function store of the constant 0 to
@@ -1010,7 +1058,8 @@ ones:
 - Module 02: `choose`, complete. The engine's search for the values is
   `findValues` with `choose` as its `decide`.
 - Module 03: `learnFit`, `fire`, `playRounds`, and the loop: `checkKit` and
-  `playLevel`, on the given budget. `look` reads only the addresses in
+  `playLevel`, on the given budget, without the first step of `playLevel`
+  (emptying a kit from another game), which is module 08's. `look` reads only the addresses in
   `kit.found`. `aimFor` searches the fit's predictions for `state.wind`, or
   takes `nearest` with no fit. `playRounds` fires each plan one frame after
   making it, and fires nothing when nothing reads the state. `checkKit` knows
@@ -1027,11 +1076,15 @@ ones:
   suggests on the state's menu, and records the evidence that rules options
   out. `aimFor` uses `aimBand` when the wind is not a number.
 - Module 07: `analyse` adds each reader's flag motion; `sayMover`,
-  `learnMotion`, `pickDecider` and `sweep`. `checkKit` gets the flag's
-  problem. `aimFor` leads a moving flag. `playRounds` waits for a plan that
-  is ready, asks the decider and ticks the decider's frames. `playLevel` sets
-  `kit.decider` before the rounds.
-- Module 08: `playLevel` deletes what a kit learned on another game.
+  `learnMotion`, `pickDecider` and `sweep`. The flag's problem, which
+  `checkKit` reports from module 06 on, gets its `motion` options. `aimFor`
+  leads a moving flag. `playRounds` waits for a plan that is ready, asks the
+  decider and ticks the decider's frames. `playLevel` sets `kit.decider`
+  before the rounds, and does not yet empty a kit from another game.
+- Module 08: `playLevel`'s first step, which deletes what a kit learned on
+  another game. If you wrote that step in module 03 from the whole entry
+  below, module 08's checks may pass already, and lesson 08 says what to do
+  instead.
 
 ```js
 controlsHold(host, kit)            // module 01: boolean
@@ -1127,6 +1180,14 @@ The labels, which the picker reads:
 - fit: `Fire 14 practice shots and fit an aim to them (about 7 rounds and 17 shots; good to about 10 paces)`
 - physics: `Test what the code says about a shot with 3 check shots (3 rounds, 3 shots): ` then `sayPhysics(code)`, with no host
 - motion: `Test what the code says about the flag by watching it for 2 rounds: ` then `sayMover`
+
+The `search` option runs `findValues` with `choose(env, 'the next
+experiment', text, labels)` as its `decide`. When it succeeds it sets
+`kit.found` and logs `search memory for the values: found angle, power, wind
+and flag in N experiments`. When `findValues` throws anything but
+`OutOfBudget`, it sets `kit.found` to `null` and logs `search memory for the
+values: failed: ` and the error's message, such as `failed: could not find
+flag`. An `OutOfBudget` error goes through to `playLevel`.
 
 #### The functions
 
@@ -1348,14 +1409,18 @@ it, so `analyse` works from module 05 on.
   `Wait and look again`. After a wait it ticks `decider.frames` frames before
   it looks and plans again. Before the shot leaves it ticks `decider.frames`
   frames, the delay the plan was made for, then fires with `fire`. When `look`
-  throws, it logs that it cannot play and why, fires nothing, and returns at
-  once. When `aimFor` returns `null` it logs that nothing in the kit can aim
-  and fires nothing in that round. It returns `{ hits, rounds }`, with
-  `rounds` being `level.rounds`.
+  throws, it logs the step `round N` with the result
+  `cannot play: MESSAGE; firing nothing`, fires nothing, and returns at
+  once. When `aimFor` returns `null` it logs the step `round N` with the
+  result `nothing in the kit can aim` and fires nothing in that round. N
+  counts the scored rounds from 1; both entries are on the `code` rung. It
+  returns `{ hits, rounds }`, with `rounds` being `level.rounds`.
 - `pickDecider(env, budget = FRAME_BUDGET)` times three decisions on a
   fire-or-wait question, by their `ms`. The middle time in frames,
   `Math.round(ms * 60 / 1000)` and at least 1, is the delay to plan for; the
-  spread is the slowest time less the fastest, in frames. It returns
+  spread is the slowest time less the fastest, turned into frames after the
+  subtraction: `Math.round((slowest - fastest) * 60 / 1000)`, so 321 and
+  262 ms give a spread of 4 frames, not 19 less 16. It returns
   `{ who: 'model', frames }` when the spread is at most `budget`, and
   `{ who: 'code', frames: 1 }` when it is more or the picker is not
   available. It logs the times and the choice.
@@ -1369,18 +1434,27 @@ it, so `analyse` works from module 05 on.
   `latency` the delay tried and the other two in hits, and puts
   `kit.decider` back.
 - `playLevel(host, level, kit, env)` gets the kit ready for the level and
-  plays it. If `kit.game` is not this game's `gameId`, the kit's status line,
-  message, found addresses, practice shots, fit, physics, reader and flag
-  motion belong to another game and are deleted, and `kit.game` is set. It
-  learns on `metered(host, kit, allowance(level))`, repeating at most 10
+  plays it, in three steps written in three modules. Module 08's step comes
+  first, and is written last: if `kit.game` is not this game's `gameId`,
+  the kit's status line, message, found addresses, practice shots, fit,
+  physics, reader and flag motion belong to another game and are deleted,
+  and `kit.game` is set. Don't write it before module 08: a kit saved by an
+  earlier engine has no `kit.game`, so this step would empty it on the next
+  level. Module 03's step, the loop, learns on
+  `metered(host, kit, allowance(level))`, repeating at most 10
   times: `checkKit`; if there is no problem, stop; keep the options not yet
   tried on this level whose cost fits what is left of the allowance; if none
-  is left, log `nothing left to try that fits the budget` (check 03-budget
-  looks for those words) and stop; `choose` one, with the text
+  is left, log `repair`:
+  `nothing left to try that fits the budget (R rounds and S shots left) for the PART: WHY`
+  (check 03-budget looks for the words up to `budget`; `round` and `shot`
+  are singular for 1) and stop; `choose` one, with the text
   `Level N, NAME: ABOUT Problem: WHY. Left for learning: R rounds and S shots.`
   and each option given with the `problem`; run it on the metered host and
-  log what it spent. When `OutOfBudget` stops a check or a repair, it logs
-  the error and stops repairing. Then it sets `kit.decider` to
+  log what it spent. When `OutOfBudget` stops a repair, it logs
+  `repair`: `stopped: ` and the error's message, such as
+  `stopped: out of rounds: 8 were left for learning`; when it stops a
+  check, it logs `check the kit`: and the error's message; either way it
+  stops repairing. Module 07's step comes next: it sets `kit.decider` to
   `{ who: 'code', frames: 1 }`, or to `pickDecider`'s answer when the kit
   has a reader, the physics and a flag motion and the flag's path over the
   next 120 frames is not all one value. It returns `playRounds` on the host

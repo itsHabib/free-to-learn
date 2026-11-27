@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 634" role="img" aria-labelledby="leb-78112-t leb-78112-d" font-family="system-ui, sans-serif" font-size="24" fill="#1b1f24">
+<title id="leb-78112-t">Two ways to write 78112</title>
+<desc id="leb-78112-d">The number 78112 in LEB128, shortest in 3 bytes and as Lob's file writes it in 5, where the two extra bytes carry only zeros. Two tables, one row for each byte: the byte, its 8 bits with the top bit first, the 7 bits of the number it carries, and what they are worth. Shortest, A0 E2 04: A0 carries 32 times 1, and another byte follows; E2 carries 98 times 128, and another byte follows; 04 carries 4 times 16,384, the last byte. As Lob's file writes it, 29 times, A0 E2 84 80 00: A0 carries 32 times 1, and another byte follows; E2 carries 98 times 128, and another byte follows; 84 carries 4 times 16,384, and another byte follows; 80 carries 0 times 2,097,152, and another byte follows; 00 carries 0 times 268,435,456, the last byte. Both add up to 78,112.</desc>
+<rect width="720" height="634" fill="#ffffff"/>
+<text x="20" y="30" font-weight="700">Shortest: A0 E2 04</text>
+<text x="20" y="68" font-size="22" fill="#57606a">byte</text>
+<text x="96" y="68" font-size="22" fill="#57606a">bits</text>
+<text x="272" y="68" font-size="22" fill="#57606a">carries</text>
+<text x="360" y="68" font-size="22" fill="#57606a">worth</text>
+<text x="540" y="68" font-size="22" fill="#57606a">adds</text>
+<rect x="12" y="80" width="696" height="40" fill="#f6f8fa"/>
+<text x="20" y="108" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">A0</text>
+<text x="96" y="108" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#3553d4" font-weight="700">1</tspan> 0100000</text>
+<text x="272" y="108" font-size="22">32</text>
+<text x="360" y="108" font-size="22">× 1</text>
+<text x="540" y="108" font-size="22">32</text>
+<text x="20" y="148" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">E2</text>
+<text x="96" y="148" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#3553d4" font-weight="700">1</tspan> 1100010</text>
+<text x="272" y="148" font-size="22">98</text>
+<text x="360" y="148" font-size="22">× 128</text>
+<text x="540" y="148" font-size="22">12,544</text>
+<rect x="12" y="160" width="696" height="40" fill="#f6f8fa"/>
+<text x="20" y="188" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">04</text>
+<text x="96" y="188" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#57606a" font-weight="700">0</tspan> 0000100</text>
+<text x="272" y="188" font-size="22">4</text>
+<text x="360" y="188" font-size="22">× 16,384</text>
+<text x="540" y="188" font-size="22">65,536</text>
+<text x="360" y="230" font-size="22" font-weight="700">total</text>
+<text x="540" y="230" font-size="22" font-weight="700">78,112</text>
+<text x="20" y="276" font-weight="700">As Lob's file writes it (29 times): A0 E2 84 80 00</text>
+<text x="20" y="314" font-size="22" fill="#57606a">byte</text>
+<text x="96" y="314" font-size="22" fill="#57606a">bits</text>
+<text x="272" y="314" font-size="22" fill="#57606a">carries</text>
+<text x="360" y="314" font-size="22" fill="#57606a">worth</text>
+<text x="540" y="314" font-size="22" fill="#57606a">adds</text>
+<rect x="12" y="326" width="696" height="40" fill="#f6f8fa"/>
+<text x="20" y="354" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">A0</text>
+<text x="96" y="354" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#3553d4" font-weight="700">1</tspan> 0100000</text>
+<text x="272" y="354" font-size="22">32</text>
+<text x="360" y="354" font-size="22">× 1</text>
+<text x="540" y="354" font-size="22">32</text>
+<text x="20" y="394" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">E2</text>
+<text x="96" y="394" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#3553d4" font-weight="700">1</tspan> 1100010</text>
+<text x="272" y="394" font-size="22">98</text>
+<text x="360" y="394" font-size="22">× 128</text>
+<text x="540" y="394" font-size="22">12,544</text>
+<rect x="12" y="406" width="696" height="40" fill="#f6f8fa"/>
+<text x="20" y="434" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">84</text>
+<text x="96" y="434" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#3553d4" font-weight="700">1</tspan> 0000100</text>
+<text x="272" y="434" font-size="22">4</text>
+<text x="360" y="434" font-size="22">× 16,384</text>
+<text x="540" y="434" font-size="22">65,536</text>
+<text x="20" y="474" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">80</text>
+<text x="96" y="474" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#3553d4" font-weight="700">1</tspan> 0000000</text>
+<text x="272" y="474" font-size="22">0</text>
+<text x="360" y="474" font-size="22">× 2,097,152</text>
+<text x="540" y="474" font-size="22">0</text>
+<rect x="12" y="486" width="696" height="40" fill="#f6f8fa"/>
+<text x="20" y="514" font-size="22" font-weight="700" font-family="ui-monospace, Menlo, Consolas, monospace">00</text>
+<text x="96" y="514" font-size="22" font-family="ui-monospace, Menlo, Consolas, monospace"><tspan fill="#57606a" font-weight="700">0</tspan> 0000000</text>
+<text x="272" y="514" font-size="22">0</text>
+<text x="360" y="514" font-size="22">× 268,435,456</text>
+<text x="540" y="514" font-size="22">0</text>
+<text x="360" y="556" font-size="22" font-weight="700">total</text>
+<text x="540" y="556" font-size="22" font-weight="700">78,112</text>
+<text x="20" y="612" font-size="22" fill="#3553d4">blue first bit: another byte follows</text>
+</svg>

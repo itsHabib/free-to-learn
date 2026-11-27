@@ -1,0 +1,7 @@
+memory: 131072 bytes, 32768 slots
+count({ f32: all, i32: all }): 65536
+bytes 00 00 34 42: f32 45, i32 1110704128
+list of 1 f32 and 2 i32 candidates:
+  f32 slot 2 at 8
+  i32 slot 0 at 0
+  i32 slot 1 at 4

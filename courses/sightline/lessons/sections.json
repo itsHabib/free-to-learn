@@ -95,7 +95,7 @@
   },
   "03-budget": {
    "lesson": "03",
-   "section": "The engine's loop"
+   "section": "Running the loop"
   },
   "03-features": {
    "lesson": "03",
@@ -119,7 +119,7 @@
   },
   "03-level-1": {
    "lesson": "03",
-   "section": "The engine's loop"
+   "section": "Level 1"
   },
   "03-nearest": {
    "lesson": "03",
@@ -127,7 +127,7 @@
   },
   "03-play": {
    "lesson": "03",
-   "section": "The engine's loop"
+   "section": "Playing the scored rounds"
   },
   "03-search": {
    "lesson": "03",

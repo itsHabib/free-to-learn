@@ -1,0 +1,18 @@
+{"angle":null,"power":null,"wind":null,"flag":null,"lineFound":false}
+  press angle_up
+    Press the angle up key: angle should go up by 1
+  press angle_down
+    Press the angle down key: angle should go down by 1
+  press power_up
+    Press the power up key: power should go up by 1
+  press power_down
+    Press the power down key: power should go down by 1
+{"angle":2,"power":65524,"wind":null,"flag":null,"lineFound":true}
+  write angle
+    Write-test the 2 angle candidates to see which one the game uses
+  press power_up
+    Press the power up key: power should go up by 1
+  press power_down
+    Press the power down key: power should go down by 1
+  press new_round
+    Press the new-round key: the wind and the flag move

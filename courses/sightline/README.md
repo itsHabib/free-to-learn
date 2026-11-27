@@ -8,17 +8,6 @@ No model writes any of the engine's code. You write all of it: a memory search, 
 
 One model takes part, and it writes no code. It's a decision model, a small language model (a program that reads text and writes text, and can be wrong) that picks an option from a menu your code wrote, such as searching memory for the values or testing what the code says about the state. The course measures its picks against always taking option 0, picking at random, and a heuristic you write.
 
-## What the measurement found
-
-Measured with the course's own engine, climbing all ten levels:
-
-- Your heuristic, which takes the cheapest option that nothing the engine has seen on the level rules out, cleared every level.
-- Always option 0 failed level 3: it searched memory that moves every round and ran out of the rounds the level leaves for learning.
-- Random picks failed some levels, all of them on the new game. Over 20 climbs, level 8 failed 5 times, level 9 8 times and level 10 6 times. The 5 climbs that lost level 8 lost levels 9 and 10 with it, so most of the losses on those two levels followed from losing level 8.
-- Two decision models on Ollama, `llama3.2:1b` and `qwen2.5:7b`, each cleared all ten levels in one climb, and neither beat the heuristic on any level. Each also replayed levels 3 and 9 from the kit that option 0 leaves. `llama3.2:1b` picked unlike the heuristic on 1 of the 5 menus of repairs it answered, searching memory on level 8 where the heuristic tests what the code says about the state, and passed anyway, using all 24 rounds that level allows. `qwen2.5:7b` picked what the heuristic picks on all 4 of its menus of repairs. The one time it was allowed to decide when to fire, on level 9 replayed, it answered "wait" to 72 of 79 questions, and its shots hit only because the engine fires a fresh plan when a round's time runs out.
-
-On these games the decision model didn't beat the heuristic, and the course says so. On these menus it couldn't have, because the cheapest option that nothing rules out always worked, and firing a ready plan at once ("Fire now") was a good answer every time, so a picker could only match the heuristic or lose to it. A menu where the cheapest option that nothing rules out sometimes fails is where a picker could earn its place. What you build around the decision model is the menu it picks from, the loop that keeps every level inside its budget (the budget is what makes a poor order cost something), and the heuristic it's measured against.
-
 ## Who it is for
 
 You can follow this course if you write JavaScript for Node 22 comfortably: functions, arrays, objects, ES modules and `async`/`await`, and running `node` in a terminal. The mathematics is high-school level: algebra, square roots, and the sine and cosine of an angle. Hexadecimal and bits are taught where they are first needed. No WebAssembly, reverse engineering or machine learning background is assumed.
@@ -32,16 +21,20 @@ Nothing else: no package install, no account, no API key and no network connecti
 
 ## How to start
 
-Run these from the course folder, the folder that holds this README and `lab.mjs`:
+Run every command from the course folder, the folder that holds this README and `lab.mjs`. Start by reading lesson 01, in a browser or in the terminal:
 
 ```
-node lab.mjs start ./work
 node lab.mjs serve
+node lab.mjs lesson 01 ./work
 ```
 
-`start` creates `work/` with the nine starter files you write, plus one finished file the course gives you, `opcodes.mjs`. `serve` prints a local address. Open it in a browser to read the lessons, answer the practice questions and read the API page. Read the lessons on that page. The practice questions appear only there, and so does the pause at each prediction. The rest of the lesson appears once you have committed an answer to each of its questions. The files in `lessons/` hold the lesson text with a marker where each question goes, and show the text after every prediction at once. Read lesson 01 first. Each lesson gives an order to write its functions in and the checks to run after each step, such as `node lab.mjs check 01 ./work --only 01-strings`. When the last step is done, run the module's whole check, `node lab.mjs check 01 ./work`. Each failure names the requirement, shows the input, what your code returned and what was required, and names the lesson section that covers it. Modules build on each other, so keep them in order.
+`serve` prints a local address. Open it in a browser to read the lessons, answer the practice questions and read the API page. `lesson` prints the same lesson in the terminal, as the next paragraph shows, and works before `work/` exists. The practice questions and the pause at each prediction appear only in those two places. The rest of the lesson appears once you have committed an answer to each of its questions. The files in `lessons/` hold the lesson text with a marker where each question goes, and show the text after every prediction at once.
 
-The files in `lessons/` hold the same text, but there a practice question is only a `{{practice:ID}}` line, and the text after a `{{gate:ID}}` line is what the page opens once you commit that question. Read in the browser to answer each question before its answer shows. The page opens that text in your browser once you commit, but the server sends any part to any request and keeps no record of answers, so this keeps your reading order rather than locking anything. `lessons/practice.mjs` holds every practice question with its answer, because the page checks your answers on your own computer. Leave it unread until you've committed your own.
+Lesson 01 opens with "Choose how to start". Its commands create `work/` on the route you pick and refuse a folder that already exists, so don't create `work/` before you have read that section. `node lab.mjs start ./work` is the blank route: `work/` with the nine starter files you write, without lesson 01's marked regions, plus one finished file the course gives you, `opcodes.mjs`. Lesson 01 says how to add its new case's file to a folder made that way. Each lesson gives an order to write its functions in and the checks to run after each step, such as `node lab.mjs check 01 ./work --only 01-strings`. When the last step is done, run the module's whole check, `node lab.mjs check 01 ./work`. Each failure names the requirement, shows the input, what your code returned and what was required, and names the lesson section that covers it. Modules build on each other, so keep them in order. Every lesson, 01 to 08, walks you through the code: each shows its important functions as listings to type into marked regions of your files, and its start command, `node examples/start-NN.mjs ./work write|supplied`, sets up those regions or gives you the working code.
+
+You can read the lessons and answer the questions in a terminal instead. `node lab.mjs lesson 01 ./work` prints lesson 01 a part at a time. A part ends at a prediction, and the command prints the newest part you have opened, with its sections listed first and the item to answer at the end. A part longer than about 12,000 characters prints its section list and its first section only, and `--next` prints the next section, carrying on from the last one printed for that lesson; `--whole` prints the whole part. `--part K` prints an earlier part, `--all` prints every open part, `--section "HEADING"` prints one section, and `--sections` prints only the first line and the headings. A section with subsections prints its text up to the first of them and then lists them, each printable with its own `--section`, and `--whole` after `--section` prints the section with all its subsections. `node lab.mjs question ID ./work` prints the next question of item ID, and `node lab.mjs answer ID ANSWER ./work` commits your answer and prints the same verdict and reason the browser shows, then the next question. Once every question of an item a lesson waits on has an answer, `lesson` prints the next part. These answers are saved in `work/.practice.json` with the question as it was worded, and a committed answer is never replaced. If a question is reworded later, your answer to the older wording stays on record as it was, the commands say so, and the question as it is now waits for an answer. The browser keeps its own record of your answers, and the two are not shared, so pick one way to read and keep to it.
+
+The files in `lessons/` hold the same text, but there a practice question is only a `{{practice:ID}}` line, and the text after a `{{gate:ID}}` line is what the page opens once you commit that question. Read in the browser or with `node lab.mjs lesson` to answer each question before its answer shows. The page opens that text in your browser once you commit, but the server sends any part to any request and keeps no record of answers, so this keeps your reading order rather than locking anything. `lessons/practice.mjs` holds every practice question with its answer, because the page and the `answer` command check your answers on your own computer. Leave it unread until you've committed your own.
 
 Your engine keeps what it learns in a kit that it carries from level to level. `node lab.mjs level 1 ./work` plays a level with your engine and prints every step it took, and `node lab.mjs climb ./work` starts from an empty kit and plays the levels in order. `node lab.mjs --help` lists every command. `API.md` gives every function and the exact rules the checks hold it to, on one page. `checks/` and `fixtures/` are the course's test code and recorded data. They hold answers to things the lessons ask you to find yourself, so leave them unread until you have passed the module they belong to.
 
@@ -83,13 +76,17 @@ About 23 hours in total. This is an estimate and hasn't been measured with learn
 
 ## How progress is saved
 
-Your progress is the code in `work/`. Checks read your files fresh on every run, so you can stop at any point and pick up later by running the next check. The kit your engine builds is saved under `work/kits/` each time it passes a level. Practice answers you commit in the browser view are kept by that browser, on that computer.
+Your progress is the code in `work/`. Checks read your files fresh on every run, so you can stop at any point and pick up later by running the next check. The kit your engine builds is saved under `work/kits/` each time it passes a level. Practice answers you commit in the browser view are kept by that browser, on that computer. Answers you commit with `node lab.mjs answer` are kept in `work/.practice.json`, and `node lab.mjs status ./work` counts them and lists the items still waiting. `--answers` lists every answer too.
 
 ## Scope
 
 The course works on two small WebAssembly games that it ships, Lob and Lob II, read only through each game's file, its memory, key presses, the screen and time. It covers memory scanning, a WebAssembly decoder for the instructions the games use, a lifter and the passes over what it makes, a least-squares fit, tests that confirm or refute what a search or a pass found, budgets of rounds and shots, and one decision model measured against stand-ins. Each defence is paired with the step that gets past it: state that moves, values that are scrambled, a wind kept off the client and a flag that moves.
 
 It doesn't cover native programs, operating-system process memory, real games or anti-cheat systems, and it doesn't teach getting past anyone else's protections. The passes are written for the code these two games compile to, and they aren't a general decompiler. No model writes code and no model is trained. The engine only reads the game files the course ships.
+
+## What the measurement found
+
+Lesson 08 measures every picker over the whole climb, and says what the measurement shows and what it doesn't. Its numbers answer questions that lessons 06 and 08 ask you, so they wait in lesson 08 until you have answered those.
 
 ## Licence
 

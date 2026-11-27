@@ -232,7 +232,7 @@ export const cases = [
   {
     id: '02-choose-pick', title: 'choose returns the model\'s pick, and does not ask when there is nothing to decide',
     requirement: 'choose passes the labels to the decision model and returns its choice. With one option or none it returns 0 without a call.',
-    reread: `${L}, a pick that can't hurt`,
+    reread: `${L}, asking the picker`,
     async run({ fn }) {
       const choose = await fn('engine.mjs', 'choose');
       const models = scripted({ decide: [2, 1] });
@@ -252,7 +252,7 @@ export const cases = [
   {
     id: '02-choose-safe', title: 'an answer that is not on the menu, and a model that is not there, are option 0',
     requirement: 'choose returns 0 when the choice is out of range, not a whole number or missing, and when the model throws. It never throws.',
-    reread: `${L}, a pick that can't hurt`,
+    reread: `${L}, asking the picker`,
     async run({ fn }) {
       const choose = await fn('engine.mjs', 'choose');
       for (const bad of [3, -1, 1.5, '1', null, undefined, NaN]) {
@@ -268,7 +268,7 @@ export const cases = [
   {
     id: '02-any-pick', title: 'random picks still find everything: on this menu no pick can stop the search',
     requirement: 'findValues finds the same addresses on seeds 55 and 89 with a decider that picks at random, choosing every experiment from your menu.',
-    reread: `${L}, a pick that can't hurt`,
+    reread: `${L}, when a pick can matter`,
     async run({ fn }) {
       const findValues = await fn('find.mjs', 'findValues');
       let x = 7;

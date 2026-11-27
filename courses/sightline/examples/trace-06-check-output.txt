@@ -1,0 +1,5 @@
+the code's reader: ok true, 3 rounds compared
+the angle 2 too low: ok false, 3 rounds compared
+  round 1: angle 43 but the screen shows 45
+  round 2: angle 43 but the screen shows 45
+  round 3: angle 43 but the screen shows 45

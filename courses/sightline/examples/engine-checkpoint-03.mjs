@@ -1,0 +1,673 @@
+/* eslint-disable no-unused-vars -- later modules use these imports and parameters */
+// The engine: one loop that plays the game level by level. Code does the work:
+// it reads the game's memory, takes the game's code apart, and tests everything it
+// finds against the game before relying on it. Where more than one thing is worth
+// trying, the decision model picks which to try first. Every level has a budget of
+// rounds and shots, so a poor order can run out.
+//
+// kit: what the engine has learned so far. Plain data, carried from level to level.
+// env: { models, log }, handed in by the lab and the checks. models.decide is the
+//      decision model, or a stand-in for one.
+// Every function throws "not written yet" until you write it. API.md has the details.
+import * as S from './scan.mjs';
+import { findValues } from './find.mjs';
+import {
+  testShot,
+  fitShots,
+  predictFit,
+  judgeFit,
+  nearest,
+  search,
+  LIMITS,
+} from './learn.mjs';
+import { parseModule } from './wasm.mjs';
+import {
+  liftAll,
+  place,
+  placeKey,
+  parts,
+  loadsIn,
+  xrefs,
+  overlay,
+} from './lift.mjs';
+import {
+  launchOf,
+  aimValues,
+  flightOf,
+  simulator,
+  decoding,
+  windWord,
+  resolve,
+} from './flight.mjs';
+import {
+  flagOf,
+  readerFrom,
+  readState,
+  checkReader,
+  aimBand,
+} from './reader.mjs';
+import {
+  moverOf,
+  flagPath,
+  judgeMotion,
+  lead,
+  ready,
+  FRAME_BUDGET,
+} from './race.mjs';
+
+export const PRACTICE = [
+  [30, 70],
+  [50, 60],
+  [40, 85],
+  [60, 75],
+  [25, 90],
+  [45, 50],
+  [65, 95],
+  [35, 60],
+  [55, 80],
+  [70, 65],
+  [20, 75],
+  [50, 95],
+  [40, 55],
+  [60, 90],
+];
+export const CHECK_SHOTS = [
+  [30, 70],
+  [55, 80],
+  [40, 85],
+];
+// Powers for sighting shots at the lowest angle: none of them can reach a flag.
+export const SIGHTERS = [70, 55, 40];
+// region: given-keys
+const KEYS = [
+  'ArrowLeft',
+  'ArrowRight',
+  'ArrowUp',
+  'ArrowDown',
+  'KeyN',
+  'Space',
+];
+
+const { parseStatus } = S;
+const say = (env, rung, step, result) => {
+  env.log?.({ rung, step, result });
+};
+// "1 round", "2 rounds": a count and its word, for the log.
+const count = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+const newRound = (host, kit) => {
+  host.press(kit.controls.new_round);
+  host.tick(2);
+};
+// endregion: given-keys
+function readAt(host, addr, type) {
+  const m = host.memory();
+  const view = new DataView(m.buffer, m.byteOffset, m.byteLength);
+  return type === 'f32'
+    ? view.getFloat32(addr, true)
+    : view.getInt32(addr, true);
+}
+
+// Two hosts run the same game when their files are the same bytes.
+export function gameId(host) {
+  const bytes = host.binary();
+  let sum = 0;
+  for (const b of bytes) sum = (sum * 31 + b) >>> 0;
+  return `${bytes.length}:${sum}`;
+}
+
+// ---------- the budget ----------
+
+export class OutOfBudget extends Error {}
+
+// What a level leaves for learning: its budget less what the scored rounds need.
+// region: given-allowance
+export function allowance(level) {
+  return {
+    rounds: level.budget.rounds - level.rounds,
+    shots: level.budget.shots - level.rounds,
+  };
+}
+// endregion: given-allowance
+
+// The host the engine learns with. It counts every key press, and once the kit
+// knows which keys start a round and fire, it refuses (throws OutOfBudget) a press
+// that would spend more than the allowance `left`.
+// region: given-metered
+export function metered(host, kit, left) {
+  const presses = {};
+  const spent = () => ({
+    rounds: presses[kit.controls?.new_round] ?? 0,
+    shots: presses[kit.controls?.fire] ?? 0,
+  });
+  const wrapped = {
+    binary: () => host.binary(),
+    memory: () => host.memory(),
+    screen: () => host.screen(),
+    write: (addr, type, value) => host.write(addr, type, value),
+    tick: (frames) => host.tick(frames),
+    press(key) {
+      if (kit.controls) {
+        const s = spent();
+        if (key === kit.controls.new_round && s.rounds >= left.rounds)
+          throw new OutOfBudget(
+            `out of rounds: ${left.rounds} were left for learning`,
+          );
+        if (key === kit.controls.fire && s.shots >= left.shots)
+          throw new OutOfBudget(
+            `out of shots: ${left.shots} were left for learning`,
+          );
+      }
+      presses[key] = (presses[key] ?? 0) + 1;
+      host.press(key);
+    },
+  };
+  return { host: Object.freeze(wrapped), spent };
+}
+// endregion: given-metered
+
+// ---------- module 01: the controls ----------
+// Lesson 01 fills the four regions below. A listing replaces everything
+// between one pair of region markers; keep the markers.
+
+// Press each key but Space and watch what changes on the status line.
+// region: probe-controls
+function probeControls(host, kit) {
+  const found = {};
+  for (const key of KEYS.filter((k) => k !== 'Space')) {
+    const before = S.snapshot(host.memory());
+    host.press(key);
+    host.tick(2);
+    const after = S.snapshot(host.memory());
+    for (const s of S.changedStrings(before, after)) {
+      const was = S.readCString(before, s.addr);
+      const label = S.changedLabel(was, s.text);
+      if (label === 'angle' || label === 'power') {
+        // Only the status line puts ANGLE or POWER before a change.
+        const up = parseStatus(s.text)[label] > parseStatus(was)[label];
+        found[`${label}_${up ? 'up' : 'down'}`] = key;
+        kit.statusLine = s.addr;
+      } else if (/^ROUND/.test(s.text)) found.new_round = key;
+    }
+  }
+  // The one key that named nothing fires. It is never pressed here.
+  found.fire = KEYS.find((k) => !Object.values(found).includes(k));
+  const six = ['angle_up', 'angle_down', 'power_up', 'power_down'];
+  six.push('new_round', 'fire');
+  return six.every((name) => found[name]) ? found : null;
+}
+// endregion: probe-controls
+
+// The message is the string, in the game's own capitals, that changes when
+// a new round starts.
+// region: find-message
+function findMessage(host, kit) {
+  const before = S.snapshot(host.memory());
+  newRound(host, kit);
+  const after = S.snapshot(host.memory());
+  const message = S.changedStrings(before, after).find(
+    (s) => s.addr !== kit.statusLine && /^[A-Z][^a-z]*$/.test(s.text),
+  );
+  kit.message = message ? message.addr : null;
+}
+// endregion: find-message
+
+// Do the keys in the kit still do what they did? Step the angle and the power one
+// way and back, watching the status line. Costs no round.
+// region: controls-hold
+export function controlsHold(host, kit) {
+  const unset = (v) => v === undefined || v === null;
+  const { controls, statusLine, message } = kit;
+  if (!controls || unset(statusLine) || unset(message)) return false;
+  const shown = (label) =>
+    parseStatus(S.readCString(host.memory(), statusLine))[label];
+  for (const label of ['angle', 'power']) {
+    const up = controls[`${label}_up`];
+    const down = controls[`${label}_down`];
+    const top = label === 'angle' ? LIMITS.angle_max : LIMITS.power_max;
+    const was = shown(label);
+    if (was === null) return false;
+    // At the top of its range an up press can't move the value,
+    // so the test steps down and back up instead.
+    const atTop = was >= top;
+    const [first, back] = atTop ? [down, up] : [up, down];
+    const step = atTop ? -1 : 1;
+    host.press(first);
+    host.tick(2);
+    const now = shown(label);
+    host.press(back);
+    host.tick(2);
+    if (now !== was + step) return false;
+  }
+  return true;
+}
+// endregion: controls-hold
+
+// region: learn-controls
+export async function learnControls(host, kit, env) {
+  if (controlsHold(host, kit)) {
+    const why = 'the keys in the kit still do what they did';
+    say(env, 'code', 'check the controls', why);
+    return kit.controls;
+  }
+  const probed = probeControls(host, kit);
+  if (!probed) throw new Error('could not work out the controls');
+  kit.controls = probed;
+  findMessage(host, kit);
+  const how = 'pressed each key and watched the status line';
+  say(env, 'code', 'work out the controls', how);
+  return probed;
+}
+// endregion: learn-controls
+// ---------- module 02: picks ----------
+
+// Ask the decision model to pick one option. With one option there is nothing to
+// decide and no call is made. Any answer that is not a usable index, and a model
+// that is not there, is option 0. The options go to the model as labels; the
+// stand-ins that are not models get the options themselves as well.
+// region: choose
+export async function choose(env, what, text, options) {
+  if (options.length <= 1) return 0; // nothing to decide: no call
+  const labelOf = (o) => (typeof o === 'string' ? o : o.label);
+  const labels = options.map(labelOf);
+  const step = `pick ${what}`;
+  try {
+    const answer = await env.models.decide(text, labels, options);
+    const choice = answer?.choice;
+    const onMenu = choice >= 0 && choice < labels.length;
+    if (Number.isInteger(choice) && onMenu) {
+      say(env, 'decision', step, labels[choice]);
+      return choice;
+    }
+    const shown = JSON.stringify(choice);
+    const why = `answered ${shown}, which is not on the menu`;
+    say(env, 'decision', step, `${why}; taking option 0`);
+  } catch (error) {
+    if (error instanceof OutOfBudget) throw error; // the level is over
+    const why = `unavailable (${error.message})`;
+    say(env, 'decision', step, `${why}; taking option 0`);
+  }
+  return 0;
+}
+// endregion: choose
+// ---------- module 03: an aim from practice shots ----------
+
+// region: learn-fit
+export async function learnFit(host, kit, env) {
+  // Sighting shots first: fired flat, each lands far short of any flag,
+  // so its message gives a distance that narrows the landing slot.
+  for (const power of SIGHTERS) {
+    if (kit.found.landing) break;
+    newRound(host, kit);
+    testShot(host, kit.found, kit.controls, LIMITS.angle_min, power);
+  }
+  const shots = [];
+  for (let i = 0; i < PRACTICE.length; i++) {
+    if (i % 4 === 0) newRound(host, kit); // before shots 1, 5, 9 and 13
+    shots.push(testShot(host, kit.found, kit.controls, ...PRACTICE[i]));
+  }
+  kit.shots = shots;
+  // The 4th, 8th and 12th are held back; the fit sees the other 11.
+  const fitOn = shots.filter((_, i) => i % 4 !== 3);
+  const heldOut = shots.filter((_, i) => i % 4 === 3);
+  const coef = fitShots(fitOn);
+  const v = judgeFit(coef, { fitOn, heldOut });
+  const sizes = `${fitOn.length} fitted, ${heldOut.length} held back`;
+  const worst =
+    `worst miss ${v.fitWorst.toFixed(1)} paces on the fitted shots, ` +
+    `${v.heldWorst.toFixed(1)} on the held-back ones`;
+  const accepted = v.verdict === 'accept';
+  const verdict = accepted ? 'accepted' : 'not good enough';
+  const step = 'fit the practice shots';
+  say(env, 'code', step, `${sizes}; ${worst}: ${verdict}`);
+  kit.fit = accepted ? { coef, game: gameId(host) } : null;
+  return kit.fit;
+}
+// endregion: learn-fit
+// What the passes find in the game's code, worked out once per game. Every
+// finding is a hypothesis until a test against the game confirms it.
+export function analyse(host) {
+  throw new Error('not written yet: analyse in engine.mjs');
+}
+export function sayReader(code, cand) {
+  throw new Error('not written yet: sayReader in engine.mjs');
+}
+export function sayPhysics(code, host = null) {
+  throw new Error('not written yet: sayPhysics in engine.mjs');
+}
+export function sayMover(cand) {
+  throw new Error('not written yet: sayMover in engine.mjs');
+}
+// region: fire
+// Set the barrel to the plan, counting press by press from the angle
+// and power look reads. A press takes no frame, so none is ticked.
+function setBarrel(host, kit, env, plan) {
+  const { controls } = kit;
+  const state = look(host, kit, env);
+  let a = Math.round(state.angle);
+  let p = Math.round(state.power);
+  for (let n = 0; n < 200 && a !== plan.angle; n++) {
+    const up = a < plan.angle;
+    host.press(up ? controls.angle_up : controls.angle_down);
+    a += up ? 1 : -1;
+  }
+  for (let n = 0; n < 200 && p !== plan.power; n++) {
+    const up = p < plan.power;
+    host.press(up ? controls.power_up : controls.power_down);
+    p += up ? 1 : -1;
+  }
+}
+
+// Fire, and tick one frame at a time until the message shows text.
+function release(host, kit) {
+  host.press(kit.controls.fire);
+  let text = '';
+  let frames = 0;
+  while (frames < 1500 && !text) {
+    host.tick(1);
+    frames++;
+    text = S.readCString(host.memory(), kit.message);
+  }
+  return { text, frames, hit: text.startsWith('HIT') };
+}
+
+export function fire(host, kit, env, plan) {
+  setBarrel(host, kit, env, plan);
+  return release(host, kit);
+}
+// endregion: fire
+// Check shots for the physics: each is simulated from memory just before it is
+// fired, then fired. The landing comes from the message (SHORT BY 37 is 37 paces
+// before the flag, to the nearest pace), with the flag read when it lands. A shot
+// that hits says only "within 12 paces", so it is fired again with other power.
+export async function learnPhysics(host, kit, env) {
+  throw new Error('not written yet: learnPhysics in engine.mjs');
+}
+// The game's state right now, through the reader if the kit has one, otherwise
+// from the addresses a search found.
+// region: look
+export function look(host, kit, env) {
+  const f = kit.found;
+  if (!f) throw new Error('nothing in the kit reads the state');
+  return {
+    angle: readAt(host, f.angle.addr, f.angle.type),
+    power: readAt(host, f.power.addr, f.power.type),
+    wind: readAt(host, f.wind.addr, 'f32'),
+    wind_arrows: null, // module 06 reads a wind shown only as arrows
+    target_x: readAt(host, f.flag.addr, 'f32'),
+  };
+}
+// endregion: look
+export async function learnReader(host, kit, env, which) {
+  throw new Error('not written yet: learnReader in engine.mjs');
+}
+// ---------- module 07: the flag's motion ----------
+
+export async function learnMotion(host, kit, env, which) {
+  throw new Error('not written yet: learnMotion in engine.mjs');
+}
+// What is missing or broken for this level, most basic first:
+// { part, why, evidence, options }, or null when the kit is ready.
+// region: repair-find
+// The search, as a repair: findValues asks the picker through choose.
+async function repairFind(host, kit, env) {
+  const step = 'search memory for the values';
+  const decide = (text, labels) =>
+    choose(env, 'the next experiment', text, labels);
+  try {
+    kit.found = await findValues(host, kit.controls, { decide });
+    const n = kit.found.experiments;
+    const what = 'found angle, power, wind and flag';
+    say(env, 'code', step, `${what} in ${n} experiments`);
+  } catch (error) {
+    if (error instanceof OutOfBudget) throw error; // the level is over
+    kit.found = null;
+    say(env, 'code', step, `failed: ${error.message}`);
+  }
+}
+// endregion: repair-find
+
+// region: options
+// What each option costs, the sentence a picker reads, and what runs.
+const OPTIONS = {
+  controls: {
+    cost: { rounds: 2, shots: 0 },
+    label: 'Press each key and watch the status line',
+    run: learnControls,
+  },
+  search: {
+    cost: { rounds: 6, shots: 0 },
+    label:
+      'Search memory for the values (about 6 rounds; what it finds' +
+      ' stops working if the state moves or is scrambled, and it' +
+      ' needs the wind on the screen)',
+    run: repairFind,
+  },
+  fit: {
+    cost: { rounds: 7, shots: 17 },
+    label:
+      'Fire 14 practice shots and fit an aim to them' +
+      ' (about 7 rounds and 17 shots; good to about 10 paces)',
+    run: learnFit,
+  },
+};
+
+// One option of a menu. which is 0 for every option in this module.
+function option(kind) {
+  const { cost, label, run } = OPTIONS[kind];
+  return { kind, which: 0, key: `${kind}:0`, label, cost, run };
+}
+// endregion: options
+
+// region: state-broke
+// Do the addresses the search found still hold what the status line
+// shows, a round later? null when they do; otherwise the reason.
+function stateBroke(host, kit) {
+  const f = kit.found;
+  newRound(host, kit);
+  const line = S.readCString(host.memory(), kit.statusLine);
+  const shown = parseStatus(line);
+  const angle = readAt(host, f.angle.addr, f.angle.type);
+  const power = readAt(host, f.power.addr, f.power.type);
+  const wind = readAt(host, f.wind.addr, 'f32');
+  if (shown.angle === null || shown.power === null) {
+    return 'the status line shows no angle and power to compare with';
+  }
+  const angleHolds = Math.abs(angle - shown.angle) <= 0.5;
+  if (!angleHolds || Math.round(power) !== shown.power) {
+    const where = `angle ${angle} there, ${shown.angle} on screen`;
+    return (
+      'a round later the addresses found by searching no longer' +
+      ` hold what the screen shows (${where})`
+    );
+  }
+  if (shown.wind === null) {
+    return (
+      'the screen shows only wind arrows, so an address for the' +
+      ' wind is no use'
+    );
+  }
+  if (!(Math.abs(wind - shown.wind) <= 0.051)) {
+    const holds = `the address found for the wind holds ${wind}`;
+    return `${holds}; the screen shows ${shown.wind}`;
+  }
+  return null;
+}
+// endregion: state-broke
+
+// region: check-kit
+export async function checkKit(host, kit, level, env) {
+  const evidence = []; // stays empty until module 06
+  if (!controlsHold(host, kit)) {
+    const why = 'the controls are not known on this game';
+    const options = [option('controls')];
+    return { part: 'controls', why, evidence, options };
+  }
+  let why = 'nothing reads the state yet';
+  if (kit.found) {
+    const broke = stateBroke(host, kit); // costs one round
+    if (broke) {
+      why = broke;
+      delete kit.found;
+    }
+  }
+  if (!kit.found) {
+    const options = [option('search')];
+    return { part: 'state', why, evidence, options };
+  }
+  if (kit.fit?.game === gameId(host)) return null; // ready to play
+  why = 'nothing in the kit aims yet';
+  return { part: 'aim', why, evidence, options: [option('fit')] };
+}
+// endregion: check-kit
+// The rule the decision model is measured against: the cheapest option that no
+// evidence rules out, in rounds and then shots; the first of equals.
+export function heuristic(problem, options) {
+  throw new Error('not written yet: heuristic in engine.mjs');
+}
+// ---------- module 07: aiming, and a decision in time ----------
+
+// The shot to fire for this state, with the best part the kit has: the code's
+// physics (leading the flag if it moves), else the fit, else the nearest practice
+// shot. delay: frames that pass before the shot leaves.
+// region: aim-for
+export function aimFor(host, kit, state, env, delay = 1) {
+  if (kit.fit && typeof state.wind === 'number') {
+    const { coef } = kit.fit;
+    // A fit can't say how long a shot flies, so frames is null.
+    const predict = (angle, power) => {
+      const x = predictFit(coef, angle, power, state.wind);
+      return { x, frames: null };
+    };
+    return search(predict, () => state.target_x);
+  }
+  return kit.shots?.length ? nearest(kit.shots, state) : null;
+}
+// endregion: aim-for
+// region: play-rounds
+export async function playRounds(host, level, kit, env) {
+  let hits = 0;
+  for (let n = 1; n <= level.rounds; n++) {
+    newRound(host, kit);
+    let state;
+    try {
+      state = look(host, kit, env);
+    } catch (error) {
+      const why = `cannot play: ${error.message}; firing nothing`;
+      say(env, 'code', `round ${n}`, why);
+      return { hits, rounds: level.rounds };
+    }
+    const plan = aimFor(host, kit, state, env);
+    if (!plan) {
+      say(env, 'code', `round ${n}`, 'nothing in the kit can aim');
+      continue;
+    }
+    host.tick(1); // the shot leaves one frame after its plan
+    if (fire(host, kit, env, plan).hit) hits++;
+  }
+  return { hits, rounds: level.rounds };
+}
+// endregion: play-rounds
+// Time the decision model three times. Its middle time, in frames, is the
+// delay the engine plans for. What cannot be planned for is the spread between
+// its fastest and slowest answer: the model may decide during a round only if
+// that spread, in frames, is within the budget.
+export async function pickDecider(env, budget = FRAME_BUDGET) {
+  throw new Error('not written yet: pickDecider in engine.mjs');
+}
+// Hit rate against decision latency, two ways. planned: the engine knows the
+// shot leaves `latency` frames after the plan and aims for that. unplanned: it
+// aims as if the shot left at once, and the shot leaves `latency` frames late.
+export async function sweep(newHost, level, kit, env, latencies) {
+  throw new Error('not written yet: sweep in engine.mjs');
+}
+// ---------- module 08: one level, start to finish ----------
+
+// region: what-fits
+// What is left of the allowance, and the options not yet tried on
+// this level whose estimated cost fits in it.
+function whatFits(problem, left, spent, tried) {
+  const rounds = left.rounds - spent.rounds;
+  const shots = left.shots - spent.shots;
+  const fits = (o) => o.cost.rounds <= rounds && o.cost.shots <= shots;
+  const untried = problem.options.filter((o) => !tried.has(o.key));
+  const room = `${count(rounds, 'round')} and ${count(shots, 'shot')}`;
+  return { options: untried.filter(fits), room };
+}
+// endregion: what-fits
+
+// region: pick-repair
+// The first problem, and the option the picker picks from those that
+// fit. null when the kit is ready or nothing that fits is left.
+async function pickRepair(at) {
+  const { meter, level, kit, env, left, tried } = at;
+  let problem;
+  try {
+    problem = await checkKit(meter.host, kit, level, env);
+  } catch (error) {
+    if (!(error instanceof OutOfBudget)) throw error;
+    say(env, 'code', 'check the kit', error.message);
+    return null;
+  }
+  if (!problem) return null; // the kit is ready
+  const spent = meter.spent();
+  const { options, room } = whatFits(problem, left, spent, tried);
+  const { part, why } = problem;
+  if (!options.length) {
+    const none = 'nothing left to try that fits the budget';
+    const line = `${none} (${room} left) for the ${part}: ${why}`;
+    say(env, 'code', 'repair', line);
+    return null;
+  }
+  const text =
+    `Level ${level.n}, ${level.name}: ${level.about}` +
+    ` Problem: ${why}. Left for learning: ${room}.`;
+  const menu = options.map((o) => ({ ...o, problem }));
+  try {
+    const pick = await choose(env, 'what to try next', text, menu);
+    return { why, option: options[pick] };
+  } catch (error) {
+    if (error instanceof OutOfBudget) return null;
+    throw error;
+  }
+}
+// endregion: pick-repair
+
+// region: repair-once
+// One pass of the loop: pick a repair and run it on the metered host.
+// false once the repairs are over.
+async function repairOnce(at) {
+  const { meter, kit, env, tried } = at;
+  const picked = await pickRepair(at);
+  if (!picked) return false;
+  const { why, option } = picked;
+  tried.add(option.key);
+  say(env, 'code', 'repair', `${why}: ${option.label}`);
+  const before = meter.spent();
+  try {
+    await option.run(meter.host, kit, env);
+  } catch (error) {
+    if (!(error instanceof OutOfBudget)) throw error;
+    say(env, 'code', 'repair', `stopped: ${error.message}`);
+    return false;
+  }
+  const after = meter.spent();
+  const rounds = count(after.rounds - before.rounds, 'round');
+  const shots = count(after.shots - before.shots, 'shot');
+  say(env, 'code', 'spent', `${option.kind}: ${rounds} and ${shots}`);
+  return true;
+}
+// endregion: repair-once
+
+// region: play-level
+export async function playLevel(host, level, kit, env) {
+  const left = allowance(level);
+  const meter = metered(host, kit, left);
+  const tried = new Set(); // keys of the options run on this level
+  const at = { meter, level, kit, env, left, tried };
+  for (let n = 0; n < 10; n++) {
+    if (!(await repairOnce(at))) break;
+  }
+  // The scored rounds, on the plain host: the allowance left room.
+  return playRounds(host, level, kit, env);
+}
+// endregion: play-level

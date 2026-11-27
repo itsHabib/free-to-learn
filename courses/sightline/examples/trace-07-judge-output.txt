@@ -1,0 +1,4 @@
+the slice: ok true, 600 frames predicted
+a constant speed: ok false, 190 frames predicted
+  round 1: the path said the flag would be at 426.54 after 191
+    frames; it was at 426.83

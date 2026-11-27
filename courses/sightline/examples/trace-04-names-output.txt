@@ -1,0 +1,5 @@
+1: env.cos (f64) -> (f64)
+4: game_init (i32 i32) -> ()
+5: func5 () -> ()
+7: game_key (i32) -> ()
+9: r_angle () -> (f32)

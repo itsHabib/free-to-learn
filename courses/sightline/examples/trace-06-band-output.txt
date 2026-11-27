@@ -1,0 +1,6 @@
+windBand(-3): [-5, -3.75]
+windBand(0): [-0.75, 0.75]
+windBand(2): [2.25, 3.75]
+level 5's build, seed 5: 3 arrows, the flag at 553.65
+  aimBand: angle 8, power 99, lands at 551.88 after 45 frames
+  the wind the server holds: 3.84
