@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="434" viewBox="0 0 400 434" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">The method, from symptom to first bad write</title>
+<desc id="d">The seven steps of lesson 13's method as boxes from top to bottom, each with the debug.mjs commands it uses: 1, Find the first visible difference (diverge, compare); 2, Find the address the getter reads (listing, call N, read); 3, Find who wrote it (last-write ADDR, who ADDR); 4, Judge that store: were its inputs right? (sources, compare); 5, Look just before it (back 30, writes 30); 6, List every change to the byte (clear, watch ADDR, seek 0, continue); 7, Name it (answer). Two arrows go back. From step 4 to step 3: when one of the store's inputs was already wrong, find who wrote that input. From step 5 to itself: when the first store in the stretch is already wrong, step back further.</desc>
+<rect width="400" height="434" fill="#ffffff"/>
+<defs><marker id="m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6f685d"/></marker><marker id="k" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b5541c"/></marker></defs>
+<text x="16" y="22" font-weight="600">The method, from symptom to first bad write</text>
+<rect x="16" y="44" width="284" height="40" fill="#efe9df" stroke="#c9c1b4" rx="4"/>
+<text x="26" y="61" font-size="13" font-weight="600">1. Find the first visible difference</text>
+<text x="28" y="77" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">diverge, compare</text>
+<line x1="56" y1="84" x2="56" y2="98" stroke="#6f685d" stroke-width="1.2" marker-end="url(#m)"/>
+<rect x="16" y="100" width="284" height="40" fill="#efe9df" stroke="#c9c1b4" rx="4"/>
+<text x="26" y="117" font-size="13" font-weight="600">2. Find the address the getter reads</text>
+<text x="28" y="133" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">listing, call N, read</text>
+<line x1="56" y1="140" x2="56" y2="154" stroke="#6f685d" stroke-width="1.2" marker-end="url(#m)"/>
+<rect x="16" y="156" width="284" height="40" fill="#efe9df" stroke="#c9c1b4" rx="4"/>
+<text x="26" y="173" font-size="13" font-weight="600">3. Find who wrote it</text>
+<text x="28" y="189" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">last-write ADDR, who ADDR</text>
+<line x1="56" y1="196" x2="56" y2="210" stroke="#6f685d" stroke-width="1.2" marker-end="url(#m)"/>
+<rect x="16" y="212" width="284" height="40" fill="#efe9df" stroke="#c9c1b4" rx="4"/>
+<text x="26" y="229" font-size="13" font-weight="600">4. Judge that store: were its inputs right?</text>
+<text x="28" y="245" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">sources, compare</text>
+<line x1="56" y1="252" x2="56" y2="266" stroke="#6f685d" stroke-width="1.2" marker-end="url(#m)"/>
+<rect x="16" y="268" width="284" height="40" fill="#efe9df" stroke="#c9c1b4" rx="4"/>
+<text x="26" y="285" font-size="13" font-weight="600">5. Look just before it</text>
+<text x="28" y="301" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">back 30, writes 30</text>
+<line x1="56" y1="308" x2="56" y2="322" stroke="#6f685d" stroke-width="1.2" marker-end="url(#m)"/>
+<rect x="16" y="324" width="284" height="40" fill="#efe9df" stroke="#c9c1b4" rx="4"/>
+<text x="26" y="341" font-size="13" font-weight="600">6. List every change to the byte</text>
+<text x="28" y="357" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">clear, watch ADDR, seek 0, continue</text>
+<line x1="56" y1="364" x2="56" y2="378" stroke="#6f685d" stroke-width="1.2" marker-end="url(#m)"/>
+<rect x="16" y="380" width="284" height="40" fill="#f3d9c6" stroke="#b5541c" rx="4"/>
+<text x="26" y="397" font-size="13" font-weight="600">7. Name it</text>
+<text x="28" y="413" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">answer</text>
+<path d="M300 232 C 350 232, 350 176, 302 176" fill="none" stroke="#b5541c" stroke-width="1.6" marker-end="url(#k)"/>
+<text x="344" y="184" font-size="12" fill="#b5541c">an input</text>
+<text x="344" y="197" font-size="12" fill="#b5541c">was</text>
+<text x="344" y="210" font-size="12" fill="#b5541c">already</text>
+<text x="344" y="223" font-size="12" fill="#b5541c">wrong</text>
+<path d="M300 296 C 340 318, 340 258, 302 280" fill="none" stroke="#b5541c" stroke-width="1.6" marker-end="url(#k)"/>
+<text x="344" y="284" font-size="12" fill="#b5541c">first store</text>
+<text x="344" y="297" font-size="12" fill="#b5541c">already</text>
+<text x="344" y="310" font-size="12" fill="#b5541c">wrong</text>
+</svg>

@@ -11009,6 +11009,56 @@
       "codeExamplesLicense": "MIT"
     },
     {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/bisect-call.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/call-frames.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/hash-scan.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/ladder-method.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/last-write-pages.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/memory-map.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/name-section.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/page-sharing.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/restore-replay.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/time-travel-debugger-part-two/lessons/figures/value-chain.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/time-travel-debugger-part-two/lessons/sections.json",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="308" viewBox="0 0 400 308" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">Find the call where two runs part</title>
+<desc id="d">Step 1 of the search, on lesson 09's tampered recording, whose answer 12 was changed. Calls are drawn as cells from call 0. The tampered recording is replayed one call at a time, and after each call its memory hash is compared with the hash the original recording kept. Calls 0 to 28 end with the same hash. Call 29 is the first whose hash differs, so the scan stops there; the remaining calls, of 759, are never replayed. Step 2 then searches inside call 29 alone: 796 instructions from tick 96,469, where memory is equal and the state saved at the call's start is the same in both runs, to tick 97,265, where memory differs.</desc>
+<rect width="400" height="308" fill="#ffffff"/>
+<defs><marker id="h" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2b2620"/></marker></defs>
+<text x="16" y="22" font-weight="600">Step 1: replay only the tampered recording</text>
+<text x="16" y="40" font-size="13" fill="#6f685d">after each call, compare its memory hash with</text>
+<text x="16" y="56" font-size="13" fill="#6f685d">the hash the original recording kept</text>
+<rect x="16" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="26.22" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="36.44" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="46.67" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="56.89" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="67.11" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="77.33" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="87.56" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="97.78" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="108" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="118.22" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="128.44" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="138.67" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="148.89" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="159.11" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="169.33" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="179.56" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="189.78" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="200" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="210.22" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="220.44" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="230.67" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="240.89" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="251.11" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="261.33" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="271.56" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="281.78" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="292" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="302.22" y="72" width="8.72" height="26" fill="#efe9df" stroke="#c9c1b4"/>
+<rect x="312.44" y="72" width="8.72" height="26" fill="#b5541c" stroke="#b5541c"/>
+<rect x="322.67" y="72" width="8.72" height="26" fill="#ffffff" stroke="#c9c1b4" stroke-dasharray="2 2"/>
+<rect x="332.89" y="72" width="8.72" height="26" fill="#ffffff" stroke="#c9c1b4" stroke-dasharray="2 2"/>
+<rect x="343.11" y="72" width="8.72" height="26" fill="#ffffff" stroke="#c9c1b4" stroke-dasharray="2 2"/>
+<rect x="353.33" y="72" width="8.72" height="26" fill="#ffffff" stroke="#c9c1b4" stroke-dasharray="2 2"/>
+<rect x="363.56" y="72" width="8.72" height="26" fill="#ffffff" stroke="#c9c1b4" stroke-dasharray="2 2"/>
+<rect x="373.78" y="72" width="8.72" height="26" fill="#ffffff" stroke="#c9c1b4" stroke-dasharray="2 2"/>
+<text x="21.11" y="113" text-anchor="middle" font-size="12" fill="#6f685d">0</text>
+<text x="123.33" y="113" text-anchor="middle" font-size="12" fill="#6f685d">10</text>
+<text x="225.56" y="113" text-anchor="middle" font-size="12" fill="#6f685d">20</text>
+<text x="317.56" y="113" text-anchor="middle" font-size="12" fill="#b5541c">29</text>
+<text x="16" y="130" font-size="12" fill="#6f685d">call</text>
+<text x="384" y="130" text-anchor="end" font-size="12" fill="#6f685d">of 759 calls</text>
+<rect x="16" y="142" width="12" height="12" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="34" y="152" font-size="12">same hash</text>
+<rect x="120" y="142" width="12" height="12" fill="#b5541c"/>
+<text x="138" y="152" font-size="12">differs: stop</text>
+<rect x="236" y="142" width="12" height="12" fill="#ffffff" stroke="#c9c1b4" stroke-dasharray="2 2"/>
+<text x="254" y="152" font-size="12">never replayed</text>
+<text x="16" y="192" font-weight="600">Step 2 searches inside call 29 alone</text>
+<rect x="36" y="206" width="328" height="30" fill="#f7f3ec" stroke="#b5541c"/>
+<text x="44" y="226" font-size="13">796 instructions</text>
+<text x="36" y="256" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">tick 96,469</text>
+<text x="364" y="256" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">tick 97,265</text>
+<text x="36" y="276" font-size="12">memory equal: state saved here,</text>
+<text x="36" y="292" font-size="12">the same in both runs</text>
+<text x="364" y="276" text-anchor="end" font-size="12">memory differs</text>
+</svg>

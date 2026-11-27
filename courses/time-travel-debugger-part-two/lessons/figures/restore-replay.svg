@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="352" viewBox="0 0 400 352" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">A move back is a restore and a short replay</title>
+<desc id="d">Two backward moves from examples/back-session.txt, drawn on the stretch between the snapshots at ticks 299,000 and 300,000. First, back 1 from 300,000: the debugger restores the snapshot at 299,000 and replays 999 instructions to 299,999. Second, rcontinue from 299,999 with a breakpoint on function 8, instruction 0: it restores the snapshot at 299,000, replays the stretch, 998 instructions, noting each position where the breakpoint fires, and finds it fires only at 299,502; then it restores the snapshot again and replays 502 instructions to stand there. 1,500 instructions in all.</desc>
+<rect width="400" height="352" fill="#ffffff"/>
+<defs><marker id="r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b5541c"/></marker><marker id="p" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#2f6f8f"/></marker></defs>
+<text x="16" y="22" font-weight="600">Two backward moves between two snapshots</text>
+<text x="16" y="50" font-size="13" font-weight="600">back 1 from 300,000</text>
+<line x1="30" y1="86" x2="370" y2="86" stroke="#6f685d"/>
+<rect x="27" y="78" width="6" height="16" fill="#2b2620"/>
+<text x="30" y="72" text-anchor="start" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#6f685d">299,000</text>
+<rect x="367" y="78" width="6" height="16" fill="#2b2620"/>
+<text x="370" y="72" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#6f685d">300,000</text>
+<path d="M364 96 C 320 128, 80 128, 36 98" fill="none" stroke="#b5541c" stroke-width="1.5" marker-end="url(#r)"/>
+<text x="200" y="116" text-anchor="middle" font-size="12" fill="#b5541c">restore the snapshot</text>
+<line x1="34" y1="138" x2="365.66" y2="138" stroke="#2f6f8f" stroke-width="2" marker-end="url(#p)"/>
+<text x="200" y="156" text-anchor="middle" font-size="12" fill="#2f6f8f">then replay 999 instructions to 299,999</text>
+<text x="16" y="196" font-size="13" font-weight="600">rcontinue from 299,999, breakpoint 8:0</text>
+<line x1="30" y1="236" x2="370" y2="236" stroke="#6f685d"/>
+<rect x="27" y="228" width="6" height="16" fill="#2b2620"/>
+<text x="30" y="222" text-anchor="start" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#6f685d">299,000</text>
+<rect x="367" y="228" width="6" height="16" fill="#2b2620"/>
+<text x="370" y="222" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#6f685d">300,000</text>
+<line x1="200.68" y1="227" x2="200.68" y2="245" stroke="#b5541c" stroke-width="2.5"/>
+<text x="200.68" y="222" text-anchor="middle" font-size="12" fill="#b5541c">fires at 299,502</text>
+<line x1="34" y1="258" x2="365.32" y2="258" stroke="#2f6f8f" stroke-width="2" marker-end="url(#p)"/>
+<text x="30" y="276" font-size="12" fill="#2f6f8f">1. restore, replay up to 299,998: 998 instructions</text>
+<line x1="34" y1="292" x2="196.68" y2="292" stroke="#2f6f8f" stroke-width="2" marker-end="url(#p)" stroke-dasharray="5 3"/>
+<text x="30" y="310" font-size="12" fill="#2f6f8f">2. restore again, replay 502 to the last stop</text>
+<text x="30" y="336" font-size="13">1,500 instructions in all</text>
+</svg>

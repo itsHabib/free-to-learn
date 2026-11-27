@@ -728,6 +728,51 @@
     "lesson": "10",
     "section": "Snapshots that share pages"
   },
+  "10e": {
+    "version": 1,
+    "lesson": "10",
+    "section": "Budgets",
+    "retry": "10e2",
+    "question": "Snapshots are every 1,000 instructions. The debugger stands at position 300,000 and calls seek(300400), then seek(300200). How many instructions does the second seek replay?",
+    "format": "a whole number",
+    "expected": "200",
+    "reason": "moveTo restores a snapshot when the target lies behind where the machine stands. The second seek's target, 300,200, is behind 300,400, so it restores the snapshot at 300,000 and replays forward 200 instructions. The first seek restored nothing: the machine at 300,000 already stood at the snapshot for 300,400 and behind the target, so it ran on 400.",
+    "wrong": [
+      {
+        "answer": "0",
+        "feedback": "Going back is never free: the machine can only run forward, so moveTo restores the snapshot at 300,000 and replays from there to 300,200."
+      },
+      {
+        "answer": "600",
+        "feedback": "The machine does not replay the 400 it moved forward again. moveTo restores the snapshot at or before the target, 300,000, and replays only from there: 200."
+      },
+      {
+        "answer": "300200",
+        "feedback": "That is the cost of replaying from tick 0. moveTo restores the nearest snapshot at or before 300,200, the one at 300,000, and replays 200."
+      },
+      {
+        "answer": "400",
+        "feedback": "400 is what the first seek replayed. The second goes back to 300,200, so moveTo restores the snapshot at 300,000 and replays 200."
+      }
+    ]
+  },
+  "10e2": {
+    "version": 1,
+    "variantOf": "10e",
+    "retryOnly": true,
+    "question": "Snapshots are every 1,000 instructions. The debugger stands at position 52,000 and calls seek(52700), then seek(52950). How many instructions does the second seek replay?",
+    "format": "a whole number",
+    "expected": "250",
+    "reason": "The second target, 52,950, lies ahead of the machine at 52,700, and the machine already stands past the snapshot at 52,000 that the target would use, so moveTo restores nothing and runs on 250.",
+    "wrong": [
+      {
+        "answer": "950",
+        "feedback": "moveTo restores a snapshot only when the target lies behind the machine or the machine stands before that snapshot. The machine at 52,700 is already past the snapshot at 52,000 and behind the target, so it runs on 250."
+      }
+    ],
+    "lesson": "10",
+    "section": "Budgets"
+  },
   "11a": {
     "version": 1,
     "lesson": "11",
@@ -995,6 +1040,47 @@
     "wrong": [],
     "lesson": "11",
     "section": "How to follow a value"
+  },
+  "11f": {
+    "version": 1,
+    "lesson": "11",
+    "section": "Where a value came from",
+    "retry": "11f2",
+    "question": "A store at g + 8 writes the i32.add of two operands: a load of the 4 bytes at g + 4, which the store at tick 5,000 last wrote, and i32.const 3. The address g came from a load at 78,112, which the store at tick 1,000 wrote. Which of these stores are on the stored value's chain: (a) tick 5,000 only, (b) tick 1,000 only, or (c) both?",
+    "format": "a, b or c",
+    "expected": "a",
+    "reason": "The sum depends on both operands. The constant depends on nothing, and the load depends on the bytes it read, which the store at tick 5,000 wrote, not on the address it read them from. The pointer g was only ever an address, so the store at tick 1,000 is not on the chain.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "A load depends on the bytes it read, not on its address. g only told the load where to read, so the store that wrote g is not on the chain; only the store at tick 5,000 is."
+      },
+      {
+        "answer": "b",
+        "feedback": "The value stored comes from the bytes at g + 4, last written at tick 5,000. The store at tick 1,000 wrote g, which was used only as an address, and addresses are not followed."
+      }
+    ]
+  },
+  "11f2": {
+    "version": 1,
+    "variantOf": "11f",
+    "retryOnly": true,
+    "question": "A store at g + 4 writes the i32.xor of two loads: the 4 bytes at g + 92, last written by the store at tick 300, and the 4 bytes at g + 4, last written by the store at tick 900. Both addresses came from g, loaded from 78,112, which the store at tick 100 wrote. Which of these stores are on the stored value's chain: (a) tick 900 only, (b) ticks 300 and 900, or (c) ticks 100, 300 and 900?",
+    "format": "a, b or c",
+    "expected": "b",
+    "reason": "The xor depends on both of its operands, and each load depends on the bytes it read: those written at ticks 300 and 900. The store at tick 100 wrote g, which both loads used only as an address, so it is not on the chain.",
+    "wrong": [
+      {
+        "answer": "c",
+        "feedback": "g was only ever an address. A load depends on the bytes it read, so the chain holds the stores at ticks 300 and 900, not the one at tick 100 that wrote g."
+      },
+      {
+        "answer": "a",
+        "feedback": "An i32.xor depends on both operands, so both loads, and the stores that last wrote their bytes, ticks 300 and 900, are on the chain."
+      }
+    ],
+    "lesson": "11",
+    "section": "Where a value came from"
   },
   "12a": {
     "version": 1,

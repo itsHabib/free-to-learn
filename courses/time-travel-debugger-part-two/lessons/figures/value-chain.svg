@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="513" viewBox="0 0 400 513" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">The chain of the store at tick 89,345</title>
+<desc id="d">The chain of the store at tick 89,345, the shell position written at g + 40 on the first game frame of the first flight, call 20, in lesson 09's recording. Each arrow points from a value to what it was computed from. The position at tick 89,345 comes from the shell position stored at tick 88,529 and the horizontal speed stored at tick 88,553, both in call 19, and from answer 3, server_wind. The position at tick 88,529 comes from the cannon position, g + 20, stored at tick 69,167, and from answer 1, cos. The speed comes from answer 1 too and from the power at g + 4 stored by the last press of up, in call 12. That store comes from the press before it, and so on through 11 presses of up in calls 2 to 12; the first comes from two stores game_init made in call 0: the key at g + 92, tick 69,157, and the angle and power, an 8-byte store at g + 0, tick 69,170. 16 stores and 2 answers in all. An input reached through another store on the chain is drawn only there.</desc>
+<rect width="400" height="513" fill="#ffffff"/>
+<defs><marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#6f685d"/></marker></defs>
+<text x="16" y="22" font-weight="600">The chain of the store at tick 89,345</text>
+<text x="16" y="40" font-size="13" fill="#6f685d">each arrow points to what a value was computed from</text>
+<rect x="95" y="56" width="170" height="38" fill="#f3d9c6" stroke="#b5541c" rx="3"/>
+<text x="102" y="71" font-size="12" font-weight="600">g + 40: shell position</text>
+<text x="102" y="87" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">tick 89,345, call 20</text>
+<rect x="290" y="56" width="100" height="38" fill="#ffffff" stroke="#2f6f8f" stroke-width="1.4" rx="19"/>
+<text x="340" y="71" text-anchor="middle" font-size="12" font-weight="600" fill="#2f6f8f">answer 3</text>
+<text x="340" y="87" text-anchor="middle" font-size="12" fill="#2f6f8f" font-family="ui-monospace, Menlo, Consolas, monospace">server_wind</text>
+<rect x="10" y="130" width="165" height="38" fill="#efe9df" stroke="#c9c1b4" rx="3"/>
+<text x="17" y="145" font-size="12" font-weight="600">g + 40: shell position</text>
+<text x="17" y="161" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">tick 88,529, call 19</text>
+<rect x="205" y="130" width="185" height="38" fill="#efe9df" stroke="#c9c1b4" rx="3"/>
+<text x="212" y="145" font-size="12" font-weight="600">g + 48: horizontal speed</text>
+<text x="212" y="161" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">tick 88,553, call 19</text>
+<rect x="10" y="206" width="150" height="38" fill="#efe9df" stroke="#c9c1b4" rx="3"/>
+<text x="17" y="221" font-size="12" font-weight="600">g + 20: cannon position</text>
+<text x="17" y="237" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">tick 69,167, call 0</text>
+<rect x="170" y="206" width="98" height="38" fill="#ffffff" stroke="#2f6f8f" stroke-width="1.4" rx="19"/>
+<text x="219" y="221" text-anchor="middle" font-size="12" font-weight="600" fill="#2f6f8f">answer 1</text>
+<text x="219" y="237" text-anchor="middle" font-size="12" fill="#2f6f8f" font-family="ui-monospace, Menlo, Consolas, monospace">cos</text>
+<line x1="180" y1="94" x2="92.5" y2="128" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<line x1="180" y1="94" x2="297.5" y2="128" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<line x1="265" y1="75" x2="288" y2="75" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<line x1="50" y1="168" x2="50" y2="204" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<line x1="155" y1="168" x2="200" y2="204" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<line x1="225" y1="168" x2="238" y2="204" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<line x1="335" y1="168" x2="335" y2="204" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<rect x="280" y="206" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="218" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 12</text>
+<text x="384" y="218" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">83,439</text>
+<rect x="280" y="225" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="237" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 11</text>
+<text x="384" y="237" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">82,713</text>
+<rect x="280" y="244" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="256" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 10</text>
+<text x="384" y="256" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">81,987</text>
+<rect x="280" y="263" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="275" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 9</text>
+<text x="384" y="275" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">81,261</text>
+<rect x="280" y="282" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="294" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 8</text>
+<text x="384" y="294" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">80,535</text>
+<rect x="280" y="301" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="313" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 7</text>
+<text x="384" y="313" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">79,809</text>
+<rect x="280" y="320" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="332" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 6</text>
+<text x="384" y="332" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">79,083</text>
+<rect x="280" y="339" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="351" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 5</text>
+<text x="384" y="351" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">78,357</text>
+<rect x="280" y="358" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="370" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 4</text>
+<text x="384" y="370" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">77,631</text>
+<rect x="280" y="377" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="389" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 3</text>
+<text x="384" y="389" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">76,905</text>
+<rect x="280" y="396" width="110" height="16" fill="#efe9df" stroke="#c9c1b4" rx="2"/>
+<text x="286" y="408" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">call 2</text>
+<text x="384" y="408" text-anchor="end" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">76,179</text>
+<text x="270" y="272" text-anchor="end" font-size="12" font-weight="600">11 presses of up,</text>
+<text x="270" y="288" text-anchor="end" font-size="12">each storing g + 4: power</text>
+<text x="270" y="304" text-anchor="end" font-size="12" fill="#6f685d">from the press before it</text>
+<rect x="10" y="441" width="180" height="38" fill="#efe9df" stroke="#c9c1b4" rx="3"/>
+<text x="17" y="456" font-size="12" font-weight="600">g + 92: key</text>
+<text x="17" y="472" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">tick 69,157, call 0</text>
+<rect x="210" y="441" width="180" height="38" fill="#efe9df" stroke="#c9c1b4" rx="3"/>
+<text x="217" y="456" font-size="12" font-weight="600">g + 0: angle and power</text>
+<text x="217" y="472" font-size="12" fill="#6f685d" font-family="ui-monospace, Menlo, Consolas, monospace">tick 69,170, call 0</text>
+<line x1="300" y1="412" x2="160" y2="439" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<line x1="335" y1="412" x2="340" y2="439" stroke="#6f685d" stroke-width="1.2" marker-end="url(#c)"/>
+<text x="16" y="499" font-size="12" fill="#6f685d">both stored by game_init, call 0</text>
+</svg>

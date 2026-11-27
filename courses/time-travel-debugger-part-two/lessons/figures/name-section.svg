@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="244" viewBox="0 0 400 244" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">Where the names sit in lob-names.wasm</title>
+<desc id="d">Where the function names sit in targets/lob-names.wasm. Top, to scale: the whole file of 7,271 bytes, 8 fixed bytes, then 9 standard sections, most of it the code section of 5,957 bytes, then 3 custom sections with id 0, 589 bytes in all: name, 372 bytes; producers, 66 bytes; target_features, 151 bytes. Middle, not to scale: the custom section &quot;name&quot;: its id 0, its size 369, its own name &quot;name&quot;, then subsections 0 (size 15), 1 (size 312), 7 (size 18), 9 (size 10); the walk reads subsection 1 and skips the others by their sizes.</desc>
+<rect width="400" height="244" fill="#ffffff"/>
+<text x="16" y="22" font-weight="600">Where the names sit in lob-names.wasm</text>
+<text x="16" y="44" font-size="12" fill="#6f685d">the whole file, 7,271 bytes, to scale</text>
+<rect x="16" y="52" width="0.4" height="26" fill="#2b2620"/>
+<rect x="16.4" y="52" width="1.67" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="18.08" y="52" width="3.04" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="21.11" y="52" width="1.42" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="22.53" y="52" width="0.35" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="22.88" y="52" width="0.25" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="23.14" y="52" width="0.51" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="23.64" y="52" width="14.22" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="37.86" y="52" width="301.5" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="339.36" y="52" width="14.83" height="26" fill="#efe9df" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="354.19" y="52" width="18.83" height="26" fill="#b5541c" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="373.02" y="52" width="3.34" height="26" fill="#e6dccb" stroke="#ffffff" stroke-width="0.8"/>
+<rect x="376.36" y="52" width="7.64" height="26" fill="#e6dccb" stroke="#ffffff" stroke-width="0.8"/>
+<text x="188.61" y="69" text-anchor="middle" font-size="12">code section, 5,957 bytes</text>
+<line x1="354.19" y1="82" x2="354.19" y2="92" stroke="#6f685d"/>
+<line x1="384" y1="82" x2="384" y2="92" stroke="#6f685d"/>
+<line x1="354.19" y1="92" x2="384" y2="92" stroke="#6f685d"/>
+<text x="384" y="108" text-anchor="end" font-size="12">3 custom sections (id 0), 589 bytes:</text>
+<text x="384" y="124" text-anchor="end" font-size="12" fill="#6f685d">name 372, producers 66, target_features 151</text>
+<text x="16" y="108" font-size="12">8 fixed bytes, then 9</text>
+<text x="16" y="124" font-size="12">standard sections</text>
+<text x="16" y="158" font-size="12" fill="#b5541c">the custom section &quot;name&quot;, 372 bytes, not to scale</text>
+<rect x="16" y="168" width="32.75" height="40" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="32.38" y="184" text-anchor="middle" font-size="12" fill="#6f685d">id</text>
+<text x="32.38" y="200" text-anchor="middle" font-size="12">0</text>
+<rect x="48.75" y="168" width="46.24" height="40" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="71.87" y="184" text-anchor="middle" font-size="12" fill="#6f685d">size</text>
+<text x="71.87" y="200" text-anchor="middle" font-size="12">369</text>
+<rect x="94.99" y="168" width="55.87" height="40" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="122.93" y="184" text-anchor="middle" font-size="12" fill="#6f685d">name</text>
+<text x="122.93" y="200" text-anchor="middle" font-size="12">&quot;name&quot;</text>
+<rect x="150.87" y="168" width="48.17" height="40" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="174.95" y="184" text-anchor="middle" font-size="12" fill="#6f685d">sub 0</text>
+<text x="174.95" y="200" text-anchor="middle" font-size="12">size 15</text>
+<rect x="199.04" y="168" width="88.63" height="40" fill="#f3d9c6" stroke="#b5541c"/>
+<text x="243.35" y="184" text-anchor="middle" font-size="12" fill="#6f685d">sub 1</text>
+<text x="243.35" y="200" text-anchor="middle" font-size="12" font-weight="600">size 312</text>
+<rect x="287.66" y="168" width="48.17" height="40" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="311.75" y="184" text-anchor="middle" font-size="12" fill="#6f685d">sub 7</text>
+<text x="311.75" y="200" text-anchor="middle" font-size="12">size 18</text>
+<rect x="335.83" y="168" width="48.17" height="40" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="359.92" y="184" text-anchor="middle" font-size="12" fill="#6f685d">sub 9</text>
+<text x="359.92" y="200" text-anchor="middle" font-size="12">size 10</text>
+<text x="16" y="226" font-size="12" font-weight="600">subsection 1 holds the function names: 29 of them</text>
+<text x="16" y="242" font-size="12" fill="#6f685d">the walk skips subsections 0, 7, 9 by their sizes</text>
+</svg>

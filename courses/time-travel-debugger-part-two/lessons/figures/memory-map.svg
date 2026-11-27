@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="390" viewBox="0 0 400 390" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">Lob's memory after game_init</title>
+<desc id="d">Lob's memory of 131,072 bytes after game_init(5, 1), lowest address first, not to scale. From 0 to 65,507: zeros nothing writes. The C stack, which grows down from 65,536, where global 0 starts; the lowest byte this run writes is 65,508. At 65,536, the data segment: 281 bytes of text copied in from the listing. From 65,824 to 78,111, 12,288 bytes that game_init's loop sets to 0, holding the game's state at g = 65,904, the status line at 71,976, the message line at 72,040 and the help text at 72,072. At 78,112, the pointer, 4 bytes holding 65,904, drawn as an arrow to g. From 78,116 to the end: zeros nothing writes.</desc>
+<rect width="400" height="390" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#b5541c"/></marker></defs>
+<text x="92" y="22" font-weight="600">Lob's 131,072 bytes after game_init(5, 1)</text>
+<text x="92" y="37" fill="#6f685d" font-size="12">lowest address first; not to scale</text>
+<rect x="92" y="44" width="296" height="46" fill="#f7f3ec" stroke="#c9c1b4"/>
+<text x="86" y="56" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="100" y="61">zeros; nothing in the run writes here</text>
+<text x="100" y="77" font-size="12" fill="#6f685d">the whole of lesson 09's recording</text>
+<rect x="92" y="90" width="296" height="40" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="86" y="102" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">65,508</text>
+<text x="100" y="107">C stack: grows down from the top</text>
+<text x="100" y="123" font-size="12" fill="#6f685d">global 0 starts at 65,536; lowest byte written 65,508</text>
+<rect x="92" y="130" width="296" height="36" fill="#e6dccb" stroke="#c9c1b4"/>
+<text x="86" y="142" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">65,536</text>
+<text x="100" y="147">data segment: 281 bytes of text</text>
+<text x="100" y="163" font-size="12" fill="#6f685d">copied in from the listing</text>
+<rect x="92" y="166" width="296" height="134" fill="#efe9df" stroke="#c9c1b4"/>
+<text x="86" y="178" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">65,824</text>
+<rect x="92" y="300" width="296" height="28" fill="#f3d9c6" stroke="#c9c1b4"/>
+<text x="86" y="312" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">78,112</text>
+<text x="100" y="319">the pointer: holds g</text>
+<rect x="92" y="328" width="296" height="46" fill="#f7f3ec" stroke="#c9c1b4"/>
+<text x="86" y="340" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">78,116</text>
+<text x="100" y="356">zeros; nothing in the run writes here</text>
+<text x="86" y="374" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">131,072</text>
+<text x="100" y="183">12,288 bytes game_init's loop sets to 0:</text>
+<rect x="100" y="196" width="280" height="21" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="106" y="211" font-weight="600">the state at g = 65,904</text>
+<rect x="100" y="221" width="280" height="21" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="106" y="236">status line at 71,976</text>
+<rect x="100" y="246" width="280" height="21" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="106" y="261">message line at 72,040</text>
+<rect x="100" y="271" width="280" height="21" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="106" y="286">help text at 72,072</text>
+<path d="M380 314 C 398 314, 398 206, 378 206" fill="none" stroke="#b5541c" stroke-width="1.6" marker-end="url(#a)"/>
+<text x="372" y="318" text-anchor="end" font-size="12" fill="#b5541c">value 65,904</text>
+</svg>

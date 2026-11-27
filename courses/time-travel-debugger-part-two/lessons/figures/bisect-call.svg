@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="412" viewBox="0 0 400 412" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">Bisection inside call 29</title>
+<desc id="d">Bisection inside call 29 of lesson 09's tampered recording, 796 instructions long. One row per test, in order; the shaded bar is the interval still in question, which starts as 0 to 796, and the mark is the offset tested: t = 398, differs; t = 199, differs; t = 99, differs; t = 49, equal; t = 74, equal; t = 86, equal; t = 92, equal; t = 95, equal; t = 97, equal; t = 98, equal. Each test keeps the half whose ends are still equal and different, until the ends are one instruction apart at 98 and 99. Memory first differs 99 instructions into the call, at tick 96,469 + 99 = 96,568.</desc>
+<rect width="400" height="412" fill="#ffffff"/>
+<text x="16" y="22" font-weight="600">Bisection inside call 29: 796 instructions</text>
+<text x="16" y="40" font-size="13" fill="#6f685d">each test runs both versions t instructions from</text>
+<text x="16" y="56" font-size="13" fill="#6f685d">the saved state and compares their memory</text>
+<rect x="70" y="72" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="70" y="72" width="256" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="198" y1="68" x2="198" y2="88" stroke="#b5541c" stroke-width="2"/>
+<text x="62" y="83" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 398</text>
+<text x="336" y="83" font-size="12" fill="#b5541c">differs</text>
+<rect x="70" y="98" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="70" y="98" width="128" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="134" y1="94" x2="134" y2="114" stroke="#b5541c" stroke-width="2"/>
+<text x="62" y="109" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 199</text>
+<text x="336" y="109" font-size="12" fill="#b5541c">differs</text>
+<rect x="70" y="124" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="70" y="124" width="64" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="101.84" y1="120" x2="101.84" y2="140" stroke="#b5541c" stroke-width="2"/>
+<text x="62" y="135" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 99</text>
+<text x="336" y="135" font-size="12" fill="#b5541c">differs</text>
+<rect x="70" y="150" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="70" y="150" width="31.84" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="85.76" y1="146" x2="85.76" y2="166" stroke="#2f6f8f" stroke-width="2"/>
+<text x="62" y="161" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 49</text>
+<text x="336" y="161" font-size="12" fill="#2f6f8f">equal</text>
+<rect x="70" y="176" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="85.76" y="176" width="16.08" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="93.8" y1="172" x2="93.8" y2="192" stroke="#2f6f8f" stroke-width="2"/>
+<text x="62" y="187" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 74</text>
+<text x="336" y="187" font-size="12" fill="#2f6f8f">equal</text>
+<rect x="70" y="202" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="93.8" y="202" width="8.04" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="97.66" y1="198" x2="97.66" y2="218" stroke="#2f6f8f" stroke-width="2"/>
+<text x="62" y="213" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 86</text>
+<text x="336" y="213" font-size="12" fill="#2f6f8f">equal</text>
+<rect x="70" y="228" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="97.66" y="228" width="4.18" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="99.59" y1="224" x2="99.59" y2="244" stroke="#2f6f8f" stroke-width="2"/>
+<text x="62" y="239" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 92</text>
+<text x="336" y="239" font-size="12" fill="#2f6f8f">equal</text>
+<rect x="70" y="254" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="99.59" y="254" width="2.25" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="100.55" y1="250" x2="100.55" y2="270" stroke="#2f6f8f" stroke-width="2"/>
+<text x="62" y="265" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 95</text>
+<text x="336" y="265" font-size="12" fill="#2f6f8f">equal</text>
+<rect x="70" y="280" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="100.55" y="280" width="1.29" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="101.2" y1="276" x2="101.2" y2="296" stroke="#2f6f8f" stroke-width="2"/>
+<text x="62" y="291" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 97</text>
+<text x="336" y="291" font-size="12" fill="#2f6f8f">equal</text>
+<rect x="70" y="306" width="256" height="12" fill="#f7f3ec" stroke="#c9c1b4"/>
+<rect x="101.2" y="306" width="0.64" height="12" fill="#efe9df" stroke="#2b2620" stroke-width="0.8"/>
+<line x1="101.52" y1="302" x2="101.52" y2="322" stroke="#2f6f8f" stroke-width="2"/>
+<text x="62" y="317" text-anchor="end" font-size="12" font-family="ui-monospace, Menlo, Consolas, monospace">t = 98</text>
+<text x="336" y="317" font-size="12" fill="#2f6f8f">equal</text>
+<line x1="70" y1="338" x2="326" y2="338" stroke="#6f685d"/>
+<text x="70" y="353" text-anchor="start" font-size="12" fill="#6f685d">0</text>
+<text x="326" y="353" text-anchor="end" font-size="12" fill="#6f685d">796</text>
+<line x1="101.84" y1="334" x2="101.84" y2="342" stroke="#b5541c" stroke-width="2"/>
+<text x="101.84" y="353" text-anchor="middle" font-size="12" fill="#b5541c" font-weight="600">99</text>
+<text x="16" y="378" font-size="13">Memory first differs 99 instructions into call 29:</text>
+<text x="16" y="396" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">tick 96,469 + 99 = 96,568</text>
+</svg>

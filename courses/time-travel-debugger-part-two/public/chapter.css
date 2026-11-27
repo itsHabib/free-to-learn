@@ -23,6 +23,8 @@ li { margin: .6rem 0; }
 code { font: .85em/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; background: #edf1e9; padding: .1em .25em; border-radius: 3px; }
 blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid #a4bca7; }
 .table-scroll { overflow-x: auto; max-width: 100%; margin: 1.5rem 0; }
+figure { margin: 1.5rem 0; }
+figure img { display: block; max-width: 100%; height: auto; }
 table { border-collapse: collapse; font: .85rem/1.6 system-ui, sans-serif; }
 th, td { border: 1px solid #ccd5ca; padding: .6rem .8rem; text-align: left; vertical-align: top; min-width: 9rem; }
 th { background: #edf1e9; }
