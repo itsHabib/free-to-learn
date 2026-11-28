@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="340" viewBox="0 0 480 340" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">quantity &gt; -70 as WebAssembly bytes</title>
+<desc id="d">The program load, const -70, gt as the reference compiler emits it. load becomes 20 00 (local.get 0); const -70 becomes 41 then BA 7F (i32.const -70); gt becomes 4A (i32.gt_s). The literal -70 needs 2 bytes of signed LEB128: 10111010 and 01111111. The first bit of each byte says whether another byte follows; the other seven are payload, the lowest 7-bit group first, each byte drawn high bit first; the second bit of the last byte, its highest payload bit, is the sign. The whole module is 42 bytes (header 8, type 8, function 4, export 10, code 12), of which 6 are the instructions.</desc>
+<rect width="480" height="340" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">quantity &gt; -70, compiled to WebAssembly bytes</text>
+<text x="116" y="52" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">['load']</text>
+<rect x="70" y="62" width="46" height="28" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="93" y="81" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">20</text>
+<rect x="116" y="62" width="46" height="28" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="139" y="81" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">00</text>
+<text x="116" y="108" text-anchor="middle" font-size="13" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">local.get 0</text>
+<text x="241" y="52" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">['const', -70]</text>
+<rect x="172" y="62" width="46" height="28" fill="#eef3f2" stroke="#1f2b29"/>
+<text x="195" y="81" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">41</text>
+<rect x="218" y="62" width="46" height="28" fill="#eef3f2" stroke="#1f2b29"/>
+<text x="241" y="81" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">BA</text>
+<rect x="264" y="62" width="46" height="28" fill="#eef3f2" stroke="#1f2b29"/>
+<text x="287" y="81" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">7F</text>
+<text x="241" y="108" text-anchor="middle" font-size="13" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">i32.const -70</text>
+<text x="343" y="52" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">['gt']</text>
+<rect x="320" y="62" width="46" height="28" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="343" y="81" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">4A</text>
+<text x="343" y="108" text-anchor="middle" font-size="13" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">i32.gt_s</text>
+<text x="16" y="81" font-size="13" fill="#5c6865">bytes</text>
+<text x="16" y="140" font-weight="600" font-size="13">-70 takes 2 bytes: 7 payload bits each, lowest group first</text>
+<rect x="70" y="156" width="22" height="26" fill="#f6e3cf" stroke="#5c6865"/>
+<text x="81" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="92" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="103" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<rect x="114" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="125" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="136" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="147" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="158" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="169" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="180" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="191" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<rect x="202" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="213" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="224" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="235" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="158" y="200" text-anchor="middle" font-size="13" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">0xBA</text>
+<text x="81" y="216" font-size="12.5" fill="#a65a17">more follows</text>
+<rect x="286" y="156" width="22" height="26" fill="#f6e3cf" stroke="#5c6865"/>
+<text x="297" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<rect x="308" y="156" width="22" height="26" fill="#d8ece8" stroke="#5c6865"/>
+<text x="319" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="330" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="341" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="352" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="363" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="374" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="385" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="396" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="407" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="418" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="429" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="440" y="156" width="22" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="451" y="174" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<text x="374" y="200" text-anchor="middle" font-size="13" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">0x7F</text>
+<text x="297" y="216" font-size="12.5" fill="#a65a17">last byte</text>
+<text x="319" y="232" font-size="12.5" fill="#1f6f68">sign bit: 1, negative</text>
+<text x="16" y="258" font-weight="600" font-size="13">the whole module is 42 bytes; your instructions are 6</text>
+<rect x="16" y="270" width="85.33333333333333" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="58.666666666666664" y="310" text-anchor="middle" font-size="12.5" fill="#5c6865">header</text>
+<text x="58.666666666666664" y="286" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">8</text>
+<rect x="101.33333333333333" y="270" width="85.33333333333333" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="144" y="310" text-anchor="middle" font-size="12.5" fill="#5c6865">type</text>
+<text x="144" y="286" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">8</text>
+<rect x="186.66666666666666" y="270" width="42.666666666666664" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="208" y="326" text-anchor="middle" font-size="12.5" fill="#5c6865">function</text>
+<text x="208" y="286" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">4</text>
+<rect x="229.33333333333331" y="270" width="106.66666666666666" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="282.66666666666663" y="310" text-anchor="middle" font-size="12.5" fill="#5c6865">export</text>
+<text x="282.66666666666663" y="286" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">10</text>
+<rect x="336" y="270" width="128" height="24" fill="#d8ece8" stroke="#5c6865"/>
+<text x="400" y="310" text-anchor="middle" font-size="12.5" fill="#5c6865">code</text>
+<text x="400" y="286" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">12</text>
+</svg>

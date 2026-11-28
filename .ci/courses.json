@@ -1033,7 +1033,7 @@
     {
       "id": "jit-compiler",
       "archive": ".packages/jit-compiler.zip",
-      "sha256": "84f31e0372f0d380e314513835acc3fc3a89f32965b30c15b27db2aa557986f2",
+      "sha256": "32593ca5188c665c5000e39efe9eeb12d70058801fb6e4af8c40c984cacd5e63",
       "archive_prefix": "jit-compiler/",
       "direct_root": "courses/jit-compiler",
       "root": "jit-compiler",

@@ -29,7 +29,7 @@ function workload(name, values) {
   return { name, values, expected };
 }
 
-function workloads(seed, shift = false) {
+export function workloads(seed, shift = false) {
   const next = random(seed);
   const value = () => Math.floor(next() * 141) - 40;
   if (shift) {

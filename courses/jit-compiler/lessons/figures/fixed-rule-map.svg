@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="319" viewBox="0 0 480 319" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">fixedRule's answer by rows remaining and nulls</title>
+<desc id="d">Two maps of fixedRule's answer, by rows still to process (0 to 1,024) and nulls in the previous 256-row batch (0 to 16). With nothing compiled yet it chooses compile only when at least 512 rows remain and the previous batch had at most 8 nulls. With a predicate already built the row count no longer matters: it compiles whenever the previous batch had at most 8 nulls. Marked: the opening case (768 rows, 2 nulls, nothing built) chooses compile; an 80-row tail chooses interpret with nothing built and compile with a predicate built. The first batch has no history and always chooses interpret.</desc>
+<rect width="480" height="319" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">What fixedRule chooses after a 256-row batch</text>
+<text x="152" y="54" text-anchor="middle" font-size="13" font-weight="600">nothing compiled yet</text>
+<rect x="62.00" y="210.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="210.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="201.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="201.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="192.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="192.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="183.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="183.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="174.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="174.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="165.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="165.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="156.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="156.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="147.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="147.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="138.00" width="90.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="152.00" y="138.00" width="90.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="62.00" y="129.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62.00" y="120.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62.00" y="111.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62.00" y="102.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62.00" y="93.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62.00" y="84.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62.00" y="75.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62.00" y="66.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="62" y="66" width="180" height="153" fill="none" stroke="#5c6865"/>
+<text x="62" y="235" text-anchor="middle" font-size="12.5" fill="#5c6865">0</text>
+<text x="152" y="235" text-anchor="middle" font-size="12.5" fill="#5c6865">512</text>
+<text x="242" y="235" text-anchor="middle" font-size="12.5" fill="#5c6865">1,024</text>
+<text x="152" y="251" text-anchor="middle" font-size="12.5" fill="#5c6865">rows still to process</text>
+<text x="56" y="218.5" text-anchor="end" font-size="12.5" fill="#5c6865">0</text>
+<text x="56" y="146.5" text-anchor="end" font-size="12.5" fill="#5c6865">8</text>
+<text x="56" y="74.5" text-anchor="end" font-size="12.5" fill="#5c6865">16</text>
+<circle cx="197.00" cy="196.50" r="4" fill="#1f2b29"/>
+<text x="190" y="180.5" font-size="12.5" text-anchor="end">opening: compile</text>
+<circle cx="76.06" cy="214.50" r="4" fill="#1f2b29"/>
+<text x="83.0625" y="207.5" font-size="12.5" text-anchor="start">80 rows: interpret</text>
+<text x="372" y="54" text-anchor="middle" font-size="13" font-weight="600">predicate already built</text>
+<rect x="282.00" y="210.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="201.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="192.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="183.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="174.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="165.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="156.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="147.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="138.00" width="180.00" height="9.00" fill="#d8ece8" shape-rendering="crispEdges"/>
+<rect x="282.00" y="129.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282.00" y="120.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282.00" y="111.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282.00" y="102.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282.00" y="93.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282.00" y="84.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282.00" y="75.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282.00" y="66.00" width="180.00" height="9.00" fill="#f6e3cf" shape-rendering="crispEdges"/>
+<rect x="282" y="66" width="180" height="153" fill="none" stroke="#5c6865"/>
+<text x="282" y="235" text-anchor="middle" font-size="12.5" fill="#5c6865">0</text>
+<text x="372" y="235" text-anchor="middle" font-size="12.5" fill="#5c6865">512</text>
+<text x="462" y="235" text-anchor="middle" font-size="12.5" fill="#5c6865">1,024</text>
+<text x="372" y="251" text-anchor="middle" font-size="12.5" fill="#5c6865">rows still to process</text>
+<text x="276" y="218.5" text-anchor="end" font-size="12.5" fill="#5c6865">0</text>
+<text x="276" y="146.5" text-anchor="end" font-size="12.5" fill="#5c6865">8</text>
+<text x="276" y="74.5" text-anchor="end" font-size="12.5" fill="#5c6865">16</text>
+<circle cx="296.06" cy="214.50" r="4" fill="#1f2b29"/>
+<text x="303.0625" y="207.5" font-size="12.5" text-anchor="start">80 rows: compile</text>
+<text x="18" y="142.5" font-size="12.5" fill="#5c6865" text-anchor="middle" transform="rotate(-90 18 142.5)">nulls in the previous batch</text>
+<rect x="62" y="271" width="14" height="14" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="82" y="283" font-size="13">compile</text>
+<rect x="150" y="271" width="14" height="14" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="170" y="283" font-size="13">interpret</text>
+<text x="62" y="305" font-size="13" fill="#5c6865">The first batch has no history: fixedRule answers interpret.</text>
+</svg>

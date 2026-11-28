@@ -154,3 +154,9 @@ test('the transfer checker sees each per-shard batch, including a short tail',as
   }
   assert.throws(()=>checkShards(dropSize),/batch size/);
 });
+
+test('the lesson figures match what tools/figures.mjs draws from the course code', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const { fileURLToPath } = await import('node:url');
+  execFileSync(process.execPath, ['tools/figures.mjs', '--check'], { cwd: fileURLToPath(new URL('.', import.meta.url)), stdio: 'pipe' });
+});

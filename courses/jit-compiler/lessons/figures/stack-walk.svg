@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="284" viewBox="0 0 480 284" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">The stack after each instruction</title>
+<desc id="d">The program load, const 30, gt, run on two orders. Quantity 46: after load the stack holds 46; after const 30 it holds 46, 30 with 30 on top; gt pops 30 as the right operand and 46 as the left and pushes true. Missing quantity: load pushes null, const 30 pushes 30, and gt pushes false because one operand is null.</desc>
+<rect width="480" height="284" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">The stack after each instruction of over30</text>
+<text x="172" y="52" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">['load']</text>
+<text x="290" y="52" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">['const', 30]</text>
+<text x="408" y="52" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">['gt']</text>
+<line x1="16" y1="62" x2="464" y2="62" stroke="#c9d2cf"/>
+<text x="16" y="106" font-weight="600">quantity 46</text>
+<text x="16" y="124" font-size="13" fill="#5c6865">answer: true</text>
+<rect x="140" y="112" width="64" height="24" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="172" y="129" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">46</text>
+<text x="208" y="128" font-size="12.5" fill="#5c6865">← top</text>
+<rect x="258" y="112" width="64" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="290" y="129" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">46</text>
+<rect x="258" y="88" width="64" height="24" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="290" y="105" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">30</text>
+<text x="326" y="104" font-size="12.5" fill="#5c6865">← top</text>
+<rect x="376" y="112" width="64" height="24" fill="#d8ece8" stroke="#1f2b29"/>
+<text x="408" y="129" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">true</text>
+<text x="444" y="128" font-size="12.5" fill="#5c6865">← top</text>
+<text x="408" y="154" text-anchor="middle" font-size="13" fill="#5c6865">left 46 &gt; right 30</text>
+<text x="16" y="216" font-weight="600">quantity null</text>
+<text x="16" y="234" font-size="13" fill="#5c6865">answer: false</text>
+<rect x="140" y="222" width="64" height="24" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="172" y="239" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">null</text>
+<text x="208" y="238" font-size="12.5" fill="#5c6865">← top</text>
+<rect x="258" y="222" width="64" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="290" y="239" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">null</text>
+<rect x="258" y="198" width="64" height="24" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="290" y="215" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">30</text>
+<text x="326" y="214" font-size="12.5" fill="#5c6865">← top</text>
+<rect x="376" y="222" width="64" height="24" fill="#d8ece8" stroke="#1f2b29"/>
+<text x="408" y="239" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace">false</text>
+<text x="444" y="238" font-size="12.5" fill="#5c6865">← top</text>
+<text x="408" y="264" text-anchor="middle" font-size="13" fill="#5c6865">a null operand: false</text>
+</svg>

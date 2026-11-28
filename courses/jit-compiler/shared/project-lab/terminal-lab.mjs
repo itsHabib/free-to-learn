@@ -81,7 +81,7 @@ export async function reader(root, title, numbers) {
   });
   const links = sections.map(({unit,heading}) => '<li><a href="#u' + unit + '">' + escapeHTML(heading) + '</a></li>').join('');
   const articles = sections.map(({unit,body}) => '<article id="u'+unit+'">'+body+'<p><a href="#contents">Back to lessons</a></p></article>').join('');
-  const css = 'body{font:1.07rem/1.65 system-ui,sans-serif;color:#182b29;background:#fff;margin:auto;max-width:46rem;padding:1rem clamp(.9rem,4vw,3rem) 4rem;overflow-wrap:anywhere}a{color:#095663}h1,h2,h3{line-height:1.18}article{margin-top:4rem;border-top:2px solid #29685f;padding-top:1rem}code{font-size:.92em}nav li{margin-bottom:.4rem}.table-scroll{overflow:auto}th,td{text-align:left;padding:.3rem}';
+  const css = 'body{font:1.07rem/1.65 system-ui,sans-serif;color:#182b29;background:#fff;margin:auto;max-width:46rem;padding:1rem clamp(.9rem,4vw,3rem) 4rem;overflow-wrap:anywhere}a{color:#095663}h1,h2,h3{line-height:1.18}article{margin-top:4rem;border-top:2px solid #29685f;padding-top:1rem}code{font-size:.92em}nav li{margin-bottom:.4rem}.table-scroll{overflow:auto}th,td{text-align:left;padding:.3rem}figure{margin:1.5rem 0}figure img{display:block;max-width:100%;height:auto}';
   const page = '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+escapeHTML(title)+'</title><style>'+css+style+'</style><main><h1>'+escapeHTML(title)+'</h1><nav id="contents" aria-label="Lessons"><ol>'+links+'</ol></nav>'+articles+'</main></html>';
   const dest = join(root, 'work', 'reader.html');
   writeFileSync(dest,page);

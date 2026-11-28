@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 42486,
-      "sha256": "e0a916bb94ffe095136cb4eb6aff9af57d389ce95f5cdaf1a9dd1f08b66ec11e"
+      "sha256": "234bf3c7fb63ab5cce04d64e78081b94f4d7c76f8437cbf13a497442f62a3c5b"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -149,13 +149,13 @@
     },
     {
       "path": ".packages/jit-compiler.zip",
-      "bytes": 48842,
-      "sha256": "84f31e0372f0d380e314513835acc3fc3a89f32965b30c15b27db2aa557986f2"
+      "bytes": 66313,
+      "sha256": "32593ca5188c665c5000e39efe9eeb12d70058801fb6e4af8c40c984cacd5e63"
     },
     {
       "path": ".packages/jit-compiler.zip.sha256",
       "bytes": 83,
-      "sha256": "688e7e4f3ae527d9927bb8b1c4286e61307c4faabfd00ac41c5340253d9fdbfd"
+      "sha256": "2c7ee9f012018d5567323ff739111b223d7e2631a681beb5f193180c71fa39f7"
     },
     {
       "path": ".packages/live-query-engine.zip",
@@ -6204,28 +6204,53 @@
     },
     {
       "path": "courses/jit-compiler/lessons/01.md",
-      "bytes": 6407,
-      "sha256": "28eb8b8e119003ac329f97d78da50167fe7c6b2c21fcc66c4b24bb8f631e23cb"
+      "bytes": 6819,
+      "sha256": "eb0e5fc9a75107df3a73a2f1a198f065b6a501562a18323da0485c46434ae467"
     },
     {
       "path": "courses/jit-compiler/lessons/02.md",
-      "bytes": 6425,
-      "sha256": "45968fb599e559f09b7c3cef74e3c3b55f2dde0471ab0be2c2406ea5a13d1055"
+      "bytes": 7100,
+      "sha256": "742e72a4e427827e5be725525692a07a31d9c5f66d45eb64f0d315482792c3d0"
     },
     {
       "path": "courses/jit-compiler/lessons/03.md",
-      "bytes": 7119,
-      "sha256": "2cf5eee1bcb364037832eab5ead943012a754cd6c619f4906234028bb68bfb47"
+      "bytes": 7628,
+      "sha256": "a915a2c8520186a18151aa7c56c4a550effe1945473419511d54bd3af53c017c"
     },
     {
       "path": "courses/jit-compiler/lessons/04.md",
-      "bytes": 10573,
-      "sha256": "f7d2f665210cba140c8f07cf1f4805ebb469d081bca0a110ad5c378214e41b11"
+      "bytes": 13704,
+      "sha256": "03abd10bc6a57ae510fef2545608da931f1e36fa754588301c84576056c5e877"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/fixed-rule-map.svg",
+      "bytes": 7970,
+      "sha256": "1bf9073a27221561b55c5b3ce9f88215ecbef4cff3b6a20c03c5745d1cc3a962"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/guard-handoff.svg",
+      "bytes": 5561,
+      "sha256": "31dbb8389a08777ffa7eb98bb5ab532b56a143a3b5071def2e9855ee3fb78c98"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/guard-position.svg",
+      "bytes": 7117,
+      "sha256": "0e2fdef3f2d22d0d3b54501d369ab36c2f0fb2e1f49d2e5d3a79bb1d8d77777e"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/stack-walk.svg",
+      "bytes": 3582,
+      "sha256": "67a988c5200e80655c7131f2b2bc8cc92bb4b5c8eea5a5ffae1c16a589ced941"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/wasm-bytes.svg",
+      "bytes": 8378,
+      "sha256": "55c699ff58c4caa48d0d057e72bb65b3691473f37c1b1fa5820af98d4d8f83ce"
     },
     {
       "path": "courses/jit-compiler/lib/bakeoff.mjs",
-      "bytes": 9121,
-      "sha256": "c88433b625870603602fed3d37ce31ed8c904a0b6004cce25c9182dd9e951f21"
+      "bytes": 9128,
+      "sha256": "5a7b96b36f2acd068803fa3aa1c8566485c2030e1f542b9f5b0b23c06dc8f1a7"
     },
     {
       "path": "courses/jit-compiler/lib/batches.mjs",
@@ -6269,8 +6294,8 @@
     },
     {
       "path": "courses/jit-compiler/runtime.test.mjs",
-      "bytes": 6934,
-      "sha256": "f251559f751da8a15e6df9118fca53190cc34efdaab586a6448ba9031532ebc9"
+      "bytes": 7291,
+      "sha256": "841d3e7f7f01033ab1ddb064499b23f8f286ab5f04b3b0de80f6d77f712228ca"
     },
     {
       "path": "courses/jit-compiler/shared/course-code/render.mjs",
@@ -6284,13 +6309,13 @@
     },
     {
       "path": "courses/jit-compiler/shared/project-lab/markdown.mjs",
-      "bytes": 3100,
-      "sha256": "8c763b3c99ecbbcad6a63f305751da8ec098e7139db832fe6100c64286ecc344"
+      "bytes": 3537,
+      "sha256": "f1f90889fdee2706e560982d15385734b8631211df2e5d34ed5aef73a9112c74"
     },
     {
       "path": "courses/jit-compiler/shared/project-lab/terminal-lab.mjs",
-      "bytes": 4988,
-      "sha256": "30c47cabe7091c48da6ecf1d17ea66099f66e7cf54e4921d4f473701f6f70b3c"
+      "bytes": 5063,
+      "sha256": "a06d98ff5bb862fe69f135d633645c529f94e1c9b6c5044278e0e51b50a73e6b"
     },
     {
       "path": "courses/jit-compiler/starter/policy.mjs",
@@ -6301,6 +6326,11 @@
       "path": "courses/jit-compiler/starter/runtime.mjs",
       "bytes": 1149,
       "sha256": "ab0524605c57db2a531fd0df6dc48bb706e9dae54437334126aec0c44b5d347a"
+    },
+    {
+      "path": "courses/jit-compiler/tools/figures.mjs",
+      "bytes": 26955,
+      "sha256": "bf153a8c3bf875b9fbb71199e30e233f8e4bdc99836dc39adf632e410f3aa037"
     },
     {
       "path": "courses/live-query-engine/.gitignore",

@@ -7899,6 +7899,31 @@
       "codeExamplesLicense": "MIT"
     },
     {
+      "path": "courses/jit-compiler/lessons/figures/fixed-rule-map.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/guard-handoff.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/guard-position.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/stack-walk.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/jit-compiler/lessons/figures/wasm-bytes.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/jit-compiler/lib/bakeoff.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
@@ -7990,6 +8015,12 @@
     },
     {
       "path": "courses/jit-compiler/starter/runtime.mjs",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/jit-compiler/tools/figures.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"
