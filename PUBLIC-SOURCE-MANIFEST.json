@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 42486,
-      "sha256": "575119d9411745719fd9d075faf471982f63c77c28095e686669ddd7da90fac4"
+      "sha256": "330ec647c50ba18ee3f5b14d4699942009bd89421cfb5fd2ae32e981e34bd0ee"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -129,13 +129,13 @@
     },
     {
       "path": ".packages/frame-perfect.zip",
-      "bytes": 3908043,
-      "sha256": "812084721243d4becc47ec31bf858c4a7801bd915e5eb29c6f906108284ce966"
+      "bytes": 3918227,
+      "sha256": "859d32d88310182a4c309f4c80d03e349fbdbea9c742b93c71690beb9ba6401d"
     },
     {
       "path": ".packages/frame-perfect.zip.sha256",
       "bytes": 84,
-      "sha256": "3c4a40fa5c14c4c21b317dd099b6fc50861134ca42a84444099070a8c97ca1a8"
+      "sha256": "66e9035096f8391e2e248923dc60dc1903944aafb87d6189c32909c5eba952c1"
     },
     {
       "path": ".packages/inside-the-shot.zip",
@@ -4299,13 +4299,13 @@
     },
     {
       "path": "courses/frame-perfect/lessons/01.md",
-      "bytes": 9789,
-      "sha256": "80b342677a08d98522dcd53fb6b719131e17232d621962a82cab6a7cf2e6926b"
+      "bytes": 10387,
+      "sha256": "68600411956485f215d581aeff02741230bf008f6bb7c17fc916b1dfbc4da894"
     },
     {
       "path": "courses/frame-perfect/lessons/02.md",
-      "bytes": 11731,
-      "sha256": "2320f03b5e9da21249000b777aa06bc7e6ba89deb375a3e215ae0aad490d76de"
+      "bytes": 12144,
+      "sha256": "444066e9b1aee624b75d699ec081085c864626ab7ebbb2758af8fbccf32de3be"
     },
     {
       "path": "courses/frame-perfect/lessons/03.md",
@@ -4319,8 +4319,8 @@
     },
     {
       "path": "courses/frame-perfect/lessons/05.md",
-      "bytes": 15946,
-      "sha256": "9ee125ccbc47405ef7e298a7d629ee10f6c29d44289024cc3264807ca4dce19b"
+      "bytes": 16346,
+      "sha256": "267bbca76405dad89fc343e60f3e17777ced9ef192b1f3d9bf58c735e93bf7f1"
     },
     {
       "path": "courses/frame-perfect/lessons/06.md",
@@ -4329,13 +4329,18 @@
     },
     {
       "path": "courses/frame-perfect/lessons/07.md",
-      "bytes": 8252,
-      "sha256": "c55d62d31880e834a9443a3c8c4ef1622797bfdf9799ece760a5287da23c5d6b"
+      "bytes": 8717,
+      "sha256": "9791fbe343789015359132e95249614b9eb7ca048950f8f2b5786f0deda0684b"
     },
     {
       "path": "courses/frame-perfect/lessons/08.md",
-      "bytes": 5878,
-      "sha256": "db8b053b9ad5d3712a8a95dafc3df43c30265356d73fd8f040ee1640c39774c4"
+      "bytes": 6283,
+      "sha256": "2b9684f8b2e09416bc02afe60163034eb814e335197564f43b0a34efed803122"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/bell-drops.svg",
+      "bytes": 13886,
+      "sha256": "c68b3f17673c2f976949b9c848383ffc3c300bb2e8c1ac728583acc53fc92eed"
     },
     {
       "path": "courses/frame-perfect/lessons/figures/bisection.svg",
@@ -4346,6 +4351,26 @@
       "path": "courses/frame-perfect/lessons/figures/jump-arc.svg",
       "bytes": 4634,
       "sha256": "5e4a354866f2f40765cfc96862c08d1f793f8d842c00a0e8dea456e55cb0a125"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/level3-map.svg",
+      "bytes": 30595,
+      "sha256": "dc4875177a0b7dc2d3f471f6a9add85933d02dc7325bda4f3f0cf13b72db726f"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/ram-map.svg",
+      "bytes": 10646,
+      "sha256": "b2102c973551b949706b0f92e02b0e117625e3d200944cafaffa18b46b22e564"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/states-vs-sequences.svg",
+      "bytes": 6154,
+      "sha256": "d1291de2c65a16aa630f6814ee2b93ef1e8d436a23bbf25a90cb184f7cdc98d1"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/three-jumps.svg",
+      "bytes": 8286,
+      "sha256": "cc68b8343f7062801915c5e67611daf2290ac79e66a22c684255db3daeac6616"
     },
     {
       "path": "courses/frame-perfect/lessons/figures/wall-clip.svg",

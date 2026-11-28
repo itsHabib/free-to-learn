@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="382" viewBox="0 0 400 382" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">The bell room and the drop for each wait</title>
+<desc id="d">The bell room drawn from its level file: the start at the bottom, the bell just above and to its right, and the four places the bell can drop a block, numbered 0 to 3 along row 7, at columns 3, 10, 14, 18; drop 3 is the one that opens a shorter way up. Below, for 0 to 12 idle frames before a plan of 6 frames right then 10 of jump, the drop the bell picks: 2, 1, 1, 2, 0, 3, 1, 0, 1, 2, 2, 2, 3. The first with drop 3 is 5 idle frames.</desc>
+<rect width="400" height="382" fill="#ffffff"/>
+<text x="8" y="24" font-weight="600">The bell room and its four drops</text>
+<text x="8" y="44" fill="#6f685d" font-size="13">Hit from below, the bell drops a block in one of the</text>
+<text x="8" y="62" fill="#6f685d" font-size="13">dashed places. Only drop 3 opens a shorter way up.</text>
+<rect x="24" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="40" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="56" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="72" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="88" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="104" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="120" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="136" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="152" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="168" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="184" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="200" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="216" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="232" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="248" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="264" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="280" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="296" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="312" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="328" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="344" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="70" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="86" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="86" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="102" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="102" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="72" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="88" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="104" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="120" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="136" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="152" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="168" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="184" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="200" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="118" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="134" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="216" y="134" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<line x1="268.8" y1="135.6" x2="268.8" y2="150" stroke="#2b2620" stroke-width="1.5"/><path d="M268.8 135.6 h9.6 l-2.4 3.2 l2.4 3.2 h-9.6 z" fill="#2f6f8f"/>
+<rect x="360" y="134" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="56" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="72" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="232" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="248" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="264" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="280" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="296" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="150" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="166" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="166" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="182" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="88" y="182" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="104" y="182" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="168" y="182" width="16" height="16" fill="#e8c35a" stroke="#2b2620" stroke-width="1"/>
+<rect x="360" y="182" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="198" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="198" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="24" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="40" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="56" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="72" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="88" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="104" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="120" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="136" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="152" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="168" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="184" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="200" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="216" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="232" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="248" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="264" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="280" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="296" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="312" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="328" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="344" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="360" y="214" width="16" height="16" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="154" y="198" width="12" height="16" fill="none" stroke="#2f6f8f" stroke-width="1.5" stroke-dasharray="3 2"/>
+<rect x="73" y="183" width="14" height="14" fill="none" fill-opacity="0.25" stroke="#2b2620" stroke-width="1.5" stroke-dasharray="3 2"/>
+<text x="80" y="179" text-anchor="middle" font-size="11" font-weight="600">0</text>
+<rect x="185" y="183" width="14" height="14" fill="none" fill-opacity="0.25" stroke="#2b2620" stroke-width="1.5" stroke-dasharray="3 2"/>
+<text x="192" y="179" text-anchor="middle" font-size="11" font-weight="600">1</text>
+<rect x="249" y="183" width="14" height="14" fill="none" fill-opacity="0.25" stroke="#2b2620" stroke-width="1.5" stroke-dasharray="3 2"/>
+<text x="256" y="179" text-anchor="middle" font-size="11" font-weight="600">2</text>
+<rect x="313" y="183" width="14" height="14" fill="#b5541c" fill-opacity="0.25" stroke="#b5541c" stroke-width="1.5" stroke-dasharray="3 2"/>
+<text x="320" y="179" text-anchor="middle" font-size="11" font-weight="600" fill="#b5541c">3</text>
+<text x="8" y="260" font-size="13">The drop the bell picks, by idle frames first:</text>
+<rect x="10" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="22" y="290" text-anchor="middle" font-size="13" font-weight="600">2</text>
+<text x="22" y="314" text-anchor="middle" font-size="11" fill="#6f685d">0</text>
+<rect x="37" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="49" y="290" text-anchor="middle" font-size="13" font-weight="600">1</text>
+<text x="49" y="314" text-anchor="middle" font-size="11" fill="#6f685d">1</text>
+<rect x="64" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="76" y="290" text-anchor="middle" font-size="13" font-weight="600">1</text>
+<text x="76" y="314" text-anchor="middle" font-size="11" fill="#6f685d">2</text>
+<rect x="91" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="103" y="290" text-anchor="middle" font-size="13" font-weight="600">2</text>
+<text x="103" y="314" text-anchor="middle" font-size="11" fill="#6f685d">3</text>
+<rect x="118" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="130" y="290" text-anchor="middle" font-size="13" font-weight="600">0</text>
+<text x="130" y="314" text-anchor="middle" font-size="11" fill="#6f685d">4</text>
+<rect x="145" y="272" width="24" height="26" fill="#b5541c" fill-opacity="0.3" stroke="#b5541c"/>
+<text x="157" y="290" text-anchor="middle" font-size="13" font-weight="600" fill="#b5541c">3</text>
+<text x="157" y="314" text-anchor="middle" font-size="11" fill="#6f685d">5</text>
+<rect x="172" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="184" y="290" text-anchor="middle" font-size="13" font-weight="600">1</text>
+<text x="184" y="314" text-anchor="middle" font-size="11" fill="#6f685d">6</text>
+<rect x="199" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="211" y="290" text-anchor="middle" font-size="13" font-weight="600">0</text>
+<text x="211" y="314" text-anchor="middle" font-size="11" fill="#6f685d">7</text>
+<rect x="226" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="238" y="290" text-anchor="middle" font-size="13" font-weight="600">1</text>
+<text x="238" y="314" text-anchor="middle" font-size="11" fill="#6f685d">8</text>
+<rect x="253" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="265" y="290" text-anchor="middle" font-size="13" font-weight="600">2</text>
+<text x="265" y="314" text-anchor="middle" font-size="11" fill="#6f685d">9</text>
+<rect x="280" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="292" y="290" text-anchor="middle" font-size="13" font-weight="600">2</text>
+<text x="292" y="314" text-anchor="middle" font-size="11" fill="#6f685d">10</text>
+<rect x="307" y="272" width="24" height="26" fill="#f6f3ee" fill-opacity="1" stroke="#c9c1b4"/>
+<text x="319" y="290" text-anchor="middle" font-size="13" font-weight="600">2</text>
+<text x="319" y="314" text-anchor="middle" font-size="11" fill="#6f685d">11</text>
+<rect x="334" y="272" width="24" height="26" fill="#b5541c" fill-opacity="0.3" stroke="#b5541c"/>
+<text x="346" y="290" text-anchor="middle" font-size="13" font-weight="600" fill="#b5541c">3</text>
+<text x="346" y="314" text-anchor="middle" font-size="11" fill="#6f685d">12</text>
+<text x="8" y="334" fill="#6f685d" font-size="13">After the idle frames, the plan: 6 frames right,</text>
+<text x="8" y="352" fill="#6f685d" font-size="13">then 10 of jump. Yellow: the bell. Blue dashed box:</text>
+<text x="8" y="370" fill="#6f685d" font-size="13">Kettle's start.</text>
+</svg>

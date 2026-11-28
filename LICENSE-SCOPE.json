@@ -5371,12 +5371,37 @@
       "codeExamplesLicense": "MIT"
     },
     {
+      "path": "courses/frame-perfect/lessons/figures/bell-drops.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/frame-perfect/lessons/figures/bisection.svg",
       "kind": "original-illustration",
       "contentLicense": "CC-BY-4.0"
     },
     {
       "path": "courses/frame-perfect/lessons/figures/jump-arc.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/level3-map.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/ram-map.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/states-vs-sequences.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/frame-perfect/lessons/figures/three-jumps.svg",
       "kind": "original-illustration",
       "contentLicense": "CC-BY-4.0"
     },
