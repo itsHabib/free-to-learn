@@ -9596,6 +9596,31 @@
       "codeExamplesLicense": "MIT"
     },
     {
+      "path": "courses/quantum-link-lab/lessons/figures/match-chance.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/figures/plus-branches.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/figures/skewed-settings.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/figures/station-sweep.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/lessons/figures/two-tails.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/quantum-link-lab/reader/code-example.css",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
@@ -9705,6 +9730,18 @@
     },
     {
       "path": "courses/quantum-link-lab/test_lab.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/tools/figure_data.py",
+      "kind": "original-software-or-technical-data-with-possible-lesson-content",
+      "codeLicense": "MIT",
+      "embeddedLessonProseLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/quantum-link-lab/tools/figures.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
       "embeddedLessonProseLicense": "CC-BY-4.0"

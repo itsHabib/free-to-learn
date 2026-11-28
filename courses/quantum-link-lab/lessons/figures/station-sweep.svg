@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="222" viewBox="0 0 480 222" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Six-state sweep at two stations</title>
+<desc id="d">Pass probability for each of the six preparations with the known-good receiver, from teleport/bench.py. End to end at the day station: all six pass 100%. End to end at the night station: zero, one, plus, minus pass 100% and plus-i and minus-i, basis Y, pass 0%. Prepared directly at the night verifier, bypassing Alice, the pair, the message and Bob: plus-i and minus-i fail.</desc>
+<rect width="480" height="222" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">Known-good receiver: two sweeps and the night bypass</text>
+<text x="145" y="50" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">zero</text>
+<text x="203" y="50" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">one</text>
+<text x="261" y="50" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">plus</text>
+<text x="319" y="50" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">minus</text>
+<text x="377" y="50" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">plus-i</text>
+<text x="435" y="50" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">minus-i</text>
+<text x="145" y="66" text-anchor="middle" font-size="12.5" fill="#5c6865">basis Z</text>
+<text x="203" y="66" text-anchor="middle" font-size="12.5" fill="#5c6865">basis Z</text>
+<text x="261" y="66" text-anchor="middle" font-size="12.5" fill="#5c6865">basis X</text>
+<text x="319" y="66" text-anchor="middle" font-size="12.5" fill="#5c6865">basis X</text>
+<text x="377" y="66" text-anchor="middle" font-size="12.5" fill="#5c6865">basis Y</text>
+<text x="435" y="66" text-anchor="middle" font-size="12.5" fill="#5c6865">basis Y</text>
+<text x="16" y="94" font-size="13" font-weight="600">day</text>
+<text x="16" y="110" font-size="13" fill="#5c6865">end to end</text>
+<rect x="118" y="80" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="145" y="102" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="176" y="80" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="203" y="102" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="234" y="80" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="261" y="102" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="292" y="80" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="319" y="102" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="350" y="80" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="377" y="102" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="408" y="80" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="435" y="102" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<text x="16" y="138" font-size="13" font-weight="600">night</text>
+<text x="16" y="154" font-size="13" fill="#5c6865">end to end</text>
+<rect x="118" y="124" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="145" y="146" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="176" y="124" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="203" y="146" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="234" y="124" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="261" y="146" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="292" y="124" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="319" y="146" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="350" y="124" width="54" height="34" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="377" y="146" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0%</text>
+<rect x="408" y="124" width="54" height="34" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="435" y="146" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0%</text>
+<text x="16" y="182" font-size="13" font-weight="600">night</text>
+<text x="16" y="198" font-size="13" fill="#5c6865">bypass</text>
+<rect x="118" y="168" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="145" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="176" y="168" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="203" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="234" y="168" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="261" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="292" y="168" width="54" height="34" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="319" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+<rect x="350" y="168" width="54" height="34" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="377" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0%</text>
+<rect x="408" y="168" width="54" height="34" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="435" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0%</text>
+</svg>
