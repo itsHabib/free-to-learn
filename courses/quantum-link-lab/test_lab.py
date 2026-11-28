@@ -126,3 +126,13 @@ class LabTests(unittest.TestCase):
         self.assertEqual(result["wins"], 4)
         self.assertEqual(result["s"], 2)
         self.assertTrue(all(row["correlation"] == .5 for row in result["settings"]))
+
+
+class Figures(unittest.TestCase):
+    # The figures are drawn by Node; a Python-only learner skips this check.
+    @unittest.skipUnless(__import__("shutil").which("node"), "node is not installed")
+    def test_lesson_figures_match_what_the_course_code_draws(self):
+        here = Path(__file__).resolve().parent
+        result = subprocess.run(["node", "tools/figures.mjs", "--check"], cwd=here,
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
