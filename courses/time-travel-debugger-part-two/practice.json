@@ -244,7 +244,7 @@
       },
       {
         "answer": "16777218",
-        "feedback": "16,777,218 is the other neighbour, equally near. A tie rounds to even precision bits: 16,777,220."
+        "feedback": "16,777,218 is the other neighbour, equally near. A tie rounds to the one whose last bit of precision is 0: 16,777,220."
       }
     ]
   },
@@ -666,7 +666,7 @@
     "question": "In project/run42.json, at the start of call 301, ask last-write for the address g + 40 (g is the 4 bytes at 78,112). In which call was that write made?",
     "format": "a call number",
     "expected": "147",
-    "reason": "The shell landed in call 148: that frame found the next position below the ground and called land(), which stores the landing point but not the position at g + 40. So the last write to g + 40 is the position update of the frame before, call 147, at tick 191,487, made by game_tick (function 8). Nothing writes it again until the next shot.",
+    "reason": "The shell landed in call 148: that frame found the next position below the ground and stored the landing point, but not the position at g + 40. So the last write to g + 40 is the position update of the frame before, call 147, at tick 191,487, made by game_tick (function 8). Nothing writes it again until the next shot.",
     "wrong": [
       {
         "answer": "300",
@@ -740,7 +740,7 @@
     "wrong": [
       {
         "answer": "0",
-        "feedback": "Going back is never free: the machine can only run forward, so moveTo restores the snapshot at 300,000 and replays from there to 300,200."
+        "feedback": "The machine runs only forward, so for this move back moveTo restores the snapshot at 300,000 and replays from there to 300,200."
       },
       {
         "answer": "600",
@@ -785,7 +785,7 @@
     "wrong": [
       {
         "answer": "10",
-        "feedback": "Each frame writes it once, but game_init wrote it first: its loop clears every byte of the game's memory, this one included. 11."
+        "feedback": "Each frame writes it once, but game_init wrote it first: its loop clears the game's state one byte at a time, this byte included. 11."
       },
       {
         "answer": "1",
@@ -1010,7 +1010,7 @@
     "accept": [
       "two"
     ],
-    "reason": "Two checks fail, 11.sources-lob and 11.sources-lob2, and each says first that its stores list is too long. In the Lob failure the extra store is the one that wrote g at 78,112 in game_init: every load of the game's state takes its address from g, so with this change every chain that passes through such a load reaches that store. Lob II reaches its state through two pointers, one stored at the address the other holds, and its failure lists the stores of both. Each failure also reports the args list wrong, because the pointers were themselves computed from game_init's first argument, the seed, so the chains now reach call 0's argument 0 as well. The other checks pass, and each can. 11.last-writer doesn't read producers at all. 11.no-replay still finds that no question replays. 11.sources-rules passes because every address its small program loads from is a constant, or computed only from constants, and a constant's producer is nothing, so the added line adds nothing. A check covers only the cases it has. In debug.mjs, the chain at tick 89,345 gains exactly the store of g and call 0's argument 0.",
+    "reason": "Two checks fail, 11.sources-lob and 11.sources-lob2, and each says first that its stores list is too long. In the Lob failure the extra store is the one that wrote g at 78,112 in game_init: every load of the game's state takes its address from g, so with this change every chain that passes through such a load reaches that store. Lob II reaches its state through two pointers, one stored at the address the other holds, and its failure lists the stores of both. Each failure also reports the args list wrong, because the pointers were themselves computed from game_init's first argument, the seed, so the chains now reach call 0's argument 0 as well. The other checks pass. 11.last-writer doesn't read producers at all. 11.no-replay still finds that no question replays. 11.sources-rules passes because every address its small program loads from is a constant, or computed only from constants, and a constant's producer is nothing, so the added line adds nothing. In debug.mjs, the chain at tick 89,345 gains exactly the store of g and call 0's argument 0.",
     "wrong": [
       {
         "answer": "0",
@@ -1280,7 +1280,7 @@
     "accept": [
       "one"
     ],
-    "reason": "One check fails, `12.function-stops`, and four pass. Its first mismatch is a `continueBack` with a function stop on `new_round`, function 5, from position 446,743 of the check's recording. Yours stops at tick 364,378, and the check expects 364,141, where `new_round`'s instruction 0 runs next. Tick 364,378 is the same call of `new_round` 237 instructions later, where its last instruction, `end`, runs next. Going backward, the stop now fires at the last position where any instruction of `new_round` was next, the end of its latest run, not its beginning. The other four can pass, and do. `12.names` and `12.lines` never use the debugger. `12.stack` reads the frames, and `12.step-out` counts them, without asking `stopHere`. Going forward, `continue` usually finds the right stop even with this change: from a position outside the function, the first of its instructions to run next is its instruction 0. A forward search goes wrong only when it starts inside the function, where its very next instruction stops it. In the session, `rcontinue` now stops at tick 84,826, with `update_hud`'s instruction 1121, `end`, running next: the last instruction of the run `finish` had just stepped out of.",
+    "reason": "One check fails, `12.function-stops`, and four pass. Its first mismatch is a `continueBack` with a function stop on `new_round`, function 5, from position 446,743 of the check's recording. Yours stops at tick 364,378, and the check expects 364,141, where `new_round`'s instruction 0 runs next. Tick 364,378 is the same call of `new_round` 237 instructions later, where its last instruction, `end`, runs next. Going backward, the stop now fires at the last position where any instruction of `new_round` was next, the end of its latest run, not its beginning. The other four pass. `12.names` and `12.lines` never use the debugger. `12.stack` reads the frames, and `12.step-out` counts them, without asking `stopHere`. Going forward, `continue` usually finds the right stop even with this change: from a position outside the function, the first of its instructions to run next is its instruction 0. A forward search goes wrong only when it starts inside the function, where its very next instruction stops it. In the session, `rcontinue` now stops at tick 84,826, with `update_hud`'s instruction 1121, `end`, running next: the last instruction of the run `finish` had just stepped out of.",
     "wrong": [
       {
         "answer": "0",
@@ -1417,7 +1417,7 @@
     "question": "In build 1's worked investigation, you add answer right after last-write 65928, so the script names the result store at tick 261,685. Will 13.build-1 pass or fail?",
     "format": "pass or fail",
     "expected": "fail",
-    "reason": "It fails, and so do the other five: all six unit 13 checks fail and none passes. `13.build-1` fails with \"the answer names build 1's first bad write\": your answer is function 8, instruction 304, address 65928, tick 261685, and the check asks for a different write. Builds 2 to 6 fail with `not written yet`, because their scripts still hold only notes. The check keeps each answer only as a slow salted hash, so it can say the answer is wrong but not which write is right. The result store is wrong, but it is not the earliest wrong store, and step 5 of the method is how to find one before it.",
+    "reason": "It fails, and so do the other five unit 13 checks. `13.build-1` fails with \"the answer names build 1's first bad write\": your answer is function 8, instruction 304, address 65928, tick 261685, and the check asks for a different write. Builds 2 to 6 fail with `not written yet`, because their scripts still hold only notes. The check keeps each answer only as a slow salted hash, so it can say the answer is wrong but not which write is right. The result store is wrong, but it is not the earliest wrong store, and step 5 of the method is how to find one before it.",
     "wrong": [
       {
         "answer": "pass",
@@ -1432,7 +1432,7 @@
     "question": "Instead, you start from the message line, SHORT BY 10. At the start of call 238 you run last-write on the byte that holds its digit 1, then answer. sources on that store lists, among the newest on its chain, an earlier store of the same game frame whose value is also wrong. Will 13.build-1 pass or fail?",
     "format": "pass or fail",
     "expected": "fail",
-    "reason": "It fails. The first bad write is the earliest store that leaves a byte different from a correct build's, and this store's own chain holds an earlier wrong store, so it came after the first bad write. A symptom's last writer is where an investigation starts, not its answer.",
+    "reason": "It fails. The first bad write is the earliest store that leaves a byte different from a correct build's, and this store's own chain holds an earlier wrong store, so it came after the first bad write. Here the symptom's last writer is where the investigation starts, not its answer.",
     "wrong": [],
     "lesson": "13",
     "section": "The method"

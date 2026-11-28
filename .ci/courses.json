@@ -953,7 +953,7 @@
     {
       "id": "time-travel-debugger-part-two",
       "archive": ".packages/time-travel-debugger-part-two.zip",
-      "sha256": "5123cf6a1b89b31d281dcaba95319519b8956076cc1de9b352b5a51630db70f4",
+      "sha256": "b6a98692886fbbdaa16e6cb5343b133945f87666ed7afc69359c1890b69c547e",
       "archive_prefix": "time-travel-debugger-part-two/",
       "direct_root": "courses/time-travel-debugger-part-two",
       "root": "time-travel-debugger-part-two",
