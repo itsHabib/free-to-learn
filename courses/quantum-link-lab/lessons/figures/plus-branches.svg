@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="274" viewBox="0 0 480 274" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Input plus through each message</title>
+<desc id="d">The tester sends plus. For each two-bit message, phase bit first, the state Bob holds before any correction, and what each receiver does. Message 00: Bob starts as plus; the broken receiver applies no gate and passes; the known-good receiver applies no gate and passes. Message 01: Bob starts as plus; the broken receiver applies X and passes; the known-good receiver applies X and passes. Message 10: Bob starts as minus; the broken receiver applies no gate and fails; the known-good receiver applies Z and passes. Message 11: Bob starts as minus; the broken receiver applies X and fails; the known-good receiver applies X, Z and passes. Each message has chance 1/4, so the broken receiver passes 50% of the time and the known-good one 100%.</desc>
+<rect width="480" height="274" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">Input plus on each of the four messages</text>
+<text x="16" y="56" font-size="13" fill="#5c6865">message</text>
+<text x="92" y="56" font-size="13" fill="#5c6865">Bob starts as</text>
+<text x="190" y="56" font-size="13" fill="#5c6865">broken receiver</text>
+<text x="340" y="56" font-size="13" fill="#5c6865">known-good receiver</text>
+<line x1="16" y1="64" x2="464" y2="64" stroke="#c9d2cf"/>
+<text x="16" y="96" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">00</text>
+<text x="92" y="96" font-family="ui-monospace, Menlo, Consolas, monospace">plus</text>
+<rect x="190" y="78" width="124" height="26" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="198" y="96" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">no gate → pass</text>
+<rect x="340" y="78" width="124" height="26" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="348" y="96" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">no gate → pass</text>
+<text x="16" y="134" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">01</text>
+<text x="92" y="134" font-family="ui-monospace, Menlo, Consolas, monospace">plus</text>
+<rect x="190" y="116" width="124" height="26" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="198" y="134" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">X → pass</text>
+<rect x="340" y="116" width="124" height="26" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="348" y="134" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">X → pass</text>
+<text x="16" y="172" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">10</text>
+<text x="92" y="172" font-family="ui-monospace, Menlo, Consolas, monospace">minus</text>
+<rect x="190" y="154" width="124" height="26" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="198" y="172" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">no gate → fail</text>
+<rect x="340" y="154" width="124" height="26" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="348" y="172" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">Z → pass</text>
+<text x="16" y="210" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">11</text>
+<text x="92" y="210" font-family="ui-monospace, Menlo, Consolas, monospace">minus</text>
+<rect x="190" y="192" width="124" height="26" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="198" y="210" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">X → fail</text>
+<rect x="340" y="192" width="124" height="26" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="348" y="210" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">X, Z → pass</text>
+<text x="16" y="240" font-size="12.5" fill="#5c6865">each message has chance 1/4</text>
+<text x="16" y="260" font-size="12.5" fill="#5c6865">passes over all four</text>
+<text x="198" y="260" font-size="14" font-weight="600" fill="#b3261e" font-family="ui-monospace, Menlo, Consolas, monospace">50%</text>
+<text x="348" y="260" font-size="14" font-weight="600" fill="#1f6f68" font-family="ui-monospace, Menlo, Consolas, monospace">100%</text>
+</svg>

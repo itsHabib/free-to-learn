@@ -8,7 +8,8 @@ const chapters = anchors.map((anchor, index) => {
   const prose = readFileSync(new URL(filename, course), 'utf8');
   // Keep links to neighbouring course files portable in the offline reader.
   const rendered = markdown(prose, 'https://course.invalid/lessons/')
-    .replaceAll('href="https://course.invalid/', 'href="../');
+    .replaceAll('href="https://course.invalid/', 'href="../')
+    .replaceAll('src="https://course.invalid/', 'src="../');
   return '<section id="' + anchor + '">' + rendered + '</section>';
 });
 const html = `<!doctype html>

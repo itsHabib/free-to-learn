@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="280" viewBox="0 0 480 280" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Match chance by input pair</title>
+<desc id="d">For each pair of inputs, the angle between Alice's and Bob's measurements and the chance their bits match at visibility 1, from equal_probability in lab.py. Inputs 00: 45 degrees apart, bits match 85.4% of the time, and the round wins when they match, 85.4%. Inputs 01: 45 degrees apart, bits match 85.4% of the time, and the round wins when they match, 85.4%. Inputs 10: 45 degrees apart, bits match 85.4% of the time, and the round wins when they match, 85.4%. Inputs 11: 135 degrees apart, bits match 14.6% of the time, and the round wins when they differ, 85.4%. Every input pair wins 85.4%, against 75% for the best classical rulebook.</desc>
+<rect width="480" height="280" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">The entangled boxes at visibility 1</text>
+<text x="16" y="58" font-size="13" fill="#5c6865">inputs</text>
+<text x="74" y="58" font-size="13" fill="#5c6865">angle apart</text>
+<text x="150" y="58" font-size="13" fill="#5c6865">chance the bits match</text>
+<text x="372" y="58" font-size="13" fill="#5c6865">wins</text>
+<line x1="16" y1="66" x2="464" y2="66" stroke="#c9d2cf"/>
+<text x="16" y="97" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">00</text>
+<text x="74" y="97" font-family="ui-monospace, Menlo, Consolas, monospace">45°</text>
+<rect x="150" y="80" width="200" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<rect x="150" y="80" width="170.71" height="24" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="156" y="97" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">85.4%</text>
+<text x="372" y="91" font-size="12.5">if equal</text>
+<text x="372" y="106" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#1f6f68">85.4%</text>
+<text x="16" y="137" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">01</text>
+<text x="74" y="137" font-family="ui-monospace, Menlo, Consolas, monospace">45°</text>
+<rect x="150" y="120" width="200" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<rect x="150" y="120" width="170.71" height="24" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="156" y="137" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">85.4%</text>
+<text x="372" y="131" font-size="12.5">if equal</text>
+<text x="372" y="146" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#1f6f68">85.4%</text>
+<text x="16" y="177" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">10</text>
+<text x="74" y="177" font-family="ui-monospace, Menlo, Consolas, monospace">45°</text>
+<rect x="150" y="160" width="200" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<rect x="150" y="160" width="170.71" height="24" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="156" y="177" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">85.4%</text>
+<text x="372" y="171" font-size="12.5">if equal</text>
+<text x="372" y="186" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#1f6f68">85.4%</text>
+<text x="16" y="217" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">11</text>
+<text x="74" y="217" font-family="ui-monospace, Menlo, Consolas, monospace">135°</text>
+<rect x="150" y="200" width="200" height="24" fill="#f3f5f4" stroke="#5c6865"/>
+<rect x="150" y="200" width="29.29" height="24" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="185.2894" y="217" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">14.6%</text>
+<text x="372" y="211" font-size="12.5">if different</text>
+<text x="372" y="226" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace" fill="#1f6f68">85.4%</text>
+<text x="16" y="250" font-size="12.5" fill="#5c6865">Each input pair wins 85.4% of the time.</text>
+<text x="16" y="268" font-size="12.5" fill="#5c6865">The best classical rulebook wins 75% on average.</text>
+</svg>
