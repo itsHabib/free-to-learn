@@ -7,6 +7,7 @@ text { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
 .b { font-size: 13px; font-weight: 600; }
 .k { font-size: 12px; fill: #1f2328; }
 </style>
+<desc>Practice hall 1 drawn at 160 by 120, 3217 visible warps. A close-up of 48 blocks of 4 by 2 pixels, each pixel coloured by the triangle that owns it, with each block labelled by how many different triangles it shows; the 48 blocks add 108.</desc>
 <rect width="390" height="532" fill="#ffffff"/>
 <text x="8" y="26" class="h">Practice hall 1 and its visible warps</text>
 <text x="8" y="46" class="s">160 by 120 pixels, 3,217 visible warps,</text>

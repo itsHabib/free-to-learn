@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 390 822" width="390" height="822" role="img" aria-label="Two shaders assembled, checker-branch.asm and escape.asm (the loop shader lesson 6 runs on a warp), one row per instruction with its number in code and its source line, the match fields assemble stored on each if, else, break and endloop, and an arrow for each jump runLane makes from them: checker-branch.asm: if 7 to 12, else 11 to 15; escape.asm: break 12 to 19, endloop 18 to 6.">
+<style>
+text { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  fill: #1f2328; font-size: 13px; }
+.h { font-size: 16px; font-weight: 600; }
+.s { font-size: 13px; fill: #57606a; }
+.b { font-size: 13px; font-weight: 600; }
+.k { font-size: 12px; fill: #1f2328; }
+</style>
+<desc>Two shaders assembled, checker-branch.asm and escape.asm (the loop shader lesson 6 runs on a warp), one row per instruction with its number in code and its source line, the match fields assemble stored on each if, else, break and endloop, and an arrow for each jump runLane makes from them: checker-branch.asm: if 7 to 12, else 11 to 15; escape.asm: break 12 to 19, endloop 18 to 6.</desc>
+<rect width="390" height="822" fill="#ffffff"/>
+<text x="8" y="26" class="h">Jump targets, filled in by assemble</text>
+<text x="8" y="46" class="s">Left: instruction number in code, then source line.</text>
+<text x="8" y="62" class="s">Middle: the match fields assemble stored. Arrows:</text>
+<text x="8" y="78" class="s">where runLane jumps from them.</text>
+<text x="8" y="100" class="b">checker-branch.asm, 17 instructions</text>
+<text x="22" y="122" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">0</text>
+<text x="46" y="122" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">6</text>
+<text x="58" y="122" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r5, r0, 8</text>
+<text x="22" y="138" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">1</text>
+<text x="46" y="138" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">7</text>
+<text x="58" y="138" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">floor r5, r5</text>
+<text x="22" y="154" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">2</text>
+<text x="46" y="154" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">8</text>
+<text x="58" y="154" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r6, r1, 8</text>
+<text x="22" y="170" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">3</text>
+<text x="46" y="170" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">9</text>
+<text x="58" y="170" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">floor r6, r6</text>
+<text x="22" y="186" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">4</text>
+<text x="46" y="186" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">10</text>
+<text x="58" y="186" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">add r5, r5, r6</text>
+<text x="22" y="202" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">5</text>
+<text x="46" y="202" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">11</text>
+<text x="58" y="202" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r5, r5, 0.5</text>
+<text x="22" y="218" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">6</text>
+<text x="46" y="218" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">12</text>
+<text x="58" y="218" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">frac r5, r5</text>
+<rect x="4" y="222" width="326" height="16" fill="#eef3fb"/>
+<text x="22" y="234" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">7</text>
+<text x="46" y="234" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">13</text>
+<text x="58" y="234" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">if r5</text>
+<text x="222" y="234" class="b" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px">else 11, end 15</text>
+<text x="22" y="250" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">8</text>
+<text x="46" y="250" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">14</text>
+<text x="72" y="250" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r2, r2, 0.3</text>
+<text x="22" y="266" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">9</text>
+<text x="46" y="266" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">15</text>
+<text x="72" y="266" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r3, r3, 0.35</text>
+<text x="22" y="282" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">10</text>
+<text x="46" y="282" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">16</text>
+<text x="72" y="282" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r4, r4, 0.45</text>
+<rect x="4" y="286" width="326" height="16" fill="#eef3fb"/>
+<text x="22" y="298" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">11</text>
+<text x="46" y="298" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">17</text>
+<text x="58" y="298" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">else</text>
+<text x="222" y="298" class="b" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px">end 15</text>
+<text x="22" y="314" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">12</text>
+<text x="46" y="314" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">18</text>
+<text x="72" y="314" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mad r2, r2, 0.6, 0.4</text>
+<text x="22" y="330" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">13</text>
+<text x="46" y="330" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">19</text>
+<text x="72" y="330" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mad r3, r3, 0.6, 0.4</text>
+<text x="22" y="346" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">14</text>
+<text x="46" y="346" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">20</text>
+<text x="72" y="346" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mad r4, r4, 0.6, 0.38</text>
+<rect x="4" y="350" width="326" height="16" fill="#eef3fb"/>
+<text x="22" y="362" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">15</text>
+<text x="46" y="362" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">21</text>
+<text x="58" y="362" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">endif</text>
+<text x="22" y="378" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">16</text>
+<text x="46" y="378" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">22</text>
+<text x="58" y="378" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">out r2, r3, r4</text>
+<path d="M 330 230 H 342 V 310 H 334" fill="none" stroke="#d9480f" stroke-width="1.5"/>
+<path d="M 334 310 l 6 -4 v 8 z" fill="#d9480f"/>
+<text x="338" y="274" class="s" text-anchor="end" style="font-size: 11px">false</text>
+<path d="M 330 294 H 354 V 358 H 334" fill="none" stroke="#d9480f" stroke-width="1.5"/>
+<path d="M 334 358 l 6 -4 v 8 z" fill="#d9480f"/>
+<text x="8" y="408" class="b">escape.asm, 21 instructions</text>
+<text x="22" y="430" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">0</text>
+<text x="46" y="430" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">5</text>
+<text x="58" y="430" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mad r2, r0, 3, -2.2</text>
+<text x="22" y="446" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">1</text>
+<text x="46" y="446" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">6</text>
+<text x="58" y="446" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mad r3, r1, 2.4, -1.2</text>
+<text x="22" y="462" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">2</text>
+<text x="46" y="462" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">7</text>
+<text x="58" y="462" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mov r4, 0</text>
+<text x="22" y="478" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">3</text>
+<text x="46" y="478" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">8</text>
+<text x="58" y="478" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mov r5, 0</text>
+<text x="22" y="494" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">4</text>
+<text x="46" y="494" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">9</text>
+<text x="58" y="494" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mov r6, 0</text>
+<rect x="4" y="498" width="326" height="16" fill="#eef3fb"/>
+<text x="22" y="510" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">5</text>
+<text x="46" y="510" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">10</text>
+<text x="58" y="510" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">loop</text>
+<text x="222" y="510" class="b" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px">end 18</text>
+<text x="22" y="526" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">6</text>
+<text x="46" y="526" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">11</text>
+<text x="72" y="526" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r7, r4, r4</text>
+<text x="22" y="542" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">7</text>
+<text x="46" y="542" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">12</text>
+<text x="72" y="542" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r8, r5, r5</text>
+<text x="22" y="558" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">8</text>
+<text x="46" y="558" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">13</text>
+<text x="72" y="558" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">add r9, r7, r8</text>
+<text x="22" y="574" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">9</text>
+<text x="46" y="574" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">14</text>
+<text x="72" y="574" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">sge r10, r9, 4</text>
+<text x="22" y="590" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">10</text>
+<text x="46" y="590" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">15</text>
+<text x="72" y="590" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">sge r11, r6, 40</text>
+<text x="22" y="606" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">11</text>
+<text x="46" y="606" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">16</text>
+<text x="72" y="606" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">max r10, r10, r11</text>
+<rect x="4" y="610" width="326" height="16" fill="#eef3fb"/>
+<text x="22" y="622" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">12</text>
+<text x="46" y="622" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">17</text>
+<text x="72" y="622" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">break r10</text>
+<text x="222" y="622" class="b" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px">end 18</text>
+<text x="22" y="638" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">13</text>
+<text x="46" y="638" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">18</text>
+<text x="72" y="638" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r9, r4, r5</text>
+<text x="22" y="654" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">14</text>
+<text x="46" y="654" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">19</text>
+<text x="72" y="654" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mad r5, r9, 2, r3</text>
+<text x="22" y="670" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">15</text>
+<text x="46" y="670" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">20</text>
+<text x="72" y="670" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">sub r7, r7, r8</text>
+<text x="22" y="686" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">16</text>
+<text x="46" y="686" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">21</text>
+<text x="72" y="686" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">add r4, r7, r2</text>
+<text x="22" y="702" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">17</text>
+<text x="46" y="702" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">22</text>
+<text x="72" y="702" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">add r6, r6, 1</text>
+<rect x="4" y="706" width="326" height="16" fill="#eef3fb"/>
+<text x="22" y="718" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">18</text>
+<text x="46" y="718" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">23</text>
+<text x="58" y="718" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">endloop</text>
+<text x="222" y="718" class="b" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11px">start 5</text>
+<text x="22" y="734" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">19</text>
+<text x="46" y="734" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">24</text>
+<text x="58" y="734" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">mul r6, r6, 0.025</text>
+<text x="22" y="750" class="k" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">20</text>
+<text x="46" y="750" class="s" text-anchor="end" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">25</text>
+<text x="58" y="750" class="k" style="font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 11.5px">out r6, r6, r6</text>
+<path d="M 330 618 H 342 V 730 H 334" fill="none" stroke="#d9480f" stroke-width="1.5"/>
+<path d="M 334 730 l 6 -4 v 8 z" fill="#d9480f"/>
+<text x="338" y="678" class="s" text-anchor="end" style="font-size: 11px">taken</text>
+<path d="M 330 714 H 354 V 522 H 334" fill="none" stroke="#d9480f" stroke-width="1.5"/>
+<path d="M 334 522 l 6 -4 v 8 z" fill="#d9480f"/>
+<text x="8" y="776" class="s">A false if goes to its else + 1, or to its endif when it</text>
+<text x="8" y="792" class="s">has no else. An else goes to its endif. A taken break goes</text>
+<text x="8" y="808" class="s">past its endloop; an endloop goes back to just after its loop.</text>
+</svg>

@@ -6,6 +6,7 @@ text { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
 .s { font-size: 13px; fill: #57606a; }
 .m { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
 </style>
+<desc>One 4 m floor tile of the courtyard seen whole from 2.4 m up, its 1 m checker squares in two shades, the diagonal where its two triangles meet dashed. Left, perspective-correct, the checker lines run straight across the diagonal. Right, with screen weights only, each triangle stretches its half of the checker its own way, so every line bends where it crosses the diagonal; a ring marks one bend.</desc>
 <rect width="390" height="285" fill="#ffffff"/>
 <text x="8" y="22" class="h" >One floor tile and its two triangles</text>
 <text x="6" y="42" class="s" >perspective-correct</text>

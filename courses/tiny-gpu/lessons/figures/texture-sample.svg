@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 390 736" width="390" height="736" role="img" aria-label="A 4 by 4 texture that repeats, with column 0 drawn again after column 3, read at (u, v) = (0.95, 0.4). Nearest sampling picks texel (3, 1), the one holding the point. Bilinear steps back half a texel and blends the four texel centres around the point, with weights 0.63 for texel (3, 1), 0.27 for texel (0, 1), 0.07 for texel (3, 2), 0.03 for texel (0, 2); the two in column 0 come from wrapping past the right edge.">
+<style>
+text { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  fill: #1f2328; font-size: 13px; }
+.h { font-size: 16px; font-weight: 600; }
+.s { font-size: 13px; fill: #57606a; }
+.b { font-size: 13px; font-weight: 600; }
+.k { font-size: 12px; fill: #1f2328; }
+</style>
+<desc>A 4 by 4 texture that repeats, with column 0 drawn again after column 3, read at (u, v) = (0.95, 0.4). Nearest sampling picks texel (3, 1), the one holding the point. Bilinear steps back half a texel and blends the four texel centres around the point, with weights 0.63 for texel (3, 1), 0.27 for texel (0, 1), 0.07 for texel (3, 2), 0.03 for texel (0, 2); the two in column 0 come from wrapping past the right edge.</desc>
+<rect width="390" height="736" fill="#ffffff"/>
+<text x="8" y="26" class="h">One sample, nearest and bilinear</text>
+<text x="8" y="46" class="s">A 4 × 4 texture that repeats, read at (u, v) = (0.95, 0.4).</text>
+<text x="8" y="62" class="s">Texel (x, y) is column x, row y. The dashed column is</text>
+<text x="8" y="78" class="s">column 0 again, after column 3.</text>
+<text x="8" y="108" class="b">Nearest: the texel that holds the point</text>
+<rect x="30" y="286" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="86" y="286" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="142" y="286" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="198" y="286" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="254" y="286" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<rect x="30" y="230" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="86" y="230" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="142" y="230" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="198" y="230" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="254" y="230" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<rect x="30" y="174" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="86" y="174" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="142" y="174" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="198" y="174" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="254" y="174" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<rect x="30" y="118" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="86" y="118" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="142" y="118" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="198" y="118" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="254" y="118" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<text x="58" y="357" class="s" text-anchor="middle">0</text>
+<text x="114" y="357" class="s" text-anchor="middle">1</text>
+<text x="170" y="357" class="s" text-anchor="middle">2</text>
+<text x="226" y="357" class="s" text-anchor="middle">3</text>
+<text x="282" y="357" class="s" text-anchor="middle">0</text>
+<text x="22" y="318" class="s" text-anchor="end">0</text>
+<text x="22" y="262" class="s" text-anchor="end">1</text>
+<text x="22" y="206" class="s" text-anchor="end">2</text>
+<text x="22" y="150" class="s" text-anchor="end">3</text>
+<rect x="198" y="230" width="56" height="56" fill="none" stroke="#2f6fdb" stroke-width="3"/>
+<circle cx="242.79999999999998" cy="252.4" r="4.5" fill="#d9480f"/>
+<text x="8" y="380" class="s">u × 4 = 3.8 and v × 4 = 1.6: texel (3, 1), all of it.</text>
+<text x="8" y="418" class="b">Bilinear: the four texel centres around it</text>
+<rect x="30" y="596" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="86" y="596" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="142" y="596" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="198" y="596" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="254" y="596" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<rect x="30" y="540" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="86" y="540" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="142" y="540" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="198" y="540" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="254" y="540" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<rect x="30" y="484" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="86" y="484" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="142" y="484" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="198" y="484" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="254" y="484" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<rect x="30" y="428" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="86" y="428" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="142" y="428" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de"/>
+<rect x="198" y="428" width="56" height="56" fill="#f6f8fa" stroke="#d0d7de"/>
+<rect x="254" y="428" width="56" height="56" fill="#cfe0fb" stroke="#d0d7de" stroke-dasharray="4 3" fill-opacity="0.5"/>
+<text x="58" y="667" class="s" text-anchor="middle">0</text>
+<text x="114" y="667" class="s" text-anchor="middle">1</text>
+<text x="170" y="667" class="s" text-anchor="middle">2</text>
+<text x="226" y="667" class="s" text-anchor="middle">3</text>
+<text x="282" y="667" class="s" text-anchor="middle">0</text>
+<text x="22" y="628" class="s" text-anchor="end">0</text>
+<text x="22" y="572" class="s" text-anchor="end">1</text>
+<text x="22" y="516" class="s" text-anchor="end">2</text>
+<text x="22" y="460" class="s" text-anchor="end">3</text>
+<rect x="226" y="512" width="56" height="56" fill="none" stroke="#1f2328" stroke-width="1" stroke-dasharray="2 2"/>
+<circle cx="226" cy="568" r="14.91" fill="#2f6fdb" fill-opacity="0.35" stroke="#2f6fdb"/>
+<text x="226" y="597.9058808997906" class="b" text-anchor="middle">0.63</text>
+<circle cx="282" cy="568" r="10.79" fill="#2f6fdb" fill-opacity="0.35" stroke="#2f6fdb"/>
+<text x="282" y="593.7942286340599" class="b" text-anchor="middle">0.27</text>
+<circle cx="226" cy="512" r="6.97" fill="#2f6fdb" fill-opacity="0.35" stroke="#2f6fdb"/>
+<text x="226" y="500.0313730334031" class="b" text-anchor="middle">0.07</text>
+<circle cx="282" cy="512" r="5.6" fill="#2f6fdb" fill-opacity="0.35" stroke="#2f6fdb"/>
+<text x="282" y="501.4019237886467" class="b" text-anchor="middle">0.03</text>
+<circle cx="242.79999999999998" cy="562.4" r="4.5" fill="#d9480f"/>
+<text x="8" y="690" class="s">Half a texel back: x = 3.3, y = 1.1, so fx = 0.3, fy = 0.1.</text>
+<text x="8" y="706" class="s">Weights: 0.63 + 0.27 + 0.07 + 0.03 = 1.</text>
+<text x="8" y="722" class="s">Column 4 is past the edge, so it wraps to column 0.</text>
+</svg>

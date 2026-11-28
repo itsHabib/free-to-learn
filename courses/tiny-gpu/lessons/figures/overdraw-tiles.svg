@@ -7,6 +7,7 @@ text { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
 .b { font-size: 13px; font-weight: 600; }
 .k { font-size: 12px; fill: #1f2328; }
 </style>
+<desc>The overdraw scene with its tile grid and triangles per tile; immediate 2887008 bytes against tiled 195312</desc>
 <rect width="390" height="590.5" fill="#ffffff"/>
 <text x="8" y="26" class="h">Six layers, binned into tiles</text>
 <text x="8" y="46" class="s">72 triangles in six sheets, drawn back to front.</text>

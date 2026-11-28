@@ -13373,12 +13373,22 @@
       "contentLicense": "CC-BY-4.0"
     },
     {
+      "path": "courses/tiny-gpu/lessons/figures/jump-targets.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/tiny-gpu/lessons/figures/overdraw-tiles.svg",
       "kind": "original-illustration",
       "contentLicense": "CC-BY-4.0"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/seam-coverage.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/texture-sample.svg",
       "kind": "original-illustration",
       "contentLicense": "CC-BY-4.0"
     },

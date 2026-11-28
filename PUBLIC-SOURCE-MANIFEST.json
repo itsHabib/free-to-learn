@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 42486,
-      "sha256": "ffe44fcf13886043233b4f329aab33fca4e93d32d57922f10d568d2f6823e1e8"
+      "sha256": "e0a916bb94ffe095136cb4eb6aff9af57d389ce95f5cdaf1a9dd1f08b66ec11e"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -269,13 +269,13 @@
     },
     {
       "path": ".packages/tiny-gpu.zip",
-      "bytes": 393136,
-      "sha256": "bff981766bce1668d52f63b7ff08c7f394f990e74f12b52a34e0a30e66118f31"
+      "bytes": 397456,
+      "sha256": "8e8acaffa8a0baf9fdc0020e57e1f7a8f3b9caf37b59eb442c56cee40317d1bb"
     },
     {
       "path": ".packages/tiny-gpu.zip.sha256",
       "bytes": 79,
-      "sha256": "dbe3fa712f694270befa26615bed12b747884a6d37508bb2e988f315fc73e78e"
+      "sha256": "a59a49398fe6b94044034581531e2ed842511f501b90b4140a585d8be4a0c87f"
     },
     {
       "path": "BACKUP-AND-RESTORE.md",
@@ -10809,13 +10809,13 @@
     },
     {
       "path": "courses/tiny-gpu/lessons/04.md",
-      "bytes": 18337,
-      "sha256": "0ff867c09ee5a84d60c011cf8d9bec5f576357679c393d662a34b4d9b1ab33be"
+      "bytes": 18779,
+      "sha256": "a860a92ea0ba1ade923d5e13e10345f418618bb359894da21655d49a93eb173a"
     },
     {
       "path": "courses/tiny-gpu/lessons/05.md",
-      "bytes": 25497,
-      "sha256": "db8119f9b5ad814d848d602fc90fb61d1f794ed9b1d1a1d56b05c4956f001acd"
+      "bytes": 26161,
+      "sha256": "8abee15d170a59e7719d5cb3265b6c5b29c2d5a6302669861397ce92fac0dad6"
     },
     {
       "path": "courses/tiny-gpu/lessons/06.md",
@@ -10839,48 +10839,58 @@
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/clip-plan.svg",
-      "bytes": 2525,
-      "sha256": "41be96934a7ac202053b51739d1be036ee2beb9956876486deb0921e72ce02d4"
+      "bytes": 2816,
+      "sha256": "ff763eca13bce76dbe25b619cd6b89fba65e1b19e184194ae8afd780c484bca8"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/column-clip.svg",
-      "bytes": 206656,
-      "sha256": "284b192018bf50fae3b126cd4e329f6d9e0d58847378ae30d8cdfbd098a8539c"
+      "bytes": 206893,
+      "sha256": "3bf51af9a18bc164064d1ada571c0696523f0f82a3a9eace225c27bbb690896d"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/edge-grid.svg",
-      "bytes": 14070,
-      "sha256": "f26e97c55c6e36c9832b6029c46f9b711e8258af40a41212b76837689f1f4736"
+      "bytes": 14284,
+      "sha256": "d514dae97eaa83cf07d5beed4e4bfecebfd74fbcde23a31013fdf8eb97c389cf"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/floor-bend.svg",
-      "bytes": 277341,
-      "sha256": "c370eab39f465edbfc9143d5ce175efff25c769d6967ea16f7a3a09e1cac3ba5"
+      "bytes": 277752,
+      "sha256": "8f3e961ac40e30df6c8119975f1469e32454c072964cf318b6d3a9b36562e240"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/hall-blocks.svg",
-      "bytes": 135237,
-      "sha256": "1e92fed53ee7ce2145f9847e084e72efdb6034120af641c634953c80b4770f5a"
+      "bytes": 135489,
+      "sha256": "99403230c582ad070eac43e2a013d4dc422606edd583c55170bd00e2872f5537"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/jump-targets.svg",
+      "bytes": 19414,
+      "sha256": "a5bd3525dcfbc0443b41743220c5d8d81d749b324f3d68973c4bf6368ec9a6bf"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/overdraw-tiles.svg",
-      "bytes": 233840,
-      "sha256": "65a986fb61904c1f7fb8f0c4871be087b2b50ff933e893c2d30b62f073fe8bc9"
+      "bytes": 233960,
+      "sha256": "bcf26218b316fb27c146308f96764779597cb431e4ce61b557029366f49a8f73"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/seam-coverage.svg",
-      "bytes": 71776,
-      "sha256": "e77ec9d0932802a7c6ae5d08fa1649fcb7f6b3f11d2b4b1b813958dacd630d62"
+      "bytes": 70708,
+      "sha256": "6f5a71a84adffd3ce0976f644236ea32e12986cb6628ea57ff3ed5bc2a14ccc4"
+    },
+    {
+      "path": "courses/tiny-gpu/lessons/figures/texture-sample.svg",
+      "bytes": 7756,
+      "sha256": "bb365be0fce861bf2901a6a3ab9b7374f4e671e0c503e7a7710a3a9a25ccfa1b"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/turned-floor-misses.svg",
-      "bytes": 413288,
-      "sha256": "af0a121aa8cd4373f1c8eb3c8ca2ffbacc02ffaa4f2ff0e8391c1c73cfef12a8"
+      "bytes": 413395,
+      "sha256": "fbc229e8a45f5a5069a52c338c2b8b040f2e6d7f4a2745190c822901c293766a"
     },
     {
       "path": "courses/tiny-gpu/lessons/figures/warp-divergence.svg",
-      "bytes": 22529,
-      "sha256": "5c8ab33ac2fc6595b7d2b3dde3a6edee9a9151037c1c463a6af4b3ccb5541ee4"
+      "bytes": 22655,
+      "sha256": "460251e4007f6fe5549b1e140706ded235846fc3797e8beddafe3254d8ec4021"
     },
     {
       "path": "courses/tiny-gpu/practice.json",

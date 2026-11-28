@@ -7,6 +7,7 @@ text { font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
 .b { font-size: 13px; font-weight: 600; }
 .k { font-size: 12px; fill: #1f2328; }
 </style>
+<desc>Cache-miss heat maps of the turned floor: row-major texels miss 7445 times, tiled texels 2112</desc>
 <rect width="390" height="371" fill="#ffffff"/>
 <text x="8" y="26" class="h">The floor turned a quarter turn</text>
 <text x="8" y="46" class="s">Texture cache misses per 4 x 2 block of pixels</text>
