@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="518" viewBox="0 0 400 518" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">Kettle's RAM, byte by byte</title>
+<desc id="d">Kettle's 32 bytes of RAM after 12 frames of holding right on room 0, as 4 rows of 8 bytes, each with its address and value, labelled by the field it belongs to: frame at 0x00 to 0x01, x at 0x02 to 0x03, y at 0x04 to 0x05, vx at 0x06 to 0x07, vy at 0x08 to 0x09, flags at 0x0a, random at 0x0b to 0x0c, gems at 0x0d, item slots at 0x0e to 0x11, done at 0x12, dead at 0x13, drop at 0x14, bell at 0x15, taken at 0x16, and bytes 0x17 to 0x1f unused. The frame counter reads 12, x is 408 sub-pixels (25.5 px), vx is 24 (1.5 px a frame), and drop is 255 because no bell has rung.</desc>
+<rect width="400" height="518" fill="#ffffff"/>
+<text x="8" y="24" font-weight="600">Kettle's RAM after 12 frames of right</text>
+<text x="8" y="44" fill="#6f685d" font-size="13">On room 0. Each box is one of the 32 bytes: its</text>
+<text x="8" y="62" fill="#6f685d" font-size="13">address above, its value inside.</text>
+<rect x="16" y="86" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="19" y="83" font-size="10" fill="#6f685d">0x00</text>
+<text x="39" y="108" text-anchor="middle" font-size="14">12</text>
+<rect x="62" y="86" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="65" y="83" font-size="10" fill="#6f685d">0x01</text>
+<text x="85" y="108" text-anchor="middle" font-size="14">0</text>
+<line x1="19" y1="125" x2="105" y2="125" stroke="#2b2620"/>
+<text x="62" y="139" text-anchor="middle" font-size="11.5">frame</text>
+<rect x="108" y="86" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="111" y="83" font-size="10" fill="#6f685d">0x02</text>
+<text x="131" y="108" text-anchor="middle" font-size="14">152</text>
+<rect x="154" y="86" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="157" y="83" font-size="10" fill="#6f685d">0x03</text>
+<text x="177" y="108" text-anchor="middle" font-size="14">1</text>
+<line x1="111" y1="125" x2="197" y2="125" stroke="#2b2620"/>
+<text x="154" y="139" text-anchor="middle" font-size="11.5">x</text>
+<rect x="200" y="86" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="203" y="83" font-size="10" fill="#6f685d">0x04</text>
+<text x="223" y="108" text-anchor="middle" font-size="14">128</text>
+<rect x="246" y="86" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="249" y="83" font-size="10" fill="#6f685d">0x05</text>
+<text x="269" y="108" text-anchor="middle" font-size="14">1</text>
+<line x1="203" y1="125" x2="289" y2="125" stroke="#2b2620"/>
+<text x="246" y="139" text-anchor="middle" font-size="11.5">y</text>
+<rect x="292" y="86" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="295" y="83" font-size="10" fill="#6f685d">0x06</text>
+<text x="315" y="108" text-anchor="middle" font-size="14">24</text>
+<rect x="338" y="86" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="341" y="83" font-size="10" fill="#6f685d">0x07</text>
+<text x="361" y="108" text-anchor="middle" font-size="14">0</text>
+<line x1="295" y1="125" x2="381" y2="125" stroke="#2b2620"/>
+<text x="338" y="139" text-anchor="middle" font-size="11.5">vx</text>
+<rect x="16" y="166" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="19" y="163" font-size="10" fill="#6f685d">0x08</text>
+<text x="39" y="188" text-anchor="middle" font-size="14">0</text>
+<rect x="62" y="166" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="65" y="163" font-size="10" fill="#6f685d">0x09</text>
+<text x="85" y="188" text-anchor="middle" font-size="14">0</text>
+<line x1="19" y1="205" x2="105" y2="205" stroke="#2b2620"/>
+<text x="62" y="219" text-anchor="middle" font-size="11.5">vy</text>
+<rect x="108" y="166" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="111" y="163" font-size="10" fill="#6f685d">0x0a</text>
+<text x="131" y="188" text-anchor="middle" font-size="14">1</text>
+<line x1="111" y1="205" x2="151" y2="205" stroke="#2b2620"/>
+<text x="131" y="219" text-anchor="middle" font-size="11.5">flags</text>
+<rect x="154" y="166" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="157" y="163" font-size="10" fill="#6f685d">0x0b</text>
+<text x="177" y="188" text-anchor="middle" font-size="14">239</text>
+<rect x="200" y="166" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="203" y="163" font-size="10" fill="#6f685d">0x0c</text>
+<text x="223" y="188" text-anchor="middle" font-size="14">232</text>
+<line x1="157" y1="205" x2="243" y2="205" stroke="#2b2620"/>
+<text x="200" y="219" text-anchor="middle" font-size="11.5">random</text>
+<rect x="246" y="166" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="249" y="163" font-size="10" fill="#6f685d">0x0d</text>
+<text x="269" y="188" text-anchor="middle" font-size="14">0</text>
+<line x1="249" y1="205" x2="289" y2="205" stroke="#2b2620"/>
+<text x="269" y="219" text-anchor="middle" font-size="11.5">gems</text>
+<rect x="292" y="166" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="295" y="163" font-size="10" fill="#6f685d">0x0e</text>
+<text x="315" y="188" text-anchor="middle" font-size="14">0</text>
+<rect x="338" y="166" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="341" y="163" font-size="10" fill="#6f685d">0x0f</text>
+<text x="361" y="188" text-anchor="middle" font-size="14">0</text>
+<rect x="16" y="246" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="19" y="243" font-size="10" fill="#6f685d">0x10</text>
+<text x="39" y="268" text-anchor="middle" font-size="14">0</text>
+<rect x="62" y="246" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="65" y="243" font-size="10" fill="#6f685d">0x11</text>
+<text x="85" y="268" text-anchor="middle" font-size="14">0</text>
+<line x1="295" y1="205" x2="381" y2="205" stroke="#2b2620"/>
+<text x="338" y="219" text-anchor="middle" font-size="11.5">item slots</text>
+<line x1="19" y1="285" x2="105" y2="285" stroke="#2b2620"/>
+<text x="62" y="299" text-anchor="middle" font-size="11.5">item slots</text>
+<rect x="108" y="246" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="111" y="243" font-size="10" fill="#6f685d">0x12</text>
+<text x="131" y="268" text-anchor="middle" font-size="14">0</text>
+<line x1="111" y1="285" x2="151" y2="285" stroke="#2b2620"/>
+<text x="131" y="299" text-anchor="middle" font-size="11.5">done</text>
+<rect x="154" y="246" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="157" y="243" font-size="10" fill="#6f685d">0x13</text>
+<text x="177" y="268" text-anchor="middle" font-size="14">0</text>
+<line x1="157" y1="285" x2="197" y2="285" stroke="#2b2620"/>
+<text x="177" y="299" text-anchor="middle" font-size="11.5">dead</text>
+<rect x="200" y="246" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="203" y="243" font-size="10" fill="#6f685d">0x14</text>
+<text x="223" y="268" text-anchor="middle" font-size="14">255</text>
+<line x1="203" y1="285" x2="243" y2="285" stroke="#2b2620"/>
+<text x="223" y="299" text-anchor="middle" font-size="11.5">drop</text>
+<rect x="246" y="246" width="46" height="34" fill="#f3ede3" stroke="#c9c1b4"/>
+<text x="249" y="243" font-size="10" fill="#6f685d">0x15</text>
+<text x="269" y="268" text-anchor="middle" font-size="14">0</text>
+<line x1="249" y1="285" x2="289" y2="285" stroke="#2b2620"/>
+<text x="269" y="299" text-anchor="middle" font-size="11.5">bell</text>
+<rect x="292" y="246" width="46" height="34" fill="#e3edf2" stroke="#c9c1b4"/>
+<text x="295" y="243" font-size="10" fill="#6f685d">0x16</text>
+<text x="315" y="268" text-anchor="middle" font-size="14">0</text>
+<line x1="295" y1="285" x2="335" y2="285" stroke="#2b2620"/>
+<text x="315" y="299" text-anchor="middle" font-size="11.5">taken</text>
+<rect x="338" y="246" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="341" y="243" font-size="10" fill="#6f685d">0x17</text>
+<text x="361" y="268" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="16" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="19" y="323" font-size="10" fill="#6f685d">0x18</text>
+<text x="39" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="62" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="65" y="323" font-size="10" fill="#6f685d">0x19</text>
+<text x="85" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="108" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="111" y="323" font-size="10" fill="#6f685d">0x1a</text>
+<text x="131" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="154" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="157" y="323" font-size="10" fill="#6f685d">0x1b</text>
+<text x="177" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="200" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="203" y="323" font-size="10" fill="#6f685d">0x1c</text>
+<text x="223" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="246" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="249" y="323" font-size="10" fill="#6f685d">0x1d</text>
+<text x="269" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="292" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="295" y="323" font-size="10" fill="#6f685d">0x1e</text>
+<text x="315" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<rect x="338" y="326" width="46" height="34" fill="#ffffff" stroke="#c9c1b4"/>
+<text x="341" y="323" font-size="10" fill="#6f685d">0x1f</text>
+<text x="361" y="348" text-anchor="middle" font-size="14" fill="#6f685d">0</text>
+<line x1="19" y1="365" x2="381" y2="365" stroke="#c9c1b4"/>
+<text x="200" y="379" text-anchor="middle" font-size="11.5" fill="#6f685d">unused, always 0</text>
+<text x="8" y="410" font-size="13">Two-byte values put the low byte first:</text>
+<text x="8" y="428" font-size="13">frame = 12 + 256 × 0 = 12.</text>
+<text x="8" y="446" font-size="13">x = 408 sub-pixels, 25.5 px.</text>
+<text x="8" y="464" font-size="13">vx = 24, 1.5 px a frame.</text>
+<text x="8" y="482" font-size="13">random = 59631; drop = 255: no bell has rung.</text>
+<text x="8" y="500" font-size="13">Addresses are hexadecimal: 0x0a is 10, 0x0b is 11.</text>
+</svg>

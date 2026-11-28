@@ -1314,7 +1314,7 @@
     {
       "id": "frame-perfect",
       "archive": ".packages/frame-perfect.zip",
-      "sha256": "812084721243d4becc47ec31bf858c4a7801bd915e5eb29c6f906108284ce966",
+      "sha256": "859d32d88310182a4c309f4c80d03e349fbdbea9c742b93c71690beb9ba6401d",
       "archive_prefix": "frame-perfect/",
       "direct_root": "courses/frame-perfect",
       "root": "frame-perfect",

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="382" viewBox="0 0 400 382" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">Three tries at one jump from one savestate</title>
+<desc id="d">Level 1's start, with the step one tile high three tiles right of Kettle. From a savestate after frame 2, three tries jump on frames 3, 4 and 5, each drawn as Kettle's feet after every frame: the jump on frame 3 lands on frame 20, on the floor in front of the step; the jump on frame 4 lands on frame 18, on top of the step; the jump on frame 5 lands on frame 19, on top of the step.</desc>
+<rect width="400" height="382" fill="#ffffff"/>
+<text x="8" y="24" font-weight="600">Three tries at one jump, from one savestate</text>
+<text x="8" y="44" fill="#6f685d" font-size="13">Level 1's start; the dashed box is where Kettle</text>
+<text x="8" y="62" fill="#6f685d" font-size="13">starts. Saved after frame 2. Each dot is the middle</text>
+<text x="8" y="80" fill="#6f685d" font-size="13">of Kettle's feet after one frame; each box is Kettle,</text>
+<text x="8" y="98" fill="#6f685d" font-size="13">6 px wide, where it lands.</text>
+<rect x="10" y="118" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="10" y="148" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="10" y="178" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="10" y="208" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="310" y="208" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="340" y="208" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="10" y="238" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="160" y="238" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="190" y="238" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="310" y="238" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="340" y="238" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="10" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="40" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="70" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="100" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="130" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="160" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<path d="M190 298 L197.5 278.5 L205 298 L212.5 278.5 L220 298 Z" fill="#b5541c" fill-opacity="0.75"/>
+<path d="M220 298 L227.5 278.5 L235 298 L242.5 278.5 L250 298 Z" fill="#b5541c" fill-opacity="0.75"/>
+<path d="M250 298 L257.5 278.5 L265 298 L272.5 278.5 L280 298 Z" fill="#b5541c" fill-opacity="0.75"/>
+<path d="M280 298 L287.5 278.5 L295 298 L302.5 278.5 L310 298 Z" fill="#b5541c" fill-opacity="0.75"/>
+<rect x="310" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="340" y="268" width="30" height="30" fill="#d9d2c5" stroke="#c9c1b4" stroke-width="0.5"/>
+<rect x="43.75" y="238" width="22.5" height="30" fill="none" stroke="#2f6f8f" stroke-width="1.5" stroke-dasharray="3 2"/>
+<path d="M60.63 268 L64.38 253 L70 239.88 L75.63 228.63 L81.25 219.25 L86.88 211.75 L92.5 206.13 L98.13 202.38 L103.75 200.5 L109.38 200.5 L115 202.38 L120.63 206.13 L126.25 211.75 L131.88 219.25 L137.5 228.63 L143.13 239.88 L148.75 253 L148.75 268 L148.75 268" fill="none" stroke="#b5541c" stroke-width="1.6"/>
+<circle cx="64.38" cy="253" r="2.3" fill="#b5541c"/>
+<circle cx="70" cy="239.88" r="2.3" fill="#b5541c"/>
+<circle cx="75.63" cy="228.63" r="2.3" fill="#b5541c"/>
+<circle cx="81.25" cy="219.25" r="2.3" fill="#b5541c"/>
+<circle cx="86.88" cy="211.75" r="2.3" fill="#b5541c"/>
+<circle cx="92.5" cy="206.13" r="2.3" fill="#b5541c"/>
+<circle cx="98.13" cy="202.38" r="2.3" fill="#b5541c"/>
+<circle cx="103.75" cy="200.5" r="2.3" fill="#b5541c"/>
+<circle cx="109.38" cy="200.5" r="2.3" fill="#b5541c"/>
+<circle cx="115" cy="202.38" r="2.3" fill="#b5541c"/>
+<circle cx="120.63" cy="206.13" r="2.3" fill="#b5541c"/>
+<circle cx="126.25" cy="211.75" r="2.3" fill="#b5541c"/>
+<circle cx="131.88" cy="219.25" r="2.3" fill="#b5541c"/>
+<circle cx="137.5" cy="228.63" r="2.3" fill="#b5541c"/>
+<circle cx="143.13" cy="239.88" r="2.3" fill="#b5541c"/>
+<circle cx="148.75" cy="253" r="2.3" fill="#b5541c"/>
+<circle cx="148.75" cy="268" r="2.3" fill="#b5541c"/>
+<circle cx="148.75" cy="268" r="2.3" fill="#b5541c"/>
+<rect x="137.5" y="238" width="22.5" height="30" fill="none" stroke="#b5541c" stroke-width="1.5"/>
+<path d="M60.63 268 L66.25 268 L71.88 253 L77.5 239.88 L83.13 228.63 L88.75 219.25 L94.38 211.75 L100 206.13 L105.63 202.38 L111.25 200.5 L116.88 200.5 L122.5 202.38 L128.13 206.13 L133.75 211.75 L139.38 219.25 L145 228.63 L150.63 238" fill="none" stroke="#2f6f8f" stroke-width="1.6"/>
+<circle cx="66.25" cy="268" r="2.3" fill="#2f6f8f"/>
+<circle cx="71.88" cy="253" r="2.3" fill="#2f6f8f"/>
+<circle cx="77.5" cy="239.88" r="2.3" fill="#2f6f8f"/>
+<circle cx="83.13" cy="228.63" r="2.3" fill="#2f6f8f"/>
+<circle cx="88.75" cy="219.25" r="2.3" fill="#2f6f8f"/>
+<circle cx="94.38" cy="211.75" r="2.3" fill="#2f6f8f"/>
+<circle cx="100" cy="206.13" r="2.3" fill="#2f6f8f"/>
+<circle cx="105.63" cy="202.38" r="2.3" fill="#2f6f8f"/>
+<circle cx="111.25" cy="200.5" r="2.3" fill="#2f6f8f"/>
+<circle cx="116.88" cy="200.5" r="2.3" fill="#2f6f8f"/>
+<circle cx="122.5" cy="202.38" r="2.3" fill="#2f6f8f"/>
+<circle cx="128.13" cy="206.13" r="2.3" fill="#2f6f8f"/>
+<circle cx="133.75" cy="211.75" r="2.3" fill="#2f6f8f"/>
+<circle cx="139.38" cy="219.25" r="2.3" fill="#2f6f8f"/>
+<circle cx="145" cy="228.63" r="2.3" fill="#2f6f8f"/>
+<circle cx="150.63" cy="238" r="2.3" fill="#2f6f8f"/>
+<rect x="139.38" y="208" width="22.5" height="30" fill="none" stroke="#2f6f8f" stroke-width="1.5"/>
+<path d="M60.63 268 L66.25 268 L71.88 268 L77.5 253 L83.13 239.88 L88.75 228.63 L94.38 219.25 L100 211.75 L105.63 206.13 L111.25 202.38 L116.88 200.5 L122.5 200.5 L128.13 202.38 L133.75 206.13 L139.38 211.75 L145 219.25 L150.63 228.63 L156.25 238" fill="none" stroke="#6b8f3a" stroke-width="1.6"/>
+<circle cx="66.25" cy="268" r="2.3" fill="#6b8f3a"/>
+<circle cx="71.88" cy="268" r="2.3" fill="#6b8f3a"/>
+<circle cx="77.5" cy="253" r="2.3" fill="#6b8f3a"/>
+<circle cx="83.13" cy="239.88" r="2.3" fill="#6b8f3a"/>
+<circle cx="88.75" cy="228.63" r="2.3" fill="#6b8f3a"/>
+<circle cx="94.38" cy="219.25" r="2.3" fill="#6b8f3a"/>
+<circle cx="100" cy="211.75" r="2.3" fill="#6b8f3a"/>
+<circle cx="105.63" cy="206.13" r="2.3" fill="#6b8f3a"/>
+<circle cx="111.25" cy="202.38" r="2.3" fill="#6b8f3a"/>
+<circle cx="116.88" cy="200.5" r="2.3" fill="#6b8f3a"/>
+<circle cx="122.5" cy="200.5" r="2.3" fill="#6b8f3a"/>
+<circle cx="128.13" cy="202.38" r="2.3" fill="#6b8f3a"/>
+<circle cx="133.75" cy="206.13" r="2.3" fill="#6b8f3a"/>
+<circle cx="139.38" cy="211.75" r="2.3" fill="#6b8f3a"/>
+<circle cx="145" cy="219.25" r="2.3" fill="#6b8f3a"/>
+<circle cx="150.63" cy="228.63" r="2.3" fill="#6b8f3a"/>
+<circle cx="156.25" cy="238" r="2.3" fill="#6b8f3a"/>
+<rect x="145" y="208" width="22.5" height="30" fill="none" stroke="#6b8f3a" stroke-width="1.5"/>
+<text x="190" y="257" text-anchor="middle" font-size="12" fill="#6f685d">step</text>
+<circle cx="60.63" cy="268" r="5" fill="#ffffff" stroke="#2b2620" stroke-width="2"/>
+<text x="54.63" y="290" font-size="12">savestate</text>
+<circle cx="16" cy="319" r="5" fill="#b5541c"/>
+<text x="28" y="324" font-size="13">jump on frame 3: lands on frame 20, before the step</text>
+<circle cx="16" cy="339" r="5" fill="#2f6f8f"/>
+<text x="28" y="344" font-size="13">jump on frame 4: lands on frame 18, on the step</text>
+<circle cx="16" cy="359" r="5" fill="#6b8f3a"/>
+<text x="28" y="364" font-size="13">jump on frame 5: lands on frame 19, on the step</text>
+</svg>

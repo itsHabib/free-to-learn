@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="360" viewBox="0 0 400 360" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#2b2620">
+<title id="t">Input sequences against distinct states</title>
+<desc id="d">A chart with a logarithmic scale of the number of input sequences of up to d frames and of distinct states within 0 to 12 frames of level 1's start. Sequences multiply by six each frame and reach about 2.61 billion within 12 frames. Distinct states, with the key that leaves out the random state, reach only 17,089; with the random state kept in the key, 62,399.</desc>
+<rect width="400" height="360" fill="#ffffff"/>
+<text x="8" y="24" font-weight="600">Within d frames of level 1's start</text>
+<text x="8" y="44" fill="#6f685d" font-size="13">Input sequences of up to d frames, and distinct</text>
+<text x="8" y="62" fill="#6f685d" font-size="13">states with your key and with the random state kept.</text>
+<line x1="52" y1="312" x2="272" y2="312" stroke="#2b2620"/>
+<line x1="52" y1="312" x2="52" y2="82" stroke="#2b2620"/>
+<line x1="52" y1="312" x2="272" y2="312" stroke="#c9c1b4" stroke-dasharray="2 3"/>
+<text x="46" y="316" text-anchor="end" font-size="11" fill="#6f685d">1</text>
+<line x1="52" y1="267.2" x2="272" y2="267.2" stroke="#c9c1b4" stroke-dasharray="2 3"/>
+<text x="46" y="271.2" text-anchor="end" font-size="11" fill="#6f685d">10²</text>
+<line x1="52" y1="222.4" x2="272" y2="222.4" stroke="#c9c1b4" stroke-dasharray="2 3"/>
+<text x="46" y="226.4" text-anchor="end" font-size="11" fill="#6f685d">10⁴</text>
+<line x1="52" y1="177.6" x2="272" y2="177.6" stroke="#c9c1b4" stroke-dasharray="2 3"/>
+<text x="46" y="181.6" text-anchor="end" font-size="11" fill="#6f685d">10⁶</text>
+<line x1="52" y1="132.8" x2="272" y2="132.8" stroke="#c9c1b4" stroke-dasharray="2 3"/>
+<text x="46" y="136.8" text-anchor="end" font-size="11" fill="#6f685d">10⁸</text>
+<line x1="52" y1="88" x2="272" y2="88" stroke="#c9c1b4" stroke-dasharray="2 3"/>
+<text x="46" y="92" text-anchor="end" font-size="11" fill="#6f685d">10¹⁰</text>
+<text x="52" y="328" text-anchor="middle" font-size="11" fill="#6f685d">0</text>
+<text x="88.67" y="328" text-anchor="middle" font-size="11" fill="#6f685d">2</text>
+<text x="125.33" y="328" text-anchor="middle" font-size="11" fill="#6f685d">4</text>
+<text x="162" y="328" text-anchor="middle" font-size="11" fill="#6f685d">6</text>
+<text x="198.67" y="328" text-anchor="middle" font-size="11" fill="#6f685d">8</text>
+<text x="235.33" y="328" text-anchor="middle" font-size="11" fill="#6f685d">10</text>
+<text x="272" y="328" text-anchor="middle" font-size="11" fill="#6f685d">12</text>
+<text x="162" y="346" text-anchor="middle" font-size="12" fill="#6f685d">frames, d</text>
+<path d="M52 312 L70.33 293.07 L88.67 275.41 L107 257.94 L125.33 240.51 L143.67 223.07 L162 205.64 L180.33 188.21 L198.67 170.78 L217 153.35 L235.33 135.92 L253.67 118.49 L272 101.06" fill="none" stroke="#b5541c" stroke-width="2"/>
+<circle cx="52" cy="312" r="2.4" fill="#b5541c"/>
+<circle cx="70.33" cy="293.07" r="2.4" fill="#b5541c"/>
+<circle cx="88.67" cy="275.41" r="2.4" fill="#b5541c"/>
+<circle cx="107" cy="257.94" r="2.4" fill="#b5541c"/>
+<circle cx="125.33" cy="240.51" r="2.4" fill="#b5541c"/>
+<circle cx="143.67" cy="223.07" r="2.4" fill="#b5541c"/>
+<circle cx="162" cy="205.64" r="2.4" fill="#b5541c"/>
+<circle cx="180.33" cy="188.21" r="2.4" fill="#b5541c"/>
+<circle cx="198.67" cy="170.78" r="2.4" fill="#b5541c"/>
+<circle cx="217" cy="153.35" r="2.4" fill="#b5541c"/>
+<circle cx="235.33" cy="135.92" r="2.4" fill="#b5541c"/>
+<circle cx="253.67" cy="118.49" r="2.4" fill="#b5541c"/>
+<circle cx="272" cy="101.06" r="2.4" fill="#b5541c"/>
+<text x="280" y="98.06" font-size="12" fill="#b5541c" font-weight="600">2.61 billion</text>
+<text x="280" y="113.06" font-size="11" fill="#b5541c">sequences</text>
+<path d="M52 312 L70.33 296.34 L88.67 282.38 L107 268.01 L125.33 255.12 L143.67 244.33 L162 235.33 L180.33 227.97 L198.67 221.85 L217 216.58 L235.33 212.04 L253.67 208.06 L272 204.59" fill="none" stroke="#6f685d" stroke-width="2"/>
+<circle cx="52" cy="312" r="2.4" fill="#6f685d"/>
+<circle cx="70.33" cy="296.34" r="2.4" fill="#6f685d"/>
+<circle cx="88.67" cy="282.38" r="2.4" fill="#6f685d"/>
+<circle cx="107" cy="268.01" r="2.4" fill="#6f685d"/>
+<circle cx="125.33" cy="255.12" r="2.4" fill="#6f685d"/>
+<circle cx="143.67" cy="244.33" r="2.4" fill="#6f685d"/>
+<circle cx="162" cy="235.33" r="2.4" fill="#6f685d"/>
+<circle cx="180.33" cy="227.97" r="2.4" fill="#6f685d"/>
+<circle cx="198.67" cy="221.85" r="2.4" fill="#6f685d"/>
+<circle cx="217" cy="216.58" r="2.4" fill="#6f685d"/>
+<circle cx="235.33" cy="212.04" r="2.4" fill="#6f685d"/>
+<circle cx="253.67" cy="208.06" r="2.4" fill="#6f685d"/>
+<circle cx="272" cy="204.59" r="2.4" fill="#6f685d"/>
+<text x="280" y="187.59" font-size="12" fill="#6f685d" font-weight="600">62,399</text>
+<text x="280" y="202.59" font-size="11" fill="#6f685d">random kept</text>
+<path d="M52 312 L70.33 298.51 L88.67 285.03 L107 270.53 L125.33 258.13 L143.67 248.21 L162 240.24 L180.33 234.33 L198.67 229.41 L217 225.33 L235.33 222.11 L253.67 219.36 L272 217.19" fill="none" stroke="#2f6f8f" stroke-width="2"/>
+<circle cx="52" cy="312" r="2.4" fill="#2f6f8f"/>
+<circle cx="70.33" cy="298.51" r="2.4" fill="#2f6f8f"/>
+<circle cx="88.67" cy="285.03" r="2.4" fill="#2f6f8f"/>
+<circle cx="107" cy="270.53" r="2.4" fill="#2f6f8f"/>
+<circle cx="125.33" cy="258.13" r="2.4" fill="#2f6f8f"/>
+<circle cx="143.67" cy="248.21" r="2.4" fill="#2f6f8f"/>
+<circle cx="162" cy="240.24" r="2.4" fill="#2f6f8f"/>
+<circle cx="180.33" cy="234.33" r="2.4" fill="#2f6f8f"/>
+<circle cx="198.67" cy="229.41" r="2.4" fill="#2f6f8f"/>
+<circle cx="217" cy="225.33" r="2.4" fill="#2f6f8f"/>
+<circle cx="235.33" cy="222.11" r="2.4" fill="#2f6f8f"/>
+<circle cx="253.67" cy="219.36" r="2.4" fill="#2f6f8f"/>
+<circle cx="272" cy="217.19" r="2.4" fill="#2f6f8f"/>
+<text x="280" y="236.19" font-size="12" fill="#2f6f8f" font-weight="600">17,089</text>
+<text x="280" y="251.19" font-size="11" fill="#2f6f8f">your key</text>
+</svg>
