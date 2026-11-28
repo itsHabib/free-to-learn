@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="228" viewBox="0 0 480 228" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Cache parity at every appended position</title>
+<desc id="d">Starting from prompt [4], tokens 5, 3, 6, 7 are appended one at a time with decodeStep, and each step's logits are compared with forward on the whole prefix. Token 5 at position 1: largest difference 0, 2 and 2 cache rows in the two blocks; Token 3 at position 2: largest difference 0, 3 and 3 cache rows in the two blocks; Token 6 at position 3: largest difference 0, 4 and 4 cache rows in the two blocks; Token 7 at position 4: largest difference 0, 5 and 5 cache rows in the two blocks. All are within the tolerance 1e-10.</desc>
+<rect width="480" height="228" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">Cached decode against full recomputation, prompt [4]</text>
+<text x="16" y="52" font-size="12.5" fill="#5c6865">append</text>
+<text x="90" y="52" font-size="12.5" fill="#5c6865">position</text>
+<text x="170" y="52" font-size="12.5" fill="#5c6865">max |cached − full|</text>
+<text x="300" y="52" font-size="12.5" fill="#5c6865">rows per block</text>
+<line x1="16" y1="60" x2="464" y2="60" stroke="#c9d2cf"/>
+<text x="16" y="89" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">token 5</text>
+<text x="110" y="89" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">1</text>
+<rect x="170" y="74" width="116" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="228" y="89" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="300" y="89" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">2 and 2</text>
+<text x="16" y="121" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">token 3</text>
+<text x="110" y="121" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">2</text>
+<rect x="170" y="106" width="116" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="228" y="121" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="300" y="121" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">3 and 3</text>
+<text x="16" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">token 6</text>
+<text x="110" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">3</text>
+<rect x="170" y="138" width="116" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="228" y="153" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="300" y="153" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">4 and 4</text>
+<text x="16" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">token 7</text>
+<text x="110" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">4</text>
+<rect x="170" y="170" width="116" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="228" y="185" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="300" y="185" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">5 and 5</text>
+<text x="16" y="214" font-size="12.5" fill="#5c6865">Tolerance 1e-10. Each step appends one key/value row per block.</text>
+</svg>

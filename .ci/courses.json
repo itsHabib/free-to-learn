@@ -137,7 +137,7 @@
     {
       "id": "small-llm-runtime",
       "archive": ".packages/small-llm-runtime.zip",
-      "sha256": "19e2d2f02a18cca381169ae61d7f48858f8f5669974560f2b6c96b0d91f4744b",
+      "sha256": "65872d2528f523f2628c45bf2ddae430549359f7b72166f741f93b9ddfe58b74",
       "archive_prefix": "",
       "direct_root": "courses/small-llm-runtime",
       "root": ".",

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="288" viewBox="0 0 480 288" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Stable softmax on extreme scores</title>
+<desc id="d">Scores [1000, 1001, −∞]. Subtracting the largest finite score, 1001, gives [−1, 0, −∞]; exponentials [0.3679, 1, 0]; normalized probabilities [0.2689, 0.7311, 0]. The shifted scores [−1000, −999, −∞] give the same probabilities [0.2689, 0.7311, 0], exactly. The masked score gets probability 0.</desc>
+<rect width="480" height="288" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">Stable softmax: subtract the largest score first</text>
+<text x="180" y="52" text-anchor="middle" font-size="12.5" fill="#5c6865">token 0</text>
+<text x="270" y="52" text-anchor="middle" font-size="12.5" fill="#5c6865">token 1</text>
+<text x="360" y="52" text-anchor="middle" font-size="12.5" fill="#5c6865">token 2</text>
+<text x="16" y="81" font-size="13">scores</text>
+<rect x="150" y="64" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="188" y="82" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">1000</text>
+<rect x="240" y="64" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="278" y="82" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">1001</text>
+<rect x="330" y="64" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="368" y="82" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">−∞</text>
+<text x="16" y="117" font-size="13">minus 1001</text>
+<rect x="150" y="100" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="188" y="118" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">-1</text>
+<rect x="240" y="100" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="278" y="118" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<rect x="330" y="100" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="368" y="118" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">−∞</text>
+<text x="16" y="153" font-size="13">exp</text>
+<rect x="150" y="136" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="188" y="154" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0.3679</text>
+<rect x="240" y="136" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="278" y="154" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<rect x="330" y="136" width="76" height="26" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="368" y="154" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="16" y="189" font-size="13">probabilities</text>
+<rect x="150" y="172" width="76" height="26" fill="#d8ece8" stroke="#5c6865"/>
+<text x="188" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0.2689</text>
+<rect x="240" y="172" width="76" height="26" fill="#d8ece8" stroke="#5c6865"/>
+<text x="278" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0.7311</text>
+<rect x="330" y="172" width="76" height="26" fill="#d8ece8" stroke="#5c6865"/>
+<text x="368" y="190" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="16" y="237" font-size="13">from −1000, −999</text>
+<rect x="150" y="220" width="76" height="26" fill="#d8ece8" stroke="#5c6865"/>
+<text x="188" y="238" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0.2689</text>
+<rect x="240" y="220" width="76" height="26" fill="#d8ece8" stroke="#5c6865"/>
+<text x="278" y="238" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0.7311</text>
+<rect x="330" y="220" width="76" height="26" fill="#d8ece8" stroke="#5c6865"/>
+<text x="368" y="238" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="16" y="274" font-size="12.5" fill="#5c6865">The two rows of probabilities agree exactly; a masked score stays 0.</text>
+</svg>

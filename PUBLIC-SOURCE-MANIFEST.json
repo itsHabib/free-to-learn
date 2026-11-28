@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 42486,
-      "sha256": "af5a10bb514eae519b3867837b2552f5a11dd63f2ce5c71e0a5dac11ae826845"
+      "sha256": "20ae096d4363f43a962eadf4beb4fa9a8e0010b7f1e3d8a9963e60cf67f12063"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -229,13 +229,13 @@
     },
     {
       "path": ".packages/small-llm-runtime.zip",
-      "bytes": 1673930,
-      "sha256": "19e2d2f02a18cca381169ae61d7f48858f8f5669974560f2b6c96b0d91f4744b"
+      "bytes": 1720449,
+      "sha256": "65872d2528f523f2628c45bf2ddae430549359f7b72166f741f93b9ddfe58b74"
     },
     {
       "path": ".packages/small-llm-runtime.zip.sha256",
       "bytes": 88,
-      "sha256": "debc309bc19bd05a74ed53368a5e5c1fa374859dafe185dedc327d3ddf990a3d"
+      "sha256": "2774310cbac41c120e26fe13b396ecd7a0c20aedcfe409b41209d42342f328b5"
     },
     {
       "path": ".packages/time-travel-debugger-part-two.zip",
@@ -8889,53 +8889,98 @@
     },
     {
       "path": "courses/small-llm-runtime/lab.mjs",
-      "bytes": 14860,
-      "sha256": "4cd9a9e51c13363bf5a20b01fb30a9b7771424bee56e0c9ccb6d5bd249bda2ba"
+      "bytes": 14880,
+      "sha256": "67380fc725e66369c60aa130252ccc121ee77fd3585565d593b3886b2671f62a"
     },
     {
       "path": "courses/small-llm-runtime/lessons/01.md",
-      "bytes": 4102,
-      "sha256": "2db06c934ca95c6346c60935f356e47a3e875e9676748dc798a65d4d960c4ad7"
+      "bytes": 4406,
+      "sha256": "2a5b09d6eb7dd211a3118c48c76e91cb64aaba561259904729d9f603b4f9c3f0"
     },
     {
       "path": "courses/small-llm-runtime/lessons/02.md",
-      "bytes": 3624,
-      "sha256": "8568f492e98c6392352e8a673ed1c7e75a0f434f1f985ee0df38ac20044a0fbc"
+      "bytes": 4008,
+      "sha256": "1189a61f5f2b5ff0559a84d6bf035a3fae61bf9c5d83f1c8125b4ef35e064828"
     },
     {
       "path": "courses/small-llm-runtime/lessons/03.md",
-      "bytes": 3870,
-      "sha256": "02c617c66fa3e5707362672771864e560b74e17a6df545611a4728885988b165"
+      "bytes": 4303,
+      "sha256": "271a80cda9dc210adfbd5d2e7e2e9536e451ad49c311ad0f14ac65debb8b08b0"
     },
     {
       "path": "courses/small-llm-runtime/lessons/04.md",
-      "bytes": 3728,
-      "sha256": "8a6fc7277b5bf12a3e8dd1464a1bfef8f21abdf918af09035bcbf354ce2de96d"
+      "bytes": 4570,
+      "sha256": "f186b7ac0ddda223fc941451cb99beeb0bb2af792e1a419d5e913145a223316c"
     },
     {
       "path": "courses/small-llm-runtime/lessons/05.md",
-      "bytes": 3427,
-      "sha256": "6e0d91908e0e3532f3dd7d46d01cc1ecdcdf432852ed3ab3ad43918924a1ae2a"
+      "bytes": 3969,
+      "sha256": "cf43683a5e74df8e8ff293ecf0e777740e5683e5d827fd42d9798fe367dcd4b0"
     },
     {
       "path": "courses/small-llm-runtime/lessons/06.md",
-      "bytes": 3668,
-      "sha256": "f1f7f06bd57023cd4c79e405d2127470bcb12f41d9d8c9a4d0a365c180c99326"
+      "bytes": 4135,
+      "sha256": "0e11b926dde61494e43c59505d291fb851ecc77384b3314af9c878e49c47131f"
     },
     {
       "path": "courses/small-llm-runtime/lessons/07.md",
-      "bytes": 3604,
-      "sha256": "3ffe664caa800c7d4d44ced4ac409c4c91cd76468146cb63b9a9349e334348c4"
+      "bytes": 4079,
+      "sha256": "966a0d7e2f22985a2dc64958057f67cdf6d3c38f2a819a5b315f87b54b80722d"
     },
     {
       "path": "courses/small-llm-runtime/lessons/08.md",
-      "bytes": 9832,
-      "sha256": "141d649b983a9fdc30f85ba0d4c2ccb2a5245c201e3a7253ab7bfc31302e5e51"
+      "bytes": 11952,
+      "sha256": "e653a74ace99a0ea8b11fb07650917803e8993c34bb7e2b0626405ef6397c1ac"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/block-shapes.svg",
+      "bytes": 4524,
+      "sha256": "d6361eb5e17f2ae6ea5277269e015a345ef48c2d6333c379b6ce2287848ef547"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/cache-parity.svg",
+      "bytes": 3522,
+      "sha256": "85f34b4379895587d08f7e80168250bc0e346699a997ab1ceacf5a1a4829b0d3"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/causal-prefix.svg",
+      "bytes": 2033,
+      "sha256": "0d644fed7ba8a0bea54da3b6d8e2346b4574b48f623be455d3dffa4f6775957c"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/generation-stops.svg",
+      "bytes": 3594,
+      "sha256": "6cd817a727997d3e760791d99ba6f3885d0070e7a2174b7f96b94a5e0603b0b6"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/rms-norm.svg",
+      "bytes": 2592,
+      "sha256": "fa5601edb76620b47d7cce3308ec415a01b7f0be15d9ecf861b4ace98a264bf7"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/stable-softmax.svg",
+      "bytes": 4476,
+      "sha256": "c1050cef3bfd8ff80bd39ee5db663ea7c49fdcaee586994bb79293d424b894d9"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/stream-order.svg",
+      "bytes": 3168,
+      "sha256": "90db31eff9bc37ef61b4c00e29347af7d4d08dfc3b682bac21f9b04f046c7140"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/tied-sampling.svg",
+      "bytes": 2774,
+      "sha256": "aa37624821c6db6bd8b6387f7f4f9e62beecd34d27c3e1779e93b8f644db186e"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/vocabulary.svg",
+      "bytes": 10589,
+      "sha256": "9b775e14184866a83e7826f0f47ca584f81de0e450dbb43c6e6c78f66b6b54e8"
     },
     {
       "path": "courses/small-llm-runtime/manifest.mjs",
-      "bytes": 1576,
-      "sha256": "9fa63245cdd7fce32a5550e8dffab88511a5b615c3eed30f984e96b3324bf5d9"
+      "bytes": 1920,
+      "sha256": "59e165f5e4e852b598042e255e006c88d7ec1a38aebccc50b91fb2adad90a23a"
     },
     {
       "path": "courses/small-llm-runtime/misconceptions.json",
@@ -8954,8 +8999,8 @@
     },
     {
       "path": "courses/small-llm-runtime/package-manifest.json",
-      "bytes": 10475,
-      "sha256": "713af0d6f4befb11e8256d71b0ce1002eaf47259ff87db2eb9aba6decb907f31"
+      "bytes": 12086,
+      "sha256": "0048cc03a9fd2522338a237150128b5db5a02b096d5b513d15da9cc670b2630a"
     },
     {
       "path": "courses/small-llm-runtime/practice.mjs",
@@ -9004,8 +9049,8 @@
     },
     {
       "path": "courses/small-llm-runtime/render.mjs",
-      "bytes": 1154,
-      "sha256": "9e7a1b42f3c732a351d504013b19a5a78aabcea09a8021838ed8c5cabae20e25"
+      "bytes": 1508,
+      "sha256": "24589e6c0fb30e4e3f7be245a7d86bc590724bf75eb43f1bedf49b8fece01687"
     },
     {
       "path": "courses/small-llm-runtime/spec.mjs",
@@ -9024,8 +9069,8 @@
     },
     {
       "path": "courses/small-llm-runtime/style.css",
-      "bytes": 2567,
-      "sha256": "e91f005d9a64ce60d4232a2fc7137cc283c0a1b00597c57fdc8517b52b33192a"
+      "bytes": 2643,
+      "sha256": "cbee5012b3661e09dca14bfa30dbb3f968f980a8da25cbbb5fbbc268b6f1d836"
     },
     {
       "path": "courses/small-llm-runtime/trained-checks.mjs",
@@ -9064,8 +9109,8 @@
     },
     {
       "path": "courses/small-llm-runtime/web.mjs",
-      "bytes": 19794,
-      "sha256": "064e6fb018853204f4a432ff645cedc4abcdd86909b5c37f1f65fd1fc0b2b65f"
+      "bytes": 19805,
+      "sha256": "45a55b9c4d133899e3a9de02d2a05d9bcb104e469fa68a963be08fb503e196a8"
     },
     {
       "path": "courses/small-llm-runtime/zip.mjs",

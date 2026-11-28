@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="266" viewBox="0 0 480 266" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Sampling two tied tokens</title>
+<desc id="d">With topK 2, the two retained tokens have equal logits, IDs 2 and 4, split [0, 1) into [0, 0.5) for token 2 and [0.5, 1) for token 4. Draw 0.25 selects token 2; Draw 0.5 selects token 4; Draw 0.75 selects token 4: 0.5 belongs to the second interval. Temperature 0 picks token 2 without drawing. The pinned generator rng(1) starts 0.236456, 0.369271, 0.504242.</desc>
+<rect width="480" height="266" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">topK 2 keeps the tied IDs 2 and 4: half-open intervals</text>
+<rect x="40" y="70" width="200" height="30" fill="#d8ece8" stroke="#1f6f68"/>
+<rect x="240" y="70" width="200" height="30" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="140" y="122" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">token 2: [0, 0.5)</text>
+<text x="340" y="122" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">token 4: [0.5, 1)</text>
+<text x="40" y="116" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="440" y="116" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<line x1="140" y1="64" x2="140" y2="106" stroke="#1f2b29" stroke-width="2"/>
+<text x="140" y="60" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">u=0.25</text>
+<text x="40" y="148" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">draw 0.25 → token 2</text>
+<line x1="240" y1="64" x2="240" y2="106" stroke="#1f2b29" stroke-width="2"/>
+<text x="240" y="60" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">u=0.5</text>
+<text x="40" y="172" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">draw 0.5 → token 4</text>
+<line x1="340" y1="64" x2="340" y2="106" stroke="#1f2b29" stroke-width="2"/>
+<text x="340" y="60" text-anchor="middle" font-size="12.5" font-family="ui-monospace, Menlo, Consolas, monospace">u=0.75</text>
+<text x="40" y="196" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">draw 0.75 → token 4</text>
+<text x="16" y="234" font-size="12.5" fill="#5c6865">Temperature 0 picks token 2 (lower ID on a tie) and draws nothing.</text>
+<text x="16" y="252" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">rng(1) gives 0.236456, 0.369271, 0.504242 …</text>
+</svg>

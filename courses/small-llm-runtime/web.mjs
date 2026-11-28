@@ -65,7 +65,7 @@ $('title').textContent=config.title;$('lead').textContent=config.lead;$('entry')
 $('identity').textContent='Build '+manifest.inputHash.slice(0,16)+' · source '+manifest.sourceRevision.slice(0,12);document.title=config.title;
 $('map').innerHTML=config.lessons.map(l=>`<a href="#lesson-${l.id}">${escape(l.id+' · '+l.title)}</a>`).join('');
 const lessonTexts=Object.fromEntries(await Promise.all(config.lessons.map(async l=>[l.id,await read(l.file)])));
-$('lessons').innerHTML=config.lessons.map(l=>`<article id="lesson-${l.id}"><p class="eyebrow">Module ${l.id} · depends on ${escape(l.dependencies.join(', ')||'entry skills')}</p>${renderMarkdown(lessonTexts[l.id])}<p><button type="button" data-lesson="${l.id}">Work on module ${l.id}</button></p></article>`).join('');
+$('lessons').innerHTML=config.lessons.map(l=>`<article id="lesson-${l.id}"><p class="eyebrow">Module ${l.id} · depends on ${escape(l.dependencies.join(', ')||'entry skills')}</p>${renderMarkdown(lessonTexts[l.id],'lessons/')}<p><button type="button" data-lesson="${l.id}">Work on module ${l.id}</button></p></article>`).join('');
 $('lesson').innerHTML=config.lessons.map(l=>`<option value="${l.id}">${escape(l.id+' · '+l.title)}</option>`).join('')+'<option value="all">All modules</option>';
 if(!raw){state.draft.source=await read(config.starter);if(!unsafe)try{save(state);}catch{}}
 $('source').value=state.draft.source;$('project').value=state.draft.project;$('help').value=state.draft.help;

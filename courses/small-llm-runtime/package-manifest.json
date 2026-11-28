@@ -1,9 +1,9 @@
 {
   "format": "ivy-cpu-package-v1",
   "course": "small-llm-runtime",
-  "sourceRevision": "fbaa574779092598628054780587838f3d6b3762",
+  "sourceRevision": "99cb2d4b12487acda5d77281c30955586cff19ad",
   "sourceDirty": true,
-  "inputHash": "b600732fe81d01b3067715f550cdc1beb34cc8970c9efb0302c772d80e968c55",
+  "inputHash": "0de77298f6d3ac4fc9be6523eac47e47eb3bf4393221dd97f4cdc7b1d4de7afb",
   "files": [
     {
       "name": "README.md",
@@ -67,23 +67,23 @@
     },
     {
       "name": "style.css",
-      "bytes": 2567,
-      "sha256": "e91f005d9a64ce60d4232a2fc7137cc283c0a1b00597c57fdc8517b52b33192a"
+      "bytes": 2643,
+      "sha256": "cbee5012b3661e09dca14bfa30dbb3f968f980a8da25cbbb5fbbc268b6f1d836"
     },
     {
       "name": "web.mjs",
-      "bytes": 19794,
-      "sha256": "064e6fb018853204f4a432ff645cedc4abcdd86909b5c37f1f65fd1fc0b2b65f"
+      "bytes": 19805,
+      "sha256": "45a55b9c4d133899e3a9de02d2a05d9bcb104e469fa68a963be08fb503e196a8"
     },
     {
       "name": "render.mjs",
-      "bytes": 1154,
-      "sha256": "9e7a1b42f3c732a351d504013b19a5a78aabcea09a8021838ed8c5cabae20e25"
+      "bytes": 1508,
+      "sha256": "24589e6c0fb30e4e3f7be245a7d86bc590724bf75eb43f1bedf49b8fece01687"
     },
     {
       "name": "lab.mjs",
-      "bytes": 14860,
-      "sha256": "4cd9a9e51c13363bf5a20b01fb30a9b7771424bee56e0c9ccb6d5bd249bda2ba"
+      "bytes": 14880,
+      "sha256": "67380fc725e66369c60aa130252ccc121ee77fd3585565d593b3886b2671f62a"
     },
     {
       "name": "node-worker.mjs",
@@ -102,48 +102,93 @@
     },
     {
       "name": "manifest.mjs",
-      "bytes": 1576,
-      "sha256": "9fa63245cdd7fce32a5550e8dffab88511a5b615c3eed30f984e96b3324bf5d9"
+      "bytes": 1920,
+      "sha256": "59e165f5e4e852b598042e255e006c88d7ec1a38aebccc50b91fb2adad90a23a"
     },
     {
       "name": "lessons/01.md",
-      "bytes": 4102,
-      "sha256": "2db06c934ca95c6346c60935f356e47a3e875e9676748dc798a65d4d960c4ad7"
+      "bytes": 4406,
+      "sha256": "2a5b09d6eb7dd211a3118c48c76e91cb64aaba561259904729d9f603b4f9c3f0"
     },
     {
       "name": "lessons/02.md",
-      "bytes": 3624,
-      "sha256": "8568f492e98c6392352e8a673ed1c7e75a0f434f1f985ee0df38ac20044a0fbc"
+      "bytes": 4008,
+      "sha256": "1189a61f5f2b5ff0559a84d6bf035a3fae61bf9c5d83f1c8125b4ef35e064828"
     },
     {
       "name": "lessons/03.md",
-      "bytes": 3870,
-      "sha256": "02c617c66fa3e5707362672771864e560b74e17a6df545611a4728885988b165"
+      "bytes": 4303,
+      "sha256": "271a80cda9dc210adfbd5d2e7e2e9536e451ad49c311ad0f14ac65debb8b08b0"
     },
     {
       "name": "lessons/04.md",
-      "bytes": 3728,
-      "sha256": "8a6fc7277b5bf12a3e8dd1464a1bfef8f21abdf918af09035bcbf354ce2de96d"
+      "bytes": 4570,
+      "sha256": "f186b7ac0ddda223fc941451cb99beeb0bb2af792e1a419d5e913145a223316c"
     },
     {
       "name": "lessons/05.md",
-      "bytes": 3427,
-      "sha256": "6e0d91908e0e3532f3dd7d46d01cc1ecdcdf432852ed3ab3ad43918924a1ae2a"
+      "bytes": 3969,
+      "sha256": "cf43683a5e74df8e8ff293ecf0e777740e5683e5d827fd42d9798fe367dcd4b0"
     },
     {
       "name": "lessons/06.md",
-      "bytes": 3668,
-      "sha256": "f1f7f06bd57023cd4c79e405d2127470bcb12f41d9d8c9a4d0a365c180c99326"
+      "bytes": 4135,
+      "sha256": "0e11b926dde61494e43c59505d291fb851ecc77384b3314af9c878e49c47131f"
     },
     {
       "name": "lessons/07.md",
-      "bytes": 3604,
-      "sha256": "3ffe664caa800c7d4d44ced4ac409c4c91cd76468146cb63b9a9349e334348c4"
+      "bytes": 4079,
+      "sha256": "966a0d7e2f22985a2dc64958057f67cdf6d3c38f2a819a5b315f87b54b80722d"
     },
     {
       "name": "lessons/08.md",
-      "bytes": 9832,
-      "sha256": "141d649b983a9fdc30f85ba0d4c2ccb2a5245c201e3a7253ab7bfc31302e5e51"
+      "bytes": 11952,
+      "sha256": "e653a74ace99a0ea8b11fb07650917803e8993c34bb7e2b0626405ef6397c1ac"
+    },
+    {
+      "name": "lessons/figures/block-shapes.svg",
+      "bytes": 4524,
+      "sha256": "d6361eb5e17f2ae6ea5277269e015a345ef48c2d6333c379b6ce2287848ef547"
+    },
+    {
+      "name": "lessons/figures/cache-parity.svg",
+      "bytes": 3522,
+      "sha256": "85f34b4379895587d08f7e80168250bc0e346699a997ab1ceacf5a1a4829b0d3"
+    },
+    {
+      "name": "lessons/figures/causal-prefix.svg",
+      "bytes": 2033,
+      "sha256": "0d644fed7ba8a0bea54da3b6d8e2346b4574b48f623be455d3dffa4f6775957c"
+    },
+    {
+      "name": "lessons/figures/rms-norm.svg",
+      "bytes": 2592,
+      "sha256": "fa5601edb76620b47d7cce3308ec415a01b7f0be15d9ecf861b4ace98a264bf7"
+    },
+    {
+      "name": "lessons/figures/generation-stops.svg",
+      "bytes": 3594,
+      "sha256": "6cd817a727997d3e760791d99ba6f3885d0070e7a2174b7f96b94a5e0603b0b6"
+    },
+    {
+      "name": "lessons/figures/stable-softmax.svg",
+      "bytes": 4476,
+      "sha256": "c1050cef3bfd8ff80bd39ee5db663ea7c49fdcaee586994bb79293d424b894d9"
+    },
+    {
+      "name": "lessons/figures/stream-order.svg",
+      "bytes": 3168,
+      "sha256": "90db31eff9bc37ef61b4c00e29347af7d4d08dfc3b682bac21f9b04f046c7140"
+    },
+    {
+      "name": "lessons/figures/tied-sampling.svg",
+      "bytes": 2774,
+      "sha256": "aa37624821c6db6bd8b6387f7f4f9e62beecd34d27c3e1779e93b8f644db186e"
+    },
+    {
+      "name": "lessons/figures/vocabulary.svg",
+      "bytes": 10589,
+      "sha256": "9b775e14184866a83e7826f0f47ca584f81de0e450dbb43c6e6c78f66b6b54e8"
     },
     {
       "name": "MISCONCEPTIONS.md",
@@ -308,15 +353,15 @@
   ],
   "scope": "Positive learner package only. Input hash is not the archive hash. Author checks are source-aware QA; browser and human acceptance require separate evidence.",
   "publicLearnerDerivative": {
-    "memberInventorySha256": "20c185aa82445e31a80aff994342e44f41bfd7f5f3428cb12c98f6d1f24e649f",
-    "scope": "Proposed learner-facing correction on public commit fbaa574779092598628054780587838f3d6b3762, pending owner review and integration. This inventory binds current member bytes. No publication or new blind-learner claim."
+    "memberInventorySha256": "b278d8fdcca2d446c1d586b9d788811ffd0b526cd9b6721a99d816762950288f",
+    "scope": "Public learner edition from public commit fbaa574779092598628054780587838f3d6b3762 with ivy PR 393 (merge 99cb2d4b) applied as patches: lesson edits, nine figures, figure rendering, the svg type in lab.mjs. The fbaa574 corrections are not yet in ivy. This inventory binds current member bytes. No new blind-learner claim."
   },
   "lineage": {
     "qualifiedPublicBase": "811cb4f2caa9964d4cde1581b0e10199f0c4f371",
     "runtimePreviouslyQualifiedAt": "11aace6",
     "priorRuntimeSourceRevision": "8a451fd73d3ed6aeada6440049cb3e8a07ed4186",
     "priorArchiveSha256": "18be32bf4df96363822f5636e04d3b13cfc4779a0b63f9cfcfcc0cb269f0d452",
-    "priorPublicCommit": "fbaa574779092598628054780587838f3d6b3762",
-    "priorPublicArchiveSha256": "88657767284606929e963221d68c654b6ab145a55a5845a1345410324b6e37cf"
+    "priorPublicCommit": "55ee347dcb66cdab12281d636d6041eaac48f335",
+    "priorPublicArchiveSha256": "19e2d2f02a18cca381169ae61d7f48858f8f5669974560f2b6c96b0d91f4744b"
   }
 }

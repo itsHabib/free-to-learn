@@ -11066,6 +11066,51 @@
       "codeExamplesLicense": "MIT"
     },
     {
+      "path": "courses/small-llm-runtime/lessons/figures/block-shapes.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/cache-parity.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/causal-prefix.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/generation-stops.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/rms-norm.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/stable-softmax.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/stream-order.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/tied-sampling.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
+      "path": "courses/small-llm-runtime/lessons/figures/vocabulary.svg",
+      "kind": "original-illustration",
+      "contentLicense": "CC-BY-4.0"
+    },
+    {
       "path": "courses/small-llm-runtime/manifest.mjs",
       "kind": "original-software-or-technical-data-with-possible-lesson-content",
       "codeLicense": "MIT",
