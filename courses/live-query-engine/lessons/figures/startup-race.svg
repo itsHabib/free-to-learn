@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="428" viewBox="0 0 480 428" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Where the opening cursor comes from</title>
+<desc id="d">A store holds B at 42. openView calls snapshot() and gets B at revision 0; while the matcher scans, revision 1 commits and deletes B; when the scan ends store.revision is 1. With the cursor taken from the snapshot, the opening screen shows B, the cursor is 0, changesAfter returns r1, and the next poll emits leave B: the board ends empty. With the cursor read after the scan, the screen shows B, the cursor is 1, changesAfter returns nothing, the next poll emits nothing, and B stays on the board although the store has no orders.</desc>
+<rect width="480" height="428" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5c6865"/></marker></defs>
+<text x="16" y="24" font-weight="600">B is cancelled while the first screen is scanned</text>
+<line x1="40" y1="66" x2="450" y2="66" stroke="#5c6865" marker-end="url(#a)"/>
+<circle cx="84" cy="66" r="4" fill="#1f2b29"/>
+<text x="84" y="54" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">snapshot()</text>
+<text x="84" y="86" text-anchor="middle" font-size="12.5" fill="#5c6865">rows: B 42, revision 0</text>
+<circle cx="220" cy="66" r="4" fill="#1f2b29"/>
+<text x="220" y="54" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">matcher runs</text>
+<text x="220" y="86" text-anchor="middle" font-size="12.5" fill="#5c6865">r1 commits: delete B</text>
+<circle cx="370" cy="66" r="4" fill="#1f2b29"/>
+<text x="370" y="54" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">scan ends</text>
+<text x="370" y="86" text-anchor="middle" font-size="12.5" fill="#5c6865">store.revision is 1</text>
+<text x="16" y="130" font-weight="600" font-size="13">Cursor from the same snapshot (openView)</text>
+<text x="30" y="159" font-size="13" fill="#5c6865">opening screen</text>
+<rect x="200" y="144" width="36" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="218" y="159" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">B</text>
+<text x="30" y="183" font-size="13" fill="#5c6865">saved cursor</text>
+<rect x="200" y="168" width="36" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="218" y="183" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">0</text>
+<text x="30" y="207" font-size="13" fill="#5c6865">changesAfter(cursor)</text>
+<rect x="200" y="192" width="36" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="218" y="207" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">r1</text>
+<text x="30" y="231" font-size="13" fill="#5c6865">next poll</text>
+<rect x="200" y="216" width="74.19999999999999" height="22" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="237.1" y="231" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">leave B</text>
+<text x="30" y="255" font-size="13" fill="#5c6865">board after it</text>
+<rect x="200" y="240" width="57" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="228.5" y="255" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">empty</text>
+<text x="16" y="282" font-weight="600" font-size="13">Cursor read after the scan</text>
+<text x="30" y="311" font-size="13" fill="#5c6865">opening screen</text>
+<rect x="200" y="296" width="36" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="218" y="311" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">B</text>
+<text x="30" y="335" font-size="13" fill="#5c6865">saved cursor</text>
+<rect x="200" y="320" width="36" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="218" y="335" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">1</text>
+<text x="30" y="359" font-size="13" fill="#5c6865">changesAfter(cursor)</text>
+<rect x="200" y="344" width="74.19999999999999" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="237.1" y="359" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">nothing</text>
+<text x="30" y="383" font-size="13" fill="#5c6865">next poll</text>
+<rect x="200" y="368" width="91.39999999999999" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="245.7" y="383" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">no events</text>
+<text x="30" y="407" font-size="13" fill="#5c6865">board after it</text>
+<rect x="200" y="392" width="36" height="22" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="218" y="407" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">B</text>
+<text x="250" y="407" font-size="13" fill="#b3261e">stuck: the store has no orders</text>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="256" viewBox="0 0 480 256" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Order A across four commits</title>
+<desc id="d">Order A starts at 18 and is absent from the board. r1 writes 45: A is visible and the desk gets a enter; r2 writes 41: A is visible and the desk gets an update; r3 writes 41: A is visible and the desk gets nothing; r4 writes 30: A is absent and the desk gets a leave.</desc>
+<rect width="480" height="256" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5c6865"/></marker></defs>
+<text x="16" y="24" font-weight="600">Order A on the packing desk (quantity &gt; 30)</text>
+<text x="30" y="56" font-size="13" fill="#5c6865">revision</text>
+<text x="120" y="56" font-size="13" fill="#5c6865">A in the store</text>
+<text x="230" y="56" font-size="13" fill="#5c6865">on the board?</text>
+<text x="340" y="56" font-size="13" fill="#5c6865">event</text>
+<line x1="16" y1="64" x2="464" y2="64" stroke="#c9d2cf"/>
+<text x="30" y="93" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r0 (open)</text>
+<text x="120" y="93" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">A 18</text>
+<rect x="230" y="78" width="76" height="22" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="268" y="93" text-anchor="middle" font-size="13">absent</text>
+<text x="340" y="93" font-size="13" fill="#5c6865"></text>
+<text x="30" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r1</text>
+<text x="120" y="127" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">A 45</text>
+<rect x="230" y="112" width="76" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="268" y="127" text-anchor="middle" font-size="13">visible</text>
+<rect x="340" y="112" width="70" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="375" y="127" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">enter</text>
+<text x="30" y="161" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r2</text>
+<text x="120" y="161" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">A 41</text>
+<rect x="230" y="146" width="76" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="268" y="161" text-anchor="middle" font-size="13">visible</text>
+<rect x="340" y="146" width="70" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="375" y="161" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">update</text>
+<text x="30" y="195" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r3</text>
+<text x="120" y="195" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">A 41</text>
+<rect x="230" y="180" width="76" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="268" y="195" text-anchor="middle" font-size="13">visible</text>
+<text x="340" y="195" font-size="13" fill="#5c6865">nothing</text>
+<text x="30" y="229" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r4</text>
+<text x="120" y="229" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">A 30</text>
+<rect x="230" y="214" width="76" height="22" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="268" y="229" text-anchor="middle" font-size="13">absent</text>
+<rect x="340" y="214" width="70" height="22" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="375" y="229" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">leave</text>
+</svg>

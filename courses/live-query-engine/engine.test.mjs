@@ -114,3 +114,9 @@ test('unit 03 catches a poll that saves the store revision after the matcher run
   };
   assert.throws(() => checks['03']({ ...runtime, poll }), /last processed revision/);
 });
+
+test('the lesson figures match what tools/figures.mjs draws from the course code', async () => {
+  const { execFileSync } = await import('node:child_process');
+  const { fileURLToPath } = await import('node:url');
+  execFileSync(process.execPath, ['tools/figures.mjs', '--check'], { cwd: fileURLToPath(new URL('.', import.meta.url)), stdio: 'pipe' });
+});

@@ -1084,7 +1084,7 @@
     {
       "id": "live-query-engine",
       "archive": ".packages/live-query-engine.zip",
-      "sha256": "7aeb62291aa0cdd67ae5b201d0e435d1187dc1b02e84e4785267b0434b034ada",
+      "sha256": "0380e4e616840b1de5b4202666f6b77898753447d6cd40fcf79fcfff4916629f",
       "archive_prefix": "live-query-engine/",
       "direct_root": "courses/live-query-engine",
       "root": "live-query-engine",

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="258" viewBox="0 0 480 258" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">A delayed reader with a staged map</title>
+<desc id="d">The view opens at revision 0 with no rows. Before the next poll, r1 writes A at 45 and r2 writes A at 20. After r1, A is A 45 and the poll emits enter A; while the poll scans it, the caller's view still reads r0, empty. After r2, A is absent and the poll emits leave A; while the poll scans it, the caller's view still reads r0, empty. r2 is compared with A as r1 left it, not with the opening view. The poll returns with the view at r2, empty. If the matcher throws on r2, the view is left at r0, empty, so a retry delivers both batches.</desc>
+<rect width="480" height="258" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5c6865"/></marker></defs>
+<text x="16" y="24" font-weight="600">A delayed reader: two commits, one poll</text>
+<text x="16" y="56" font-size="13" fill="#5c6865">revision</text>
+<text x="96" y="56" font-size="13" fill="#5c6865">A afterwards</text>
+<text x="210" y="56" font-size="13" fill="#5c6865">events</text>
+<text x="340" y="56" font-size="13" fill="#5c6865">view during poll</text>
+<line x1="16" y1="64" x2="464" y2="64" stroke="#c9d2cf"/>
+<text x="16" y="91" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r0 (open)</text>
+<rect x="340" y="76" width="91.39999999999999" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="385.7" y="91" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">r0, empty</text>
+<text x="16" y="125" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r1</text>
+<rect x="96" y="110" width="48.4" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="120.2" y="125" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">A 45</text>
+<rect x="210" y="110" width="74.19999999999999" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="247.1" y="125" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">enter A</text>
+<rect x="340" y="110" width="91.39999999999999" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="385.7" y="125" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">r0, empty</text>
+<text x="16" y="159" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">r2</text>
+<rect x="96" y="144" width="65.6" height="22" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="128.8" y="159" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">absent</text>
+<rect x="210" y="144" width="74.19999999999999" height="22" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="247.1" y="159" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">leave A</text>
+<rect x="340" y="144" width="91.39999999999999" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="385.7" y="159" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">r0, empty</text>
+<text x="16" y="203" font-size="13">the poll returns</text>
+<rect x="340" y="188" width="91.39999999999999" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="385.7" y="203" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">r2, empty</text>
+<text x="16" y="237" font-size="13" fill="#b3261e">if the matcher throws on r2</text>
+<rect x="340" y="222" width="91.39999999999999" height="22" fill="#fbe9e7" stroke="#b3261e"/>
+<text x="385.7" y="237" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">r0, empty</text>
+</svg>

@@ -5,7 +5,7 @@
     {
       "path": ".ci/courses.json",
       "bytes": 42486,
-      "sha256": "234bf3c7fb63ab5cce04d64e78081b94f4d7c76f8437cbf13a497442f62a3c5b"
+      "sha256": "575119d9411745719fd9d075faf471982f63c77c28095e686669ddd7da90fac4"
     },
     {
       "path": ".ci/public_contracts.py",
@@ -159,13 +159,13 @@
     },
     {
       "path": ".packages/live-query-engine.zip",
-      "bytes": 39647,
-      "sha256": "7aeb62291aa0cdd67ae5b201d0e435d1187dc1b02e84e4785267b0434b034ada"
+      "bytes": 52015,
+      "sha256": "0380e4e616840b1de5b4202666f6b77898753447d6cd40fcf79fcfff4916629f"
     },
     {
       "path": ".packages/live-query-engine.zip.sha256",
       "bytes": 88,
-      "sha256": "10a16a0e0f77224b4d42dae95ff55c3b32b4d5b35fa803bb57995878521e66d7"
+      "sha256": "cc820d7001d5aef5d497c9c24cb01f135576bcdca0306de05783be39726345fd"
     },
     {
       "path": ".packages/one-file-world.zip",
@@ -6359,8 +6359,8 @@
     },
     {
       "path": "courses/live-query-engine/engine.test.mjs",
-      "bytes": 5455,
-      "sha256": "d412d2f38f73c492c8d49b2fb0584b12190526b51071dbac66b61809a11978d1"
+      "bytes": 5812,
+      "sha256": "7a44a47420651084e992899a546439181efd2320dbf54fc052ad15753128a8f3"
     },
     {
       "path": "courses/live-query-engine/examples/handoff.mjs",
@@ -6379,18 +6379,38 @@
     },
     {
       "path": "courses/live-query-engine/lessons/01.md",
-      "bytes": 5333,
-      "sha256": "0c6eafcf03b039856dd65a094b6c5cc539bd1a1af1e67b7ac23f509293d7d2d8"
+      "bytes": 6399,
+      "sha256": "7654e6b490970744064d220edc90180e535efa7ebfdb81f24e6daf172d6f540b"
     },
     {
       "path": "courses/live-query-engine/lessons/02.md",
-      "bytes": 5319,
-      "sha256": "ba9edc379e33a61609ae958f850320194b2b339d2f3e008816508c1f855cd243"
+      "bytes": 5760,
+      "sha256": "3e9f72af4d5e185caf11db4bbe1f242cff72b639e3b7c37055e4cc33b9ddfc0a"
     },
     {
       "path": "courses/live-query-engine/lessons/03.md",
-      "bytes": 9033,
-      "sha256": "5961864819bd3106ab67861df76d9c9c1b339b90bad495e1f112d40f42d5e9b8"
+      "bytes": 10568,
+      "sha256": "3462a88cd460569959e6776c7a6ad0ef303a112afaf2b24f69c9d81d464738e1"
+    },
+    {
+      "path": "courses/live-query-engine/lessons/figures/delayed-reader.svg",
+      "bytes": 3940,
+      "sha256": "0b22d538f0682afa082271bd80e8dfee83f6034739894e835009b10aa35715dc"
+    },
+    {
+      "path": "courses/live-query-engine/lessons/figures/event-walk.svg",
+      "bytes": 3749,
+      "sha256": "cc68fc07ab7ae42a19e32e2205f27ea4c22223c98e83267af81cf9721c0a92d5"
+    },
+    {
+      "path": "courses/live-query-engine/lessons/figures/one-commit.svg",
+      "bytes": 4460,
+      "sha256": "b7483ae52b90b8c369a766ca9b8985307cd11128a92cd6be15727f8ddb34902f"
+    },
+    {
+      "path": "courses/live-query-engine/lessons/figures/startup-race.svg",
+      "bytes": 5176,
+      "sha256": "cf9ff91bf79158fd0513ea269b1b3d2e3208c1e5a2a895b2d2a7f60004715882"
     },
     {
       "path": "courses/live-query-engine/lib/checks.mjs",
@@ -6439,13 +6459,13 @@
     },
     {
       "path": "courses/live-query-engine/shared/project-lab/markdown.mjs",
-      "bytes": 3100,
-      "sha256": "8c763b3c99ecbbcad6a63f305751da8ec098e7139db832fe6100c64286ecc344"
+      "bytes": 3537,
+      "sha256": "f1f90889fdee2706e560982d15385734b8631211df2e5d34ed5aef73a9112c74"
     },
     {
       "path": "courses/live-query-engine/shared/project-lab/terminal-lab.mjs",
-      "bytes": 4988,
-      "sha256": "30c47cabe7091c48da6ecf1d17ea66099f66e7cf54e4921d4f473701f6f70b3c"
+      "bytes": 5063,
+      "sha256": "a06d98ff5bb862fe69f135d633645c529f94e1c9b6c5044278e0e51b50a73e6b"
     },
     {
       "path": "courses/live-query-engine/starter/runtime.mjs",
@@ -6456,6 +6476,11 @@
       "path": "courses/live-query-engine/terminal.test.mjs",
       "bytes": 2652,
       "sha256": "945502c1add2d78786b246430d2ec0e939a609ff79830bfb78d3cd685ea74ed8"
+    },
+    {
+      "path": "courses/live-query-engine/tools/figures.mjs",
+      "bytes": 18221,
+      "sha256": "d3119ce213d4a3a1fd8e3219249448a9db116378525bbbd8708009e30a3abdad"
     },
     {
       "path": "courses/one-file-world/LICENSE.md",

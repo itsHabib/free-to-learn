@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="274" viewBox="0 0 480 274" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">One poll of one commit</title>
+<desc id="d">The board at revision 0 holds B 42. Revision 1 changes A 45 and B (deleted). Only the rows that still exist go to the matcher: it receives [45] and returns [0], which selects A. Then each touched ID is looked up before and after: A goes from absent to A 45, giving enter; B goes from B 42 to absent, giving leave. The board after the poll holds A 45.</desc>
+<rect width="480" height="274" fill="#ffffff"/>
+<defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5c6865"/></marker></defs>
+<text x="16" y="24" font-weight="600">One poll, one commit: revision 1</text>
+<text x="16" y="50" font-size="13" fill="#5c6865">the board at r0</text>
+<rect x="130" y="35" width="48.4" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="154.2" y="50" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">B 42</text>
+<text x="16" y="84" font-size="13" fill="#5c6865">r1 changes</text>
+<rect x="130" y="69" width="48.4" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="154.2" y="84" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">A 45</text>
+<rect x="184.4" y="69" width="91.39999999999999" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="230.1" y="84" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">B deleted</text>
+<text x="16" y="118" font-size="13" fill="#5c6865">matcher</text>
+<rect x="130" y="103" width="48.4" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="154.2" y="118" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">[45]</text>
+<line x1="184.4" y1="114" x2="212.4" y2="114" stroke="#5c6865" marker-end="url(#a)"/>
+<rect x="218.4" y="103" width="39.8" height="22" fill="#f3f5f4" stroke="#1f2b29"/>
+<text x="238.3" y="118" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">[0]</text>
+<text x="266.2" y="118" font-size="13" fill="#5c6865">index 0 is A</text>
+<text x="30" y="154" font-size="13" fill="#5c6865">touched ID</text>
+<text x="110" y="154" font-size="13" fill="#5c6865">before (board)</text>
+<text x="220" y="154" font-size="13" fill="#5c6865">after (matcher)</text>
+<text x="330" y="154" font-size="13" fill="#5c6865">event</text>
+<line x1="16" y1="162" x2="464" y2="162" stroke="#c9d2cf"/>
+<text x="50" y="189" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">A</text>
+<rect x="110" y="174" width="65.6" height="22" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="142.8" y="189" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">absent</text>
+<rect x="220" y="174" width="48.4" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="244.2" y="189" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">A 45</text>
+<rect x="330" y="174" width="57" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="358.5" y="189" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">enter</text>
+<text x="50" y="223" font-family="ui-monospace, Menlo, Consolas, monospace" font-weight="600">B</text>
+<rect x="110" y="208" width="48.4" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="134.2" y="223" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">B 42</text>
+<rect x="220" y="208" width="65.6" height="22" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="252.8" y="223" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">absent</text>
+<rect x="330" y="208" width="57" height="22" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="358.5" y="223" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">leave</text>
+<text x="16" y="256" font-size="13" fill="#5c6865">board after the poll</text>
+<rect x="150" y="241" width="48.4" height="22" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="174.2" y="256" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">A 45</text>
+</svg>

@@ -22,6 +22,14 @@ export function markdown(text, base) {
     }
     if (code !== null) { code.push(line); continue; }
     if (line.startsWith('<!--')) continue;
+    // A line that is only a Markdown image is a figure: a local file beside the lesson or a web address.
+    const image = line.match(/^!\[([^\]]*)\]\(([^)\s]+)\)$/);
+    if (image) {
+      flush(); closeList();
+      const url = new URL(image[2], base);
+      if (['http:', 'https:', 'file:'].includes(url.protocol)) out.push(`<figure><img src="${escapeHTML(url.href)}" alt="${escapeHTML(image[1])}"></figure>`);
+      continue;
+    }
     if (!line.trim()) { flush(); closeList(); continue; }
     const heading = line.match(/^(#{1,6})\s+(.+)/);
     if (heading) { flush(); closeList(); const n = Math.min(6, heading[1].length + 1); out.push(`<h${n}>${inline(heading[2], base)}</h${n}>`); continue; }
