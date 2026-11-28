@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="244" viewBox="0 0 480 244" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">One decoder block with checkpoint shapes</title>
+<desc id="d">The tensors of block 0 in the fixture checkpoint, in execution order. Attention half, built in this module: attnNorm [8], wq [8,8], wk [8,8], wv [8,8], wo [8,8], then a residual add. Feed-forward half, built in module 03: ffnNorm [8], w1 [8,16], w3 [8,16], w2 [16,8]. With h the ffnNorm output, SiLU of h times w1, multiplied elementwise by h times w3, is 16 wide; w2 projects it back to 8 for the residual add. The model has 2 blocks and 2 heads of 4; embedding [32, 8], lmHead [8, 32].</desc>
+<rect width="480" height="244" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">One decoder block, shapes read from the checkpoint (block 0 of 2)</text>
+<text x="16" y="56" font-size="13" font-weight="600">x [8] → attention half (this module)</text>
+<rect x="16" y="66" width="78" height="44" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="55" y="84" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">attnNorm</text>
+<text x="55" y="101" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8]</text>
+<rect x="102" y="66" width="60" height="44" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="132" y="84" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">wq</text>
+<text x="132" y="101" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8,8]</text>
+<rect x="170" y="66" width="60" height="44" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="200" y="84" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">wk</text>
+<text x="200" y="101" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8,8]</text>
+<rect x="238" y="66" width="60" height="44" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="268" y="84" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">wv</text>
+<text x="268" y="101" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8,8]</text>
+<rect x="306" y="66" width="60" height="44" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="336" y="84" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">wo</text>
+<text x="336" y="101" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8,8]</text>
+<text x="16" y="134" font-size="13" font-weight="600">+ residual, then the feed-forward half (module 03)</text>
+<rect x="16" y="144" width="70" height="44" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="51" y="162" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">ffnNorm</text>
+<text x="51" y="179" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8]</text>
+<rect x="94" y="144" width="62" height="44" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="125" y="162" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">w1</text>
+<text x="125" y="179" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8,16]</text>
+<rect x="164" y="144" width="62" height="44" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="195" y="162" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">w3</text>
+<text x="195" y="179" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[8,16]</text>
+<rect x="234" y="144" width="62" height="44" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="265" y="162" text-anchor="middle" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">w2</text>
+<text x="265" y="179" text-anchor="middle" font-size="12.5" fill="#5c6865" font-family="ui-monospace, Menlo, Consolas, monospace">[16,8]</text>
+<text x="16" y="212" font-size="12.5" fill="#5c6865">With h the ffnNorm output, SiLU(h·w1) × (h·w3) is [16] wide; w2 brings it back to [8].</text>
+<text x="16" y="230" font-size="12.5" fill="#5c6865">2 heads of 4; embedding [32,8], lmHead [8,32].</text>
+</svg>

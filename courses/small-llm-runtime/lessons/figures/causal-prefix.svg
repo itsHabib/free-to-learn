@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="204" viewBox="0 0 480 204" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Causal prefix independence</title>
+<desc id="d">forward on &quot;abc&quot; and on &quot;abz&quot;, which differ only at the last position. Position 0: largest logit difference 0; Position 1: largest logit difference 0; Position 2: largest logit difference 2.513. Causal attention keeps earlier positions from seeing the changed token.</desc>
+<rect width="480" height="204" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">Change only the last token: &quot;abc&quot; against &quot;abz&quot;</text>
+<text x="150" y="44" font-size="12.5" fill="#5c6865">largest logit difference</text>
+<text x="16" y="68" font-size="13">position 0</text>
+<text x="90" y="68" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">a / a</text>
+<rect x="150" y="54" width="4" height="20" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="162" y="69" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">max |Δ| 0, identical</text>
+<text x="16" y="112" font-size="13">position 1</text>
+<text x="90" y="112" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">b / b</text>
+<rect x="150" y="98" width="4" height="20" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="162" y="113" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">max |Δ| 0, identical</text>
+<text x="16" y="156" font-size="13">position 2</text>
+<text x="90" y="156" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">c / z</text>
+<rect x="150" y="142" width="130" height="20" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="288" y="157" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">max |Δ| 2.513</text>
+<text x="16" y="190" font-size="12.5" fill="#5c6865">Positions before the change see only earlier tokens, so their logits do not move.</text>
+</svg>

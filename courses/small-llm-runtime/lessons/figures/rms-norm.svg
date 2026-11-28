@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="274" viewBox="0 0 480 274" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">RMSNorm on the worked example</title>
+<desc id="d">RMSNorm step by step on x = [2, -2] with gains [1, 2] and epsilon 1, matching rmsNorm in the reference: the mean of squares is 4; adding epsilon and taking the square root gives √5, about 2.2361; dividing gives [0.8944, -0.8944]; multiplying by the gains gives [0.8944, -1.7889]. No mean is subtracted, and a zero input stays zero because epsilon keeps the root positive.</desc>
+<rect width="480" height="274" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">RMSNorm of [2,-2] with gains [1,2] and epsilon 1</text>
+<text x="16" y="66" font-size="13" fill="#5c6865">input x</text>
+<rect x="206" y="48" width="258" height="28" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="214" y="67" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">[2, -2]</text>
+<text x="335" y="85" text-anchor="middle" font-size="12">↓</text>
+<text x="16" y="106" font-size="13" fill="#5c6865">mean of squares</text>
+<rect x="206" y="88" width="258" height="28" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="214" y="107" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">(2² + (-2)²) / 2 = 4</text>
+<text x="335" y="125" text-anchor="middle" font-size="12">↓</text>
+<text x="16" y="146" font-size="13" fill="#5c6865">add epsilon, root</text>
+<rect x="206" y="128" width="258" height="28" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="214" y="147" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">√(4 + 1) = √5 ≈ 2.2361</text>
+<text x="335" y="165" text-anchor="middle" font-size="12">↓</text>
+<text x="16" y="186" font-size="13" fill="#5c6865">divide each coordinate</text>
+<rect x="206" y="168" width="258" height="28" fill="#f3f5f4" stroke="#5c6865"/>
+<text x="214" y="187" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">[0.8944, -0.8944]</text>
+<text x="335" y="205" text-anchor="middle" font-size="12">↓</text>
+<text x="16" y="226" font-size="13" fill="#5c6865">times the gains</text>
+<rect x="206" y="208" width="258" height="28" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="214" y="227" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">[0.8944, -1.7889]</text>
+<text x="16" y="260" font-size="12.5" fill="#5c6865">No mean is subtracted. A zero input stays [0, 0]: epsilon keeps the root positive.</text>
+</svg>

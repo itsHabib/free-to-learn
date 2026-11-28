@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="208" viewBox="0 0 480 208" role="img" aria-labelledby="t d" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="14" fill="#1f2b29">
+<title id="t">Two generations and their stop reasons</title>
+<desc id="d">The reference generate on prompt [4,3,5] (&quot;a b&quot;) with 8 new tokens and seed 1. Position 3: token 4; Position 4: token 8; Position 5: token 10; Position 6: token 29; Position 7: token 18; Position 8: token 23; Position 9: token EOS. It generates 7 tokens and stops with &quot;eos&quot;. With a 31-token prompt and the same settings it generates 1 token at position 31 and stops with &quot;context&quot;.</desc>
+<rect width="480" height="208" fill="#ffffff"/>
+<text x="16" y="24" font-weight="600">generate(prompt [4,3,5], 8 new tokens, seed 1)</text>
+<text x="16" y="67" font-size="12.5" fill="#5c6865">position</text>
+<text x="16" y="99" font-size="12.5" fill="#5c6865">token</text>
+<text x="104" y="67" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">3</text>
+<rect x="80" y="80" width="46" height="28" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="103" y="99" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">4</text>
+<text x="156" y="67" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">4</text>
+<rect x="132" y="80" width="46" height="28" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="155" y="99" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">8</text>
+<text x="208" y="67" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">5</text>
+<rect x="184" y="80" width="46" height="28" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="207" y="99" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">10</text>
+<text x="260" y="67" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">6</text>
+<rect x="236" y="80" width="46" height="28" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="259" y="99" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">29</text>
+<text x="312" y="67" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">7</text>
+<rect x="288" y="80" width="46" height="28" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="311" y="99" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">18</text>
+<text x="364" y="67" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">8</text>
+<rect x="340" y="80" width="46" height="28" fill="#d8ece8" stroke="#1f6f68"/>
+<text x="363" y="99" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">23</text>
+<text x="416" y="67" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">9</text>
+<rect x="392" y="80" width="46" height="28" fill="#f6e3cf" stroke="#a65a17"/>
+<text x="415" y="99" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="13">EOS</text>
+<text x="16" y="134" font-size="13">7 tokens generated; stop = &quot;eos&quot;</text>
+<text x="16" y="170" font-size="13" font-weight="600">A 31-token prompt in context 32, same settings:</text>
+<text x="16" y="192" font-size="13" font-family="ui-monospace, Menlo, Consolas, monospace">1 token generated at position 31; stop = &quot;context&quot;</text>
+</svg>
