@@ -11,7 +11,7 @@
   "wrong": [
    {
     "answer": "2",
-    "feedback": "Message 4 is the one that looks odd but is fine, so which of the others did you let through? A string \"52\" is not a number, and 70.5 is not a whole number: both are refused, as is the extra field hit."
+    "feedback": "Message 4 is valid even though its fields are in a different order. A string \"52\" is not a number, and 70.5 is not a whole number: both are refused, as is the extra field hit."
    },
    {
     "answer": "4",
@@ -48,7 +48,7 @@
    "9, 10",
    "9 10"
   ],
-  "reason": "Seq 9 is above 7: admitted, and lastSeq becomes 9. Seq 8 is now at or below lastSeq: stale. Seq 10 fires in round 3, and the last fire was in round 2: admitted, firedRound becomes 3. Seq 11 fires in round 3 again: refused (fired, or flying, since the shell left with seq 10).",
+  "reason": "Seq 9 is above 7: admitted, and lastSeq becomes 9. Seq 8 is now at or below lastSeq: stale. Seq 10 fires in round 3, and the last fire was in round 2: admitted, firedRound becomes 3. Seq 11 requests another fire in round 3. No tick has passed since seq 10 launched the shell, so the server refuses seq 11 as flying before it checks fired.",
   "wrong": [
    {
     "answer": "9,8,10",
@@ -277,11 +277,11 @@
   "question": "At 0 ms the expert hits 23.8% of 2,400 shots with the full view and 25.0% with the drawn view. Does the drawn view help experts?",
   "format": "yes or no",
   "expected": "no",
-  "reason": "At 0 ms the two screens differ only by fractions of a pace, so the expert plays almost the same game, and small differences early send the sessions down different paths. The 1.2-point gap is noise: the standard error of a rate near 24% over 2,400 shots is about 0.9 points, and the difference of two such rates has a standard error of about 1.2.",
+  "reason": "At 0 ms the two screens differ only by fractions of a pace, so the expert plays almost the same game, and small differences early send the sessions down different paths. The 1.2-point gap is consistent with sampling noise: the standard error of a rate near 24% over 2,400 shots is about 0.9 points, and the difference of two such rates has a standard error of about 1.2.",
   "wrong": [
    {
     "answer": "yes",
-    "feedback": "At 0 ms the two screens differ only by fractions of a pace. A difference of 1.2 points over 2,400 shots is about one standard error of the difference: noise."
+    "feedback": "At 0 ms the two screens differ only by fractions of a pace. A difference of 1.2 points over 2,400 shots is about one standard error of the difference, consistent with noise."
    }
   ]
  },
@@ -449,7 +449,7 @@
    },
    {
     "answer": "40",
-    "feedback": "40 meets the budget, but so does 25, which flags more cheats: chooseThreshold takes the smallest threshold within the budget."
+    "feedback": "40 meets the budget, but so does 25, which can flag more cheats: chooseThreshold takes the smallest threshold within the budget."
    }
   ]
  },
@@ -585,7 +585,7 @@
   "question": "A slow-pong faker holds its pongs, so its largest recent sample is 380 ms. The window is 6. How many ticks may its claims rewind?",
   "format": "a whole number of ticks",
   "expected": "6",
-  "reason": "380 ms is 7.6 ticks; ceil gives 8, plus 1 is 9. The window, 6, is smaller, so the window decides. That is why only the window limits this faker.",
+  "reason": "380 ms is 7.6 ticks; ceil gives 8, plus 1 is 9. The window, 6, is smaller, so the window decides.",
   "wrong": [
    {
     "answer": "9",
@@ -853,7 +853,7 @@
   "question": "A view adds calm: Math.abs(game.serverWind()) < 0.5. The exact wind is 0.3 and the arrows show ~ (its band is -0.75 to 0.75). setHidden('wind', k) sets -0.375, 0 and 0.375 for k = 1, 2 and 3. For which values of k does the message change?",
   "format": "the values of k, separated by commas, or none",
   "expected": "none",
-  "reason": "calm is true now, and all three test winds are under 0.5 in size, so calm stays true and the message never changes. The view leaks the wind all the same: a wind of 0.6 would turn calm false. Three variants catch many leaks, but they cannot rule out a leak that shows only at a value none of them reaches. A passing test is evidence about the cases it tried.",
+  "reason": "calm is true now, and all three test winds are under 0.5 in size, so calm stays true and the message never changes. The view leaks the wind all the same: a wind of 0.6 would turn calm false. Three variants catch many leaks, but they cannot rule out a leak that shows only at a value none of them reaches.",
   "wrong": [
    {
     "answer": "1,3",
@@ -923,7 +923,7 @@
   "question": "Why must the threshold come from the dev split, and not from the sessions you will report? (a) held-out sessions are harder (b) a threshold chosen on the sessions it's then measured on is measured too kindly (c) the dev split has more cheats (d) chooseThreshold accepts only dev scores",
   "format": "one letter",
   "expected": "b",
-  "reason": "Choosing the threshold fits it to the sessions it was chosen on: their particular lucky experts and unlucky searchers. Measured on those same sessions, it looks better than it will on any others. Fresh sessions give the honest number.",
+  "reason": "Choosing the threshold fits it to the sessions it was chosen on: their particular lucky experts and unlucky searchers. Evaluating the detector on the sessions used to choose its threshold can make its performance look too good. Fresh sessions measure how that choice performs on data it was not fitted to.",
   "wrong": [
    {
     "answer": "a",
@@ -1120,7 +1120,7 @@
   "question": "drawnView keeps its rounded flag, but cloud: Math.round(game.cloud()) becomes cloud: game.cloud(), so the cloud is sent unrounded. How many of unit 13's four checks fail?",
   "format": "a whole number from 0 to 4",
   "expected": "2",
-  "reason": "Two, `13.view-fields` and `13.view-noninterference`: the cloud field is not rounded, and changing cloudFraction alone changes your message. `13.view-encodings` passes, because the values it searches for are the exact wind, the flag's speed, the random state, the flag's exact x and the shell's velocity, not the cloud's exact position. A search finds only what it is told to look for; the non-interference test needs no list.",
+  "reason": "Two, `13.view-fields` and `13.view-noninterference`: the cloud field is not rounded, and changing cloudFraction alone changes your message. `13.view-encodings` passes, because the values it searches for are the exact wind, the flag's speed, the random state, the flag's exact x and the shell's velocity, not the cloud's exact position. The encoding search needs a list of values and encodings. The non-interference test uses the hidden names in game.hidden and compares messages without listing possible encodings.",
   "wrong": [],
   "lesson": "13",
   "section": "Precision is information"
@@ -1169,7 +1169,7 @@
   "question": "In judgeInteract, const allowed = Math.min(window, Math.ceil(rtt) + 1); becomes const allowed = window;, so the client's round trip no longer bounds the rewind. How many of unit 15's six checks fail?",
   "format": "a whole number from 0 to 6",
   "expected": "2",
-  "reason": "Two checks fail and four pass. `15.judge` fails on its case of a claim older than the round trip allows: your judge now looks further back than `min(window, ceil(rtt) + 1)`. `15.sweep` fails on the first interaction of its own sessions that your judge decides at another tick than the rule does. `15.position-at`, `15.measure-rtt`, `15.tally` and `15.pick` never call judgeInteract. The sweep changes in one column above all. The honest columns read exactly as before, because no honest claim in these sessions was older than its own round trip plus a tick, so the bound never cut one short. The naive faker's column, 0 at every window in the listing, now counts accepted lies from window 3 on, 5,458 of its 16,176 presses at window 7: its claims reach up to 12 ticks back, and only the window stops them now. The slow-pong column moves a little too, from presses it makes before any of its held pongs has arrived, when the bound had held them to one tick. And the last two lines still name windows 7 and 6, because pickWindow reads only the honest rate and the slow-pong column: the table it picks from can hide a broken judge. Lesson 17's courier budget limits the naive faker's accepted lies, and would catch this.",
+  "reason": "Two checks fail and four pass. `15.judge` fails on its case of a claim older than the round trip allows: your judge now looks further back than `min(window, ceil(rtt) + 1)`. `15.sweep` fails on the first interaction of its own sessions that your judge decides at another tick than the rule does. `15.position-at`, `15.measure-rtt`, `15.tally` and `15.pick` never call judgeInteract. Look first at the naive faker's accepted lies. The honest columns read exactly as before, because no honest claim in these sessions was older than its own round trip plus a tick, so the bound never cut one short. The naive faker's column, 0 at every window in the listing, now counts accepted lies from window 3 on, 5,458 of its 16,176 presses at window 7: its claims reach up to 12 ticks back, and only the window stops them now. The slow-pong column moves a little too, from presses it makes before any of its held pongs has arrived, when the bound had held them to one tick. And the last two lines still name windows 7 and 6, because pickWindow reads only the honest rate and the slow-pong column: the table it picks from can hide a broken judge. Lesson 17's courier budget limits the naive faker's accepted lies, and would catch this.",
   "wrong": [
    {
     "answer": "0",
